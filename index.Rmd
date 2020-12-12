@@ -12,17 +12,12 @@ output:
     keep_tex: yes
     latex_engine: xelatex
     citation_package: natbib
-fontsize: 12pt
-linestretch: 1.5
 toc-depth: 1
 secnumdepth: 1
-lof: True
-lot: True
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [biblio_psicom.bib]
 biblio-style: apalike
-geometry: "left=4cm, right=3cm, top=2.5cm, bottom=2.5cm"
 ---
 
 # Prefazione
