@@ -6,11 +6,8 @@ Una teoria psicologica di un qualche aspetto del comportamento umano o
 della mente ha le seguenti proprietà:
 
 1.  descrive le caratteristiche del comportamento in questione,
-
 2.  formula predizioni sulle caratteristiche future del comportamento,
-
 3.  è sostenuta da evidenze empiriche,
-
 4.  deve essere falsificabile (ovvero, in linea di principio, deve
     potere fare delle predizioni su aspetti del fenomeno considerato che
     non sono ancora noti e che, se venissero indagati, potrebbero
@@ -21,9 +18,7 @@ L'analisi dei dati si riferisce al punto 3 indicato sopra e, nelle sue
 fasi distinte, ovvero
 
 -   la misurazione,
-
 -   l'analisi descrittiva,
-
 -   l'inferenza causale,
 
 ha un ruolo centrale nello sviluppo delle teorie psicologiche. Prima di
