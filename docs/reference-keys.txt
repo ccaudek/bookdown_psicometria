@@ -1,6 +1,3 @@
-prefazione
-perché-tanta-statistica-in-psicologia
-come-studiare
 chapter:terminologia
 metodi-e-procedure-della-psicologia
 variabili-e-costanti

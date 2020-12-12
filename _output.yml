@@ -1,22 +1,13 @@
 bookdown::gitbook:
-  css: r4ds.css
+  css: style.css
   config:
     toc:
       before: |
         <li><a href="./">SHORT TITLE HERE</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-bookdown::pdf_book:
-  includes:
-    in_header: preamble.tex
-  latex_engine: "xelatex"
-  citation_package: natbib
-  keep_tex: yes
-bookdown::epub_book: default
-bookdown::html_document2:
-  citation_package: biblatex
-  theme: default
-  toc: yes
-  toc_float:
-    collapsed: true
-    smooth_scroll: false
+#bookdown::pdf_book:
+#  includes:
+#    in_header: preamble.tex
+#  latex_engine: xelatex
+#  citation_package: natbib

@@ -1,26 +1,27 @@
 --- 
 title: "PSICOMETRIA"
 author: "Corrado Caudek"
-description: "Queste dispense contengono il materiale delle lezioni dell'insegnamento Psicometria B000286 (A.A. 2020/2021) rivolto agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche dell'Università di Firenze."
-language: italian
+description: >
+  ""
+github-repo: ccaudek/bookdown_psicometria
+
+bibliography: [biblio_psicom.bib]
+csl: apa6.csl
 link-citations: yes
+
+documentclass: book
+site: bookdown::bookdown_site
+output          :
+  bookdown::gitbook:
+    
+language: italian
 date: "`r Sys.Date()`"
-output: 
-  bookdown::pdf_book:
-    includes:
-      in_header: preamble.tex
-    keep_tex: yes
-    latex_engine: xelatex
-    citation_package: natbib
+
 toc-depth: 1
 secnumdepth: 1
-site: bookdown::bookdown_site
-documentclass: book
-bibliography: [biblio_psicom.bib]
-biblio-style: apalike
 ---
 
-# Prefazione
+# Prefazione {-}
 
 Queste dispense contengono il materiale delle lezioni dell'insegnamento Psicometria  B000286 (A.A. 2019/2020) rivolto agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche dell'Università di Firenze. 
 L'insegnamento di Psicometria si propone di fornire agli studenti un'introduzione all'analisi dei dati in psicologia.  
@@ -30,7 +31,7 @@ Tali conoscenze sono state aggiunte delle appendici di queste dispense.
 concetti elementari di insiemistica). 
 La lettura di tale materiale è consigliata a tutti, sia a chi sta studiando gli argomenti proposti per la prima volta, sia a chi deve ripassare per colmare eventuali lacune pregresse. 
 
-## Perché tanta statistica in psicologia?
+## Perché tanta statistica in psicologia? {-}
 
 Sembra sensato spendere due parole su un tema che è importante per gli studenti: quello indicato dal titolo di questa sezione.
 È ovvio che agli studenti di psicologia la statistica non piace.
@@ -92,7 +93,7 @@ Le considerazioni precedenti cercano di chiarire il seguente punto: la statistic
 Nel bene e nel male, gli psicologi usano strumenti statistici in tantissime fasi della loro attività professionale: in particolare quando costruiscono, somministrano e interpretano i test psicometrici.
 È dunque chiaro che possedere delle solide basi di statistica è un tassello imprescindibile del bagaglio professionale dello psicologo.
 
-## Come studiare?
+## Come studiare? {-}
 
 Il giusto metodo di studio per prepararsi all'esame di Psicometria è quello di seguire attivamente le lezioni, assimilare i concetti via via che essi vengono presentati e verificare in autonomia le procedure presentate a lezione. 
 È importante fare domande a lezione per sviluppare la capacità di mettere in relazione tra loro i diversi argomenti trattati, prendere parte  alle esercitazioni organizzate dai Peer Tutor, utilizzare i forum attivi su Moodle e, soprattutto, svolgere gli esercizi proposti su Moodle. 
