@@ -1,4 +1,4 @@
-book_filename: "bookdownproj"
+book_filename: "Psicometria"
 output_dir: docs
 delete_merged_file: true
 edit: https://github.com/ccaudek/bookdown_psicometria/edit/master/%s
@@ -12,4 +12,5 @@ rmd_files: [
   "index.rmd",
   "terminologia.Rmd",
   "misurazione.Rmd",
+  "References.Rmd",
 ]
