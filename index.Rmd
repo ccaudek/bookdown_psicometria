@@ -3,11 +3,26 @@ title: "PSICOMETRIA"
 author: "Corrado Caudek"
 description: "Queste dispense contengono il materiale delle lezioni dell'insegnamento Psicometria B000286 (A.A. 2020/2021) rivolto agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche dell'Università di Firenze."
 language: italian
-bibliography: [biblio_psicom.bib]
-biblio-style: "apalike"
 link-citations: yes
 date: "`r Sys.Date()`"
+output: 
+  bookdown::pdf_book:
+    includes:
+      in_header: preamble.tex
+    keep_tex: yes
+    latex_engine: xelatex
+    citation_package: natbib
+fontsize: 12pt
+linestretch: 1.5
+toc-depth: 1
+secnumdepth: 1
+lof: True
+lot: True
 site: bookdown::bookdown_site
+documentclass: book
+bibliography: [biblio_psicom.bib]
+biblio-style: apalike
+geometry: "left=4cm, right=3cm, top=2.5cm, bottom=2.5cm"
 ---
 
 # Prefazione
