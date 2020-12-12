@@ -1,7 +1,6 @@
 --- 
 title: "PSICOMETRIA"
 author: "Corrado Caudek"
-institute: "Università degli Studi di Firenze"
 date: "`r Sys.Date()`"
 description: >
   ""
@@ -15,8 +14,6 @@ documentclass: book
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook
-    
-language: italian
 ---
 
 # Prefazione {-}
