@@ -6,3 +6,15 @@ metodi-e-procedure-della-psicologia
 variabili-e-costanti
 variabili-indipendenti-e-variabili-dipendenti
 la-matrice-dei-dati
+chapter:misurazione
+le-scale-di-misura
+scala-nominale
+scala-ordinale
+scala-ad-intervalli
+scala-di-rapporti
+gerarchia-dei-livelli-di-scala-di-misura
+sec:DiscreteVsContinuous
+perché-certe-misure-sono-migliori-di-altre
+sec:accuratezza_precisione
+sec:reliability
+sec:validity
