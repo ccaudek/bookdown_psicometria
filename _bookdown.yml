@@ -25,12 +25,13 @@ language:
     chapter_name: 'Capitolo '
 before_chapter_script: "_common.R"
 
+# comment-out below when building HTML book, un-comment for PDF and full-length Markdown
 rmd_files: [
   "index.rmd",
-  "pacchetti.Rmd",
-  "terminologia.Rmd",
-  "misurazione.Rmd",
-  "stat_descrittive.Rmd",
-  "prob_intro.Rmd",
-  "References.Rmd",
+  "01_pacchetti.Rmd",
+  "02_terminologia.Rmd",
+  "03_misurazione.Rmd",
+  "04_stat_descrittive.Rmd",
+  "05_prob_intro.Rmd",
+  "99_References.Rmd",
 ]
