@@ -4,7 +4,6 @@ delete_merged_file: true
 edit: https://github.com/ccaudek/bookdown_psicometria/edit/master/%s
 view: https://github.com/ccaudek/bookdown_psicometria/blob/master/%s
 
-
 language:
   label:
     fig: 'Figura '
@@ -30,5 +29,6 @@ rmd_files: [
   "index.rmd",
   "terminologia.Rmd",
   "misurazione.Rmd",
+  "stat_descrittive.Rmd",
   "References.Rmd",
 ]
