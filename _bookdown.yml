@@ -3,9 +3,27 @@ output_dir: docs
 delete_merged_file: true
 edit: https://github.com/ccaudek/bookdown_psicometria/edit/master/%s
 view: https://github.com/ccaudek/bookdown_psicometria/blob/master/%s
-language: 
+
+
+language:
+  label:
+    fig: 'Figura '
+    tab: 'Tabella '
+    eq: 'Equazione '
+    thm: 'Teorema '
+    lem: 'Lemma '
+    cor: 'Corollario '
+    prp: 'Proposizione '
+    cnj: 'Congettura '
+    def: 'Definizione '
+    exm: 'Esempio '
+    exr: 'Exercizio '
+    proof: 'Dimostrazione. '
+    remark: 'Osservazione. '
+    solution: 'Soluzione. '
   ui:
-    chapter_name: "Capitolo "
+    edit: Edit
+    chapter_name: 'Capitolo '
 before_chapter_script: "_common.R"
 
 rmd_files: [

@@ -73,19 +73,26 @@ presente nel campione, dalla *variabile dipendente*, che descrive ciò
 che varia al variare della variabile indipendente e che viene misurato
 nel campione.
 
+
+
+```{exercise, prob-var-dip-indip}
 Uno psicologo convoca 120 studenti universitari per un test di memoria.
 Prima di iniziare l'esperimento, a metà dei soggetti viene detto che si
 tratta di un compito particolarmente difficile; agli altri soggetti non
 viene data alcuna indicazione. Lo psicologo misura il punteggio nella
 prova di memoria di ciascun soggetto. Si individuino la variabile
 indipendente e la variabile dipendente di questo esperimento.
+```
 
+```{solution}
 La variabile indipendente è l'informazione sulla difficoltà della prova.
 La variabile indipendente viene manipolata dallo sperimentatore
 assegnando i soggetti (di solito in maniera causale) o alla condizione
 (modalità) "informazione assegnata" o "informazione non data". La
 variabile dipendente è ciò che viene misurato nell'esperimento, ovvero
 il punteggio nella prova di memoria di ciascun soggetto.
+```
+
 
 ## La matrice dei dati
 

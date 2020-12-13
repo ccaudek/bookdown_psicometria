@@ -24,7 +24,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2020-12-12" />
+<meta name="date" content="2020-12-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -176,14 +176,17 @@ l’ordine di rango tra le modalità, ma non dà alcuna informazione su
 quanto una modalità sia più grande di un’altra. Non ci dice, per
 esempio, se la distanza tra le modalità <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> sia uguale, maggiore o
 minore della distanza tra le modalità <span class="math inline">\(b\)</span> e <span class="math inline">\(c\)</span>.</p>
-<p>Un esempio classico di scala ordinale è quello della scala Mohs per la
+
+<div class="example">
+<span id="exm:ex-scala-ord" class="example"><strong>Esempio 2.1  (Scala Mohs)  </strong></span>Un esempio classico di scala ordinale è quello della scala Mohs per la
 determinazione della durezza dei minerali. Per stabilire la durezza dei
 minerali si usa il criterio empirico della scalfittura. Vengono
 stabiliti livelli di durezza crescente da 1 a 10 con riferimento a dieci
 minerali: talco, gesso, calcite, fluorite, apatite, ortoclasio, quarzo,
 topazio, corindone e diamante. Un minerale appartenente ad uno di questi
 livelli se scalfisce quello di livello inferiore ed è scalfito da quello
-di livello superiore.</p>
+di livello superiore.
+</div>
 </div>
 <div id="scala-ad-intervalli" class="section level3" number="2.1.3">
 <h3><span class="header-section-number">2.1.3</span> Scala ad intervalli</h3>
@@ -219,7 +222,11 @@ consiste nel sommare una costante a tutti i valori della scala. Essendo
 la scala invariate rispetto alla traslazione e alla dilatazione, le
 trasformazioni ammissibili sono le <em>trasformazioni lineari</em>:
 <span class="math display">\[y&#39; = a + by, \quad b &gt; 0.\]</span>
-Esempio di scala ad intervalli è la temperatura misurata in gradi
+L’aspetto che rimane invariante a seguito di una trasformazione lineare
+è l’uguaglianza dei rapporti fra intervalli.</p>
+
+<div class="example">
+<p><span id="exm:ex-scala-temperatura" class="example"><strong>Esempio 2.2  (Temperatura)  </strong></span>Esempio di scala ad intervalli è la temperatura misurata in gradi
 Celsius o Fahrenheit, ma non Kelvin. Come per la scala nominale, è
 possibile stabilire se due modalità sono uguali o diverse: 30<span class="math inline">\(^\circ\)</span>C
 <span class="math inline">\(\neq\)</span> 20<span class="math inline">\(^\circ\)</span>C. Come per la scala ordinale è possibile mettere due
@@ -245,14 +252,16 @@ infatti, devono dirci qualcosa a proposito della realtà empirica e non
 possono in nessun modo essere condizionate dalle nostre scelte
 arbitrarie che ci portano a scegliere la scala Centigrada piuttosto che
 quella Fahrenheit.</p>
-<p>L’aspetto che rimane invariante a seguito di una trasformazione lineare
-è l’uguaglianza dei rapporti fra intervalli. Consideriamo, ad esempio,
-tre temperature: 20<span class="math inline">\(^\circ\)</span>C = 68<span class="math inline">\(^\circ\)</span>F; 15<span class="math inline">\(^\circ\)</span>C = 59<span class="math inline">\(^\circ\)</span>F;
-10<span class="math inline">\(^\circ\)</span>C = 50<span class="math inline">\(^\circ\)</span>F. È facile rendersi conto del fatto che i
-rapporti fra intervalli restano costanti indipendentemente dall’unità di
-misura che è stata scelta:
-<span class="math display">\[\frac{20^\circ C - 10^\circ C}{20^\circ C - 15^\circ C} = 
-  \frac{68^\circ F - 50^\circ F}{68^\circ F-59^\circ F} = 2.\]</span></p>
+<p>Consideriamo ora l’aspetto invariante di una trasformazione lineare, ovvero l’uguaglianza dei rapporti fra intervalli. Prendiamo in esame, ad esempio, tre temperature:
+<span class="math inline">\(20^\circ C = 68^\circ F\)</span>,
+<span class="math inline">\(15^\circ C = 59^\circ F\)</span>,
+<span class="math inline">\(10^\circ C = 50 ^\circ F\)</span>.</p>
+È facile rendersi conto del fatto che i rapporti fra intervalli restano costanti indipendentemente dall’unità di misura che è stata scelta:
+<span class="math display">\[
+  \frac{20^\circ C - 10^\circ C}{20^\circ C - 15^\circ C} = 
+  \frac{68^\circ F - 50^\circ F}{68^\circ F-59^\circ F} = 2.
+\]</span>
+</div>
 </div>
 <div id="scala-di-rapporti" class="section level3" number="2.1.4">
 <h3><span class="header-section-number">2.1.4</span> Scala di rapporti</h3>
@@ -281,9 +290,7 @@ invariati anche i rapporti: <span class="math display">\[\frac{y_i}{y_j} = \frac
 <p><span class="citation"><a href="bibliografia.html#ref-stevens46" role="doc-biblioref">Stevens</a> (<a href="bibliografia.html#ref-stevens46" role="doc-biblioref">1946</a>)</span> parla di <em>livelli di scala</em> poiché i quattro tipi di scala di
 misura stanno in una precisa gerarchia: la scala nominale rappresenta il
 livello più basso della misurazione, la scala a rapporti equivalenti è
-invece il livello più alto. Passando da un livello di misurazione ad uno
-più alto aumenta il numero di operazioni aritmetiche che possono essere
-compiute sui valori della scala.</p>
+invece il livello più alto.</p>
 <table>
 <thead>
 <tr class="header">
@@ -318,6 +325,15 @@ compiute sui valori della scala.</p>
 </tr>
 </tbody>
 </table>
+<p>Passando da un livello di misurazione ad uno
+più alto aumenta il numero di operazioni aritmetiche che possono essere
+compiute sui valori della scala, come indicato nella figura seguente.</p>
+<div class="figure" style="text-align: center"><span id="fig:tikz-ex"></span>
+<img src="Psicometria_files/figure-html/tikz-ex-1.png" alt="I quattro livelli di scala secondo @stevens46." width="70%" />
+<p class="caption">
+Figura 2.1: I quattro livelli di scala secondo <span class="citation"><a href="bibliografia.html#ref-stevens46" role="doc-biblioref">Stevens</a> (<a href="bibliografia.html#ref-stevens46" role="doc-biblioref">1946</a>)</span>.
+</p>
+</div>
 <p>Per ciò che riguarda le trasformazioni ammissibili, più il livello di
 scala è basso, più le funzioni sono generali (sono minori cioè i vincoli
 per passare da una rappresentazione numerica ad un’altra equivalente).
@@ -335,6 +351,12 @@ esempio, il numero di biciclette possedute da una persona è una
 variabile discreta poiché la variabile può assumere solo gli interi non
 negativi. Le frazioni di biciclette non sono considerate. Le variabili
 discrete di solito assumono valori interi.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<img src="Psicometria_files/figure-html/unnamed-chunk-5-1.png" alt="Le variabili continue possono assumere un insieme continuo di valori, al contrario delle variabili discrete, per le quali l'insieme dei possibili valori ha cardinalità al più numerabile." width="70%" />
+<p class="caption">
+Figura 2.2: Le variabili continue possono assumere un insieme continuo di valori, al contrario delle variabili discrete, per le quali l’insieme dei possibili valori ha cardinalità al più numerabile.
+</p>
+</div>
 <p>Quando una variabile può assumere qualsiasi valore entro un intervallo
 specificato, allora si dice che la variabile è continua. In teoria, ciò
 significa che frazioni e decimali possono essere utilizzati per
@@ -386,6 +408,13 @@ valore reale;</li>
 ottenuti sono concordanti, cioè differiscono in maniera irrilevante
 tra loro.</li>
 </ul>
+<p>La metafora del tiro a bersaglio illustra la relazione tra precisione e accuratezza.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<img src="Psicometria_files/figure-html/unnamed-chunk-6-1.png" alt="Illustrazione dei concetti di precisione e accuratezza: (a) bassa precisione e bassa accuratezza, (b) bassa precisione e alta accuratezza, (c) alta precisione e bassa accuratezza, (d) alta precisione e alta accuratezza." width="70%" />
+<p class="caption">
+Figura 2.3: Illustrazione dei concetti di precisione e accuratezza: (a) bassa precisione e bassa accuratezza, (b) bassa precisione e alta accuratezza, (c) alta precisione e bassa accuratezza, (d) alta precisione e alta accuratezza.
+</p>
+</div>
 <p>Per tenere sotto controllo l’incidenza degli errori, sono stati
 introdotti in psicologia i concetti di attendibilità e validità:</p>
 <ul>

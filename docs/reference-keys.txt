@@ -1,3 +1,9 @@
+exr:prob-var-dip-indip
+exm:ex-scala-ord
+exm:ex-scala-temperatura
+fig:tikz-ex
+fig:unnamed-chunk-5
+fig:unnamed-chunk-6
 chapter:terminologia
 metodi-e-procedure-della-psicologia
 variabili-e-costanti

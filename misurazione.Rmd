@@ -56,6 +56,7 @@ quanto una modalità sia più grande di un'altra. Non ci dice, per
 esempio, se la distanza tra le modalità $a$ e $b$ sia uguale, maggiore o
 minore della distanza tra le modalità $b$ e $c$.
 
+```{example, ex-scala-ord, name="Scala Mohs"}
 Un esempio classico di scala ordinale è quello della scala Mohs per la
 determinazione della durezza dei minerali. Per stabilire la durezza dei
 minerali si usa il criterio empirico della scalfittura. Vengono
@@ -64,6 +65,8 @@ minerali: talco, gesso, calcite, fluorite, apatite, ortoclasio, quarzo,
 topazio, corindone e diamante. Un minerale appartenente ad uno di questi
 livelli se scalfisce quello di livello inferiore ed è scalfito da quello
 di livello superiore.
+```
+
 
 ### Scala ad intervalli
 
@@ -101,6 +104,10 @@ consiste nel sommare una costante a tutti i valori della scala. Essendo
 la scala invariate rispetto alla traslazione e alla dilatazione, le
 trasformazioni ammissibili sono le *trasformazioni lineari*:
 $$y' = a + by, \quad b > 0.$$
+L'aspetto che rimane invariante a seguito di una trasformazione lineare
+è l'uguaglianza dei rapporti fra intervalli.
+
+```{example, ex-scala-temperatura, name="Temperatura"}
 Esempio di scala ad intervalli è la temperatura misurata in gradi
 Celsius o Fahrenheit, ma non Kelvin. Come per la scala nominale, è
 possibile stabilire se due modalità sono uguali o diverse: 30$^\circ$C
@@ -129,14 +136,18 @@ possono in nessun modo essere condizionate dalle nostre scelte
 arbitrarie che ci portano a scegliere la scala Centigrada piuttosto che
 quella Fahrenheit.
 
-L'aspetto che rimane invariante a seguito di una trasformazione lineare
-è l'uguaglianza dei rapporti fra intervalli. Consideriamo, ad esempio,
-tre temperature: 20$^\circ$C = 68$^\circ$F; 15$^\circ$C = 59$^\circ$F;
-10$^\circ$C = 50$^\circ$F. È facile rendersi conto del fatto che i
-rapporti fra intervalli restano costanti indipendentemente dall'unità di
-misura che è stata scelta:
-  $$\frac{20^\circ C - 10^\circ C}{20^\circ C - 15^\circ C} = 
-  \frac{68^\circ F - 50^\circ F}{68^\circ F-59^\circ F} = 2.$$
+Consideriamo ora l'aspetto invariante di una trasformazione lineare, ovvero l'uguaglianza dei rapporti fra intervalli. Prendiamo in esame, ad esempio, tre temperature: 
+$20^\circ C = 68^\circ F$,
+$15^\circ C = 59^\circ F$,
+$10^\circ C = 50 ^\circ F$. 
+
+È facile rendersi conto del fatto che i rapporti fra intervalli restano costanti indipendentemente dall'unità di misura che è stata scelta:
+$$
+  \frac{20^\circ C - 10^\circ C}{20^\circ C - 15^\circ C} = 
+  \frac{68^\circ F - 50^\circ F}{68^\circ F-59^\circ F} = 2.
+$$
+```
+
   
 ### Scala di rapporti
   
@@ -167,9 +178,8 @@ invariati anche i rapporti: $$\frac{y_i}{y_j} = \frac{y'_i}{y'_j}.$$
 @stevens46 parla di *livelli di scala* poiché i quattro tipi di scala di
 misura stanno in una precisa gerarchia: la scala nominale rappresenta il
 livello più basso della misurazione, la scala a rapporti equivalenti è
-invece il livello più alto. Passando da un livello di misurazione ad uno
-più alto aumenta il numero di operazioni aritmetiche che possono essere
-compiute sui valori della scala.
+invece il livello più alto. 
+
 
 | Scale di modalità |  Operazioni aritmetiche |
 | ----------------- | ------------------------------------------------- |
@@ -180,11 +190,48 @@ compiute sui valori della scala.
 | intervallari      | differenze (rapporti tra differenze)              |
 | di rapporti       | rapporti diretti tra le misure                    |
 
+
+Passando da un livello di misurazione ad uno
+più alto aumenta il numero di operazioni aritmetiche che possono essere
+compiute sui valori della scala, come indicato nella figura seguente.
+
+
+```{tikz, echo=FALSE, tikz-ex, fig.cap = "I quattro livelli di scala secondo @stevens46.", fig.ext = 'png', cache=TRUE}
+\usetikzlibrary{
+  matrix, patterns, calc, fit, shapes, chains, snakes,
+  arrows.meta, arrows, backgrounds, trees, positioning,
+  lindenmayersystems
+}
+\begin{tikzpicture}[scale=0.9,text height=1.5ex,text depth=.25ex]
+  \node (h) at (2.3, 0) {};
+  \node (v) at (0,0.8) {};
+  \node (Nominal) at (1, 2) {Nominale};
+  \node (Ordinal) at ($(Nominal)+(h)$) {Ordinale};
+  \node (Interval) at ($(Nominal)+2*(h)$) {Intervalli};
+  \node (Ratio) at ($(Nominal)+3*(h)$) {Rapporti};
+  \node (Equality) at ($(Nominal)-3*(v)$) {$=\ne$};
+  \node (LessMore) at ($(Ordinal)-3*(v)$) {$<>$};
+  \node (PlusMinus) at ($(Interval)-3*(v)$) {$+-$};
+  \node (MultiplyDivide) at ($(Ratio)-3*(v)$) {$\times\div$};
+  \node [text width=2cm,text centered] (Mutual) at ($(Nominal)-1.5*(v)$) {Categorie distinte};
+  \node [text width=2cm,text centered] (Order) at ($(Ordinal)-1.5*(v)$) {Categorie ordinate};
+  \node [text width=2cm,text centered] (Distance) at ($(Interval)-1.5*(v)$) {Distanze costanti};
+  \node [text width=2cm,text centered] (Magnitude) at ($(Ratio)-1.5*(v)$) {Zero assoluto};
+  \node [color=black] (Level) at ($(Nominal)-1.2*(h)$) {\textbf{Livello}};
+  \node [text width=2cm,text centered, color=black] (Feature) at ($(Level)-1.5*(v)$) {\textbf{Caratteristiche}}; 
+  \node [color=black] (Operation) at ($(Level)-3*(v)$) {\textbf{Operazioni}}; 
+\draw[decoration={brace,amplitude=3mm}, decorate] (Nominal.north) -- (Ordinal.north) node[midway,above=3mm] (Categorical) {Categoriale};
+  \draw[decoration={brace,amplitude=3mm}, decorate] (Interval.north) -- (Ratio.north) node[midway,above=3mm] (Quantitative) {Quantitativa};
+    \draw[decoration={brace,amplitude=3mm}, decorate] (Categorical.north) -- (Quantitative.north) node[midway,above=3mm] (Variable) {Variabile};
+\end{tikzpicture}
+```
+
 Per ciò che riguarda le trasformazioni ammissibili, più il livello di
 scala è basso, più le funzioni sono generali (sono minori cioè i vincoli
 per passare da una rappresentazione numerica ad un'altra equivalente).
 Salendo la gerarchia, la natura delle funzioni di trasformazione si fa
 più restrittiva.
+
 
 ## Variabili discrete vs. variabili continue {#sec:DiscreteVsContinuous}
 
@@ -197,6 +244,38 @@ variabile discreta poiché la variabile può assumere solo gli interi non
 negativi. Le frazioni di biciclette non sono considerate. Le variabili
 discrete di solito assumono valori interi.
 
+
+```{tikz, echo=FALSE, fig.cap = "Le variabili continue possono assumere un insieme continuo di valori, al contrario delle variabili discrete, per le quali l'insieme dei possibili valori ha cardinalità al più numerabile.", fig.ext = 'png', cache=TRUE}
+\usetikzlibrary{
+  matrix, patterns, calc, fit, shapes, chains, snakes,
+  arrows.meta, arrows, backgrounds, trees, positioning,
+  lindenmayersystems
+}
+\begin{tikzpicture}[xscale=0.8]
+    \definecolor{darkgray}{rgb}{0.66, 0.66, 0.66};
+    \definecolor{lightgray}{rgb}{0.83, 0.83, 0.83};
+%    \definecolor{firebrick2}{RGB}{205,38,38};
+%    \definecolor{royalblue2}{RGB}{67,110,238};
+\node [anchor=west] at (10.5,1.25) {Discreto};
+\node [anchor=west] at (10.5,2.25) {Continuo};
+\foreach \n in {0,...,10} {
+    \node at (\n,0) {\n};
+    \draw (\n,0.5)--(\n,0.75);
+  }
+ \tikzstyle{every node}=[draw=none,shape=circle,ball color=darkgray,minimum size=4mm];
+\foreach \n in {0,...,10} {
+    \node at (\n,1.25) {};
+}
+\draw (0,0.75) --(10,0.75);
+ \tikzstyle{every node}=[draw=none,shape=circle,ball color=lightgray,minimum size=4mm];
+\node (r1) at (0,2.25) {};
+\node  (r10)  at (10,2.25) {};
+\draw [color=lightgray,ultra thick] (r1.east)--(r10.west);
+\end{tikzpicture}
+```
+
+
+
 Quando una variabile può assumere qualsiasi valore entro un intervallo
 specificato, allora si dice che la variabile è continua. In teoria, ciò
 significa che frazioni e decimali possono essere utilizzati per
@@ -204,6 +283,7 @@ raggiungere un livello di precisione qualsiasi. In pratica, a un certo
 punto dobbiamo arrotondare i numeri, rendendo tecnicamente la variabile
 discreta. In variabili veramente discrete, tuttavia, non è possibile
 aumentare a piacimento il livello di precisione della misurazione.
+
 
 ## Perché certe misure sono migliori di altre?
 
@@ -250,6 +330,58 @@ misura viene definita:
 -   *precisa* quando, ripetendo più volte la misura, i risultati
     ottenuti sono concordanti, cioè differiscono in maniera irrilevante
     tra loro.
+
+La metafora del tiro a bersaglio illustra la relazione tra precisione e accuratezza.
+
+
+```{tikz, echo=FALSE, fig.cap = "Illustrazione dei concetti di precisione e accuratezza: (a) bassa precisione e bassa accuratezza, (b) bassa precisione e alta accuratezza, (c) alta precisione e bassa accuratezza, (d) alta precisione e alta accuratezza.", fig.ext = 'png', cache=TRUE}
+\usetikzlibrary{
+  matrix, patterns, calc, fit, shapes, chains, snakes,
+  arrows.meta, arrows, backgrounds, trees, positioning,
+  lindenmayersystems
+}
+\begin{tikzpicture}[font=\sffamily]
+
+\draw[latex-latex,thick](0,-9) -- node[midway,sloped,above] {Aumento della  precisione}
+(0,0) -- node[midway,sloped,above] {Aumento dell'accuratezza} (9,0);
+%
+\begin{scope}[shift={(2.5,-2.25)}]
+ \foreach \X in {0.25,0.75,1.25,1.75}
+ {\draw (0,0) circle (\X);}
+ \node[anchor=north] at (-90:1.8) {(a)};
+ \foreach \X in {1,...,12}
+  \fill (-1,1) + (rand*360:rand*1.5) circle(2pt);
+\end{scope}
+%
+\begin{scope}[shift={(7.5,-2.25)}]
+ \foreach \X in {0.25,0.75,1.25,1.75}
+ {\draw (0,0) circle (\X);}
+ \node[anchor=north] at (-90:1.8) {(b)};
+ \foreach \X in {1,...,12}
+  \fill  (rand*360:rand*1.5) circle(2pt);
+\end{scope}
+%
+\begin{scope}[shift={(2.5,-7)}]
+ \foreach \X in {0.25,0.75,1.25,1.75}
+ {\draw (0,0) circle (\X);}
+ \node[anchor=north] at (-90:1.8) {(c)};
+ \foreach \X in {1,...,12}
+  \fill (-1,1) + (rand*360:rand*0.5) circle(2pt);
+\end{scope}
+%
+\begin{scope}[shift={(7.5,-7)}]
+ \foreach \X in {0.25,0.75,1.25,1.75}
+ {\draw (0,0) circle (\X);}
+ \node[anchor=north] at (-90:1.8) {(d)};
+ \foreach \X in {1,...,12}
+  \fill  (rand*360:rand*0.5) circle(2pt);
+\end{scope}
+\end{tikzpicture}
+```
+
+
+
+
 
 Per tenere sotto controllo l'incidenza degli errori, sono stati
 introdotti in psicologia i concetti di attendibilità e validità:
