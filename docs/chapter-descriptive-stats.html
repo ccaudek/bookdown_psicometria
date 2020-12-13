@@ -349,7 +349,7 @@ verificano in un intervallo di valori.</p>
 una partizione delle modalità della variabile di interesse in <span class="math inline">\(m\)</span> classi
 (denotate con <span class="math inline">\(\Delta_i\)</span>) tra loro disgiunte. In tale partizione, la
 classe <span class="math inline">\(i\)</span>-esima coincide con un intervallo di valori aperto a destra
-<span class="math inline">\([a_i, b_i)\)</span> o aperto a sinistra <span class="math inline">\((a_i, b_i]\)</span><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. Ad ogni classe
+<span class="math inline">\([a_i, b_i)\)</span> o aperto a sinistra <span class="math inline">\((a_i, b_i]\)</span>. Ad ogni classe
 <span class="math inline">\(\Delta_i\)</span> avente <span class="math inline">\(a_i\)</span> e <span class="math inline">\(b_i\)</span> come limite inferiore e superiore
 associamo l’ampiezza <span class="math inline">\(b_i - a_i\)</span> (non necessariamente uguale per ogni
 classe) e il valore centrale <span class="math inline">\(\bar{x}_i\)</span>. La scelta delle classi è
@@ -430,7 +430,7 @@ tipici vanno sotto il nome di <strong>mode</strong> della distribuzione.</p>
 <span id="cb1-5"><a href="chapter-descriptive-stats.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(<span class="st">&quot;datasauRus&quot;</span>))</span>
 <span id="cb1-6"><a href="chapter-descriptive-stats.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(<span class="st">&quot;ggExtra&quot;</span>))</span>
 <span id="cb1-7"><a href="chapter-descriptive-stats.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(<span class="st">&quot;bayesplot&quot;</span>))</span>
-<span id="cb1-8"><a href="chapter-descriptive-stats.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">bayesplot_theme_set</span>()</span>
+<span id="cb1-8"><a href="chapter-descriptive-stats.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">bayesplot_theme_set</span>(<span class="fu">theme_default</span>(<span class="at">base_size =</span> <span class="dv">12</span>, <span class="at">base_family =</span> <span class="st">&quot;sans&quot;</span>))</span>
 <span id="cb1-9"><a href="chapter-descriptive-stats.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;patchwork&quot;</span>)</span></code></pre></div>
 <p>Leggiamo i dati assumendo che il file <code>data.mood.csv</code> si trovi nella cartella <code>data</code> contenuta nella <em>working directory</em>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="chapter-descriptive-stats.html#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(</span>
@@ -1085,7 +1085,7 @@ l’unità di misura delle due scale è arbitraria. Infatti, qual è l’unità
 di misura della depressione? Chi può dirlo! Ma, al di là delle
 differenze derivanti dall’errore di misurazione e dalla differente unità
 di misura, ci aspettiamo che, se le due scale misurano entrambe lo
-stesso costrutto[^3], allora i valori prodotti dalle due scale dovranno
+stesso costrutto, allora i valori prodotti dalle due scale dovranno
 essere tra loro <em>linearmente associati</em>. Per capire cosa si intende con
 “associazione lineare” iniziamo a guardare i dati. Per fare questo
 utilizziamo una rappresentazione grafica che va sotto il nome di
@@ -1368,15 +1368,6 @@ sempre il caso in psicologia), per fare questo è necessario usare un
 software statistico.</p>
 
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="2">
-<li id="fn2"><p>Un costrutto rappresenta il risultato di una fondata riflessione
-scientifica, non è per definizione accessibile all’osservazione
-diretta, ma viene inferito dall’osservazione di opportuni indicatori
-(Sartori, 2005).<a href="chapter-descriptive-stats.html#fnref2" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 

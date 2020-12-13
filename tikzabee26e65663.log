@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.9.25)  13 DEC 2020 14:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.9.25)  13 DEC 2020 17:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**tikzabee3790d93d.tex
-(./tikzabee3790d93d.tex
+**tikzabee26e65663.tex
+(./tikzabee26e65663.tex
 LaTeX2e <2020-02-02> patch level 5
 L3 programming layer <2020-09-24> (/usr/local/texlive/2020/texmf-dist/tex/latex
 /base/article.cls
@@ -409,8 +409,8 @@ File: tikzlibrarymatrix.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count276
 \l__pdf_internal_box=\box59
-) (./tikzabee3790d93d.aux)
-\openout1 = `tikzabee3790d93d.aux'.
+) (./tikzabee26e65663.aux)
+\openout1 = `tikzabee26e65663.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
@@ -613,19 +613,19 @@ ayersystems.code.tex
 ))
 Preview: Tightpage -32891 -32891 32891 32891
 [1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./ti
-kzabee3790d93d.aux) ) 
+kzabee26e65663.aux) ) 
 Here is how much of TeX's memory you used:
- 16154 strings out of 480875
- 366409 string characters out of 5907566
+ 16156 strings out of 480875
+ 366430 string characters out of 5907566
  592688 words of memory out of 5000000
- 31464 multiletter control sequences out of 15000+600000
- 538952 words of font info for 43 fonts, out of 8000000 for 9000
+ 31465 multiletter control sequences out of 15000+600000
+ 539257 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,7n,80p,420b,3164s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,7n,80p,420b,3166s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmr12.pfb>
-Output written on tikzabee3790d93d.pdf (1 page, 16676 bytes).
+Output written on tikzabee26e65663.pdf (1 page, 16676 bytes).
 PDF statistics:
  19 PDF objects out of 1000 (max. 8388607)
  13 compressed objects within 1 object stream

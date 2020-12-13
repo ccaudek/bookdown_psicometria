@@ -118,7 +118,7 @@ Per creare una distribuzione di frequenze possiamo procedere effettuando
 una partizione delle modalità della variabile di interesse in $m$ classi
 (denotate con $\Delta_i$) tra loro disgiunte. In tale partizione, la
 classe $i$-esima coincide con un intervallo di valori aperto a destra
-$[a_i, b_i)$ o aperto a sinistra $(a_i, b_i]$[^1]. Ad ogni classe
+$[a_i, b_i)$ o aperto a sinistra $(a_i, b_i]$. Ad ogni classe
 $\Delta_i$ avente $a_i$ e $b_i$ come limite inferiore e superiore
 associamo l'ampiezza $b_i - a_i$ (non necessariamente uguale per ogni
 classe) e il valore centrale $\bar{x}_i$. La scelta delle classi è
@@ -175,7 +175,7 @@ suppressPackageStartupMessages(library("ggpubr"))
 suppressPackageStartupMessages(library("datasauRus"))
 suppressPackageStartupMessages(library("ggExtra"))
 suppressPackageStartupMessages(library("bayesplot"))
-bayesplot_theme_set()
+bayesplot_theme_set(theme_default(base_size = 12, base_family = "sans"))
 library("patchwork")
 ```
 
@@ -692,6 +692,7 @@ bysubj %>%
 Si noti che solitamente i software restituiscono un valore __interpolato__ del $p$-esimo quantile $q_p$ $(0 < p < 1)$, il quale viene calcolato mediante specifiche procedure. Il risultato fornito dai software, dunque, non sarà identico a quello trovato utilizzando la definizione non interpolata di quantile che abbiamo presentato qui. Se, per qualche ragione, vogliamo conoscere l'algoritmo usato per la determinazione dei quantili interpolati, dobbiamo leggere la documentazione del software.
 ``` 
 
+
 ## Indici di dispersione
 
 Le medie e gli indici di posizione descritti in precedenza forniscono
@@ -865,7 +866,7 @@ l'unità di misura delle due scale è arbitraria. Infatti, qual è l'unità
 di misura della depressione? Chi può dirlo! Ma, al di là delle
 differenze derivanti dall'errore di misurazione e dalla differente unità
 di misura, ci aspettiamo che, se le due scale misurano entrambe lo
-stesso costrutto[^3], allora i valori prodotti dalle due scale dovranno
+stesso costrutto, allora i valori prodotti dalle due scale dovranno
 essere tra loro _linearmente associati_. Per capire cosa si intende con
 "associazione lineare" iniziamo a guardare i dati. Per fare questo
 utilizziamo una rappresentazione grafica che va sotto il nome di
