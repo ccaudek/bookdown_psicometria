@@ -425,7 +425,16 @@ semplicemente alla riga che esse occupano.</p>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": null,
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
 "fontsettings": {
 "theme": "white",
 "family": "sans",
@@ -446,15 +455,7 @@ gitbook.start({
 "download": null,
 "toc": {
 "collapse": "subsection"
-},
-"facebook": false,
-"twitter": true,
-"github": true,
-"google": false,
-"weibo": false,
-"instapper": false,
-"vk": false,
-"all": false
+}
 });
 });
 </script>

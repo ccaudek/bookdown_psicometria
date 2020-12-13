@@ -2,14 +2,14 @@ exr:prob-var-dip-indip
 exm:ex-scala-ord
 exm:ex-scala-temperatura
 fig:tikz-ex
-fig:unnamed-chunk-8
-exm:example-biciclette
 fig:unnamed-chunk-9
+exm:example-biciclette
+fig:unnamed-chunk-10
 fig:hist1zetsche
 fig:hist2zetsche
 fig:zetschehist3
-fig:unnamed-chunk-17
 fig:unnamed-chunk-18
+fig:unnamed-chunk-19
 fig:violin-zetsche
 eq:mean
 eq:scost-sempl-mediana

@@ -652,8 +652,8 @@ distribuiscono intorno ai valori centrali. Distinguiamo tra
 distribuzioni simmetriche e asimmetriche, e tra distribuzioni unimodali
 o multimodali. Un’illustrazione grafica è fornita nella
 figura seguente.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-17"></span>
-<img src="Psicometria_files/figure-html/unnamed-chunk-17-1.png" alt="1: Asimmetria negativa. 2: Asimmetria positiva. 3: Distribuzione unimodale. 4: Distribuzione bimodale." width="70%" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-18"></span>
+<img src="Psicometria_files/figure-html/unnamed-chunk-18-1.png" alt="1: Asimmetria negativa. 2: Asimmetria positiva. 3: Distribuzione unimodale. 4: Distribuzione bimodale." width="70%" />
 <p class="caption">
 Figura 4.4: 1: Asimmetria negativa. 2: Asimmetria positiva. 3: Distribuzione unimodale. 4: Distribuzione bimodale.
 </p>
@@ -713,8 +713,8 @@ valore più piccolo tra le osservazioni che risulta maggiore o uguale al
 primo quartile meno la distanza corrispondente a 1.5 volte la distanza
 interquartile.
 Il valore adiacente superiore è il valore più grande tra le osservazioni che risulta minore o uguale a <span class="math inline">\(Q_3+1.5\)</span> IQR. I valori esterni ai valori adiacenti (chiamati <em>valori anomali</em>) vengono rappresentati individualmente nel box-plot per meglio evidenziarne la presenza e la posizione.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-18"></span>
-<img src="Psicometria_files/figure-html/unnamed-chunk-18-1.png" alt="Box-plot, laddove $M$ è la mediana, $ar{x}$ è la media aritmetica e IQR è la distanza interquartile ($Q_3 - Q_1$)." width="70%" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-19"></span>
+<img src="Psicometria_files/figure-html/unnamed-chunk-19-1.png" alt="Box-plot, laddove $M$ è la mediana, $ar{x}$ è la media aritmetica e IQR è la distanza interquartile ($Q_3 - Q_1$)." width="70%" />
 <p class="caption">
 Figura 4.5: Box-plot, laddove <span class="math inline">\(M\)</span> è la mediana, <span class="math inline">\(ar{x}\)</span> è la media aritmetica e IQR è la distanza interquartile (<span class="math inline">\(Q_3 - Q_1\)</span>).
 </p>
@@ -737,7 +737,7 @@ Nel caso dei dati di <span class="citation"><a href="bibliografia.html#ref-zetsc
 <span id="cb12-14"><a href="chapter-descriptive-stats.html#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Gruppo&quot;</span>,</span>
 <span id="cb12-15"><a href="chapter-descriptive-stats.html#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;BDI-II&quot;</span></span>
 <span id="cb12-16"><a href="chapter-descriptive-stats.html#cb12-16" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="Psicometria_files/figure-html/unnamed-chunk-19-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="Psicometria_files/figure-html/unnamed-chunk-20-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>La figura <a href="chapter-descriptive-stats.html#fig:violin-zetsche">4.6</a> fornisce due rappresentazioni grafiche che possono essere utilizzate per rispondere a questa domanda.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="chapter-descriptive-stats.html#cb13-1" aria-hidden="true" tabindex="-1"></a>bysubj <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
 <span id="cb13-2"><a href="chapter-descriptive-stats.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(esm_id, group) <span class="sc">%&gt;%</span> </span>
@@ -1409,7 +1409,16 @@ software statistico.</p>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": null,
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
 "fontsettings": {
 "theme": "white",
 "family": "sans",
@@ -1430,15 +1439,7 @@ gitbook.start({
 "download": null,
 "toc": {
 "collapse": "subsection"
-},
-"facebook": false,
-"twitter": true,
-"github": true,
-"google": false,
-"weibo": false,
-"instapper": false,
-"vk": false,
-"all": false
+}
 });
 });
 </script>

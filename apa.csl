@@ -14,7 +14,7 @@
     <category citation-format="author-date"/>
     <category field="psychology"/>
     <category field="generic-base"/>
-    <updated>2019-12-04T13:09:49+00:00</updated>
+    <updated>2020-05-12T22:22:03+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="en">
@@ -55,30 +55,6 @@
       <term name="letter" form="short">خطاب</term>
     </terms>
   </locale>
-  <locale xml:lang="bg">
-    <terms>
-      <term name="letter">лична комуникация</term>
-      <term name="letter" form="short">писмо</term>
-    </terms>
-  </locale>
-  <locale xml:lang="ca">
-    <terms>
-      <term name="letter">comunicació personal</term>
-      <term name="letter" form="short">carta</term>
-    </terms>
-  </locale>
-  <locale xml:lang="cs">
-    <terms>
-      <term name="letter">osobní komunikace</term>
-      <term name="letter" form="short">dopis</term>
-    </terms>
-  </locale>
-  <locale xml:lang="cy">
-    <terms>
-      <term name="letter">cyfathrebu personol</term>
-      <term name="letter" form="short">llythyr</term>
-    </terms>
-  </locale>
   <locale xml:lang="da">
     <terms>
       <term name="et-al">et al.</term>
@@ -93,41 +69,11 @@
       <term name="letter" form="short">Brief</term>
     </terms>
   </locale>
-  <locale xml:lang="el">
-    <terms>
-      <term name="letter">προσωπική επικοινωνία</term>
-      <term name="letter" form="short">επιστολή</term>
-    </terms>
-  </locale>
   <locale xml:lang="es">
     <terms>
       <term name="from">de</term>
       <term name="letter">comunicación personal</term>
       <term name="letter" form="short">carta</term>
-    </terms>
-  </locale>
-  <locale xml:lang="et">
-    <terms>
-      <term name="letter">isiklik suhtlus</term>
-      <term name="letter" form="short">kiri</term>
-    </terms>
-  </locale>
-  <locale xml:lang="eu">
-    <terms>
-      <term name="letter">komunikazio pertsonala</term>
-      <term name="letter" form="short">gutuna</term>
-    </terms>
-  </locale>
-  <locale xml:lang="fa">
-    <terms>
-      <term name="letter">ارتباط شخصی</term>
-      <term name="letter" form="short">نامه</term>
-    </terms>
-  </locale>
-  <locale xml:lang="fi">
-    <terms>
-      <term name="letter">henkilökohtainen viestintä</term>
-      <term name="letter" form="short">kirje</term>
     </terms>
   </locale>
   <locale xml:lang="fr">
@@ -138,78 +84,6 @@
         <single>éd.</single>
         <multiple>éds.</multiple>
       </term>
-    </terms>
-  </locale>
-  <locale xml:lang="he">
-    <terms>
-      <term name="letter">תקשורת אישית</term>
-      <term name="letter" form="short">מכתב</term>
-    </terms>
-  </locale>
-  <locale xml:lang="hr">
-    <terms>
-      <term name="letter">osobna komunikacija</term>
-      <term name="letter" form="short">pismo</term>
-    </terms>
-  </locale>
-  <locale xml:lang="hu">
-    <terms>
-      <term name="letter">személyes kommunikáció</term>
-      <term name="letter" form="short">levél</term>
-    </terms>
-  </locale>
-  <locale xml:lang="id">
-    <terms>
-      <term name="letter">komunikasi pribadi</term>
-      <term name="letter" form="short">surat</term>
-    </terms>
-  </locale>
-  <locale xml:lang="is">
-    <terms>
-      <term name="letter">persónuleg samskipti</term>
-      <term name="letter" form="short">bréf</term>
-    </terms>
-  </locale>
-  <locale xml:lang="it">
-    <terms>
-      <term name="letter">comunicazione personale</term>
-      <term name="letter" form="short">lettera</term>
-    </terms>
-  </locale>
-  <locale xml:lang="ja">
-    <terms>
-      <term name="letter">個人的なやり取り</term>
-      <term name="letter" form="short">手紙</term>
-    </terms>
-  </locale>
-  <locale xml:lang="ko">
-    <terms>
-      <term name="letter">개인 서신</term>
-      <term name="letter" form="short">편지</term>
-    </terms>
-  </locale>
-  <locale xml:lang="la">
-    <terms>
-      <term name="letter"/>
-      <term name="letter" form="short">epistula</term>
-    </terms>
-  </locale>
-  <locale xml:lang="lt">
-    <terms>
-      <term name="letter">communicationis personalis</term>
-      <term name="letter" form="short"/>
-    </terms>
-  </locale>
-  <locale xml:lang="lv">
-    <terms>
-      <term name="letter">personīga komunikācija</term>
-      <term name="letter" form="short">vēstule</term>
-    </terms>
-  </locale>
-  <locale xml:lang="mn">
-    <terms>
-      <term name="letter">хувийн харилцаа холбоо</term>
-      <term name="letter" form="short">захиа</term>
     </terms>
   </locale>
   <locale xml:lang="nb">
@@ -233,58 +107,10 @@
       <term name="letter" form="short">brev</term>
     </terms>
   </locale>
-  <locale xml:lang="pl">
-    <terms>
-      <term name="letter">osobista komunikacja</term>
-      <term name="letter" form="short">list</term>
-    </terms>
-  </locale>
-  <locale xml:lang="pt">
-    <terms>
-      <term name="letter">comunicação pessoal</term>
-      <term name="letter" form="short">carta</term>
-    </terms>
-  </locale>
-  <locale xml:lang="ro">
-    <terms>
-      <term name="letter">comunicare personală</term>
-      <term name="letter" form="short">scrisoare</term>
-    </terms>
-  </locale>
   <locale xml:lang="ru">
     <terms>
       <term name="letter">личная переписка</term>
       <term name="letter" form="short">письмо</term>
-    </terms>
-  </locale>
-  <locale xml:lang="sk">
-    <terms>
-      <term name="letter">osobná komunikácia</term>
-      <term name="letter" form="short">list</term>
-    </terms>
-  </locale>
-  <locale xml:lang="sl">
-    <terms>
-      <term name="letter">osebna komunikacija</term>
-      <term name="letter" form="short">pismo</term>
-    </terms>
-  </locale>
-  <locale xml:lang="sr">
-    <terms>
-      <term name="letter">лична комуникација</term>
-      <term name="letter" form="short">писмо</term>
-    </terms>
-  </locale>
-  <locale xml:lang="sv">
-    <terms>
-      <term name="letter">personlig kommunikation</term>
-      <term name="letter" form="short">brev</term>
-    </terms>
-  </locale>
-  <locale xml:lang="th">
-    <terms>
-      <term name="letter">การสื่อสารส่วนบุคคล</term>
-      <term name="letter" form="short">จดหมาย</term>
     </terms>
   </locale>
   <locale xml:lang="tr">
@@ -293,35 +119,11 @@
       <term name="letter" form="short">mektup</term>
     </terms>
   </locale>
-  <locale xml:lang="uk">
-    <terms>
-      <term name="letter">особисте спілкування</term>
-      <term name="letter" form="short">лист</term>
-    </terms>
-  </locale>
-  <locale xml:lang="vi">
-    <terms>
-      <term name="letter">giao tiếp cá nhân</term>
-      <term name="letter" form="short">thư</term>
-    </terms>
-  </locale>
-  <locale xml:lang="zh-CN">
-    <terms>
-      <term name="letter">的私人交流</term>
-      <term name="letter" form="short">信函</term>
-    </terms>
-  </locale>
-  <locale xml:lang="zh-TW">
-    <terms>
-      <term name="letter">私人通訊</term>
-      <term name="letter" form="short">信函</term>
-    </terms>
-  </locale>
   <!-- General categories of item types:
        Periodical: article-journal article-magazine article-newspaper post-weblog review review-book
        Periodical or Booklike: paper-conference
-       Booklike: article book broadcast chapter dataset entry entry-dictionary entry-encyclopedia figure
-                 graphic interview manuscript map motion_picture musical_score pamphlet patent
+       Booklike: article book broadcast chapter dataset entry entry-dictionary entry-encyclopedia figure 
+                 graphic interview manuscript map motion_picture musical_score pamphlet patent 
                  personal_communication report song speech thesis post webpage
        Legal: bill legal_case legislation treaty
   -->
@@ -387,9 +189,9 @@
       <if type="bill legal_case legislation treaty" match="any">
         <text macro="title-intext"/>
       </if>
-      <else-if type="interview personal_communication" match="any">
+      <else-if type="interview personal_communication">
         <choose>
-          <!-- These variables indicate that the letter is retrievable by the reader.
+          <!-- These variables indicate that the letter is retrievable by the reader. 
                 If not, then use the APA in-text-only personal communication format -->
           <if variable="archive container-title DOI publisher URL" match="none">
             <group delimiter=", ">
@@ -470,7 +272,7 @@
                   </if>
                 </choose>
               </else-if>
-              <!-- Only year: article article-journal book chapter entry entry-dictionary entry-encyclopedia dataset figure graphic
+              <!-- Only year: article article-journal book chapter entry entry-dictionary entry-encyclopedia dataset figure graphic 
                    manuscript map musical_score paper-conference[published] patent report review review-book thesis -->
             </choose>
           </if>
@@ -543,10 +345,10 @@
             </choose>
             <group>
               <choose>
-                <if type="interview personal_communication" match="any">
+                <if type="interview personal_communication">
                   <choose>
                     <if variable="archive container-title DOI publisher URL" match="none">
-                      <!-- These variables indicate that the communication is retrievable by the reader.
+                      <!-- These variables indicate that the communication is retrievable by the reader. 
                            If not, then use the in-text-only personal communication format -->
                       <date variable="issued" form="text"/>
                     </if>
@@ -611,7 +413,7 @@
       </else-if>
       <else>
         <choose>
-          <if type="article-journal article-magazine article-newspaper post-weblog review review-book" match="any">
+          <if type="article-journal article-magazine article-newspaper post-weblog review review-book">
             <text variable="title" font-style="italic"/>
           </if>
           <else-if type="paper-conference">
@@ -728,7 +530,7 @@
             </group>
           </group>
         </if>
-        <else-if type="post webpage" match="any">
+        <else-if type="post webpage">
           <!-- For post webpage, container-title is treated as publisher -->
           <group delimiter="; ">
             <text macro="secondary-contributors"/>
@@ -1311,7 +1113,7 @@
   <macro name="reviewed-title">
     <choose>
       <if variable="reviewed-title">
-        <!-- Not possible to distinguish TV series episode from other reviewed
+        <!-- Not possible to distinguish TV series episode from other reviewed 
               works [Ex. 69] -->
         <text variable="reviewed-title" font-style="italic"/>
       </if>
@@ -1508,7 +1310,7 @@
             </if>
           </choose>
         </if>
-        <else-if type="post webpage" match="any">
+        <else-if type="post webpage">
           <!-- For websites, treat container title like publisher -->
           <group delimiter="; ">
             <text variable="container-title" text-case="title"/>
@@ -1591,7 +1393,7 @@
         <group prefix="(" suffix=")">
           <choose>
             <if variable="references">
-              <!-- This provides the option for more elaborate description
+              <!-- This provides the option for more elaborate description 
                    of publication history, such as full "reprinted" references
                    (examples 11, 43, 44) or retracted references -->
               <text variable="references"/>
