@@ -27,8 +27,10 @@ before_chapter_script: "_common.R"
 
 rmd_files: [
   "index.rmd",
+  "pacchetti.Rmd",
   "terminologia.Rmd",
   "misurazione.Rmd",
   "stat_descrittive.Rmd",
+  "prob_intro.Rmd",
   "References.Rmd",
 ]

@@ -1,5 +1,4 @@
 base
-here
 tidyverse
 ggplot2
 tibble
@@ -9,6 +8,10 @@ purrr
 dplyr
 stringr
 forcats
+here
+tidybayes
+RColorBrewer
+cowplot
 carData
 car
 patchwork
@@ -16,3 +19,4 @@ ggpubr
 datasauRus
 bayesplot
 ggExtra
+rio

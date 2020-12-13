@@ -165,20 +165,7 @@ cat('
 
 ### Esercizio con R
 
-Poniamoci ora il problema di costruire la tabella precedente partendo dai dati grezzi messi a disposizione da @zetsche_future_2019. Iniziamo a caricare i pacchetti che ci servono.
-
-```{r}
-suppressPackageStartupMessages(library("here"))
-suppressPackageStartupMessages(library("tidyverse"))
-suppressPackageStartupMessages(library("car"))
-suppressPackageStartupMessages(library("ggpubr"))
-suppressPackageStartupMessages(library("datasauRus"))
-suppressPackageStartupMessages(library("ggExtra"))
-suppressPackageStartupMessages(library("bayesplot"))
-bayesplot_theme_update(text = element_text(size = 12, family = "sans"))
-library("patchwork")
-```
-
+Poniamoci ora il problema di costruire la tabella precedente partendo dai dati grezzi messi a disposizione da @zetsche_future_2019. 
 Leggiamo i dati assumendo che il file `data.mood.csv` si trovi nella cartella `data` contenuta nella _working directory_.
 
 ```{r}
@@ -1056,13 +1043,16 @@ alcunché sulle relazioni __causali__ che legano le variabili. È ben nota
 l'espressione: "correlazione non significa causazione".
 
 Di opinione diversa era invece Karl Pearson (1911), il quale ha
-affermato: "Quanto spesso, quando è stato osservato un nuovo fenomeno,
+affermato: 
+
+> Quanto spesso, quando è stato osservato un nuovo fenomeno,
 sentiamo che viene posta la domanda: 'qual è la sua causa?'. Questa è
 una domanda a cui potrebbe essere assolutamente impossibile rispondere.
 Invece, può essere più facile rispondere alla domanda: 'in che misura
 altri fenomeni sono associati con esso?'. Dalla risposta a questa
-seconda domanda possono risultare molte preziose conoscenze." Che alla
-seconda domanda posta da Pearson sia facile rispondere è indubbio. Che
+seconda domanda possono risultare molte preziose conoscenze.
+
+Che alla seconda domanda posta da Pearson sia facile rispondere è indubbio. Che
 la nostra comprensione di un fenomeno possa aumentare sulla base delle
 informazioni fornite dalle correlazioni, invece, è molto dubbio e quasi
 certamente falso.
@@ -1076,8 +1066,8 @@ quello di misurare la _validità concorrente_ di un test psiologico. Se
 un test psicologico misura effettivamente ciò che ci si aspetta che
 misuri (nel caso dell'esempio presente, la depressione), allora dovremo
 aspettarci che fornisca una correlazione alta con risultati di altri
-test che misurano lo stesso costrutto (come nel caso dei dati di
-[@zetsche_future_2019]). Un'altra proprietà desiderabile di un test
+test che misurano lo stesso costrutto -- come nel caso dei dati di
+[@zetsche_future_2019]. Un'altra proprietà desiderabile di un test
 psicometrico è la _validità divergente_: i risultati di test
 psicometrici che misurano costrutti diversi dovrebbero essere poco
 associati tra loro. In altre parole, in questo secondo caso dovremmo
@@ -1110,7 +1100,7 @@ pari a zero non significa che non c'è relazione tra le due variabili, ma
 solo che tra esse non c'è una relazione *lineare*. Un esempio di questo
 fatto è fornito dalla figura \@ref(fig:zerocorr).
 
-```{r zerocorr, out.width="95%", fig.cap = "Due insiemi di dati (fittizi) per i quali i coefficienti di correlazione di Pearson sono entrambi 0. Ma questo non significa che non vi sia alcuna relazione tra le variabili."}
+```{r zerocorr, out.width="80%", fig.cap = "Due insiemi di dati (fittizi) per i quali i coefficienti di correlazione di Pearson sono entrambi 0. Ma questo non significa che non vi sia alcuna relazione tra le variabili."}
 slant <- ggplot(datasaurus_dozen_wide, aes(x=slant_down_x,y=slant_down_y),   colour=dataset) 
 # loads slant-pattern dataset of datasauRus package into data frame slant
 slant <- slant + 
