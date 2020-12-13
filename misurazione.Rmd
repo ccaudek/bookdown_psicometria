@@ -238,12 +238,17 @@ più restrittiva.
 Le variabili a livello di intervalli e di rapporti possono essere
 discrete o continue. Le variabili discrete possono assumere alcuni
 valori ma non altri. Una volta che l'elenco di valori accettabili è
-stato specificato, non ci sono casi che cadono tra questi valori. Ad
-esempio, il numero di biciclette possedute da una persona è una
-variabile discreta poiché la variabile può assumere solo gli interi non
-negativi. Le frazioni di biciclette non sono considerate. Le variabili
+stato specificato, non ci sono casi che cadono tra questi valori. 
+Le variabili
 discrete di solito assumono valori interi.
 
+Quando una variabile può assumere qualsiasi valore entro un intervallo
+specificato, allora si dice che la variabile è continua. In teoria, ciò
+significa che frazioni e decimali possono essere utilizzati per
+raggiungere un livello di precisione qualsiasi. In pratica, a un certo
+punto dobbiamo arrotondare i numeri, rendendo tecnicamente la variabile
+discreta. In variabili veramente discrete, tuttavia, non è possibile
+aumentare a piacimento il livello di precisione della misurazione.
 
 ```{tikz, echo=FALSE, fig.cap = "Le variabili continue possono assumere un insieme continuo di valori, al contrario delle variabili discrete, per le quali l'insieme dei possibili valori ha cardinalità al più numerabile.", fig.ext = 'png', cache=TRUE}
 \usetikzlibrary{
@@ -274,18 +279,11 @@ discrete di solito assumono valori interi.
 \end{tikzpicture}
 ```
 
+```{example, example-biciclette}
+Il numero di biciclette possedute da una persona è una variabile discreta poiché tale variabile può assumere come modalità solo i numeri interi non negativi. Le frazioni di biciclette non sono sensate.
+```
 
-
-Quando una variabile può assumere qualsiasi valore entro un intervallo
-specificato, allora si dice che la variabile è continua. In teoria, ciò
-significa che frazioni e decimali possono essere utilizzati per
-raggiungere un livello di precisione qualsiasi. In pratica, a un certo
-punto dobbiamo arrotondare i numeri, rendendo tecnicamente la variabile
-discreta. In variabili veramente discrete, tuttavia, non è possibile
-aumentare a piacimento il livello di precisione della misurazione.
-
-
-## Perché certe misure sono migliori di altre?
+## Perché alcune misurazioni sono migliori di altre?
 
 In psicologia, ciò che vogliamo misurare non è una caratteristica
 fisica, ma invece è un concetto teorico inosservabile, ovvero un
@@ -325,14 +323,13 @@ Le differenze tra le due tipologie di errori, sistematici e casuali,
 introducono i concetti di accuratezza e di precisione della misura. Una
 misura viene definita:
 
--   *accurata*, quando vi è un accordo tra la misura effettuata ed il
+*   __accurata__, quando vi è un accordo tra la misura effettuata ed il
     valore reale;
--   *precisa* quando, ripetendo più volte la misura, i risultati
+*   __precisa__ quando, ripetendo più volte la misura, i risultati
     ottenuti sono concordanti, cioè differiscono in maniera irrilevante
     tra loro.
 
 La metafora del tiro a bersaglio illustra la relazione tra precisione e accuratezza.
-
 
 ```{tikz, echo=FALSE, fig.cap = "Illustrazione dei concetti di precisione e accuratezza: (a) bassa precisione e bassa accuratezza, (b) bassa precisione e alta accuratezza, (c) alta precisione e bassa accuratezza, (d) alta precisione e alta accuratezza.", fig.ext = 'png', cache=TRUE}
 \usetikzlibrary{
@@ -379,16 +376,12 @@ La metafora del tiro a bersaglio illustra la relazione tra precisione e accurate
 \end{tikzpicture}
 ```
 
-
-
-
-
 Per tenere sotto controllo l'incidenza degli errori, sono stati
 introdotti in psicologia i concetti di attendibilità e validità:
   
--   l'*attendibilità* esprime il grado di accordo o coerenza tra
+*   l'__attendibilità__ esprime il grado di accordo o coerenza tra
     misurazioni indipendenti dello stesso costrutto psicologico[^1];
--   la *validità* descrive il grado in cui uno strumento misura ciò che
+*   la __validità__ descrive il grado in cui uno strumento misura ciò che
     dice di misurare.
 
 ### Attendibilità {#sec:reliability}
@@ -407,7 +400,7 @@ il grado in cui uno strumento misura effettivamente ciò che dovrebbe
 misurare. In genere, si fa riferimento ad almeno quattro tipi di
 validità.
 
--   La *validità di costrutto* riguarda il grado in cui un test misura
+*   La __validità di costrutto__ riguarda il grado in cui un test misura
     ciò per cui è stato costruito. Essa si suddivide in: validità
     convergente e validità divergente. La validità convergente fa
     riferimento alla concordanza tra uno strumento e un altro che misura
@@ -415,13 +408,13 @@ validità.
     grado di discriminazione tra strumenti che misurano costrutti
     differenti. Senza validità di costrutto le altre forme di validità
     non hanno senso.
--   In base alla *validità di contenuto*, un test fornisce una misura
+*   In base alla __validità di contenuto__, un test fornisce una misura
     valida di un attributo psicologico se il dominio dell'attributo è
 rappresentato in maniera adeguata dagli item del test. Un requisito
 di base della validità di contenuto è la rilevanza e la
 rappresentatività del contenuto degli item in riferimento
 all'attributo che il test intende misurare.
--   La *validità di criterio* valuta il grado di concordanza tra i
+*   La __validità di criterio__ valuta il grado di concordanza tra i
     risultati dello strumento considerato e i risultati ottenuti da
     altri strumenti che misurano lo stesso costrutto, o tra i risultati
     dello strumento considerato e un criterio esterno. Nella validità
@@ -430,7 +423,7 @@ all'attributo che il test intende misurare.
     costrutto viene misurato prima e il criterio in un momento
     successivo, consentendo la valutazione della capacità dello
     strumento di predire un evento futuro.
--   Infine, la *validità di facciata* fa riferimento al grado in cui il
+*   Infine, la __validità di facciata__ fa riferimento al grado in cui il
     test appare valido ai soggetti a cui esso è diretto. La validità di
     facciata è importante in ambiti particolari, quali ad esempio la
     selezione del personale per una determinata occupazione. In questo

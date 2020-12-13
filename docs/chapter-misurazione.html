@@ -95,7 +95,7 @@
 <li class="chapter" data-level="2.1.5" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#gerarchia-dei-livelli-di-scala-di-misura"><i class="fa fa-check"></i><b>2.1.5</b> Gerarchia dei livelli di scala di misura</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:DiscreteVsContinuous"><i class="fa fa-check"></i><b>2.2</b> Variabili discrete vs. variabili continue</a></li>
-<li class="chapter" data-level="2.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#perché-certe-misure-sono-migliori-di-altre"><i class="fa fa-check"></i><b>2.3</b> Perché certe misure sono migliori di altre?</a>
+<li class="chapter" data-level="2.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#perché-alcune-misurazioni-sono-migliori-di-altre"><i class="fa fa-check"></i><b>2.3</b> Perché alcune misurazioni sono migliori di altre?</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:accuratezza_precisione"><i class="fa fa-check"></i><b>2.3.1</b> Tipologie di errori</a></li>
 <li class="chapter" data-level="2.3.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:reliability"><i class="fa fa-check"></i><b>2.3.2</b> Attendibilità</a></li>
@@ -346,17 +346,9 @@ più restrittiva.</p>
 <p>Le variabili a livello di intervalli e di rapporti possono essere
 discrete o continue. Le variabili discrete possono assumere alcuni
 valori ma non altri. Una volta che l’elenco di valori accettabili è
-stato specificato, non ci sono casi che cadono tra questi valori. Ad
-esempio, il numero di biciclette possedute da una persona è una
-variabile discreta poiché la variabile può assumere solo gli interi non
-negativi. Le frazioni di biciclette non sono considerate. Le variabili
+stato specificato, non ci sono casi che cadono tra questi valori.
+Le variabili
 discrete di solito assumono valori interi.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
-<img src="Psicometria_files/figure-html/unnamed-chunk-5-1.png" alt="Le variabili continue possono assumere un insieme continuo di valori, al contrario delle variabili discrete, per le quali l'insieme dei possibili valori ha cardinalità al più numerabile." width="70%" />
-<p class="caption">
-Figura 2.2: Le variabili continue possono assumere un insieme continuo di valori, al contrario delle variabili discrete, per le quali l’insieme dei possibili valori ha cardinalità al più numerabile.
-</p>
-</div>
 <p>Quando una variabile può assumere qualsiasi valore entro un intervallo
 specificato, allora si dice che la variabile è continua. In teoria, ciò
 significa che frazioni e decimali possono essere utilizzati per
@@ -364,9 +356,19 @@ raggiungere un livello di precisione qualsiasi. In pratica, a un certo
 punto dobbiamo arrotondare i numeri, rendendo tecnicamente la variabile
 discreta. In variabili veramente discrete, tuttavia, non è possibile
 aumentare a piacimento il livello di precisione della misurazione.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<img src="Psicometria_files/figure-html/unnamed-chunk-5-1.png" alt="Le variabili continue possono assumere un insieme continuo di valori, al contrario delle variabili discrete, per le quali l'insieme dei possibili valori ha cardinalità al più numerabile." width="70%" />
+<p class="caption">
+Figura 2.2: Le variabili continue possono assumere un insieme continuo di valori, al contrario delle variabili discrete, per le quali l’insieme dei possibili valori ha cardinalità al più numerabile.
+</p>
 </div>
-<div id="perché-certe-misure-sono-migliori-di-altre" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Perché certe misure sono migliori di altre?</h2>
+
+<div class="example">
+<span id="exm:example-biciclette" class="example"><strong>Esempio 2.3  </strong></span>Il numero di biciclette possedute da una persona è una variabile discreta poiché tale variabile può assumere come modalità solo i numeri interi non negativi. Le frazioni di biciclette non sono sensate.
+</div>
+</div>
+<div id="perché-alcune-misurazioni-sono-migliori-di-altre" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Perché alcune misurazioni sono migliori di altre?</h2>
 <p>In psicologia, ciò che vogliamo misurare non è una caratteristica
 fisica, ma invece è un concetto teorico inosservabile, ovvero un
 costrutto. Ad esempio, supponiamo che un docente voglia valutare quanto
@@ -402,9 +404,9 @@ proporzionali).</p>
 introducono i concetti di accuratezza e di precisione della misura. Una
 misura viene definita:</p>
 <ul>
-<li><em>accurata</em>, quando vi è un accordo tra la misura effettuata ed il
+<li><strong>accurata</strong>, quando vi è un accordo tra la misura effettuata ed il
 valore reale;</li>
-<li><em>precisa</em> quando, ripetendo più volte la misura, i risultati
+<li><strong>precisa</strong> quando, ripetendo più volte la misura, i risultati
 ottenuti sono concordanti, cioè differiscono in maniera irrilevante
 tra loro.</li>
 </ul>
@@ -418,9 +420,9 @@ Figura 2.3: Illustrazione dei concetti di precisione e accuratezza: (a) bassa pr
 <p>Per tenere sotto controllo l’incidenza degli errori, sono stati
 introdotti in psicologia i concetti di attendibilità e validità:</p>
 <ul>
-<li>l’<em>attendibilità</em> esprime il grado di accordo o coerenza tra
+<li>l’<strong>attendibilità</strong> esprime il grado di accordo o coerenza tra
 misurazioni indipendenti dello stesso costrutto psicologico<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>;</li>
-<li>la <em>validità</em> descrive il grado in cui uno strumento misura ciò che
+<li>la <strong>validità</strong> descrive il grado in cui uno strumento misura ciò che
 dice di misurare.</li>
 </ul>
 </div>
@@ -440,7 +442,7 @@ il grado in cui uno strumento misura effettivamente ciò che dovrebbe
 misurare. In genere, si fa riferimento ad almeno quattro tipi di
 validità.</p>
 <ul>
-<li>La <em>validità di costrutto</em> riguarda il grado in cui un test misura
+<li>La <strong>validità di costrutto</strong> riguarda il grado in cui un test misura
 ciò per cui è stato costruito. Essa si suddivide in: validità
 convergente e validità divergente. La validità convergente fa
 riferimento alla concordanza tra uno strumento e un altro che misura
@@ -448,13 +450,13 @@ lo stesso costrutto. La validità divergente, al contrario, valuta il
 grado di discriminazione tra strumenti che misurano costrutti
 differenti. Senza validità di costrutto le altre forme di validità
 non hanno senso.</li>
-<li>In base alla <em>validità di contenuto</em>, un test fornisce una misura
+<li>In base alla <strong>validità di contenuto</strong>, un test fornisce una misura
 valida di un attributo psicologico se il dominio dell’attributo è
 rappresentato in maniera adeguata dagli item del test. Un requisito
 di base della validità di contenuto è la rilevanza e la
 rappresentatività del contenuto degli item in riferimento
 all’attributo che il test intende misurare.</li>
-<li>La <em>validità di criterio</em> valuta il grado di concordanza tra i
+<li>La <strong>validità di criterio</strong> valuta il grado di concordanza tra i
 risultati dello strumento considerato e i risultati ottenuti da
 altri strumenti che misurano lo stesso costrutto, o tra i risultati
 dello strumento considerato e un criterio esterno. Nella validità
@@ -463,7 +465,7 @@ consentendo un confronto immediato. Nella validità predittiva, il
 costrutto viene misurato prima e il criterio in un momento
 successivo, consentendo la valutazione della capacità dello
 strumento di predire un evento futuro.</li>
-<li>Infine, la <em>validità di facciata</em> fa riferimento al grado in cui il
+<li>Infine, la <strong>validità di facciata</strong> fa riferimento al grado in cui il
 test appare valido ai soggetti a cui esso è diretto. La validità di
 facciata è importante in ambiti particolari, quali ad esempio la
 selezione del personale per una determinata occupazione. In questo

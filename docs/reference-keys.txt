@@ -3,6 +3,7 @@ exm:ex-scala-ord
 exm:ex-scala-temperatura
 fig:tikz-ex
 fig:unnamed-chunk-5
+exm:example-biciclette
 fig:unnamed-chunk-6
 chapter:terminologia
 metodi-e-procedure-della-psicologia
@@ -17,7 +18,7 @@ scala-ad-intervalli
 scala-di-rapporti
 gerarchia-dei-livelli-di-scala-di-misura
 sec:DiscreteVsContinuous
-perché-certe-misure-sono-migliori-di-altre
+perché-alcune-misurazioni-sono-migliori-di-altre
 sec:accuratezza_precisione
 sec:reliability
 sec:validity
