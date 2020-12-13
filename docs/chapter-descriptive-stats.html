@@ -24,7 +24,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2020-12-13" />
+<meta name="date" content="2020-12-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -347,10 +347,10 @@ deviazione standard.</p>
 <div id="sec:distr_freq" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Distribuzioni di frequenze</h2>
 <p>Per introdurre i principali strumenti della statistica descrittiva
-considereremo qui i dati raccolti da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>. Questi autori
+considereremo qui i dati raccolti da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>. Questi autori
 hanno studiato le aspettative negative le quali sono state evidenziate
 come un meccanismo chiave nel mantenimento e nella reiterazione della
-depressione. <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> hanno valutato le aspettative di
+depressione. <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> hanno valutato le aspettative di
 individui depressi circa il loro umore futuro ed si sono chiesti se
 queste aspettative fossero accurate oppure distorte negativamente.</p>
 <p>In uno degli studi descritti viene esaminato un campione costituito da 30
@@ -358,7 +358,7 @@ soggetti con almeno un episodio depressivo maggiore e da 37 controlli
 sani. Gli autori hanno misurato il livello depressivo con il <em>Beck
 Depression Inventory</em> (BDI-II). Ma qual è la la gravità della
 depressione riportata dai soggetti nel campione esaminato da
-<span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>?</p>
+<span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>?</p>
 <p>Dei 67 soggetti considerati, uno non ha completato il BDI-II e quindi abbiamo a disposizione 66 valori del BDI-II.
 I dati sono riportati nella tabella [tab:bdi2_values].
 Per semplicità i dati sono stati ordinati in
@@ -390,7 +390,7 @@ Proprietà: <span class="math inline">\(n_1 + n_2 + \dots + n_m = n\)</span>.</p
 <li><p>La <strong>frequenza cumulata relativa</strong> <span class="math inline">\(F_i\)</span>, ovvero
 <span class="math inline">\(F_i = f_1+f_2+\dots+f_m = \frac{N_i}{n} = \frac{1}{n} \sum_{i=1}^m f_i.\)</span></p></li>
 </ul>
-<p>Calcoliamo ora la distribuzione di frequenza assoluta e la distribuzione di frequenza relativa per i valori del BDI-II del campione clinico di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.
+<p>Calcoliamo ora la distribuzione di frequenza assoluta e la distribuzione di frequenza relativa per i valori del BDI-II del campione clinico di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.
 Per costruire una distribuzione di frequenza è innanzitutto necessario scegliere gli
 intervalli delle classi. Facendo riferimento ai cut-off usati per l’interpretazione del BDI-II, definiamo i seguenti <strong>intervalli aperti a destra</strong>:</p>
 <ul>
@@ -400,7 +400,7 @@ intervalli delle classi. Facendo riferimento ai cut-off usati per l’interpreta
 <li>depressione severa: [28.5, 63).</li>
 </ul>
 <p>La distribuzione di frequenza della variabile <code>bdi2</code> è riportata nella
-tabella seguente. Questa distribuzione di frequenza ci aiuta a capire meglio cosa sta succedendo. Se consideriamo la frequenza relativa, ad esempio, possiamo notare che ci sono due valori maggiormente ricorrenti e tali valori corrispondono alle due classi più estreme. Questo ha senso nel caso presente, in quanto il campione esaminato da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> includeva due gruppi di
+tabella seguente. Questa distribuzione di frequenza ci aiuta a capire meglio cosa sta succedendo. Se consideriamo la frequenza relativa, ad esempio, possiamo notare che ci sono due valori maggiormente ricorrenti e tali valori corrispondono alle due classi più estreme. Questo ha senso nel caso presente, in quanto il campione esaminato da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> includeva due gruppi di
 soggetti: soggetti sani (con valori BDI-II bassi) e soggetti depressi
 (con valori BDI-II alti). In una distribuzione di frequenza tali valori
 tipici vanno sotto il nome di <strong>mode</strong> della distribuzione.</p>
@@ -447,7 +447,7 @@ tipici vanno sotto il nome di <strong>mode</strong> della distribuzione.</p>
 </table>
 <div id="esercizio-con-r" class="section level3" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Esercizio con R</h3>
-<p>Poniamoci ora il problema di costruire la tabella precedente partendo dai dati grezzi messi a disposizione da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.
+<p>Poniamoci ora il problema di costruire la tabella precedente partendo dai dati grezzi messi a disposizione da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.
 Leggiamo i dati assumendo che il file <code>data.mood.csv</code> si trovi nella cartella <code>data</code> contenuta nella <em>working directory</em>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="chapter-descriptive-stats.html#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(</span>
 <span id="cb3-2"><a href="chapter-descriptive-stats.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;data.mood.csv&quot;</span>), </span>
@@ -498,7 +498,7 @@ Leggiamo i dati assumendo che il file <code>data.mood.csv</code> si trovi nella 
 <span id="cb8-2"><a href="chapter-descriptive-stats.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb8-3"><a href="chapter-descriptive-stats.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    minimal       mild   moderate     severe </span></span>
 <span id="cb8-4"><a href="chapter-descriptive-stats.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0.54545455 0.01515152 0.18181818 0.25757576</span></span></code></pre></div>
-<p>In questo modo abbiamo ottenuto le distribuzioni di frequenza assoluta e relativa per i valori del BDI-II dei soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>:</p>
+<p>In questo modo abbiamo ottenuto le distribuzioni di frequenza assoluta e relativa per i valori del BDI-II dei soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>:</p>
 <table>
 <thead>
 <tr class="header">
@@ -569,7 +569,7 @@ Il pacchetto <code>ggplot2</code> è un potente strumento per rappresentare graf
 <div class="figure" style="text-align: center"><span id="fig:hist1zetsche"></span>
 <img src="Psicometria_files/figure-html/hist1zetsche-1.png" alt="Istogramma per i valori BDI-II riportati da @zetsche_future_2019." width="80%" />
 <p class="caption">
-Figura 4.1: Istogramma per i valori BDI-II riportati da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.
+Figura 4.1: Istogramma per i valori BDI-II riportati da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.
 </p>
 </div>
 <p>Con i quattro intervalli individuati dai cut-off del BDI-II otteniamo la
@@ -595,7 +595,7 @@ Questo è il caso dell’istogramma seguente il quale è stato generato a partir
 <div class="figure" style="text-align: center"><span id="fig:hist2zetsche"></span>
 <img src="Psicometria_files/figure-html/hist2zetsche-1.png" alt="Una rappresentazione più comune per l'istogramma dei valori BDI-II di @zetsche_future_2019 nella quale gli intervalli delle classi hanno ampiezze uguali." width="80%" />
 <p class="caption">
-Figura 4.2: Una rappresentazione più comune per l’istogramma dei valori BDI-II di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> nella quale gli intervalli delle classi hanno ampiezze uguali.
+Figura 4.2: Una rappresentazione più comune per l’istogramma dei valori BDI-II di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> nella quale gli intervalli delle classi hanno ampiezze uguali.
 </p>
 </div>
 </div>
@@ -638,7 +638,7 @@ stessa idea si applica anche quando il campione è più piccolo.</p>
 <div class="figure" style="text-align: center"><span id="fig:zetschehist3"></span>
 <img src="Psicometria_files/figure-html/zetschehist3-1.png" alt="Funzione di densità empirica per i valori BDI-II di @zetsche_future_2019." width="80%" />
 <p class="caption">
-Figura 4.3: Funzione di densità empirica per i valori BDI-II di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.
+Figura 4.3: Funzione di densità empirica per i valori BDI-II di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.
 </p>
 </div>
 <p>Che interpretazione possiamo attribuire alla funzione di densità empirica rappresentata nella figura <a href="chapter-descriptive-stats.html#fig:zetschehist3">4.3</a>?
@@ -659,14 +659,14 @@ Figura 4.4: 1: Asimmetria negativa. 2: Asimmetria positiva. 3: Distribuzione uni
 </p>
 </div>
 <p>Nel pannello 1 la distribuzione è unimodadle con asimmetria negativa; nel pannello 2 la distribuzione è unimodadle con asimmetria positiva; nel pannello 3 la distribuzione è simmetrica e unimodale; nel pannello 4 la distribuzione è bimodale.</p>
-<p>Se consideriamo nuovamente la figura <a href="chapter-descriptive-stats.html#fig:zetschehist3">4.3</a> possiamo dire che la distribuzione dei valori del BDI-II nel campione considerato da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> è bimodale.</p>
+<p>Se consideriamo nuovamente la figura <a href="chapter-descriptive-stats.html#fig:zetschehist3">4.3</a> possiamo dire che la distribuzione dei valori del BDI-II nel campione considerato da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> è bimodale.</p>
 </div>
 <div id="indici-di-posizione" class="section level2" number="4.6">
 <h2><span class="header-section-number">4.6</span> Indici di posizione</h2>
 <div id="quantili" class="section level3" number="4.6.1">
 <h3><span class="header-section-number">4.6.1</span> Quantili</h3>
 <p>La descrizione della distribuzione dei valori BDI-II di
-<span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> può essere facilitata dalla determinazione di
+<span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> può essere facilitata dalla determinazione di
 alcuni valori caratteristici che sintetizzano le informazioni contenute
 nella distribuzione di frequenze. Si dicono <em>quantili</em> (o <em>frattili</em>)
 quei valori caratteristici che hanno le seguenti proprietà. I <em>quartili</em>
@@ -694,7 +694,7 @@ distribuzione di valori che è molto popolare e può essere usata in
 alternativa ad un istogramma (in realtà vedremo poi come possa essere
 combinata con un istogramma). Tale rappresentazione va sotto il nome di
 box-plot.</p>
-<p>Per fare un esempio, consideriamo i nove soggetti del campione clinico di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> che hanno riportato un unico episodio di depressione maggiore. Per tali soggetti i valori ordinati del BDI-II (per semplicità li chiameremo <span class="math inline">\(x\)</span>) sono i seguenti: 19, 26, 27, 28, 28, 33, 33, 41, 43.
+<p>Per fare un esempio, consideriamo i nove soggetti del campione clinico di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> che hanno riportato un unico episodio di depressione maggiore. Per tali soggetti i valori ordinati del BDI-II (per semplicità li chiameremo <span class="math inline">\(x\)</span>) sono i seguenti: 19, 26, 27, 28, 28, 33, 33, 41, 43.
 Per il calcolo del secondo quartile (non interpolato), ovvero per il calcolo della mediana, dobbiamo considerare la quantità <span class="math inline">\(np = 9 \cdot 0.5 = 4.5\)</span>, non intero. Quindi, <span class="math inline">\(q_1 = x_{4 + 1} = 27\)</span>.
 Per il calcolo del quantile (non interpolato) di ordine <span class="math inline">\(p = 2/3\)</span> dobbiamo considerare la quantità <span class="math inline">\(np = 9 \cdot 2/3 = 6\)</span>, intero. Quindi, <span class="math inline">\(q_{\frac{2}{3}} = \frac{1}{2} (x_{6} + x_{7}) = \frac{1}{2} (33 + 33) = 33\)</span>.</p>
 </div>
@@ -720,7 +720,7 @@ Figura 4.5: Box-plot, laddove <span class="math inline">\(M\)</span> è la media
 </p>
 </div>
 <p>Consideriamo ora un caso concreto nel quale viene utilizzato un box-plot.
-Nel caso dei dati di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> ci chiediamo in che modo si differenziano le distribuzioni del BDI-II tra i due gruppi considerati, ovvero tra il gruppo dei pazienti e il gruppo di controllo.</p>
+Nel caso dei dati di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> ci chiediamo in che modo si differenziano le distribuzioni del BDI-II tra i due gruppi considerati, ovvero tra il gruppo dei pazienti e il gruppo di controllo.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="chapter-descriptive-stats.html#cb12-1" aria-hidden="true" tabindex="-1"></a>bysubj <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
 <span id="cb12-2"><a href="chapter-descriptive-stats.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(esm_id, group) <span class="sc">%&gt;%</span> </span>
 <span id="cb12-3"><a href="chapter-descriptive-stats.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
@@ -773,7 +773,7 @@ Nel caso dei dati di <span class="citation"><a href="bibliografia.html#ref-zetsc
 <div class="figure" style="text-align: center"><span id="fig:violin-zetsche"></span>
 <img src="Psicometria_files/figure-html/violin-zetsche-1.png" alt="Due versioni di un violin plot per i valori BDI-II di ciascuno dei due gruppi di soggetti esaminati da @zetsche_future_2019." width="95%" />
 <p class="caption">
-Figura 4.6: Due versioni di un violin plot per i valori BDI-II di ciascuno dei due gruppi di soggetti esaminati da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.
+Figura 4.6: Due versioni di un violin plot per i valori BDI-II di ciascuno dei due gruppi di soggetti esaminati da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.
 </p>
 </div>
 <p>Nella figura <a href="chapter-descriptive-stats.html#fig:violin-zetsche">4.6</a> sinistra sono rappresentati i dati grezzi: questa è la pratica migliore quando il numero di osservazioni è piccolo. La linea curva che circonda (simmetricamente) le osservazioni è l’<strong>istogramma lisciato</strong> che abbiamo descritto in precedenza. Nella figura <a href="chapter-descriptive-stats.html#fig:violin-zetsche">4.6</a> destra sono rappresentanti gli stessi dati: la funzione di densità empirica è la stessa di prima, ma al suo interno viene collocato un box-plot. Questa seconda rappresentazione è da preferirsi quando ci sono molte osservazioni e non è utile rappresentare singolarmente ciascun dato. Entrambe le rappresentazioni suggeriscono che la distribuzione dei dati è all’incirca simmetrica nel gruppo clinico (codificato come <code>mdd</code>). Il gruppo di controllo (<code>ctl</code>) mostra invece un’asimmetria positiva, con tre osservazioni evidenziate nel boxplot come dei “valori anomali,” dato che si discostano dalla mediana di una quantità maggiore di 1.5 IQR.</p>
@@ -808,7 +808,7 @@ risposta a qualche domanda);</li>
 dei dati fornite nel testo.</li>
 </ol>
 <p>In base a questi principi, la funzione di densità empirica fornisce una
-rappresentazione migliore dei dati di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> di quanto lo faccia un istogramma. Inoltre, se oltre al grupppo di appartenenza non ci sono altre dimensioni importanti da mettere in evidenza, allora la nostra scelta dovrebbe
+rappresentazione migliore dei dati di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> di quanto lo faccia un istogramma. Inoltre, se oltre al grupppo di appartenenza non ci sono altre dimensioni importanti da mettere in evidenza, allora la nostra scelta dovrebbe
 ricadere sul pannello di sinistra della figura <a href="chapter-descriptive-stats.html#fig:violin-zetsche">4.6</a>.</p>
 </div>
 </div>
@@ -861,7 +861,7 @@ distribuzione è asimmetrica, o in presenza di valori anomali (<em>outlier</em>)
 – si veda il pannello di destra della figura <a href="chapter-descriptive-stats.html#fig:violin-zetsche">4.6</a>. In tali circostanze, la tendenza centrale della distribuzione è meglio rappresentata dalla mediana o dalla media spuntata.</p>
 <div id="esercizio-con-r-3" class="section level4" number="4.7.1.1">
 <h4><span class="header-section-number">4.7.1.1</span> Esercizio con R</h4>
-<p>Calcoliamo la media dei valori BDI-II per i due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p>Calcoliamo la media dei valori BDI-II per i due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="chapter-descriptive-stats.html#cb14-1" aria-hidden="true" tabindex="-1"></a>bysubj <span class="sc">%&gt;%</span> </span>
 <span id="cb14-2"><a href="chapter-descriptive-stats.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
 <span id="cb14-3"><a href="chapter-descriptive-stats.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
@@ -885,7 +885,7 @@ poi eliminare il primo 5% e l’ultimo 5% dei dati della serie così
 ordinata. La media spuntata è data dalla media aritmetica dei dati rimanenti.</p>
 <div id="esercizio-con-r-4" class="section level4" number="4.7.2.1">
 <h4><span class="header-section-number">4.7.2.1</span> Esercizio con R</h4>
-<p>Calcoliamo la media spuntata dei valori BDI-II per i due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> escludendo il 10% dei valori più estremi in ciascun gruppo.</p>
+<p>Calcoliamo la media spuntata dei valori BDI-II per i due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> escludendo il 10% dei valori più estremi in ciascun gruppo.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="chapter-descriptive-stats.html#cb15-1" aria-hidden="true" tabindex="-1"></a>bysubj <span class="sc">%&gt;%</span> </span>
 <span id="cb15-2"><a href="chapter-descriptive-stats.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
 <span id="cb15-3"><a href="chapter-descriptive-stats.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
@@ -909,7 +909,7 @@ perde il suo significato di indice di tendenza centrale) e la <em>mediana</em>
 <span class="math inline">\(\tilde{x}\)</span>.</p>
 <div id="esercizio-con-r-5" class="section level4" number="4.7.3.1">
 <h4><span class="header-section-number">4.7.3.1</span> Esercizio con R</h4>
-<p>Calcoliamo i quantili di ordine 0.25, 0.5 e 0.75 dei valori BDI-II per i due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p>Calcoliamo i quantili di ordine 0.25, 0.5 e 0.75 dei valori BDI-II per i due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="chapter-descriptive-stats.html#cb16-1" aria-hidden="true" tabindex="-1"></a>bysubj <span class="sc">%&gt;%</span> </span>
 <span id="cb16-2"><a href="chapter-descriptive-stats.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
 <span id="cb16-3"><a href="chapter-descriptive-stats.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
@@ -971,7 +971,7 @@ S_{Me} = \frac{1}{n} \sum_{i=1}^n |x_i - x_{0.5}|.
 \end{equation}\]</span></p>
 <div id="esercizio-con-r-6" class="section level4" number="4.8.2.1">
 <h4><span class="header-section-number">4.8.2.1</span> Esercizio con R</h4>
-<p>Calcoliamo lo scostamento medio semplice dalla media per il BDI-II dei due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p>Calcoliamo lo scostamento medio semplice dalla media per il BDI-II dei due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="chapter-descriptive-stats.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(bysubj<span class="sc">$</span>bdi <span class="sc">-</span> <span class="fu">median</span>(bysubj<span class="sc">$</span>bdi)))</span>
 <span id="cb17-2"><a href="chapter-descriptive-stats.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 14.48387</span></span></code></pre></div>
 <p>Oppure, per i due gruppi:</p>
@@ -995,7 +995,7 @@ S_{Me} = \frac{1}{n} \sum_{i=1}^n |x_i - x_{0.5}|.
 MAD = \text{med} (|x_i - \text{med}(x_i)|).
 \tag{4.3}
 \end{equation}\]</span></p>
-<p>Per i dati di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> abbiamo:</p>
+<p>Per i dati di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> abbiamo:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="chapter-descriptive-stats.html#cb19-1" aria-hidden="true" tabindex="-1"></a>bysubj <span class="sc">%&gt;%</span> </span>
 <span id="cb19-2"><a href="chapter-descriptive-stats.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
 <span id="cb19-3"><a href="chapter-descriptive-stats.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
@@ -1024,7 +1024,7 @@ La varianza è una misura di dispersione più complessa di quelle esaminate in p
 un’unità di misura che è il quadrato dell’unità di misura dei dati originari e quindi ad essa non può essere assegnata un’interpretazione intuitiva.</p>
 <div id="esercizio-con-r-7" class="section level4" number="4.8.3.1">
 <h4><span class="header-section-number">4.8.3.1</span> Esercizio con R</h4>
-<p>Calcoliamo la varianza dei punteggi BDI-II nei due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p>Calcoliamo la varianza dei punteggi BDI-II nei due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="chapter-descriptive-stats.html#cb20-1" aria-hidden="true" tabindex="-1"></a>bysubj <span class="sc">%&gt;%</span> </span>
 <span id="cb20-2"><a href="chapter-descriptive-stats.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
 <span id="cb20-3"><a href="chapter-descriptive-stats.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
@@ -1044,7 +1044,7 @@ un’unità di misura che è il quadrato dell’unità di misura dei dati origin
 <p>Alla deviazione standard può essere assegnata una semplice interpretazione: la deviazione standard è <strong>simile</strong> (ma non identica) allo scostamento medio semplice dalla media. La deviazione standard ci dice, dunque, quanto sono distanti, in media, le singole osservazioni dal centro della distribuzione.</p>
 <div id="esercizio-con-r-8" class="section level4" number="4.8.4.1">
 <h4><span class="header-section-number">4.8.4.1</span> Esercizio con R</h4>
-<p>Calcoliamo la deviazione standard per il BDI-II dei due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p>Calcoliamo la deviazione standard per il BDI-II dei due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="chapter-descriptive-stats.html#cb21-1" aria-hidden="true" tabindex="-1"></a>bysubj <span class="sc">%&gt;%</span> </span>
 <span id="cb21-2"><a href="chapter-descriptive-stats.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
 <span id="cb21-3"><a href="chapter-descriptive-stats.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
@@ -1077,7 +1077,7 @@ quartile oppure alla mediana, cioè:
 </div>
 <div id="le-relazioni-tra-variabili" class="section level2" number="4.9">
 <h2><span class="header-section-number">4.9</span> Le relazioni tra variabili</h2>
-<p><span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> hanno misurato il livello di depressione dei
+<p><span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> hanno misurato il livello di depressione dei
 soggetti del loro esperimento utilizzando due scale psicometriche: il
 Beck Depression Inventory II (BDI-II) e la Center for Epidemiologic
 Studies Depression Scale (CES-D). Il BDI-II è uno strumento self-report
@@ -1152,7 +1152,7 @@ abbiamo già incontrato in precedenza.</p>
 <div class="figure" style="text-align: center"><span id="fig:zetsche-scatter"></span>
 <img src="Psicometria_files/figure-html/zetsche-scatter-1.png" alt="Associazione tra le variabili BDI-II e CES-D nel campione esaminato da @zetsche_future_2019. Ai margini del diagramma a dispersione sono rappresentate le funzioni di densità empirica delle due variabili." width="95%" />
 <p class="caption">
-Figura 4.7: Associazione tra le variabili BDI-II e CES-D nel campione esaminato da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>. Ai margini del diagramma a dispersione sono rappresentate le funzioni di densità empirica delle due variabili.
+Figura 4.7: Associazione tra le variabili BDI-II e CES-D nel campione esaminato da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>. Ai margini del diagramma a dispersione sono rappresentate le funzioni di densità empirica delle due variabili.
 </p>
 </div>
 <p>Dalla figura <a href="chapter-descriptive-stats.html#fig:zetsche-scatter">4.7</a> possiamo vedere che i dati mostrano
@@ -1301,7 +1301,7 @@ un test psicologico misura effettivamente ciò che ci si aspetta che
 misuri (nel caso dell’esempio presente, la depressione), allora dovremo
 aspettarci che fornisca una correlazione alta con risultati di altri
 test che misurano lo stesso costrutto – come nel caso dei dati di
-<span class="citation">(<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche, Bürkner, &amp; Renneberg, 2019</a>)</span>. Un’altra proprietà desiderabile di un test
+<span class="citation">(<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al., 2019</a>)</span>. Un’altra proprietà desiderabile di un test
 psicometrico è la <em>validità divergente</em>: i risultati di test
 psicometrici che misurano costrutti diversi dovrebbero essere poco
 associati tra loro. In altre parole, in questo secondo caso dovremmo

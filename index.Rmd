@@ -8,8 +8,12 @@ twitter-handle: ccaudek
 knit: "bookdown::render_book"
 github-repo: ccaudek/bookdown_psicometria
 bibliography: psicom.bib
-csl: apa6.csl
+biblio-style: apalike
+csl: apa.csl
 link-citations: yes
+fontsize: 12pt
+monofont: "Source Code Pro"
+monofontoptions: "Scale=0.7"
 
 documentclass: book
 site: bookdown::bookdown_site
@@ -25,6 +29,15 @@ output:
         instapper: no
         vk: no
         all: no
+
+  bookdown::pdf_book:
+    toc_depth: 2
+    number_sections: true
+    citation_package: default
+    pandoc_args: [ "--csl", "apa.csl" ]
+
+  bookdown::markdown_document2:
+    default
 ---
 
 # Prefazione {-}
