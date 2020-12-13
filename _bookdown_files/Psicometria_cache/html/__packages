@@ -11,3 +11,8 @@ stringr
 forcats
 carData
 car
+patchwork
+ggpubr
+datasauRus
+bayesplot
+ggExtra

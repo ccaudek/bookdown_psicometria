@@ -171,9 +171,15 @@ Poniamoci ora il problema di costruire la tabella precedente partendo dai dati g
 suppressPackageStartupMessages(library("here"))
 suppressPackageStartupMessages(library("tidyverse"))
 suppressPackageStartupMessages(library("car"))
+suppressPackageStartupMessages(library("ggpubr"))
+suppressPackageStartupMessages(library("datasauRus"))
+suppressPackageStartupMessages(library("ggExtra"))
+suppressPackageStartupMessages(library("bayesplot"))
+bayesplot_theme_set()
+library("patchwork")
 ```
 
-Leggiamo i dati.
+Leggiamo i dati assumendo che il file `data.mood.csv` si trovi nella cartella `data` contenuta nella _working directory_.
 
 ```{r}
 df <- read.csv(
@@ -182,7 +188,7 @@ df <- read.csv(
 ) 
 ```
 
-C'è un solo valore di depressione per ciascun soggetto ma tale valore viene ripetuto tante volte quante volte sono le righe del data.frame associate ad ogni soggetto (ciascuna riga corrispondente ad una prova diversa). È dunque necessario trasformare il data.frame in modo tale da avere un'unica riga per ciascun soggetto, ovvero un unico valore BDI-II per soggetto.
+C'è un solo valore di depressione per ciascun soggetto ma tale valore viene ripetuto tante volte quante volte sono le righe del `data.frame` associate ad ogni soggetto (ciascuna riga corrispondente ad una prova diversa). È dunque necessario trasformare il `data.frame` in modo tale da avere un'unica riga per ciascun soggetto, ovvero un unico valore BDI-II per soggetto.
 
 ```{r}
 bysubj <- df %>% 
@@ -193,13 +199,13 @@ bysubj <- df %>%
   na.omit()
 ```
 
-Ci sono dunque `r length(unique(bysubj$esm_id))` soggetti i quali hanno ottenuto i valori sulla scala del BDI-II stampati di seguito (li mostriamo ordinati dal più piccolo al più grande).
+Ci sono dunque `r length(unique(bysubj$esm_id))` soggetti i quali hanno ottenuto i valori sulla scala del BDI-II stampati di seguito (li presento ordinati dal più piccolo al più grande).
 
 ```{r}
 sort(bysubj$bdi)
 ```
 
-Calcoliamo ora le frequenze assolute per i seguenti intervalli aperti a destra: [0, 13.5), [13.5, 19.5), [19.5, 28.5), [28.5, 63). Esaminando i dati, vediamo che 36 soggetti cadono nella prima classe. Dobbiamo però eseguire quest'operazione di conteggio utilizzando R. 
+Calcolo ora le frequenze assolute per i seguenti intervalli aperti a destra: [0, 13.5), [13.5, 19.5), [19.5, 28.5), [28.5, 63). Esaminando i dati, possiamo notare  che 36 soggetti cadono nella prima classe. È però necessario eseguire quest'operazione di conteggio utilizzando R. 
 
 Uno dei modi possibili per calcolare le frequenze assolute è quello di usare la funzione `cut()`. Mediante tal funzione è possibile dividere il *campo di variazione* (ovvero, la differenza tra il valore massimo di una distribuzione ed il valore minimo) di una variabile continua `x` in intervalli e codificare ciascun valore `x` nei termini dell'intervallo a cui appartiene. Tale risultato si ottiene nel modo seguente.
 
@@ -264,7 +270,7 @@ Come si trova l'altezza delle barre dell'istogramma? Per la classe [0, 13.5), ad
 Una rappresentazione grafica dell'istogramma delle frequenze relative si può ottenere con R utilizzando le funzioni di `ggplot2`.
 Il pacchetto `ggplot2` è un potente strumento per rappresentare graficamente i dati. Le iniziali del nome, `gg`, si riferiscono alla ''Grammar of Graphics'', che è un modo di pensare le figure come una serie di layer stratificati. Originariamente descritta da Leland Wilkinson, la grammatica dei grafici è stata aggiornata e applicata in R da Hadley Wickham, il creatore del pacchetto. Per chiarezza, precisiamo che la funzione `ggplot()` utilizza intervalli aperti a destra.
 
-```{r hist1zetsche, fig.cap="Istogramma per i valori BDI-II riportati da @zetsche_future_2019."}
+```{r hist1zetsche, out.width="80%", fig.cap="Istogramma per i valori BDI-II riportati da @zetsche_future_2019."}
 p1 <- bysubj %>%
   ggplot(aes(x = bdi)) +
   geom_histogram(
@@ -289,7 +295,7 @@ rettangoli.
 Anche se nel caso presente è sensato usare ampiezze diverse per gli intervalli delle classi, in generale gli istogrammi si costruiscono utilizzando intervalli riportati sulle ascisse con un'ampiezza uguale.
 Questo è il caso dell'istogramma seguente il quale è stato generato a partire dagli stessi dati.
 
-```{r hist2zetsche, fig.cap="Una rappresentazione più comune per l'istogramma dei valori BDI-II di @zetsche_future_2019 nella quale gli intervalli delle classi hanno ampiezze uguali."}
+```{r hist2zetsche, out.width="80%", fig.cap="Una rappresentazione più comune per l'istogramma dei valori BDI-II di @zetsche_future_2019 nella quale gli intervalli delle classi hanno ampiezze uguali."}
 p2 <- bysubj %>%
   ggplot(aes(x = bdi)) +
   geom_histogram(
@@ -325,7 +331,7 @@ stessa idea si applica anche quando il campione è più piccolo.
 
 Nel caso dei dati del BDI-II otteniamo la reppresentazione fornita dalla figura seguente.
 
-```{r zetschehist3, fig.cap="Funzione di densità empirica per i valori BDI-II di @zetsche_future_2019."}
+```{r zetschehist3, out.width="80%", fig.cap="Funzione di densità empirica per i valori BDI-II di @zetsche_future_2019."}
 p3 <- bysubj %>% 
   ggplot(aes(x = bdi)) +
   geom_histogram(
@@ -441,46 +447,101 @@ scatola due segmenti di retta i cui estremi sono detti "valore
 adiacente" inferiore e superiore. Il valore adiacente inferiore è il
 valore più piccolo tra le osservazioni che risulta maggiore o uguale al
 primo quartile meno la distanza corrispondente a 1.5 volte la distanza
-interquartile (si veda la
-figura [\[fig:boxplot\]](#fig:boxplot){reference-type="ref"
-reference="fig:boxplot"}). Il valore adiacente superiore è il valore più
-grande tra le osservazioni che risulta minore o uguale a $Q_3+1.5$ IQR.
-I valori esterni ai valori adiacenti (chiamati *valori anomali*) vengono
-rappresentati individualmente nel box-plot per meglio evidenziarne la
-presenza e la posizione.
+interquartile. 
+Il valore adiacente superiore è il valore più grande tra le osservazioni che risulta minore o uguale a $Q_3+1.5$ IQR. I valori esterni ai valori adiacenti (chiamati *valori anomali*) vengono rappresentati individualmente nel box-plot per meglio evidenziarne la presenza e la posizione.
 
-Consideriamo ora un caso concreto nel quale viene utilizzato un
-box-plot. Nel caso dei dati di @zetsche_future_2019 riportati nella
-tabella [1.1](#tab:Zetsche2020){reference-type="ref"
-reference="tab:Zetsche2020"} ci chiediamo in che modo si differenziano
-le distribuzioni del BDI-II tra i due gruppi considerati, ovvero tra il
-gruppo dei pazienti e il gruppo di controllo. La
-figura [1.3](#fig:Zetsche_violin_plot){reference-type="ref"
-reference="fig:Zetsche_violin_plot"} ci fornisce due rappresentazioni
-grafiche possibili che possono essere utilizzate per rispondere a questa
-domanda.
+```{tikz, echo=FALSE, fig.cap = "Box-plot, laddove $M$ è la mediana, $\bar{x}$ è la media aritmetica e IQR è la distanza interquartile ($Q_3 - Q_1$).", fig.ext = 'png', cache=TRUE}
+\usetikzlibrary{
+  matrix, patterns, calc, fit, shapes, chains, snakes,
+  arrows.meta, arrows, backgrounds, trees, positioning,
+  lindenmayersystems
+}
+\begin{tikzpicture}[thick, scale=.83]
+ \filldraw[fill=gray!20] (2,0) rectangle (5,1);% draw the box
+ \draw (3,0) -- (3,1) node[above]{$\textsc{M}$};% draw the median
+ \draw (5,0.5) -- (7,0.5);% draw right whisker
+ \draw (2,0.5) -- (1,0.5);% draw left whisker
+ \draw (7,0.39) -- (7,0.61);% draw vertical tab
+ \draw (1,0.39) -- (1,0.61);% draw vertical tab
+ \node[below] at (2,0) {$\textsc{$Q_1$}$};% label the hinge
+ \node[below] at (5,0) {$\textsc{$Q_3$}$};% label the hinge
+ \filldraw[ball color=gray!80,shading=ball] (4,0.5) circle
+ (0.06cm) node[above]{$\bar{x}$};% the mean
+ \draw[<->] (2.3, -0.3) -- (4.7, -0.3)
+ node[pos=0.5,below]{$\textsc{IQR}$}; % mark the IQR fences
+ \draw[<->] (2, -0.8) -- (0,-0.8)
+ node[pos=0.5,below]{$\textsc{1.5*IQR}$}; % left inner fence
+ \draw[<->] (2,-1.4) -- (-2, -1.4)
+ node[pos=0.5,below]{$\textsc{3*IQR}$};% left outer fence
+ \draw[<->] (5, -0.8) -- (8,-0.8)
+ node[midway,below]{$\textsc{1.5*IQR}$}; % right inner fence
+ \draw[<->] (5,-1.4) -- (10, -1.4)
+ node[pos=0.5,below]{$\textsc{3*IQR}$};% right outer fence
+ %
+ \node[below] at (9,0.7) {$\textbf{*}$}; % mild outlier on the right
+ \node[below] at (-2.4,0.7) {$o$}; % extreme outlier on the left
+ \draw (-3,-2) -- (11,-2);
+ \draw[snake=ticks,segment length=1cm] (-3,-2) -- (11.1,-2);
+\end{tikzpicture}
+```
 
-![Due versioni di un "violin plot" dei valori BDI-II per ciascun gruppo
-specificato nella tabella [1.1](#tab:Zetsche2020){reference-type="ref"
-reference="tab:Zetsche2020"}.](Zetsche_violin_plot.pdf){#fig:Zetsche_violin_plot
-width="1.0\\linewidth"}
+Consideriamo ora un caso concreto nel quale viene utilizzato un box-plot.
+Nel caso dei dati di @zetsche_future_2019 ci chiediamo in che modo si differenziano le distribuzioni del BDI-II tra i due gruppi considerati, ovvero tra il gruppo dei pazienti e il gruppo di controllo.
 
-Nella figura [1.3](#fig:Zetsche_violin_plot){reference-type="ref"
-reference="fig:Zetsche_violin_plot"} sinistra sono rappresentati i dati
-grezzi: questa è la pratica migliore quando il numero di osservazioni è
-piccolo. La linea curva che circonda (simmetricamente) le osservazioni è
-l'"istogramma lisciato" che abbiamo descritto in precedenza. Nella
-figura [1.3](#fig:Zetsche_violin_plot){reference-type="ref"
-reference="fig:Zetsche_violin_plot"} destra sono rappresentanti gli
-stessi dati: la funzione di densità empirica è la stessa di prima, ma al
-suo interno viene collocato un box-plot. Questa seconda rappresentazione
-è da preferirsi quando ci sono molte osservazioni e non è utile
-rappresentare singolarmente ciascun dato. Entrambe le rappresentazioni
-suggeriscono che la distribuzione dei dati è all'incirca simmetrica nel
-gruppo clinico (codificato come "mdd"). Il gruppo di controllo ("ctl")
-mostra invece un'asimmetria positiva, con tre osservazioni evidenziate
-nel boxplot come dei "valori anomili", dato che si discostano dalla
-mediana di una quantità maggiore di 1.5 IQR.
+```{r, out.width="80%"}
+bysubj <- df %>% 
+  group_by(esm_id, group) %>% 
+  summarise(
+    bdi = mean(bdi),
+    nr_of_episodes = mean(nr_of_episodes, na.rm = TRUE)
+  ) %>% 
+  na.omit()
+
+bysubj %>% 
+  ggplot(aes(x=group, y=bdi)) + 
+  geom_boxplot() +
+  labs(
+    x = "Gruppo",
+    y = "BDI-II"
+  )
+```
+
+La figura \@ref(fig:violin-zetsche) fornisce due rappresentazioni grafiche che possono essere utilizzate per rispondere a questa domanda.
+
+```{r violin-zetsche, out.width="95%", fig.cap = "Due versioni di un violin plot per i valori BDI-II di ciascuno dei due gruppi di soggetti esaminati da @zetsche_future_2019."}
+bysubj <- df %>% 
+  group_by(esm_id, group) %>% 
+  summarise(
+    bdi = mean(bdi),
+    nr_of_episodes = mean(nr_of_episodes, na.rm = TRUE)
+  ) %>% 
+  na.omit()
+
+p1 <- bysubj %>% 
+  ggplot(aes(x=group, y=bdi)) + 
+  geom_violin(trim=FALSE) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize=0.7) +
+  labs(
+    x = "Gruppo",
+    y = "BDI-II"
+    #, caption = "Fonte: Zetsche, Buerkner, & Renneberg (2020)"
+  )
+
+p2 <- bysubj %>% 
+  ggplot(aes(x=group, y=bdi)) + 
+  geom_violin(trim=FALSE) +
+  geom_boxplot(width=0.05) +
+  labs(
+    x = "Gruppo",
+    y = "BDI-II"
+    #, caption = "Fonte: Zetsche, Buerkner, & Renneberg (2020)"
+  )
+
+p1 + p2
+```
+
+Nella figura \@ref(fig:violin-zetsche) sinistra sono rappresentati i dati grezzi: questa è la pratica migliore quando il numero di osservazioni è piccolo. La linea curva che circonda (simmetricamente) le osservazioni è l'__istogramma lisciato__ che abbiamo descritto in precedenza. Nella figura \@ref(fig:violin-zetsche) destra sono rappresentanti gli stessi dati: la funzione di densità empirica è la stessa di prima, ma al suo interno viene collocato un box-plot. Questa seconda rappresentazione è da preferirsi quando ci sono molte osservazioni e non è utile rappresentare singolarmente ciascun dato. Entrambe le rappresentazioni suggeriscono che la distribuzione dei dati è all'incirca simmetrica nel gruppo clinico (codificato come `mdd`). Il gruppo di controllo (`ctl`) mostra invece un'asimmetria positiva, con tre osservazioni evidenziate nel boxplot come dei "valori anomali", dato che si discostano dalla mediana di una quantità maggiore di 1.5 IQR.
+
 
 ### L'eccellenza grafica
 
@@ -497,37 +558,24 @@ inchiostro possibile, usando il minor spazio possibile. Secondo
 @tufte_visual_display, le rappresentazioni grafiche dovrebbero:
 
 1.  mostrare i dati;
-
 2.  indurre l'osservatore a riflettere sulla sostanza piuttosto che
     sulla progettazione grafica, o qualcos'altro;
-
 3.  evitare di distorcere quanto i dati stanno comunicando ("integrità
     grafica");
-
 4.  presentare molte informazioni in forma succinta;
-
 5.  rivelare la coerenza tra le molte dimensioni dei dati;
-
 6.  incoraggiare l'osservatore a comparare differenti porzioni di dati;
-
 7.  rivelare i dati a diversi livelli di dettaglio, da una visione ampia
     alla struttura di base;
-
 8.  servire ad uno scopo preciso (descrizione, esplorazione, o la
     risposta a qualche domanda);
-
 9.  essere fortemente integrate con le descrizioni statistiche e verbali
     dei dati fornite nel testo.
 
 In base a questi principi, la funzione di densità empirica fornisce una
-rappresentazione migliore dei dati della
-tabella [1.1](#tab:Zetsche2020){reference-type="ref"
-reference="tab:Zetsche2020"} di quanto lo faccia un istogramma. Inoltre,
-se oltre al grupppo di appartenenza non ci sono altre dimensioni
-importanti da mettere in evidenza, allora la nostra scelta dovrebbe
-ricadere sul pannello di sinistra della
-figura [1.3](#fig:Zetsche_violin_plot){reference-type="ref"
-reference="fig:Zetsche_violin_plot"}.
+rappresentazione migliore dei dati di @zetsche_future_2019 di quanto lo faccia un istogramma. Inoltre, se oltre al grupppo di appartenenza non ci sono altre dimensioni importanti da mettere in evidenza, allora la nostra scelta dovrebbe
+ricadere sul pannello di sinistra della figura \@ref(fig:violin-zetsche).
+
 
 ## Indici di tendenza centrale
 
@@ -546,21 +594,26 @@ comunemente usata è la media.
 
 Tutti conosciamo la media aritmetica di $\{x_1, x_2, \dots, x_n\}$,
 ovvero il numero reale $\bar{x}$ definito da
-$$\bar{x}=\frac{1}{n}\sum_{i=1}^n x_i.
- \label{eq:media_aritm}$$
-Nell'eq. [\[eq:media_aritm\]](#eq:media_aritm){reference-type="eqref"
-reference="eq:media_aritm"} abbiamo usato la notazione delle sommatorie
+\begin{equation}
+\bar{x}=\frac{1}{n}\sum_{i=1}^n x_i.
+(\#eq:mean)
+\end{equation}
+Nell'eq. \@ref(eq:mean) abbiamo usato la notazione delle sommatorie
 per descrivere una somma di valori. Questa notazione è molto usata in
 statistica e viene descritta in Appendice.
 
 La media gode della seguente importante proprietà: la somma degli scarti
 tra ciascuna modalità $x_i$ e la media aritmetica $\bar{x}$ è nulla,
-cioè $$\sum_{i=1}^n (x_i - \bar{x}) = 0.\notag
+cioè 
+$$
+\sum_{i=1}^n (x_i - \bar{x}) = 0.\notag
 \label{eq:diffmeansumzero}$$ Infatti, $$\begin{aligned}
 \sum_{i=1}^n (x_i - \bar{x}) &= \sum_i x_i - \sum_i \bar{x}\notag\\
 &= \sum_i x_i - n \bar{x}\notag\\
-&= \sum_i x_i - \sum_i x_i = 0.\notag\end{aligned}$$ Ciò ci consente di
-pensare alla media come al baricentro della distribuzione.
+&= \sum_i x_i - \sum_i x_i = 0.\notag\end{aligned}
+$$ 
+
+Ciò ci consente di pensare alla media come al baricentro della distribuzione.
 
 Un'altra proprietà della media è la seguente. La somma dei quadrati
 degli scarti tra ciascuna modalità $x_i$ e una costante arbitraria
@@ -574,23 +627,43 @@ testicolo. Ma la media ha altri problemi, oltre al fatto di ispirare
 battute simili alle precedenti. In particolare, dobbiamo notare che la
 media non è sempre l'indice che meglio rappresenta la tendenza centrale
 di una distribuzione. In particolare, ciò non accade quando la
-distribuzione è asimmetrica, o in presenza di valori anomali (*outlier*)
--- si veda il pannello di destra della
-figura [1.3](#fig:Zetsche_violin_plot){reference-type="ref"
-reference="fig:Zetsche_violin_plot"}. In tali circostanze, la tendenza
-centrale della distribuzione è meglio rappresentata dalla mediana o
-dalla media spuntata.
+distribuzione è asimmetrica, o in presenza di valori anomali (_outlier_)
+-- si veda il pannello di destra della figura \@ref(fig:violin-zetsche). In tali circostanze, la tendenza centrale della distribuzione è meglio rappresentata dalla mediana o dalla media spuntata.
+
+#### Esercizio con R
+
+Calcoliamo la media dei valori BDI-II per i due gruppi di soggetti di @zetsche_future_2019.
+
+```{r}
+bysubj %>% 
+  group_by(group) %>% 
+  summarise(
+    avg_bdi = mean(bdi)
+  ) 
+```
+
 
 ### Media spuntata
 
-La *media spuntata* $\bar{x}_t$ (*trimmed mean*) non è altro che la
+La _media spuntata_ $\bar{x}_t$ (_trimmed mean_) non è altro che la
 media dei dati calcolata considerando solo il 90% (o altra percentuale)
 dei dati centrali. Per calcolare $\bar{x}_t$ si ordinando i dati secondo
 una sequenza crescente, $x_1 \leq x_2 \leq x_3 \leq \dots \leq x_n$, per
 poi eliminare il primo 5% e l'ultimo 5% dei dati della serie così
-ordinata. La media spuntata è data dalla media aritmetica
-[\[eq:media_aritm\]](#eq:media_aritm){reference-type="eqref"
-reference="eq:media_aritm"} dei dati rimanenti.
+ordinata. La media spuntata è data dalla media aritmetica dei dati rimanenti.
+
+#### Esercizio con R
+
+Calcoliamo la media spuntata dei valori BDI-II per i due gruppi di soggetti di @zetsche_future_2019 escludendo il 10% dei valori più estremi in ciascun gruppo.
+
+```{r}
+bysubj %>% 
+  group_by(group) %>% 
+  summarise(
+    avg_trim_bdi = mean(bdi, trim = 0.1)
+  ) 
+```
+
 
 ### Moda e mediana
 
@@ -600,6 +673,24 @@ classe con la frequenza massima (può succedere che una distribuzione
 abbia più mode; in tal caso si dice *multimodale* e questo operatore
 perde il suo significato di indice di tendenza centrale) e la *mediana*
 $\tilde{x}$.
+
+#### Esercizio con R
+
+Calcoliamo i quantili di ordine 0.25, 0.5 e 0.75 dei valori BDI-II per i due gruppi di soggetti di @zetsche_future_2019.
+
+```{r}
+bysubj %>% 
+  group_by(group) %>% 
+  summarise(
+    q25 = quantile(bdi, probs = 0.25),
+    q50 = quantile(bdi, probs = 0.50),
+    q75 = quantile(bdi, probs = 0.75)
+  ) 
+```
+
+```{remark, rem-quantile_interpolation}
+Si noti che solitamente i software restituiscono un valore __interpolato__ del $p$-esimo quantile $q_p$ $(0 < p < 1)$, il quale viene calcolato mediante specifiche procedure. Il risultato fornito dai software, dunque, non sarà identico a quello trovato utilizzando la definizione non interpolata di quantile che abbiamo presentato qui. Se, per qualche ragione, vogliamo conoscere l'algoritmo usato per la determinazione dei quantili interpolati, dobbiamo leggere la documentazione del software.
+``` 
 
 ## Indici di dispersione
 
@@ -625,7 +716,7 @@ $x_{0.75}$). Pertanto non utilizzano tutte le informazioni che sono
 disponibili. Inoltre, l'intervallo di variazione ha il limite di essere
 pesantemente influenzato dalla presenza di valori anomali.
 
-### Scostamento medio semplice dalla mediana
+### Scostamento medio semplice dalla media
 
 Dati i limiti delle statistiche precedenti è più comune misurare la
 variabilità di una variabile statistica come la dispersione dei dati
@@ -635,52 +726,101 @@ poi calcolare la media degli scostamenti dei singoli dati dal valore di
 riferimento. Ad esempio, se scegliamo la mediana quale misura di
 posizione centrale, è possibile calcolare la media aritmetica della
 distribuzione degli scarti in valore assoluto tra ciascuna modalità e la
-mediana stessa. Nel caso di una variabile statistica $X$ lo *scostamento
-medio semplice dalla mediana* è la quantità
-$$S_{Me} = \frac{1}{n} \sum_{i=1}^n |x_i - x_{0.5}|.
-\label{eq:scostam_medio_sempl}$$
+mediana stessa. Nel caso di una variabile statistica $X$ lo _scostamento
+medio semplice dalla media_ è la quantità
+
+\begin{equation}
+S_{Me} = \frac{1}{n} \sum_{i=1}^n |x_i - x_{0.5}|.
+(\#eq:scost-sempl-mediana)
+\end{equation}
+
+
+#### Esercizio con R
+
+Calcoliamo lo scostamento medio semplice dalla media per il BDI-II dei due gruppi di soggetti di @zetsche_future_2019.
+
+```{r}
+mean(abs(bysubj$bdi - median(bysubj$bdi)))
+```
+
+Oppure, per i due gruppi:
+
+```{r}
+mean_abs_dev <- function(x){
+  mean(abs(x - median(x)))
+}
+
+bysubj %>% 
+  group_by(group) %>% 
+  summarise(
+    Mean_abs_dev = mean_abs_dev(bdi)
+  ) 
+```
+
+La _deviazione mediana assoluta_ è una misura robusta della dispersione statistica di un campione. Per un insieme $x_1, x_2, \dots, x_n$, il valore di MAD è definito come la mediana del valore assoluto delle deviazioni dei dati dalla mediana, ovvero:
+
+\begin{equation}
+MAD = \text{med} (|x_i - \text{med}(x_i)|).
+(\#eq:mad)
+\end{equation}
+
+Per i dati di @zetsche_future_2019 abbiamo:
+
+```{r}
+bysubj %>% 
+  group_by(group) %>% 
+  summarise(
+    MAD = mad(bdi)
+  ) 
+```
+
 
 ### Varianza
 
 Anche se la statistica definita
-dall'eq. [\[eq:scostam_medio_sempl\]](#eq:scostam_medio_sempl){reference-type="eqref"
-reference="eq:scostam_medio_sempl"} è molto intuitiva, la misura di
+dall'eq. \@ref(eq:scost-sempl-mediana) è molto intuitiva, la misura di
 variabilità di gran lunga più usata per valutare la variabilità di una
 variabile statistica è senza dubbio la varianza. La varianza
-$$s^2 = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2
-\label{eq:var_descr}$$ è la media dei quadrati degli scarti
-$x_i - \bar{x}$ tra ogni valore e la media della distribuzione. La
-varianza è la misura di dispersione più tecnicamente complessa. È
-appropriata solo nel caso di distribuzioni simmetriche e, anch'essa, è
-fortemente influenzata dai valori anomali. Inoltre, è espressa in
-un'unità di misura che è il quadrato dell'unità di misura dei dati
-originari e quindi non consente un'interpretazione intuitiva.
+\begin{equation}
+s^2 = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2
+(\#eq:var-descr)
+\end{equation}
+è la media dei quadrati degli scarti $x_i - \bar{x}$ tra ogni valore e la media della distribuzione. 
+La varianza è una misura di dispersione più complessa di quelle esaminate in precedenza. È appropriata solo nel caso di distribuzioni simmetriche e, anch'essa, è fortemente influenzata dai valori anomali. Inoltre, è espressa in
+un'unità di misura che è il quadrato dell'unità di misura dei dati originari e quindi ad essa non può essere assegnata un'interpretazione intuitiva.
+
+#### Esercizio con R
+
+Calcoliamo la varianza dei punteggi BDI-II nei due gruppi di soggetti di @zetsche_future_2019.
+
+```{r}
+bysubj %>% 
+  group_by(group) %>% 
+  summarise(
+    variance = var(bdi)
+  ) 
+```
+
 
 ### Deviazione standard
 
-Per tali ragioni la misura più usata della dispersione di una
-distribuzione di dati è la *deviazione standard*, ovvero la radice
-quadrata della varianza. A differenza della varianza, dunque, la
-deviazione standard è espressa nella stessa unità di misura dei dati.
-Come nel caso della varianza, anche la deviazione standard $s$ dovrebbe
-essere usata soltanto quando la media è adeguata per misurare il centro
-della distribuzione, ovvero, nel caso di distribuzioni simmetriche. Come
-nel caso della media $\bar{x}$, anche la deviazione standard è
-fortemente influenzata dai dati anomali (*outlier*), ovvero dalla
-presenza di uno o di pochi dati che sono molto più distanti dalla media
-rispetto agli altri valori della distribuzione. Quando tutte le
-osservazioni sono uguali, $s=0$, altrimenti $s > 0$.
+Per le ragioni espresse sopra, la misura più usata della dispersione di una distribuzione di dati è la _deviazione standard_, ovvero la radice quadrata della varianza. A differenza della varianza, dunque, la deviazione standard è espressa nella stessa unità di misura dei dati. Come nel caso della varianza, anche la deviazione standard $s$ dovrebbe essere usata soltanto quando la media è adeguata per misurare il centro della distribuzione, ovvero, nel caso di distribuzioni simmetriche. Come nel caso della media $\bar{x}$, anche la deviazione standard è fortemente influenzata dai dati anomali (*outlier*), ovvero dalla presenza di uno o di pochi dati che sono molto più distanti dalla media rispetto agli altri valori della distribuzione. Quando tutte le osservazioni sono uguali, $s=0$, altrimenti $s > 0$.
 
-Alla deviazione standard può essere assegnata una semplice
-interpretazione: la deviazione standard è *simile* (anche se non uguale)
-alla media del valore assoluto degli scarti di ciascuna osservazione
-dalla media. La deviazione standard ci dice, dunque, quanto sono
-distanti, in media, le singole osservazioni dal centro della
-distribuzione. Nel caso del campione clinico considerato da
-@zetsche_future_2019, ciascuna osservazione dista, in media, 5.33 punti
-dalla media della distribuzione. Anche se la deviazione standard è pari
-a 6.5 e non è uguale a tale valore, facendo un'approssimazione, possiamo
-pensare che, all'incirca, essa rappresenti una tale distanza media.
+Alla deviazione standard può essere assegnata una semplice interpretazione: la deviazione standard è __simile__ (ma non identica) allo scostamento medio semplice dalla media. La deviazione standard ci dice, dunque, quanto sono distanti, in media, le singole osservazioni dal centro della distribuzione. 
+
+
+#### Esercizio con R
+
+Calcoliamo la deviazione standard per il BDI-II dei due gruppi di soggetti di @zetsche_future_2019.
+
+```{r}
+bysubj %>% 
+  group_by(group) %>% 
+  summarise(
+    stdev = sd(bdi)
+  ) 
+```
+
 
 ### Indici di variabilità relativi
 
@@ -709,7 +849,7 @@ adulti e adolescenti di almeno 13 anni di età con diagnosi psichiatrica
 mentre la CES-D è una scala self-report progettata per misurare i
 sintomi depressivi che sono stati vissuti nella settimana precedente
 nella popolazione generale, specialmente quella degli
-adolescenti/giovani adulti. La prima domanda ovvia che ci può venire in
+adolescenti/giovani adulti. Una domanda ovvia che ci può venire in
 mente è: quanto sono simili le misure ottenute mediante queste due
 scale?
 
@@ -718,7 +858,7 @@ essere identici, e questo per due motivi: (1) la presenza degli errori
 di misurazione e (2) l'unità di misura delle due variabili. L'errore di
 misurazione corrompe sempre, almeno in parte, qualunque operazione di
 misurazione. E questo è vero specialmente in psicologia dove
-l'*affidabilità* degli strumenti di misurazione è minore che in altre
+l'_attendibilità_ degli strumenti di misurazione è minore che in altre
 discipline (quali la fisica, ad esempio). Il secondo motivo per cui i
 valori delle scale BDI-II e CES-D non possono essere uguali è che
 l'unità di misura delle due scale è arbitraria. Infatti, qual è l'unità
@@ -726,10 +866,10 @@ di misura della depressione? Chi può dirlo! Ma, al di là delle
 differenze derivanti dall'errore di misurazione e dalla differente unità
 di misura, ci aspettiamo che, se le due scale misurano entrambe lo
 stesso costrutto[^3], allora i valori prodotti dalle due scale dovranno
-essere tra loro *linearmente associati*. Per capire cosa si intende con
+essere tra loro _linearmente associati_. Per capire cosa si intende con
 "associazione lineare" iniziamo a guardare i dati. Per fare questo
 utilizziamo una rappresentazione grafica che va sotto il nome di
-*diagramma a dispersione*.
+diagramma a dispersione.
 
 ### Diagramma a dispersione
 
@@ -737,22 +877,51 @@ Il diagramma di dispersione è la rappresentazione grafica delle coppie
 di punti individuati dalle variabili BDI-II e CES-D, e si ottiene
 ponendo, ad esempio, i valori BDI-II sull'asse delle ascisse e quelli
 del CES-D sull'asse delle ordinate. In tale grafico, fornito dalla
-figura [1.4](#fig:Zetsche_scatterplot){reference-type="ref"
-reference="fig:Zetsche_scatterplot"}, cascun punto corrisponde ad un
+figura , cascun punto corrisponde ad un
 individuo del quale, nel caso presente, conosciamo il livello di
 depressione misurato dalle due scale psicometriche. A tale grafico sono
 state aggiunte le funzioni *marginali* (ovvero, che si riferiscono a
 ciascuna variabile considerata singolarmente) di densità empirica che
 abbiamo già incontrato in precedenza.
 
-![Associazione tra le variabili BDI-II e CES-D nel campione esaminato da
-@zetsche_future_2019. Ai margini del diagramma a dispersione sono
-rappresentate le funzioni di densità empirica delle due
-variabili.](Zetsche_scatterplot.pdf){#fig:Zetsche_scatterplot
-width="80%"}
+```{r}
+bysubj <- df %>% 
+  group_by(esm_id, group) %>% 
+  summarise(
+    bdi = mean(bdi),
+    cesd = mean(cesd_sum)
+  ) %>% 
+  na.omit() %>% 
+  ungroup()
+```
 
-Dalla figura [1.4](#fig:Zetsche_scatterplot){reference-type="ref"
-reference="fig:Zetsche_scatterplot"} possiamo vedere che i dati mostrano
+```{r, zetsche-scatter, out.width="95%", fig.cap = "Associazione tra le variabili BDI-II e CES-D nel campione esaminato da @zetsche_future_2019. Ai margini del diagramma a dispersione sono rappresentate le funzioni di densità empirica delle due variabili."}
+m_cesd <- mean(bysubj$cesd)
+m_bdi <- mean(bysubj$bdi)
+FONT_SIZE <- 10
+
+p <- bysubj %>%
+  ggplot(
+    aes(x=bdi, y=cesd, color=group)) +
+  geom_point(size=1) +
+  geom_hline(yintercept= m_cesd, linetype="dashed", color = "gray") +
+  geom_vline(xintercept = m_bdi, linetype="dashed", color = "gray") +
+  geom_text(x=-1, y=16, label="I", color = "gray", size=FONT_SIZE) +
+  geom_text(x=0, y=46, label="IV", color = "gray", size=FONT_SIZE) +
+  geom_text(x=18, y=46, label="III", color = "gray", size=FONT_SIZE) +
+  geom_text(x=18, y=16, label="II", color = "gray", size=FONT_SIZE) +
+  theme(legend.position="none") +
+  labs(
+    x = "BDI-II",
+    y = "CESD"
+  )
+
+p2 <- ggMarginal(p, type="density")
+p2
+```
+
+
+Dalla figura \@ref(fig:zetsche-scatter) possiamo vedere che i dati mostrano
 una certa tendenza a disporsi attorno ad una retta -- nel gergo
 statistico, questo fatto viene espresso dicendo che i punteggi BDI-II
 tendono ad essere linearmente associati ai punteggi CES-D. È ovvio,
@@ -767,6 +936,7 @@ dobbiamo specificare un indice statistico che descrive la direzione e la
 forza della relazione lineare tra le due variabili. Ci sono vari indici
 statistici che possiamo utilizzare a questo scopo.
 
+
 ### Covarianza
 
 Iniziamo a considerare il più importante di tali indici, chiamato
@@ -775,7 +945,10 @@ sorprenderà più di tanto in quanto, in una forma solo apparentemente
 diversa, l'abbiamo già incontrato in precedenza. Ci ricordiamo infatti
 che la varianza di una generica variabile $X$ è definita come la media
 degli scarti quadratici di ciascuna osservazione dalla media:
-$$S_{XX} = \frac{1}{n} \sum_{i=1}^n(X_i - \bar{X}) (X_i - \bar{X}).$$
+\begin{equation}
+S_{XX} = \frac{1}{n} \sum_{i=1}^n(X_i - \bar{X}) (X_i - \bar{X}).
+(\#eq:variance2)
+\end{equation}
 Infatti, la varianza viene talvolta descritta come la "covarianza di una
 variabile con sé stessa".
 
@@ -784,18 +957,13 @@ una sola variabile, chiediamoci come due variabili $X$ e $Y$ "variano
 insieme" (co-variano). È facile capire come una risposta a tale domanda
 possa essere fornita da una semplice trasformazione della formula
 precedente che diventa:
-$$S_{XY} = \frac{1}{n} \sum_{i=1}^n(X_i - \bar{X}) (Y_i - \bar{Y}).
-\label{eq:definition_covariance}$$
-L'eq. [\[eq:definition_covariance\]](#eq:definition_covariance){reference-type="eqref"
-reference="eq:definition_covariance"} ci fornisce dunque la definizione
-della covarianza.
+\begin{equation}
+S_{XY} = \frac{1}{n} \sum_{i=1}^n(X_i - \bar{X}) (Y_i - \bar{Y}).
+(\#eq:covariance)
+\end{equation}
+L'eq. \@ref(eq:covariance) ci fornisce dunque la definizione della covarianza.
 
-Per capire il significato
-dell'eq. [\[eq:definition_covariance\]](#eq:definition_covariance){reference-type="eqref"
-reference="eq:definition_covariance"}, supponiamo di dividere il grafico
-della figura [1.4](#fig:Zetsche_scatterplot){reference-type="ref"
-reference="fig:Zetsche_scatterplot"} in quattro quadranti definiti da
-una retta verticale passante per la media dei valori BDI-II e da una
+Per capire il significato dell'eq. \@ref(eq:covariance), supponiamo di dividere il grafico della figura \@ref(fig:zetsche-scatter) in quattro quadranti definiti da una retta verticale passante per la media dei valori BDI-II e da una
 retta orizzontale passante per la media dei valori CES-D. Numeriamo i
 quadranti partendo da quello in basso a sinistra e muovendoci in senso
 antiorario.
@@ -826,6 +994,7 @@ l'altezza viene misurata in metri e il peso in chilogrammi. Dunque, il
 valore della covarianza cambia al mutare dell'unità di misura delle
 variabili anche se l'associazione tra le variabili resta costante.
 
+
 ### Correlazione
 
 Dato che il valore assoluto della covarianza è di difficile
@@ -836,40 +1005,34 @@ operazione si dice *standardizzazione* e corrisponde alla divisione
 della covarianza per le deviazioni standard ($s_X$, $s_Y$) delle due
 variabili:
 
-$$r_{XY} = \frac{S_{XY}}{s_X s_Y}.$$ La quantià che si ottiene in questo
-modo viene chiamata *correlazione* di Bravais-Pearson (dal nome degli
-autori che, indipendentemente l'uno dall'altro, la hanno introdotta).
+\begin{equation}
+r_{XY} = \frac{S_{XY}}{s_X s_Y}.
+(\#eq:correlation)
+\end{equation}
+La quantià che si ottiene in questo modo viene chiamata *correlazione* di Bravais-Pearson (dal nome degli autori che, indipendentemente l'uno dall'altro, la hanno introdotta).
 
 Il coefficiente di correlazione ha le seguenti proprietà:
 
--   ha lo stesso segno della covarianza, dato che si ottiene dividendo
+*   ha lo stesso segno della covarianza, dato che si ottiene dividendo
     la covarianza per due numeri positivi;
-
--   è un numero puro, cioè non dipende dall'unità di misura delle
+*   è un numero puro, cioè non dipende dall'unità di misura delle
     variabili;
-
--   assume valori compresi tra -1 e +1.
+*   assume valori compresi tra -1 e +1.
 
 Ad esso possiamo assegnare la seguente interpretazione:
 
 1.  $r_{XY} = -1$ $\rightarrow$ perfetta relazione negativa: tutti i
     punti si trovano esattamente su una retta con pendenza negativa (dal
     quadrante in alto a sinistra al quadrante in basso a destra);
-
 2.  $r_{XY} = +1$ $\rightarrow$ perfetta relazione positiva: tutti i
     punti si trovano esattamente su una retta con pendenza positiva (dal
     quadrante in basso a sinistra al quadrante in alto a destra);
-
 3.  $-1 < r_{XY} < +1$ $\rightarrow$ presenza di una relazione lineare
     di intensità diversa;
-
 4.  $r_{XY} = 0$ $\rightarrow$ assenza di relazione lineare tra $X$ e
     $Y$.
 
-Per i dati della
-figura [1.4](#fig:Zetsche_scatterplot){reference-type="ref"
-reference="fig:Zetsche_scatterplot"}, la covarianza è 207.426. Il segno
-positivo della covarianza ci dice che tra le due variabili c'è
+Per i dati della figura \@ref(fig:zetsche-scatter), la covarianza è 207.426. Il segno positivo della covarianza ci dice che tra le due variabili c'è
 un'associazione lineare positiva. Per capire qual è l'intensità della
 relazione lineare tra le due variabili calcoliamo la correlazione.
 Essendo le deviazioni standard del BDI-II e del CES-D rispettavamente
@@ -878,19 +1041,17 @@ $\frac{207.426}{15.38 \cdot 14.93} = 0.904.$ Tale valore è prossimo a
 1.0, il che vuol dire che i punti del diagramma a dispersione non si
 discostano troppo da una retta con una pendenza positiva.
 
+
 ## Correlazione e causazione
 
-Facendo riferimento nuovamente alla
-figura [1.4](#fig:Zetsche_scatterplot){reference-type="ref"
-reference="fig:Zetsche_scatterplot"}, possiamo dire che, in molte
-applicazioni (ma non nel caso presente!) l'asse $x$ rappresenta una
-quantità nota come *variabile indipendente* e l'interesse si concentra
-sulla sua influenza sulla *variabile dipendente* tracciata sull'asse
+Facendo riferimento nuovamente alla figura \@ref(fig:zetsche-scatter), possiamo dire che, in molte applicazioni (ma non nel caso presente!) l'asse $x$ rappresenta una
+quantità nota come _variabile indipendente_ e l'interesse si concentra
+sulla sua influenza sulla _variabile dipendente_ tracciata sull'asse
 $y$. Ciò presuppone però che sia nota la direzione in cui l'influenza
 causale potrebbe risiedere. È importante tenere bene a mente che la
 correlazione è soltanto un indice descrittivo della relazione lineare
 tra due variabili e in nessun caso può essere usata per inferire
-alcunché sulle relazioni *causali* che legano le variabili. È ben nota
+alcunché sulle relazioni __causali__ che legano le variabili. È ben nota
 l'espressione: "correlazione non significa causazione".
 
 Di opinione diversa era invece Karl Pearson (1911), il quale ha
@@ -905,17 +1066,18 @@ la nostra comprensione di un fenomeno possa aumentare sulla base delle
 informazioni fornite dalle correlazioni, invece, è molto dubbio e quasi
 certamente falso.
 
+
 ### Usi della correlazione
 
 Anche se non può essere usata per studiare le relazioni causali, la
 correlazione viene usata per molti altri scopi tra i quali, per esempio,
-quello di misurare la *validità concorrente* di un test psiologico. Se
+quello di misurare la _validità concorrente_ di un test psiologico. Se
 un test psicologico misura effettivamente ciò che ci si aspetta che
 misuri (nel caso dell'esempio presente, la depressione), allora dovremo
 aspettarci che fornisca una correlazione alta con risultati di altri
 test che misurano lo stesso costrutto (come nel caso dei dati di
 [@zetsche_future_2019]). Un'altra proprietà desiderabile di un test
-psicometrico è la *validità divergente*: i risultati di test
+psicometrico è la _validità divergente_: i risultati di test
 psicometrici che misurano costrutti diversi dovrebbero essere poco
 associati tra loro. In altre parole, in questo secondo caso dovremmo
 aspettarci che la correlazione sia bassa.
@@ -929,11 +1091,12 @@ Tale misura di associazione è appropriata quando, del fenomeno in esame,
 gli psicologi sono stati in grado di misurare soltanto le relazioni
 d'ordine tra le diverse modalità della risposta dei soggetti, non
 l'intensità della risposta. Le variabili psicologiche che hanno questa
-proprietà si dicono *ordinali*. Nel caso di variabili ordinali, non è
+proprietà si dicono _ordinali_. Nel caso di variabili ordinali, non è
 possibile sintetizzare i dati mediante le statistiche descrittive che
 abbiamo introdotto in questo capitolo, quali ad esempio la media e la
 varianza, ma è invece solo possibile riassumere i dati mediante una
 distribuzione di frequenze per le varie modalità della risposta.
+
 
 ### Correlazione nulla
 
@@ -944,14 +1107,36 @@ lineari tra le variabili, anche sono molto forti, non vengono catturate
 dalla correlazione. È importante rendersi conto che una correlazione
 pari a zero non significa che non c'è relazione tra le due variabili, ma
 solo che tra esse non c'è una relazione *lineare*. Un esempio di questo
-fatto è fornito dalla
-figura [1.5](#fig:Cairo_zero_corr){reference-type="ref"
-reference="fig:Cairo_zero_corr"}.
+fatto è fornito dalla figura \@ref(fig:zerocorr).
 
-![Due insiemi di dati (fittizi) per i quali i coefficienti di
-correlazione di Pearson sono entrambi 0. Ma questo non significa che non
-vi sia alcuna relazione tra le
-variabili.](Cairo_zero_corr){#fig:Cairo_zero_corr width="80%"}
+```{r zerocorr, out.width="95%", fig.cap = "Due insiemi di dati (fittizi) per i quali i coefficienti di correlazione di Pearson sono entrambi 0. Ma questo non significa che non vi sia alcuna relazione tra le variabili."}
+slant <- ggplot(datasaurus_dozen_wide, aes(x=slant_down_x,y=slant_down_y),   colour=dataset) 
+# loads slant-pattern dataset of datasauRus package into data frame slant
+slant <- slant + 
+  geom_point() # as a scatter type geom
+slant <- slant + 
+  theme_void() # eliminates unwanted axis labels
+slant <- slant + 
+  theme(legend.position = "none", 
+        panel.border = element_rect(colour = "black", fill=NA, size = 1),
+        plot.margin = margin(0,2,0,2), aspect.ratio = 1) 
+# removes legend, adds a border, adds margin space below, and specifies 
+# required aspect ratio
+
+dino <- ggplot(datasaurus_dozen_wide, aes(x=dino_x,y=dino_y), colour=dataset) +
+  geom_point() 
+# loads dino-figure dataset of datasauRus package into data 
+#frame dino as a scatter type geom
+dino <- dino +theme_void() # eliminates unwanted axis labels
+dino <- dino + 
+  theme(legend.position = "none", 
+        panel.border =  element_rect(colour = "black", fill=NA, size = 1),
+        plot.margin = margin(0,2,0,2), aspect.ratio = 1) 
+# removes legend, adds a border, adds margin space below, specifies 
+# required aspect ratio
+
+slant + dino
+```
 
 ## Conclusioni {#conclusioni .unnumbered}
 
@@ -973,23 +1158,3 @@ essere chiaro che, quando disponiamo di grandi moli di dati (come è
 sempre il caso in psicologia), per fare questo è necessario usare un
 software statistico.
 
-[^1]: Un intervallo aperto non include i suoi estremi ed è indicato con
-    le parentesi tonde. Ad esempio, (0,1) significa maggiore di 0 e
-    minore di 1. Un intervallo chiuso è un intervallo che include i suoi
-    estremi ed è indicato con le parentesi quadre. Ci possono essere
-    intervalli aperti, "$(a, b)$", intervalli chiusi, "$[a, b]$",
-    intervalli aperti a sinistra, "$(a, b]$", e intervalli aperti a
-    destra, "$[a, b)$".
-
-[^2]: Si noti che solitamente i software restituiscono un valore
-    *interpolato* di $p$-esimo quantile $q_p$ $(0 < p < 1)$, il quale
-    viene calcolato mediante specifiche procedure. Il risultato fornito
-    dai software, dunque, non sarà identico a quello trovato utilizzando
-    la definizione non interpolata di quantile che abbiamo presentato
-    sopra. Se, per qualche ragione, vogliamo conoscere l'algoritmo usato
-    per la determinazione dei quantili interpolati, dobbiamo leggere la
-    documentazione del software.
-
-[^3]: Per costrutto si intende un concetto astratto non direttamente
-    osservabile, reso osservabile dalle variabili che vengono
-    effettivamente misurate.
