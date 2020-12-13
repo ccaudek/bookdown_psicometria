@@ -175,7 +175,7 @@ suppressPackageStartupMessages(library("ggpubr"))
 suppressPackageStartupMessages(library("datasauRus"))
 suppressPackageStartupMessages(library("ggExtra"))
 suppressPackageStartupMessages(library("bayesplot"))
-bayesplot_theme_set(theme_default(base_size = 12, base_family = "sans"))
+bayesplot_theme_update(text = element_text(size = 12, family = "sans"))
 library("patchwork")
 ```
 
