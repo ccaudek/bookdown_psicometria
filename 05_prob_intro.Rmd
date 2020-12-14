@@ -63,7 +63,7 @@ di quegli estremi erano nettamente diverse. Kent riconobbe che la
 soluzione di tale problema era quella di usare i numeri per esprimere il
 nostro grado di certezza, notando mestamente: 
 
-> Non abbiamo usato i numeri...e sembra chiaro che abbiamo abusando delle parole.
+> Non abbiamo usato i numeri... e sembra chiaro che abbiamo abusando delle parole.
 
 Da allora non è cambiato molto. Ancora oggi le persone nel mondo della
 politica, degli affari e nella vita quotidiana continuano a usare parole
@@ -84,6 +84,7 @@ linguistica deriva una cattiva comunicazione. È dunque necessario
 procedere in modo diverso nel linguaggio scientifico. Vedremo in questo
 capitolo come sia possibile assegnare al termine "probabilità" un
 significato preciso.
+
 
 ## Probabilità nel linguaggio scientifico
 
@@ -125,7 +126,7 @@ diverso ogni volta che si ripete una certa operazione, in modo tale da
 rappresentare il grado di casualità che si osserva quando si lancia di
 un dado. Per ora ci limitiamo ad esaminare i risultati che vengono
 prodotti in questo modo e che sono illustrati nella
-figura [1.1](#fig:demere){reference-type="ref" reference="fig:demere"}.
+figura \@ref(fig:demere).
 
 
 ```{r demere, out.width="80%", fig.cap="Risultati ottenuti da 10000 ripetizioni delle due scommesse di De Méré."}
@@ -221,13 +222,9 @@ probabilità fa uso di una specifica terminologia i cui concetti di base
 sono descritti di seguito. 
 
 * Il calcolo delle probabilità si occupa di un generico *esperimento casuale*. Si dice *esperimento casuale* qualsiasi attività che produce un risultato osservabile. L'esecuzione di un esperimento casuale è chiamata *prova* dell'esperimento. Esempi sono: lanciare una moneta, lanciare un dado a 6 facce, provare un nuovo percorso per andare al lavoro per vedere se è più veloce di quello che usiamo di solito, o giocare al gioco di De Méré.
-
 * Il risultato (o esito) di una prova si indica con $\omega$ ed è detto *evento elementare*.
-
 * Prima che l'esperimento casuale venga eseguito non sappiamo quale esito verrà prodotto; dopo che l'esperimento casuale è stato eseguito, l'esito dell'esperimento si "cristallizza" nel risultato osservato.
-
 * Si dice *spazio campionario* $\Omega$ (probability space) l'insieme di tutti i possibili esiti di un esperimento casuale. Lo spazio campionario può essere finito, infinito o infinito numerabile. Eseguire un esperimento casuale significa scegliere in maniera casuale uno dei possibili eventi elementari dello spazio campionario.
-
 * Si dice *evento composto* (o non-elementare) un sottoinsieme dello spazio campionario, ovvero un insieme che può essere a sua volta scomposto in più eventi elementari. Per esempio, il numero 4 è un evento elementare dello spazio campionario finito $\Omega = \{1, 2, 3, 4, 5, 6\}$ che corrisponde all'esperimento casuale del lancio di un dado. L'evento composto $A$ "il risultato è pari" è $A = \{2, 4, 6\}$.
 
 

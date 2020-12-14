@@ -324,7 +324,7 @@ di quegli estremi erano nettamente diverse. Kent riconobbe che la
 soluzione di tale problema era quella di usare i numeri per esprimere il
 nostro grado di certezza, notando mestamente:</p>
 <blockquote>
-<p>Non abbiamo usato i numeri…e sembra chiaro che abbiamo abusando delle parole.</p>
+<p>Non abbiamo usato i numeri… e sembra chiaro che abbiamo abusando delle parole.</p>
 </blockquote>
 <p>Da allora non è cambiato molto. Ancora oggi le persone nel mondo della
 politica, degli affari e nella vita quotidiana continuano a usare parole
@@ -383,7 +383,7 @@ diverso ogni volta che si ripete una certa operazione, in modo tale da
 rappresentare il grado di casualità che si osserva quando si lancia di
 un dado. Per ora ci limitiamo ad esaminare i risultati che vengono
 prodotti in questo modo e che sono illustrati nella
-figura <a href="chapter-prob-discreta.html#fig:demere" reference-type="ref" reference="fig:demere">1.1</a>.</p>
+figura <a href="chapter-prob-discreta.html#fig:demere">5.1</a>.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="chapter-prob-discreta.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Game A: Throw a fair die at most four times, and win if you get a six.</span></span>
 <span id="cb25-2"><a href="chapter-prob-discreta.html#cb25-2" aria-hidden="true" tabindex="-1"></a>experiment_a <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
 <span id="cb25-3"><a href="chapter-prob-discreta.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  rolls <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
@@ -479,11 +479,11 @@ non è noto o non può essere predetto con certezza.</p>
 probabilità fa uso di una specifica terminologia i cui concetti di base
 sono descritti di seguito.</p>
 <ul>
-<li><p>Il calcolo delle probabilità si occupa di un generico <em>esperimento casuale</em>. Si dice <em>esperimento casuale</em> qualsiasi attività che produce un risultato osservabile. L’esecuzione di un esperimento casuale è chiamata <em>prova</em> dell’esperimento. Esempi sono: lanciare una moneta, lanciare un dado a 6 facce, provare un nuovo percorso per andare al lavoro per vedere se è più veloce di quello che usiamo di solito, o giocare al gioco di De Méré.</p></li>
-<li><p>Il risultato (o esito) di una prova si indica con <span class="math inline">\(\omega\)</span> ed è detto <em>evento elementare</em>.</p></li>
-<li><p>Prima che l’esperimento casuale venga eseguito non sappiamo quale esito verrà prodotto; dopo che l’esperimento casuale è stato eseguito, l’esito dell’esperimento si “cristallizza” nel risultato osservato.</p></li>
-<li><p>Si dice <em>spazio campionario</em> <span class="math inline">\(\Omega\)</span> (probability space) l’insieme di tutti i possibili esiti di un esperimento casuale. Lo spazio campionario può essere finito, infinito o infinito numerabile. Eseguire un esperimento casuale significa scegliere in maniera casuale uno dei possibili eventi elementari dello spazio campionario.</p></li>
-<li><p>Si dice <em>evento composto</em> (o non-elementare) un sottoinsieme dello spazio campionario, ovvero un insieme che può essere a sua volta scomposto in più eventi elementari. Per esempio, il numero 4 è un evento elementare dello spazio campionario finito <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5, 6\}\)</span> che corrisponde all’esperimento casuale del lancio di un dado. L’evento composto <span class="math inline">\(A\)</span> “il risultato è pari” è <span class="math inline">\(A = \{2, 4, 6\}\)</span>.</p></li>
+<li>Il calcolo delle probabilità si occupa di un generico <em>esperimento casuale</em>. Si dice <em>esperimento casuale</em> qualsiasi attività che produce un risultato osservabile. L’esecuzione di un esperimento casuale è chiamata <em>prova</em> dell’esperimento. Esempi sono: lanciare una moneta, lanciare un dado a 6 facce, provare un nuovo percorso per andare al lavoro per vedere se è più veloce di quello che usiamo di solito, o giocare al gioco di De Méré.</li>
+<li>Il risultato (o esito) di una prova si indica con <span class="math inline">\(\omega\)</span> ed è detto <em>evento elementare</em>.</li>
+<li>Prima che l’esperimento casuale venga eseguito non sappiamo quale esito verrà prodotto; dopo che l’esperimento casuale è stato eseguito, l’esito dell’esperimento si “cristallizza” nel risultato osservato.</li>
+<li>Si dice <em>spazio campionario</em> <span class="math inline">\(\Omega\)</span> (probability space) l’insieme di tutti i possibili esiti di un esperimento casuale. Lo spazio campionario può essere finito, infinito o infinito numerabile. Eseguire un esperimento casuale significa scegliere in maniera casuale uno dei possibili eventi elementari dello spazio campionario.</li>
+<li>Si dice <em>evento composto</em> (o non-elementare) un sottoinsieme dello spazio campionario, ovvero un insieme che può essere a sua volta scomposto in più eventi elementari. Per esempio, il numero 4 è un evento elementare dello spazio campionario finito <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5, 6\}\)</span> che corrisponde all’esperimento casuale del lancio di un dado. L’evento composto <span class="math inline">\(A\)</span> “il risultato è pari” è <span class="math inline">\(A = \{2, 4, 6\}\)</span>.</li>
 </ul>
 </div>
 <div id="le-diverse-definizioni-della-probabilità" class="section level2" number="5.4">
