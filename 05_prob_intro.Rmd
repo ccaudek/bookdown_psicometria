@@ -549,29 +549,15 @@ $A \subset X$ come $$P_{\pi}(A) = \sum_{x \in A} P_{\pi}(x).$$ Qui non
 facciamo altro che applicare il terzo assioma di Kolmogorov.
 
 ```{exercise, ex-va-discr-2dice}
-Consideriamo nuovamente lo spazio
-campionario $\Omega$ dell'esercizio  e definiamo la variabile
-aleatoria $S(\omega)$ come la somma dei puntini che si ottengono dal
-lancio di due dadi. Per esempio,
-$S(\{(6, 3)\}) = 6 + 3 = 9$. Iniziamo a chiederci qual è
-la probabilità dell'evento $S = 7$.
+Consideriamo nuovamente lo spazio campionario $\Omega$ dell'esercizio precedente e definiamo la variabile aleatoria $S(\omega)$ come la somma dei puntini che si ottengono dal lancio di due dadi. Per esempio, $S(\{(6, 3)\}) = 6 + 3 = 9$. Iniziamo a chiederci qual è la probabilità dell'evento $S = 7$.
 ```
 
 ```{solution}
-Per risolvere tale problema iniziamo a considerare il fatto che l'evento
-$S = 7$ si verifica in corrispondenza di sei punti elementari dello
-spazio campionario 
-$\Omega$: \{(1, 6), (2, 5), (3, 4), (4, 3), (2, 5), (6, 1)\}.
-Dunque,
+Per risolvere tale problema iniziamo a considerare il fatto che l'evento $S = 7$ si verifica in corrispondenza di sei punti elementari dello spazio campionario $\Omega$: \{(1, 6), (2, 5), (3, 4), (4, 3), (2, 5), (6, 1)\}. Dunque,
 \begin{equation}
 P(S = 7) = P\{(1, 6)\} + P\{(2, 5)\} + P\{(3, 4)\} + P\{(4, 3)\} + P\{(2, 5)\} + P\{(6, 1)\}.
 \end{equation}
-Se possiamo assumere che i due dadi sono bilanciati, allora ciascun
-evento elementare dello spazio campionario ha probabilità $\frac{1}{36}$
-e la probabilità cercata diventa $\frac{1}{6}$. È facile estendere il
-ragionamento fatto sopra a tutti i valori che $S$ può assumere. In
-questo modo giungiamo alla funzione di massa di probabilità $P_0$
-riportata nella prima riga della tabella seguente.
+Se possiamo assumere che i due dadi sono bilanciati, allora ciascun evento elementare dello spazio campionario ha probabilità $\frac{1}{36}$ e la probabilità cercata diventa $\frac{1}{6}$. È facile estendere il ragionamento fatto sopra a tutti i valori che $S$ può assumere. In questo modo giungiamo alla funzione di massa di probabilità $P_0$ riportata nella prima riga della tabella seguente.
 
 ::: {#tab:massa_prob_due_dadi_on_tr}
         s               2                3                4                5                6                 7                8                9                10               11               12
@@ -594,15 +580,9 @@ P(\{(2, 3)\}) = P(\{4\}) = P(\{5\}) = \frac{1}{8}\notag.
 \label{eq:loaded_dice}
 \end{aligned}
 $$ 
-Nel caso dei due dadi truccati, la probabilità dell'evento elementare $\{(1, 1\}$ è $\frac{1}{4}\frac{1}{4}$. Dunque, $P(S=2) = \frac{4}{64}$. La probabilità dell'evento elementare $\{(1, 2)\}$ è $\frac{1}{4}\frac{1}{8}$. Tale valore è uguale alla probabilità dell'evento elementare $\{(2, 1)\}$. Dunque, la probabilità che $S$ sia uguale a 3 è $\frac{1}{4}\frac{1}{8} + \frac{1}{8}\frac{1}{4} = \frac{4}{64}$, e così via. Svolgendo i calcoli per tutti i possibili valori di $S$ otteniamo la funzione di massa di probabilità $P_1$ riportata nella seconda riga
-della tabella precedente.
+Nel caso dei due dadi truccati, la probabilità dell'evento elementare (1, 1) è 1/4 1/4. Dunque, *P*(*S* = 2) = 4/64. La probabilità dell'evento elementare (1, 2) è 1/4 1/8. Tale valore è uguale alla probabilità dell'evento elementare (2, 1). La probabilità che *S* sia uguale a 3 è 1/4 1/8 + 1/8 1/4 = 4/64, e così via. Svolgendo i calcoli per tutti i possibili valori di *S* otteniamo la funzione di massa di probabilità $P_1$ riportata nella seconda riga della tabella precedente.
 
-Si noti che, a partire dalla funzione di massa di probabilità di $S$, è
-possibile calcolare la probabilità di altri eventi. Per esempio,
-possiamo dire che l'evento $S > 10$ ha una probabilità minore nel caso
-dei dadi bilanciati, $P_0(S > 10) = \frac{3}{36} = \frac{1}{12}$,
-rispetto al caso dei dadi truccati considerati in precedenza,
-$P_1(S > 10) = \frac{8}{64} = \frac{1}{8}$.
+Si noti che, a partire dalla funzione di massa di probabilità di *S*, è possibile calcolare la probabilità di altri eventi. Per esempio, possiamo dire che l'evento *S* > 10 ha una probabilità minore nel caso dei dadi bilanciati, ovvero 3/36 = 1/12, rispetto al caso dei dadi truccati considerati in precedenza dove, per lo stesso evento, abbiamo una probabilità di 8/64 = 1/8.
 ```
 
 
