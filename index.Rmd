@@ -31,7 +31,7 @@ Queste dispense contengono il materiale delle lezioni dell'insegnamento Psicomet
 
 L'insegnamento di Psicometria si propone di fornire agli studenti un'introduzione all'analisi dei dati in psicologia. Alcuni degli argomenti trattati richiedono delle conoscenze pregresse, soprattutto di tipo matematico. 
 Tali conoscenze sono state aggiunte delle appendici di queste dispense. 
-concetti elementari di insiemistica). La lettura di tale materiale è consigliata a tutti, sia a chi sta studiando gli argomenti proposti per la prima volta, sia a chi deve ripassare per colmare eventuali lacune pregresse. 
+La lettura di tale materiale è consigliata a tutti, sia a chi sta studiando gli argomenti proposti per la prima volta, sia a chi deve ripassare per colmare eventuali lacune pregresse. 
 
 ## Perché tanta statistica in psicologia? {-}
 

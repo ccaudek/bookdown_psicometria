@@ -20,3 +20,5 @@ datasauRus
 bayesplot
 ggExtra
 rio
+knitr
+pander

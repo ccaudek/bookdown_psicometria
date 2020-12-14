@@ -26,6 +26,9 @@ def:def-assiomi-Kolmogorov
 exr:ex-parlamento-londra
 exr:ex-urna-10b-10r-10g
 def:def-var-aleatoria
+def:def-var-aleatoria-discr
+def:def-distr-prob-va-discr
+exr:ex-va-discr-2dice
 chapter:pacchetti
 chapter:terminologia
 metodi-e-procedure-della-psicologia
