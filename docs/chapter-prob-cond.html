@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Bibliografia | PSICOMETRIA</title>
+  <title>Capitolo 6 Probabilità condizionata | PSICOMETRIA</title>
   <meta name="description" content="""" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Bibliografia | PSICOMETRIA" />
+  <meta property="og:title" content="Capitolo 6 Probabilità condizionata | PSICOMETRIA" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ccaudek/bookdown_psicometria" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Bibliografia | PSICOMETRIA" />
+  <meta name="twitter:title" content="Capitolo 6 Probabilità condizionata | PSICOMETRIA" />
   <meta name="twitter:site" content="@ccaudek" />
   <meta name="twitter:description" content="""" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="chapter-prob-cond.html"/>
-
+<link rel="prev" href="chapter-prob-discreta.html"/>
+<link rel="next" href="bibliografia.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -272,43 +272,258 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="bibliografia" class="section level1 unnumbered">
-<h1>Bibliografia</h1>
+<div id="chapter:prob_cond" class="section level1" number="6">
+<h1><span class="header-section-number">Capitolo 6</span> Probabilità condizionata</h1>
+<p>L’attribuzione di una probabilità ad un evento è sempre condizionata
+dalle conoscenze che abbiamo a disposizione. Per un determinato stato di
+conoscenze, attribuiamo ad un dato evento una certa probabilità di
+verificarsi; ma se il nostro stato di conoscenze cambia, allora cambierà
+anche la probabilità che attribuiamo all’evento in questione. Per
+esempio, posiamo chiederci quale sia probabilità che Mario Rossi superi
+l’esame di Psicometria nel primo appello del presente anno accademico.
+In assenza di altre informazioni, la migliore stima di tale probabilità
+è data dalla proporzione di studenti che hanno superato l’esame di
+Psicometria nel corrispondente appello dei passati anni accademici. Ma
+se sappiamo che Mario Rossi è particolarmente portato per le materie
+quantitative, ha un’ottima preparazione di base e ha studiato molto,
+allora la probabilità sarà sicuramente più alta.</p>
+<div id="sec:prob_cond" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Probabilità condizionata su altri eventi</h2>
+<p>La probabilità condizionata è una componente essenziale del ragionamento
+scientifico dato che chiarisce come sia possibile incorporare le
+evidenze disponibili, in maniera logica e coerente, nella nostra
+conoscenza del mondo. Infatti, si può pensare che tutte le probabilità
+siano probabilità condizionate, anche se l’evento condizionante non è
+sempre esplicitamente menzionato. Consideriamo il seguente problema.</p>
 
-<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
-<div id="ref-cesario2019there" class="csl-entry">
-Cesario, J., Johnson, D. J., &amp; Terrill, W. (2019). Is there evidence of racial disparity in police use of deadly force? Analyses of officer-involved fatal shootings in 2015–2016. <em>Social Psychological and Personality Science</em>, <em>10</em>(5), 586–595.
+<div class="exercise">
+<span id="exr:screening-tumore" class="exercise"><strong>Exercizio 6.1  </strong></span>Lo screening per la diagnosi precoce del tumore mammario si avvale di
+test che sono accurati al 90%, nel senso che il 90% delle donne con
+cancro e il 90% delle donne senza cancro saranno classificate
+correttamente. Supponiamo che l’1% delle donne sottoposte allo screening
+abbia effettivamente il cancro al seno. Ci chiediamo: qual è la
+probabilità che una donna scelta casualmente abbia una mammografia
+positiva e, se ce l’ha, qual è la probabilità che abbia davvero il
+cancro?
 </div>
-<div id="ref-ross2020racial" class="csl-entry">
-Ross, C. T., Winterhalder, B., &amp; McElreath, R. (2020). Racial disparities in police use of deadly force against unarmed individuals persist after appropriately benchmarking shooting data on violent crime rates. <em>Social Psychological and Personality Science</em>, 1–10.
+
+<div class="solution">
+ <span class="solution"><em>Soluzione. </em></span> Per risolvere questo problema, supponiamo che il test in questione venga
+somministrato ad un grande campione di donne, diciamo a 1000 donne. Di
+queste 1000 donne, 10 (ovvero, l’1%) hanno il cancro al seno. Per queste
+10 donne, il test darà un risultato positivo in 9 casi (ovvero, nel 90%
+dei casi). Per le rimanenti 990 donne che non hanno il cancro al seno,
+il test darà un risultato positivo in 99 casi (se la probabilità di un
+vero positivo è del 90%, la probabilità di un falso positivo è del 10%).
+Questa situazione è rappresentata nella figura <a href="chapter-prob-cond.html#fig:mammografia">6.1</a>.
+Mettendo insieme questi due risultati, vediamo che il test dà un risultato positivo per 9 donne che hanno effettivamente il cancro al seno e per 99 donne che non ce l’hanno, per un totale di 108 risultati positivi. Dunque, la probabilità di ottenere un risultato positivo al test è <span class="math inline">\(\frac{108}{1000}\)</span> = 11%. Ma delle 108
+donne che hanno ottenuto un risultato positivo al test, solo 9 hanno il
+cancro al seno. Dunque, la probabilità di avere il cancro, dato un
+risultato positivo al test, è pari a <span class="math inline">\(\frac{9}{108}\)</span> = 8%.
 </div>
-<div id="ref-stevens46" class="csl-entry">
-Stevens, S. S. (1946). On the theory of scales of measurement. <em>Science</em>, <em>103</em>(2684), 677–680.
+<br/>
+<div class="figure" style="text-align: center"><span id="fig:mammografia"></span>
+<img src="images/mammografia.png" alt="Rappresentazione ad albero che riporta le frequenze attese dei risultati di una mammografia in un campione di 1,000 donne" width="60%" />
+<p class="caption">
+Figura 6.1: Rappresentazione ad albero che riporta le frequenze attese dei risultati di una mammografia in un campione di 1,000 donne
+</p>
 </div>
-<div id="ref-tufte_visual_display" class="csl-entry">
-Tufte, E. R. (2001). <em>The visual display of quantitative information</em>. Graphics press Cheshire, CT.
+<p><br/>
+Nell’esercizio <a href="chapter-prob-cond.html#exr:screening-tumore">6.1</a> la probabilità dell’evento “ottenere un risultato positivo al test” è una probabilità non condizionata, mentre la probabilità dell’evento “avere il cancro al seno, dato che il test ha
+dato un risultato positivo” è una probabilità condizionata. In termini
+generali, la probabilità condizionata <span class="math inline">\(P(A \mid B)\)</span> rappresenta la
+probabilità che si verifichi l’evento <span class="math inline">\(A\)</span> sapendo che si è verificato
+l’evento <span class="math inline">\(B\)</span>; oppure: la probabilità di <span class="math inline">\(A\)</span> in una prova valida solo se
+si verifica anche <span class="math inline">\(B\)</span>. Ciò ci conduce alla seguente definizione.</p>
+
+<div class="definition">
+<span id="def:prob-cond" class="definition"><strong>Definizione 6.1  (Probabilità condizionata)  </strong></span>Dato un qualsiasi evento <span class="math inline">\(A\)</span>, si chiama <em>probabilità condizionata</em> di
+<span class="math inline">\(A\)</span> dato <span class="math inline">\(B\)</span> il numero
+<span class="math display" id="eq:probcond">\[\begin{equation}
+P(A \mid B) = \frac{P(A \cap B)}{P(B)}, \quad \text{con}\, P(B) &gt; 0,
+\tag{6.1}
+\end{equation}\]</span>
+dove <span class="math inline">\(P(A\cap B)\)</span> è la probabilità congiunta dei
+due eventi, ovvero la probabilità che si verifichino entrambi.
 </div>
-<div id="ref-zetsche_future_2019" class="csl-entry">
-Zetsche, U., Bürkner, P.-C., &amp; Renneberg, B. (2019). Future expectations in clinical depression: Biased or realistic? <em>Journal of Abnormal Psychology</em>, <em>128</em>(7), 678–688.
+<p><br/>
+In alcuni casi può essere conveniente leggere al contrario la
+formula <a href="chapter-prob-cond.html#def:prob-cond">6.1</a> e utilizzarla per calcolare la probabilità
+dell’intersezione di due eventi. Per esempio se conosciamo la
+probabilità dell’evento <span class="math inline">\(B\)</span> e la probabilità condizionata di <span class="math inline">\(A\)</span> su <span class="math inline">\(B\)</span>,
+otteniamo
+<span class="math display" id="eq:probcondinv">\[\begin{equation}
+P(A \cap B) = P(B)P(A \mid B),
+\tag{6.2}
+\end{equation}\]</span>
+mentre se conosciamo la probabilità dell’evento <span class="math inline">\(A\)</span> e la probabilità condizionata di <span class="math inline">\(B\)</span> su <span class="math inline">\(A\)</span>, otteniamo <span class="math inline">\(P(A \cap B) = P(A)P(B \mid A)\)</span>.</p>
+
+<div class="exercise">
+<span id="exr:carte-cuori" class="exercise"><strong>Exercizio 6.2  </strong></span>Da un mazzo di 52 carte (13 carte per ciascuno dei 4 semi) ne viene
+estratta 1 in modo casuale. Qual è la probabilità che esca una figura di
+cuori? Sapendo che la carta estratta ha il seme di cuori, qual è la
+probabilità che il valore numerico della carta sia 7, 8 o 9?
+</div>
+
+<div class="solution">
+ <span class="solution"><em>Soluzione. </em></span> Ci sono 13 carte di cuori, dunque la risposta alla prima domanda è 1/4.
+Per rispondere alla seconda domanda consideriamo solo le 13 carte di
+cuori; la probabilità cercata è dunque 3/13.
+</div>
+<div id="la-fallacia-del-pubblico-ministero" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> La fallacia del pubblico ministero</h3>
+<p>Un errore comune che si commette è quello di credere che <span class="math inline">\(P(A \mid B)\)</span>
+sia uguale a <span class="math inline">\(P(B \mid A)\)</span>. Tale fallacia ha particolare risalto in
+ambito forense tanto che è conosciuta con il nome di “fallacia del
+procuratore” (<em>prosecutor’s fallacy</em>). In essa, una piccola probabilità
+dell’evidenza, data l’innocenza, viene erroneamente interpretata come la
+probabilità dell’innocenza, data l’evidenza.</p>
+<p>Consideriamo il caso di un esame del DNA. Un esperto forense potrebbe
+affermare, ad esempio, che “se l’imputato è innocente, c’è solo una
+possibilità su un miliardo che vi sia una corrispondenza tra il suo DNA
+e il DNA trovato sulla scena del crimine.” Ma talvolta questa
+probabilità è erroneamente interpretata come avesse il seguente
+significato: “date le prove del DNA, c’è solo una possibilità su un
+miliardo che l’imputato sia innocente.”</p>
+<p>Le considerazioni precedenti risultano più chiare se facciamo nuovamente
+riferimento all’esercizio <a href="chapter-prob-cond.html#exr:screening-tumore">6.1</a>. In tale esercizio abbiamo visto come la probabilità di cancro dato un risultato positivo al test sia uguale a 0.08. Tale probabilità è molto diversa dalla probabilità di un risultato
+positivo al test data la presenza del cancro. Infatti, questa seconda
+probabilità è uguale a 0.90 ed è descritta nel problema come una delle
+caratteristiche del test in questione.</p>
 </div>
 </div>
+<div id="legge-della-probabilità-composta" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Legge della probabilità composta</h2>
+<p>Il teorema della probabilità composta deriva dal concetto di probabilità
+condizionata per cui la probabilità che si verifichino due eventi <span class="math inline">\(A_i\)</span>
+e <span class="math inline">\(A_j\)</span> è pari alla probabilità di uno dei due eventi moltiplicato con
+la probabilità dell’altro evento condizionato al verificarsi del primo.</p>
+<p>L’equazione <a href="chapter-prob-cond.html#eq:probcondinv">(6.2)</a> si estende al caso di <span class="math inline">\(n\)</span> eventi <span class="math inline">\(A_1, \dots, A_n\)</span> nella forma seguente:
+<span class="math display" id="eq:probcomposte">\[\begin{equation}
+\begin{split}
+P(A_1 \cap A_2 \cap \dots\cap A_n) = {}&amp; P(A_1)P(A_2 \mid A_1)P(A_3 \mid A_1 \cap A_2) \dots\\
+ &amp; P(A_n \mid A_1 \cap A_2 \cap \dots \cap A_{n-1})
+\end{split}
+\tag{6.3}
+\end{equation}\]</span>
+la quale esprime in forma generale la legge della probabilità composta.</p>
+
+<div class="exercise">
+<p><span id="exr:urna-6b4n" class="exercise"><strong>Exercizio 6.3  </strong></span>Da un’urna contenente 6 palline bianche e 4 nere si estrae una pallina
+per volta, senza reintrodurla nell’urna. Indichiamo con <span class="math inline">\(B_i\)</span> l’evento:
+“esce una pallina bianca alla <span class="math inline">\(i\)</span>-esima estrazione” e con <span class="math inline">\(N_i\)</span>
+l’estrazione di una pallina nera. L’evento: “escono due palline bianche
+nelle prime due estrazioni” è rappresentato dalla intersezione
+<span class="math inline">\(\{B_1 \cap B_2\}\)</span> e la sua probabilità vale, per la <a href="chapter-prob-cond.html#eq:probcondinv">(6.2)</a>
+<span class="math display">\[
+P(B_1 \cap B_2) = P(B_1)P(B_2 \mid B_1).
+\]</span>
+<span class="math inline">\(P(B_1)\)</span> vale 6/10, perché nella prima estrazione <span class="math inline">\(\Omega\)</span> è costituito da 10 elementi: 6 palline bianche e 4 nere. La probabilità condizionata <span class="math inline">\(P(B_2 \mid B_1)\)</span> vale 5/9, perché nella seconda estrazione, se è verificato l’evento <span class="math inline">\(B_1\)</span>, lo spazio campionario consiste di 5 palline bianche e 4 nere. Si ricava
+pertanto:
+<span class="math display">\[
+  P(B_1 \cap B_2) = \frac{6}{10} \cdot \frac{5}{9} = \frac{1}{3}.
+\]</span>
+In modo analogo si ha che
+<span class="math display">\[
+P(N_1 \cap N_2) = P(N_1)P(N_2 \mid N_1) = \frac{4}{10} \cdot \frac{3}{9} = \frac{4}{30}.
+\]</span></p>
+<p>Se l’esperimento consiste nell’estrazione successiva di 3 palline, la
+probabilità che queste siano tutte bianche vale, per
+la <a href="chapter-prob-cond.html#eq:probcomposte">(6.3)</a>:
+<span class="math display">\[
+P(B_1 \cap B_2 \cap B_3)=P(B_1)P(B_2 \mid B_1)P(B_3 \mid B_1 \cap B_2),
+\]</span>
+dove la probabilità <span class="math inline">\(P(B_3 \mid B_1 \cap B_2)\)</span> si calcola supponendo che
+si sia verificato l’evento condizionante <span class="math inline">\(\{B_1 \cap B_2\}\)</span>. Lo spazio
+campionario per questa probabilità condizionata è costituito da 4
+palline bianche e 4 nere, per cui <span class="math inline">\(P(B_3 \mid B_1 \cap B_2) = 1/2\)</span> e
+quindi:
+<span class="math display">\[
+P (B_1 \cap B_2 \cap B_3) = \frac{6}{10}\cdot\frac{5}{9} \cdot\frac{4}{8}  = \frac{1}{6}.
+\]</span></p>
+La probabilità dell’estrazione di tre palline nere è invece:
+<span class="math display">\[
+\begin{aligned}
+P(N_1 \cap N_2 \cap N_3) &amp;= P(N_1)P(N_2 \mid N_1)P(N_3 \mid N_1 \cap N_2)\notag\\ 
+&amp;= \frac{4}{10} \cdot \frac{3}{9} \cdot \frac{2}{8} = \frac{1}{30}.\notag
+\end{aligned}
+\]</span>
+</div>
+</div>
+<div id="lindipendendenza-stocastica" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> L’indipendendenza stocastica</h2>
+<p>Un concetto molto importante per le applicazioni statistiche della
+probabilità è quello dell’indipendenza stocastica. La
+definizione <a href="chapter-prob-cond.html#eq:probcond">(6.1)</a> esprime il concetto intuitivo di indipendenza
+di un evento da un altro, nel senso che il verificarsi di <span class="math inline">\(A\)</span> non
+influisce sulla probabilità del verificarsi di <span class="math inline">\(B\)</span>, ovvero non la
+condiziona. Infatti, per la definizione <a href="chapter-prob-cond.html#eq:probcond">(6.1)</a> di probabilità condizionata, si ha che, se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono due eventi indipendenti, risulta:
+<span class="math display">\[
+P(A \mid B) = \frac{P(A)P(B)}{P(B)} = P(A).\notag
+\]</span>
+Possiamo dunque dire che due eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono indipendenti se
+<span class="math display">\[
+\begin{split}
+P(A \mid B) &amp;= P(A), \\
+P(B \mid A) &amp;= P(B).
+\end{split}
+\]</span></p>
+
+<div class="exercise">
+<span id="exr:dadi-eventi-indip" class="exercise"><strong>Exercizio 6.4  </strong></span>Nel lancio di due dadi non truccati, si considerino gli eventi:
+<span class="math inline">\(A=\{\)</span>esce un <span class="math inline">\(1\)</span> o un <span class="math inline">\(2\)</span> nel primo lancio<span class="math inline">\(\}\)</span> e <span class="math inline">\(B=\{\)</span>il punteggio
+totale è <span class="math inline">\(8\}\)</span>. Gli eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono indipendenti?
 </div>
 
+<div class="solution">
+<p> <span class="solution"><em>Soluzione. </em></span> Rappresentiamo qui sotto lo spazio campionario dell’esperimento casuale.</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:sampling-space-dice"></span>
+<img src="images/sampling-space-dice.png" alt="Rappresentazione dello spazio campionario dei risultati dell'esperimento casuale corrispondente al lancio di due dadi bilanciati. Sono evidenziati gli eventi elementari che costituiscono l'evento A: esce un 1 o un 2 nel primo lancio." width="50%" />
+<p class="caption">
+Figura 6.2: Rappresentazione dello spazio campionario dei risultati dell’esperimento casuale corrispondente al lancio di due dadi bilanciati. Sono evidenziati gli eventi elementari che costituiscono l’evento A: esce un 1 o un 2 nel primo lancio.
+</p>
+</div>
+<p>Gli eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> non sono statisticamente indipendenti. Infatti, le
+loro probabilità valgono <span class="math inline">\(P(A) = 12/36\)</span> e <span class="math inline">\(P(B) = 5/36\)</span> e la probabilità
+della loro intersezione è
+<span class="math display">\[P(A \cap B) = 1/36 = 3/108 \neq P(A)P(B) = 5/108.\]</span></p>
 
+<div class="remark">
+ <span class="remark"><em>Osservazione. </em></span> Si noti che il concetto di indipendenza è del tutto differente da quello
+di incompatibilità. Due eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> incompatibili (per i quali si
+ha <span class="math inline">\(A \cap B = \emptyset\)</span>) sono statisticamente dipendenti, poiché il
+verificarsi dell’uno esclude il verificarsi dell’altro:
+<span class="math inline">\(P(A \cap B)=0 \neq P(A)P(B)\)</span>.
+</div>
 
+<div class="remark">
+ <span class="remark"><em>Osservazione. </em></span> Se due eventi con probabilità non nulla sono statisticamente indipendenti, la legge delle probabilità totali espressa dalla <a href="chapter-prob-discreta.html#eq:probunione">(5.1)</a> si modifica nella relazione seguente:
+<span class="math display">\[\begin{equation}
+P(A \cup B) = P(A) + P(B) - P(A)P(B).
+\end{equation}\]</span>
+</div>
+</div>
+<div id="conclusioni" class="section level2 unnumbered">
+<h2>Conclusioni</h2>
+<p>La probabilità condizionata è importante perché ci fornisce uno
+strumento per precisare il concetto di indipendenza statistica. Una
+delle più importanti domande delle analisi statistiche è infatti quella
+che si chiede se due variabili siano o meno associate. In questo
+capitolo abbiamo discusso il concetto di indipendenza (come contrapposto
+al concetto di associazione); nel capitolo <a href="chapter-descriptive-stats.html#chapter:descriptive-stats">4</a> abbiamo descritto poi uno dei modi possibili che ci consentono di quantificare l’associazione tra due variabili. In seguito vedremo come sia possibile fare inferenza sull’associazione tra variabili – ovvero, come stabilire il livello di
+fiducia nel verificarsi dell’evento esaminato nel campione in un
+contesto più ampio, cioè quello della popolazione.</p>
 
-
-
-
-
-
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="chapter-prob-cond.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="chapter-prob-discreta.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bibliografia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -339,7 +554,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ccaudek/bookdown_psicometria/edit/master/99_References.Rmd",
+"link": "https://github.com/ccaudek/bookdown_psicometria/edit/master/06_prob_condiz.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -347,7 +562,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ccaudek/bookdown_psicometria/blob/master/99_References.Rmd",
+"link": "https://github.com/ccaudek/bookdown_psicometria/blob/master/06_prob_condiz.Rmd",
 "text": null
 },
 "download": null,

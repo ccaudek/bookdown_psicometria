@@ -399,7 +399,10 @@ assegnate le seguenti proprietà.
     necessariamente disgiunti, dunque, la probabilità dell'unione è pari
     alla somma delle singole probabilità dei due eventi meno la
     probabilità dell'intersezione:
-    $$P(A \text{ o } B) = P(A \cup B) = P(A) + P(B) - P(A \cap B).$$
+    \begin{equation}
+    P(A \text{ o } B) = P(A \cup B) = P(A) + P(B) - P(A \cap B).
+    (\#eq:probunione)
+    \end{equation}
 
 ```{exercise, ex-parlamento-londra}
 Nel 2012, a 97 deputati al Parlamento di Londra è stato chiesto: "Se lanci una moneta due volte, qual è la probabilità di ottenere due volte testa?" La maggioranza, 60 su 97, non ha saputo dare la risposta corretta. Come possiamo dare a questo problema una risposta migliore di quella fornita da questi politici?

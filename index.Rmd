@@ -14,7 +14,6 @@ link-citations: yes
 geometry:
   margin = 0.5in
 urlcolor: blue
-highlight: tango
 header-includes:
   \usepackage[T1]{fontenc}
 github-repo: ccaudek/bookdown_psicometria

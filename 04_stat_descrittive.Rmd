@@ -1,4 +1,4 @@
-# Statistica descrittiva {#chapter:descriptive_stats}
+# Statistica descrittiva {#chapter:descriptive-stats}
 
 Nel 1907 Francis Galton, cugino di Charles Darwin, matematico e
 statistico autodidatta, geografo, esploratore, teorico della

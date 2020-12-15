@@ -33,5 +33,6 @@ rmd_files: [
   "03_misurazione.Rmd",
   "04_stat_descrittive.Rmd",
   "05_prob_intro.Rmd",
+  "06_prob_condiz.Rmd",
   "99_References.Rmd",
 ]

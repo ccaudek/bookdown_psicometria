@@ -24,7 +24,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2020-12-14" />
+<meta name="date" content="2020-12-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="chapter-descriptive-stats.html"/>
-<link rel="next" href="bibliografia.html"/>
+<link rel="next" href="chapter-prob-cond.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -239,6 +239,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.7.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#funzione-di-massa-di-probabilità"><i class="fa fa-check"></i><b>5.7.2</b> Funzione di massa di probabilità</a></li>
 </ul></li>
 <li class="chapter" data-level="5.8" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#notazione"><i class="fa fa-check"></i><b>5.8</b> Notazione</a></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html"><i class="fa fa-check"></i><b>6</b> Probabilità condizionata</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#sec:prob_cond"><i class="fa fa-check"></i><b>6.1</b> Probabilità condizionata su altri eventi</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#la-fallacia-del-pubblico-ministero"><i class="fa fa-check"></i><b>6.1.1</b> La fallacia del pubblico ministero</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#legge-della-probabilità-composta"><i class="fa fa-check"></i><b>6.2</b> Legge della probabilità composta</a></li>
+<li class="chapter" data-level="6.3" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#lindipendendenza-stocastica"><i class="fa fa-check"></i><b>6.3</b> L’indipendendenza stocastica</a></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
@@ -637,7 +647,10 @@ le loro probabilità dobbiamo evitare che la loro parte comune
 necessariamente disgiunti, dunque, la probabilità dell’unione è pari
 alla somma delle singole probabilità dei due eventi meno la
 probabilità dell’intersezione:
-<span class="math display">\[P(A \text{ o } B) = P(A \cup B) = P(A) + P(B) - P(A \cap B).\]</span></p></li>
+<span class="math display" id="eq:probunione">\[\begin{equation}
+P(A \text{ o } B) = P(A \cup B) = P(A) + P(B) - P(A \cap B).
+\tag{5.1}
+\end{equation}\]</span></p></li>
 </ol>
 
 <div class="exercise">
@@ -888,7 +901,7 @@ notazione qui introdotta.</p>
         </div>
       </div>
 <a href="chapter-descriptive-stats.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="bibliografia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="chapter-prob-cond.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
