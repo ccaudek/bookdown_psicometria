@@ -34,5 +34,6 @@ rmd_files: [
   "04_stat_descrittive.Rmd",
   "05_prob_intro.Rmd",
   "06_prob_condiz.Rmd",
+  "07_theo_bayes.Rmd",
   "99_References.Rmd",
 ]

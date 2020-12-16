@@ -24,7 +24,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2020-12-15" />
+<meta name="date" content="2020-12-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -249,6 +249,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#legge-della-probabilità-composta"><i class="fa fa-check"></i><b>6.2</b> Legge della probabilità composta</a></li>
 <li class="chapter" data-level="6.3" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#lindipendendenza-stocastica"><i class="fa fa-check"></i><b>6.3</b> L’indipendendenza stocastica</a></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html"><i class="fa fa-check"></i><b>7</b> Il teorema di Bayes</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:tot_prob_theorem"><i class="fa fa-check"></i><b>7.1</b> Il teorema della probabilità totale</a></li>
+<li class="chapter" data-level="7.2" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:bayes_theorem"><i class="fa fa-check"></i><b>7.2</b> Il teorema della probabilità delle cause</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#aggiornamento-bayesiano"><i class="fa fa-check"></i><b>7.2.1</b> Aggiornamento Bayesiano</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
@@ -534,7 +543,11 @@ che <span class="math inline">\(\emptyset \in \mathcal{A}\)</span>; se <span cla
 campionario <span class="math inline">\(\Omega\)</span>) è 1: <span class="math inline">\(P(\Omega) = \sum_{\omega \in \Omega} P(\omega) = 1;\)</span></li>
 <li>se <span class="math inline">\(A_1, A_2, \dots, A_k\)</span> sono eventi disgiunti, allora la
 probabilità che uno di essi si verifichi è pari alla somma delle
-loro separate probabilità: <span class="math inline">\(P(A_1 \text{ o } A_1 \dots \text{ o } A_k) = P(A_1) + P(A_2) +\dots + P(A_k).\)</span></li>
+loro separate probabilità:
+<span class="math display" id="eq:probcomposte">\[\begin{equation}
+P(A_1 \text{ o } A_1 \dots \text{ o } A_k) = P(A_1) + P(A_2) +\dots + P(A_k).
+\tag{5.1}
+\end{equation}\]</span></li>
 </ol>
 <p>La definizione <a href="chapter-prob-discreta.html#def:def-assiomi-Kolmogorov">5.2</a> corrisponde al cosiddetto <em>approccio assiomatico</em> messo a punto da Kolmogorov intorno al 1930, il quale è alla base della moderna teoria della probabilità.</p>
 <p>Nonostante l’enorme complessità dell’approccio assiomatico alla
@@ -649,7 +662,7 @@ alla somma delle singole probabilità dei due eventi meno la
 probabilità dell’intersezione:
 <span class="math display" id="eq:probunione">\[\begin{equation}
 P(A \text{ o } B) = P(A \cup B) = P(A) + P(B) - P(A \cap B).
-\tag{5.1}
+\tag{5.2}
 \end{equation}\]</span></p></li>
 </ol>
 

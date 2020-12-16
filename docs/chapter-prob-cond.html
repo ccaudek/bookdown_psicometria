@@ -24,7 +24,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2020-12-15" />
+<meta name="date" content="2020-12-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="chapter-prob-discreta.html"/>
-<link rel="next" href="bibliografia.html"/>
+<link rel="next" href="chapter-bayes-theo.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -251,6 +251,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#lindipendendenza-stocastica"><i class="fa fa-check"></i><b>6.3</b> L’indipendendenza stocastica</a></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html"><i class="fa fa-check"></i><b>7</b> Il teorema di Bayes</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:tot_prob_theorem"><i class="fa fa-check"></i><b>7.1</b> Il teorema della probabilità totale</a></li>
+<li class="chapter" data-level="7.2" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:bayes_theorem"><i class="fa fa-check"></i><b>7.2</b> Il teorema della probabilità delle cause</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#aggiornamento-bayesiano"><i class="fa fa-check"></i><b>7.2.1</b> Aggiornamento Bayesiano</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -404,7 +413,7 @@ la probabilità dell’altro evento condizionato al verificarsi del primo.</p>
 P(A_1 \cap A_2 \cap \dots\cap A_n) = {}&amp; P(A_1)P(A_2 \mid A_1)P(A_3 \mid A_1 \cap A_2) \dots\\
  &amp; P(A_n \mid A_1 \cap A_2 \cap \dots \cap A_{n-1})
 \end{split}
-\tag{6.3}
+\tag{5.1}
 \end{equation}\]</span>
 la quale esprime in forma generale la legge della probabilità composta.</p>
 
@@ -429,7 +438,7 @@ P(N_1 \cap N_2) = P(N_1)P(N_2 \mid N_1) = \frac{4}{10} \cdot \frac{3}{9} = \frac
 \]</span></p>
 <p>Se l’esperimento consiste nell’estrazione successiva di 3 palline, la
 probabilità che queste siano tutte bianche vale, per
-la <a href="chapter-prob-cond.html#eq:probcomposte">(6.3)</a>:
+la <a href="chapter-prob-discreta.html#eq:probcomposte">(5.1)</a>:
 <span class="math display">\[
 P(B_1 \cap B_2 \cap B_3)=P(B_1)P(B_2 \mid B_1)P(B_3 \mid B_1 \cap B_2),
 \]</span>
@@ -471,8 +480,8 @@ P(B \mid A) &amp;= P(B).
 
 <div class="exercise">
 <span id="exr:dadi-eventi-indip" class="exercise"><strong>Exercizio 6.4  </strong></span>Nel lancio di due dadi non truccati, si considerino gli eventi:
-<span class="math inline">\(A=\{\)</span>esce un <span class="math inline">\(1\)</span> o un <span class="math inline">\(2\)</span> nel primo lancio<span class="math inline">\(\}\)</span> e <span class="math inline">\(B=\{\)</span>il punteggio
-totale è <span class="math inline">\(8\}\)</span>. Gli eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono indipendenti?
+<em>A</em> = {esce un 1 o un 2 nel primo lancio} e <em>B</em> = {il punteggio
+totale è 8}. Gli eventi <em>A</em> e <em>B</em> sono indipendenti?
 </div>
 
 <div class="solution">
@@ -484,21 +493,23 @@ totale è <span class="math inline">\(8\}\)</span>. Gli eventi <span class="math
 Figura 6.2: Rappresentazione dello spazio campionario dei risultati dell’esperimento casuale corrispondente al lancio di due dadi bilanciati. Sono evidenziati gli eventi elementari che costituiscono l’evento A: esce un 1 o un 2 nel primo lancio.
 </p>
 </div>
-<p>Gli eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> non sono statisticamente indipendenti. Infatti, le
-loro probabilità valgono <span class="math inline">\(P(A) = 12/36\)</span> e <span class="math inline">\(P(B) = 5/36\)</span> e la probabilità
+<p>Gli eventi <em>A</em> e <em>B</em> non sono statisticamente indipendenti. Infatti, le
+loro probabilità valgono <em>P</em>(A) = 12/36 e <em>P</em>(B) = 5/36 e la probabilità
 della loro intersezione è
-<span class="math display">\[P(A \cap B) = 1/36 = 3/108 \neq P(A)P(B) = 5/108.\]</span></p>
+<span class="math display">\[
+P(A \cap B) = 1/36 = 3/108 \neq P(A)P(B) = 5/108.
+\]</span></p>
 
 <div class="remark">
  <span class="remark"><em>Osservazione. </em></span> Si noti che il concetto di indipendenza è del tutto differente da quello
-di incompatibilità. Due eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> incompatibili (per i quali si
+di incompatibilità. Due eventi <em>A</em> e <em>B</em> incompatibili (per i quali si
 ha <span class="math inline">\(A \cap B = \emptyset\)</span>) sono statisticamente dipendenti, poiché il
 verificarsi dell’uno esclude il verificarsi dell’altro:
 <span class="math inline">\(P(A \cap B)=0 \neq P(A)P(B)\)</span>.
 </div>
 
 <div class="remark">
- <span class="remark"><em>Osservazione. </em></span> Se due eventi con probabilità non nulla sono statisticamente indipendenti, la legge delle probabilità totali espressa dalla <a href="chapter-prob-discreta.html#eq:probunione">(5.1)</a> si modifica nella relazione seguente:
+ <span class="remark"><em>Osservazione. </em></span> Se due eventi con probabilità non nulla sono statisticamente indipendenti, la legge delle probabilità totali espressa dalla <a href="chapter-prob-discreta.html#eq:probunione">(5.2)</a> si modifica nella relazione seguente:
 <span class="math display">\[\begin{equation}
 P(A \cup B) = P(A) + P(B) - P(A)P(B).
 \end{equation}\]</span>
@@ -523,7 +534,7 @@ contesto più ampio, cioè quello della popolazione.</p>
         </div>
       </div>
 <a href="chapter-prob-discreta.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="bibliografia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="chapter-bayes-theo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

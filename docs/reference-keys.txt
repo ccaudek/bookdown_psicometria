@@ -23,6 +23,7 @@ fig:zerocorr
 fig:demere
 def:def-ing-prob
 def:def-assiomi-Kolmogorov
+eq:probcomposte
 eq:probunione
 exr:ex-parlamento-londra
 exr:ex-urna-10b-10r-10g
@@ -36,10 +37,17 @@ def:prob-cond
 eq:probcond
 eq:probcondinv
 exr:carte-cuori
-eq:probcomposte
 exr:urna-6b4n
 exr:dadi-eventi-indip
 fig:sampling-space-dice
+thm:theo-prob-tot
+eq:prob-total-1a
+eq:prob-total-1b
+exr:tre-urne75r25b
+exr:urna5r2v
+eq:bayes1
+thm:theo-bayes
+eq:bayes2
 chapter:pacchetti
 chapter:terminologia
 metodi-e-procedure-della-psicologia
@@ -115,3 +123,7 @@ sec:prob_cond
 la-fallacia-del-pubblico-ministero
 legge-della-probabilità-composta
 lindipendendenza-stocastica
+chapter:bayes_theo
+sec:tot_prob_theorem
+sec:bayes_theorem
+aggiornamento-bayesiano

@@ -9,7 +9,7 @@ output:
 documentclass: book
 bibliography: psicom.bib
 biblio-style: apalike
-csl: apa.csl
+csl: apa7.csl
 link-citations: yes
 geometry:
   margin = 0.5in

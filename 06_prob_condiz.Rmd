@@ -203,8 +203,8 @@ $$
 
 ```{exercise, dadi-eventi-indip}
 Nel lancio di due dadi non truccati, si considerino gli eventi:
-$A=\{$esce un $1$ o un $2$ nel primo lancio$\}$ e $B=\{$il punteggio
-totale è $8\}$. Gli eventi $A$ e $B$ sono indipendenti?
+_A_ = {esce un 1 o un 2 nel primo lancio} e _B_ = {il punteggio
+totale è 8}. Gli eventi _A_ e _B_ sono indipendenti?
 ```
 
 ```{solution}
@@ -214,14 +214,16 @@ Rappresentiamo qui sotto lo spazio campionario dell'esperimento casuale.
 knitr::include_graphics("images/sampling-space-dice.png")
 ```
 
-Gli eventi $A$ e $B$ non sono statisticamente indipendenti. Infatti, le
-loro probabilità valgono $P(A) = 12/36$ e $P(B) = 5/36$ e la probabilità
+Gli eventi _A_ e _B_ non sono statisticamente indipendenti. Infatti, le
+loro probabilità valgono _P_(A) = 12/36 e _P_(B) = 5/36 e la probabilità
 della loro intersezione è
-$$P(A \cap B) = 1/36 = 3/108 \neq P(A)P(B) = 5/108.$$
+$$
+P(A \cap B) = 1/36 = 3/108 \neq P(A)P(B) = 5/108.
+$$
 
 ```{remark, indip-incompat}
 Si noti che il concetto di indipendenza è del tutto differente da quello
-di incompatibilità. Due eventi $A$ e $B$ incompatibili (per i quali si
+di incompatibilità. Due eventi _A_ e _B_ incompatibili (per i quali si
 ha $A \cap B = \emptyset$) sono statisticamente dipendenti, poiché il
 verificarsi dell'uno esclude il verificarsi dell'altro:
 $P(A \cap B)=0  \neq P(A)P(B)$.

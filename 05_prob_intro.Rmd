@@ -272,7 +272,12 @@ La funzione di probabilità $P()$ deve soddisfare i seguenti assiomi:
     campionario $\Omega$) è 1: $P(\Omega) = \sum_{\omega \in \Omega} P(\omega) = 1;$
 3.  se $A_1, A_2, \dots, A_k$ sono eventi disgiunti, allora la
     probabilità che uno di essi si verifichi è pari alla somma delle
-    loro separate probabilità: $P(A_1 \text{ o } A_1 \dots \text{ o } A_k) = P(A_1) + P(A_2) +\dots + P(A_k).$
+    loro separate probabilità: 
+    \begin{equation}
+    P(A_1 \text{ o } A_1 \dots \text{ o } A_k) = P(A_1) + P(A_2) +\dots + P(A_k).
+    (\#eq:probcomposte)
+    \end{equation}
+    
 
 La definizione \@ref(def:def-assiomi-Kolmogorov) corrisponde al cosiddetto _approccio assiomatico_ messo a punto da Kolmogorov intorno al 1930, il quale è alla base della moderna teoria della probabilità.
 
