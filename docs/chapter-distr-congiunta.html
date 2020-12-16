@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Appendici | PSICOMETRIA</title>
+  <title>Capitolo 8 Probabilità congiunta | PSICOMETRIA</title>
   <meta name="description" content="""" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Appendici | PSICOMETRIA" />
+  <meta property="og:title" content="Capitolo 8 Probabilità congiunta | PSICOMETRIA" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ccaudek/bookdown_psicometria" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Appendici | PSICOMETRIA" />
+  <meta name="twitter:title" content="Capitolo 8 Probabilità congiunta | PSICOMETRIA" />
   <meta name="twitter:site" content="@ccaudek" />
   <meta name="twitter:description" content="""" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="chapter-distr-congiunta.html"/>
-<link rel="next" href="bibliografia.html"/>
+<link rel="prev" href="chapter-bayes-theo.html"/>
+<link rel="next" href="appendici.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -312,272 +312,319 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="appendici" class="section level1 unnumbered">
-<h1>Appendici</h1>
-<div id="simbologia-di-base" class="section level2 unnumbered">
-<h2>Simbologia di base</h2>
-<p>Per una scrittura più sintetica possono essere utilizzati alcuni simboli
-matematici.</p>
-<ul>
-<li><p>L’operatore logico booleano <span class="math inline">\(\land\)</span> significa “e” (congiunzione
-forte) mentre il connettivo di disgiunzione <span class="math inline">\(\lor\)</span> significa “o”
-(oppure) (congiunzione debole).</p></li>
-<li><p>Il quantificatore esistenziale <span class="math inline">\(\exists\)</span> vuol dire “esiste almeno
-un” e indica l’esistenza di almeno una istanza del concetto/oggetto
-indicato. Il quantificatore esistenziale di unicità <span class="math inline">\(\exists!\)</span>
-(“esiste soltanto un”) indica l’esistenza di esattamente una istanza
-del concetto/oggetto indicato. Il quantificatore esistenziale
-<span class="math inline">\(\nexists\)</span> nega l’esistenza del concetto/oggetto indicato.</p></li>
-<li><p>Il quantificatore universale <span class="math inline">\(\forall\)</span> vuol dire “per ogni.”</p></li>
-<li><p>L’implicazione logica “<span class="math inline">\(\Rightarrow\)</span>” significa “implica” (se
-…allora). <span class="math inline">\(P \Rightarrow Q\)</span> vuol dire che <span class="math inline">\(P\)</span> è condizione
-sufficiente per la verità di <span class="math inline">\(Q\)</span> e che <span class="math inline">\(Q\)</span> è condizione necessaria
-per la verità di <span class="math inline">\(P\)</span>.</p></li>
-<li><p>L’equivalenza matematica “<span class="math inline">\(\iff\)</span>” significa “se e solo se” e indica
-una condizione necessaria e sufficiente, o corrispondenza biunivoca.</p></li>
-<li><p>Il simbolo <span class="math inline">\(\vert\)</span> si legge “tale che.”</p></li>
-<li><p>Il simbolo <span class="math inline">\(\triangleq\)</span> (o <span class="math inline">\(:=\)</span>) si legge “uguale per definizione.”</p></li>
-<li><p>Il simbolo <span class="math inline">\(\Delta\)</span> indica la differenza fra due valori della
-variabile scritta a destra del simbolo.</p></li>
-<li><p>Il simbolo <span class="math inline">\(\propto\)</span> si legge “proporzionale a.”</p></li>
-<li><p>Il simbolo <span class="math inline">\(\approx\)</span> si legge “circa.”</p></li>
-<li><p>Il simbolo <span class="math inline">\(\in\)</span> della teoria degli insiemi vuol dire “appartiene” e
-indica l’appartenenza di un elemento ad un insieme. Il simbolo
-<span class="math inline">\(\notin\)</span> vuol dire “non appartiene.”</p></li>
-<li><p>Il simbolo <span class="math inline">\(\subseteq\)</span> si legge “è un sottoinsieme di” (può
-coincidere con l’insieme stesso). Il simbolo <span class="math inline">\(\subset\)</span> si legge “è
-un sottoinsieme proprio di.”</p></li>
-<li><p>Il simbolo <span class="math inline">\(\#\)</span> indica la cardinalità di un insieme.</p></li>
-<li><p>Il simbolo <span class="math inline">\(\cap\)</span> indica l’intersezione di due insiemi. Il simbolo
-<span class="math inline">\(\cup\)</span> indica l’unione di due insiemi.</p></li>
-<li><p>Il simbolo <span class="math inline">\(\emptyset\)</span> indica l’insieme vuoto o evento impossibile.</p></li>
-</ul>
-</div>
-<div id="numeri-binari-interi-razionali-irrazionali-e-reali" class="section level2 unnumbered">
-<h2>Numeri binari, interi, razionali, irrazionali e reali</h2>
-<div id="numeri-binari" class="section level3 unnumbered">
-<h3>Numeri binari</h3>
-<p>I più semplici sono i numeri binari, cioè zero o uno. Useremo spesso
-numeri binari per rappresentare se qualcosa è vero o falso, o presente o
-assente.</p>
-<p>Supponiamo di chiedere a 10 studenti “Ti piacciono i mirtilli?” Poniamo
-che le risposte siano le seguenti:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="appendici.html#cb27-1" aria-hidden="true" tabindex="-1"></a>opinion <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;No&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;No&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;No&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;Yes&#39;</span>)</span>
-<span id="cb27-2"><a href="appendici.html#cb27-2" aria-hidden="true" tabindex="-1"></a>opinion</span>
-<span id="cb27-3"><a href="appendici.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;Yes&quot; &quot;No&quot;  &quot;Yes&quot; &quot;No&quot;  &quot;Yes&quot; &quot;No&quot;  &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot;</span></span></code></pre></div>
-<p>Tali risposte possono essere ricodificate nei termini di valori di
-verità, ovvero, vero e falso, generalmente denotati rispettivamente come
-1 e 0. In tale ricodifica può essere effettuata mediante l’operatore
-<code>==</code> che è un test per l’uguaglianza e restituisce il valore logico VERO
-se le due cose sono uguali e FALSO se non lo sono:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="appendici.html#cb28-1" aria-hidden="true" tabindex="-1"></a>opinion <span class="ot">&lt;-</span> opinion <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span></span>
-<span id="cb28-2"><a href="appendici.html#cb28-2" aria-hidden="true" tabindex="-1"></a>opinion</span>
-<span id="cb28-3"><a href="appendici.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE</span></span></code></pre></div>
-<p>R considera i valori di verità e i numeri binari in modo equivalente, con
-TRUE uguale a 1 e FALSE uguale a zero. Di conseguenza, possiamo
-effettuare operazioni algebriche sui valori logici VERO e FALSO.
-Nell’esempio, possiamo sommare i valori di verità, dividere per 10</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="appendici.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(opinion) <span class="sc">/</span> <span class="fu">length</span>(opinion)</span>
-<span id="cb29-2"><a href="appendici.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.7</span></span></code></pre></div>
-<p>e concludere che 7 risposte su 10 sono positive.</p>
-</div>
-<div id="numeri-interi" class="section level3 unnumbered">
-<h3>Numeri interi</h3>
-<p>Un numero intero è un numero senza decimali. Si dicono <strong>naturali</strong> i
-numeri che servono a contare, come 1, 2, … L’insieme dei numeri
-naturali si indica con il simbolo <span class="math inline">\(\mathbb{N}\)</span>. È anche necessario
-introdurre i numeri con il segno per poter trattare grandezze negative.
-Si ottengono così l’insieme numerico dei numeri interi relativi:
-<span class="math inline">\(\mathbb{Z} = \{0, \pm 1, \pm 2, \dots \}\)</span></p>
-</div>
-<div id="numeri-razionali" class="section level3 unnumbered">
-<h3>Numeri razionali</h3>
-<p>I numeri razionali sono i numeri frazionari <span class="math inline">\(m/n\)</span>, dove <span class="math inline">\(m, n \in N\)</span>,
-con <span class="math inline">\(n \neq 0\)</span>. Si ottengono così i numeri razionali:
-<span class="math inline">\(\mathbb{Q} = \{\frac{m}{n} \,\vert\, m, n \in \mathbb{Z}, n \neq 0\}\)</span>.
-È evidente che <span class="math inline">\(\mathbb{N} \subseteq \mathbb{Z} \subseteq \mathbb{Q}\)</span>.
-Anche in questo caso è necessario poter trattare grandezze negative. I
-numeri razionali non negativi sono indicati con
-<span class="math inline">\(\mathbb{Q^+} = \{q \in \mathbb{Q} \,\vert\, q \geq 0\}\)</span>.</p>
-</div>
-<div id="numeri-irrazionali" class="section level3 unnumbered">
-<h3>Numeri irrazionali</h3>
-<p>Tuttavia, non tutti i punti di una retta <span class="math inline">\(r\)</span> possono essere
-rappresentati mediante i numeri interi e razionali. È dunque necessario
-introdurre un’altra classe di numeri. Si dicono <strong>irrazionali</strong>, e sono
-denotati con <span class="math inline">\(\mathbb{R}\)</span>, i numeri che possono essere scritti come una
-frazione <span class="math inline">\(a / b\)</span>, con <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> interi e <span class="math inline">\(b\)</span> diverso da 0. I numeri
-irrazionali sono i numeri illimitati e non periodici che quindi non
-possono essere espressi sotto forma di frazione. Per esempio,
-<span class="math inline">\(\sqrt{2}\)</span>, <span class="math inline">\(\sqrt{3}\)</span> e <span class="math inline">\({\displaystyle \pi =3,141592\ldots}\)</span> sono
-numeri irrazionali.</p>
-</div>
-<div id="numeri-reali" class="section level3 unnumbered">
-<h3>Numeri reali</h3>
-<p>I punti della retta <span class="math inline">\(r\)</span> sono quindi “di più” dei numeri razionali. Per
-poter rappresentare tutti i punti della retta abbiamo dunque bisogno dei
-numeri <strong>reali</strong>. I numeri reali possono essere positivi, negativi o nulli
-e comprendono, come casi particolari, i numeri interi, i numeri
-razionali e i numeri irrazionali. Spesso in statisticac il numero dei
-decimali indica il grado di precisione della misurazione.</p>
-</div>
-</div>
-<div id="intervalli" class="section level2 unnumbered">
-<h2>Intervalli</h2>
-<p>Un intervallo si dice chiuso se gli estremi sono compresi
-nell’intervallo, aperto se gli estremi non sono compresi. Le
-caratteristiche degli intervalli sono riportate nella tabella seguente.</p>
+<div id="chapter:distr_congiunta" class="section level1" number="8">
+<h1><span class="header-section-number">Capitolo 8</span> Probabilità congiunta</h1>
+<p>Finora abbiamo considerato unicamente le leggi di singole variabile
+aleatorie. Tuttavia, in psicologia e nella vita quotidiana, siamo spesso
+interessati a studiare problemi di probabilità legati al valore
+congiunto di due o più variabili aleatorie. Ad esempio, potremmo
+misurare il QI dei bambini e il loro peso alla nascita, o l’altezza e il
+peso delle giraffe, o il livello di inquinamento atmosferico e il tasso
+di malattie respiratorie nelle città, o il numero di amici di Facebook e
+l’età. Che relazione tra le variabili ci possiamo aspettare in ciascuno
+di questi esempi? Perché?</p>
+<p>Per capire la relazione che sussiste tra due variabili aleatorie è
+necessario calcolare gli indici di <em>covarianza</em> e <em>correlazione</em>. Per
+fare ciò è necessario utilizzare la funzione di probabilità congiunta.
+L’obiettivo di questo capitolo è quello di chiarire cosa si intende per
+funzione di probabilità congiunta di due variabili casuali <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.
+Esamineremo qui in dettaglio il caso discreto.</p>
+<div id="funzione-di-probabilità-congiunta" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Funzione di probabilità congiunta</h2>
+<p>Dopo aver trattato delle distribuzioni di probabilità di una variabile
+aleatoria, che associa ad ogni evento elementare dello spazio
+campionario uno ed un solo numero reale, è naturale estendere questo
+concetto al caso di due o più dimensioni. Iniziamo a descrivere il caso
+discreto con un esempio. Consideriamo qui l’esperimento casuale
+corrispondente al lancio di tre monete equilibrate. Lo spazio
+campionario di tale esperimento casuale è
+<span class="math display">\[\Omega = \{TTT, TTC, TCT, CTT, CCT, CTC, TCC, CCC\}.\]</span> Dato che i tre
+lanci sono tra loro indipendenti, non c’è ragione di aspettarsi che uno
+degli otto risultati possibili dell’esperimento sia più probabile degli
+altri, dunque possiamo associare a ciascuno degli otto eventi elementari
+dello spazio campionario la stessa probabilità, ovvero 1/8.</p>
+<p>Su tale spazio campionario consideriamo le variabili aleatorie
+<span class="math inline">\(X \in \{0, 1, 2, 3\}\)</span>, che conta il numero delle teste nei tre lanci, e
+<span class="math inline">\(Y \in \{0, 1\}\)</span>, che conta il numero delle teste al primo lancio.
+Indicando con T = ‘testa’ e C = ‘croce,’ si ottiene dunque la situazione
+riportata nella tabella successiva.</p>
+<div id="tab:tre-monete-distr-cong-1">
 <table>
+<caption>Spazio campionario dell’esperimento consistente nel lancio di tre
+monete equilibrate su cui sono state definite le variabili aleatorie
+<span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</caption>
 <thead>
 <tr class="header">
-<th align="center">Intervallo</th>
-<th></th>
-<th></th>
+<th align="center"><span class="math inline">\(\omega\)</span></th>
+<th align="center"><span class="math inline">\(X\)</span></th>
+<th align="center"><span class="math inline">\(Y\)</span></th>
+<th align="center"><span class="math inline">\(P(\omega)\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">chiuso</td>
-<td><span class="math display">\[a, b\]</span></td>
-<td><span class="math inline">\(a \leq x \leq b\)</span></td>
+<td align="center"><span class="math inline">\(\omega_1\)</span> = TTT</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">1/8</td>
 </tr>
 <tr class="even">
-<td align="center">aperto</td>
-<td>(a, b)</td>
-<td><span class="math inline">\(a &lt; x &lt; b\)</span></td>
+<td align="center"><span class="math inline">\(\omega_2\)</span> = TTC</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">1/8</td>
 </tr>
 <tr class="odd">
-<td align="center">chiuso a sinistra e aperto a destra</td>
-<td>[a, b)</td>
-<td><span class="math inline">\(a \leq x &lt; b\)</span></td>
+<td align="center"><span class="math inline">\(\omega_3\)</span> = TCT</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">1/8</td>
 </tr>
 <tr class="even">
-<td align="center">aperto a sinistra e chiuso a destra</td>
-<td>(a, b]</td>
-<td><span class="math inline">\(a &lt; x \leq b\)</span></td>
+<td align="center"><span class="math inline">\(\omega_4\)</span> = CTT</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1/8</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\omega_5\)</span> = CCT</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1/8</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\omega_6\)</span> = CTC</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1/8</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\omega_7\)</span> = TCC</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1/8</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\omega_8\)</span> = CCC</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1/8</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="cap:insiemi" class="section level2 unnumbered">
-<h2>Insiemi</h2>
-<p>Un insieme (o collezione, classe, gruppo, …) è un concetto primitivo,
-ovvero è un concetto che già possediamo. Georg Cantor l’ha definito nel
-modo seguente:</p>
-<blockquote>
-<p>un insieme è una collezione di oggetti, determinati e distinti, della nostra percezione o del nostro pensiero, concepiti come un tutto unico; tali oggetti si dicono elementi dell’insieme.</p>
-</blockquote>
-<p>Mentre non è rilevante la natura degli oggetti che costituiscono
-l’insieme, ciò che importa è distinguere se un dato oggetto appartenga o
-meno ad un insieme. Deve essere vera una delle due possibilità: il dato
-oggetto è un elemento dell’insieme considerato oppure non è elemento
-dell’insieme considerato. Due insiemi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> si dicono uguali se sono
-formati dagli stessi elementi, anche se disposti in ordine diverso:
-<span class="math inline">\(A=B\)</span>. Due insiemi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> si dicono diversi se non contengono gli
-stessi elementi: <span class="math inline">\(A \neq B\)</span>. Ad esempio, i seguenti insiemi sono uguali:
-<span class="math display">\[\{1, 2, 3\} = \{3, 1, 2\} = \{1, 3, 2\}= \{1, 1, 1, 2, 3, 3, 3\}.\]</span>
-Gli insiemi sono denotati da una lettera maiuscola, mentre le lettere
-minuscole, di solito, designano gli elementi di un insieme. Per esempio,
-un generico insieme <span class="math inline">\(A\)</span> si indica con
-<span class="math display">\[A = \{a_1, a_2, \dots, a_n\}, \quad \text{con~} n &gt; 0.\]</span></p>
-<p>La scrittura <span class="math inline">\(a \in A\)</span> dice che <span class="math inline">\(a\)</span> è un elemento di <span class="math inline">\(A\)</span>. Per dire che
-<span class="math inline">\(b\)</span> non è un elemento di <span class="math inline">\(A\)</span> si scrive <span class="math inline">\(b \notin A.\)</span></p>
-<p>Per quegli insiemi i cui elementi soddisfano una certa proprietà che li
-caratterizza, tale proprietà può essere usata per descrivere più
-sinteticamente l’insieme:
+<p>Ci poniamo il problema di associare un livello di probabilità ad ogni
+coppia <span class="math inline">\((x, y)\)</span> definita su <span class="math inline">\(\Omega\)</span>. La coppia <span class="math inline">\((X = 0, Y = 0)\)</span> si
+realizza in corrispondenza di un solo evento elementare, ovvero CCC;
+avrà dunque una probabilità pari a <span class="math inline">\(Pr(X=0, Y=0) = Pr(CCC) = 1/8\)</span>. Nel
+caso della coppia <span class="math inline">\((X = 1, Y = 0)\)</span> ci sono due eventi elementari che
+danno luogo al risultato considerato, ovvero, CCT e CTC; la probabilità
+<span class="math inline">\(Pr(X=1, Y=0)\)</span> sarà dunque data dall’unione delle probabilità dei due
+eventi elementari corrispondenti, cioé
+<span class="math inline">\(Pr(X=1, Y=0) = Pr(CCT \:\cup\: CTC) = 1/8 + 1/8 = 1/4\)</span>. Riportiamo qui
+sotto i calcoli svolti per tutti i possibili valori di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.
 <span class="math display">\[
-A = \{x ~\vert~ \text{proprietà posseduta da~} x\},
-\]</span>
-che si legge come “<span class="math inline">\(A\)</span> è l’insieme degli elementi <span class="math inline">\(x\)</span> per cui è vera la proprietà
-indicata.” Per esempio, per indicare l’insieme <span class="math inline">\(A\)</span> delle coppie di
-numeri reali <span class="math inline">\((x,y)\)</span> che appartengono alla parabola <span class="math inline">\(y = x^2 + 1\)</span> si può
-scrivere:
-<span class="math display">\[
-A = \{(x,y) ~\vert~ y = x^2 + 1\}.
-\]</span>
-Dati due insiemi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>, diremo che <span class="math inline">\(A\)</span> è un <em>sottoinsieme</em> di <span class="math inline">\(B\)</span> se
-e solo se tutti gli elementi di <span class="math inline">\(A\)</span> sono anche elementi di <span class="math inline">\(B\)</span>:
-<span class="math display">\[A \subseteq B \iff (\forall x \in A \Rightarrow x \in B).\]</span> Se esiste
-almeno un elemento di <span class="math inline">\(B\)</span> che non appartiene ad <span class="math inline">\(A\)</span> allora diremo che
-<span class="math inline">\(A\)</span> è un <em>sottoinsieme proprio</em> di <span class="math inline">\(B\)</span>:
-<span class="math display">\[
-A \subset B \iff (A \subseteq B, \exists~ x \in B ~\vert~ x \notin A).
-\]</span>
-Un altro insieme, detto <em>insieme delle parti</em>, o insieme potenza, che si
-associa all’insieme <span class="math inline">\(A\)</span> è l’insieme di tutti i sottoinsiemi di <span class="math inline">\(A\)</span>,
-inclusi l’insieme vuoto e <span class="math inline">\(A\)</span> stesso. Per esempio, per l’insieme
-<span class="math inline">\(A = \{a, b, c\}\)</span>, l’insieme delle parti è:
-<span class="math display">\[
-\mathcal{P}(A) = \{
-\emptyset, \{a\}, \{b\}, \{c\},
- \{a, b\}, \{a, c\}, \{c, b\},
- \{a, b, c\}
-\}.
+\begin{aligned}
+P(X = 0, Y = 0) &amp;= P(\omega_8 = CCC) = 1/8; \notag\\
+P(X = 1, Y = 0) &amp;= P(\omega_5 = CCT) + P(\omega_6 = CTC) = 2/8; \notag\\
+P(X = 1, Y = 1) &amp;= P(\omega_7 = TCC) = 1/8; \notag\\
+P(X = 2, Y = 0) &amp;= P(\omega_4 = CTT) = 1/8; \notag\\
+P(X = 2, Y = 1) &amp;= P(\omega_3 = TCT) + P(\omega_2 = TTC) = 2/8; \notag\\
+P(X = 3, Y = 1) &amp;= P(\omega_1 = TTT) = 1/8; \notag
+\end{aligned}
 \]</span></p>
-<div id="operazioni-tra-insiemi" class="section level3 unnumbered">
-<h3>Operazioni tra insiemi</h3>
-<p>Si definisce <strong>intersezione</strong> di <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> l’insieme <span class="math inline">\(A \cap B\)</span> di tutti
-gli elementi <span class="math inline">\(x\)</span> che appartengono ad <span class="math inline">\(A\)</span> e contemporaneamente a <span class="math inline">\(B\)</span>:
-<span class="math display">\[A \cap B = \{x ~\vert~ x \in A \land x \in B\}.\]</span></p>
-<p>Si definisce <strong>unione</strong> di <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> l’insieme <span class="math inline">\(A \cup B\)</span> di tutti gli
-elementi <span class="math inline">\(x\)</span> che appartengono ad <span class="math inline">\(A\)</span> o a <span class="math inline">\(B\)</span>, cioè
-<span class="math display">\[
-A \cup B = \{x ~\vert~ x \in A \lor x \in B\}.
-\]</span></p>
-<p><strong>Differenza</strong>. Si indica con <span class="math inline">\(A \setminus B\)</span> l’insieme degli elementi di
-<span class="math inline">\(A\)</span> che non appartengono a <span class="math inline">\(B\)</span>:
-<span class="math display">\[A \setminus B = \{x ~\vert~ x \in A \land x \notin B\}.\]</span></p>
-<p><strong>Insieme complementare</strong>. Nel caso che sia <span class="math inline">\(B \subseteq A\)</span>, l’insieme
-differenza <span class="math inline">\(A \setminus B\)</span> è detto insieme complementare di <span class="math inline">\(B\)</span> in <span class="math inline">\(A\)</span> e
-si indica con <span class="math inline">\(B^C\)</span>.</p>
-<p>Dato un insieme <span class="math inline">\(S\)</span>, una <strong>partizione</strong> di <span class="math inline">\(S\)</span> è una collezione di
-sottoinsiemi di <span class="math inline">\(S\)</span>, <span class="math inline">\(S_1, \dots, S_k\)</span>, tali che
-<span class="math display">\[S = S_1 \cup S_2 \cup \dots S_k\]</span> e
-<span class="math display">\[S_i \cap S_j, \quad \text{con~} i \neq j.\]</span></p>
-<p>La relazione tra unione, intersezione e insieme complementare è data
-dalle leggi di DeMorgan: <span class="math display">\[(A \cup B)^c = A^c \cap B^c,\]</span>
-<span class="math display">\[(A \cap B)^c = A^c \cup B^c.\]</span></p>
+<p>Le probabilità così trovate possono essere riportate nella
+tabella seguente.</p>
+<div id="tab:tre-monete-distr-cong">
+<table>
+<caption>Distribuzione di probabilità congiunta per i risultati
+dell’esperimento consistente nel lancio di tre monete equilibrate.</caption>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(x\y\)</span></th>
+<th align="center">0</th>
+<th align="center">1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">1/8</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">2/8</td>
+<td align="center">1/8</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">1/8</td>
+<td align="center">2/8</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">1/8</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="diagrammi-di-eulero-venn" class="section level3 unnumbered">
-<h3>Diagrammi di Eulero-Venn</h3>
-<p>In molte situazioni è utile servirsi dei cosiddetti diagrammi di
-Eulero-Venn per rappresentare gli insiemi e verificare le proprietà
-delle operazioni tra insiemi (si veda la figura <a href="appendici.html#fig:sets-venn-diagrams">8.1</a>.
-I diagrammi di Venn sono così nominati in onore del matematico inglese del diciannovesimo secolo John Venn anche se Leibnitz e Eulero avevano già in precedenza utilizzato rappresentazioni simili.
-In tale rappresentazione, gli insiemi sono individuati da regioni del piano delimitate da una curva chiusa. Nel caso di insiemi finiti, è possibile evidenziare esplicitamente alcuni elementi di un insieme mediante punti, quando si
-possono anche evidenziare tutti gli elementi degli insiemi considerati.</p>
-<div class="figure" style="text-align: center"><span id="fig:sets-venn-diagrams"></span>
-<img src="images/sets-venn-diagrams.pdf" alt="In tutte le figure $S$ è la regione delimitata dal rettangolo, $L$ è la regione all'interno del cerchio di sinistra e $R$ è la regione all'interno del cerchio di destra. La regione evidenziata mostra l'insieme indicato sotto ciascuna figura." width="100%" />
-<p class="caption">
-Figura 8.1: In tutte le figure <span class="math inline">\(S\)</span> è la regione delimitata dal rettangolo, <span class="math inline">\(L\)</span> è la regione all’interno del cerchio di sinistra e <span class="math inline">\(R\)</span> è la regione all’interno del cerchio di destra. La regione evidenziata mostra l’insieme indicato sotto ciascuna figura.
-</p>
+<p>La tabella qui sopra ci fornisce il risultato che cercavamo, ovvero la distribuzione di probabilità congiunta delle variabili aleatorie <span class="math inline">\(X\)</span> = “numero di realizzazioni con il risultato testa nei tre lanci” e <span class="math inline">\(Y\)</span> = “numero di realizzazioni con il risultato testa nel primo lancio” per l’esperimento casuale considerato.
+Una generica funzione di probabilità congiunta bivariata può essere
+rappresentata come qui indicato.</p>
+<p>In generale, possiamo dire che, dato uno spazio campionario discreto
+<span class="math inline">\(\Omega\)</span>, è possibile associare ad ogni evento elementare <span class="math inline">\(\omega_i\)</span>
+dello spazio campionario una coppia di numeri reali <span class="math inline">\((x, y)\)</span>, essendo
+<span class="math inline">\(x = X(\omega)\)</span> e <span class="math inline">\(y = Y(\omega)\)</span>, il che ci conduce alla seguente
+definizione.</p>
+<p>La funzione che associa ad ogni coppia <span class="math inline">\((x, y)\)</span> un livello di
+probabilità prende il nome di funzione di probabilità congiunta:
+<span class="math display">\[P(x, y) = P(X = x, Y = y).\]</span>
+Il termine “congiunta” deriva dal fatto che questa probabilità è legata
+al verificarsi di una coppia di valori, il primo associato alla
+variabile aleatoria <span class="math inline">\(X\)</span> ed il secondo alla variabile aleatoria <span class="math inline">\(Y\)</span>. Nel
+caso di due sole variabili, si parla di distribuzione bivariata, mentre
+nel caso di più variabili si parla di distribuzione multivariata.</p>
+<div id="proprietà" class="section level3" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Proprietà</h3>
+<p>Una distribuzione di massa di probabilità congiunta bivariata deve
+soddisfare due proprietà:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(0 \leq p(x_i, y_j) \leq 1\)</span>;</p></li>
+<li><p>la probabilità totale deve essere uguale a <span class="math inline">\(1.0\)</span>. Tale proprietà può
+essere espressa nel modo seguente
+<span class="math display">\[\sum_{i} \sum_{j} p(x_i, y_j) = 1.0.\]</span></p></li>
+</ol>
 </div>
-<p>I diagrammi di Eulero-Venn che forniscono una dimostrazione delle leggi
-di DeMorgan sono forniti nella figura <a href="appendici.html#fig:demorgan">8.2</a>.</p>
-<div class="figure" style="text-align: center"><span id="fig:demorgan"></span>
-<img src="images/demorgan.pdf" alt="Dimostrazione delle leggi di DeMorgan." width="100%" />
-<p class="caption">
-Figura 8.2: Dimostrazione delle leggi di DeMorgan.
-</p>
-</div>
-</div>
-<div id="sec:prod_cartesiano" class="section level3 unnumbered">
-<h3>Coppie ordinate e prodotto cartesiano</h3>
-<p>Una coppia ordinata <span class="math inline">\((x,y)\)</span> è l’insieme i cui elementi sono <span class="math inline">\(x \in A\)</span> e
-<span class="math inline">\(y \in B\)</span> e nella quale <span class="math inline">\(x\)</span> è la prima componente (o prima coordinata),
-<span class="math inline">\(y\)</span> la seconda. L’insieme di tutte le coppie ordinate costruite a
-partire dagli insiemi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> viene detto <strong>prodotto cartesiano</strong>:
-<span class="math display">\[A \times B = \{(x, y) ~\vert~ x \in A \land y \in B\}.\]</span> Ad esempio,
-sia <span class="math inline">\(A = \{1, 2, 3\}\)</span> e <span class="math inline">\(B = \{a, b\}\)</span>. Allora,
-<span class="math display">\[\{1, 2\} \times \{a, b, c\} = \{(1, a), (1, b), (1, c), (2, a), (2, b), (2, c)\}.\]</span></p>
-</div>
-<div id="cardinalità" class="section level3 unnumbered">
-<h3>Cardinalità</h3>
-<p>Si definisce <strong>cardinalità</strong> (o potenza) di un insieme finito il numero
-degli elementi dell’insieme. Viene indicata con <span class="math inline">\(\vert A\vert, \#(A)\)</span> o
-<span class="math inline">\(\text{c}(A)\)</span>.</p>
+<div id="eventi" class="section level3" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Eventi</h3>
+<p>Si noti che dalla probabilità congiunta possiamo calcolare la
+probabilità di qualsiasi evento definito in base alle variabili
+aleatorie <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Per capire come questo possa essere fatto,
+consideriamo nuovamente l’esperimento discusso sopra.</p>
 
+<div class="exercise">
+<span id="exr:unnamed-chunk-44" class="exercise"><strong>Exercizio 8.1  </strong></span>Per la distribuzione di massa di probabilità congiunta riportata nella
+tabella precedente si trovi la probabilità dell’evento <span class="math inline">\(X+Y \leq 1\)</span>.
 </div>
+
+<div class="solution">
+ <span class="solution"><em>Soluzione. </em></span> Per trovare la probabilità richiesta dobbiamo semplicemente sommare le
+probabilità associate a tutte le coppie <span class="math inline">\((x,y)\)</span> che soddisfano la
+conzione <span class="math inline">\(X+Y \leq 1\)</span>. Ovvero,
+<span class="math display">\[
+\begin{aligned}
+P_{XY}(X+Y \leq 1) = &amp;P_{XY}(0, 0) + P_{XY}(1, 0)= 3/8.\notag
+\end{aligned}
+\]</span>
+</div>
+</div>
+<div id="funzioni-di-probabilità-marginali" class="section level3" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> Funzioni di probabilità marginali</h3>
+<p>Data la funzione di probabilità congiunta <span class="math inline">\(p(x, y)\)</span> è possibile pervenire alla costruzione della funzione di probabilità della singola variabile aleatoria, <span class="math inline">\(X\)</span> o <span class="math inline">\(Y\)</span>:
+<span class="math display">\[
+p_X(x) = P(X = x) = \sum_y p(x,y)
+\]</span>
+<span class="math display">\[
+p_Y(y) = P(Y = y) = \sum_x p(x,y)
+\]</span>
+che prendono, rispettivamente, il nome di funzione di probabilità marginale di <span class="math inline">\(X\)</span> funzione di probabilità marginale di <span class="math inline">\(Y\)</span>. Si noti che <span class="math inline">\(P_X\)</span> e <span class="math inline">\(P_Y\)</span> sono normalizzate:
+<span class="math display">\[
+\sum_x P_X(x) = 1.0, \quad \sum_y P_Y(y) = 1.0.
+\]</span></p>
+<p>Per l’esperimento casuale consistente nel lancio di tre monete equilibrate, si calcolino le probabilità marginali di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p>Nell’ultima colonna a destra e nell’ultima riga in basso della tabella seguente sono riportate le distribuzioni di probabilità marginali di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. <span class="math inline">\(P_X\)</span> si ottiene sommando su ciascuna riga fissata la colonna <span class="math inline">\(j\)</span>, <span class="math inline">\(P_X(X = j) = \sum_y p_{xy}(x = j, y)\)</span>. <span class="math inline">\(P_Y\)</span> si trova sommando su ciascuna colonna fissata la riga <span class="math inline">\(i,\)</span> <span class="math inline">\(P_Y (Y = i) = \sum_x p_{xy}(x, y = i)\)</span>. Si noti che:
+<span class="math display">\[
+\sum_x P_X(x) = 1, \quad \sum_y P_Y(y) = 1.
+\]</span></p>
+<div id="default">
+<table>
+<caption>Distribuzione di probabilità congiunta <span class="math inline">\(p(x,y)\)</span> per i risultati
+dell’esperimento consistente nel lancio di tre monete equilibrate e
+probabilità marginali <span class="math inline">\(p(x)\)</span> e <span class="math inline">\(p(y)\)</span>.</caption>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(x\y\)</span></th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="left"><span class="math inline">\(p(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">1/8</td>
+<td align="center">0</td>
+<td align="left">1/8</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">2/8</td>
+<td align="center">1/8</td>
+<td align="left">3/8</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">1/8</td>
+<td align="center">2/8</td>
+<td align="left">3/8</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">1/8</td>
+<td align="left">1/8</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(p(y)\)</span></td>
+<td align="center">4/8</td>
+<td align="center">4/8</td>
+<td align="left">1.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="indipendenza-stocastica" class="section level3" number="8.1.4">
+<h3><span class="header-section-number">8.1.4</span> Indipendenza stocastica</h3>
+<p>Ora abbiamo tutti gli strumenti per potere dare una definizione
+statistica precisa al concetto di indipendenza. La definizione proposta
+sarà necessariamente coerente con la definizione di indipendenza che
+abbiamo usato fino ad ora. Ma, espressa in questi nuovi termini, potrà
+essere utilizzata in indagini probabilistiche e statistiche più
+complesse. Ricordiamo che gli eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> si dicono indipendenti se
+<span class="math inline">\(P (A \cap B)\, = P(A) P(B)\)</span>. Diciamo quindi che <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono
+indipendenti se qualsiasi evento definito da <span class="math inline">\(X\)</span> è indipendente da
+qualsiasi evento definito da <span class="math inline">\(Y\)</span>. La definizione formale che garantisce
+che ciò accada è la seguente.</p>
+<p>Le variabili aleatorie distribuite congiuntamente <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono
+indipendenti se la loro distribuzione congiunta è il prodotto delle
+distribuzioni marginali: <span class="math display">\[P(X, Y)\, = P_X(x)P_Y(y).\]</span></p>
+<p>Nel caso discreto, dunque, l’indipendenza implica che la probabilità
+riportata in ciascuna cella della tabella di probabilità congiunta deve
+essere uguale al prodotto delle probabilità marginali di riga e di
+colonna: <span class="math display">\[p(x_i, y_i)\, = p_X(x_i) p_Y(y_i).\notag\]</span></p>
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-46" class="exercise"><strong>Exercizio 8.2  </strong></span>Per la situazione rappresentata nella tabella qui sopra le variabili aleatorie <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono indipendenti?
+</div>
+
+<div class="solution">
+ <span class="solution"><em>Soluzione. </em></span> Nella tabellale variabili aleatorie <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> non sono indipendenti: le probabilità congiunte non sono ricavabili dal prodotto delle marginali. Per esempio, nessuna delle probabilità marginali è uguale a <span class="math inline">\(0\)</span> per cui nessuno dei valori dentro la tabella (probabilità congiunte) che risulta essere uguale a <span class="math inline">\(0\)</span> può essere il prodotto delle probabilità marginali.
+</div>
+</div>
+</div>
+<div id="conclusioni" class="section level2 unnumbered">
+<h2>Conclusioni</h2>
+<p>La funzione di probabilità congiunta tiene simultaneamente conto del
+comportamento di due variabili aleatorie <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> e di come esse si
+influenzano reciprocamente. In particolare, si osserva che se le due
+variabili non si influenzano, cioè se sono statisticamente indipendenti,
+allora la distribuzione di massa di probabilità congiunta si ottiene
+come prodotto delle funzioni di probabilità marginali di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>:
+<span class="math inline">\(P_{X, Y}(x, y) = P_X(x) P_Y(y)\)</span>.</p>
+
 </div>
 </div>
             </section>
@@ -585,8 +632,8 @@ degli elementi dell’insieme. Viene indicata con <span class="math inline">\(\v
           </div>
         </div>
       </div>
-<a href="chapter-distr-congiunta.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="bibliografia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="chapter-bayes-theo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="appendici.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -617,7 +664,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ccaudek/bookdown_psicometria/edit/master/98_appendici.Rmd",
+"link": "https://github.com/ccaudek/bookdown_psicometria/edit/master/08_prob_congiunta.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -625,7 +672,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ccaudek/bookdown_psicometria/blob/master/98_appendici.Rmd",
+"link": "https://github.com/ccaudek/bookdown_psicometria/blob/master/08_prob_congiunta.Rmd",
 "text": null
 },
 "download": null,

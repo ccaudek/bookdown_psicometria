@@ -35,6 +35,7 @@ rmd_files: [
   "05_prob_intro.Rmd",
   "06_prob_condiz.Rmd",
   "07_theo_bayes.Rmd",
+  "08_prob_congiunta.Rmd",
   "98_appendici.Rmd",
-  "99_References.Rmd",
+  "99_References.Rmd"
 ]

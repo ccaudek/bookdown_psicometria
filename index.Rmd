@@ -26,7 +26,7 @@ description: >
 
 **Questo LIBRO-IN-PROGRESS è stato aggiornato il giorno: `r format (Sys.Date(), '%d %b %Y')`**.
 
-Queste dispense contengono il materiale delle lezioni dell'insegnamento Psicometria  B000286 (A.A. 2019/2020) rivolto agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche dell'Università di Firenze. 
+Queste dispense contengono il materiale delle lezioni dell'insegnamento Psicometria  B000286 (A.A. 2020/2021) rivolto agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche dell'Università di Firenze. 
 
 L'insegnamento di Psicometria si propone di fornire agli studenti un'introduzione all'analisi dei dati in psicologia. Alcuni degli argomenti trattati richiedono delle conoscenze pregresse, soprattutto di tipo matematico. 
 Tali conoscenze sono state aggiunte delle appendici di queste dispense. 
