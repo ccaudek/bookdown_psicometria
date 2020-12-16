@@ -18,8 +18,7 @@ header-includes:
   \usepackage[T1]{fontenc}
 github-repo: ccaudek/bookdown_psicometria
 twitter-handle: ccaudek
-description: >
-  ""
+description: "Queste dispense si propongono di fornire un'introduzione all'analisi dei dati psicologici per gli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l'uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l'inferenza Bayesiana."
 ---
 
 # Prefazione {-}
