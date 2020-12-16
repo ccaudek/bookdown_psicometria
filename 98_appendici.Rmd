@@ -1,0 +1,273 @@
+# Appendici {-}
+
+## Simbologia di base {#simbologia-di-base .unnumbered}
+
+Per una scrittura più sintetica possono essere utilizzati alcuni simboli
+matematici.
+
+-   L'operatore logico booleano $\land$ significa "e" (congiunzione
+    forte) mentre il connettivo di disgiunzione $\lor$ significa "o"
+    (oppure) (congiunzione debole).
+
+-   Il quantificatore esistenziale $\exists$ vuol dire "esiste almeno
+    un" e indica l'esistenza di almeno una istanza del concetto/oggetto
+    indicato. Il quantificatore esistenziale di unicità $\exists!$
+    ("esiste soltanto un") indica l'esistenza di esattamente una istanza
+    del concetto/oggetto indicato. Il quantificatore esistenziale
+    $\nexists$ nega l'esistenza del concetto/oggetto indicato.
+
+-   Il quantificatore universale $\forall$ vuol dire "per ogni."
+
+-   L'implicazione logica "$\Rightarrow$" significa "implica" (se
+    ...allora). $P \Rightarrow Q$ vuol dire che $P$ è condizione
+    sufficiente per la verità di $Q$ e che $Q$ è condizione necessaria
+    per la verità di $P$.
+
+-   L'equivalenza matematica "$\iff$" significa "se e solo se" e indica
+    una condizione necessaria e sufficiente, o corrispondenza biunivoca.
+
+-   Il simbolo $\vert$ si legge "tale che."
+
+-   Il simbolo $\triangleq$ (o $:=$) si legge "uguale per definizione."
+
+-   Il simbolo $\Delta$ indica la differenza fra due valori della
+    variabile scritta a destra del simbolo.
+
+-   Il simbolo $\propto$ si legge "proporzionale a."
+
+-   Il simbolo $\approx$ si legge "circa."
+
+-   Il simbolo $\in$ della teoria degli insiemi vuol dire "appartiene" e
+    indica l'appartenenza di un elemento ad un insieme. Il simbolo
+    $\notin$ vuol dire "non appartiene."
+
+-   Il simbolo $\subseteq$ si legge "è un sottoinsieme di" (può
+    coincidere con l'insieme stesso). Il simbolo $\subset$ si legge "è
+    un sottoinsieme proprio di."
+
+-   Il simbolo $\#$ indica la cardinalità di un insieme.
+
+-   Il simbolo $\cap$ indica l'intersezione di due insiemi. Il simbolo
+    $\cup$ indica l'unione di due insiemi.
+
+-   Il simbolo $\emptyset$ indica l'insieme vuoto o evento impossibile.
+
+
+## Numeri binari, interi, razionali, irrazionali e reali {#numeri-binari-interi-razionali-irrazionali-e-reali .unnumbered}
+
+### Numeri binari {#numeri-binari .unnumbered}
+
+I più semplici sono i numeri binari, cioè zero o uno. Useremo spesso
+numeri binari per rappresentare se qualcosa è vero o falso, o presente o
+assente.
+
+Supponiamo di chiedere a 10 studenti "Ti piacciono i mirtilli?" Poniamo
+che le risposte siano le seguenti:
+
+```{r}
+opinion <- c('Yes','No','Yes','No','Yes','No','Yes','Yes','Yes','Yes')
+opinion
+```
+
+Tali risposte possono essere ricodificate nei termini di valori di
+verità, ovvero, vero e falso, generalmente denotati rispettivamente come
+1 e 0. In tale ricodifica può essere effettuata mediante l'operatore
+`==` che è un test per l'uguaglianza e restituisce il valore logico VERO
+se le due cose sono uguali e FALSO se non lo sono:
+
+```{r}
+opinion <- opinion == "Yes"
+opinion
+```
+
+R considera i valori di verità e i numeri binari in modo equivalente, con
+TRUE uguale a 1 e FALSE uguale a zero. Di conseguenza, possiamo
+effettuare operazioni algebriche sui valori logici VERO e FALSO.
+Nell'esempio, possiamo sommare i valori di verità, dividere per 10
+
+```{r}
+sum(opinion) / length(opinion)
+```
+
+e concludere che 7 risposte su 10 sono positive.
+
+
+### Numeri interi {#numeri-interi .unnumbered}
+
+Un numero intero è un numero senza decimali. Si dicono __naturali__ i
+numeri che servono a contare, come 1, 2, ... L'insieme dei numeri
+naturali si indica con il simbolo $\mathbb{N}$. È anche necessario
+introdurre i numeri con il segno per poter trattare grandezze negative.
+Si ottengono così l'insieme numerico dei numeri interi relativi:
+$\mathbb{Z} = \{0, \pm 1, \pm 2, \dots \}$
+
+### Numeri razionali {#numeri-razionali .unnumbered}
+
+I numeri razionali sono i numeri frazionari $m/n$, dove $m, n \in N$,
+con $n \neq 0$. Si ottengono così i numeri razionali:
+$\mathbb{Q} = \{\frac{m}{n} \,\vert\, m, n \in \mathbb{Z}, n \neq 0\}$.
+È evidente che $\mathbb{N} \subseteq \mathbb{Z} \subseteq \mathbb{Q}$.
+Anche in questo caso è necessario poter trattare grandezze negative. I
+numeri razionali non negativi sono indicati con
+$\mathbb{Q^+} = \{q \in \mathbb{Q} \,\vert\, q \geq 0\}$.
+
+### Numeri irrazionali {#numeri-irrazionali .unnumbered}
+
+Tuttavia, non tutti i punti di una retta $r$ possono essere
+rappresentati mediante i numeri interi e razionali. È dunque necessario
+introdurre un'altra classe di numeri. Si dicono __irrazionali__, e sono
+denotati con $\mathbb{R}$, i numeri che possono essere scritti come una
+frazione $a / b$, con $a$ e $b$ interi e $b$ diverso da 0. I numeri
+irrazionali sono i numeri illimitati e non periodici che quindi non
+possono essere espressi sotto forma di frazione. Per esempio,
+$\sqrt{2}$, $\sqrt{3}$ e ${\displaystyle \pi =3,141592\ldots}$ sono
+numeri irrazionali.
+
+### Numeri reali {#numeri-reali .unnumbered}
+
+I punti della retta $r$ sono quindi "di più" dei numeri razionali. Per
+poter rappresentare tutti i punti della retta abbiamo dunque bisogno dei
+numeri __reali__. I numeri reali possono essere positivi, negativi o nulli
+e comprendono, come casi particolari, i numeri interi, i numeri
+razionali e i numeri irrazionali. Spesso in statisticac il numero dei
+decimali indica il grado di precisione della misurazione.
+
+
+## Intervalli {#intervalli .unnumbered}
+
+Un intervallo si dice chiuso se gli estremi sono compresi
+nell'intervallo, aperto se gli estremi non sono compresi. Le
+caratteristiche degli intervalli sono riportate nella tabella seguente.
+
+               Intervallo                          
+  ------------------------------------- ---------- -------------------
+                 chiuso                  \[a, b\]   $a \leq x \leq b$
+                 aperto                   (a, b)       $a < x < b$
+   chiuso a sinistra e aperto a destra   \[a, b)     $a \leq x < b$
+   aperto a sinistra e chiuso a destra   (a, b\]     $a < x \leq b$
+
+
+## Insiemi {#cap:insiemi .unnumbered}
+
+Un insieme (o collezione, classe, gruppo, ...) è un concetto primitivo,
+ovvero è un concetto che già possediamo. Georg Cantor l'ha definito nel
+modo seguente:
+
+> un insieme è una collezione di oggetti, determinati e distinti, della nostra percezione o del nostro pensiero, concepiti come un tutto unico; tali oggetti si dicono elementi dell'insieme.
+
+Mentre non è rilevante la natura degli oggetti che costituiscono
+l'insieme, ciò che importa è distinguere se un dato oggetto appartenga o
+meno ad un insieme. Deve essere vera una delle due possibilità: il dato
+oggetto è un elemento dell'insieme considerato oppure non è elemento
+dell'insieme considerato. Due insiemi $A$ e $B$ si dicono uguali se sono
+formati dagli stessi elementi, anche se disposti in ordine diverso:
+$A=B$. Due insiemi $A$ e $B$ si dicono diversi se non contengono gli
+stessi elementi: $A \neq B$. Ad esempio, i seguenti insiemi sono uguali:
+$$\{1, 2, 3\} = \{3, 1, 2\} = \{1, 3, 2\}= \{1, 1, 1, 2, 3, 3, 3\}.$$
+Gli insiemi sono denotati da una lettera maiuscola, mentre le lettere
+minuscole, di solito, designano gli elementi di un insieme. Per esempio,
+un generico insieme $A$ si indica con
+$$A = \{a_1, a_2, \dots, a_n\}, \quad \text{con~} n > 0.$$
+
+La scrittura $a \in A$ dice che $a$ è un elemento di $A$. Per dire che
+$b$ non è un elemento di $A$ si scrive $b \notin A.$
+
+Per quegli insiemi i cui elementi soddisfano una certa proprietà che li
+caratterizza, tale proprietà può essere usata per descrivere più
+sinteticamente l'insieme:
+$$
+A = \{x ~\vert~ \text{proprietà posseduta da~} x\},
+$$ 
+che si legge come "$A$ è l'insieme degli elementi $x$ per cui è vera la proprietà
+indicata." Per esempio, per indicare l'insieme $A$ delle coppie di
+numeri reali $(x,y)$ che appartengono alla parabola $y = x^2 + 1$ si può
+scrivere: 
+$$
+A = \{(x,y) ~\vert~ y = x^2 + 1\}.
+$$
+Dati due insiemi $A$ e $B$, diremo che $A$ è un *sottoinsieme* di $B$ se
+e solo se tutti gli elementi di $A$ sono anche elementi di $B$:
+$$A \subseteq B \iff (\forall x \in A \Rightarrow x \in B).$$ Se esiste
+almeno un elemento di $B$ che non appartiene ad $A$ allora diremo che
+$A$ è un *sottoinsieme proprio* di $B$:
+$$
+A \subset B \iff (A \subseteq B, \exists~ x \in B ~\vert~ x \notin A).
+$$
+Un altro insieme, detto *insieme delle parti*, o insieme potenza, che si
+associa all'insieme $A$ è l'insieme di tutti i sottoinsiemi di $A$,
+inclusi l'insieme vuoto e $A$ stesso. Per esempio, per l'insieme
+$A = \{a, b, c\}$, l'insieme delle parti è: 
+$$
+\mathcal{P}(A) = \{
+\emptyset, \{a\}, \{b\}, \{c\},
+ \{a, b\}, \{a, c\}, \{c, b\},
+ \{a, b, c\}
+\}.
+$$
+
+### Operazioni tra insiemi {#operazioni-tra-insiemi .unnumbered}
+
+Si definisce __intersezione__ di $A$ e $B$ l'insieme $A \cap B$ di tutti
+gli elementi $x$ che appartengono ad $A$ e contemporaneamente a $B$:
+$$A \cap B = \{x ~\vert~ x \in A \land x \in B\}.$$
+
+Si definisce __unione__ di $A$ e $B$ l'insieme $A \cup B$ di tutti gli
+elementi $x$ che appartengono ad $A$ o a $B$, cioè
+$$
+A \cup B = \{x ~\vert~ x \in A \lor x \in B\}.
+$$
+
+__Differenza__. Si indica con $A \setminus B$ l'insieme degli elementi di
+$A$ che non appartengono a $B$:
+$$A \setminus B = \{x ~\vert~ x \in A \land x \notin B\}.$$
+
+__Insieme complementare__. Nel caso che sia $B \subseteq A$, l'insieme
+differenza $A \setminus B$ è detto insieme complementare di $B$ in $A$ e
+si indica con $B^C$.
+
+Dato un insieme $S$, una __partizione__ di $S$ è una collezione di
+sottoinsiemi di $S$, $S_1, \dots, S_k$, tali che
+$$S = S_1 \cup S_2 \cup \dots S_k$$ e
+$$S_i \cap S_j, \quad \text{con~} i \neq j.$$
+
+La relazione tra unione, intersezione e insieme complementare è data
+dalle leggi di DeMorgan: $$(A \cup B)^c = A^c \cap B^c,$$
+$$(A \cap B)^c = A^c \cup B^c.$$
+
+### Diagrammi di Eulero-Venn {#diagrammi-di-eulero-venn .unnumbered}
+
+In molte situazioni è utile servirsi dei cosiddetti diagrammi di
+Eulero-Venn per rappresentare gli insiemi e verificare le proprietà
+delle operazioni tra insiemi (si veda la figura \@ref(fig:sets-venn-diagrams). 
+I diagrammi di Venn sono così nominati in onore del matematico inglese del diciannovesimo secolo John Venn anche se Leibnitz e Eulero avevano già in precedenza utilizzato rappresentazioni simili.
+In tale rappresentazione, gli insiemi sono individuati da regioni del piano delimitate da una curva chiusa. Nel caso di insiemi finiti, è possibile evidenziare esplicitamente alcuni elementi di un insieme mediante punti, quando si
+possono anche evidenziare tutti gli elementi degli insiemi considerati.
+
+```{r sets-venn-diagrams, out.width='100%', echo=FALSE, fig.cap="In tutte le figure $S$ è la regione delimitata dal rettangolo, $L$ è la regione all'interno del cerchio di sinistra e $R$ è la regione all'interno del cerchio di destra. La regione evidenziata mostra l'insieme indicato sotto ciascuna figura."}
+knitr::include_graphics('images/sets-venn-diagrams.pdf')
+```
+
+I diagrammi di Eulero-Venn che forniscono una dimostrazione delle leggi
+di DeMorgan sono forniti nella figura \@ref(fig:demorgan). 
+
+```{r demorgan, out.width='100%', echo=FALSE, fig.cap="Dimostrazione delle leggi di DeMorgan."}
+knitr::include_graphics('images/demorgan.pdf')
+```
+
+
+### Coppie ordinate e prodotto cartesiano {#sec:prod_cartesiano .unnumbered}
+
+Una coppia ordinata $(x,y)$ è l'insieme i cui elementi sono $x \in A$ e
+$y \in B$ e nella quale $x$ è la prima componente (o prima coordinata),
+$y$ la seconda. L'insieme di tutte le coppie ordinate costruite a
+partire dagli insiemi $A$ e $B$ viene detto __prodotto cartesiano__:
+$$A \times B = \{(x, y) ~\vert~ x \in A \land y \in B\}.$$ Ad esempio,
+sia $A = \{1, 2, 3\}$ e $B = \{a, b\}$. Allora,
+$$\{1, 2\} \times \{a, b, c\} = \{(1, a), (1, b), (1, c), (2, a), (2, b), (2, c)\}.$$
+
+### Cardinalità {#cardinalità .unnumbered}
+
+Si definisce __cardinalità__ (o potenza) di un insieme finito il numero
+degli elementi dell'insieme. Viene indicata con $\vert A\vert, \#(A)$ o
+$\text{c}(A)$.
+

@@ -263,6 +263,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="appendice-a.html"><a href="appendice-a.html"><i class="fa fa-check"></i>Appendice A</a>
 <ul>
 <li class="chapter" data-level="" data-path="appendice-a.html"><a href="appendice-a.html#simbologia-di-base"><i class="fa fa-check"></i>Simbologia di base</a></li>
+<li class="chapter" data-level="" data-path="appendice-a.html"><a href="appendice-a.html#numeri-binari-interi-razionali-irrazionali-e-reali"><i class="fa fa-check"></i>Numeri binari, interi, razionali, irrazionali e reali</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendice-a.html"><a href="appendice-a.html#numeri-binari"><i class="fa fa-check"></i>Numeri binari</a></li>
+<li class="chapter" data-level="" data-path="appendice-a.html"><a href="appendice-a.html#numeri-interi"><i class="fa fa-check"></i>Numeri interi</a></li>
+<li class="chapter" data-level="" data-path="appendice-a.html"><a href="appendice-a.html#numeri-razionali"><i class="fa fa-check"></i>Numeri razionali</a></li>
+<li class="chapter" data-level="" data-path="appendice-a.html"><a href="appendice-a.html#numeri-irrazionali"><i class="fa fa-check"></i>Numeri irrazionali</a></li>
+<li class="chapter" data-level="" data-path="appendice-a.html"><a href="appendice-a.html#numeri-reali"><i class="fa fa-check"></i>Numeri reali</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendice-a.html"><a href="appendice-a.html#intervalli"><i class="fa fa-check"></i>Intervalli</a></li>
+<li class="chapter" data-level="" data-path="appendice-a.html"><a href="appendice-a.html#cap:insiemi"><i class="fa fa-check"></i>Insiemi</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendice-a.html"><a href="appendice-a.html#operazioni-tra-insiemi"><i class="fa fa-check"></i>Operazioni tra insiemi</a></li>
+<li class="chapter" data-level="" data-path="appendice-a.html"><a href="appendice-a.html#diagrammi-di-eulero-venn"><i class="fa fa-check"></i>Diagrammi di Eulero-Venn</a></li>
+<li class="chapter" data-level="" data-path="appendice-a.html"><a href="appendice-a.html#sec:prod_cartesiano"><i class="fa fa-check"></i>Coppie ordinate e prodotto cartesiano</a></li>
+<li class="chapter" data-level="" data-path="appendice-a.html"><a href="appendice-a.html#cardinalità"><i class="fa fa-check"></i>Cardinalità</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
 <li class="divider"></li>
@@ -325,8 +341,233 @@ un sottoinsieme proprio di.”</p></li>
 <span class="math inline">\(\cup\)</span> indica l’unione di due insiemi.</p></li>
 <li><p>Il simbolo <span class="math inline">\(\emptyset\)</span> indica l’insieme vuoto o evento impossibile.</p></li>
 </ul>
+</div>
+<div id="numeri-binari-interi-razionali-irrazionali-e-reali" class="section level2 unnumbered">
+<h2>Numeri binari, interi, razionali, irrazionali e reali</h2>
+<div id="numeri-binari" class="section level3 unnumbered">
+<h3>Numeri binari</h3>
+<p>I più semplici sono i numeri binari, cioè zero o uno. Useremo spesso
+numeri binari per rappresentare se qualcosa è vero o falso, o presente o
+assente.</p>
+<p>Supponiamo di chiedere a 10 studenti “Ti piacciono i mirtilli?” Poniamo
+che le risposte siano le seguenti:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="appendice-a.html#cb27-1" aria-hidden="true" tabindex="-1"></a>opinion <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;No&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;No&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;No&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;Yes&#39;</span>)</span>
+<span id="cb27-2"><a href="appendice-a.html#cb27-2" aria-hidden="true" tabindex="-1"></a>opinion</span>
+<span id="cb27-3"><a href="appendice-a.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;Yes&quot; &quot;No&quot;  &quot;Yes&quot; &quot;No&quot;  &quot;Yes&quot; &quot;No&quot;  &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot;</span></span></code></pre></div>
+<p>Tali risposte possono essere ricodificate nei termini di valori di
+verità, ovvero, vero e falso, generalmente denotati rispettivamente come
+1 e 0. In tale ricodifica può essere effettuata mediante l’operatore
+<code>==</code> che è un test per l’uguaglianza e restituisce il valore logico VERO
+se le due cose sono uguali e FALSO se non lo sono:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="appendice-a.html#cb28-1" aria-hidden="true" tabindex="-1"></a>opinion <span class="ot">&lt;-</span> opinion <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span></span>
+<span id="cb28-2"><a href="appendice-a.html#cb28-2" aria-hidden="true" tabindex="-1"></a>opinion</span>
+<span id="cb28-3"><a href="appendice-a.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE</span></span></code></pre></div>
+<p>R considera i valori di verità e i numeri binari in modo equivalente, con
+TRUE uguale a 1 e FALSE uguale a zero. Di conseguenza, possiamo
+effettuare operazioni algebriche sui valori logici VERO e FALSO.
+Nell’esempio, possiamo sommare i valori di verità, dividere per 10</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="appendice-a.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(opinion) <span class="sc">/</span> <span class="fu">length</span>(opinion)</span>
+<span id="cb29-2"><a href="appendice-a.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.7</span></span></code></pre></div>
+<p>e concludere che 7 risposte su 10 sono positive.</p>
+</div>
+<div id="numeri-interi" class="section level3 unnumbered">
+<h3>Numeri interi</h3>
+<p>Un numero intero è un numero senza decimali. Si dicono <em>naturali</em> i
+numeri che servono a contare, come 1, 2, … L’insieme dei numeri
+naturali si indica con il simbolo <span class="math inline">\(\mathbb{N}\)</span>. È anche necessario
+introdurre i numeri con il segno per poter trattare grandezze negative.
+Si ottengono così l’insieme numerico dei numeri interi relativi:
+<span class="math inline">\(\mathbb{Z} = \{0, \pm 1, \pm 2, \dots \}\)</span></p>
+</div>
+<div id="numeri-razionali" class="section level3 unnumbered">
+<h3>Numeri razionali</h3>
+<p>I numeri razionali sono i numeri frazionari <span class="math inline">\(m/n\)</span>, dove <span class="math inline">\(m, n \in N\)</span>,
+con <span class="math inline">\(n \neq 0\)</span>. Si ottengono così i numeri razionali:
+<span class="math inline">\(\mathbb{Q} = \{\frac{m}{n} \,\vert\, m, n \in \mathbb{Z}, n \neq 0\}\)</span>.
+È evidente che <span class="math inline">\(\mathbb{N} \subseteq \mathbb{Z} \subseteq \mathbb{Q}\)</span>.
+Anche in questo caso è necessario poter trattare grandezze negative. I
+numeri razionali non negativi sono indicati con
+<span class="math inline">\(\mathbb{Q^+} = \{q \in \mathbb{Q} \,\vert\, q \geq 0\}\)</span>.</p>
+</div>
+<div id="numeri-irrazionali" class="section level3 unnumbered">
+<h3>Numeri irrazionali</h3>
+<p>Tuttavia, non tutti i punti di una retta <span class="math inline">\(r\)</span> possono essere
+rappresentati mediante i numeri interi e razionali. È dunque necessario
+introdurre un’altra classe di numeri. Si dicono <em>irrazionali</em>, e sono
+denotati con <span class="math inline">\(\mathbb{R}\)</span>, i numeri che possono essere scritti come una
+frazione <span class="math inline">\(a / b\)</span>, con <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> interi e <span class="math inline">\(b\)</span> diverso da 0. I numeri
+irrazionali sono i numeri illimitati e non periodici che quindi non
+possono essere espressi sotto forma di frazione. Per esempio,
+<span class="math inline">\(\sqrt{2}\)</span>, <span class="math inline">\(\sqrt{3}\)</span> e <span class="math inline">\({\displaystyle \pi =3,141592\ldots}\)</span> sono
+numeri irrazionali.</p>
+</div>
+<div id="numeri-reali" class="section level3 unnumbered">
+<h3>Numeri reali</h3>
+<p>I punti della retta <span class="math inline">\(r\)</span> sono quindi “di più” dei numeri razionali. Per
+poter rappresentare tutti i punti della retta abbiamo dunque bisogno dei
+numeri <em>reali</em>. I numeri reali possono essere positivi, negativi o nulli
+e comprendono, come casi particolari, i numeri interi, i numeri
+razionali e i numeri irrazionali. Spesso in statisticac il numero dei
+decimali indica il grado di precisione della misurazione.</p>
+</div>
+</div>
+<div id="intervalli" class="section level2 unnumbered">
+<h2>Intervalli</h2>
+<p>Un intervallo si dice chiuso se gli estremi sono compresi
+nell’intervallo, aperto se gli estremi non sono compresi. Le
+caratteristiche degli intervalli sono riportate nella tabella seguente.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Intervallo</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">chiuso</td>
+<td><span class="math display">\[a, b\]</span></td>
+<td><span class="math inline">\(a \leq x \leq b\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">aperto</td>
+<td>(a, b)</td>
+<td><span class="math inline">\(a &lt; x &lt; b\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">chiuso a sinistra e aperto a destra</td>
+<td>[a, b)</td>
+<td><span class="math inline">\(a \leq x &lt; b\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">aperto a sinistra e chiuso a destra</td>
+<td>(a, b]</td>
+<td><span class="math inline">\(a &lt; x \leq b\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="cap:insiemi" class="section level2 unnumbered">
+<h2>Insiemi</h2>
+<p>Un insieme (o collezione, classe, gruppo, …) è un concetto primitivo,
+ovvero è un concetto che già possediamo. Georg Cantor l’ha definito nel
+modo seguente:</p>
+<blockquote>
+<p>un insieme è una collezione di oggetti, determinati e distinti, della
+nostra percezione o del nostro pensiero, concepiti come un tutto
+unico; tali oggetti si dicono elementi dell’insieme.</p>
+</blockquote>
+<p>Mentre non è rilevante la natura degli oggetti che costituiscono
+l’insieme, ciò che importa è distinguere se un dato oggetto appartenga o
+meno ad un insieme. Deve essere vera una delle due possibilità: il dato
+oggetto è un elemento dell’insieme considerato oppure non è elemento
+dell’insieme considerato. Due insiemi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> si dicono uguali se sono
+formati dagli stessi elementi, anche se disposti in ordine diverso:
+<span class="math inline">\(A=B\)</span>. Due insiemi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> si dicono diversi se non contengono gli
+stessi elementi: <span class="math inline">\(A \neq B\)</span>. Ad esempio, i seguenti insiemi sono uguali:
+<span class="math display">\[\{1, 2, 3\} = \{3, 1, 2\} = \{1, 3, 2\}= \{1, 1, 1, 2, 3, 3, 3\}.\]</span></p>
+<p>Gli insiemi sono denotati da una lettera maiuscola, mentre le lettere
+minuscole, di solito, designano gli elementi di un insieme. Per esempio,
+un generico insieme <span class="math inline">\(A\)</span> si indica con
+<span class="math display">\[A = \{a_1, a_2, \dots, a_n\}, \quad \text{con~} n &gt; 0.\]</span></p>
+<p>La scrittura <span class="math inline">\(a \in A\)</span> dice che <span class="math inline">\(a\)</span> è un elemento di <span class="math inline">\(A\)</span>. Per dire che
+<span class="math inline">\(b\)</span> non è un elemento di <span class="math inline">\(A\)</span> si scrive <span class="math inline">\(b \notin A.\)</span></p>
+<p>Per quegli insiemi i cui elementi soddisfano una certa proprietà che li
+caratterizza, tale proprietà può essere usata per descrivere più
+sinteticamente l’insieme:
+<span class="math display">\[A = \{x ~\vert~ \text{proprietà posseduta da~} x\},\]</span> che si legge
+come “<span class="math inline">\(A\)</span> è l’insieme degli elementi <span class="math inline">\(x\)</span> per cui è vera la proprietà
+indicata.” Per esempio, per indicare l’insieme <span class="math inline">\(A\)</span> delle coppie di
+numeri reali <span class="math inline">\((x,y)\)</span> che appartengono alla parabola <span class="math inline">\(y = x^2 + 1\)</span> si può
+scrivere: <span class="math display">\[A = \{(x,y) ~\vert~ y = x^2 + 1\}.\]</span></p>
+<p>Dati due insiemi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>, diremo che <span class="math inline">\(A\)</span> è un <em>sottoinsieme</em> di <span class="math inline">\(B\)</span> se
+e solo se tutti gli elementi di <span class="math inline">\(A\)</span> sono anche elementi di <span class="math inline">\(B\)</span>:
+<span class="math display">\[A \subseteq B \iff (\forall x \in A \Rightarrow x \in B).\]</span> Se esiste
+almeno un elemento di <span class="math inline">\(B\)</span> che non appartiene ad <span class="math inline">\(A\)</span> allora diremo che
+<span class="math inline">\(A\)</span> è un <em>sottoinsieme proprio</em> di <span class="math inline">\(B\)</span>:
+<span class="math display">\[A \subset B \iff (A \subseteq B, \exists~ x \in B ~\vert~ x \notin A).\]</span></p>
+<p>Un altro insieme, detto <em>insieme delle parti</em>, o insieme potenza, che si
+associa all’insieme <span class="math inline">\(A\)</span> è l’insieme di tutti i sottoinsiemi di <span class="math inline">\(A\)</span>,
+inclusi l’insieme vuoto e <span class="math inline">\(A\)</span> stesso. Per esempio, per l’insieme
+<span class="math inline">\(A = \{a, b, c\}\)</span>, l’insieme delle parti è: <span class="math display">\[\mathcal{P}(A) = \{
+\emptyset, \{a\}, \{b\}, \{c\},
+ \{a, b\}, \{a, c\}, \{c, b\},
+ \{a, b, c\}
+\}.\]</span></p>
+<div id="operazioni-tra-insiemi" class="section level3 unnumbered">
+<h3>Operazioni tra insiemi</h3>
+<p>Si definisce <em>intersezione</em> di <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> l’insieme <span class="math inline">\(A \cap B\)</span> di tutti
+gli elementi <span class="math inline">\(x\)</span> che appartengono ad <span class="math inline">\(A\)</span> e contemporaneamente a <span class="math inline">\(B\)</span>:
+<span class="math display">\[A \cap B = \{x ~\vert~ x \in A \land x \in B\}.\]</span></p>
+<p>Si definisce <em>unione</em> di <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> l’insieme <span class="math inline">\(A \cup B\)</span> di tutti gli
+elementi <span class="math inline">\(x\)</span> che appartengono ad <span class="math inline">\(A\)</span> o a <span class="math inline">\(B\)</span>, cioè
+<span class="math display">\[A \cup B = \{x ~\vert~ x \in A \lor x \in B\}.\]</span></p>
+<p><em>Differenza</em>. Si indica con <span class="math inline">\(A \setminus B\)</span> l’insieme degli elementi di
+<span class="math inline">\(A\)</span> che non appartengono a <span class="math inline">\(B\)</span>:
+<span class="math display">\[A \setminus B = \{x ~\vert~ x \in A \land x \notin B\}.\]</span></p>
+<p><em>Insieme complementare</em>. Nel caso che sia <span class="math inline">\(B \subseteq A\)</span>, l’insieme
+differenza <span class="math inline">\(A \setminus B\)</span> è detto insieme complementare di <span class="math inline">\(B\)</span> in <span class="math inline">\(A\)</span> e
+si indica con <span class="math inline">\(B^C\)</span>.</p>
+<p>Dato un insieme <span class="math inline">\(S\)</span>, una <em>partizione</em> di <span class="math inline">\(S\)</span> è una collezione di
+sottoinsiemi di <span class="math inline">\(S\)</span>, <span class="math inline">\(S_1, \dots, S_k\)</span>, tali che
+<span class="math display">\[S = S_1 \cup S_2 \cup \dots S_k\]</span> e
+<span class="math display">\[S_i \cap S_j, \quad \text{con~} i \neq j.\]</span></p>
+<p>La relazione tra unione, intersezione e insieme complementare è data
+dalle leggi di DeMorgan: <span class="math display">\[(A \cup B)^c = A^c \cap B^c,\]</span>
+<span class="math display">\[(A \cap B)^c = A^c \cup B^c.\]</span></p>
+</div>
+<div id="diagrammi-di-eulero-venn" class="section level3 unnumbered">
+<h3>Diagrammi di Eulero-Venn</h3>
+<p>In molte situazioni è utile servirsi dei cosiddetti diagrammi di
+Eulero-Venn<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> per rappresentare gli insiemi e verificare le proprietà
+delle operazioni tra insiemi (si veda la
+Figura <a href="appendice-a.html#fig:sets-venn-diagrams" reference-type="ref" reference="fig:sets-venn-diagrams">1</a>). In tale rappresentazione, gli
+insiemi sono individuati da regioni del piano delimitate da una curva
+chiusa. Nel caso di insiemi finiti, è possibile evidenziare
+esplicitamente alcuni elementi di un insieme mediante punti, quando si
+possono anche evidenziare tutti gli elementi degli insiemi considerati.</p>
+<div class="figure">
+<embed src="sets-venn_diagrams.pdf" id="fig:sets-venn-diagrams" style="width:100.0%" />
+<p class="caption">Diagrammi di Eulero-Venn. In tutte le figure <span class="math inline">\(S\)</span> è la regione
+delimitata dal rettangolo, <span class="math inline">\(L\)</span> è la regione all’interno del cerchio di
+sinistra e <span class="math inline">\(R\)</span> è la regione all’interno del cerchio di destra. La
+regione evidenziata mostra l’insieme indicato sotto ciascuna figura.</p>
+</div>
+<p>I diagrammi di Eulero-Venn che forniscono una dimostrazione delle leggi
+di DeMorgan sono forniti nella
+Figura <a href="appendice-a.html#fig:demorgan" reference-type="ref" reference="fig:demorgan">2</a>.</p>
+<div class="figure">
+<embed src="demorgan.pdf" id="fig:demorgan" style="width:100.0%" />
+<p class="caption">Dimostrazione delle leggi di DeMorgan.</p>
+</div>
+</div>
+<div id="sec:prod_cartesiano" class="section level3 unnumbered">
+<h3>Coppie ordinate e prodotto cartesiano</h3>
+<p>Una coppia ordinata <span class="math inline">\((x,y)\)</span> è l’insieme i cui elementi sono <span class="math inline">\(x \in A\)</span> e
+<span class="math inline">\(y \in B\)</span> e nella quale <span class="math inline">\(x\)</span> è la prima componente (o prima coordinata),
+<span class="math inline">\(y\)</span> la seconda. L’insieme di tutte le coppie ordinate costruite a
+partire dagli insiemi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> viene detto <em>prodotto cartesiano</em>:
+<span class="math display">\[A \times B = \{(x, y) ~\vert~ x \in A \land y \in B\}.\]</span> Ad esempio,
+sia <span class="math inline">\(A = \{1, 2, 3\}\)</span> e <span class="math inline">\(B = \{a, b\}\)</span>. Allora,
+<span class="math display">\[\{1, 2\} \times \{a, b, c\} = \{(1, a), (1, b), (1, c), (2, a), (2, b), (2, c)\}.\]</span></p>
+</div>
+<div id="cardinalità" class="section level3 unnumbered">
+<h3>Cardinalità</h3>
+<p>Si definisce <em>cardinalità</em> (o potenza) di un insieme finito il numero
+degli elementi dell’insieme. Viene indicata con <span class="math inline">\(\vert A\vert, \#(A)\)</span> o
+<span class="math inline">\(\text{c}(A)\)</span>.</p>
 
 </div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>I diagrammi di Venn sono così nominati in onore del matematico
+inglese del diciannovesimo secolo John Venn anche se Leibnitz e
+Eulero avevano già in precedenza utilizzato rappresentazioni simili.<a href="appendice-a.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
@@ -365,7 +606,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ccaudek/bookdown_psicometria/edit/master/70_simbologia.Rmd",
+"link": "https://github.com/ccaudek/bookdown_psicometria/edit/master/98_appendici.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -373,7 +614,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ccaudek/bookdown_psicometria/blob/master/70_simbologia.Rmd",
+"link": "https://github.com/ccaudek/bookdown_psicometria/blob/master/98_appendici.Rmd",
 "text": null
 },
 "download": null,

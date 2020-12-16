@@ -48,6 +48,8 @@ exr:urna5r2v
 eq:bayes1
 thm:theo-bayes
 eq:bayes2
+fig:sets-venn-diagrams
+fig:demorgan
 chapter:pacchetti
 chapter:terminologia
 metodi-e-procedure-della-psicologia
