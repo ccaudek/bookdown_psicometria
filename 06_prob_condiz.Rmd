@@ -1,5 +1,10 @@
 # Probabilità condizionata {#chapter:prob_cond}
 
+```{r, include = FALSE}
+source("_common.R")
+knitr::opts_chunk$set(fig.align="center")
+```
+
 L'attribuzione di una probabilità ad un evento è sempre condizionata
 dalle conoscenze che abbiamo a disposizione. Per un determinato stato di
 conoscenze, attribuiamo ad un dato evento una certa probabilità di

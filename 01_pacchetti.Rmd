@@ -1,3 +1,10 @@
+# (PART\*) Introduzione al linguaggio R {-}
+
+```{r, include = FALSE}
+source("_common.R")
+knitr::opts_chunk$set(fig.align="center")
+```
+
 # Pacchetti {#chapter:pacchetti}
 
 Riporto qui tutti i pacchetti che verranno usati in queste dispense.

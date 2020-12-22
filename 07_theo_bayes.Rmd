@@ -1,5 +1,10 @@
 # Il teorema di Bayes {#chapter:bayes_theo}
 
+```{r, include = FALSE}
+source("_common.R")
+knitr::opts_chunk$set(fig.align="center")
+```
+
 Il teorema di Bayes ha un ruolo centrale nella statistica Bayesiana,
 anche se viene utilizzato anche dall'approccio frequentista. Prima di
 esaminare il teorema di Bayes introdurremo una sua componente, ovvero il

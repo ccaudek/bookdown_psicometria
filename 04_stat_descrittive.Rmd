@@ -1,3 +1,10 @@
+# (PART\*) Descrizione {-}
+
+```{r, include = FALSE}
+source("_common.R")
+knitr::opts_chunk$set(fig.align="center")
+```
+
 # Statistica descrittiva {#chapter:descriptive-stats}
 
 Nel 1907 Francis Galton, cugino di Charles Darwin, matematico e

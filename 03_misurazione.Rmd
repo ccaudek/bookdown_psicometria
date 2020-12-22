@@ -1,5 +1,10 @@
 # La misurazione in psicologia {#chapter:misurazione}
 
+```{r, include = FALSE}
+source("_common.R")
+knitr::opts_chunk$set(fig.align="center")
+```
+
 Le osservazioni empiriche -- osservazioni sul campo, sondaggi o
 risultati di esperimenti -- forniscono il materiale che viene utilizzato
 in un'indagine statistica e sono chiamate *dati*. Quando parliamo di

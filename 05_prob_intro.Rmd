@@ -1,3 +1,10 @@
+# (PART\*) Elementiditeoriadellaprobabilità {-}
+
+```{r, include = FALSE}
+source("_common.R")
+knitr::opts_chunk$set(fig.align="center")
+```
+
 # Che cos'è la probabilità? {#chapter:prob_discreta}
 
 È normale fare delle congetture rispetto a ciò di cui non siamo sicuri.
