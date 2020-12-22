@@ -13,8 +13,8 @@ suppressPackageStartupMessages(library("tidybayes"))
 suppressPackageStartupMessages(library("datasauRus"))
 suppressPackageStartupMessages(library("RColorBrewer"))
 suppressPackageStartupMessages(library("rio"))
+suppressPackageStartupMessages(library("papaja"))
 library("patchwork")
-theme_set(theme_tidybayes() + panel_border())
 set.seed(12345)
 ```
 

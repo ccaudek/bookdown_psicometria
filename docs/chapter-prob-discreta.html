@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capitolo 5 Che cos’è la probabilità? | PSICOMETRIA</title>
-  <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici per gli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capitolo 5 Che cos’è la probabilità? | PSICOMETRIA" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici per gli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta property="og:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   <meta name="github-repo" content="ccaudek/bookdown_psicometria" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Capitolo 5 Che cos’è la probabilità? | PSICOMETRIA" />
   <meta name="twitter:site" content="@ccaudek" />
-  <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici per gli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   
 
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2020-12-16" />
+<meta name="date" content="2020-12-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="chapter-descriptive-stats.html"/>
 <link rel="next" href="chapter-prob-cond.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -434,63 +432,62 @@ rappresentare il grado di casualità che si osserva quando si lancia di
 un dado. Per ora ci limitiamo ad esaminare i risultati che vengono
 prodotti in questo modo e che sono illustrati nella
 figura <a href="chapter-prob-discreta.html#fig:demere">5.1</a>.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="chapter-prob-discreta.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Game A: Throw a fair die at most four times, and win if you get a six.</span></span>
-<span id="cb25-2"><a href="chapter-prob-discreta.html#cb25-2" aria-hidden="true" tabindex="-1"></a>experiment_a <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
-<span id="cb25-3"><a href="chapter-prob-discreta.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  rolls <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb25-4"><a href="chapter-prob-discreta.html#cb25-4" aria-hidden="true" tabindex="-1"></a>  condition <span class="ot">&lt;-</span> <span class="fu">sum</span>(rolls <span class="sc">==</span> <span class="dv">6</span>) <span class="sc">&gt;</span> <span class="dv">0</span></span>
-<span id="cb25-5"><a href="chapter-prob-discreta.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(condition)</span>
-<span id="cb25-6"><a href="chapter-prob-discreta.html#cb25-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb25-7"><a href="chapter-prob-discreta.html#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="chapter-prob-discreta.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Game B: Throw two fair dice at most twenty-four times, and win if you get a double-six.</span></span>
-<span id="cb25-9"><a href="chapter-prob-discreta.html#cb25-9" aria-hidden="true" tabindex="-1"></a>experiment_b <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
-<span id="cb25-10"><a href="chapter-prob-discreta.html#cb25-10" aria-hidden="true" tabindex="-1"></a>  first.die <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">24</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb25-11"><a href="chapter-prob-discreta.html#cb25-11" aria-hidden="true" tabindex="-1"></a>  second.die <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">24</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb25-12"><a href="chapter-prob-discreta.html#cb25-12" aria-hidden="true" tabindex="-1"></a>  condition <span class="ot">&lt;-</span> <span class="fu">sum</span>((first.die <span class="sc">==</span> second.die) <span class="sc">&amp;</span> (first.die <span class="sc">==</span> <span class="dv">6</span>)) <span class="sc">&gt;</span> <span class="dv">0</span></span>
-<span id="cb25-13"><a href="chapter-prob-discreta.html#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(condition)</span>
-<span id="cb25-14"><a href="chapter-prob-discreta.html#cb25-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb25-15"><a href="chapter-prob-discreta.html#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-16"><a href="chapter-prob-discreta.html#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co"># number of replications</span></span>
-<span id="cb25-17"><a href="chapter-prob-discreta.html#cb25-17" aria-hidden="true" tabindex="-1"></a>nrep <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
-<span id="cb25-18"><a href="chapter-prob-discreta.html#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Play game A nrep times. We get a vector of nrep elements. Eeach element of </span></span>
-<span id="cb25-19"><a href="chapter-prob-discreta.html#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="co"># of the simsA vector is the outcome obtained by playing game A once: TRUE if</span></span>
-<span id="cb25-20"><a href="chapter-prob-discreta.html#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="co"># the output is a win, FALSE if the output of the game is a loss. Remember than</span></span>
-<span id="cb25-21"><a href="chapter-prob-discreta.html#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="co"># TRUE = 1 and FALSE = 0.</span></span>
-<span id="cb25-22"><a href="chapter-prob-discreta.html#cb25-22" aria-hidden="true" tabindex="-1"></a>sims_a <span class="ot">&lt;-</span> <span class="fu">replicate</span>(nrep, <span class="fu">experiment_a</span>())</span>
-<span id="cb25-23"><a href="chapter-prob-discreta.html#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="co"># The proportion of wins in game A </span></span>
-<span id="cb25-24"><a href="chapter-prob-discreta.html#cb25-24" aria-hidden="true" tabindex="-1"></a>prop_wins_a <span class="ot">&lt;-</span> <span class="fu">sum</span>(sims_a)<span class="sc">/</span><span class="fu">length</span>(sims_a)</span>
-<span id="cb25-25"><a href="chapter-prob-discreta.html#cb25-25" aria-hidden="true" tabindex="-1"></a>prop_wins_a</span>
-<span id="cb25-26"><a href="chapter-prob-discreta.html#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5193</span></span>
-<span id="cb25-27"><a href="chapter-prob-discreta.html#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="co"># To plot the results, we compute the </span></span>
-<span id="cb25-28"><a href="chapter-prob-discreta.html#cb25-28" aria-hidden="true" tabindex="-1"></a>nwins_a <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(sims_a)</span>
-<span id="cb25-29"><a href="chapter-prob-discreta.html#cb25-29" aria-hidden="true" tabindex="-1"></a>ntrials <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>nrep</span>
-<span id="cb25-30"><a href="chapter-prob-discreta.html#cb25-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-31"><a href="chapter-prob-discreta.html#cb25-31" aria-hidden="true" tabindex="-1"></a>sims_b <span class="ot">&lt;-</span> <span class="fu">replicate</span>(nrep, <span class="fu">experiment_b</span>())</span>
-<span id="cb25-32"><a href="chapter-prob-discreta.html#cb25-32" aria-hidden="true" tabindex="-1"></a>prop_wins_b <span class="ot">&lt;-</span> <span class="fu">sum</span>(sims_b)<span class="sc">/</span><span class="fu">length</span>(sims_b) </span>
-<span id="cb25-33"><a href="chapter-prob-discreta.html#cb25-33" aria-hidden="true" tabindex="-1"></a>prop_wins_b</span>
-<span id="cb25-34"><a href="chapter-prob-discreta.html#cb25-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.493</span></span>
-<span id="cb25-35"><a href="chapter-prob-discreta.html#cb25-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-36"><a href="chapter-prob-discreta.html#cb25-36" aria-hidden="true" tabindex="-1"></a>nwins_b <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(sims_b)</span>
-<span id="cb25-37"><a href="chapter-prob-discreta.html#cb25-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-38"><a href="chapter-prob-discreta.html#cb25-38" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb25-39"><a href="chapter-prob-discreta.html#cb25-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(ntrials, ntrials), </span>
-<span id="cb25-40"><a href="chapter-prob-discreta.html#cb25-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">pwin =</span> <span class="fu">c</span>(nwins_a<span class="sc">/</span>ntrials, nwins_b<span class="sc">/</span>ntrials),</span>
-<span id="cb25-41"><a href="chapter-prob-discreta.html#cb25-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">game =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Scommessa A&quot;</span>, <span class="st">&quot;Scommessa B&quot;</span>), <span class="at">each =</span> nrep)</span>
-<span id="cb25-42"><a href="chapter-prob-discreta.html#cb25-42" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb25-43"><a href="chapter-prob-discreta.html#cb25-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-44"><a href="chapter-prob-discreta.html#cb25-44" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
-<span id="cb25-45"><a href="chapter-prob-discreta.html#cb25-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb25-46"><a href="chapter-prob-discreta.html#cb25-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> pwin, <span class="at">col =</span> game)</span>
-<span id="cb25-47"><a href="chapter-prob-discreta.html#cb25-47" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb25-48"><a href="chapter-prob-discreta.html#cb25-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
-<span id="cb25-49"><a href="chapter-prob-discreta.html#cb25-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb25-50"><a href="chapter-prob-discreta.html#cb25-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">200</span>, <span class="dv">1000</span>, <span class="dv">3000</span>,  <span class="dv">10000</span>)) <span class="sc">+</span></span>
-<span id="cb25-51"><a href="chapter-prob-discreta.html#cb25-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb25-52"><a href="chapter-prob-discreta.html#cb25-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb25-53"><a href="chapter-prob-discreta.html#cb25-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">&quot;Numero di ripetizioni del gioco di De Méré&quot;</span>, </span>
-<span id="cb25-54"><a href="chapter-prob-discreta.html#cb25-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">&quot;Proporzione di vincite&quot;</span>) <span class="sc">+</span></span>
-<span id="cb25-55"><a href="chapter-prob-discreta.html#cb25-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;gray80&quot;</span>, <span class="st">&quot;skyblue&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb25-56"><a href="chapter-prob-discreta.html#cb25-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:demere"></span>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="chapter-prob-discreta.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Game A: Throw a fair die at most four times, and win if you get a six.</span></span>
+<span id="cb52-2"><a href="chapter-prob-discreta.html#cb52-2" aria-hidden="true" tabindex="-1"></a>experiment_a <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
+<span id="cb52-3"><a href="chapter-prob-discreta.html#cb52-3" aria-hidden="true" tabindex="-1"></a>  rolls <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb52-4"><a href="chapter-prob-discreta.html#cb52-4" aria-hidden="true" tabindex="-1"></a>  condition <span class="ot">&lt;-</span> <span class="fu">sum</span>(rolls <span class="sc">==</span> <span class="dv">6</span>) <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb52-5"><a href="chapter-prob-discreta.html#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(condition)</span>
+<span id="cb52-6"><a href="chapter-prob-discreta.html#cb52-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-7"><a href="chapter-prob-discreta.html#cb52-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-8"><a href="chapter-prob-discreta.html#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Game B: Throw two fair dice at most twenty-four times, and win if you get a double-six.</span></span>
+<span id="cb52-9"><a href="chapter-prob-discreta.html#cb52-9" aria-hidden="true" tabindex="-1"></a>experiment_b <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
+<span id="cb52-10"><a href="chapter-prob-discreta.html#cb52-10" aria-hidden="true" tabindex="-1"></a>  first.die <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">24</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb52-11"><a href="chapter-prob-discreta.html#cb52-11" aria-hidden="true" tabindex="-1"></a>  second.die <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">24</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb52-12"><a href="chapter-prob-discreta.html#cb52-12" aria-hidden="true" tabindex="-1"></a>  condition <span class="ot">&lt;-</span> <span class="fu">sum</span>((first.die <span class="sc">==</span> second.die) <span class="sc">&amp;</span> (first.die <span class="sc">==</span> <span class="dv">6</span>)) <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb52-13"><a href="chapter-prob-discreta.html#cb52-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(condition)</span>
+<span id="cb52-14"><a href="chapter-prob-discreta.html#cb52-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-15"><a href="chapter-prob-discreta.html#cb52-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-16"><a href="chapter-prob-discreta.html#cb52-16" aria-hidden="true" tabindex="-1"></a><span class="co"># number of replications</span></span>
+<span id="cb52-17"><a href="chapter-prob-discreta.html#cb52-17" aria-hidden="true" tabindex="-1"></a>nrep <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
+<span id="cb52-18"><a href="chapter-prob-discreta.html#cb52-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Play game A nrep times. We get a vector of nrep elements. Eeach element of </span></span>
+<span id="cb52-19"><a href="chapter-prob-discreta.html#cb52-19" aria-hidden="true" tabindex="-1"></a><span class="co"># of the simsA vector is the outcome obtained by playing game A once: TRUE if</span></span>
+<span id="cb52-20"><a href="chapter-prob-discreta.html#cb52-20" aria-hidden="true" tabindex="-1"></a><span class="co"># the output is a win, FALSE if the output of the game is a loss. Remember than</span></span>
+<span id="cb52-21"><a href="chapter-prob-discreta.html#cb52-21" aria-hidden="true" tabindex="-1"></a><span class="co"># TRUE = 1 and FALSE = 0.</span></span>
+<span id="cb52-22"><a href="chapter-prob-discreta.html#cb52-22" aria-hidden="true" tabindex="-1"></a>sims_a <span class="ot">&lt;-</span> <span class="fu">replicate</span>(nrep, <span class="fu">experiment_a</span>())</span>
+<span id="cb52-23"><a href="chapter-prob-discreta.html#cb52-23" aria-hidden="true" tabindex="-1"></a><span class="co"># The proportion of wins in game A </span></span>
+<span id="cb52-24"><a href="chapter-prob-discreta.html#cb52-24" aria-hidden="true" tabindex="-1"></a>prop_wins_a <span class="ot">&lt;-</span> <span class="fu">sum</span>(sims_a)<span class="sc">/</span><span class="fu">length</span>(sims_a)</span>
+<span id="cb52-25"><a href="chapter-prob-discreta.html#cb52-25" aria-hidden="true" tabindex="-1"></a>prop_wins_a</span></code></pre></div>
+<pre><code>## [1] 0.5153</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="chapter-prob-discreta.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To plot the results, we compute the </span></span>
+<span id="cb54-2"><a href="chapter-prob-discreta.html#cb54-2" aria-hidden="true" tabindex="-1"></a>nwins_a <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(sims_a)</span>
+<span id="cb54-3"><a href="chapter-prob-discreta.html#cb54-3" aria-hidden="true" tabindex="-1"></a>ntrials <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>nrep</span>
+<span id="cb54-4"><a href="chapter-prob-discreta.html#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="chapter-prob-discreta.html#cb54-5" aria-hidden="true" tabindex="-1"></a>sims_b <span class="ot">&lt;-</span> <span class="fu">replicate</span>(nrep, <span class="fu">experiment_b</span>())</span>
+<span id="cb54-6"><a href="chapter-prob-discreta.html#cb54-6" aria-hidden="true" tabindex="-1"></a>prop_wins_b <span class="ot">&lt;-</span> <span class="fu">sum</span>(sims_b)<span class="sc">/</span><span class="fu">length</span>(sims_b) </span>
+<span id="cb54-7"><a href="chapter-prob-discreta.html#cb54-7" aria-hidden="true" tabindex="-1"></a>prop_wins_b</span></code></pre></div>
+<pre><code>## [1] 0.492</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="chapter-prob-discreta.html#cb56-1" aria-hidden="true" tabindex="-1"></a>nwins_b <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(sims_b)</span>
+<span id="cb56-2"><a href="chapter-prob-discreta.html#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="chapter-prob-discreta.html#cb56-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb56-4"><a href="chapter-prob-discreta.html#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(ntrials, ntrials), </span>
+<span id="cb56-5"><a href="chapter-prob-discreta.html#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pwin =</span> <span class="fu">c</span>(nwins_a<span class="sc">/</span>ntrials, nwins_b<span class="sc">/</span>ntrials),</span>
+<span id="cb56-6"><a href="chapter-prob-discreta.html#cb56-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">game =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Scommessa A&quot;</span>, <span class="st">&quot;Scommessa B&quot;</span>), <span class="at">each =</span> nrep)</span>
+<span id="cb56-7"><a href="chapter-prob-discreta.html#cb56-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb56-8"><a href="chapter-prob-discreta.html#cb56-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-9"><a href="chapter-prob-discreta.html#cb56-9" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb56-10"><a href="chapter-prob-discreta.html#cb56-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb56-11"><a href="chapter-prob-discreta.html#cb56-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> pwin, <span class="at">col =</span> game)</span>
+<span id="cb56-12"><a href="chapter-prob-discreta.html#cb56-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb56-13"><a href="chapter-prob-discreta.html#cb56-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb56-14"><a href="chapter-prob-discreta.html#cb56-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb56-15"><a href="chapter-prob-discreta.html#cb56-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">200</span>, <span class="dv">1000</span>, <span class="dv">3000</span>,  <span class="dv">10000</span>)) <span class="sc">+</span></span>
+<span id="cb56-16"><a href="chapter-prob-discreta.html#cb56-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb56-17"><a href="chapter-prob-discreta.html#cb56-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb56-18"><a href="chapter-prob-discreta.html#cb56-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">&quot;Numero di ripetizioni del gioco di De Méré&quot;</span>, </span>
+<span id="cb56-19"><a href="chapter-prob-discreta.html#cb56-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">&quot;Proporzione di vincite&quot;</span>) <span class="sc">+</span></span>
+<span id="cb56-20"><a href="chapter-prob-discreta.html#cb56-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;gray80&quot;</span>, <span class="st">&quot;skyblue&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb56-21"><a href="chapter-prob-discreta.html#cb56-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:demere"></span>
 <img src="Psicometria_files/figure-html/demere-1.png" alt="Risultati ottenuti da 10000 ripetizioni delle due scommesse di De Méré." width="80%" />
 <p class="caption">
 Figura 5.1: Risultati ottenuti da 10000 ripetizioni delle due scommesse di De Méré.
@@ -646,11 +643,11 @@ ripetizioni dell’esperimento casuale. È molto facile utilizzare   per
 calcolare una tale probabilità. Per esempio, se vogliamo calcolare la
 probabilità di ottenere 3 nel lancio di un dado equilibrato, possiamo
 eseguire la seguente simulazione.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="chapter-prob-discreta.html#cb26-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
-<span id="cb26-2"><a href="chapter-prob-discreta.html#cb26-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb26-3"><a href="chapter-prob-discreta.html#cb26-3" aria-hidden="true" tabindex="-1"></a>x_01 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb26-4"><a href="chapter-prob-discreta.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x_01)</span>
-<span id="cb26-5"><a href="chapter-prob-discreta.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.1676</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="chapter-prob-discreta.html#cb57-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
+<span id="cb57-2"><a href="chapter-prob-discreta.html#cb57-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb57-3"><a href="chapter-prob-discreta.html#cb57-3" aria-hidden="true" tabindex="-1"></a>x_01 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb57-4"><a href="chapter-prob-discreta.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x_01)</span></code></pre></div>
+<pre><code>## [1] 0.16616</code></pre>
 <p>Il risultato è ovviamente molto simile a <span class="math inline">\(1/6\)</span>.</p>
 </div>
 <div id="approccio-bayesiano" class="section level3" number="5.5.2">

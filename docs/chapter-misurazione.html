@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capitolo 3 La misurazione in psicologia | PSICOMETRIA</title>
-  <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici per gli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capitolo 3 La misurazione in psicologia | PSICOMETRIA" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici per gli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta property="og:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   <meta name="github-repo" content="ccaudek/bookdown_psicometria" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Capitolo 3 La misurazione in psicologia | PSICOMETRIA" />
   <meta name="twitter:site" content="@ccaudek" />
-  <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici per gli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   
 
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2020-12-16" />
+<meta name="date" content="2020-12-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="chapter-terminologia.html"/>
 <link rel="next" href="chapter-descriptive-stats.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -516,8 +514,8 @@ invece il livello più alto.</p>
 <p>Passando da un livello di misurazione ad uno
 più alto aumenta il numero di operazioni aritmetiche che possono essere
 compiute sui valori della scala, come indicato nella figura seguente.</p>
-<div class="figure" style="text-align: center"><span id="fig:tikz-ex"></span>
-<img src="Psicometria_files/figure-html/tikz-ex-1.png" alt="I quattro livelli di scala secondo @stevens46." width="70%" />
+<div class="figure"><span id="fig:tikz-ex"></span>
+<img src="Psicometria_files/figure-html/tikz-ex-1.png" alt="I quattro livelli di scala secondo @stevens46." width="672" />
 <p class="caption">
 Figura 3.1: I quattro livelli di scala secondo <span class="citation"><a href="bibliografia.html#ref-stevens46" role="doc-biblioref">Stevens</a> (<a href="bibliografia.html#ref-stevens46" role="doc-biblioref">1946</a>)</span>.
 </p>
@@ -544,8 +542,8 @@ raggiungere un livello di precisione qualsiasi. In pratica, a un certo
 punto dobbiamo arrotondare i numeri, rendendo tecnicamente la variabile
 discreta. In variabili veramente discrete, tuttavia, non è possibile
 aumentare a piacimento il livello di precisione della misurazione.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
-<img src="Psicometria_files/figure-html/unnamed-chunk-9-1.png" alt="Le variabili continue possono assumere un insieme continuo di valori, al contrario delle variabili discrete, per le quali l'insieme dei possibili valori ha cardinalità al più numerabile." width="70%" />
+<div class="figure"><span id="fig:unnamed-chunk-5"></span>
+<img src="Psicometria_files/figure-html/unnamed-chunk-5-1.png" alt="Le variabili continue possono assumere un insieme continuo di valori, al contrario delle variabili discrete, per le quali l'insieme dei possibili valori ha cardinalità al più numerabile." width="672" />
 <p class="caption">
 Figura 3.2: Le variabili continue possono assumere un insieme continuo di valori, al contrario delle variabili discrete, per le quali l’insieme dei possibili valori ha cardinalità al più numerabile.
 </p>
@@ -599,8 +597,8 @@ ottenuti sono concordanti, cioè differiscono in maniera irrilevante
 tra loro.</li>
 </ul>
 <p>La metafora del tiro a bersaglio illustra la relazione tra precisione e accuratezza.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
-<img src="Psicometria_files/figure-html/unnamed-chunk-10-1.png" alt="Illustrazione dei concetti di precisione e accuratezza: (a) bassa precisione e bassa accuratezza, (b) bassa precisione e alta accuratezza, (c) alta precisione e bassa accuratezza, (d) alta precisione e alta accuratezza." width="70%" />
+<div class="figure"><span id="fig:unnamed-chunk-6"></span>
+<img src="Psicometria_files/figure-html/unnamed-chunk-6-1.png" alt="Illustrazione dei concetti di precisione e accuratezza: (a) bassa precisione e bassa accuratezza, (b) bassa precisione e alta accuratezza, (c) alta precisione e bassa accuratezza, (d) alta precisione e alta accuratezza." width="672" />
 <p class="caption">
 Figura 3.3: Illustrazione dei concetti di precisione e accuratezza: (a) bassa precisione e bassa accuratezza, (b) bassa precisione e alta accuratezza, (c) alta precisione e bassa accuratezza, (d) alta precisione e alta accuratezza.
 </p>

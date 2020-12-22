@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capitolo 7 Il teorema di Bayes | PSICOMETRIA</title>
-  <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici per gli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capitolo 7 Il teorema di Bayes | PSICOMETRIA" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici per gli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta property="og:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   <meta name="github-repo" content="ccaudek/bookdown_psicometria" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Capitolo 7 Il teorema di Bayes | PSICOMETRIA" />
   <meta name="twitter:site" content="@ccaudek" />
-  <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici per gli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   
 
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2020-12-16" />
+<meta name="date" content="2020-12-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="chapter-prob-cond.html"/>
 <link rel="next" href="chapter-distr-congiunta.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -346,7 +344,7 @@ P(E) = P(E \mid A_1) P(A_1) + P (E \mid A_2) P(A_2) + P(E \mid A_3) P(A_3).
 costituito da tutti gli eventi elementari in <span class="math inline">\(E \cap A_1\)</span>, <span class="math inline">\(E \cap A_2\)</span>
 e <span class="math inline">\(E \cap A_3\)</span>, allora la probabilità <span class="math inline">\(P(E)\)</span> è data dalla somma delle
 probabilità di queti tre eventi. Ciò è illustrato nella figura seguente.</p>
-<p><img src="Psicometria_files/figure-html/tikz-prob-tot-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="Psicometria_files/figure-html/tikz-prob-tot-1.png" width="672" /></p>
 
 <div class="exercise">
 <p><span id="exr:tre-urne75r25b" class="exercise"><strong>Exercizio 7.1  </strong></span>Si considerino tre urne, ciascuna delle quali contiene 100 palline:</p>
@@ -421,7 +419,7 @@ ipotesi fatte che se si verifica <span class="math inline">\(E\)</span> deve anc
 almeno uno degli eventi <span class="math inline">\(A_1\)</span> e <span class="math inline">\(A_2\)</span>. Supponendo che si sia verificato
 l’evento <span class="math inline">\(E\)</span>, ci chiediamo: qual è la probabilità che si sia verificato
 <span class="math inline">\(A_1\)</span> piuttosto che <span class="math inline">\(A_2\)</span>?</p>
-<p><img src="Psicometria_files/figure-html/unnamed-chunk-42-1.png" width="45%" style="display: block; margin: auto;" /></p>
+<p><img src="Psicometria_files/figure-html/unnamed-chunk-34-1.png" width="45%" /></p>
 <p>Per rispondere alla domanda precedente scriviamo:
 <span class="math display">\[\begin{equation}
 \begin{aligned}

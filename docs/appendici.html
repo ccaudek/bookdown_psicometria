@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Appendici | PSICOMETRIA</title>
-  <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici per gli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Appendici | PSICOMETRIA" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici per gli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta property="og:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   <meta name="github-repo" content="ccaudek/bookdown_psicometria" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Appendici | PSICOMETRIA" />
   <meta name="twitter:site" content="@ccaudek" />
-  <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici per gli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   
 
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2020-12-16" />
+<meta name="date" content="2020-12-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="chapter-distr-congiunta.html"/>
 <link rel="next" href="bibliografia.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -362,23 +360,23 @@ numeri binari per rappresentare se qualcosa è vero o falso, o presente o
 assente.</p>
 <p>Supponiamo di chiedere a 10 studenti “Ti piacciono i mirtilli?” Poniamo
 che le risposte siano le seguenti:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="appendici.html#cb27-1" aria-hidden="true" tabindex="-1"></a>opinion <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;No&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;No&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;No&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;Yes&#39;</span>)</span>
-<span id="cb27-2"><a href="appendici.html#cb27-2" aria-hidden="true" tabindex="-1"></a>opinion</span>
-<span id="cb27-3"><a href="appendici.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;Yes&quot; &quot;No&quot;  &quot;Yes&quot; &quot;No&quot;  &quot;Yes&quot; &quot;No&quot;  &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="appendici.html#cb59-1" aria-hidden="true" tabindex="-1"></a>opinion <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;No&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;No&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;No&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;Yes&#39;</span>,<span class="st">&#39;Yes&#39;</span>)</span>
+<span id="cb59-2"><a href="appendici.html#cb59-2" aria-hidden="true" tabindex="-1"></a>opinion</span></code></pre></div>
+<pre><code>##  [1] &quot;Yes&quot; &quot;No&quot;  &quot;Yes&quot; &quot;No&quot;  &quot;Yes&quot; &quot;No&quot;  &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot;</code></pre>
 <p>Tali risposte possono essere ricodificate nei termini di valori di
 verità, ovvero, vero e falso, generalmente denotati rispettivamente come
 1 e 0. In tale ricodifica può essere effettuata mediante l’operatore
 <code>==</code> che è un test per l’uguaglianza e restituisce il valore logico VERO
 se le due cose sono uguali e FALSO se non lo sono:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="appendici.html#cb28-1" aria-hidden="true" tabindex="-1"></a>opinion <span class="ot">&lt;-</span> opinion <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span></span>
-<span id="cb28-2"><a href="appendici.html#cb28-2" aria-hidden="true" tabindex="-1"></a>opinion</span>
-<span id="cb28-3"><a href="appendici.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="appendici.html#cb61-1" aria-hidden="true" tabindex="-1"></a>opinion <span class="ot">&lt;-</span> opinion <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span></span>
+<span id="cb61-2"><a href="appendici.html#cb61-2" aria-hidden="true" tabindex="-1"></a>opinion</span></code></pre></div>
+<pre><code>##  [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE</code></pre>
 <p>R considera i valori di verità e i numeri binari in modo equivalente, con
 TRUE uguale a 1 e FALSE uguale a zero. Di conseguenza, possiamo
 effettuare operazioni algebriche sui valori logici VERO e FALSO.
 Nell’esempio, possiamo sommare i valori di verità, dividere per 10</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="appendici.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(opinion) <span class="sc">/</span> <span class="fu">length</span>(opinion)</span>
-<span id="cb29-2"><a href="appendici.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.7</span></span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="appendici.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(opinion) <span class="sc">/</span> <span class="fu">length</span>(opinion)</span></code></pre></div>
+<pre><code>## [1] 0.7</code></pre>
 <p>e concludere che 7 risposte su 10 sono positive.</p>
 </div>
 <div id="numeri-interi" class="section level3 unnumbered">
@@ -546,7 +544,7 @@ delle operazioni tra insiemi (si veda la figura <a href="appendici.html#fig:set
 I diagrammi di Venn sono così nominati in onore del matematico inglese del diciannovesimo secolo John Venn anche se Leibnitz e Eulero avevano già in precedenza utilizzato rappresentazioni simili.
 In tale rappresentazione, gli insiemi sono individuati da regioni del piano delimitate da una curva chiusa. Nel caso di insiemi finiti, è possibile evidenziare esplicitamente alcuni elementi di un insieme mediante punti, quando si
 possono anche evidenziare tutti gli elementi degli insiemi considerati.</p>
-<div class="figure" style="text-align: center"><span id="fig:sets-venn-diagrams"></span>
+<div class="figure"><span id="fig:sets-venn-diagrams"></span>
 <img src="images/sets-venn-diagrams.pdf" alt="In tutte le figure $S$ è la regione delimitata dal rettangolo, $L$ è la regione all'interno del cerchio di sinistra e $R$ è la regione all'interno del cerchio di destra. La regione evidenziata mostra l'insieme indicato sotto ciascuna figura." width="100%" />
 <p class="caption">
 Figura 8.1: In tutte le figure <span class="math inline">\(S\)</span> è la regione delimitata dal rettangolo, <span class="math inline">\(L\)</span> è la regione all’interno del cerchio di sinistra e <span class="math inline">\(R\)</span> è la regione all’interno del cerchio di destra. La regione evidenziata mostra l’insieme indicato sotto ciascuna figura.
@@ -554,7 +552,7 @@ Figura 8.1: In tutte le figure <span class="math inline">\(S\)</span> è la regi
 </div>
 <p>I diagrammi di Eulero-Venn che forniscono una dimostrazione delle leggi
 di DeMorgan sono forniti nella figura <a href="appendici.html#fig:demorgan">8.2</a>.</p>
-<div class="figure" style="text-align: center"><span id="fig:demorgan"></span>
+<div class="figure"><span id="fig:demorgan"></span>
 <img src="images/demorgan.pdf" alt="Dimostrazione delle leggi di DeMorgan." width="100%" />
 <p class="caption">
 Figura 8.2: Dimostrazione delle leggi di DeMorgan.

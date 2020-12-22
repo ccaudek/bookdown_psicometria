@@ -268,7 +268,8 @@ p1 <- bysubj %>%
   labs(
     x = "BDI-II",
     y = "Densità di frequenza"
-  )
+  ) +
+  theme_apa()
 p1
 ```
 
@@ -293,7 +294,8 @@ p2 <- bysubj %>%
   labs(
     x = "BDI-II",
     y = "Densità di frequanza"
-  )
+  ) +
+  theme_apa()
 p2
 ```
 
@@ -335,7 +337,8 @@ p3 <- bysubj %>%
   labs(
     x = "BDI-II",
     y = "Densità di frequenza"
-  )
+  ) +
+  theme_apa()
 p3
 ```
 
@@ -490,7 +493,8 @@ bysubj %>%
   labs(
     x = "Gruppo",
     y = "BDI-II"
-  )
+  ) +
+  theme_apa()
 ```
 
 La figura \@ref(fig:violin-zetsche) fornisce due rappresentazioni grafiche che possono essere utilizzate per rispondere a questa domanda.
@@ -512,7 +516,8 @@ p1 <- bysubj %>%
     x = "Gruppo",
     y = "BDI-II"
     #, caption = "Fonte: Zetsche, Buerkner, & Renneberg (2020)"
-  )
+  ) +
+  theme_apa()
 
 p2 <- bysubj %>% 
   ggplot(aes(x=group, y=bdi)) + 
@@ -522,7 +527,8 @@ p2 <- bysubj %>%
     x = "Gruppo",
     y = "BDI-II"
     #, caption = "Fonte: Zetsche, Buerkner, & Renneberg (2020)"
-  )
+  ) +
+  theme_apa()
 
 p1 + p2
 ```
@@ -865,12 +871,13 @@ Il diagramma di dispersione è la rappresentazione grafica delle coppie
 di punti individuati dalle variabili BDI-II e CES-D, e si ottiene
 ponendo, ad esempio, i valori BDI-II sull'asse delle ascisse e quelli
 del CES-D sull'asse delle ordinate. In tale grafico, fornito dalla
-figura , cascun punto corrisponde ad un
+figura \@ref(fig:zetsche-scatter), cascun punto corrisponde ad un
 individuo del quale, nel caso presente, conosciamo il livello di
-depressione misurato dalle due scale psicometriche. A tale grafico sono
-state aggiunte le funzioni *marginali* (ovvero, che si riferiscono a
-ciascuna variabile considerata singolarmente) di densità empirica che
-abbiamo già incontrato in precedenza.
+depressione misurato dalle due scale psicometriche. 
+<!-- A tale grafico sono -->
+<!-- state aggiunte le funzioni *marginali* (ovvero, che si riferiscono a -->
+<!-- ciascuna variabile considerata singolarmente) di densità empirica che -->
+<!-- abbiamo già incontrato in precedenza. -->
 
 ```{r}
 bysubj <- df %>% 
@@ -883,7 +890,7 @@ bysubj <- df %>%
   ungroup()
 ```
 
-```{r, zetsche-scatter, out.width="95%", fig.cap = "Associazione tra le variabili BDI-II e CES-D nel campione esaminato da @zetsche_future_2019. Ai margini del diagramma a dispersione sono rappresentate le funzioni di densità empirica delle due variabili."}
+```{r, zetsche-scatter, out.width="95%", fig.cap = "Associazione tra le variabili BDI-II e CES-D nello studio di @zetsche_future_2019. In rosso sono rappresentate le osservazioni del gruppo di controllo; in blu quelle dei pazienti."}
 m_cesd <- mean(bysubj$cesd)
 m_bdi <- mean(bysubj$bdi)
 FONT_SIZE <- 10
@@ -898,21 +905,19 @@ p <- bysubj %>%
   geom_text(x=0, y=46, label="IV", color = "gray", size=FONT_SIZE) +
   geom_text(x=18, y=46, label="III", color = "gray", size=FONT_SIZE) +
   geom_text(x=18, y=16, label="II", color = "gray", size=FONT_SIZE) +
-  theme(legend.position="none") +
   labs(
     x = "BDI-II",
     y = "CESD"
-  )
-
-p2 <- ggMarginal(p, type="density")
-p2
+  ) +
+  theme_apa() +
+  theme(legend.position="none") 
+p
 ```
-
 
 Dalla figura \@ref(fig:zetsche-scatter) possiamo vedere che i dati mostrano
 una certa tendenza a disporsi attorno ad una retta -- nel gergo
-statistico, questo fatto viene espresso dicendo che i punteggi BDI-II
-tendono ad essere linearmente associati ai punteggi CES-D. È ovvio,
+statistico, questo fatto viene espresso dicendo che i punteggi CES-D 
+tendono ad essere linearmente associati ai punteggi BDI-II. È ovvio,
 tuttavia, che tale relazione lineare è lungi dall'essere perfetta -- se
 fosse perfetta, tutti i punti del diagramma a dispersione si
 disporrebbero esattamente lungo una retta.
@@ -920,7 +925,7 @@ disporrebbero esattamente lungo una retta.
 Il problema che ci poniamo è quello di trovare un indice numerico che
 descriva di quanto la nube di punti si discosta da una perfetta
 relazione lineare tra le due variabili. Per risolvere tale problema
-dobbiamo specificare un indice statistico che descrive la direzione e la
+dobbiamo specificare un indice statistico che descriva la direzione e la
 forza della relazione lineare tra le due variabili. Ci sono vari indici
 statistici che possiamo utilizzare a questo scopo.
 
