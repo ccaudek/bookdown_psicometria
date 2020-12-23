@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capitolo 7 Il teorema di Bayes | PSICOMETRIA</title>
+  <title>Capitolo 8 Il teorema di Bayes | PSICOMETRIA</title>
   <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capitolo 7 Il teorema di Bayes | PSICOMETRIA" />
+  <meta property="og:title" content="Capitolo 8 Il teorema di Bayes | PSICOMETRIA" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ccaudek/bookdown_psicometria" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capitolo 7 Il teorema di Bayes | PSICOMETRIA" />
+  <meta name="twitter:title" content="Capitolo 8 Il teorema di Bayes | PSICOMETRIA" />
   <meta name="twitter:site" content="@ccaudek" />
   <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   
@@ -24,13 +24,13 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2020-12-22" />
+<meta name="date" content="2020-12-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon" />
 <link rel="prev" href="chapter-prob-cond.html"/>
 <link rel="next" href="chapter-distr-congiunta.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
@@ -138,134 +138,148 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#perché-tanta-statistica-in-psicologia"><i class="fa fa-check"></i>Perché tanta statistica in psicologia?</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#come-studiare"><i class="fa fa-check"></i>Come studiare?</a></li>
 </ul></li>
+<li class="part"><span><b>Introduzione al linguaggio R</b></span></li>
 <li class="chapter" data-level="1" data-path="chapter-pacchetti.html"><a href="chapter-pacchetti.html"><i class="fa fa-check"></i><b>1</b> Pacchetti</a></li>
-<li class="chapter" data-level="2" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html"><i class="fa fa-check"></i><b>2</b> Terminologia</a>
+<li class="chapter" data-level="2" data-path="cha-install.html"><a href="cha-install.html"><i class="fa fa-check"></i><b>2</b> Per cominciare</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#metodi-e-procedure-della-psicologia"><i class="fa fa-check"></i><b>2.1</b> Metodi e procedure della psicologia</a></li>
-<li class="chapter" data-level="2.2" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#variabili-e-costanti"><i class="fa fa-check"></i><b>2.2</b> Variabili e costanti</a></li>
-<li class="chapter" data-level="2.3" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#variabili-indipendenti-e-variabili-dipendenti"><i class="fa fa-check"></i><b>2.3</b> Variabili indipendenti e variabili dipendenti</a></li>
-<li class="chapter" data-level="2.4" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#la-matrice-dei-dati"><i class="fa fa-check"></i><b>2.4</b> La matrice dei dati</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="2.1" data-path="cha-install.html"><a href="cha-install.html#installare-r-e-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installare R e RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="cha-install.html"><a href="cha-install.html#utilizzare-rstudio-per-semplificare-il-lavoro"><i class="fa fa-check"></i><b>2.2</b> Utilizzare RStudio per semplificare il lavoro</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="cha-install.html"><a href="cha-install.html#eseguire-il-codice"><i class="fa fa-check"></i><b>2.2.1</b> Eseguire il codice</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html"><i class="fa fa-check"></i><b>3</b> La misurazione in psicologia</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#le-scale-di-misura"><i class="fa fa-check"></i><b>3.1</b> Le scale di misura</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-nominale"><i class="fa fa-check"></i><b>3.1.1</b> Scala nominale</a></li>
-<li class="chapter" data-level="3.1.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-ordinale"><i class="fa fa-check"></i><b>3.1.2</b> Scala ordinale</a></li>
-<li class="chapter" data-level="3.1.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-ad-intervalli"><i class="fa fa-check"></i><b>3.1.3</b> Scala ad intervalli</a></li>
-<li class="chapter" data-level="3.1.4" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-di-rapporti"><i class="fa fa-check"></i><b>3.1.4</b> Scala di rapporti</a></li>
-<li class="chapter" data-level="3.1.5" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#gerarchia-dei-livelli-di-scala-di-misura"><i class="fa fa-check"></i><b>3.1.5</b> Gerarchia dei livelli di scala di misura</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:DiscreteVsContinuous"><i class="fa fa-check"></i><b>3.2</b> Variabili discrete vs. variabili continue</a></li>
-<li class="chapter" data-level="3.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#perché-alcune-misurazioni-sono-migliori-di-altre"><i class="fa fa-check"></i><b>3.3</b> Perché alcune misurazioni sono migliori di altre?</a>
+<li class="part"><span><b>Misurazione</b></span></li>
+<li class="chapter" data-level="3" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html"><i class="fa fa-check"></i><b>3</b> Terminologia</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:accuratezza_precisione"><i class="fa fa-check"></i><b>3.3.1</b> Tipologie di errori</a></li>
-<li class="chapter" data-level="3.3.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:reliability"><i class="fa fa-check"></i><b>3.3.2</b> Attendibilità</a></li>
-<li class="chapter" data-level="3.3.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:validity"><i class="fa fa-check"></i><b>3.3.3</b> Validità</a></li>
+<li class="chapter" data-level="3.1" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#metodi-e-procedure-della-psicologia"><i class="fa fa-check"></i><b>3.1</b> Metodi e procedure della psicologia</a></li>
+<li class="chapter" data-level="3.2" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#variabili-e-costanti"><i class="fa fa-check"></i><b>3.2</b> Variabili e costanti</a></li>
+<li class="chapter" data-level="3.3" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#variabili-indipendenti-e-variabili-dipendenti"><i class="fa fa-check"></i><b>3.3</b> Variabili indipendenti e variabili dipendenti</a></li>
+<li class="chapter" data-level="3.4" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#la-matrice-dei-dati"><i class="fa fa-check"></i><b>3.4</b> La matrice dei dati</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+<li class="chapter" data-level="4" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html"><i class="fa fa-check"></i><b>4</b> La misurazione in psicologia</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#le-scale-di-misura"><i class="fa fa-check"></i><b>4.1</b> Le scale di misura</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-nominale"><i class="fa fa-check"></i><b>4.1.1</b> Scala nominale</a></li>
+<li class="chapter" data-level="4.1.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-ordinale"><i class="fa fa-check"></i><b>4.1.2</b> Scala ordinale</a></li>
+<li class="chapter" data-level="4.1.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-ad-intervalli"><i class="fa fa-check"></i><b>4.1.3</b> Scala ad intervalli</a></li>
+<li class="chapter" data-level="4.1.4" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-di-rapporti"><i class="fa fa-check"></i><b>4.1.4</b> Scala di rapporti</a></li>
+<li class="chapter" data-level="4.1.5" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#gerarchia-dei-livelli-di-scala-di-misura"><i class="fa fa-check"></i><b>4.1.5</b> Gerarchia dei livelli di scala di misura</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html"><i class="fa fa-check"></i><b>4</b> Statistica descrittiva</a>
+<li class="chapter" data-level="4.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:DiscreteVsContinuous"><i class="fa fa-check"></i><b>4.2</b> Variabili discrete vs. variabili continue</a></li>
+<li class="chapter" data-level="4.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#perché-alcune-misurazioni-sono-migliori-di-altre"><i class="fa fa-check"></i><b>4.3</b> Perché alcune misurazioni sono migliori di altre?</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#perché-riassumere-i-dati"><i class="fa fa-check"></i><b>4.1</b> Perché riassumere i dati?</a></li>
-<li class="chapter" data-level="4.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#sec:distr_freq"><i class="fa fa-check"></i><b>4.2</b> Distribuzioni di frequenze</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r"><i class="fa fa-check"></i><b>4.2.1</b> Esercizio con R</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#istogramma"><i class="fa fa-check"></i><b>4.3</b> Istogramma</a>
-<ul>
-<li class="chapter" data-level="4.3.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r-1"><i class="fa fa-check"></i><b>4.3.1</b> Esercizio con R</a></li>
-</ul></li>
-<li class="chapter" data-level="4.4" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#funzione-di-densità-empirica"><i class="fa fa-check"></i><b>4.4</b> Funzione di densità empirica</a>
-<ul>
-<li class="chapter" data-level="4.4.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r-2"><i class="fa fa-check"></i><b>4.4.1</b> Esercizio con R</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#forma-di-una-distribuzione"><i class="fa fa-check"></i><b>4.5</b> Forma di una distribuzione</a></li>
-<li class="chapter" data-level="4.6" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-posizione"><i class="fa fa-check"></i><b>4.6</b> Indici di posizione</a>
-<ul>
-<li class="chapter" data-level="4.6.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#quantili"><i class="fa fa-check"></i><b>4.6.1</b> Quantili</a></li>
-<li class="chapter" data-level="4.6.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#box-plot"><i class="fa fa-check"></i><b>4.6.2</b> Box-plot</a></li>
-<li class="chapter" data-level="4.6.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#leccellenza-grafica"><i class="fa fa-check"></i><b>4.6.3</b> L’eccellenza grafica</a></li>
-</ul></li>
-<li class="chapter" data-level="4.7" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-tendenza-centrale"><i class="fa fa-check"></i><b>4.7</b> Indici di tendenza centrale</a>
-<ul>
-<li class="chapter" data-level="4.7.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#media"><i class="fa fa-check"></i><b>4.7.1</b> Media</a></li>
-<li class="chapter" data-level="4.7.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#media-spuntata"><i class="fa fa-check"></i><b>4.7.2</b> Media spuntata</a></li>
-<li class="chapter" data-level="4.7.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#moda-e-mediana"><i class="fa fa-check"></i><b>4.7.3</b> Moda e mediana</a></li>
-</ul></li>
-<li class="chapter" data-level="4.8" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-dispersione"><i class="fa fa-check"></i><b>4.8</b> Indici di dispersione</a>
-<ul>
-<li class="chapter" data-level="4.8.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-basati-sullordinamento-dei-dati"><i class="fa fa-check"></i><b>4.8.1</b> Indici basati sull’ordinamento dei dati</a></li>
-<li class="chapter" data-level="4.8.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#scostamento-medio-semplice-dalla-media"><i class="fa fa-check"></i><b>4.8.2</b> Scostamento medio semplice dalla media</a></li>
-<li class="chapter" data-level="4.8.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#varianza"><i class="fa fa-check"></i><b>4.8.3</b> Varianza</a></li>
-<li class="chapter" data-level="4.8.4" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#deviazione-standard"><i class="fa fa-check"></i><b>4.8.4</b> Deviazione standard</a></li>
-<li class="chapter" data-level="4.8.5" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-variabilità-relativi"><i class="fa fa-check"></i><b>4.8.5</b> Indici di variabilità relativi</a></li>
-</ul></li>
-<li class="chapter" data-level="4.9" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#le-relazioni-tra-variabili"><i class="fa fa-check"></i><b>4.9</b> Le relazioni tra variabili</a>
-<ul>
-<li class="chapter" data-level="4.9.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#diagramma-a-dispersione"><i class="fa fa-check"></i><b>4.9.1</b> Diagramma a dispersione</a></li>
-<li class="chapter" data-level="4.9.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#covarianza"><i class="fa fa-check"></i><b>4.9.2</b> Covarianza</a></li>
-<li class="chapter" data-level="4.9.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione"><i class="fa fa-check"></i><b>4.9.3</b> Correlazione</a></li>
-</ul></li>
-<li class="chapter" data-level="4.10" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-e-causazione"><i class="fa fa-check"></i><b>4.10</b> Correlazione e causazione</a>
-<ul>
-<li class="chapter" data-level="4.10.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#usi-della-correlazione"><i class="fa fa-check"></i><b>4.10.1</b> Usi della correlazione</a></li>
-<li class="chapter" data-level="4.10.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-di-spearman"><i class="fa fa-check"></i><b>4.10.2</b> Correlazione di Spearman</a></li>
-<li class="chapter" data-level="4.10.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-nulla"><i class="fa fa-check"></i><b>4.10.3</b> Correlazione nulla</a></li>
+<li class="chapter" data-level="4.3.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:accuratezza_precisione"><i class="fa fa-check"></i><b>4.3.1</b> Tipologie di errori</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:reliability"><i class="fa fa-check"></i><b>4.3.2</b> Attendibilità</a></li>
+<li class="chapter" data-level="4.3.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:validity"><i class="fa fa-check"></i><b>4.3.3</b> Validità</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html"><i class="fa fa-check"></i><b>5</b> Che cos’è la probabilità?</a>
+<li class="part"><span><b>Descrizione</b></span></li>
+<li class="chapter" data-level="5" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html"><i class="fa fa-check"></i><b>5</b> Statistica descrittiva</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-naturale"><i class="fa fa-check"></i><b>5.1</b> Probabilità nel linguaggio naturale</a></li>
-<li class="chapter" data-level="5.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-scientifico"><i class="fa fa-check"></i><b>5.2</b> Probabilità nel linguaggio scientifico</a></li>
-<li class="chapter" data-level="5.3" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#terminologia"><i class="fa fa-check"></i><b>5.3</b> Terminologia</a></li>
-<li class="chapter" data-level="5.4" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#le-diverse-definizioni-della-probabilità"><i class="fa fa-check"></i><b>5.4</b> Le diverse definizioni della probabilità</a>
+<li class="chapter" data-level="5.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#perché-riassumere-i-dati"><i class="fa fa-check"></i><b>5.1</b> Perché riassumere i dati?</a></li>
+<li class="chapter" data-level="5.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#sec:distr_freq"><i class="fa fa-check"></i><b>5.2</b> Distribuzioni di frequenze</a>
 <ul>
-<li class="chapter" data-level="5.4.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#sec:def_ing_prob"><i class="fa fa-check"></i><b>5.4.1</b> Una definizione “ingenua” della probabilità</a></li>
-<li class="chapter" data-level="5.4.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#una-definizione-non-ingenua-della-probabilità"><i class="fa fa-check"></i><b>5.4.2</b> Una definizione “non ingenua” della probabilità</a></li>
+<li class="chapter" data-level="5.2.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r"><i class="fa fa-check"></i><b>5.2.1</b> Esercizio con R</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#assegnare-le-probabilità-agli-eventi"><i class="fa fa-check"></i><b>5.5</b> Assegnare le probabilità agli eventi</a>
+<li class="chapter" data-level="5.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#istogramma"><i class="fa fa-check"></i><b>5.3</b> Istogramma</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-frequentista"><i class="fa fa-check"></i><b>5.5.1</b> Approccio frequentista</a></li>
-<li class="chapter" data-level="5.5.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-bayesiano"><i class="fa fa-check"></i><b>5.5.2</b> Approccio Bayesiano</a></li>
+<li class="chapter" data-level="5.3.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r-1"><i class="fa fa-check"></i><b>5.3.1</b> Esercizio con R</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#proprietà-elementari-della-probabilità"><i class="fa fa-check"></i><b>5.6</b> Proprietà elementari della probabilità</a></li>
-<li class="chapter" data-level="5.7" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#variabili-aleatorie"><i class="fa fa-check"></i><b>5.7</b> Variabili aleatorie</a>
+<li class="chapter" data-level="5.4" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#funzione-di-densità-empirica"><i class="fa fa-check"></i><b>5.4</b> Funzione di densità empirica</a>
 <ul>
-<li class="chapter" data-level="5.7.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#a-cosa-servono-le-variabili-aleatorie"><i class="fa fa-check"></i><b>5.7.1</b> A cosa servono le variabili aleatorie?</a></li>
-<li class="chapter" data-level="5.7.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#funzione-di-massa-di-probabilità"><i class="fa fa-check"></i><b>5.7.2</b> Funzione di massa di probabilità</a></li>
+<li class="chapter" data-level="5.4.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r-2"><i class="fa fa-check"></i><b>5.4.1</b> Esercizio con R</a></li>
 </ul></li>
-<li class="chapter" data-level="5.8" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#notazione"><i class="fa fa-check"></i><b>5.8</b> Notazione</a></li>
+<li class="chapter" data-level="5.5" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#forma-di-una-distribuzione"><i class="fa fa-check"></i><b>5.5</b> Forma di una distribuzione</a></li>
+<li class="chapter" data-level="5.6" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-posizione"><i class="fa fa-check"></i><b>5.6</b> Indici di posizione</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#quantili"><i class="fa fa-check"></i><b>5.6.1</b> Quantili</a></li>
+<li class="chapter" data-level="5.6.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#box-plot"><i class="fa fa-check"></i><b>5.6.2</b> Box-plot</a></li>
+<li class="chapter" data-level="5.6.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#leccellenza-grafica"><i class="fa fa-check"></i><b>5.6.3</b> L’eccellenza grafica</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-tendenza-centrale"><i class="fa fa-check"></i><b>5.7</b> Indici di tendenza centrale</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#media"><i class="fa fa-check"></i><b>5.7.1</b> Media</a></li>
+<li class="chapter" data-level="5.7.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#media-spuntata"><i class="fa fa-check"></i><b>5.7.2</b> Media spuntata</a></li>
+<li class="chapter" data-level="5.7.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#moda-e-mediana"><i class="fa fa-check"></i><b>5.7.3</b> Moda e mediana</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-dispersione"><i class="fa fa-check"></i><b>5.8</b> Indici di dispersione</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-basati-sullordinamento-dei-dati"><i class="fa fa-check"></i><b>5.8.1</b> Indici basati sull’ordinamento dei dati</a></li>
+<li class="chapter" data-level="5.8.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#scostamento-medio-semplice-dalla-media"><i class="fa fa-check"></i><b>5.8.2</b> Scostamento medio semplice dalla media</a></li>
+<li class="chapter" data-level="5.8.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#varianza"><i class="fa fa-check"></i><b>5.8.3</b> Varianza</a></li>
+<li class="chapter" data-level="5.8.4" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#deviazione-standard"><i class="fa fa-check"></i><b>5.8.4</b> Deviazione standard</a></li>
+<li class="chapter" data-level="5.8.5" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-variabilità-relativi"><i class="fa fa-check"></i><b>5.8.5</b> Indici di variabilità relativi</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#le-relazioni-tra-variabili"><i class="fa fa-check"></i><b>5.9</b> Le relazioni tra variabili</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#diagramma-a-dispersione"><i class="fa fa-check"></i><b>5.9.1</b> Diagramma a dispersione</a></li>
+<li class="chapter" data-level="5.9.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#covarianza"><i class="fa fa-check"></i><b>5.9.2</b> Covarianza</a></li>
+<li class="chapter" data-level="5.9.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione"><i class="fa fa-check"></i><b>5.9.3</b> Correlazione</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-e-causazione"><i class="fa fa-check"></i><b>5.10</b> Correlazione e causazione</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#usi-della-correlazione"><i class="fa fa-check"></i><b>5.10.1</b> Usi della correlazione</a></li>
+<li class="chapter" data-level="5.10.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-di-spearman"><i class="fa fa-check"></i><b>5.10.2</b> Correlazione di Spearman</a></li>
+<li class="chapter" data-level="5.10.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-nulla"><i class="fa fa-check"></i><b>5.10.3</b> Correlazione nulla</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html"><i class="fa fa-check"></i><b>6</b> Probabilità condizionata</a>
+<li class="part"><span><b>Elementi di teoria della probabilità</b></span></li>
+<li class="chapter" data-level="6" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html"><i class="fa fa-check"></i><b>6</b> Che cos’è la probabilità?</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#sec:prob_cond"><i class="fa fa-check"></i><b>6.1</b> Probabilità condizionata su altri eventi</a>
+<li class="chapter" data-level="6.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-naturale"><i class="fa fa-check"></i><b>6.1</b> Probabilità nel linguaggio naturale</a></li>
+<li class="chapter" data-level="6.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-scientifico"><i class="fa fa-check"></i><b>6.2</b> Probabilità nel linguaggio scientifico</a></li>
+<li class="chapter" data-level="6.3" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#terminologia"><i class="fa fa-check"></i><b>6.3</b> Terminologia</a></li>
+<li class="chapter" data-level="6.4" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#le-diverse-definizioni-della-probabilità"><i class="fa fa-check"></i><b>6.4</b> Le diverse definizioni della probabilità</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#la-fallacia-del-pubblico-ministero"><i class="fa fa-check"></i><b>6.1.1</b> La fallacia del pubblico ministero</a></li>
+<li class="chapter" data-level="6.4.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#sec:def_ing_prob"><i class="fa fa-check"></i><b>6.4.1</b> Una definizione “ingenua” della probabilità</a></li>
+<li class="chapter" data-level="6.4.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#una-definizione-non-ingenua-della-probabilità"><i class="fa fa-check"></i><b>6.4.2</b> Una definizione “non ingenua” della probabilità</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#legge-della-probabilità-composta"><i class="fa fa-check"></i><b>6.2</b> Legge della probabilità composta</a></li>
-<li class="chapter" data-level="6.3" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#lindipendendenza-stocastica"><i class="fa fa-check"></i><b>6.3</b> L’indipendendenza stocastica</a></li>
+<li class="chapter" data-level="6.5" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#assegnare-le-probabilità-agli-eventi"><i class="fa fa-check"></i><b>6.5</b> Assegnare le probabilità agli eventi</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-frequentista"><i class="fa fa-check"></i><b>6.5.1</b> Approccio frequentista</a></li>
+<li class="chapter" data-level="6.5.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-bayesiano"><i class="fa fa-check"></i><b>6.5.2</b> Approccio Bayesiano</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#proprietà-elementari-della-probabilità"><i class="fa fa-check"></i><b>6.6</b> Proprietà elementari della probabilità</a></li>
+<li class="chapter" data-level="6.7" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#variabili-aleatorie"><i class="fa fa-check"></i><b>6.7</b> Variabili aleatorie</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#a-cosa-servono-le-variabili-aleatorie"><i class="fa fa-check"></i><b>6.7.1</b> A cosa servono le variabili aleatorie?</a></li>
+<li class="chapter" data-level="6.7.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#funzione-di-massa-di-probabilità"><i class="fa fa-check"></i><b>6.7.2</b> Funzione di massa di probabilità</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#notazione"><i class="fa fa-check"></i><b>6.8</b> Notazione</a></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html"><i class="fa fa-check"></i><b>7</b> Il teorema di Bayes</a>
+<li class="chapter" data-level="7" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html"><i class="fa fa-check"></i><b>7</b> Probabilità condizionata</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:tot_prob_theorem"><i class="fa fa-check"></i><b>7.1</b> Il teorema della probabilità totale</a></li>
-<li class="chapter" data-level="7.2" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:bayes_theorem"><i class="fa fa-check"></i><b>7.2</b> Il teorema della probabilità delle cause</a>
+<li class="chapter" data-level="7.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#sec:prob_cond"><i class="fa fa-check"></i><b>7.1</b> Probabilità condizionata su altri eventi</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#aggiornamento-bayesiano"><i class="fa fa-check"></i><b>7.2.1</b> Aggiornamento Bayesiano</a></li>
+<li class="chapter" data-level="7.1.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#la-fallacia-del-pubblico-ministero"><i class="fa fa-check"></i><b>7.1.1</b> La fallacia del pubblico ministero</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#legge-della-probabilità-composta"><i class="fa fa-check"></i><b>7.2</b> Legge della probabilità composta</a></li>
+<li class="chapter" data-level="7.3" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#lindipendendenza-stocastica"><i class="fa fa-check"></i><b>7.3</b> L’indipendendenza stocastica</a></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html"><i class="fa fa-check"></i><b>8</b> Il teorema di Bayes</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:tot_prob_theorem"><i class="fa fa-check"></i><b>8.1</b> Il teorema della probabilità totale</a></li>
+<li class="chapter" data-level="8.2" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:bayes_theorem"><i class="fa fa-check"></i><b>8.2</b> Il teorema della probabilità delle cause</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#aggiornamento-bayesiano"><i class="fa fa-check"></i><b>8.2.1</b> Aggiornamento Bayesiano</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html"><i class="fa fa-check"></i><b>8</b> Probabilità congiunta</a>
+<li class="chapter" data-level="9" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html"><i class="fa fa-check"></i><b>9</b> Probabilità congiunta</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzione-di-probabilità-congiunta"><i class="fa fa-check"></i><b>8.1</b> Funzione di probabilità congiunta</a>
+<li class="chapter" data-level="9.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzione-di-probabilità-congiunta"><i class="fa fa-check"></i><b>9.1</b> Funzione di probabilità congiunta</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#proprietà"><i class="fa fa-check"></i><b>8.1.1</b> Proprietà</a></li>
-<li class="chapter" data-level="8.1.2" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#eventi"><i class="fa fa-check"></i><b>8.1.2</b> Eventi</a></li>
-<li class="chapter" data-level="8.1.3" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzioni-di-probabilità-marginali"><i class="fa fa-check"></i><b>8.1.3</b> Funzioni di probabilità marginali</a></li>
-<li class="chapter" data-level="8.1.4" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#indipendenza-stocastica"><i class="fa fa-check"></i><b>8.1.4</b> Indipendenza stocastica</a></li>
+<li class="chapter" data-level="9.1.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#proprietà"><i class="fa fa-check"></i><b>9.1.1</b> Proprietà</a></li>
+<li class="chapter" data-level="9.1.2" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#eventi"><i class="fa fa-check"></i><b>9.1.2</b> Eventi</a></li>
+<li class="chapter" data-level="9.1.3" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzioni-di-probabilità-marginali"><i class="fa fa-check"></i><b>9.1.3</b> Funzioni di probabilità marginali</a></li>
+<li class="chapter" data-level="9.1.4" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#indipendenza-stocastica"><i class="fa fa-check"></i><b>9.1.4</b> Indipendenza stocastica</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
@@ -310,16 +324,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chapter:bayes_theo" class="section level1" number="7">
-<h1><span class="header-section-number">Capitolo 7</span> Il teorema di Bayes</h1>
+<div id="chapter:bayes_theo" class="section level1" number="8">
+<h1><span class="header-section-number">Capitolo 8</span> Il teorema di Bayes</h1>
 <p>Il teorema di Bayes ha un ruolo centrale nella statistica Bayesiana,
 anche se viene utilizzato anche dall’approccio frequentista. Prima di
 esaminare il teorema di Bayes introdurremo una sua componente, ovvero il
 teorema della probabilità totale.</p>
-<div id="sec:tot_prob_theorem" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Il teorema della probabilità totale</h2>
+<div id="sec:tot_prob_theorem" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Il teorema della probabilità totale</h2>
 <p>Il teorema della probabilità totale fa uso della legge della probabilità
-composta <a href="chapter-prob-discreta.html#eq:probcomposte">(5.1)</a> per calcolare le probabilità di casi più
+composta <a href="chapter-prob-discreta.html#eq:probcomposte">(6.1)</a> per calcolare le probabilità di casi più
 complessi di quelli considerati fino ad ora. La notazione sembra
 complessa, ma l’idea sottostante è semplice. Discutiamo qui il teorema
 della probabilità totale considerando il caso di una partizione dello
@@ -328,26 +342,26 @@ situazione al caso di una partizione in un qualunque numero di
 sottoinsiemi.</p>
 
 <div class="theorem">
-<span id="thm:theo-prob-tot" class="theorem"><strong>Teorema 7.1  </strong></span>Sia <span class="math inline">\(\{A_1, A_2, A_3\}\)</span> una partizione dello spazio campionario
+<span id="thm:theo-prob-tot" class="theorem"><strong>Teorema 8.1  </strong></span>Sia <span class="math inline">\(\{A_1, A_2, A_3\}\)</span> una partizione dello spazio campionario
 <span class="math inline">\(\Omega\)</span>. Se <span class="math inline">\(E\)</span> è un qualunque altro evento, allora:
 <span class="math display" id="eq:prob-total-1a">\[\begin{equation}
 P(E) = P(E \cap A_1) + P(E \cap A_2) + P(E \cap A_3) \notag
-\tag{7.1}
+\tag{8.1}
 \end{equation}\]</span>
 ovvero
 <span class="math display" id="eq:prob-total-1b">\[\begin{equation}
 P(E) = P(E \mid A_1) P(A_1) + P (E \mid A_2) P(A_2) + P(E \mid A_3) P(A_3).
-\tag{7.2}
+\tag{8.2}
 \end{equation}\]</span>
 </div>
 <p>Il teorema della probabilità totale afferma che, se l’evento <span class="math inline">\(E\)</span> è
 costituito da tutti gli eventi elementari in <span class="math inline">\(E \cap A_1\)</span>, <span class="math inline">\(E \cap A_2\)</span>
 e <span class="math inline">\(E \cap A_3\)</span>, allora la probabilità <span class="math inline">\(P(E)\)</span> è data dalla somma delle
 probabilità di queti tre eventi. Ciò è illustrato nella figura seguente.</p>
-<p><img src="Psicometria_files/figure-html/tikz-prob-tot-1.png" width="672" /></p>
+<p><img src="Psicometria_files/figure-html/tikz-prob-tot-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 <div class="exercise">
-<p><span id="exr:tre-urne75r25b" class="exercise"><strong>Exercizio 7.1  </strong></span>Si considerino tre urne, ciascuna delle quali contiene 100 palline:</p>
+<p><span id="exr:tre-urne75r25b" class="exercise"><strong>Exercizio 8.1  </strong></span>Si considerino tre urne, ciascuna delle quali contiene 100 palline:</p>
 <ul>
 <li>Urna 1: 75 palline rosse e 25 palline blu,</li>
 <li>Urna 2: 60 palline rosse e 40 palline blu,</li>
@@ -377,7 +391,7 @@ P(R) &amp;= P(R \mid U_1)P(U_1)+P(R \mid U_2)P(U_2)+P(R \mid U_3)P(U_3)\notag\\
 </div>
 
 <div class="exercise">
-<span id="exr:urna5r2v" class="exercise"><strong>Exercizio 7.2  </strong></span>Consideriamo un’urna che contiene 5 palline rosse e 2 palline verdi. Due
+<span id="exr:urna5r2v" class="exercise"><strong>Exercizio 8.2  </strong></span>Consideriamo un’urna che contiene 5 palline rosse e 2 palline verdi. Due
 palline vengono estratte, una dopo l’altra. Vogliamo sapere la
 probabilità dell’evento “la seconda pallina estratta è rossa.”
 </div>
@@ -389,7 +403,7 @@ pallina estratta è verde,” <span class="math inline">\(R_2\)</span> l’event
 rossa” e <span class="math inline">\(V_2\)</span> l’evento “la seconda pallina estratta è verde.” Dobbiamo
 trovare <span class="math inline">\(P(R_2)\)</span> e possiamo risolvere il problema usando il teorema
 della probabilità
-totale <a href="chapter-bayes-theo.html#eq:prob-total-1b">(7.2)</a>:</p>
+totale <a href="chapter-bayes-theo.html#eq:prob-total-1b">(8.2)</a>:</p>
 <span class="math display">\[\begin{equation}
 \begin{aligned}
 P(R_2) &amp;= P(R_2 \mid R_1) P(R_1) + P(R_2 \mid V_1)P(V_1)\notag\\
@@ -406,8 +420,8 @@ una pallina rossa è uguale a 5/6. La probabilità di una pallina verde
 nella prima estrazione è 2/7.
 </div>
 </div>
-<div id="sec:bayes_theorem" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Il teorema della probabilità delle cause</h2>
+<div id="sec:bayes_theorem" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Il teorema della probabilità delle cause</h2>
 <p>Il teorema di Bayes rappresenta uno dei fondamenti della teoria della
 probabilità e della statistica. Lo presentiamo qui considerando prima un
 caso specifico per poi descriverlo nella sua forma più generale.</p>
@@ -419,7 +433,7 @@ ipotesi fatte che se si verifica <span class="math inline">\(E\)</span> deve anc
 almeno uno degli eventi <span class="math inline">\(A_1\)</span> e <span class="math inline">\(A_2\)</span>. Supponendo che si sia verificato
 l’evento <span class="math inline">\(E\)</span>, ci chiediamo: qual è la probabilità che si sia verificato
 <span class="math inline">\(A_1\)</span> piuttosto che <span class="math inline">\(A_2\)</span>?</p>
-<p><img src="Psicometria_files/figure-html/unnamed-chunk-34-1.png" width="45%" /></p>
+<p><img src="Psicometria_files/figure-html/unnamed-chunk-43-1.png" width="45%" style="display: block; margin: auto;" /></p>
 <p>Per rispondere alla domanda precedente scriviamo:
 <span class="math display">\[\begin{equation}
 \begin{aligned}
@@ -438,24 +452,24 @@ P(E) &amp;= P(E \cap A_1) + P(E \cap A_2)\notag\\
 Sostituendo il risultato precedente nella formula della probabilità condizionata <span class="math inline">\(P(A_1 \mid E)\)</span> otteniamo:
 <span class="math display" id="eq:bayes1">\[\begin{equation}
 P(A_1 \mid E) = \frac{P(E \mid A_1)P(A_1)}{P(E \mid A_1)P(A_1) + P(E \mid A_2)P(A_2)}.
-\tag{7.3}
+\tag{8.3}
 \end{equation}\]</span>
-La <a href="chapter-bayes-theo.html#eq:bayes1">(7.3)</a> si generalizza facilmente al caso di più di due eventi disgiunti, come indicato di seguito.</p>
+La <a href="chapter-bayes-theo.html#eq:bayes1">(8.3)</a> si generalizza facilmente al caso di più di due eventi disgiunti, come indicato di seguito.</p>
 
 <div class="theorem">
-<span id="thm:theo-bayes" class="theorem"><strong>Teorema 7.2  (Teorema di Bayes)  </strong></span>Siano <span class="math inline">\(A_1\)</span>, <span class="math inline">\(A_2,\)</span> …, <span class="math inline">\(A_n\)</span> <span class="math inline">\(n\)</span> eventi disgiunti con <span class="math inline">\(P(A_i) &gt; 0\)</span> e
+<span id="thm:theo-bayes" class="theorem"><strong>Teorema 8.2  (Teorema di Bayes)  </strong></span>Siano <span class="math inline">\(A_1\)</span>, <span class="math inline">\(A_2,\)</span> …, <span class="math inline">\(A_n\)</span> <span class="math inline">\(n\)</span> eventi disgiunti con <span class="math inline">\(P(A_i) &gt; 0\)</span> e
 tali che <span class="math inline">\(\bigcup_{i=1}^{n} A_i = \Omega\)</span>. Per l’evento
 <span class="math inline">\(E \subset \Omega\)</span> con <span class="math inline">\(P(E) &gt; 0\)</span>, abbiamo
 <span class="math display" id="eq:bayes2">\[\begin{equation}
 P(A_j \mid E) = \frac{P(E \mid A_j)P(A_j)}{\sum_{i=1}^{n}P(E \mid A_i)P(A_i)}.
-\tag{7.4}
+\tag{8.4}
 \end{equation}\]</span>
 </div>
-<p>La formula <a href="chapter-bayes-theo.html#eq:bayes2">(7.4)</a> prende il nome di <em>Teorema di Bayes</em> e mostra che
+<p>La formula <a href="chapter-bayes-theo.html#eq:bayes2">(8.4)</a> prende il nome di <em>Teorema di Bayes</em> e mostra che
 la conoscenza del verificarsi dell’evento <span class="math inline">\(E\)</span> modifica la probabilità
 che abbiamo attribuito all’evento <span class="math inline">\(A_j\)</span>.</p>
-<div id="aggiornamento-bayesiano" class="section level3" number="7.2.1">
-<h3><span class="header-section-number">7.2.1</span> Aggiornamento Bayesiano</h3>
+<div id="aggiornamento-bayesiano" class="section level3" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Aggiornamento Bayesiano</h3>
 <p>Consideriamo ora un’altra applicazione del teorema di Bayes che ci fa
 capire come l’applicazione di questo teorema ci consente di modificare
 una credenza a priori in maniera dinamica, via via che nuove evidenze
@@ -611,7 +625,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ccaudek/bookdown_psicometria/edit/master/07_theo_bayes.Rmd",
+"link": "https://github.com/ccaudek/bookdown_psicometria/edit/master/17_theo_bayes.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -619,7 +633,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ccaudek/bookdown_psicometria/blob/master/07_theo_bayes.Rmd",
+"link": "https://github.com/ccaudek/bookdown_psicometria/blob/master/17_theo_bayes.Rmd",
 "text": null
 },
 "download": null,

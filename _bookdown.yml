@@ -29,13 +29,14 @@ language:
 rmd_files: [
   "index.rmd",
   "01_pacchetti.Rmd",
-  "02_terminologia.Rmd",
-  "03_misurazione.Rmd",
-  "04_stat_descrittive.Rmd",
-  # "05_prob_intro.Rmd",
-  # "06_prob_condiz.Rmd",
-  # "07_theo_bayes.Rmd",
-  # "08_prob_congiunta.Rmd",
-  # "98_appendici.Rmd",
+  "02_installazione.Rmd",
+  "12_terminologia.Rmd",
+  "13_misurazione.Rmd",
+  "14_stat_descrittive.Rmd",
+  "15_prob_intro.Rmd",
+  "16_prob_condiz.Rmd",
+  "17_theo_bayes.Rmd",
+  "18_prob_congiunta.Rmd",
+  "98_appendici.Rmd",
   "99_References.Rmd"
 ]
