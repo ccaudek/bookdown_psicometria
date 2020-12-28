@@ -30,6 +30,7 @@ rmd_files: [
   "index.rmd",
   "01_pacchetti.Rmd",
   "02_installazione.Rmd",
+  "03_R_sintassi.Rmd",
   "12_terminologia.Rmd",
   "13_misurazione.Rmd",
   "14_stat_descrittive.Rmd",

@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitolo 3 Sintassi di base | PSICOMETRIA</title>
+  <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitolo 3 Sintassi di base | PSICOMETRIA" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta name="github-repo" content="ccaudek/bookdown_psicometria" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitolo 3 Sintassi di base | PSICOMETRIA" />
+  <meta name="twitter:site" content="@ccaudek" />
+  <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  
+
+<meta name="author" content="Corrado Caudek" />
+
+
+<meta name="date" content="2020-12-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="cha-install.html"/>
+<link rel="next" href="chapter-terminologia.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A.A. 2020/2021</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefazione</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#perché-tanta-statistica-in-psicologia"><i class="fa fa-check"></i>Perché tanta statistica in psicologia?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#come-studiare"><i class="fa fa-check"></i>Come studiare?</a></li>
+</ul></li>
+<li class="part"><span><b>Introduzione al linguaggio R</b></span></li>
+<li class="chapter" data-level="1" data-path="chapter-pacchetti.html"><a href="chapter-pacchetti.html"><i class="fa fa-check"></i><b>1</b> Pacchetti</a></li>
+<li class="chapter" data-level="2" data-path="cha-install.html"><a href="cha-install.html"><i class="fa fa-check"></i><b>2</b> Per cominciare</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="2.1" data-path="cha-install.html"><a href="cha-install.html#installare-r-e-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installare R e RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="cha-install.html"><a href="cha-install.html#utilizzare-rstudio-per-semplificare-il-lavoro"><i class="fa fa-check"></i><b>2.2</b> Utilizzare RStudio per semplificare il lavoro</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="cha-install.html"><a href="cha-install.html#eseguire-il-codice"><i class="fa fa-check"></i><b>2.2.1</b> Eseguire il codice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html"><i class="fa fa-check"></i><b>3</b> Sintassi di base</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="3.1" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#utilizzare-la-console-r-come-calcolatrice"><i class="fa fa-check"></i><b>3.1</b> Utilizzare la console R come calcolatrice</a></li>
+<li class="chapter" data-level="3.2" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#le-parentesi"><i class="fa fa-check"></i><b>3.2</b> Le parentesi</a></li>
+<li class="chapter" data-level="3.3" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#i-nomi-degli-oggetti"><i class="fa fa-check"></i><b>3.3</b> I nomi degli oggetti</a></li>
+<li class="chapter" data-level="3.4" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#permanenza-dei-dati-e-rimozione-di-oggetti"><i class="fa fa-check"></i><b>3.4</b> Permanenza dei dati e rimozione di oggetti</a></li>
+<li class="chapter" data-level="3.5" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#chiudere-r"><i class="fa fa-check"></i><b>3.5</b> Chiudere R</a></li>
+<li class="chapter" data-level="3.6" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#sec:editor"><i class="fa fa-check"></i><b>3.6</b> Creare ed eseguire uno script R con un editore</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#commentare-il-codice"><i class="fa fa-check"></i><b>3.6.1</b> Commentare il codice</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#sec:change_dir"><i class="fa fa-check"></i><b>3.7</b> Cambiare la cartella di lavoro</a></li>
+<li class="chapter" data-level="3.8" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#loggetto-base-di-il-vettore"><i class="fa fa-check"></i><b>3.8</b> L’oggetto base di : il vettore</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#operazioni-vettorializzate"><i class="fa fa-check"></i><b>3.8.1</b> Operazioni vettorializzate</a></li>
+<li class="chapter" data-level="3.8.2" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#vettori-aritmetici"><i class="fa fa-check"></i><b>3.8.2</b> Vettori aritmetici</a></li>
+<li class="chapter" data-level="3.8.3" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#generazione-di-sequenze-regolari"><i class="fa fa-check"></i><b>3.8.3</b> Generazione di sequenze regolari</a></li>
+<li class="chapter" data-level="3.8.4" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#sec:gen_rand_numbers"><i class="fa fa-check"></i><b>3.8.4</b> Generazione di numeri casuali</a></li>
+<li class="chapter" data-level="3.8.5" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#vettori-logici"><i class="fa fa-check"></i><b>3.8.5</b> Vettori logici</a></li>
+<li class="chapter" data-level="3.8.6" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#dati-mancanti"><i class="fa fa-check"></i><b>3.8.6</b> Dati mancanti</a></li>
+<li class="chapter" data-level="3.8.7" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#vettori-di-caratteri-e-fattori"><i class="fa fa-check"></i><b>3.8.7</b> Vettori di caratteri e fattori</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#cap:sintassi_funzioni"><i class="fa fa-check"></i><b>3.9</b> Funzioni</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#scrivere-proprie-funzioni"><i class="fa fa-check"></i><b>3.9.1</b> Scrivere proprie funzioni</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#pacchetti"><i class="fa fa-check"></i><b>3.10</b> Pacchetti</a>
+<ul>
+<li class="chapter" data-level="3.10.1" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#istallazione-e-upgrade-dei-pacchetti"><i class="fa fa-check"></i><b>3.10.1</b> Istallazione e upgrade dei pacchetti</a></li>
+<li class="chapter" data-level="3.10.2" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#caricare-un-pacchetto-in-r"><i class="fa fa-check"></i><b>3.10.2</b> Caricare un pacchetto in R</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>Misurazione</b></span></li>
+<li class="chapter" data-level="4" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html"><i class="fa fa-check"></i><b>4</b> Terminologia</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#metodi-e-procedure-della-psicologia"><i class="fa fa-check"></i><b>4.1</b> Metodi e procedure della psicologia</a></li>
+<li class="chapter" data-level="4.2" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#variabili-e-costanti"><i class="fa fa-check"></i><b>4.2</b> Variabili e costanti</a></li>
+<li class="chapter" data-level="4.3" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#variabili-indipendenti-e-variabili-dipendenti"><i class="fa fa-check"></i><b>4.3</b> Variabili indipendenti e variabili dipendenti</a></li>
+<li class="chapter" data-level="4.4" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#la-matrice-dei-dati"><i class="fa fa-check"></i><b>4.4</b> La matrice dei dati</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html"><i class="fa fa-check"></i><b>5</b> La misurazione in psicologia</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#le-scale-di-misura"><i class="fa fa-check"></i><b>5.1</b> Le scale di misura</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-nominale"><i class="fa fa-check"></i><b>5.1.1</b> Scala nominale</a></li>
+<li class="chapter" data-level="5.1.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-ordinale"><i class="fa fa-check"></i><b>5.1.2</b> Scala ordinale</a></li>
+<li class="chapter" data-level="5.1.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-ad-intervalli"><i class="fa fa-check"></i><b>5.1.3</b> Scala ad intervalli</a></li>
+<li class="chapter" data-level="5.1.4" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-di-rapporti"><i class="fa fa-check"></i><b>5.1.4</b> Scala di rapporti</a></li>
+<li class="chapter" data-level="5.1.5" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#gerarchia-dei-livelli-di-scala-di-misura"><i class="fa fa-check"></i><b>5.1.5</b> Gerarchia dei livelli di scala di misura</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:DiscreteVsContinuous"><i class="fa fa-check"></i><b>5.2</b> Variabili discrete vs. variabili continue</a></li>
+<li class="chapter" data-level="5.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#perché-alcune-misurazioni-sono-migliori-di-altre"><i class="fa fa-check"></i><b>5.3</b> Perché alcune misurazioni sono migliori di altre?</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:accuratezza_precisione"><i class="fa fa-check"></i><b>5.3.1</b> Tipologie di errori</a></li>
+<li class="chapter" data-level="5.3.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:reliability"><i class="fa fa-check"></i><b>5.3.2</b> Attendibilità</a></li>
+<li class="chapter" data-level="5.3.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:validity"><i class="fa fa-check"></i><b>5.3.3</b> Validità</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="part"><span><b>Descrizione</b></span></li>
+<li class="chapter" data-level="6" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html"><i class="fa fa-check"></i><b>6</b> Statistica descrittiva</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#perché-riassumere-i-dati"><i class="fa fa-check"></i><b>6.1</b> Perché riassumere i dati?</a></li>
+<li class="chapter" data-level="6.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#sec:distr_freq"><i class="fa fa-check"></i><b>6.2</b> Distribuzioni di frequenze</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r"><i class="fa fa-check"></i><b>6.2.1</b> Esercizio con R</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#istogramma"><i class="fa fa-check"></i><b>6.3</b> Istogramma</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r-1"><i class="fa fa-check"></i><b>6.3.1</b> Esercizio con R</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#funzione-di-densità-empirica"><i class="fa fa-check"></i><b>6.4</b> Funzione di densità empirica</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r-2"><i class="fa fa-check"></i><b>6.4.1</b> Esercizio con R</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#forma-di-una-distribuzione"><i class="fa fa-check"></i><b>6.5</b> Forma di una distribuzione</a></li>
+<li class="chapter" data-level="6.6" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-posizione"><i class="fa fa-check"></i><b>6.6</b> Indici di posizione</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#quantili"><i class="fa fa-check"></i><b>6.6.1</b> Quantili</a></li>
+<li class="chapter" data-level="6.6.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#box-plot"><i class="fa fa-check"></i><b>6.6.2</b> Box-plot</a></li>
+<li class="chapter" data-level="6.6.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#leccellenza-grafica"><i class="fa fa-check"></i><b>6.6.3</b> L’eccellenza grafica</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-tendenza-centrale"><i class="fa fa-check"></i><b>6.7</b> Indici di tendenza centrale</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#media"><i class="fa fa-check"></i><b>6.7.1</b> Media</a></li>
+<li class="chapter" data-level="6.7.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#media-spuntata"><i class="fa fa-check"></i><b>6.7.2</b> Media spuntata</a></li>
+<li class="chapter" data-level="6.7.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#moda-e-mediana"><i class="fa fa-check"></i><b>6.7.3</b> Moda e mediana</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-dispersione"><i class="fa fa-check"></i><b>6.8</b> Indici di dispersione</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-basati-sullordinamento-dei-dati"><i class="fa fa-check"></i><b>6.8.1</b> Indici basati sull’ordinamento dei dati</a></li>
+<li class="chapter" data-level="6.8.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#scostamento-medio-semplice-dalla-media"><i class="fa fa-check"></i><b>6.8.2</b> Scostamento medio semplice dalla media</a></li>
+<li class="chapter" data-level="6.8.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#varianza"><i class="fa fa-check"></i><b>6.8.3</b> Varianza</a></li>
+<li class="chapter" data-level="6.8.4" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#deviazione-standard"><i class="fa fa-check"></i><b>6.8.4</b> Deviazione standard</a></li>
+<li class="chapter" data-level="6.8.5" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-variabilità-relativi"><i class="fa fa-check"></i><b>6.8.5</b> Indici di variabilità relativi</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#le-relazioni-tra-variabili"><i class="fa fa-check"></i><b>6.9</b> Le relazioni tra variabili</a>
+<ul>
+<li class="chapter" data-level="6.9.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#diagramma-a-dispersione"><i class="fa fa-check"></i><b>6.9.1</b> Diagramma a dispersione</a></li>
+<li class="chapter" data-level="6.9.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#covarianza"><i class="fa fa-check"></i><b>6.9.2</b> Covarianza</a></li>
+<li class="chapter" data-level="6.9.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione"><i class="fa fa-check"></i><b>6.9.3</b> Correlazione</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-e-causazione"><i class="fa fa-check"></i><b>6.10</b> Correlazione e causazione</a>
+<ul>
+<li class="chapter" data-level="6.10.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#usi-della-correlazione"><i class="fa fa-check"></i><b>6.10.1</b> Usi della correlazione</a></li>
+<li class="chapter" data-level="6.10.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-di-spearman"><i class="fa fa-check"></i><b>6.10.2</b> Correlazione di Spearman</a></li>
+<li class="chapter" data-level="6.10.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-nulla"><i class="fa fa-check"></i><b>6.10.3</b> Correlazione nulla</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="part"><span><b>Elementi di teoria della probabilità</b></span></li>
+<li class="chapter" data-level="7" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html"><i class="fa fa-check"></i><b>7</b> Che cos’è la probabilità?</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-naturale"><i class="fa fa-check"></i><b>7.1</b> Probabilità nel linguaggio naturale</a></li>
+<li class="chapter" data-level="7.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-scientifico"><i class="fa fa-check"></i><b>7.2</b> Probabilità nel linguaggio scientifico</a></li>
+<li class="chapter" data-level="7.3" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#terminologia"><i class="fa fa-check"></i><b>7.3</b> Terminologia</a></li>
+<li class="chapter" data-level="7.4" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#le-diverse-definizioni-della-probabilità"><i class="fa fa-check"></i><b>7.4</b> Le diverse definizioni della probabilità</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#sec:def_ing_prob"><i class="fa fa-check"></i><b>7.4.1</b> Una definizione “ingenua” della probabilità</a></li>
+<li class="chapter" data-level="7.4.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#una-definizione-non-ingenua-della-probabilità"><i class="fa fa-check"></i><b>7.4.2</b> Una definizione “non ingenua” della probabilità</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#assegnare-le-probabilità-agli-eventi"><i class="fa fa-check"></i><b>7.5</b> Assegnare le probabilità agli eventi</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-frequentista"><i class="fa fa-check"></i><b>7.5.1</b> Approccio frequentista</a></li>
+<li class="chapter" data-level="7.5.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-bayesiano"><i class="fa fa-check"></i><b>7.5.2</b> Approccio Bayesiano</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#proprietà-elementari-della-probabilità"><i class="fa fa-check"></i><b>7.6</b> Proprietà elementari della probabilità</a></li>
+<li class="chapter" data-level="7.7" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#variabili-aleatorie"><i class="fa fa-check"></i><b>7.7</b> Variabili aleatorie</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#a-cosa-servono-le-variabili-aleatorie"><i class="fa fa-check"></i><b>7.7.1</b> A cosa servono le variabili aleatorie?</a></li>
+<li class="chapter" data-level="7.7.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#funzione-di-massa-di-probabilità"><i class="fa fa-check"></i><b>7.7.2</b> Funzione di massa di probabilità</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#notazione"><i class="fa fa-check"></i><b>7.8</b> Notazione</a></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html"><i class="fa fa-check"></i><b>8</b> Probabilità condizionata</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#sec:prob_cond"><i class="fa fa-check"></i><b>8.1</b> Probabilità condizionata su altri eventi</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#la-fallacia-del-pubblico-ministero"><i class="fa fa-check"></i><b>8.1.1</b> La fallacia del pubblico ministero</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#legge-della-probabilità-composta"><i class="fa fa-check"></i><b>8.2</b> Legge della probabilità composta</a></li>
+<li class="chapter" data-level="8.3" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#lindipendendenza-stocastica"><i class="fa fa-check"></i><b>8.3</b> L’indipendendenza stocastica</a></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html"><i class="fa fa-check"></i><b>9</b> Il teorema di Bayes</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:tot_prob_theorem"><i class="fa fa-check"></i><b>9.1</b> Il teorema della probabilità totale</a></li>
+<li class="chapter" data-level="9.2" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:bayes_theorem"><i class="fa fa-check"></i><b>9.2</b> Il teorema della probabilità delle cause</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#aggiornamento-bayesiano"><i class="fa fa-check"></i><b>9.2.1</b> Aggiornamento Bayesiano</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html"><i class="fa fa-check"></i><b>10</b> Probabilità congiunta</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzione-di-probabilità-congiunta"><i class="fa fa-check"></i><b>10.1</b> Funzione di probabilità congiunta</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#proprietà"><i class="fa fa-check"></i><b>10.1.1</b> Proprietà</a></li>
+<li class="chapter" data-level="10.1.2" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#eventi"><i class="fa fa-check"></i><b>10.1.2</b> Eventi</a></li>
+<li class="chapter" data-level="10.1.3" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzioni-di-probabilità-marginali"><i class="fa fa-check"></i><b>10.1.3</b> Funzioni di probabilità marginali</a></li>
+<li class="chapter" data-level="10.1.4" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#indipendenza-stocastica"><i class="fa fa-check"></i><b>10.1.4</b> Indipendenza stocastica</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html"><i class="fa fa-check"></i>Appendici</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#simbologia-di-base"><i class="fa fa-check"></i>Simbologia di base</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-binari-interi-razionali-irrazionali-e-reali"><i class="fa fa-check"></i>Numeri binari, interi, razionali, irrazionali e reali</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-binari"><i class="fa fa-check"></i>Numeri binari</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-interi"><i class="fa fa-check"></i>Numeri interi</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-razionali"><i class="fa fa-check"></i>Numeri razionali</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-irrazionali"><i class="fa fa-check"></i>Numeri irrazionali</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-reali"><i class="fa fa-check"></i>Numeri reali</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#intervalli"><i class="fa fa-check"></i>Intervalli</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#cap:insiemi"><i class="fa fa-check"></i>Insiemi</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#operazioni-tra-insiemi"><i class="fa fa-check"></i>Operazioni tra insiemi</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#diagrammi-di-eulero-venn"><i class="fa fa-check"></i>Diagrammi di Eulero-Venn</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#sec:prod_cartesiano"><i class="fa fa-check"></i>Coppie ordinate e prodotto cartesiano</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#cardinalità"><i class="fa fa-check"></i>Cardinalità</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSICOMETRIA</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter:sintassi_R" class="section level1" number="3">
+<h1><span class="header-section-number">Capitolo 3</span> Sintassi di base</h1>
+<div id="obiettivi-di-apprendimento" class="section level2 unnumbered">
+<h2>Obiettivi di apprendimento</h2>
+<p>Lo studio di questo capitolo dovrebbe insegnare allo studente come:</p>
+<ul>
+<li>Conoscere e sapere usare alcune delle funzioni di base di R.</li>
+</ul>
+</div>
+<div id="motivazione" class="section level2 unnumbered">
+<h2>Motivazione</h2>
+<p>R è un linguaggio di programmazione orientato all’analisi dei dati, il
+calcolo e la visualizzazione grafica. È disponibile su Internet una
+vasta gamma di materiali utile per avvicinarsi all’ambiente R e aiutare
+l’utente nell’apprendimento di questo software statistico. Cercheremo
+qui di fornire alcune indicazioni e una breve descrizione delle risorse
+di base di R.</p>
+</div>
+<div id="utilizzare-la-console-r-come-calcolatrice" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Utilizzare la console R come calcolatrice</h2>
+<p>La console di RStudio contiene un cursore rappresentato dal simbolo “&gt;”
+(linea di comando) dove si possono inserire i comandi e le funzioni –
+in realtà è sempre meglio utilizzare un R  Notebook anziché la console,
+ma per ora esaminiamo il funzionamento di quest’ultima.</p>
+<p>La console di RStudio può essere utilizzata come semplice calcolatrice.
+I comandi elementari consistono di espressioni o di assegnazioni. Le
+operazioni aritmetiche vengono eseguite mediante simboli “standard:” +,
+*, -, /, <code>sqrt()</code>, <code>log()</code>, <code>exp()</code>, …</p>
+<p>I comandi sono separati da un carattere di nuova linea (si immette un
+carattere di nuova linea digitando il tasto <code>Invio</code>). Se un comando non
+è completo alla fine della linea,  R darà un prompt differente che per
+default è il carattere <code>+</code> sulla linea seguente e continuerà a leggere
+l’input finché il comando non è sintatticamente completo. Ad esempio,</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="chapter-sintassi-R.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">-</span></span>
+<span id="cb5-2"><a href="chapter-sintassi-R.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> </span>
+<span id="cb5-3"><a href="chapter-sintassi-R.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb5-4"><a href="chapter-sintassi-R.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<p>R è un ambiente interattivo, ossia i comandi producono una risposta
+immediata. Se scriviamo <code>2 + 2</code> e premiamo il tasto di invio, comparirà
+nella riga successiva il risultato:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="chapter-sintassi-R.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb6-2"><a href="chapter-sintassi-R.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span></code></pre></div>
+<p>Il risultato è preceduto da <code>[1]</code>, il che significa che il risultato
+dell’operazione che abbiamo appena eseguito è il primo valore di questa
+linea. Alcune funzioni ritornano più di un singolo numero e, in quel
+caso, l’informazione fornita da R  è più utile. Per esempio, l’istruzione
+<code>100:130</code> ritorna <span class="math inline">\(31\)</span> valori, ovvero i numeri da <span class="math inline">\(100\)</span> a <span class="math inline">\(130\)</span>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="chapter-sintassi-R.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span><span class="sc">:</span><span class="dv">130</span></span>
+<span id="cb7-2"><a href="chapter-sintassi-R.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122</span></span>
+<span id="cb7-3"><a href="chapter-sintassi-R.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [24] 123 124 125 126 127 128 129 130</span></span></code></pre></div>
+<p>In questo caso, <code>[24]</code> indica che il valore <span class="math inline">\(123\)</span> è il ventiquattresimo numero
+che è stato stampato sulla console.</p>
+<p>R  è un linguaggio di programmazione a oggetti, quindi si basa sulla
+creazione di oggetti e sulla possibilità di salvarli nella memoria del
+programma. Quando creiamo un oggetto gli attribuiamo un nome usando il
+simbolo <code>&lt;-</code>. Ad esempio, per creare un oggetto che contiene il
+risultato dell’operazione <code>2 + 2</code> procediamo nel modo seguente:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="chapter-sintassi-R.html#cb8-1" aria-hidden="true" tabindex="-1"></a>res_sum <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb8-2"><a href="chapter-sintassi-R.html#cb8-2" aria-hidden="true" tabindex="-1"></a>res_sum</span>
+<span id="cb8-3"><a href="chapter-sintassi-R.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span></code></pre></div>
+<p>L’operazione di assegnazione (<code>&lt;-</code>) copia il contenuto dell’operando
+destro (detto <code>r-value</code>) nell’operando sinistro detto (<code>l-value</code>). Il
+valore dell’espressione assegnazione è <code>r-value</code>. Nell’esempio
+precedente, <code>res_sum</code> (<code>l-value</code>) assume il valore di <span class="math inline">\(4\)</span>.</p>
+<p>La console di RStudio fornisce la possibilità di richiamare e rieseguire
+i comandi. I tasti freccia verticale, <span class="math inline">\(\uparrow\)</span> e <span class="math inline">\(\downarrow\)</span>, sulla
+tastiera possono essere utilizzati per scorrere avanti e indietro i
+comandi già immessi. Appena trovato il comando che interessa, lo si può
+modificare, ad esempio, con i tasti freccia orizzontali, immettendo
+nuovi caratteri o cancellandone altri.</p>
+<p>Se viene digitato un comando che R non riconosce, sulla console viene
+visualizzato un messaggio di errore; ad esempio,</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="chapter-sintassi-R.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> % <span class="dv">9</span></span>
+<span id="cb9-2"><a href="chapter-sintassi-R.html#cb9-2" aria-hidden="true" tabindex="-1"></a>Errore<span class="sc">:</span> unexpected input <span class="cf">in</span> <span class="st">&quot;3 % 9&quot;</span></span></code></pre></div>
+</div>
+<div id="le-parentesi" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Le parentesi</h2>
+<p>Le parentesi in R  (come in generale in ogni linguaggio di programmazione) assegnano un significato diverso alle porzioni di codice che delimitano.</p>
+<ul>
+<li>Le parentesi tonde funzionano come nell’algebra. Per esempio</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="chapter-sintassi-R.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">4</span></span>
+<span id="cb10-2"><a href="chapter-sintassi-R.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 14</span></span></code></pre></div>
+<p>non è equivalente a</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="chapter-sintassi-R.html#cb11-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">4</span></span>
+<span id="cb11-2"><a href="chapter-sintassi-R.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 20</span></span></code></pre></div>
+<p>Le due istruzioni precedenti producono risultati diversi perché, se
+la sequenza delle operazioni algebriche non viene specificata dalle
+parentesi, R  assegna alle operazioni algebriche il seguente ordine
+di priorità decrescente: esponenziazione, moltiplicazione /
+divisione, addizione / sottrazione, confronti logici
+(<code>&lt;, &gt;, &lt;=, &gt;=, ==, !=</code>). È sempre una buona idea rendere esplicito
+l’ordine delle operazioni algebriche che si vuole eseguire mediante
+l’uso delle parentesi tonde.<br />
+Le parentesi tonde vengono anche utilizzate per le funzioni, come
+vedremo nei prossimi paragrafi. Tra le parentesi tonde avremo dunque
+l’oggetto a cui vogliamo applicare la funzione e gli argomenti
+passati alla funzione.</p>
+<ul>
+<li><p>Le parentesi graffe sono destinate alla programmazione. Un blocco
+tra le parentesi graffe viene letto come un oggetto unico che può
+contenere una o più istruzioni.</p></li>
+<li><p>Le parentesi quadre vengono utilizzate per selezionare degli
+elementi, per esempio all’interno di un vettore, o di una matrice, o
+di un data.frame. L’argomento entro le parentesi quadre può essere
+generato da espressioni logiche.</p></li>
+</ul>
+</div>
+<div id="i-nomi-degli-oggetti" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> I nomi degli oggetti</h2>
+<p>Le entità create e manipolate da R si chiamano ‘oggetti.’ Tali oggetti
+possono essere variabili, array di numeri, caratteri, stringhe,
+funzioni, o più in generale strutture costruite a partire da tali
+componenti. Durante una sessione di  R gli oggetti sono creati e
+memorizzati attraverso opportuni nomi.</p>
+<p>I nomi possono contenere un qualunque carattere alfanumerico e come
+carattere speciale il trattino basso (<code>_</code>) o il punto.  R fornisce i
+seguenti vincoli per i nomi degli oggetti: i nomi degli oggetti non
+possono mai iniziare con un carattere numerico e non possono contenere i
+seguenti simboli: <code>$</code>, <code>@</code>, <code>!</code>, <code>^</code>, <code>+</code>, <code>-</code>, <code>/</code>, <code>*</code>. È buona
+pratica usare nomi come <code>ratio_of_sums</code>. È fortemente sconsigliato
+utilizzare nei nomi degli oggetti caratteri accentati o, ancora peggio,
+apostrofi. Per questa ragione è sensato creare i nomi degli oggetti
+utilizzando la lingua inglese. È anche bene che i nomi degli oggetti non
+coincidano con nomi di funzioni. Si noti che R  è <em>case sensitive</em>, cioè
+<code>A</code> e <code>a</code> sono due simboli diversi e identificano due oggetti
+differenti.</p>
+</div>
+<div id="permanenza-dei-dati-e-rimozione-di-oggetti" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Permanenza dei dati e rimozione di oggetti</h2>
+<p>Gli oggetti vengono salvati nello “spazio di lavoro” (<em>workspace</em>). Il
+comando <code>ls()</code> può essere utilizzato per visualizzare i nomi degli
+oggetti che sono in quel momento memorizzati in R.</p>
+<p>Per eliminare oggetti dallo spazio di lavoro è disponibile la funzione
+<code>rm()</code>; ad esempio</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="chapter-sintassi-R.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(x, y, z, ink, junk, temp, foo, bar)</span></code></pre></div>
+<p>cancella tutti gli oggetti indicati entro parentesi. Per eliminare tutti
+gli oggetti presenti nello spazio di lavoro si può utilizzare la
+seguente istruzione:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="chapter-sintassi-R.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+</div>
+<div id="chiudere-r" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Chiudere R</h2>
+<p>Quando si chiude RStudio il programma ci chiederà se si desidera salvare
+l’area di lavoro sul computer. Tale operazione è da evitare in quanto
+gli oggetti così salvati andranno ad interferire con gli oggetti creati
+in un lavoro futuro. Si consiglia dunque di rispondere negativamente a
+questa domanda.</p>
+<ul>
+<li><p>In RStudio, selezionare <code>Preferences</code> dal menu a tendina e, in
+<code>R General</code> <code>Workspace</code>, deselezionare l’opzione
+<code>Restore .RData into workspace at start-</code> <code>up</code> e scegliere l’opzione
+<code>Never</code> nella finestra di dialogo <code>Save workspace to</code>
+<code>.RData on exit</code>.</p></li>
+<li><p>In R, selezionare <code>Preferences</code> dal menu a tendina e, in <code>Startup</code>,
+selezionare l’opzione <code>No</code> in corrispondenza dell’item
+<code>Save workspace on exit from R</code>.</p></li>
+</ul>
+</div>
+<div id="sec:editor" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Creare ed eseguire uno script R con un editore</h2>
+<p>È molto più facile interagire con   manipolando uno script con un
+editore piuttosto che inserendo direttamente le istruzioni nella
+console. R  fornisce il Text Editor dove è possibile inserire il codice
+(File <span class="math inline">\(\to\)</span> New Script). Per salvare il file basta utilizzare l’apposito
+menù a tendina (estensione <code>.R</code>). Tale file potrà poi essere riaperto ed
+utilizzato in un momento successivo.</p>
+<p>L’editore comunica con  R nel modo seguente: dopo avere selezionato la
+porzione di codice che si vuole eseguire, si digita un’apposita sequenza
+di tasti (<code>Command + Enter</code> su Mac OS X e <code>ctrl + r</code> in Windows)<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.
+Così facendo, R  eseguirà le istruzioni selezionate e l’output verrà
+stampato sulla console. Il Text Editor fornito da R  è piuttosto
+primitivo: è fortemente consigliato utilizzare RStudio.</p>
+<div id="commentare-il-codice" class="section level3" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Commentare il codice</h3>
+<p>I commenti sono parole in linguaggio naturale (nel nostro caso l’italiano), che permettono agli utilizzatori di capire il flusso logico del codice e a chi lo ha scritto di ricordare il perché di determinate istruzioni. In  R, le parole dopo il simbolo <code>#</code> sono considerate
+commenti e sono ignorate; ad esempio:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="chapter-sintassi-R.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Questo e&#39; un commento</span></span></code></pre></div>
+</div>
+</div>
+<div id="sec:change_dir" class="section level2" number="3.7">
+<h2><span class="header-section-number">3.7</span> Cambiare la cartella di lavoro</h2>
+<p>Quando si inizia una sessione di lavoro,   sceglie una cartella quale
+“working directory.” Sarà in tale cartella che andrà a cercare gli
+script definiti dall’utilizzatore e i file dei dati. È possibile
+determinare quale sia la corrente “working directory” digitando sulla
+console di RStudio l’istruzione:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="chapter-sintassi-R.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<p>Per cambiare la cartella di lavoro (in maniera tale che corrisponda alla
+cartella nella quale sono stati salvati i dati e gli script da eseguire)
+si sceglie la voce <code>Set Working Directory</code> sul menù a tendina di RStudio
+e si selezione la voce <code>Choose Directory…</code> Nella finestra che compare,
+si cambia la cartella con quella che si vuole.</p>
+</div>
+<div id="loggetto-base-di-il-vettore" class="section level2" number="3.8">
+<h2><span class="header-section-number">3.8</span> L’oggetto base di : il vettore</h2>
+<p>R  opera su strutture di dati; la più semplice di tali strutture è il
+vettore numerico, che consiste in un insieme ordinato di numeri; ad
+esempio:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="chapter-sintassi-R.html#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">7.0</span>, <span class="fl">10.2</span>, <span class="sc">-</span><span class="fl">2.9</span>, <span class="fl">21.4</span>)</span></code></pre></div>
+<p>Nell’istruzione precedente, <code>c()</code> è una funzione. In   gli argomenti
+sono passati alle funzioni inserendoli all’interno delle parentesi
+tonde. Si noti che gli argomenti (in questo caso, i numeri
+<span class="math inline">\(7.0, 10.2, -2.9, 21.4\)</span>) sono separati a virgole. La funzione <code>c()</code> può
+prendere un numero arbitrario di argomenti e genera un vettore
+concatenando i suoi argomenti. L’operatore <code>&lt;-</code> assegna un nome al
+vettore che è stato creato. Nel caso presente, digitando <code>x</code> possiamo
+visualizzare il vettore che abbiamo creato:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="chapter-sintassi-R.html#cb17-1" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb17-2"><a href="chapter-sintassi-R.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  7.0 10.2 -2.9 21.4</span></span></code></pre></div>
+<p>Se invece eseguiamo l’istruzione</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="chapter-sintassi-R.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fl">7.0</span>, <span class="fl">10.2</span>, <span class="sc">-</span><span class="fl">2.9</span>, <span class="fl">21.4</span>)</span>
+<span id="cb18-2"><a href="chapter-sintassi-R.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  7.0 10.2 -2.9 21.4</span></span></code></pre></div>
+<p>senza assegnazione, il valore dell’espressione sarà visualizzato nella
+console, ma il vettore non potrà essere utilizzato in nessun altro modo.</p>
+<div id="operazioni-vettorializzate" class="section level3" number="3.8.1">
+<h3><span class="header-section-number">3.8.1</span> Operazioni vettorializzate</h3>
+<p>Molte operazioni in   sono vettorializzate, il che significa che esse
+sono eseguite in parallelo in determinati oggetti . Ciò consente di
+scrivere codice che sia efficiente, conciso e più facile da leggere
+rispetto al codice che contiene istruzioni non vettorializzate.</p>
+</div>
+<div id="vettori-aritmetici" class="section level3" number="3.8.2">
+<h3><span class="header-section-number">3.8.2</span> Vettori aritmetici</h3>
+<p>L’esempio più semplice che illustra come si svolgono le operazioni
+vettorializzate riguarda le operazioni algebriche applicate ai vettori.
+I vettori, infatti, possono essere utilizzati in espressioni numeriche
+nelle quali le operazioni algebriche vengono eseguite “elemento per
+elemento.”</p>
+<p>Per illustrare questo concetto, definiamo il vettore <code>die</code> che contiene
+i possibili risultati del lancio di un dado:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="chapter-sintassi-R.html#cb19-1" aria-hidden="true" tabindex="-1"></a>die <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb19-2"><a href="chapter-sintassi-R.html#cb19-2" aria-hidden="true" tabindex="-1"></a>die</span>
+<span id="cb19-3"><a href="chapter-sintassi-R.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3 4 5 6</span></span></code></pre></div>
+<p>Supponiamo di volere sommare <span class="math inline">\(10\)</span> a ciascun elemento del vettore <code>die</code>.
+Dato che le operazioni sui vettori sono eseguite elemento per elemento,
+per ottenere questo risultato è sufficiente eseguire l’istruzione:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="chapter-sintassi-R.html#cb20-1" aria-hidden="true" tabindex="-1"></a>die <span class="sc">+</span> <span class="dv">10</span></span>
+<span id="cb20-2"><a href="chapter-sintassi-R.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11 12 13 14 15 16</span></span></code></pre></div>
+<p>Si noti come la costante <span class="math inline">\(10\)</span> sia stata sommata a ciascun elemento del
+vettore. In maniera corrispondente, l’istruzione</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="chapter-sintassi-R.html#cb21-1" aria-hidden="true" tabindex="-1"></a>die <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb21-2"><a href="chapter-sintassi-R.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0 1 2 3 4 5</span></span></code></pre></div>
+<p>sottrarrà un’unità da ciascuno degli elementi del vettore <code>die</code>.</p>
+<p>Se l’operazione aritmetica coinvolge due o più vettori,   allinea i
+vettori ed esegue una sequenza di operazioni elemento per elemento. Per
+esempio, l’istruzione</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="chapter-sintassi-R.html#cb22-1" aria-hidden="true" tabindex="-1"></a>die <span class="sc">*</span> die</span>
+<span id="cb22-2"><a href="chapter-sintassi-R.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  1  4  9 16 25 36</span></span></code></pre></div>
+<p>fa sì che i due vettori vengano disposti l’uno di fianco all’altro per
+poi moltiplicare gli elementi corrispondenti: il primo elemento del
+primo vettore per il primo elemento del secondo vettore e così via. Il
+vettore risultante avrà la stessa dimensione dei due vettori che sono
+stati moltiplicati, come indicato qui sotto:</p>
+<p><span class="math display">\[\begin{array}{ccccc}
+1 &amp; \times &amp; 1 &amp; \to &amp; 1 \\
+2 &amp; \times &amp; 2 &amp; \to &amp; 4 \\
+3 &amp; \times &amp; 3 &amp; \to &amp; 9 \\
+4 &amp; \times &amp; 4 &amp; \to &amp; 16 \\
+5 &amp; \times &amp; 5 &amp; \to &amp; 25 \\
+6 &amp; \times &amp; 6 &amp; \to &amp; 36 \\
+\hline
+\verb+die+ &amp; * &amp; \verb+die+ &amp; = &amp; 
+\end{array}\]</span></p>
+<p>Oltre agli operatori aritmetici elementari <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, e <code>^</code> per
+l’elevamento a potenza, sono disponibili le più comuni funzioni
+matematiche: <code>log()</code>, <code>exp()</code>, <code>sin()</code>, <code>cos()</code>, <code>tan()</code>, <code>sqrt()</code>,
+<code>max()</code>, <code>min()</code> e così via. Altre funzioni di uso comune sono:
+<code>range()</code> che restituisce un vettore <code>c(min(x), max(x))</code>; <code>sort()</code> che
+restituisce un vettore ordinato; <code>length(x)</code> che restituisce il numero
+di elementi di <code>x</code>; <code>sum(x)</code> che dà la somma degli elementi di <code>x</code>,
+mentre <code>prod(x)</code> dà il loro prodotto. Due funzioni statistiche di uso
+comune sono <code>mean(x)</code>, la media aritmetica, e <code>var(x)</code>, la varianza.</p>
+</div>
+<div id="generazione-di-sequenze-regolari" class="section level3" number="3.8.3">
+<h3><span class="header-section-number">3.8.3</span> Generazione di sequenze regolari</h3>
+<p>R  possiede un ampio numero di funzioni per generare sequenze di numeri.
+Ad esempio, <code>c(1:10)</code> è il vettore <code>c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</code>.
+L’espressione <code>c(30:1)</code> può essere utilizzata per generare una sequenza
+all’indietro.</p>
+<p>La funzione <code>seq()</code> genera un vettore che contiene una sequenza regolare
+di numeri, generata in base a determinate regole. Può avere 5 argomenti:
+i primi due rappresentano l’inizio (<code>from</code>) e la fine (<code>to</code>) della
+sequenza, il terzo specifica l’ampiezza del passo (<code>by</code>), il quarto la
+lunghezza della sequenza (<code>length.out</code>) e infine il quinto
+(<code>along.with</code>), che se utilizzato deve essere l’unico parametro
+presente, è il nome di un vettore, ad esempio <code>x</code>, creando in tal modo
+la sequenza 1, 2, …, <code>length(x)</code>. Esempi di utilizzo della funzione
+<code>seq()</code> sono i seguenti:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="chapter-sintassi-R.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>)</span>
+<span id="cb23-2"><a href="chapter-sintassi-R.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></span>
+<span id="cb23-3"><a href="chapter-sintassi-R.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">2.5</span>)</span>
+<span id="cb23-4"><a href="chapter-sintassi-R.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -5.0 -2.5  0.0  2.5  5.0</span></span>
+<span id="cb23-5"><a href="chapter-sintassi-R.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">7</span>, <span class="at">length.out =</span> <span class="dv">4</span>)</span>
+<span id="cb23-6"><a href="chapter-sintassi-R.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 3 5 7</span></span>
+<span id="cb23-7"><a href="chapter-sintassi-R.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">along.with =</span> die)</span>
+<span id="cb23-8"><a href="chapter-sintassi-R.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3 4 5 6</span></span></code></pre></div>
+<p>Altra funzione utilizzata per generare sequenze è <code>rep()</code> che può essere
+utilizzata per replicare un oggetto in vari modi. Ad esempio:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="chapter-sintassi-R.html#cb24-1" aria-hidden="true" tabindex="-1"></a>die3 <span class="ot">&lt;-</span> <span class="fu">rep</span>(die, <span class="at">times =</span> <span class="dv">3</span>)</span>
+<span id="cb24-2"><a href="chapter-sintassi-R.html#cb24-2" aria-hidden="true" tabindex="-1"></a>die3</span>
+<span id="cb24-3"><a href="chapter-sintassi-R.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 2 3 4 5 6 1 2 3 4 5 6 1 2 3 4 5 6</span></span></code></pre></div>
+<p>metterà tre copie di <code>die</code> nell’oggetto <code>die3</code>.</p>
+</div>
+<div id="sec:gen_rand_numbers" class="section level3" number="3.8.4">
+<h3><span class="header-section-number">3.8.4</span> Generazione di numeri casuali</h3>
+<p>La funzione <code>sample()</code> è una delle tante funzioni che possono essere
+usate per generare numeri casuali. Per esempio, la seguente istruzione
+simula dieci lanci di un dado a sei facce:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="chapter-sintassi-R.html#cb25-1" aria-hidden="true" tabindex="-1"></a>roll <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-2"><a href="chapter-sintassi-R.html#cb25-2" aria-hidden="true" tabindex="-1"></a>roll</span>
+<span id="cb25-3"><a href="chapter-sintassi-R.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 5 4 5 6 4 6 1 5 5 5</span></span></code></pre></div>
+<p>Il primo argomento di <code>sample()</code> è il vettore da cui la funzione
+estrarrà degli elementi a caso; il secondo argomento specifica che
+dovranno essere effettuate 10 estrazioni casuali; il terzo argomento
+specifica che le estrazioni sono con rimessa (cioè, lo stesso elemento
+può essere estratto più di una volta).</p>
+<p>Scegliere un elemento a caso dal vettore <span class="math inline">\(\{1, 2, 3, 4, 5, 6\}\)</span> è
+equivalente a lanciare un dado e osservare la faccia che si presenta.
+L’istruzione precedente corrisponde dunque alla simulazione di dieci
+lanci di un dado a sei facce.</p>
+</div>
+<div id="vettori-logici" class="section level3" number="3.8.5">
+<h3><span class="header-section-number">3.8.5</span> Vettori logici</h3>
+<p>Quando si manipolano i vettori, talvolta si vogliono trovare gli
+elementi che soddisfano determinate condizioni logiche. Per esempio, in
+dieci lanci di un dado, quante volte è uscito <span class="math inline">\(5\)</span>? Per rispondere a
+questa domanda si possono usare gli operatori logici <code>&lt;</code>, <code>&gt;</code> e <code>==</code> per
+le operazioni di “minore di,” “maggiore di” e “uguale a.” Se scriviamo</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="chapter-sintassi-R.html#cb26-1" aria-hidden="true" tabindex="-1"></a>roll <span class="sc">==</span> <span class="dv">5</span></span>
+<span id="cb26-2"><a href="chapter-sintassi-R.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE</span></span></code></pre></div>
+<p>creiamo un vettore costituito da elementi <code>TRUE/FALSE</code> i quali
+identificano gli elementi del vettore che soddisfano la condizione
+logica specificata.</p>
+<p>Possiamo trattare tale vettore come se fosse costituito da elementi di
+valore <span class="math inline">\(0\)</span> e <span class="math inline">\(1\)</span>. Sommando gli elementi di tale vettore, infatti,
+possiamo contare il numero di “5”:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="chapter-sintassi-R.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(roll <span class="sc">==</span> <span class="dv">5</span>)</span>
+<span id="cb27-2"><a href="chapter-sintassi-R.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+</div>
+<div id="dati-mancanti" class="section level3" number="3.8.6">
+<h3><span class="header-section-number">3.8.6</span> Dati mancanti</h3>
+<p>Quando si è in presenza di un dato mancante,   assegna il valore
+speciale <code>NA</code>, che sta per <em>Not Available</em>. In generale, un’operazione
+su un <code>NA</code> dà come risultato un <code>NA</code>. Nell’uso delle funzioni che
+operano sui dati sarà dunque necessario specificare che, qualunque
+operazione venga effettuata, gli <code>NA</code> devono essere esclusi.</p>
+</div>
+<div id="vettori-di-caratteri-e-fattori" class="section level3" number="3.8.7">
+<h3><span class="header-section-number">3.8.7</span> Vettori di caratteri e fattori</h3>
+<p>I vettori di caratteri si creano formando una sequenza di caratteri
+delimitati da doppie virgolette e possono essere concatenati in un
+vettore attraverso la funzione <code>c()</code>. Successivamente, si può applicare
+la funzione <code>factor()</code>, che definisce automaticamente le modalità della
+variabile categoriale. Ad esempio,</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="chapter-sintassi-R.html#cb28-1" aria-hidden="true" tabindex="-1"></a>soc_status <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb28-2"><a href="chapter-sintassi-R.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;high&quot;</span>)</span>
+<span id="cb28-3"><a href="chapter-sintassi-R.html#cb28-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-4"><a href="chapter-sintassi-R.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(soc_status)</span>
+<span id="cb28-5"><a href="chapter-sintassi-R.html#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;high&quot;   &quot;low&quot;    &quot;medium&quot;</span></span></code></pre></div>
+<p>Talvolta l’ordine dei livelli del fattore non importa, mentre altre
+volte l’ordine è importante, per esempio, quando una variable
+categoriale viene rappresentata in un grafico. Per specificare l’ordine
+dei livelli del fattore si usa la seguente sintassi:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="chapter-sintassi-R.html#cb29-1" aria-hidden="true" tabindex="-1"></a>soc_status <span class="ot">&lt;-</span> </span>
+<span id="cb29-2"><a href="chapter-sintassi-R.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">factor</span>(soc_status, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;high&quot;</span>))</span>
+<span id="cb29-3"><a href="chapter-sintassi-R.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(soc_status)</span>
+<span id="cb29-4"><a href="chapter-sintassi-R.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;low&quot;    &quot;medium&quot; &quot;high&quot;</span></span></code></pre></div>
+</div>
+</div>
+<div id="cap:sintassi_funzioni" class="section level2" number="3.9">
+<h2><span class="header-section-number">3.9</span> Funzioni</h2>
+<p>  offre la possibilità di utilizzare un’enorme libreria di funzioni che
+permettono di svolgere operazioni complicate, quali ad esempio, il
+campionamento casuale. Esaminiamo ora con più attenzione le proprietà
+delle funzioni di R utilizzando ancora l’esempio del lancio di un dado.
+Abbiamo visto in precedenza come il lancio di un dado possa essere
+simulato da R  con la funzione <code>sample()</code>. La funzione <code>sample()</code> prende
+tre argomenti: il nome di un vettore, un numero chiamato <code>size</code> e un
+argomento chiamato <code>replace</code>. La funzione <code>sample()</code> ritorna un numero
+di elementi del vettore pari a <code>size</code>. Ad esempio</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="chapter-sintassi-R.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(die, <span class="dv">2</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-2"><a href="chapter-sintassi-R.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 6</span></span></code></pre></div>
+<p>Assegnando <code>TRUE</code> all’argomento <code>replace</code> specifichiamo che vogliamo un
+campionamento con rimessa.</p>
+<p>Se volgiamo eseguire una serie di lanci indipendenti di un dado,
+eseguiamo ripetutamente la funzione <code>sample()</code> ponendo <code>size</code> uguale a
+1:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="chapter-sintassi-R.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(die, <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-2"><a href="chapter-sintassi-R.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb31-3"><a href="chapter-sintassi-R.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(die, <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-4"><a href="chapter-sintassi-R.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span>
+<span id="cb31-5"><a href="chapter-sintassi-R.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(die, <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-6"><a href="chapter-sintassi-R.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<p>Come si fa a sapere quanti e quali argomenti sono richiesti da una
+funzione? Tale informazione viene fornita dalla funzione <code>args()</code>. Nel
+nostro caso</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="chapter-sintassi-R.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">args</span>(sample)</span>
+<span id="cb32-2"><a href="chapter-sintassi-R.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; function (x, size, replace = FALSE, prob = NULL) </span></span>
+<span id="cb32-3"><a href="chapter-sintassi-R.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div>
+<p>ci informa che il primo argomento è un vettore chiamato <code>x</code>, il secondo
+argomento è chiamato <code>size</code> ed ha il significato descritto sopra, il
+terzo argomento, <code>replace</code>, specifica se il campionamento è eseguito con
+o senza reimmissione, e il quarto argomento, <code>prob</code>, assegna delle
+probabilità agli elementi del vettore. Il significato degli argomenti
+viene spiegato nel file di help della funzione. Si noti che agli ultimi
+due argomenti sono stati assegnati dei valori, detti di default. Ciò
+significa che, se l’utilizzatore non li cambia, verranno usati da . La
+specificazione <code>replace = FALSE</code> significa che il campionamento viene
+eseguito senza reimmissione. Se desideriamo un campionamento con
+reimmissione, basta specificare <code>replace = TRUE</code> (nel caso di una
+singola estrazione è ovviamente irrilevante). Ad esempio, l’istruzione
+seguente simula i risultati di 10 lanci indipendenti di un dado:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="chapter-sintassi-R.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(die, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb33-2"><a href="chapter-sintassi-R.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 5 5 4 5 2 6 4 2 3 1</span></span></code></pre></div>
+<p>Infine, <code>prob = NULL</code> specifica che non viene alterata la probabilità di
+estrazione degli elementi del vettore. In generale, gli argomenti di una
+funzione possono essere oggetti come vettori, matrici, altre funzioni,
+parametri o operatori logici.</p>
+<p>R  ha un sistema di help interno in formato HTML che si richiama con
+<code>help.start()</code>. Per avere informazioni su qualche funzione specifica,
+per esempio la funzione <code>sample()</code>, il comando da utilizzare è
+<code>help(sample)</code> oppure <code>?sample</code>.</p>
+<div id="scrivere-proprie-funzioni" class="section level3" number="3.9.1">
+<h3><span class="header-section-number">3.9.1</span> Scrivere proprie funzioni</h3>
+<p>Abbiamo visto in precedenza come sia possibile simulare i risultati
+prodotti da dieci lanci di un dado o, in maniera equivalente, dal
+singolo lancio di dieci dadi. Possiamo replicare questo processo
+digitando ripetutamente le stesse istruzioni nella console. Otterremo
+ogni volta risultati diversi perché, ad ogni ripetizione, il generatore
+di numeri pseudo-casuali di   dipende dal valore ottenuto dal clock
+interno della macchina. La funzione <code>set.seed()</code> ci permette di
+replicare esattamente i risultati della generazione di numeri casuali.
+Per ottenere questo risultato, basta assegnare al seed un numero
+arbitrario, es. <code>set.seed(12345)</code>. Tuttavia, questa procedura è
+praticamente difficile da perseguire se il numero di ripetizioni è alto.
+In tal caso è vantaggioso scrivere una funzione contenente il codice che
+specifica il numero di ripetizioni. In questo modo, per trovare il
+risultato cercato basterà chiamare la funzione una sola volta.</p>
+<p>Le funzioni di R  sono costituite da tre elementi: il nome, il blocco del
+codice e una serie di argomenti. Per creare una funzione è necessario
+immagazzinare in R  questi tre elementi e <code>function()</code> consente di
+ottenere tale risultato usando la sintassi seguente:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="chapter-sintassi-R.html#cb34-1" aria-hidden="true" tabindex="-1"></a>nome_funzione <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2, ...) {</span>
+<span id="cb34-2"><a href="chapter-sintassi-R.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  espressione1</span>
+<span id="cb34-3"><a href="chapter-sintassi-R.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  espressione2</span>
+<span id="cb34-4"><a href="chapter-sintassi-R.html#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(risultato)</span>
+<span id="cb34-5"><a href="chapter-sintassi-R.html#cb34-5" aria-hidden="true" tabindex="-1"></a>} </span></code></pre></div>
+<p>Una chiamata di funzione è poi eseguita nel seguente modo:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="chapter-sintassi-R.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nome_funzione</span>(arg1, arg2, ...)</span></code></pre></div>
+<p>Per potere essere utilizzata, una funzione deve essere presente nella
+memoria di lavoro di R. Le funzioni salvate in un file possono essere
+richiamate utilizzando la funzione <code>source()</code>, ad esempio,
+<code>source("file_funzioni.R")</code>.</p>
+<p>Consideriamo ora la funzione <code>two_rolls()</code> che ritorna la somma dei
+punti prodotti dal lancio di due dadi non truccati:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="chapter-sintassi-R.html#cb36-1" aria-hidden="true" tabindex="-1"></a>two_rolls <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb36-2"><a href="chapter-sintassi-R.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  die <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb36-3"><a href="chapter-sintassi-R.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">sample</span>(die, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb36-4"><a href="chapter-sintassi-R.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  sum_res <span class="ot">&lt;-</span> <span class="fu">sum</span>(res)</span>
+<span id="cb36-5"><a href="chapter-sintassi-R.html#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sum_res)</span>
+<span id="cb36-6"><a href="chapter-sintassi-R.html#cb36-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>La funzione <code>two_rolls()</code> inizia con il creare il vettore <code>die</code> che
+contiene sei elementi: i numeri da <span class="math inline">\(1\)</span> a <span class="math inline">\(6\)</span>. Viene poi utilizzata la
+funzione <code>sample()</code> con gli gli argomenti, <code>die</code>, <code>size = 2</code> e
+<code>replace = TRUE</code>. Tale funzione restituisce il risultato del lancio di
+due dadi. Il risultato fornito da <code>sample(die, size = 2, replace = TRUE)</code> viene assegnato all’oggetto <code>res</code>. L’oggetto <code>res</code> corrisponde dunque ad un vettore di due elementi.
+L’istruzione <code>sum(res)</code> somma gli elementi del vettore <code>res</code> e
+attribuisce il risultato di questa operazione a <code>sum_res</code>. Infine, la
+funzione <code>return()</code> ritorna il contenuto dell’oggetto <code>sum_res</code>.
+Invocando la funzione <code>two_rolls()</code> si ottiene dunque la somma del
+lancio di due dadi. In generale, la funzione <code>two_rolls()</code> produrrà un
+risultato diverso ogni volta che viene usata:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="chapter-sintassi-R.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">two_rolls</span>()   </span>
+<span id="cb37-2"><a href="chapter-sintassi-R.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 9</span></span>
+<span id="cb37-3"><a href="chapter-sintassi-R.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">two_rolls</span>()</span>
+<span id="cb37-4"><a href="chapter-sintassi-R.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11</span></span>
+<span id="cb37-5"><a href="chapter-sintassi-R.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">two_rolls</span>()</span>
+<span id="cb37-6"><a href="chapter-sintassi-R.html#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 7</span></span></code></pre></div>
+<p>La formattazione del codice mediante l’uso di spazi e rientri non è
+necessaria ma è altamente raccomandata per minimizzare la probabilità di
+compiere errori.</p>
+</div>
+</div>
+<div id="pacchetti" class="section level2" number="3.10">
+<h2><span class="header-section-number">3.10</span> Pacchetti</h2>
+<p>Le funzioni di  R sono organizzate in pacchetti, i più importanti dei
+quali sono già disponibili quando si accede al programma.</p>
+<div id="istallazione-e-upgrade-dei-pacchetti" class="section level3" number="3.10.1">
+<h3><span class="header-section-number">3.10.1</span> Istallazione e upgrade dei pacchetti</h3>
+<p>Alcuni pacchetti non sono presenti nella release di base di R. Per
+installare un pacchetto non presente è sufficiente scrivere nella
+console:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="chapter-sintassi-R.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;nome_pacchetto&quot;</span>)</span></code></pre></div>
+<p>Ad esempio,</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="chapter-sintassi-R.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
+<p>La prima volta che si usa questa funzione durante una sessione di lavoro
+si dovrà anche selezionare da una lista il sito <em>mirror</em> da cui
+scaricare il pacchetto.</p>
+<p>Gli autori dei pacchetti periodicamente rilasciano nuove versioni dei
+loro pacchetti che contengono miglioramenti di varia natura. Per
+eseguire l’upgrade dei pacchetti <code>ggplot2</code> e <code>dplyr</code>, ad esempio, si usa
+la seguente istruzione:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="chapter-sintassi-R.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">update.packages</span>(<span class="fu">c</span>(<span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;dplyr&quot;</span>))</span></code></pre></div>
+<p>Per eseguire l’upgrade di tutti i pacchetti l’istruzione è</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="chapter-sintassi-R.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">update.packages</span>()</span></code></pre></div>
+</div>
+<div id="caricare-un-pacchetto-in-r" class="section level3" number="3.10.2">
+<h3><span class="header-section-number">3.10.2</span> Caricare un pacchetto in R</h3>
+<p>L’istallazione dei pacchetti non rende immediatamente disponibili le
+funzioni in essi contenute. L’istallazione di un pacchetto semplicemente
+copia il codice sul disco rigido della macchina in uso. Per potere usare
+le funzioni contenute in un pacchetto installato è necessario caricare
+il pacchetto in . Ciò si ottiene con il comando:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="chapter-sintassi-R.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
+<p>se si vuole caricare il pacchetto <code>ggplot2</code>. A questo punto diventa
+possibile usare le funzioni contenute in <code>ggplot2</code>. Queste operazioni si
+possono anche eseguire usando dal menu a tendina di RStudio.</p>
+<p>Per sapere quali sono i pacchetti già presenti nella release di  R con
+cui si sta lavorando, basta scrivere:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="chapter-sintassi-R.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>()</span></code></pre></div>
+
+</div>
+</div>
+</div>
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>Un costrutto rappresenta il risultato di una fondata riflessione
+scientifica, non è per definizione accessibile all’osservazione
+diretta, ma viene inferito dall’osservazione di opportuni indicatori
+(Sartori, 2005).<a href="chapter-sintassi-R.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cha-install.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-terminologia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ccaudek/bookdown_psicometria/edit/master/03_R_sintassi.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/ccaudek/bookdown_psicometria/blob/master/03_R_sintassi.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
