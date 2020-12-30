@@ -891,8 +891,10 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
 <span id="cb90-9"><a href="chapter-stima-funzione-aposteriori.html#cb90-9" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x=</span>param, <span class="at">y=</span><span class="fu">likelihood</span>(param)) <span class="sc">%&gt;%</span> </span>
 <span id="cb90-10"><a href="chapter-stima-funzione-aposteriori.html#cb90-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
 <span id="cb90-11"><a href="chapter-stima-funzione-aposteriori.html#cb90-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb90-12"><a href="chapter-stima-funzione-aposteriori.html#cb90-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="fu">expression</span>(theta)) <span class="sc">+</span></span>
-<span id="cb90-13"><a href="chapter-stima-funzione-aposteriori.html#cb90-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Verosimiglianza&quot;</span>)</span></code></pre></div>
+<span id="cb90-12"><a href="chapter-stima-funzione-aposteriori.html#cb90-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb90-13"><a href="chapter-stima-funzione-aposteriori.html#cb90-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(theta),</span>
+<span id="cb90-14"><a href="chapter-stima-funzione-aposteriori.html#cb90-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Verosimiglianza&quot;</span></span>
+<span id="cb90-15"><a href="chapter-stima-funzione-aposteriori.html#cb90-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p><img src="Psicometria_files/figure-html/unnamed-chunk-103-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="distribuzione-a-priori-1" class="section level4" number="11.4.3.2">
@@ -906,8 +908,10 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
 <span id="cb91-6"><a href="chapter-stima-funzione-aposteriori.html#cb91-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x=</span>param, <span class="at">y=</span><span class="fu">prior</span>(param)) <span class="sc">%&gt;%</span> </span>
 <span id="cb91-7"><a href="chapter-stima-funzione-aposteriori.html#cb91-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
 <span id="cb91-8"><a href="chapter-stima-funzione-aposteriori.html#cb91-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb91-9"><a href="chapter-stima-funzione-aposteriori.html#cb91-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="fu">expression</span>(theta)) <span class="sc">+</span></span>
-<span id="cb91-10"><a href="chapter-stima-funzione-aposteriori.html#cb91-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Densità&quot;</span>)</span></code></pre></div>
+<span id="cb91-9"><a href="chapter-stima-funzione-aposteriori.html#cb91-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb91-10"><a href="chapter-stima-funzione-aposteriori.html#cb91-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(theta),</span>
+<span id="cb91-11"><a href="chapter-stima-funzione-aposteriori.html#cb91-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Densità&quot;</span></span>
+<span id="cb91-12"><a href="chapter-stima-funzione-aposteriori.html#cb91-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p><img src="Psicometria_files/figure-html/unnamed-chunk-104-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="distribuzione-a-posteriori" class="section level4" number="11.4.3.3">
@@ -920,8 +924,10 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
 <span id="cb92-5"><a href="chapter-stima-funzione-aposteriori.html#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x=</span>param, <span class="at">y=</span><span class="fu">posterior</span>(param)) <span class="sc">%&gt;%</span> </span>
 <span id="cb92-6"><a href="chapter-stima-funzione-aposteriori.html#cb92-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
 <span id="cb92-7"><a href="chapter-stima-funzione-aposteriori.html#cb92-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb92-8"><a href="chapter-stima-funzione-aposteriori.html#cb92-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="fu">expression</span>(theta)) <span class="sc">+</span></span>
-<span id="cb92-9"><a href="chapter-stima-funzione-aposteriori.html#cb92-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Densità&quot;</span>)</span></code></pre></div>
+<span id="cb92-8"><a href="chapter-stima-funzione-aposteriori.html#cb92-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb92-9"><a href="chapter-stima-funzione-aposteriori.html#cb92-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(theta),</span>
+<span id="cb92-10"><a href="chapter-stima-funzione-aposteriori.html#cb92-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Densità&quot;</span></span>
+<span id="cb92-11"><a href="chapter-stima-funzione-aposteriori.html#cb92-11" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p><img src="Psicometria_files/figure-html/unnamed-chunk-105-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Questo è il risultato che vogliamo ottenere utilizzando l’algoritmo di Metropolis. Dalla figura precedente vediamo che la moda della distribuzione a posteriori è pari a circa 0.6. Questo è il valore più verosimile a posteriori per il parametro <span class="math inline">\(\theta\)</span>.</p>
 </div>

@@ -566,8 +566,10 @@ likelihood <- function(param, x = 23, N = 30) {
 data.frame(x=param, y=likelihood(param)) %>% 
   ggplot(aes(x, y)) +
   geom_line() +
-  xlab(expression(theta)) +
-  ylab("Verosimiglianza")
+  labs(
+    x = expression(theta),
+    y = "Verosimiglianza"
+  )
 ```
 
 
@@ -584,8 +586,10 @@ prior <- function(param, alpha = 2, beta = 10) {
 data.frame(x=param, y=prior(param)) %>% 
   ggplot(aes(x, y)) +
   geom_line() +
-  xlab(expression(theta)) +
-  ylab("Densità")
+  labs(
+    x = expression(theta),
+    y = "Densità"
+  )
 ```
 
 #### Distribuzione a posteriori
@@ -600,8 +604,10 @@ posterior <- function(param) {
 data.frame(x=param, y=posterior(param)) %>% 
   ggplot(aes(x, y)) +
   geom_line() +
-  xlab(expression(theta)) +
-  ylab("Densità")
+  labs(
+    x = expression(theta),
+    y = "Densità"
+  )
 ```
 
 Questo è il risultato che vogliamo ottenere utilizzando l'algoritmo di Metropolis.  Dalla figura precedente vediamo che la moda della distribuzione a posteriori è pari a circa 0.6. Questo è il valore più verosimile a posteriori per il parametro $\theta$.
