@@ -38,6 +38,7 @@ rmd_files: [
   "16_prob_condiz.Rmd",
   "17_theo_bayes.Rmd",
   "18_prob_congiunta.Rmd",
+  "23_grid_approx.Rmd",
   "98_appendici.Rmd",
   "99_References.Rmd"
 ]

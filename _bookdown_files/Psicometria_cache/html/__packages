@@ -1,5 +1,4 @@
 base
-here
 tidyverse
 ggplot2
 tibble
@@ -9,6 +8,8 @@ purrr
 dplyr
 stringr
 forcats
+papaja
+here
 ggpubr
 ggExtra
 carData
@@ -18,5 +19,4 @@ tidybayes
 datasauRus
 RColorBrewer
 rio
-papaja
 patchwork

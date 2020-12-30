@@ -15,3 +15,9 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 
 # Supress crayon output
 options(crayon.enabled = FALSE)
+
+library("tidyverse")
+# Se theme_papaja::apa() for all figures
+library("papaja")
+theme_set(papaja::theme_apa())
+

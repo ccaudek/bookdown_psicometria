@@ -24,7 +24,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2020-12-28" />
+<meta name="date" content="2020-12-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -317,6 +317,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
+<li class="chapter" data-level="11" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html"><i class="fa fa-check"></i><b>11</b> Stima della funzione a posteriori</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:met_numerici_convenzionali"><i class="fa fa-check"></i><b>11.1</b> Metodi numerici convenzionali</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:appross_numerica"><i class="fa fa-check"></i><b>11.1.1</b> La procedura dell’approssimazione numerica</a></li>
+<li class="chapter" data-level="11.1.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:es_pratico_zetsche"><i class="fa fa-check"></i><b>11.1.2</b> Un esempio pratico</a></li>
+<li class="chapter" data-level="11.1.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:aspett_future_beta2_10"><i class="fa fa-check"></i><b>11.1.3</b> Un esempio pratico (versione 2)</a></li>
+<li class="chapter" data-level="11.1.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sommario-della-funzione-a-posteriori"><i class="fa fa-check"></i><b>11.1.4</b> Sommario della funzione a posteriori</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#approssimazione-quadratica"><i class="fa fa-check"></i><b>11.2</b> Approssimazione quadratica</a></li>
+<li class="chapter" data-level="11.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:integr_MC"><i class="fa fa-check"></i><b>11.3</b> Integrazione con metodo Monte Carlo</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:legge_forte_grandi_numeri"><i class="fa fa-check"></i><b>11.3.1</b> Legge forte dei grandi numeri</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:mmmc"><i class="fa fa-check"></i><b>11.4</b> Metodi MC basati su Catena di Markov</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:turista_viagg"><i class="fa fa-check"></i><b>11.4.1</b> Il problema del turista viaggiatore</a></li>
+<li class="chapter" data-level="11.4.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#lalgoritmo-di-metropolis"><i class="fa fa-check"></i><b>11.4.2</b> L’algoritmo di Metropolis</a></li>
+<li class="chapter" data-level="11.4.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:metropolis_one_mean"><i class="fa fa-check"></i><b>11.4.3</b> Una applicazione concreta</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:pregi_inferenza_bayes"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html"><i class="fa fa-check"></i>Appendici</a>
 <ul>
 <li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#simbologia-di-base"><i class="fa fa-check"></i>Simbologia di base</a></li>
@@ -559,9 +581,8 @@ Leggiamo i dati assumendo che il file <code>data.mood.csv</code> si trovi nella 
 <span id="cb45-7"><a href="chapter-descriptive-stats.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` ungrouping output (override with `.groups` argument)</span></span></code></pre></div>
 <p>Ci sono dunque 66 soggetti i quali hanno ottenuto i valori sulla scala del BDI-II stampati di seguito (li presento ordinati dal più piccolo al più grande).</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="chapter-descriptive-stats.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(bysubj<span class="sc">$</span>bdi)</span>
-<span id="cb46-2"><a href="chapter-descriptive-stats.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  2  2  2  2  3  3</span></span>
-<span id="cb46-3"><a href="chapter-descriptive-stats.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [32]  3  5  7  9 12 19 22 22 24 25 25 26 26 26 27 27 28 28 30 30 30 31 31 33 33 34 35 35 35 36 39</span></span>
-<span id="cb46-4"><a href="chapter-descriptive-stats.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [63] 41 43 43 44</span></span></code></pre></div>
+<span id="cb46-2"><a href="chapter-descriptive-stats.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  2  2  2  2  3  3  3  5  7  9 12 19</span></span>
+<span id="cb46-3"><a href="chapter-descriptive-stats.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [38] 22 22 24 25 25 26 26 26 27 27 28 28 30 30 30 31 31 33 33 34 35 35 35 36 39 41 43 43 44</span></span></code></pre></div>
 <p>Calcolo ora le frequenze assolute per i seguenti intervalli aperti a destra: [0, 13.5), [13.5, 19.5), [19.5, 28.5), [28.5, 63). Esaminando i dati, possiamo notare che 36 soggetti cadono nella prima classe. È però necessario eseguire quest’operazione di conteggio utilizzando R.</p>
 <p>Uno dei modi possibili per calcolare le frequenze assolute è quello di usare la funzione <code>cut()</code>. Mediante tal funzione è possibile dividere il <em>campo di variazione</em> (ovvero, la differenza tra il valore massimo di una distribuzione ed il valore minimo) di una variabile continua <code>x</code> in intervalli e codificare ciascun valore <code>x</code> nei termini dell’intervallo a cui appartiene. Tale risultato si ottiene nel modo seguente.</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="chapter-descriptive-stats.html#cb47-1" aria-hidden="true" tabindex="-1"></a>bysubj<span class="sc">$</span>bdi_level <span class="ot">&lt;-</span> <span class="fu">cut</span>(</span>
@@ -574,14 +595,13 @@ Leggiamo i dati assumendo che il file <code>data.mood.csv</code> si trovi nella 
 <span id="cb47-8"><a href="chapter-descriptive-stats.html#cb47-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb47-9"><a href="chapter-descriptive-stats.html#cb47-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-10"><a href="chapter-descriptive-stats.html#cb47-10" aria-hidden="true" tabindex="-1"></a>bysubj<span class="sc">$</span>bdi_level</span>
-<span id="cb47-11"><a href="chapter-descriptive-stats.html#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] moderate severe   severe   moderate severe   severe   severe   severe   moderate severe  </span></span>
-<span id="cb47-12"><a href="chapter-descriptive-stats.html#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] moderate mild     severe   minimal  minimal  minimal  severe   moderate minimal  minimal </span></span>
-<span id="cb47-13"><a href="chapter-descriptive-stats.html#cb47-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] minimal  minimal  minimal  moderate minimal  minimal  minimal  minimal  minimal  minimal </span></span>
-<span id="cb47-14"><a href="chapter-descriptive-stats.html#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [31] minimal  severe   minimal  minimal  severe   minimal  moderate minimal  minimal  minimal </span></span>
-<span id="cb47-15"><a href="chapter-descriptive-stats.html#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [41] severe   minimal  minimal  severe   severe   moderate severe   severe   minimal  moderate</span></span>
-<span id="cb47-16"><a href="chapter-descriptive-stats.html#cb47-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [51] minimal  moderate severe   moderate moderate minimal  minimal  minimal  minimal  minimal </span></span>
-<span id="cb47-17"><a href="chapter-descriptive-stats.html#cb47-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [61] minimal  minimal  minimal  minimal  minimal  minimal </span></span>
-<span id="cb47-18"><a href="chapter-descriptive-stats.html#cb47-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: minimal mild moderate severe</span></span></code></pre></div>
+<span id="cb47-11"><a href="chapter-descriptive-stats.html#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] moderate severe   severe   moderate severe   severe   severe   severe   moderate severe   moderate mild    </span></span>
+<span id="cb47-12"><a href="chapter-descriptive-stats.html#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] severe   minimal  minimal  minimal  severe   moderate minimal  minimal  minimal  minimal  minimal  moderate</span></span>
+<span id="cb47-13"><a href="chapter-descriptive-stats.html#cb47-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] minimal  minimal  minimal  minimal  minimal  minimal  minimal  severe   minimal  minimal  severe   minimal </span></span>
+<span id="cb47-14"><a href="chapter-descriptive-stats.html#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [37] moderate minimal  minimal  minimal  severe   minimal  minimal  severe   severe   moderate severe   severe  </span></span>
+<span id="cb47-15"><a href="chapter-descriptive-stats.html#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [49] minimal  moderate minimal  moderate severe   moderate moderate minimal  minimal  minimal  minimal  minimal </span></span>
+<span id="cb47-16"><a href="chapter-descriptive-stats.html#cb47-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [61] minimal  minimal  minimal  minimal  minimal  minimal </span></span>
+<span id="cb47-17"><a href="chapter-descriptive-stats.html#cb47-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: minimal mild moderate severe</span></span></code></pre></div>
 <p>Possiamo ora usare la funzione <code>table()</code> la quale ritorna un elenco che associa la frequenza assoluta a ciascuna modalità della variabile in input – ovvero, la distribuzione di frequenza assoluta.</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="chapter-descriptive-stats.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(bysubj<span class="sc">$</span>bdi_level)</span>
 <span id="cb48-2"><a href="chapter-descriptive-stats.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
@@ -784,7 +804,7 @@ l’intero tale che <span class="math inline">\(k &lt; np &lt; k + 1\)</span> �
 Allora <span class="math inline">\(q_p = x_{k+1}.\)</span> Se <span class="math inline">\(np = k\)</span> con <span class="math inline">\(k\)</span> intero, allora
 <span class="math inline">\(q_p = \frac{1}{2}(x_{k} + x_{k+1}).\)</span> Se vogliamo calcolare il primo
 quartile <span class="math inline">\(q_1\)</span>, ad esempio, utilizziamo <span class="math inline">\(p = 0.25\)</span>. Dovendo calcolare
-gli altri quantili basta sostituire a <span class="math inline">\(p\)</span> il valore appropriato[^2].</p>
+gli altri quantili basta sostituire a <span class="math inline">\(p\)</span> il valore appropriato<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
 <p>Gli indici di posizione, tra le altre cose, hanno un ruolo importante,
 ovvero vengono utilizzati per creare una rappresentazione grafica di una
 distribuzione di valori che è molto popolare e può essere usata in
@@ -1491,6 +1511,14 @@ software statistico.</p>
 
 
 
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p>È possibile che, per i diversi sistemi operativi, sia necessaria
+l’installazione di componenti ulteriori. Si veda
+<a href="https://github.com/rmcelreath/rethinking" class="uri">https://github.com/rmcelreath/rethinking</a>.<a href="chapter-descriptive-stats.html#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
             </section>
 
           </div>
