@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitolo 14 Regressione lineare semplice | PSICOMETRIA</title>
+  <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitolo 14 Regressione lineare semplice | PSICOMETRIA" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta name="github-repo" content="ccaudek/bookdown_psicometria" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitolo 14 Regressione lineare semplice | PSICOMETRIA" />
+  <meta name="twitter:site" content="@ccaudek" />
+  <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  
+
+<meta name="author" content="Corrado Caudek" />
+
+
+<meta name="date" content="2021-01-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="chapter-stima-funzione-aposteriori.html"/>
+<link rel="next" href="chapter-stat-models.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A.A. 2020/2021</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefazione</a></li>
+<li class="part"><span><b>Introduzione</b></span></li>
+<li class="chapter" data-level="" data-path="obiettivi.html"><a href="obiettivi.html"><i class="fa fa-check"></i>Obiettivi</a></li>
+<li class="chapter" data-level="" data-path="perché-tanta-statistica-in-psicologia.html"><a href="perché-tanta-statistica-in-psicologia.html"><i class="fa fa-check"></i>Perché tanta statistica in psicologia?</a></li>
+<li class="chapter" data-level="" data-path="come-studiare.html"><a href="come-studiare.html"><i class="fa fa-check"></i>Come studiare?</a></li>
+<li class="part"><span><b>Introduzione al linguaggio R</b></span></li>
+<li class="chapter" data-level="1" data-path="chapter-pacchetti.html"><a href="chapter-pacchetti.html"><i class="fa fa-check"></i><b>1</b> Pacchetti</a></li>
+<li class="chapter" data-level="2" data-path="cha-install.html"><a href="cha-install.html"><i class="fa fa-check"></i><b>2</b> Per cominciare</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="2.1" data-path="cha-install.html"><a href="cha-install.html#installare-r-e-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installare R e RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="cha-install.html"><a href="cha-install.html#utilizzare-rstudio-per-semplificare-il-lavoro"><i class="fa fa-check"></i><b>2.2</b> Utilizzare RStudio per semplificare il lavoro</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="cha-install.html"><a href="cha-install.html#eseguire-il-codice"><i class="fa fa-check"></i><b>2.2.1</b> Eseguire il codice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html"><i class="fa fa-check"></i><b>3</b> Sintassi di base</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="3.1" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#utilizzare-la-console-r-come-calcolatrice"><i class="fa fa-check"></i><b>3.1</b> Utilizzare la console R come calcolatrice</a></li>
+<li class="chapter" data-level="3.2" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#le-parentesi"><i class="fa fa-check"></i><b>3.2</b> Le parentesi</a></li>
+<li class="chapter" data-level="3.3" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#i-nomi-degli-oggetti"><i class="fa fa-check"></i><b>3.3</b> I nomi degli oggetti</a></li>
+<li class="chapter" data-level="3.4" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#permanenza-dei-dati-e-rimozione-di-oggetti"><i class="fa fa-check"></i><b>3.4</b> Permanenza dei dati e rimozione di oggetti</a></li>
+<li class="chapter" data-level="3.5" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#chiudere-r"><i class="fa fa-check"></i><b>3.5</b> Chiudere R</a></li>
+<li class="chapter" data-level="3.6" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#sec:editor"><i class="fa fa-check"></i><b>3.6</b> Creare ed eseguire uno script R con un editore</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#commentare-il-codice"><i class="fa fa-check"></i><b>3.6.1</b> Commentare il codice</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#sec:change_dir"><i class="fa fa-check"></i><b>3.7</b> Cambiare la cartella di lavoro</a></li>
+<li class="chapter" data-level="3.8" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#loggetto-base-di-il-vettore"><i class="fa fa-check"></i><b>3.8</b> L’oggetto base di : il vettore</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#operazioni-vettorializzate"><i class="fa fa-check"></i><b>3.8.1</b> Operazioni vettorializzate</a></li>
+<li class="chapter" data-level="3.8.2" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#vettori-aritmetici"><i class="fa fa-check"></i><b>3.8.2</b> Vettori aritmetici</a></li>
+<li class="chapter" data-level="3.8.3" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#generazione-di-sequenze-regolari"><i class="fa fa-check"></i><b>3.8.3</b> Generazione di sequenze regolari</a></li>
+<li class="chapter" data-level="3.8.4" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#sec:gen_rand_numbers"><i class="fa fa-check"></i><b>3.8.4</b> Generazione di numeri casuali</a></li>
+<li class="chapter" data-level="3.8.5" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#vettori-logici"><i class="fa fa-check"></i><b>3.8.5</b> Vettori logici</a></li>
+<li class="chapter" data-level="3.8.6" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#dati-mancanti"><i class="fa fa-check"></i><b>3.8.6</b> Dati mancanti</a></li>
+<li class="chapter" data-level="3.8.7" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#vettori-di-caratteri-e-fattori"><i class="fa fa-check"></i><b>3.8.7</b> Vettori di caratteri e fattori</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#cap:sintassi_funzioni"><i class="fa fa-check"></i><b>3.9</b> Funzioni</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#scrivere-proprie-funzioni"><i class="fa fa-check"></i><b>3.9.1</b> Scrivere proprie funzioni</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#pacchetti"><i class="fa fa-check"></i><b>3.10</b> Pacchetti</a>
+<ul>
+<li class="chapter" data-level="3.10.1" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#istallazione-e-upgrade-dei-pacchetti"><i class="fa fa-check"></i><b>3.10.1</b> Istallazione e upgrade dei pacchetti</a></li>
+<li class="chapter" data-level="3.10.2" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#caricare-un-pacchetto-in-r"><i class="fa fa-check"></i><b>3.10.2</b> Caricare un pacchetto in R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html"><i class="fa fa-check"></i><b>4</b> Strutture di dati</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="4.1" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#classi-e-modi-degli-oggetti"><i class="fa fa-check"></i><b>4.1</b> Classi e modi degli oggetti</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#vettori"><i class="fa fa-check"></i><b>4.1.1</b> Vettori</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#matrici"><i class="fa fa-check"></i><b>4.2</b> Matrici</a></li>
+<li class="chapter" data-level="4.3" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
+<li class="chapter" data-level="4.4" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#operazioni-aritmetiche-su-vettori-matrici-e-array"><i class="fa fa-check"></i><b>4.4</b> Operazioni aritmetiche su vettori, matrici e array</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#operazioni-aritmetiche-su-vettori"><i class="fa fa-check"></i><b>4.4.1</b> Operazioni aritmetiche su vettori</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#operazioni-aritmetiche-su-matrici"><i class="fa fa-check"></i><b>4.4.2</b> Operazioni aritmetiche su matrici</a></li>
+<li class="chapter" data-level="4.4.3" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#operazioni-aritmetiche-su-array"><i class="fa fa-check"></i><b>4.4.3</b> Operazioni aritmetiche su array</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#liste"><i class="fa fa-check"></i><b>4.5</b> Liste</a></li>
+<li class="chapter" data-level="4.6" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#data-frame"><i class="fa fa-check"></i><b>4.6</b> Data frame</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#selezione-di-elementi"><i class="fa fa-check"></i><b>4.6.1</b> Selezione di elementi</a></li>
+<li class="chapter" data-level="4.6.2" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#giochi-di-carte"><i class="fa fa-check"></i><b>4.6.2</b> Giochi di carte</a></li>
+<li class="chapter" data-level="4.6.3" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#variabili-locali"><i class="fa fa-check"></i><b>4.6.3</b> Variabili locali</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapter-strutture-controllo.html"><a href="chapter-strutture-controllo.html"><i class="fa fa-check"></i><b>5</b> Strutture di controllo</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="5.1" data-path="chapter-strutture-controllo.html"><a href="chapter-strutture-controllo.html#il-ciclo-for"><i class="fa fa-check"></i><b>5.1</b> Il ciclo <code>for</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html"><i class="fa fa-check"></i><b>6</b> Input/Output</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="6.1" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html#la-funzione-read.table"><i class="fa fa-check"></i><b>6.1</b> La funzione <code>read.table()</code></a></li>
+<li class="chapter" data-level="6.2" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html#file-di-dati-forniti-da-r"><i class="fa fa-check"></i><b>6.2</b> File di dati forniti da R</a></li>
+<li class="chapter" data-level="6.3" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html#esportazione-di-un-file"><i class="fa fa-check"></i><b>6.3</b> Esportazione di un file</a></li>
+<li class="chapter" data-level="6.4" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html#pacchetto-rio"><i class="fa fa-check"></i><b>6.4</b> Pacchetto <code>rio</code></a></li>
+<li class="chapter" data-level="6.5" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html#dove-sono-i-miei-file"><i class="fa fa-check"></i><b>6.5</b> Dove sono i miei file?</a></li>
+</ul></li>
+<li class="part"><span><b>Misurazione</b></span></li>
+<li class="chapter" data-level="7" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html"><i class="fa fa-check"></i><b>7</b> Terminologia</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#metodi-e-procedure-della-psicologia"><i class="fa fa-check"></i><b>7.1</b> Metodi e procedure della psicologia</a></li>
+<li class="chapter" data-level="7.2" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#variabili-e-costanti"><i class="fa fa-check"></i><b>7.2</b> Variabili e costanti</a></li>
+<li class="chapter" data-level="7.3" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#variabili-indipendenti-e-variabili-dipendenti"><i class="fa fa-check"></i><b>7.3</b> Variabili indipendenti e variabili dipendenti</a></li>
+<li class="chapter" data-level="7.4" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#la-matrice-dei-dati"><i class="fa fa-check"></i><b>7.4</b> La matrice dei dati</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html"><i class="fa fa-check"></i><b>8</b> La misurazione in psicologia</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#le-scale-di-misura"><i class="fa fa-check"></i><b>8.1</b> Le scale di misura</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-nominale"><i class="fa fa-check"></i><b>8.1.1</b> Scala nominale</a></li>
+<li class="chapter" data-level="8.1.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-ordinale"><i class="fa fa-check"></i><b>8.1.2</b> Scala ordinale</a></li>
+<li class="chapter" data-level="8.1.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-ad-intervalli"><i class="fa fa-check"></i><b>8.1.3</b> Scala ad intervalli</a></li>
+<li class="chapter" data-level="8.1.4" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-di-rapporti"><i class="fa fa-check"></i><b>8.1.4</b> Scala di rapporti</a></li>
+<li class="chapter" data-level="8.1.5" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#gerarchia-dei-livelli-di-scala-di-misura"><i class="fa fa-check"></i><b>8.1.5</b> Gerarchia dei livelli di scala di misura</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:DiscreteVsContinuous"><i class="fa fa-check"></i><b>8.2</b> Variabili discrete vs. variabili continue</a></li>
+<li class="chapter" data-level="8.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#perché-alcune-misurazioni-sono-migliori-di-altre"><i class="fa fa-check"></i><b>8.3</b> Perché alcune misurazioni sono migliori di altre?</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:accuratezza_precisione"><i class="fa fa-check"></i><b>8.3.1</b> Tipologie di errori</a></li>
+<li class="chapter" data-level="8.3.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:reliability"><i class="fa fa-check"></i><b>8.3.2</b> Attendibilità</a></li>
+<li class="chapter" data-level="8.3.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:validity"><i class="fa fa-check"></i><b>8.3.3</b> Validità</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="part"><span><b>Elementi di teoria della probabilità</b></span></li>
+<li class="chapter" data-level="9" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html"><i class="fa fa-check"></i><b>9</b> Che cos’è la probabilità?</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-naturale"><i class="fa fa-check"></i><b>9.1</b> Probabilità nel linguaggio naturale</a></li>
+<li class="chapter" data-level="9.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-scientifico"><i class="fa fa-check"></i><b>9.2</b> Probabilità nel linguaggio scientifico</a></li>
+<li class="chapter" data-level="9.3" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#terminologia"><i class="fa fa-check"></i><b>9.3</b> Terminologia</a></li>
+<li class="chapter" data-level="9.4" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#le-diverse-definizioni-della-probabilità"><i class="fa fa-check"></i><b>9.4</b> Le diverse definizioni della probabilità</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#sec:def_ing_prob"><i class="fa fa-check"></i><b>9.4.1</b> Una definizione “ingenua” della probabilità</a></li>
+<li class="chapter" data-level="9.4.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#una-definizione-non-ingenua-della-probabilità"><i class="fa fa-check"></i><b>9.4.2</b> Una definizione “non ingenua” della probabilità</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#assegnare-le-probabilità-agli-eventi"><i class="fa fa-check"></i><b>9.5</b> Assegnare le probabilità agli eventi</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-frequentista"><i class="fa fa-check"></i><b>9.5.1</b> Approccio frequentista</a></li>
+<li class="chapter" data-level="9.5.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-bayesiano"><i class="fa fa-check"></i><b>9.5.2</b> Approccio Bayesiano</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#proprietà-elementari-della-probabilità"><i class="fa fa-check"></i><b>9.6</b> Proprietà elementari della probabilità</a></li>
+<li class="chapter" data-level="9.7" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#variabili-aleatorie"><i class="fa fa-check"></i><b>9.7</b> Variabili aleatorie</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#a-cosa-servono-le-variabili-aleatorie"><i class="fa fa-check"></i><b>9.7.1</b> A cosa servono le variabili aleatorie?</a></li>
+<li class="chapter" data-level="9.7.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#funzione-di-massa-di-probabilità"><i class="fa fa-check"></i><b>9.7.2</b> Funzione di massa di probabilità</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#notazione"><i class="fa fa-check"></i><b>9.8</b> Notazione</a></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html"><i class="fa fa-check"></i><b>10</b> Probabilità condizionata</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#sec:prob_cond"><i class="fa fa-check"></i><b>10.1</b> Probabilità condizionata su altri eventi</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#la-fallacia-del-pubblico-ministero"><i class="fa fa-check"></i><b>10.1.1</b> La fallacia del pubblico ministero</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#legge-della-probabilità-composta"><i class="fa fa-check"></i><b>10.2</b> Legge della probabilità composta</a></li>
+<li class="chapter" data-level="10.3" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#lindipendendenza-stocastica"><i class="fa fa-check"></i><b>10.3</b> L’indipendendenza stocastica</a></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html"><i class="fa fa-check"></i><b>11</b> Il teorema di Bayes</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:tot_prob_theorem"><i class="fa fa-check"></i><b>11.1</b> Il teorema della probabilità totale</a></li>
+<li class="chapter" data-level="11.2" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:bayes_theorem"><i class="fa fa-check"></i><b>11.2</b> Il teorema della probabilità delle cause</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#aggiornamento-bayesiano"><i class="fa fa-check"></i><b>11.2.1</b> Aggiornamento Bayesiano</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html"><i class="fa fa-check"></i><b>12</b> Probabilità congiunta</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzione-di-probabilità-congiunta"><i class="fa fa-check"></i><b>12.1</b> Funzione di probabilità congiunta</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#proprietà"><i class="fa fa-check"></i><b>12.1.1</b> Proprietà</a></li>
+<li class="chapter" data-level="12.1.2" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#eventi"><i class="fa fa-check"></i><b>12.1.2</b> Eventi</a></li>
+<li class="chapter" data-level="12.1.3" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzioni-di-probabilità-marginali"><i class="fa fa-check"></i><b>12.1.3</b> Funzioni di probabilità marginali</a></li>
+<li class="chapter" data-level="12.1.4" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#indipendenza-stocastica"><i class="fa fa-check"></i><b>12.1.4</b> Indipendenza stocastica</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html"><i class="fa fa-check"></i><b>13</b> Stima della funzione a posteriori</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:met_numerici_convenzionali"><i class="fa fa-check"></i><b>13.1</b> Metodi numerici convenzionali</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:appross_numerica"><i class="fa fa-check"></i><b>13.1.1</b> La procedura dell’approssimazione numerica</a></li>
+<li class="chapter" data-level="13.1.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:es_pratico_zetsche"><i class="fa fa-check"></i><b>13.1.2</b> Un esempio pratico</a></li>
+<li class="chapter" data-level="13.1.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:aspett_future_beta2_10"><i class="fa fa-check"></i><b>13.1.3</b> Un esempio pratico (versione 2)</a></li>
+<li class="chapter" data-level="13.1.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sommario-della-funzione-a-posteriori"><i class="fa fa-check"></i><b>13.1.4</b> Sommario della funzione a posteriori</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#approssimazione-quadratica"><i class="fa fa-check"></i><b>13.2</b> Approssimazione quadratica</a></li>
+<li class="chapter" data-level="13.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:integr_MC"><i class="fa fa-check"></i><b>13.3</b> Integrazione con metodo Monte Carlo</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:legge_forte_grandi_numeri"><i class="fa fa-check"></i><b>13.3.1</b> Legge forte dei grandi numeri</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:mmmc"><i class="fa fa-check"></i><b>13.4</b> Metodi MC basati su Catena di Markov</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:turista_viagg"><i class="fa fa-check"></i><b>13.4.1</b> Il problema del turista viaggiatore</a></li>
+<li class="chapter" data-level="13.4.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#lalgoritmo-di-metropolis"><i class="fa fa-check"></i><b>13.4.2</b> L’algoritmo di Metropolis</a></li>
+<li class="chapter" data-level="13.4.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:metropolis_one_mean"><i class="fa fa-check"></i><b>13.4.3</b> Una applicazione concreta</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:pregi_inferenza_bayes"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="chapter-reglin.html"><a href="chapter-reglin.html"><i class="fa fa-check"></i><b>14</b> Regressione lineare semplice</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="14.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#la-funzione-lineare"><i class="fa fa-check"></i><b>14.1</b> La funzione lineare</a></li>
+<li class="chapter" data-level="14.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#lerrore-di-misurazione"><i class="fa fa-check"></i><b>14.2</b> L’errore di misurazione</a></li>
+<li class="chapter" data-level="14.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#scopi-della-regressione-lineare"><i class="fa fa-check"></i><b>14.3</b> Scopi della regressione lineare</a></li>
+<li class="chapter" data-level="14.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#quantificare-lassociazione-fra-due-caratteri-quantitativi"><i class="fa fa-check"></i><b>14.4</b> Quantificare l’associazione fra due caratteri quantitativi</a></li>
+<li class="chapter" data-level="14.5" data-path="chapter-reglin.html"><a href="chapter-reglin.html#stime-dei-minimi-quadrati"><i class="fa fa-check"></i><b>14.5</b> Stime dei minimi quadrati</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#monotwinsiq"><i class="fa fa-check"></i><b>14.5.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="14.5.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#sec:beta_r"><i class="fa fa-check"></i><b>14.5.2</b> Coefficiente angolare e correlazione di Pearson</a></li>
+<li class="chapter" data-level="14.5.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#regressione-verso-la-media"><i class="fa fa-check"></i><b>14.5.3</b> Regressione verso la media</a></li>
+<li class="chapter" data-level="14.5.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#punti-influenti-e-valori-anomali"><i class="fa fa-check"></i><b>14.5.4</b> Punti influenti e valori anomali</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="chapter-reglin.html"><a href="chapter-reglin.html#bontà-delladattamento"><i class="fa fa-check"></i><b>14.6</b> Bontà dell’adattamento</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#errore-standard-della-stima"><i class="fa fa-check"></i><b>14.6.1</b> Errore standard della stima</a></li>
+<li class="chapter" data-level="14.6.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#indice-di-determinazione"><i class="fa fa-check"></i><b>14.6.2</b> Indice di determinazione</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="chapter-reglin.html"><a href="chapter-reglin.html#inferenza-sullassociazione-tra-x-e-y-nella-popolazione"><i class="fa fa-check"></i><b>14.7</b> Inferenza sull’associazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> nella popolazione</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#modello-statistico-di-regressione-lineare"><i class="fa fa-check"></i><b>14.7.1</b> Modello statistico di regressione lineare</a></li>
+<li class="chapter" data-level="14.7.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#proprietà-degli-stimatori-dei-minimi-quadrati"><i class="fa fa-check"></i><b>14.7.2</b> Proprietà degli stimatori dei minimi quadrati</a></li>
+<li class="chapter" data-level="14.7.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#le-inferenze-sul-modello-di-regressione"><i class="fa fa-check"></i><b>14.7.3</b> Le inferenze sul modello di regressione</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-reglin.html"><a href="chapter-reglin.html#considerazioni-conclusive"><i class="fa fa-check"></i>Considerazioni conclusive</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html"><i class="fa fa-check"></i><b>15</b> Il modello lineare</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-binomiale"><i class="fa fa-check"></i><b>15.1</b> Modello Binomiale</a></li>
+<li class="chapter" data-level="15.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec:idrossi"><i class="fa fa-check"></i><b>15.2</b> Il presidente Trump e l’idrossiclorochina</a></li>
+<li class="chapter" data-level="15.3" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-normale"><i class="fa fa-check"></i><b>15.3</b> Modello Normale</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#il-modello-normale-con-quap"><i class="fa fa-check"></i><b>15.3.1</b> Il modello normale con <code>quap()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_mod_lin"><i class="fa fa-check"></i><b>15.4</b> Il modello di regressione lineare</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>15.4.1</b> Variabile indipendente dicotomica</a></li>
+<li class="chapter" data-level="15.4.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>15.4.2</b> Un esempio pratico</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>15.5</b> Una variabile indipendente continua</a></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html"><i class="fa fa-check"></i>Appendici</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#simbologia-di-base"><i class="fa fa-check"></i>Simbologia di base</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-binari-interi-razionali-irrazionali-e-reali"><i class="fa fa-check"></i>Numeri binari, interi, razionali, irrazionali e reali</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-binari"><i class="fa fa-check"></i>Numeri binari</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-interi"><i class="fa fa-check"></i>Numeri interi</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-razionali"><i class="fa fa-check"></i>Numeri razionali</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-irrazionali"><i class="fa fa-check"></i>Numeri irrazionali</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-reali"><i class="fa fa-check"></i>Numeri reali</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#intervalli"><i class="fa fa-check"></i>Intervalli</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#cap:insiemi"><i class="fa fa-check"></i>Insiemi</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#operazioni-tra-insiemi"><i class="fa fa-check"></i>Operazioni tra insiemi</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#diagrammi-di-eulero-venn"><i class="fa fa-check"></i>Diagrammi di Eulero-Venn</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#sec:prod_cartesiano"><i class="fa fa-check"></i>Coppie ordinate e prodotto cartesiano</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#cardinalità"><i class="fa fa-check"></i>Cardinalità</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#propr_coef_min_quad"><i class="fa fa-check"></i>Proprietà degli stimatori dei minimi quadrati</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSICOMETRIA</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter:reglin" class="section level1" number="14">
+<h1><span class="header-section-number">Capitolo 14</span> Regressione lineare semplice</h1>
+<div id="obiettivi-di-apprendimento" class="section level2 unnumbered">
+<h2>Obiettivi di apprendimento</h2>
+<p>Lo studio di questo capitolo dovrebbe insegnare allo studente come:</p>
+<ul>
+<li>Spiegare il concetto di stima dei minimi quadrati.</li>
+<li>Collegare i concetti di coefficiente angolare del modello lineare di
+regressione semplice e correlazione di Pearson.</li>
+<li>Descrivere come possa essere valutata la bontà di adattamento del
+modello ai dati.</li>
+<li>Spiegare come si può fare inferenza sull’associazione tra <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>
+nella popolazione.</li>
+<li>Applicare il metodo del test dell’ipotesi nulla alle ipotesi
+relative ai coefficienti del modello di regressione.</li>
+<li>Spiegare l’influenza dei punti influenti e dei valori anomali sulla
+soluzione dei minimi quadrati.</li>
+</ul>
+</div>
+<div id="motivazione" class="section level2 unnumbered">
+<h2>Motivazione</h2>
+<p>Lo scopo della ricerca è trovare le associazioni tra le variabili e fare
+confronti fra le condizioni sperimentali. Nel caso della psicologia, il
+ricercatore vuole scoprire le leggi generali che descrivono le relazioni
+tra i costrutti psicologici e le relazioni che intercorrono tra i
+fenomeni psicologici e quelli non psicologici (sociali, economici,
+storici, …). Abbiamo già visto come la correlazione di Pearson sia uno
+strumento adatto a questo scopo. Infatti, essa ci informa sulla
+direzione e sull’intensità della relazione lineare tra due variabili.
+Tuttavia, la correlazione non è sufficiente, in quanto il ricercatore ha
+a disposizione solo i dati di un campione, mentre vorrebbe descrivere la
+relazione tra le variabili nella popolazione. A causa della variabilità
+campionaria, le proprietà dei campioni sono necessariamente diverse da
+quelle della popolazione: ciò che si può osservare nella popolazione
+potrebbe non emergere nel campione e, al contrario, il campione
+manifesta caratteristiche che non sono necessariamente presenti nella
+popolazione. È dunque necessario chiarire, dal punto di vista
+statistico, il legame che intercorre tra le proprietà del campione e le
+proprietà della popolazione da cui esso è stato estratto. Come nel caso
+della media, anche in questo caso dovrà essere costruita la
+distribuzione di una statistica; ma però, nel caso presente, la
+statistica di interesse sarà costruita utilizzando, non i dati di una
+sola variabile, ma bensì i dati che descrivono l’andamento congiunto di
+due variabili.</p>
+<p>Il modello di regressione utilizza la funzione matematica più semplice
+per descrivere la relazione fra due variabili, ovvero la funzione
+lineare. Inizieremo a descrivere le proprietà geometriche della funzione lineare per poi utilizzare questa semplice funzione per costruire il modello statistico della regressione lineare.</p>
+</div>
+<div id="la-funzione-lineare" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> La funzione lineare</h2>
+<p>Si chiama <em>funzione lineare</em> una funzione del tipo</p>
+<p><span class="math display">\[
+f(x) = a + b x,
+\]</span>
+dove <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> sono delle costanti.
+Il grafico di tale funzione è una retta di cui il parametro <span class="math inline">\(b\)</span> è detto <em>coefficiente angolare</em> e il parametro <span class="math inline">\(a\)</span> è detto <em>intercetta</em> con l’asse delle <span class="math inline">\(y\)</span> (infatti, la retta interseca l’asse <span class="math inline">\(y\)</span> nel punto <span class="math inline">\((0,a)\)</span>, se <span class="math inline">\(b \neq 0\)</span>).</p>
+<p>Per assegnare un’interpretazione geometrica alle costanti <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> si consideri la funzione</p>
+<p><span class="math display">\[
+y = b x.
+\]</span>
+Tale funzione rappresenta un caso particolare, ovvero quello della <em>proporzionalità diretta</em> tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>. Il caso generale della linearità</p>
+<p><span class="math display">\[
+y = a + b x
+\]</span>
+non fa altro che sommare una costante <span class="math inline">\(a\)</span> a ciascuno dei valori <span class="math inline">\(y = b x\)</span>. Nella funzione lineare <span class="math inline">\(y = a + b x\)</span>, se <span class="math inline">\(b\)</span> è positivo allora <span class="math inline">\(y\)</span> aumenta al crescere di <span class="math inline">\(x\)</span>; se <span class="math inline">\(b\)</span> è negativo allora <span class="math inline">\(y\)</span> diminuisce al crescere di <span class="math inline">\(x\)</span>; se <span class="math inline">\(b=0\)</span> la retta è orizzontale, ovvero <span class="math inline">\(y\)</span> non muta al variare di <span class="math inline">\(x\)</span>.</p>
+<p>Consideriamo ora il coefficiente <span class="math inline">\(b\)</span>. Si consideri un punto <span class="math inline">\(x_0\)</span> e un incremento arbitrario <span class="math inline">\(\varepsilon\)</span> come indicato nella figura <a href="chapter-reglin.html#fig:linearfunction">14.1</a>. Le differenze <span class="math inline">\(\Delta x = (x_0 + \varepsilon) - x_0\)</span> e <span class="math inline">\(\Delta y = f(x_0 + \varepsilon) - f(x_0)\)</span> sono detti <em>incrementi</em> di <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>. Il coefficiente angolare <span class="math inline">\(b\)</span> è uguale al rapporto</p>
+<p><span class="math display">\[
+    b = \frac{\Delta y}{\Delta x} = \frac{f(x_0 + \varepsilon) - f(x_0)}{(x_0 + \varepsilon) - x_0},
+\]</span>
+indipendentemente dalla grandezza degli incrementi <span class="math inline">\(\Delta x\)</span> e <span class="math inline">\(\Delta y\)</span>. Il modo più semplice per assegnare un’interpretazione geometrica al coefficiente angolare (o pendenza) della retta è dunque quello di porre <span class="math inline">\(\Delta x = 1\)</span>. In tali circostanze infatti <span class="math inline">\(b = \Delta y\)</span>.</p>
+<div class="figure" style="text-align: center"><span id="fig:linearfunction"></span>
+<img src="images/linear_function.png" alt="La funzione lineare $y = a + bx$." width="70%" />
+<p class="caption">
+Figura 14.1: La funzione lineare <span class="math inline">\(y = a + bx\)</span>.
+</p>
+</div>
+</div>
+<div id="lerrore-di-misurazione" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> L’errore di misurazione</h2>
+<p>Per descrivere l’associazione tra due variabili, tuttavia, la funzione lineare non è sufficiente. Nel mondo empirico, infatti, la relazione tra variabili non è mai perfettamente lineare. È dunque necessario includere nel modello di regressione anche una componente d’errore, ovvero una componente della <span class="math inline">\(y\)</span> che non può essere spiegata dal modello lineare. Nel caso di due sole variabili, questo ci conduce alla seguente formulazione del modello di regressione:</p>
+<p><span class="math display" id="eq:regbivpop">\[\begin{equation}
+y = \alpha + \beta x + \varepsilon,
+\tag{14.1}
+\end{equation}\]</span></p>
+<p>laddove i parametri <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span> descrivono l’associazione tra le variabili aleatorie <span class="math inline">\(y\)</span> e <span class="math inline">\(x\)</span> (nella popolazione), e il termine d’errore <span class="math inline">\(\varepsilon\)</span> specifica quant’è grande la porzione della variabile <span class="math inline">\(y\)</span> che non può essere predetta nei termini di una relazione lineare con la <span class="math inline">\(x\)</span>.</p>
+<p>Si noti che l’eq. <a href="chapter-reglin.html#eq:regbivpop">(14.1)</a> ci consente di formulare una predizione, nei termini di un modello lineare, del valore atteso della <span class="math inline">\(y\)</span> conoscendo <span class="math inline">\(x\)</span>, ovvero</p>
+<p><span class="math display" id="eq:regbivpop2">\[\begin{equation}
+\hat{y} = \mathbb{E}(y \mid x) = \alpha + \beta x.
+\tag{14.2}
+\end{equation}\]</span></p>
+<p>In altri termini, se i parametri del modello (<span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span>) sono noti, allora è possibile predire <span class="math inline">\(y\)</span> sulla base della nostra conoscenza della <span class="math inline">\(x\)</span>.</p>
+<p>Per esempio, se conosciamo la relazione lineare tra quoziente di intelligenza ed aspettativa di vita, allora possiamo prevedere quanto a lungo vivrà una persona sulla base del suo QI. Sì, c’è una relazione lineare tra intelligenza e aspettativa di vita! – per una discussione, si veda, ad esempio, l’articolo di David Z. Hambrick pubblicato su Scientific American il 22 dicembre 2015. Ma quando sarà accurata la nostra previsione? Ciò dipende dal termine d’errore dell’eq. <a href="chapter-reglin.html#eq:regbivpop">(14.1)</a>. L’analisi di regressione ci fornisce un metodo per rispondere a domande di questo tipo.</p>
+</div>
+<div id="scopi-della-regressione-lineare" class="section level2" number="14.3">
+<h2><span class="header-section-number">14.3</span> Scopi della regressione lineare</h2>
+<p>Il modello di regressione lineare si pone tre obiettivi:</p>
+<ol style="list-style-type: decimal">
+<li>descrivere l’associazione tra le variabili <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> nel campione esaminato;</li>
+<li>misurare la bontà dell’adattamento dell’associazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>;</li>
+<li>fare inferenze sull’associazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> nella popolazione da cui il campione è stato estratto.</li>
+</ol>
+<p>Il primo obiettivo intende rispondere alla stessa domanda a cui risponde il coefficiente di correlazione: quali sono l’intensità e il segno della relazione lineare che descrive l’associazione tra due variabili? Vedremo che c’è una precisa relazione tra il coefficiente <span class="math inline">\(b\)</span> del modello di regressione (che rappresenta la pendenza della retta di regressione) e
+il coefficiente di correlazione <span class="math inline">\(r\)</span> di Pearson: il coefficiente di
+correlazione non è altro che la pendenza della retta di regressione
+quando i dati sono standardizzati. Vi è però un’importante differenza
+tra la correlazione ed il modello di regressione. La correlazione è un
+indicatore simmetrico di associazione tra due caratteri. Il modello di
+regressione, invece, si chiede come varia una variabile, detta
+<em>dipendente</em> e solitamente denotata con <span class="math inline">\(y\)</span>, al variare di un’altra
+variabile, detta <em>indipendente</em> (o predittore), solitamente denotata con
+<span class="math inline">\(x\)</span>. L’analisi della regressione lineare si pone dunque il problema di
+studiare la relazione asimmetrica tra due variabili.</p>
+<p>Il secondo obiettivo del modello di regressione lineare si chiede se il
+modello di regressione sia sensato per descrivere l’associazione
+osservata tra le due variabili. Vogliamo trovare un indice che descriva
+quanto distanti sono i dati dalla retta di regressione. Se i punti di un
+diagramma a dispersione sono molto vicini alla retta di regressione,
+allora il modello di regressione è adeguato per descrivere
+l’associazione tra le due variabili. In questo caso la bontà di
+adattamento del modello ai dati è grande. Oppure può succedere che i
+punti di un diagramma a dispersione siano molto lontani alla retta di
+regressione e/o che la retta di regressione sia piatta. In questi due
+ultimi casi non vi è evidenza di una associazione lineare tra le due
+variabili e l’indice che misura la bontà dell’adattamento
+dell’associazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> assume un valore basso e prossimo allo
+zero. Tale indice va sotto il nome di coefficiente di determinazione.</p>
+<p>Il terzo obiettivo è quello più ambizioso: ci chiediamo quale potrebbe
+essere l’associazione tra le variabili <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> nella popolazione, alla
+luce delle informazioni che sono state osservate nel campione. Quello che vorremmo conoscere è <span class="math inline">\(p(\theta \mid \text{dati})\)</span>, laddove <span class="math inline">\(\theta\)</span> è il parametro sconosciuto che rappresenta la pendenza della retta di regressione nella popolazione. Vedremo come l’approccio Bayesiano può essere usato per rispondere a questa domanda.</p>
+<p>Il modello di regressione è, probabilmente, il più importante dei modelli statistici. Noi qui ne
+esamineremo solo le sue caratteristiche di base. Ma tale modello può
+essere esteso in modo tale da includere più di un predittore (nel qual
+caso si parla di modello di regressione multipla), oppure una variabile
+dipendente qualitativa (il che produce il modello di regressione
+logistica), oppure molteplici variabili dipendenti continue (il che
+produce il modello di regressione multivariato). Sviluppi più moderni di
+questo modello considerano inoltre il caso della violazione
+dell’assunzione di indipendenza tra le osservazioni, il che conduce alla
+costruzione dei modelli ad effetti misti (<em>mixed-effects models</em>).
+Infine, uno sviluppo importante del modello di regressione lineare è
+l’analisi fattoriale, nel qual caso viene ipotizzata l’esistenza di
+variabili indipendenti <em>inosservabili</em> (latenti), le quali corrispondono
+ai costrutti psicologici. Il modello fattoriale, così formulato,
+costituisce il fondamento della Psicometria, ovvero di quelle tecniche
+statistiche che stanno alla base della costruzione e della validazione
+dei reattivi psicologici.</p>
+</div>
+<div id="quantificare-lassociazione-fra-due-caratteri-quantitativi" class="section level2" number="14.4">
+<h2><span class="header-section-number">14.4</span> Quantificare l’associazione fra due caratteri quantitativi</h2>
+<p>Consideriamo tre variabili aleatorie <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span> ed <span class="math inline">\(\varepsilon\)</span> legate dalla relazione lineare</p>
+<p><span class="math display">\[
+y = \alpha + \beta x + \varepsilon,
+\]</span></p>
+<p>dove <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span> sono numeri reali e <span class="math inline">\(\mathbb{E}(\varepsilon) = 0\)</span>. Chiameremo <em>modello lineare</em> (semplice) la relazione dell’eq. <a href="chapter-reglin.html#eq:regbivpop">(14.1)</a> e chiameremo <em>retta di regressione</em> la retta</p>
+<p><span class="math display" id="eq:regrline">\[\begin{equation}
+y = \alpha + \beta x.
+\tag{14.3}
+\end{equation}\]</span></p>
+<p>Il parametro <span class="math inline">\(\alpha\)</span> è l’ordinata all’origine (o intercetta) mentre il parametro <span class="math inline">\(\beta\)</span> è il coefficiente angolare della retta. Possiamo interpretare l’eq. <a href="chapter-reglin.html#eq:regbivpop">(14.1)</a> pensando che le variabili aleatorie <span class="math inline">\(x\)</span> ed <span class="math inline">\(y\)</span> siano legate tra loro da una relazione lineare perturbata da un errore casuale <span class="math inline">\(\varepsilon\)</span>.</p>
+<p>Dato un insieme di realizzazioni campionarie delle variabili aleatorie <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>, ci poniamo lo scopo di determinare la retta di regressione campionaria</p>
+<p><span class="math display" id="eq:fittedval">\[\begin{equation}
+\hat{y}_i  =  a + b x_i
+\tag{14.4}
+\end{equation}\]</span></p>
+<p>che approssima il meglio possibile la distribuzione dei punti <span class="math inline">\(x_i\)</span>, <span class="math inline">\(y_i\)</span>, <span class="math inline">\(i = 1, \dots, n\)</span>. Lo studio di questo problema è detto <em>regressione lineare</em>.</p>
+</div>
+<div id="stime-dei-minimi-quadrati" class="section level2" number="14.5">
+<h2><span class="header-section-number">14.5</span> Stime dei minimi quadrati</h2>
+<p>Il primo obiettivo dell’analisi di regressione è quello di trovare la retta che meglio descrive l’andamento dei dati osservati in un campione. Iniziamo con il definire i <em>residui</em> <span class="math inline">\(e_i\)</span> tramite la relazione</p>
+<p><span class="math display" id="eq:residuals">\[\begin{equation}
+e_i  = y_i - (a + b x_i).
+\tag{14.5}
+\end{equation}\]</span></p>
+<p>In altri termini, il residuo <span class="math inline">\(i\)</span>-esimo è la differenza fra l’ordinata del punto (<span class="math inline">\(x_i\)</span>, <span class="math inline">\(y_i\)</span>) e quella del punto di ascissa <span class="math inline">\(x_i\)</span> sulla retta di regressione campionaria.</p>
+<p>Per determinare i coefficienti <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> della retta <a href="chapter-reglin.html#eq:fittedval">(14.4)</a> non è sufficiente minimizzare la somma dei residui <span class="math inline">\(\sum_{i=1}^{n}e_i\)</span>, in quanto i residui possono essere sia positivi che negativi e la loro somma può essere molto prossima allo zero anche per differenze molto grandi tra i valori osservati e la retta
+di regressione. Infatti, ciascuna retta passante per il punto (<span class="math inline">\(\bar{x}, \bar{y}\)</span>) ha <span class="math inline">\(\sum_{i=1}^{n}e_i=0\)</span>.</p>
+<div class="proof">
+<p><span id="unlabeled-div-37" class="proof"><em>Dimostrazione</em>. </span>Una retta passante per il punto (<span class="math inline">\(\bar{x}, \bar{y}\)</span>) soddisfa l’equazione <span class="math inline">\(\bar{y} = a + b \bar{x}\)</span>. Sottraendo tale equazione dall’equazione <span class="math inline">\(y_i = a + b x_i + e_i\)</span> otteniamo
+<span class="math display">\[
+y_i - \bar{y} =  b (x_i - \bar{x}) + e_i.
+\]</span>
+Sommando su tutte le osservazioni, si ha che</p>
+<p><span class="math display">\[
+\sum_{i=1}^n e_i = \sum_{i=1}^n (y_i - \bar{y} ) -  b \sum_{i=1}^n (x_i - \bar{x}) = 0 - b(0) = 0. 
+\]</span></p>
+</div>
+<p>Questo problema viene risolto scegliendo i coefficienti <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> che
+minimizzano, non tanto la somma dei residui, ma bensì l’<em>errore
+quadratico</em>, cioè la somma dei quadrati degli errori:</p>
+<p><span class="math display">\[
+S(a, b) = \sum_{i=1}^{n} e_i^2 = \sum (y_i - a - b x_i)^2.
+\]</span></p>
+<p>Il metodo più diretto per determinare quelli che vengono chiamati i <em>coefficienti dei minimi quadrati</em> è quello di trovare le derivate parziali della funzione <span class="math inline">\(S(a, b)\)</span> rispetto ai coefficienti <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>:</p>
+<p><span class="math display" id="eq:normderiv">\[\begin{equation}
+\begin{aligned}
+\frac{\partial S(a,b)}{\partial a} &amp;= \sum (-1)(2)(y_i - a - b x_i), \notag \\
+\frac{\partial S(a,b)}{\partial b} &amp;= \sum (-x_i)(2)(y_i - a - b x_i).
+\end{aligned}
+\tag{14.6}
+\end{equation}\]</span></p>
+<p>Ponendo le derivate uguali a zero e dividendo entrambi i membri per <span class="math inline">\(-2\)</span> si ottengono le <em>equazioni normali</em></p>
+<p><span class="math display" id="eq:eqnormali">\[\begin{equation}
+\begin{aligned}
+ an + b \sum x_i &amp;= \sum y_i, \notag \\
+ a \sum x_i + b \sum x_i^2 &amp;= \sum x_i y_i. 
+\end{aligned}
+\tag{14.7}
+\end{equation}\]</span></p>
+<p>I coefficienti dei minimi quadrati <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> si trovano risolvendo le equazioni <a href="chapter-reglin.html#eq:eqnormali">(14.7)</a> e sono uguali a:</p>
+<p><span class="math display" id="eq:minsqab">\[\begin{equation}
+\begin{aligned}
+a &amp;= \bar{y} - b \bar{x},\\
+b &amp;= \frac{\sum (x_i - \bar{x}) (y_i - \bar{y})}{\sum (x_i - \bar{x})^2}.
+\end{aligned}
+\tag{14.8}
+\end{equation}\]</span></p>
+<div id="monotwinsiq" class="section level3" number="14.5.1">
+<h3><span class="header-section-number">14.5.1</span> Un esempio concreto</h3>
+<p>Consideriamo i dati relativi a 34 coppie di gemelli monozigoti separati alla nascita (<span class="citation"><a href="bibliografia.html#ref-anderson2012new" role="doc-biblioref">Anderson &amp; Finn</a> (<a href="bibliografia.html#ref-anderson2012new" role="doc-biblioref">2012</a>)</span>). Dei gemelli conosciamo l’ordine della nascita e il quoziente di intelligenza misurato con il <em>Dominoes Intelligence test</em>. Il test è costituito da 48 domande a ciascuna delle quali viene assegnato un punto nel caso di risposta corretta. La media del test nella popolazione è di 28 punti, che corrisponde al punteggiodi 100 sulla scala WAIS. I dati sono:</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="chapter-reglin.html#cb126-1" aria-hidden="true" tabindex="-1"></a>iq1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">32</span>, <span class="dv">29</span>, <span class="dv">13</span>, <span class="dv">32</span>, <span class="dv">24</span>, <span class="dv">33</span>, <span class="dv">19</span>, <span class="dv">13</span>, <span class="dv">36</span>, <span class="dv">26</span>, <span class="dv">26</span>, <span class="dv">32</span>, <span class="dv">27</span>, <span class="dv">6</span>, <span class="dv">16</span>, <span class="dv">41</span>, <span class="dv">29</span>, <span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">28</span>, <span class="dv">30</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">27</span>, <span class="dv">40</span>, <span class="dv">30</span>, <span class="dv">30</span>, <span class="dv">21</span>, <span class="dv">27</span>, <span class="dv">15</span>, <span class="dv">38</span>, <span class="dv">4</span>, <span class="dv">12</span>)</span>
+<span id="cb126-2"><a href="chapter-reglin.html#cb126-2" aria-hidden="true" tabindex="-1"></a>iq2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">28</span>, <span class="dv">35</span>, <span class="dv">4</span>, <span class="dv">18</span>, <span class="dv">33</span>, <span class="dv">26</span>, <span class="dv">9</span>, <span class="dv">22</span>, <span class="dv">34</span>, <span class="dv">17</span>, <span class="dv">20</span>, <span class="dv">33</span>, <span class="dv">28</span>, <span class="dv">10</span>, <span class="dv">28</span>, <span class="dv">40</span>, <span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">24</span>, <span class="dv">22</span>, <span class="dv">34</span>, <span class="dv">23</span>, <span class="dv">21</span>, <span class="dv">25</span>, <span class="dv">38</span>, <span class="dv">25</span>, <span class="dv">26</span>, <span class="dv">27</span>, <span class="dv">24</span>, <span class="dv">9</span>, <span class="dv">27</span>, <span class="dv">2</span>, <span class="dv">9</span>)</span>
+<span id="cb126-3"><a href="chapter-reglin.html#cb126-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(iq1, iq2)</span></code></pre></div>
+<p>Un diagramma di dispersione per questi dati, insieme alla retta di regressione dei minimi quadrati, è riportato nella figura <a href="chapter-reglin.html#fig:twinmono">14.2</a>.</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="chapter-reglin.html#cb127-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb127-2"><a href="chapter-reglin.html#cb127-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iq1, <span class="at">y =</span> iq2)) <span class="sc">+</span></span>
+<span id="cb127-3"><a href="chapter-reglin.html#cb127-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">color=</span><span class="st">&quot;lightgrey&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
+<span id="cb127-4"><a href="chapter-reglin.html#cb127-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb127-5"><a href="chapter-reglin.html#cb127-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb127-6"><a href="chapter-reglin.html#cb127-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Qi primo nato&quot;</span>,</span>
+<span id="cb127-7"><a href="chapter-reglin.html#cb127-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;QI secondo nato&quot;</span>,</span>
+<span id="cb127-8"><a href="chapter-reglin.html#cb127-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Gemelli monozigoti separati alla nascita&quot;</span>,</span>
+<span id="cb127-9"><a href="chapter-reglin.html#cb127-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;(Fonte: Anderson e Finn, 2012)&quot;</span></span>
+<span id="cb127-10"><a href="chapter-reglin.html#cb127-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb127-11"><a href="chapter-reglin.html#cb127-11" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:twinmono"></span>
+<img src="Psicometria_files/figure-html/twinmono-1.png" alt="Retta di regressione che descrive la relazione lineare tra il quoziente di intelligenza del secondo nato e il quoziente di intelligenza del primo nato." width="70%" />
+<p class="caption">
+Figura 14.2: Retta di regressione che descrive la relazione lineare tra il quoziente di intelligenza del secondo nato e il quoziente di intelligenza del primo nato.
+</p>
+</div>
+<p>I coefficienti di regressione si trovano con le formule dei minimi quadrati. Usando R, per <span class="math inline">\(b\)</span> otteniamo</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="chapter-reglin.html#cb128-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">cov</span>(df<span class="sc">$</span>iq1, df<span class="sc">$</span>iq2) <span class="sc">/</span> <span class="fu">var</span>(df<span class="sc">$</span>iq1) </span>
+<span id="cb128-2"><a href="chapter-reglin.html#cb128-2" aria-hidden="true" tabindex="-1"></a>b</span>
+<span id="cb128-3"><a href="chapter-reglin.html#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.8498545</span></span></code></pre></div>
+<p>e per <span class="math inline">\(a\)</span> otteniamo</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="chapter-reglin.html#cb129-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">mean</span>(df<span class="sc">$</span>iq2) <span class="sc">-</span> b <span class="sc">*</span> <span class="fu">mean</span>(df<span class="sc">$</span>iq1)</span>
+<span id="cb129-2"><a href="chapter-reglin.html#cb129-2" aria-hidden="true" tabindex="-1"></a>a</span>
+<span id="cb129-3"><a href="chapter-reglin.html#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.838871</span></span></code></pre></div>
+<p>Tali risultati corrispondono ai valori trovati dalla funzione <code>lm()</code> con la seguente sintassi:</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="chapter-reglin.html#cb130-1" aria-hidden="true" tabindex="-1"></a>fm <span class="ot">&lt;-</span> <span class="fu">lm</span>(iq2 <span class="sc">~</span> iq1, <span class="at">data =</span> df)</span></code></pre></div>
+<p>L’oggetto creato da <code>{lm()</code> può essere visionato utilizzando <code>coef(fm)</code> o con <code>summary(fm)</code>.</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="chapter-reglin.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fm)</span>
+<span id="cb131-2"><a href="chapter-reglin.html#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb131-3"><a href="chapter-reglin.html#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb131-4"><a href="chapter-reglin.html#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = iq2 ~ iq1, data = df)</span></span>
+<span id="cb131-5"><a href="chapter-reglin.html#cb131-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb131-6"><a href="chapter-reglin.html#cb131-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb131-7"><a href="chapter-reglin.html#cb131-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb131-8"><a href="chapter-reglin.html#cb131-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -11.0342  -3.8218  -0.5852   3.4658  12.5635 </span></span>
+<span id="cb131-9"><a href="chapter-reglin.html#cb131-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb131-10"><a href="chapter-reglin.html#cb131-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb131-11"><a href="chapter-reglin.html#cb131-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb131-12"><a href="chapter-reglin.html#cb131-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)   1.8389     3.0269   0.608    0.548    </span></span>
+<span id="cb131-13"><a href="chapter-reglin.html#cb131-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; iq1           0.8499     0.1155   7.357 2.29e-08 ***</span></span>
+<span id="cb131-14"><a href="chapter-reglin.html#cb131-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb131-15"><a href="chapter-reglin.html#cb131-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb131-16"><a href="chapter-reglin.html#cb131-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb131-17"><a href="chapter-reglin.html#cb131-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 6.102 on 32 degrees of freedom</span></span>
+<span id="cb131-18"><a href="chapter-reglin.html#cb131-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.6285, Adjusted R-squared:  0.6169 </span></span>
+<span id="cb131-19"><a href="chapter-reglin.html#cb131-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 54.13 on 1 and 32 DF,  p-value: 2.288e-08</span></span></code></pre></div>
+<p>I valori predetti dal modello di regressione sono dati da</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="chapter-reglin.html#cb132-1" aria-hidden="true" tabindex="-1"></a>yhat <span class="ot">&lt;-</span> a <span class="sc">+</span> b <span class="sc">*</span> df<span class="sc">$</span>iq1</span></code></pre></div>
+<p>o, in maniera equivalente, possono essere trovati con <code>predict(fm)</code></p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="chapter-reglin.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fm) </span>
+<span id="cb133-2"><a href="chapter-reglin.html#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         1         2         3         4         5         6         7         8         9 </span></span>
+<span id="cb133-3"><a href="chapter-reglin.html#cb133-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20.535671 29.034216 26.484652 12.886980 29.034216 22.235380 29.884070 17.986107 12.886980 </span></span>
+<span id="cb133-4"><a href="chapter-reglin.html#cb133-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        10        11        12        13        14        15        16        17        18 </span></span>
+<span id="cb133-5"><a href="chapter-reglin.html#cb133-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 32.433634 23.935089 23.935089 29.034216 24.784943  6.937998 15.436543 36.682907 26.484652 </span></span>
+<span id="cb133-6"><a href="chapter-reglin.html#cb133-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        19        20        21        22        23        24        25        26        27 </span></span>
+<span id="cb133-7"><a href="chapter-reglin.html#cb133-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12.886980 18.835962 25.634798 27.334507 20.535671 21.385525 24.784943 35.833052 27.334507 </span></span>
+<span id="cb133-8"><a href="chapter-reglin.html#cb133-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        28        29        30        31        32        33        34 </span></span>
+<span id="cb133-9"><a href="chapter-reglin.html#cb133-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27.334507 19.685816 24.784943 14.586689 34.133343  5.238289 12.037125</span></span></code></pre></div>
+<p>I residui di regressione, ovvero la differenza tra il valore osservato e il valore predetto dal modello, si trovano mediante l’istruzione</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="chapter-reglin.html#cb134-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> df<span class="sc">$</span>iq2 <span class="sc">-</span> yhat</span></code></pre></div>
+<p>o, in maniera equivalente, con <code>residuals(fm)</code></p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="chapter-reglin.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">residuals</span>(fm)</span>
+<span id="cb135-2"><a href="chapter-reglin.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           1           2           3           4           5           6           7 </span></span>
+<span id="cb135-3"><a href="chapter-reglin.html#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  -8.5356706  -1.0342160   8.5153476  -8.8869798 -11.0342160  10.7646203  -3.8840705 </span></span>
+<span id="cb135-4"><a href="chapter-reglin.html#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           8           9          10          11          12          13          14 </span></span>
+<span id="cb135-5"><a href="chapter-reglin.html#cb135-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  -8.9861070   9.1130202   1.5663659  -6.9350888  -3.9350888   3.9657840   3.2150567 </span></span>
+<span id="cb135-6"><a href="chapter-reglin.html#cb135-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          15          16          17          18          19          20          21 </span></span>
+<span id="cb135-7"><a href="chapter-reglin.html#cb135-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3.0620019  12.5634566   3.3170932   3.5153476  -2.8869798   5.1640385  -3.6347978 </span></span>
+<span id="cb135-8"><a href="chapter-reglin.html#cb135-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          22          23          24          25          26          27          28 </span></span>
+<span id="cb135-9"><a href="chapter-reglin.html#cb135-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   6.6654931   2.4643294  -0.3855252   0.2150567   2.1669478  -2.3345069  -1.3345069 </span></span>
+<span id="cb135-10"><a href="chapter-reglin.html#cb135-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          29          30          31          32          33          34 </span></span>
+<span id="cb135-11"><a href="chapter-reglin.html#cb135-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   7.3141839  -0.7849433  -5.5866889  -7.1333432  -3.2382890  -3.0371253</span></span></code></pre></div>
+<p>I residui possono essere rappresentanti graficamente come riportato nella figura <a href="chapter-reglin.html#fig:reglinresiduals">14.3</a>.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="chapter-reglin.html#cb136-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(fm)   </span>
+<span id="cb136-2"><a href="chapter-reglin.html#cb136-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>residuals <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fm) </span>
+<span id="cb136-3"><a href="chapter-reglin.html#cb136-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-4"><a href="chapter-reglin.html#cb136-4" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb136-5"><a href="chapter-reglin.html#cb136-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> iq1, <span class="at">y =</span> iq2)) <span class="sc">+</span></span>
+<span id="cb136-6"><a href="chapter-reglin.html#cb136-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">&quot;lightgrey&quot;</span>) <span class="sc">+</span>  </span>
+<span id="cb136-7"><a href="chapter-reglin.html#cb136-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> iq1, <span class="at">yend =</span> predicted), <span class="at">alpha =</span> .<span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb136-8"><a href="chapter-reglin.html#cb136-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb136-9"><a href="chapter-reglin.html#cb136-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> predicted), <span class="at">shape =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb136-10"><a href="chapter-reglin.html#cb136-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb136-11"><a href="chapter-reglin.html#cb136-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Qi primo nato&quot;</span>,</span>
+<span id="cb136-12"><a href="chapter-reglin.html#cb136-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;QI secondo nato&quot;</span>,</span>
+<span id="cb136-13"><a href="chapter-reglin.html#cb136-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Gemelli monozigoti separati alla nascita&quot;</span>,</span>
+<span id="cb136-14"><a href="chapter-reglin.html#cb136-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;(Fonte: Anderson e Finn, 2012)&quot;</span></span>
+<span id="cb136-15"><a href="chapter-reglin.html#cb136-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb136-16"><a href="chapter-reglin.html#cb136-16" aria-hidden="true" tabindex="-1"></a>p1</span>
+<span id="cb136-17"><a href="chapter-reglin.html#cb136-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:reglinresiduals"></span>
+<img src="Psicometria_files/figure-html/reglinresiduals-1.png" alt="Residui del modello di regressione che esprime il quoziente di intelligenza del secondo nato in funzione del quoziente di intelligenza del primo nato." width="70%" />
+<p class="caption">
+Figura 14.3: Residui del modello di regressione che esprime il quoziente di intelligenza del secondo nato in funzione del quoziente di intelligenza del primo nato.
+</p>
+</div>
+</div>
+<div id="sec:beta_r" class="section level3" number="14.5.2">
+<h3><span class="header-section-number">14.5.2</span> Coefficiente angolare e correlazione di Pearson</h3>
+<p>Ricordando che <span class="math inline">\(r_{xy}=s_{xy} / (s_x s_y)\)</span> è il coefficiente di
+correlazione lineare e che <span class="math inline">\(b=s_{xy} /s_x^2\)</span> è la stima dei minimi
+quadrati del coefficiente angolare della retta di regressione,
+sostituendo <span class="math inline">\(r_{xy}s_xs_y\)</span> al numeratore dell’equazione di <span class="math inline">\(b\)</span> e
+semplificando, si ottiene
+<span class="math display">\[\begin{equation}
+b = r_{yx}\frac{s_y}{s_x}.
+\end{equation}\]</span>
+Se i dati vengono standardizzati, dunque, l’equazione della retta di regressione
+campionaria diventa
+<span class="math display">\[\begin{equation}
+z_{y_i} = r_{xy} z_{x_i} + e_i,
+\end{equation}\]</span>
+in quanto <span class="math inline">\(a = \bar{z}_y - b\bar{z}_x =0\)</span> e <span class="math inline">\(s_x = s_y = 1\)</span>.</p>
+<p>Si può dunque assegnare al coefficiente di correlazione di Pearson la seguente
+interpretazione: <span class="math inline">\(r_{xy}\)</span> è uguale alla pendenza <span class="math inline">\(b\)</span> della retta di
+regressione quando le variabili <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> vengono standardizzate
+(Rodgers &amp; Nicewander, 1988).</p>
+<p>Facciamo un esempio calcolando i coefficienti di regressione sui punteggi standardizzati del
+quoziente di intelligenza dei gemelli monozigoti.</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="chapter-reglin.html#cb137-1" aria-hidden="true" tabindex="-1"></a>ziq1 <span class="ot">&lt;-</span> <span class="fu">scale</span>(df<span class="sc">$</span>iq1)</span>
+<span id="cb137-2"><a href="chapter-reglin.html#cb137-2" aria-hidden="true" tabindex="-1"></a>ziq2 <span class="ot">&lt;-</span> <span class="fu">scale</span>(df<span class="sc">$</span>iq2)</span>
+<span id="cb137-3"><a href="chapter-reglin.html#cb137-3" aria-hidden="true" tabindex="-1"></a>fm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ziq2 <span class="sc">~</span> ziq1)</span>
+<span id="cb137-4"><a href="chapter-reglin.html#cb137-4" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(fm1)</span>
+<span id="cb137-5"><a href="chapter-reglin.html#cb137-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  (Intercept)         ziq1 </span></span>
+<span id="cb137-6"><a href="chapter-reglin.html#cb137-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1.818206e-16 7.927594e-01</span></span></code></pre></div>
+<p>Utilizzando i valori standardizzati del QI l’intercetta diventa pari a zero e la pendenza della retta di regressione diventa uguale alla correlazione tra le due variabili:</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="chapter-reglin.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>iq1, df<span class="sc">$</span>iq2)</span>
+<span id="cb138-2"><a href="chapter-reglin.html#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.7927594</span></span></code></pre></div>
+</div>
+<div id="regressione-verso-la-media" class="section level3" number="14.5.3">
+<h3><span class="header-section-number">14.5.3</span> Regressione verso la media</h3>
+<p>Il termine regressione fu introdotto da Francis Galton (1822-1911), un
+antropologo che fu, tra le altre cose, promotore dell’eugenetica. Nel
+1886, nell’ambito dei suoi studi sull’ereditarietà dei caratteri, Galton
+raccolse le stature di <span class="math inline">\(928\)</span> figli adulti e dei loro <span class="math inline">\(205\)</span> genitori
+(padri e madri) – i dati sono disponibili nel data.frame <code>Galton</code>
+contenuto nel pacchetto R  <code>HistData</code>. Galton esaminò la relazione tra
+l’altezza media dei figli e l’altezza media dei genitori, che chiamò
+“mid-parent height.” In questi dati, genitori e figli hanno la stessa
+altezza media di <span class="math inline">\(68.2\)</span> pollici. Galton osservò però come l’altezza
+media dei figli nati da genitori di una data altezza era più simile al
+valore dell’altezza media della popolazione intera di quanto lo fosse la
+mid-height dei genitori. Ad esempio, per genitori con una mid-height
+compresa tra <span class="math inline">\(70\)</span> e <span class="math inline">\(71\)</span> pollici, l’altezza media dei figli risultò
+essere di <span class="math inline">\(69.5\)</span> pollici. Nelle parole di Galton, questo corrispondeva
+ad una <em>regression toward mediocrity</em>, un concetto che noi oggi
+chiamiamo “regressione verso la media.” Nonostante l’interpretazione
+(errata) di Galton, è importante capire come questo sia un fenomeno
+statistico, non genetico. Esaminiamo la ragione per cui ciò si verifica.</p>
+<p>In precedenza abbiamo visto come, nel caso di dati standardizzati, la retta di
+regressione campionaria diventa: <span class="math display">\[\hat{z}_{y_i} = r_{xy} z_{x_i}.\]</span> Dal
+momento che <span class="math inline">\(r_{xy}\)</span> è il coefficiente di regressione, esso assume
+valori compresi tra <span class="math inline">\(-1\)</span> e <span class="math inline">\(1\)</span>. Assumiamo che <span class="math inline">\(r_{xy}\)</span> sia positivo e
+minore di <span class="math inline">\(1\)</span> (ovvero, assumiamo che la correlazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> sia
+positiva ma non perfetta). La formula <span class="math inline">\(\hat{z}_{y_i} = r_{xy} z_{x_i}\)</span>
+implica che, se <span class="math inline">\(z_{x_i}\)</span> è positivo, allora il valore predetto
+<span class="math inline">\(\hat{z}_{y_i}\)</span> dovrà essere minore di <span class="math inline">\(z_{x_i}\)</span>. In maniera equivalente,
+si può dire che la ‘distanza’ tra il valore predetto <span class="math inline">\(\hat{y}\)</span> della
+variabile di risposta e la media <span class="math inline">\(\bar{y}\)</span> tenderà ad essere minore della
+distanza tra <span class="math inline">\(x\)</span> e <span class="math inline">\(\bar{x}\)</span>:</p>
+<p><span class="math display">\[
+\frac{\hat{y} - \bar{y}}{s_y} &lt; \frac{x - \bar{x}}{s_x}.
+\]</span></p>
+<p>Il termine ‘distanza’ è stato messo tra virgolette in quanto è necessario tenere in
+considerazione l’unità di misura delle variabili. Per fare questo, la
+distanza tra le osservazioni e il centro della distribuzione viene
+misurata solo dopo avere standardizzato le variabili – ovvero, viene
+misurata in unità di deviazioni standard.</p>
+</div>
+<div id="punti-influenti-e-valori-anomali" class="section level3" number="14.5.4">
+<h3><span class="header-section-number">14.5.4</span> Punti influenti e valori anomali</h3>
+<p>La soluzione dei minimi quadrati è fortemente influenzata dalla presenza di punti influenti che sono anche delle osservazioni anomale. Un’osservazione anomala è un’osservazione con un residuo elevato (ovvero, avente un valore anomalo di <span class="math inline">\(y\)</span> rispetto alla previsione). Un punto di leva è un punto con un valore anomalo <span class="math inline">\(x\)</span>. Un punto influente è un’osservazione che influenza in maniera rilevante le stime dei minimi quadrati. Non sempre un punto anomalo è anche un punto influente. Per contro esistono punti non anomali che influiscono notevolmente sulle stime dei minimi quadrati – si veda la Figura <a href="chapter-reglin.html#fig:puntianominfl">14.4</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:puntianominfl"></span>
+<img src="images/leverage_outliers.pdf" alt="Osservazioni anomale e osservazioni influenti." width="70%" />
+<p class="caption">
+Figura 14.4: Osservazioni anomale e osservazioni influenti.
+</p>
+</div>
+</div>
+</div>
+<div id="bontà-delladattamento" class="section level2" number="14.6">
+<h2><span class="header-section-number">14.6</span> Bontà dell’adattamento</h2>
+<p>Il secondo obiettivo dell’analisi della regressione è quello di misurare la bontà di adattamento del modello di regressione ai dati.</p>
+<div id="errore-standard-della-stima" class="section level3" number="14.6.1">
+<h3><span class="header-section-number">14.6.1</span> Errore standard della stima</h3>
+<p>Un indice assoluto della bontà di adattamento è fornito dalla deviazione
+standard dei residui, <span class="math inline">\(s_e\)</span>, chiamata anche <em>errore standard della
+stima</em>. Uno stimatore non distorto della varianza dei residui nella
+popolazione è dato da</p>
+<p><span class="math display" id="eq:varres">\[\begin{equation}
+s^2_e = \frac{\sum e_i^2}{n-2}
+\tag{14.9}
+\end{equation}\]</span>
+e quindi l’errore standard della stima sarà
+<span class="math display" id="eq:sdres">\[\begin{equation}
+s_e = \sqrt{\frac{\sum e_i^2}{n-2}}.
+\tag{14.10}
+\end{equation}\]</span>
+Dato che <span class="math inline">\(s_e\)</span> è possiede la stessa unità di misura della variabile <span class="math inline">\(y\)</span>, l’errore standard della stima può essere considerato come una sorta di “residuo medio.”</p>
+<p>Consideriamo nuovamente l’esempio dei gemelli monozigoti separati alla
+nascita. L’errore standard della regressione</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="chapter-reglin.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>(e<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="fu">length</span>(e) <span class="sc">-</span> <span class="dv">2</span>)) </span>
+<span id="cb139-2"><a href="chapter-reglin.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6.101646</span></span></code></pre></div>
+<p>è simile, anche se non identico, al valore medio dei residui</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="chapter-reglin.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(fm<span class="sc">$</span>residuals)) </span>
+<span id="cb140-2"><a href="chapter-reglin.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.91695</span></span></code></pre></div>
+<p>In conclusione, se usiamo la retta di regressione per predire il quoziente di intelligenza del gemello nato per secondo a partire dal quoziente di intelligenza del gemello nato per primo compiamo, in media, un errore di circa 6 punti.</p>
+</div>
+<div id="indice-di-determinazione" class="section level3" number="14.6.2">
+<h3><span class="header-section-number">14.6.2</span> Indice di determinazione</h3>
+<p>Un importante risultato dei minimi quadrati riguarda la cosiddetta <em>scomposizione della devianza di regressione</em> mediante la quale si definisce l’indice di determinazione, il quale fornisce una misura relativa della bontà di adattamento del modello di regressione ai dati
+del campione. Come indicato nella figura <a href="chapter-reglin.html#fig:scompdev">14.5</a>, per una generica osservazione
+<span class="math inline">\(x_i, y_i\)</span>, la variazione di <span class="math inline">\(y_i\)</span> rispetto alla media <span class="math inline">\(\bar{y}\)</span> può essere descritta come la somma di due componenti: il residuo <span class="math inline">\(e_i=y_i- \hat{y}_i\)</span> e lo scarto di <span class="math inline">\(\hat{y}_i\)</span> rispetto alla media <span class="math inline">\(\bar{y}\)</span>: <span class="math inline">\(y_i - \bar{y} = (y_i- \hat{y}_i) + (\hat{y}_i - \bar{y}) = e_i + (\hat{y}_i - \bar{y})\)</span>.</p>
+<div class="figure" style="text-align: center"><span id="fig:scompdev"></span>
+<img src="images/scomposizione.pdf" alt="Scomposizione della devianza." width="50%" />
+<p class="caption">
+Figura 14.5: Scomposizione della devianza.
+</p>
+</div>
+<p>Se consideriamo tutte le osservazioni, la devianza delle <span class="math inline">\(y\)</span> può essere scomposta nel seguente modo:</p>
+<p><span class="math display">\[
+\begin{aligned}
+ \sum (y_i - \bar{y})^2 &amp;= \sum \left[ e_i + (\hat{y}_i - \bar{y})
+ \right]^2 
+ = \sum e_i^2 + \sum (\hat{y}_i - \bar{y})^2 + 2 \sum e_i (\hat{y}_i -
+ \bar{y}) \notag\end{aligned}
+ \]</span></p>
+<p>Per i vincoli imposti sui residui dalle equazioni normali, il doppio prodotto si annulla, infatti</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sum e_i (\hat{y}_i - \bar{y}) &amp;= \sum e_i \hat{y}_i - \bar{y}\sum e_i = \sum e_i (a + b x_i) \notag \\
+&amp;= a \sum e_i + b \sum e_i x_i = 0 \notag\end{aligned}
+\]</span></p>
+<p>Di conseguenza, possiamo concludere che la devianza totale (<span class="math inline">\(\dev_T\)</span>) si scompone nella somma della devianza di dispersione (<span class="math inline">\(dev_E\)</span>) e della devianza di regressione (<span class="math inline">\(\dev_T\)</span>):</p>
+<p><span class="math display">\[
+\begin{aligned}
+\underbrace{\sum_{i=1}^n (y_i - \bar{y})^2}_{\tiny{\text{Devianza
+totale}}} &amp;= \underbrace{\sum_{i=1}^n e_i^2}_{\tiny{\text{Devianza
+di dispersione}}} + \underbrace{\sum_{i=1}^n  (\hat{y}_i -
+\bar{y})^2}_{\tiny{\text{Devianza di regressione}}} \notag
+\end{aligned}
+\]</span></p>
+<p>La devianza di regressione, <span class="math inline">\(dev_R \triangleq dev_T - dev_E\)</span>, indica dunque la riduzione degli errori al quadrato che è imputabile alla regressione lineare. Il rapporto <span class="math inline">\(dev_T/dev_T\)</span>, detto <em>indice di determinazione</em>, esprime tale riduzione degli errori in termini proporzionali e definisce il coefficiente di correlazione al quadrato:</p>
+<p><span class="math display" id="eq:rsq">\[\begin{equation}
+r^2 \triangleq \frac{dev_R}{dev_T} = 1 - \frac{dev_E}{dev_T}.
+\tag{14.11}
+\end{equation}\]</span></p>
+<p>Quando l’insieme di tutte le deviazioni della <span class="math inline">\(y\)</span> dalla media è spiegato dall’insieme di tutte le deviazioni della variabile teorica <span class="math inline">\(\hat{y}\)</span> dalla media, si ha che l’adattamento (o accostamento) del modello al campione di dati è perfetto, la devianza residua è nulla ed <span class="math inline">\(r^2 = 1\)</span>; nel caso opposto, la variabilità totale coincide con quella residua, per cui <span class="math inline">\(r^2 = 0\)</span>. Tra questi due estremi, <span class="math inline">\(r\)</span> indica l’intensità della relazione lineare tra le due variabili e <span class="math inline">\(r^2\)</span>, con <span class="math inline">\(0 \leq r^2 \leq 1\)</span>, esprime la porzione della devianza totale della <span class="math inline">\(y\)</span> che è spiegata dalla regressione lineare sulla <span class="math inline">\(x\)</span>.</p>
+<p>Per i dati dei gemelli monozitoti separati alla nascita, la devianza totale si scompone nelle componenti di “devianza spiegata” e “devianza non spiegata” nel modo seguente:</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="chapter-reglin.html#cb141-1" aria-hidden="true" tabindex="-1"></a>dev_t <span class="ot">&lt;-</span> <span class="fu">sum</span>((df<span class="sc">$</span>iq2 <span class="sc">-</span> <span class="fu">mean</span>(df<span class="sc">$</span>iq2))<span class="sc">^</span><span class="dv">2</span>) </span>
+<span id="cb141-2"><a href="chapter-reglin.html#cb141-2" aria-hidden="true" tabindex="-1"></a>dev_r <span class="ot">&lt;-</span> <span class="fu">sum</span>((yhat <span class="sc">-</span> <span class="fu">mean</span>(df<span class="sc">$</span>iq2))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb141-3"><a href="chapter-reglin.html#cb141-3" aria-hidden="true" tabindex="-1"></a>dev_e <span class="ot">&lt;-</span> <span class="fu">sum</span>((df<span class="sc">$</span>iq2 <span class="sc">-</span> yhat)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<p>le quali assumono i valori, rispettivamente, pari a <span class="math inline">\(3206.618\)</span>, <span class="math inline">\(2015.255\)</span> e <span class="math inline">\(1191.363\)</span>. Ne segue che il coefficiente di determinazione è <code>dev_r / dev_t = 0.628</code>, ovvero <code>1 - dev_e / dev_t = 0.628</code>. Questo risultato coincide con quello trovato con <code>lm()</code>:</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="chapter-reglin.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fm)<span class="sc">$</span>r.squared</span>
+<span id="cb142-2"><a href="chapter-reglin.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.6284675</span></span></code></pre></div>
+<p>Possiamo quindi concludere che, nel caso del campione esaminato, i fattori genetici spiegano circa il 63% della varianza del quoziente di intelligenza dei gemelli monozigoti (quando prevediamo il QI dei secondi nati dal QI dei primi nati).</p>
+</div>
+</div>
+<div id="inferenza-sullassociazione-tra-x-e-y-nella-popolazione" class="section level2" number="14.7">
+<h2><span class="header-section-number">14.7</span> Inferenza sull’associazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> nella popolazione</h2>
+<p>Il terzo obiettivo dell’analisi di regressione è quello di fare inferenze sull’associazione tra le due variabili nella popolazione da cui il campione deriva. Ci chiediamo se l’associazione osservata nel campione rifletta le proprietà della popolazione oppure sia imputabile agli errori di campionamento.</p>
+<p>Se si segue la scuola frequentista, nella regressione bivariata il
+problema dell’inferenza statistica è basato sulla stessa logica seguita
+nel caso di una singola variabile aleatoria. Nell’inferenza su una
+media, per esempio, viene valutata l’ipotesi nulla <span class="math inline">\(H_0: \mu=0\)</span> e il
+parametro di interesse, la media <span class="math inline">\(\mu\)</span> della popolazione, viene stimato
+mediante un’opportuna statistica, ovvero la media campionaria <span class="math inline">\(\bar{y}\)</span>.
+Le inferenze statistiche sono basate sulla conoscenza delle proprietà
+della distribuzione della statistica campionaria <span class="math inline">\(\bar{y}\)</span>.</p>
+<p>È possibile però anche definire degli stimatori che dipendono da due (o
+più) caratteri. Per esempio, il coefficiente <span class="math inline">\(b\)</span> della retta di
+regressione campionaria, che viene usato quale stimatore del
+coefficiente angolare <span class="math inline">\(\beta\)</span> della funzione di regressione nella
+popolazione <span class="math inline">\(y = \alpha + \beta x + \varepsilon\)</span>, è definito rispetto a
+due caratteri, <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>. Per ciascun campione casuale di <span class="math inline">\(n\)</span>
+osservazioni <span class="math inline">\(x, y\)</span>, lo stimatore <span class="math inline">\(b\)</span> di <span class="math inline">\(\beta\)</span> assume un diverso
+valore (<span class="math inline">\(b\)</span> è una variabile aleatoria). L’insieme delle stime <span class="math inline">\(b\)</span> di
+<span class="math inline">\(\beta\)</span> nell’universo dei campioni di ampiezza <span class="math inline">\(n\)</span> costituisce la
+<em>distribuzione campionaria</em> di <span class="math inline">\(b\)</span>. Analogamente si può dire dello
+stimatore <span class="math inline">\(a\)</span> di <span class="math inline">\(\alpha\)</span>. Il problema che ci poniamo ora è appunto
+quello di descrivere le proprietà delle distribuzioni campionarie dei
+due stimatori dei minimi quadrati <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>. Per fare questo, dobbiamo
+però prima introdurre il modello statistico della regressione lineare.</p>
+<div id="modello-statistico-di-regressione-lineare" class="section level3" number="14.7.1">
+<h3><span class="header-section-number">14.7.1</span> Modello statistico di regressione lineare</h3>
+<p>In corrispondenza di a ciascun valore della variabile <span class="math inline">\(x\)</span>, che si
+ipotizza essere costante da campione a campione, corrisponde nella
+popolazione una distribuzione di valori <span class="math inline">\(y\)</span>. Ci chiediamo che relazione
+intercorra tra le medie condizionali <span class="math inline">\(\bar{y}_i \mid x_i\)</span> e la variabile
+<span class="math inline">\(x\)</span>. Se disponiamo di un campione di ciascuna distribuzione condizionata
+<span class="math inline">\(y_i \mid x_i\)</span>, allora possiamo calcolare la media condizionale nel
+campione per stimare la corrispondente media nella popolazione. Una tale
+situazione si può verificare in un contesto sperimentale, in cui,
+mantenendo fissi i valori del carattere <span class="math inline">\(x\)</span>, la ripetizione delle prove
+produce un campione del carattere <span class="math inline">\(y\)</span> subordinatamente ad ogni <span class="math inline">\(x\)</span>.
+Nel caso di dati di tipo osservazionale, invece, vengono osservate
+coppie di valori (<span class="math inline">\(x_i, y_i\)</span>), con <span class="math inline">\(i=1, \dots, n\)</span>, e per ogni valore
+<span class="math inline">\(x\)</span> si ha a disposizione un unico valore <span class="math inline">\(y\)</span>.</p>
+<p>Allo scopo di attenuare le conseguenze derivanti dalle limitazioni di
+cui soffrono i dati a disposizione, si definisce il <em>modello statistico
+di regressione lineare</em> introducendo nell’analisi delle ipotesi sulla
+popolazione. Il modello statistico di regressione è basato sulle quattro seguenti
+ipotesi a proposito della struttura della popolazione.</p>
+<ol style="list-style-type: decimal">
+<li><p>La funzione di regressione è lineare (<em>linearità</em>):
+<span class="math display">\[
+\mathbb{E}(y_i \mid x_1, \dots, x_n) = \alpha + \beta x_i, \quad
+i=1, \dots, n,
+\]</span>
+ovvero, le medie delle distribuzioni condizionali <span class="math inline">\(y \mid x_i\)</span> sono linearmente associate alla variabile esplicativa <em>x</em>.</p></li>
+<li><p>Le varianze delle distribuzioni condizionali <span class="math inline">\(y \mid x_i\)</span> sono costanti al variare della <span class="math inline">\(x\)</span> (<em>omoschedasticità</em>):
+<span class="math display">\[
+var(y_i \mid x_1, \dots,  x_n) = \sigma^2, \quad i=1,
+\dots, n.
+\]</span></p></li>
+<li><p>Le osservazioni <span class="math inline">\(y_i\)</span> sono tra loro incorrelate subordinatamente alle <span class="math inline">\(x_i\)</span> (<em>indipendenza</em>):
+<span class="math display">\[
+cov(y_i, y_j \mid x_1, \dots, x_n) = 0, \quad per \hskip.1 in i \neq j,
+\]</span>
+ovvero, l’osservazione <span class="math inline">\(y_i\)</span> è selezionata dalla distribuzione condizionale <span class="math inline">\(y_i \mid x_i\)</span> tramite un campionamento casuale indipendente.</p></li>
+<li><p>La distribuzione di <span class="math inline">\(y_i\)</span> subordinata a <span class="math inline">\(X=x_i\)</span> segue la distribuzione gaussiana (<em>normalità</em>):
+<span class="math display">\[
+(y_i \mid x_i) \sim \mathcal{N}(\alpha+\beta x_i, \sigma^2).
+\]</span></p></li>
+</ol>
+</div>
+<div id="proprietà-degli-stimatori-dei-minimi-quadrati" class="section level3" number="14.7.2">
+<h3><span class="header-section-number">14.7.2</span> Proprietà degli stimatori dei minimi quadrati</h3>
+<p>Può essere dimostrato (vedi Appendici) che, se le assunzioni del modello lineare sono soddisfatte, allora i coefficienti dei minimi quadrati avranno le seguenti proprietà:</p>
+<p><span class="math display" id="eq:propcoefminquad">\[\begin{equation}
+\begin{aligned}
+b &amp;\sim \mathcal{N}\bigg(\beta,  \frac{\sigma^2_{\varepsilon}}{\sum(x_i-\bar{x})^2}\bigg),\\
+a &amp;\sim \mathcal{N}\bigg(\alpha, \frac{\sigma^2_{\varepsilon}\textstyle\sum x_i^2}{n \textstyle\sum (x_i-\bar{x})^2} \bigg).
+\end{aligned}
+\tag{14.12}
+\end{equation}\]</span></p>
+</div>
+<div id="le-inferenze-sul-modello-di-regressione" class="section level3" number="14.7.3">
+<h3><span class="header-section-number">14.7.3</span> Le inferenze sul modello di regressione</h3>
+<p>L’inferenza statistica sul modello di regressione può essere svolta in modi diversi. Esamineremo qui l’approccio frequentista per affrontare in seguito l’approccio Bayesiano.</p>
+<p>L’inferenza statistica frequentista si articola nella formulazione degli intervalli di confidenza per i parametri di interesse e nei test di significatività statistica.
+Un’ipotesi che viene frequentemente sottoposta a verifica è quella di significatività, cioè l’ipotesi che alla variabile esplicativa sia associato un coefficiente nullo. In tal caso, l’ipotesi nulla è
+<span class="math display">\[
+H_0:\beta=0
+\]</span>
+e l’ipotesi alternativa è
+<span class="math display">\[
+H_1:\beta \neq 0.
+\]</span>
+Sotto l’ipotesi nulla <span class="math inline">\(H_0: \beta = 0\)</span> la statistica
+<span class="math display">\[
+t_{\hat{\beta}} = \frac{\hat{\beta}}{s_{\hat{\beta}}}
+\]</span>
+si distribuisce come una variabile aleatoria <span class="math inline">\(t\)</span> di Student con <span class="math inline">\(n-2\)</span> gradi
+di libertà.</p>
+<p>Di fronte al problema di decidere se il valore stimato <span class="math inline">\(\hat{\beta}\)</span> sia
+sufficientemente ‘distante’ da zero, in modo da respingere l’ipotesi
+nulla che il vero valore <span class="math inline">\(\beta\)</span> sia nullo, non è sufficiente basarsi
+soltanto sul valore numerico assunto da <span class="math inline">\(\hat{\beta}\)</span>, ma occorre tener
+conto della variabilità campionaria. La statistica ottenuta dividendo
+<span class="math inline">\(\hat{\beta}\)</span> per la stima del suo errore standard, <span class="math inline">\(s_{\hat{\beta}}\)</span>,
+ci permette di utilizzare la distribuzione <span class="math inline">\(t\)</span> di Student come metrica
+per stabilire se la stima trovata si debba considerare ‘diversa’ da
+quanto ipotizzato sotto <span class="math inline">\(H_0\)</span>.</p>
+<p>L’ipotesi nulla viene rifiutata quando il valore assoluto del rapporto è
+esterno alla regione di accettazione, i cui limiti sono definiti dai
+valori critici della distribuzione <span class="math inline">\(t\)</span> di Student con <span class="math inline">\(n - 2\)</span> gradi di
+libertà per il livello di significatività <span class="math inline">\(\alpha\)</span> prescelto. Se
+l’ipotesi nulla viene rifiutata si dice che il coefficiente
+<span class="math inline">\(\hat{\beta}\)</span> è “statisticamente significativo” ammettendo così la
+possibilità di descrivere con un modello lineare la relazione esistente
+tra le variabili <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>. Quando non si può rifiutare l’ipotesi nulla
+nel modello di regressione, si conclude che il coefficiente angolare
+della retta non risulta significativamente diverso da zero, individuando
+così nella popolazione una retta parallela all’asse delle ascisse.</p>
+<p>Il valore-<span class="math inline">\(p\)</span> esprime la probabilità di ottenere un valore del test
+uguale o superiore a quello ottenuto nel campione esaminato, utilizzando
+la distribuzione campionaria del test sotto l’ipotesi nulla. Se
+<span class="math inline">\(t_{\hat{\beta}}\)</span> è il valore osservato del rapporto <span class="math inline">\(t\)</span> per il
+coefficiente angolare della retta di regressione, allora il <span class="math inline">\(p\)</span>-valore è
+dato da <span class="math display">\[p = 2 \times Pr(t \geq |t_{\hat{\beta}}|),\]</span> dove <span class="math inline">\(t\)</span> è il
+valore di una variabile aleatoria <span class="math inline">\(t\)</span> di Student con <span class="math inline">\((n-2)\)</span> gradi di
+libertà.</p>
+<p>Ogni volta che il <span class="math inline">\(p\)</span>-valore del test è inferiore al livello di
+significatività che si è scelto per <span class="math inline">\(H_0\)</span>, il test porta al rifiuto
+dell’ipotesi nulla. Solitamente si sceglie un livello <span class="math inline">\(\alpha\)</span> pari a
+0.05 o 0.01.</p>
+<p>Consideriamo nuovamente la regressione del QI del secondo nato sul QI del primo nato nei gemelli monozigoti esaminati da <span class="citation"><a href="bibliografia.html#ref-anderson2012new" role="doc-biblioref">Anderson &amp; Finn</a> (<a href="bibliografia.html#ref-anderson2012new" role="doc-biblioref">2012</a>)</span>. Dall’output prodotto dalla funzione <code>lm()</code> possiamo ricavare le informazioni per il calcolo della statistica <span class="math inline">\(t\)</span>:</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="chapter-reglin.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fm)</span>
+<span id="cb143-2"><a href="chapter-reglin.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb143-3"><a href="chapter-reglin.html#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb143-4"><a href="chapter-reglin.html#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = iq2 ~ iq1, data = df)</span></span>
+<span id="cb143-5"><a href="chapter-reglin.html#cb143-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb143-6"><a href="chapter-reglin.html#cb143-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb143-7"><a href="chapter-reglin.html#cb143-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb143-8"><a href="chapter-reglin.html#cb143-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -11.0342  -3.8218  -0.5852   3.4658  12.5635 </span></span>
+<span id="cb143-9"><a href="chapter-reglin.html#cb143-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb143-10"><a href="chapter-reglin.html#cb143-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb143-11"><a href="chapter-reglin.html#cb143-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb143-12"><a href="chapter-reglin.html#cb143-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)   1.8389     3.0269   0.608    0.548    </span></span>
+<span id="cb143-13"><a href="chapter-reglin.html#cb143-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; iq1           0.8499     0.1155   7.357 2.29e-08 ***</span></span>
+<span id="cb143-14"><a href="chapter-reglin.html#cb143-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb143-15"><a href="chapter-reglin.html#cb143-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb143-16"><a href="chapter-reglin.html#cb143-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb143-17"><a href="chapter-reglin.html#cb143-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 6.102 on 32 degrees of freedom</span></span>
+<span id="cb143-18"><a href="chapter-reglin.html#cb143-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.6285, Adjusted R-squared:  0.6169 </span></span>
+<span id="cb143-19"><a href="chapter-reglin.html#cb143-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 54.13 on 1 and 32 DF,  p-value: 2.288e-08</span></span></code></pre></div>
+<p>che risulta essere</p>
+<p><span class="math display">\[
+t = \frac{B}{s_{\hat{\beta}}}=\frac{0.8499}{0.1155} = 7.357.
+\]</span>
+Supponendo un’ipotesi alternativa bidirezionale, <span class="math inline">\(H_1: \beta \neq 0\)</span>, la regione critica sarà suddivisa nelle due code della distribuzione <span class="math inline">\(t\)</span> di Student con <span class="math inline">\(25\)</span> gradi di libertà. Essendo il valore critico <span class="math inline">\(t_{n-2, 1-\alpha/2}\)</span> pari a</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="chapter-reglin.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(.<span class="dv">975</span>, <span class="dv">32</span>)</span>
+<span id="cb144-2"><a href="chapter-reglin.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.036933</span></span></code></pre></div>
+<p>si può rifiutare <span class="math inline">\(H_0\)</span>.</p>
+<p>In maniera corrispondente, possiamo considerare il <span class="math inline">\(p\)</span>-valore. Il <span class="math inline">\(p\)</span>-valore è l’area sottesa alla funzione di densità <span class="math inline">\(t\)</span> di Student con <span class="math inline">\(n-2=32\)</span> gradi di libertà nei due intervalli <span class="math inline">\([-\infty, -t_{\hat{\beta}}]\)</span> e <span class="math inline">\([t_{\hat{\beta}}, \infty]\)</span> è</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="chapter-reglin.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fl">7.357</span>, <span class="dv">32</span>)</span>
+<span id="cb145-2"><a href="chapter-reglin.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.145083e-08</span></span></code></pre></div>
+<p>Dato che il <span class="math inline">\(p\)</span>-valore è minore di <span class="math inline">\(\alpha = 0.05\)</span>, l’approccio frequentista conclude rigettando <span class="math inline">\(H_0\)</span>. Il risultato si può riportare nel modo seguente:</p>
+<blockquote>
+<p>L’analisi della regressione bivariata ha rivelato una relazione lineare positiva tra il QI dei gemelli monozigoti primi nati e il QI dei gemelli secondi nati, <span class="math inline">\(\hat{\beta} = 0.85\)</span>, <span class="math inline">\(t_{32} = 7.36\)</span>, <span class="math inline">\(p = .0001\)</span>.</p>
+</blockquote>
+<p>I test di significatività possono essere eseguiti con R  utilizzando la funzione <code>summary()</code> applicata all’oggetto creato dal <code>lm()</code>: Il test statistico sul parametro <span class="math inline">\(\beta\)</span> del modello di regressione verifica l’ipotesi nulla di indipendenza, ovvero l’ipotesi che, nella popolazione, la pendenza della retta di regressione sia uguale a zero.</p>
+<p>Più informativo del test statistico <span class="math inline">\(H_0: \beta=0\)</span> è l’intervallo di confidenza per il parametro <span class="math inline">\(\beta\)</span>:
+<span class="math display">\[
+\hat{\beta} \pm t_{\alpha/2} s_{\hat{\beta}}.
+\]</span>
+Nel caso presente, abbiamo</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="chapter-reglin.html#cb146-1" aria-hidden="true" tabindex="-1"></a>fm<span class="sc">$</span>coef[<span class="dv">2</span>] <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">qt</span>(.<span class="dv">025</span>, <span class="dv">32</span>) <span class="sc">*</span> <span class="fl">0.1155</span></span>
+<span id="cb146-2"><a href="chapter-reglin.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.0851203 0.6145887</span></span></code></pre></div>
+<p>Dato che il limite inferiore dell’intervallo di confidenza è superiore allo zero, possiamo concludere che vi è un’<em>associazione</em> (lineare) <em>positiva</em> tra il QI del primo nato e il QI del secondo nato, nelle coppie di gemelli monozigoti che sono state esaminate da <span class="citation"><a href="bibliografia.html#ref-anderson2012new" role="doc-biblioref">Anderson &amp; Finn</a> (<a href="bibliografia.html#ref-anderson2012new" role="doc-biblioref">2012</a>)</span>.</p>
+</div>
+</div>
+<div id="considerazioni-conclusive" class="section level2 unnumbered">
+<h2>Considerazioni conclusive</h2>
+<p>Il modello di regressione lineare semplice viene usato per descrivere la
+relazione tra due variabili e per determinare il segno e l’intensità di
+tale relazione. Inoltre, il modello di regressione ci consente di
+prevedere il valore della variabile dipendente in base ad alcuni nuovi
+valori della variabile indipendente. Il modello di regressione lineare
+semplice è in realtà molto limitato, in quanto descrive soltanto la
+relazione tra la variabile dipendente <span class="math inline">\(y\)</span> e una sola variabile
+esplicativa <span class="math inline">\(x\)</span>. Esso diventa molto più utile quando incorpora più
+variabili indipendenti. In questo secondo caso, però, i calcoli per la
+stima dei coefficienti del modello diventano più complicati. Abbiamo
+deciso qui di presentare solo il modello di regressione lineare semplice
+perché, in quel caso, sia la logica dell’inferenza sia le procedure di
+calcolo sono facilmente maneggiabili. Nel caso più generale, quello del
+modello di regressione multipla, la logica dell’inferenza rimarrà
+identica a quella discussa qui, ma le procedure di calcolo richiedono
+l’uso dell’algebra matriciale che esula dagli scopi del presente
+insegnamento. Il modello di regressione multipla può includere sia
+regressori quantitativi, sia regressori qualitativi, utilizzando un
+opportuna schema di codifica. È interessante notare come un modello di
+regressione multipla che include una sola variabile esplicativa
+quantitativa corrisponde all’analisi della varianza ad una via; un
+modello di regressione multipla che include più di una variabile
+esplicativa quantitativa corrisponde all’analisi della varianza più vie.
+Questi argomenti verranno sviluppati negli insegnamenti di carattere
+quantitativo più avanzati. Possiamo qui concludere dicendo che il
+modello di regressione, nelle sue varie forme e varianti, costituisce la
+tecnica di analisi dei dati maggiormente usata in psicologia.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chapter-stima-funzione-aposteriori.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-stat-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ccaudek/bookdown_psicometria/edit/master/40_reglin.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/ccaudek/bookdown_psicometria/blob/master/40_reglin.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

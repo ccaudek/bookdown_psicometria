@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capitolo 5 La misurazione in psicologia | PSICOMETRIA</title>
+  <title>Capitolo 8 La misurazione in psicologia | PSICOMETRIA</title>
   <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capitolo 5 La misurazione in psicologia | PSICOMETRIA" />
+  <meta property="og:title" content="Capitolo 8 La misurazione in psicologia | PSICOMETRIA" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ccaudek/bookdown_psicometria" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capitolo 5 La misurazione in psicologia | PSICOMETRIA" />
+  <meta name="twitter:title" content="Capitolo 8 La misurazione in psicologia | PSICOMETRIA" />
   <meta name="twitter:site" content="@ccaudek" />
   <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2020-12-30" />
+<meta name="date" content="2021-01-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon" />
 <link rel="prev" href="chapter-terminologia.html"/>
-<link rel="next" href="chapter-descriptive-stats.html"/>
+<link rel="next" href="chapter-prob-discreta.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -133,11 +133,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">A.A. 2020/2021</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefazione</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#perché-tanta-statistica-in-psicologia"><i class="fa fa-check"></i>Perché tanta statistica in psicologia?</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#come-studiare"><i class="fa fa-check"></i>Come studiare?</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefazione</a></li>
+<li class="part"><span><b>Introduzione</b></span></li>
+<li class="chapter" data-level="" data-path="obiettivi.html"><a href="obiettivi.html"><i class="fa fa-check"></i>Obiettivi</a></li>
+<li class="chapter" data-level="" data-path="perché-tanta-statistica-in-psicologia.html"><a href="perché-tanta-statistica-in-psicologia.html"><i class="fa fa-check"></i>Perché tanta statistica in psicologia?</a></li>
+<li class="chapter" data-level="" data-path="come-studiare.html"><a href="come-studiare.html"><i class="fa fa-check"></i>Come studiare?</a></li>
 <li class="part"><span><b>Introduzione al linguaggio R</b></span></li>
 <li class="chapter" data-level="1" data-path="chapter-pacchetti.html"><a href="chapter-pacchetti.html"><i class="fa fa-check"></i><b>1</b> Pacchetti</a></li>
 <li class="chapter" data-level="2" data-path="cha-install.html"><a href="cha-install.html"><i class="fa fa-check"></i><b>2</b> Per cominciare</a>
@@ -184,160 +184,193 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.10.2" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#caricare-un-pacchetto-in-r"><i class="fa fa-check"></i><b>3.10.2</b> Caricare un pacchetto in R</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="4" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html"><i class="fa fa-check"></i><b>4</b> Strutture di dati</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="4.1" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#classi-e-modi-degli-oggetti"><i class="fa fa-check"></i><b>4.1</b> Classi e modi degli oggetti</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#vettori"><i class="fa fa-check"></i><b>4.1.1</b> Vettori</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#matrici"><i class="fa fa-check"></i><b>4.2</b> Matrici</a></li>
+<li class="chapter" data-level="4.3" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
+<li class="chapter" data-level="4.4" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#operazioni-aritmetiche-su-vettori-matrici-e-array"><i class="fa fa-check"></i><b>4.4</b> Operazioni aritmetiche su vettori, matrici e array</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#operazioni-aritmetiche-su-vettori"><i class="fa fa-check"></i><b>4.4.1</b> Operazioni aritmetiche su vettori</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#operazioni-aritmetiche-su-matrici"><i class="fa fa-check"></i><b>4.4.2</b> Operazioni aritmetiche su matrici</a></li>
+<li class="chapter" data-level="4.4.3" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#operazioni-aritmetiche-su-array"><i class="fa fa-check"></i><b>4.4.3</b> Operazioni aritmetiche su array</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#liste"><i class="fa fa-check"></i><b>4.5</b> Liste</a></li>
+<li class="chapter" data-level="4.6" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#data-frame"><i class="fa fa-check"></i><b>4.6</b> Data frame</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#selezione-di-elementi"><i class="fa fa-check"></i><b>4.6.1</b> Selezione di elementi</a></li>
+<li class="chapter" data-level="4.6.2" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#giochi-di-carte"><i class="fa fa-check"></i><b>4.6.2</b> Giochi di carte</a></li>
+<li class="chapter" data-level="4.6.3" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#variabili-locali"><i class="fa fa-check"></i><b>4.6.3</b> Variabili locali</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapter-strutture-controllo.html"><a href="chapter-strutture-controllo.html"><i class="fa fa-check"></i><b>5</b> Strutture di controllo</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="5.1" data-path="chapter-strutture-controllo.html"><a href="chapter-strutture-controllo.html#il-ciclo-for"><i class="fa fa-check"></i><b>5.1</b> Il ciclo <code>for</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html"><i class="fa fa-check"></i><b>6</b> Input/Output</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="6.1" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html#la-funzione-read.table"><i class="fa fa-check"></i><b>6.1</b> La funzione <code>read.table()</code></a></li>
+<li class="chapter" data-level="6.2" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html#file-di-dati-forniti-da-r"><i class="fa fa-check"></i><b>6.2</b> File di dati forniti da R</a></li>
+<li class="chapter" data-level="6.3" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html#esportazione-di-un-file"><i class="fa fa-check"></i><b>6.3</b> Esportazione di un file</a></li>
+<li class="chapter" data-level="6.4" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html#pacchetto-rio"><i class="fa fa-check"></i><b>6.4</b> Pacchetto <code>rio</code></a></li>
+<li class="chapter" data-level="6.5" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html#dove-sono-i-miei-file"><i class="fa fa-check"></i><b>6.5</b> Dove sono i miei file?</a></li>
+</ul></li>
 <li class="part"><span><b>Misurazione</b></span></li>
-<li class="chapter" data-level="4" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html"><i class="fa fa-check"></i><b>4</b> Terminologia</a>
+<li class="chapter" data-level="7" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html"><i class="fa fa-check"></i><b>7</b> Terminologia</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#metodi-e-procedure-della-psicologia"><i class="fa fa-check"></i><b>4.1</b> Metodi e procedure della psicologia</a></li>
-<li class="chapter" data-level="4.2" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#variabili-e-costanti"><i class="fa fa-check"></i><b>4.2</b> Variabili e costanti</a></li>
-<li class="chapter" data-level="4.3" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#variabili-indipendenti-e-variabili-dipendenti"><i class="fa fa-check"></i><b>4.3</b> Variabili indipendenti e variabili dipendenti</a></li>
-<li class="chapter" data-level="4.4" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#la-matrice-dei-dati"><i class="fa fa-check"></i><b>4.4</b> La matrice dei dati</a></li>
+<li class="chapter" data-level="7.1" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#metodi-e-procedure-della-psicologia"><i class="fa fa-check"></i><b>7.1</b> Metodi e procedure della psicologia</a></li>
+<li class="chapter" data-level="7.2" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#variabili-e-costanti"><i class="fa fa-check"></i><b>7.2</b> Variabili e costanti</a></li>
+<li class="chapter" data-level="7.3" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#variabili-indipendenti-e-variabili-dipendenti"><i class="fa fa-check"></i><b>7.3</b> Variabili indipendenti e variabili dipendenti</a></li>
+<li class="chapter" data-level="7.4" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#la-matrice-dei-dati"><i class="fa fa-check"></i><b>7.4</b> La matrice dei dati</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html"><i class="fa fa-check"></i><b>5</b> La misurazione in psicologia</a>
+<li class="chapter" data-level="8" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html"><i class="fa fa-check"></i><b>8</b> La misurazione in psicologia</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#le-scale-di-misura"><i class="fa fa-check"></i><b>5.1</b> Le scale di misura</a>
+<li class="chapter" data-level="8.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#le-scale-di-misura"><i class="fa fa-check"></i><b>8.1</b> Le scale di misura</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-nominale"><i class="fa fa-check"></i><b>5.1.1</b> Scala nominale</a></li>
-<li class="chapter" data-level="5.1.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-ordinale"><i class="fa fa-check"></i><b>5.1.2</b> Scala ordinale</a></li>
-<li class="chapter" data-level="5.1.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-ad-intervalli"><i class="fa fa-check"></i><b>5.1.3</b> Scala ad intervalli</a></li>
-<li class="chapter" data-level="5.1.4" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-di-rapporti"><i class="fa fa-check"></i><b>5.1.4</b> Scala di rapporti</a></li>
-<li class="chapter" data-level="5.1.5" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#gerarchia-dei-livelli-di-scala-di-misura"><i class="fa fa-check"></i><b>5.1.5</b> Gerarchia dei livelli di scala di misura</a></li>
+<li class="chapter" data-level="8.1.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-nominale"><i class="fa fa-check"></i><b>8.1.1</b> Scala nominale</a></li>
+<li class="chapter" data-level="8.1.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-ordinale"><i class="fa fa-check"></i><b>8.1.2</b> Scala ordinale</a></li>
+<li class="chapter" data-level="8.1.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-ad-intervalli"><i class="fa fa-check"></i><b>8.1.3</b> Scala ad intervalli</a></li>
+<li class="chapter" data-level="8.1.4" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-di-rapporti"><i class="fa fa-check"></i><b>8.1.4</b> Scala di rapporti</a></li>
+<li class="chapter" data-level="8.1.5" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#gerarchia-dei-livelli-di-scala-di-misura"><i class="fa fa-check"></i><b>8.1.5</b> Gerarchia dei livelli di scala di misura</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:DiscreteVsContinuous"><i class="fa fa-check"></i><b>5.2</b> Variabili discrete vs. variabili continue</a></li>
-<li class="chapter" data-level="5.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#perché-alcune-misurazioni-sono-migliori-di-altre"><i class="fa fa-check"></i><b>5.3</b> Perché alcune misurazioni sono migliori di altre?</a>
+<li class="chapter" data-level="8.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:DiscreteVsContinuous"><i class="fa fa-check"></i><b>8.2</b> Variabili discrete vs. variabili continue</a></li>
+<li class="chapter" data-level="8.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#perché-alcune-misurazioni-sono-migliori-di-altre"><i class="fa fa-check"></i><b>8.3</b> Perché alcune misurazioni sono migliori di altre?</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:accuratezza_precisione"><i class="fa fa-check"></i><b>5.3.1</b> Tipologie di errori</a></li>
-<li class="chapter" data-level="5.3.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:reliability"><i class="fa fa-check"></i><b>5.3.2</b> Attendibilità</a></li>
-<li class="chapter" data-level="5.3.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:validity"><i class="fa fa-check"></i><b>5.3.3</b> Validità</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
-</ul></li>
-<li class="part"><span><b>Descrizione</b></span></li>
-<li class="chapter" data-level="6" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html"><i class="fa fa-check"></i><b>6</b> Statistica descrittiva</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#perché-riassumere-i-dati"><i class="fa fa-check"></i><b>6.1</b> Perché riassumere i dati?</a></li>
-<li class="chapter" data-level="6.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#sec:distr_freq"><i class="fa fa-check"></i><b>6.2</b> Distribuzioni di frequenze</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r"><i class="fa fa-check"></i><b>6.2.1</b> Esercizio con R</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#istogramma"><i class="fa fa-check"></i><b>6.3</b> Istogramma</a>
-<ul>
-<li class="chapter" data-level="6.3.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r-1"><i class="fa fa-check"></i><b>6.3.1</b> Esercizio con R</a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#funzione-di-densità-empirica"><i class="fa fa-check"></i><b>6.4</b> Funzione di densità empirica</a>
-<ul>
-<li class="chapter" data-level="6.4.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r-2"><i class="fa fa-check"></i><b>6.4.1</b> Esercizio con R</a></li>
-</ul></li>
-<li class="chapter" data-level="6.5" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#forma-di-una-distribuzione"><i class="fa fa-check"></i><b>6.5</b> Forma di una distribuzione</a></li>
-<li class="chapter" data-level="6.6" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-posizione"><i class="fa fa-check"></i><b>6.6</b> Indici di posizione</a>
-<ul>
-<li class="chapter" data-level="6.6.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#quantili"><i class="fa fa-check"></i><b>6.6.1</b> Quantili</a></li>
-<li class="chapter" data-level="6.6.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#box-plot"><i class="fa fa-check"></i><b>6.6.2</b> Box-plot</a></li>
-<li class="chapter" data-level="6.6.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#leccellenza-grafica"><i class="fa fa-check"></i><b>6.6.3</b> L’eccellenza grafica</a></li>
-</ul></li>
-<li class="chapter" data-level="6.7" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-tendenza-centrale"><i class="fa fa-check"></i><b>6.7</b> Indici di tendenza centrale</a>
-<ul>
-<li class="chapter" data-level="6.7.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#media"><i class="fa fa-check"></i><b>6.7.1</b> Media</a></li>
-<li class="chapter" data-level="6.7.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#media-spuntata"><i class="fa fa-check"></i><b>6.7.2</b> Media spuntata</a></li>
-<li class="chapter" data-level="6.7.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#moda-e-mediana"><i class="fa fa-check"></i><b>6.7.3</b> Moda e mediana</a></li>
-</ul></li>
-<li class="chapter" data-level="6.8" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-dispersione"><i class="fa fa-check"></i><b>6.8</b> Indici di dispersione</a>
-<ul>
-<li class="chapter" data-level="6.8.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-basati-sullordinamento-dei-dati"><i class="fa fa-check"></i><b>6.8.1</b> Indici basati sull’ordinamento dei dati</a></li>
-<li class="chapter" data-level="6.8.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#scostamento-medio-semplice-dalla-media"><i class="fa fa-check"></i><b>6.8.2</b> Scostamento medio semplice dalla media</a></li>
-<li class="chapter" data-level="6.8.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#varianza"><i class="fa fa-check"></i><b>6.8.3</b> Varianza</a></li>
-<li class="chapter" data-level="6.8.4" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#deviazione-standard"><i class="fa fa-check"></i><b>6.8.4</b> Deviazione standard</a></li>
-<li class="chapter" data-level="6.8.5" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-variabilità-relativi"><i class="fa fa-check"></i><b>6.8.5</b> Indici di variabilità relativi</a></li>
-</ul></li>
-<li class="chapter" data-level="6.9" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#le-relazioni-tra-variabili"><i class="fa fa-check"></i><b>6.9</b> Le relazioni tra variabili</a>
-<ul>
-<li class="chapter" data-level="6.9.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#diagramma-a-dispersione"><i class="fa fa-check"></i><b>6.9.1</b> Diagramma a dispersione</a></li>
-<li class="chapter" data-level="6.9.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#covarianza"><i class="fa fa-check"></i><b>6.9.2</b> Covarianza</a></li>
-<li class="chapter" data-level="6.9.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione"><i class="fa fa-check"></i><b>6.9.3</b> Correlazione</a></li>
-</ul></li>
-<li class="chapter" data-level="6.10" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-e-causazione"><i class="fa fa-check"></i><b>6.10</b> Correlazione e causazione</a>
-<ul>
-<li class="chapter" data-level="6.10.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#usi-della-correlazione"><i class="fa fa-check"></i><b>6.10.1</b> Usi della correlazione</a></li>
-<li class="chapter" data-level="6.10.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-di-spearman"><i class="fa fa-check"></i><b>6.10.2</b> Correlazione di Spearman</a></li>
-<li class="chapter" data-level="6.10.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-nulla"><i class="fa fa-check"></i><b>6.10.3</b> Correlazione nulla</a></li>
+<li class="chapter" data-level="8.3.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:accuratezza_precisione"><i class="fa fa-check"></i><b>8.3.1</b> Tipologie di errori</a></li>
+<li class="chapter" data-level="8.3.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:reliability"><i class="fa fa-check"></i><b>8.3.2</b> Attendibilità</a></li>
+<li class="chapter" data-level="8.3.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:validity"><i class="fa fa-check"></i><b>8.3.3</b> Validità</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
 <li class="part"><span><b>Elementi di teoria della probabilità</b></span></li>
-<li class="chapter" data-level="7" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html"><i class="fa fa-check"></i><b>7</b> Che cos’è la probabilità?</a>
+<li class="chapter" data-level="9" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html"><i class="fa fa-check"></i><b>9</b> Che cos’è la probabilità?</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-naturale"><i class="fa fa-check"></i><b>7.1</b> Probabilità nel linguaggio naturale</a></li>
-<li class="chapter" data-level="7.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-scientifico"><i class="fa fa-check"></i><b>7.2</b> Probabilità nel linguaggio scientifico</a></li>
-<li class="chapter" data-level="7.3" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#terminologia"><i class="fa fa-check"></i><b>7.3</b> Terminologia</a></li>
-<li class="chapter" data-level="7.4" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#le-diverse-definizioni-della-probabilità"><i class="fa fa-check"></i><b>7.4</b> Le diverse definizioni della probabilità</a>
+<li class="chapter" data-level="9.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-naturale"><i class="fa fa-check"></i><b>9.1</b> Probabilità nel linguaggio naturale</a></li>
+<li class="chapter" data-level="9.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-scientifico"><i class="fa fa-check"></i><b>9.2</b> Probabilità nel linguaggio scientifico</a></li>
+<li class="chapter" data-level="9.3" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#terminologia"><i class="fa fa-check"></i><b>9.3</b> Terminologia</a></li>
+<li class="chapter" data-level="9.4" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#le-diverse-definizioni-della-probabilità"><i class="fa fa-check"></i><b>9.4</b> Le diverse definizioni della probabilità</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#sec:def_ing_prob"><i class="fa fa-check"></i><b>7.4.1</b> Una definizione “ingenua” della probabilità</a></li>
-<li class="chapter" data-level="7.4.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#una-definizione-non-ingenua-della-probabilità"><i class="fa fa-check"></i><b>7.4.2</b> Una definizione “non ingenua” della probabilità</a></li>
+<li class="chapter" data-level="9.4.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#sec:def_ing_prob"><i class="fa fa-check"></i><b>9.4.1</b> Una definizione “ingenua” della probabilità</a></li>
+<li class="chapter" data-level="9.4.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#una-definizione-non-ingenua-della-probabilità"><i class="fa fa-check"></i><b>9.4.2</b> Una definizione “non ingenua” della probabilità</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#assegnare-le-probabilità-agli-eventi"><i class="fa fa-check"></i><b>7.5</b> Assegnare le probabilità agli eventi</a>
+<li class="chapter" data-level="9.5" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#assegnare-le-probabilità-agli-eventi"><i class="fa fa-check"></i><b>9.5</b> Assegnare le probabilità agli eventi</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-frequentista"><i class="fa fa-check"></i><b>7.5.1</b> Approccio frequentista</a></li>
-<li class="chapter" data-level="7.5.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-bayesiano"><i class="fa fa-check"></i><b>7.5.2</b> Approccio Bayesiano</a></li>
+<li class="chapter" data-level="9.5.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-frequentista"><i class="fa fa-check"></i><b>9.5.1</b> Approccio frequentista</a></li>
+<li class="chapter" data-level="9.5.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-bayesiano"><i class="fa fa-check"></i><b>9.5.2</b> Approccio Bayesiano</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#proprietà-elementari-della-probabilità"><i class="fa fa-check"></i><b>7.6</b> Proprietà elementari della probabilità</a></li>
-<li class="chapter" data-level="7.7" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#variabili-aleatorie"><i class="fa fa-check"></i><b>7.7</b> Variabili aleatorie</a>
+<li class="chapter" data-level="9.6" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#proprietà-elementari-della-probabilità"><i class="fa fa-check"></i><b>9.6</b> Proprietà elementari della probabilità</a></li>
+<li class="chapter" data-level="9.7" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#variabili-aleatorie"><i class="fa fa-check"></i><b>9.7</b> Variabili aleatorie</a>
 <ul>
-<li class="chapter" data-level="7.7.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#a-cosa-servono-le-variabili-aleatorie"><i class="fa fa-check"></i><b>7.7.1</b> A cosa servono le variabili aleatorie?</a></li>
-<li class="chapter" data-level="7.7.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#funzione-di-massa-di-probabilità"><i class="fa fa-check"></i><b>7.7.2</b> Funzione di massa di probabilità</a></li>
+<li class="chapter" data-level="9.7.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#a-cosa-servono-le-variabili-aleatorie"><i class="fa fa-check"></i><b>9.7.1</b> A cosa servono le variabili aleatorie?</a></li>
+<li class="chapter" data-level="9.7.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#funzione-di-massa-di-probabilità"><i class="fa fa-check"></i><b>9.7.2</b> Funzione di massa di probabilità</a></li>
 </ul></li>
-<li class="chapter" data-level="7.8" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#notazione"><i class="fa fa-check"></i><b>7.8</b> Notazione</a></li>
+<li class="chapter" data-level="9.8" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#notazione"><i class="fa fa-check"></i><b>9.8</b> Notazione</a></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html"><i class="fa fa-check"></i><b>8</b> Probabilità condizionata</a>
+<li class="chapter" data-level="10" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html"><i class="fa fa-check"></i><b>10</b> Probabilità condizionata</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#sec:prob_cond"><i class="fa fa-check"></i><b>8.1</b> Probabilità condizionata su altri eventi</a>
+<li class="chapter" data-level="10.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#sec:prob_cond"><i class="fa fa-check"></i><b>10.1</b> Probabilità condizionata su altri eventi</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#la-fallacia-del-pubblico-ministero"><i class="fa fa-check"></i><b>8.1.1</b> La fallacia del pubblico ministero</a></li>
+<li class="chapter" data-level="10.1.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#la-fallacia-del-pubblico-ministero"><i class="fa fa-check"></i><b>10.1.1</b> La fallacia del pubblico ministero</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#legge-della-probabilità-composta"><i class="fa fa-check"></i><b>8.2</b> Legge della probabilità composta</a></li>
-<li class="chapter" data-level="8.3" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#lindipendendenza-stocastica"><i class="fa fa-check"></i><b>8.3</b> L’indipendendenza stocastica</a></li>
+<li class="chapter" data-level="10.2" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#legge-della-probabilità-composta"><i class="fa fa-check"></i><b>10.2</b> Legge della probabilità composta</a></li>
+<li class="chapter" data-level="10.3" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#lindipendendenza-stocastica"><i class="fa fa-check"></i><b>10.3</b> L’indipendendenza stocastica</a></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html"><i class="fa fa-check"></i><b>9</b> Il teorema di Bayes</a>
+<li class="chapter" data-level="11" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html"><i class="fa fa-check"></i><b>11</b> Il teorema di Bayes</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:tot_prob_theorem"><i class="fa fa-check"></i><b>9.1</b> Il teorema della probabilità totale</a></li>
-<li class="chapter" data-level="9.2" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:bayes_theorem"><i class="fa fa-check"></i><b>9.2</b> Il teorema della probabilità delle cause</a>
+<li class="chapter" data-level="11.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:tot_prob_theorem"><i class="fa fa-check"></i><b>11.1</b> Il teorema della probabilità totale</a></li>
+<li class="chapter" data-level="11.2" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:bayes_theorem"><i class="fa fa-check"></i><b>11.2</b> Il teorema della probabilità delle cause</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#aggiornamento-bayesiano"><i class="fa fa-check"></i><b>9.2.1</b> Aggiornamento Bayesiano</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html"><i class="fa fa-check"></i><b>10</b> Probabilità congiunta</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzione-di-probabilità-congiunta"><i class="fa fa-check"></i><b>10.1</b> Funzione di probabilità congiunta</a>
-<ul>
-<li class="chapter" data-level="10.1.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#proprietà"><i class="fa fa-check"></i><b>10.1.1</b> Proprietà</a></li>
-<li class="chapter" data-level="10.1.2" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#eventi"><i class="fa fa-check"></i><b>10.1.2</b> Eventi</a></li>
-<li class="chapter" data-level="10.1.3" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzioni-di-probabilità-marginali"><i class="fa fa-check"></i><b>10.1.3</b> Funzioni di probabilità marginali</a></li>
-<li class="chapter" data-level="10.1.4" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#indipendenza-stocastica"><i class="fa fa-check"></i><b>10.1.4</b> Indipendenza stocastica</a></li>
+<li class="chapter" data-level="11.2.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#aggiornamento-bayesiano"><i class="fa fa-check"></i><b>11.2.1</b> Aggiornamento Bayesiano</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html"><i class="fa fa-check"></i><b>11</b> Stima della funzione a posteriori</a>
+<li class="chapter" data-level="12" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html"><i class="fa fa-check"></i><b>12</b> Probabilità congiunta</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:met_numerici_convenzionali"><i class="fa fa-check"></i><b>11.1</b> Metodi numerici convenzionali</a>
+<li class="chapter" data-level="12.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzione-di-probabilità-congiunta"><i class="fa fa-check"></i><b>12.1</b> Funzione di probabilità congiunta</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:appross_numerica"><i class="fa fa-check"></i><b>11.1.1</b> La procedura dell’approssimazione numerica</a></li>
-<li class="chapter" data-level="11.1.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:es_pratico_zetsche"><i class="fa fa-check"></i><b>11.1.2</b> Un esempio pratico</a></li>
-<li class="chapter" data-level="11.1.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:aspett_future_beta2_10"><i class="fa fa-check"></i><b>11.1.3</b> Un esempio pratico (versione 2)</a></li>
-<li class="chapter" data-level="11.1.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sommario-della-funzione-a-posteriori"><i class="fa fa-check"></i><b>11.1.4</b> Sommario della funzione a posteriori</a></li>
+<li class="chapter" data-level="12.1.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#proprietà"><i class="fa fa-check"></i><b>12.1.1</b> Proprietà</a></li>
+<li class="chapter" data-level="12.1.2" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#eventi"><i class="fa fa-check"></i><b>12.1.2</b> Eventi</a></li>
+<li class="chapter" data-level="12.1.3" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzioni-di-probabilità-marginali"><i class="fa fa-check"></i><b>12.1.3</b> Funzioni di probabilità marginali</a></li>
+<li class="chapter" data-level="12.1.4" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#indipendenza-stocastica"><i class="fa fa-check"></i><b>12.1.4</b> Indipendenza stocastica</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#approssimazione-quadratica"><i class="fa fa-check"></i><b>11.2</b> Approssimazione quadratica</a></li>
-<li class="chapter" data-level="11.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:integr_MC"><i class="fa fa-check"></i><b>11.3</b> Integrazione con metodo Monte Carlo</a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:legge_forte_grandi_numeri"><i class="fa fa-check"></i><b>11.3.1</b> Legge forte dei grandi numeri</a></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:mmmc"><i class="fa fa-check"></i><b>11.4</b> Metodi MC basati su Catena di Markov</a>
+<li class="chapter" data-level="13" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html"><i class="fa fa-check"></i><b>13</b> Stima della funzione a posteriori</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:turista_viagg"><i class="fa fa-check"></i><b>11.4.1</b> Il problema del turista viaggiatore</a></li>
-<li class="chapter" data-level="11.4.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#lalgoritmo-di-metropolis"><i class="fa fa-check"></i><b>11.4.2</b> L’algoritmo di Metropolis</a></li>
-<li class="chapter" data-level="11.4.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:metropolis_one_mean"><i class="fa fa-check"></i><b>11.4.3</b> Una applicazione concreta</a></li>
+<li class="chapter" data-level="13.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:met_numerici_convenzionali"><i class="fa fa-check"></i><b>13.1</b> Metodi numerici convenzionali</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:appross_numerica"><i class="fa fa-check"></i><b>13.1.1</b> La procedura dell’approssimazione numerica</a></li>
+<li class="chapter" data-level="13.1.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:es_pratico_zetsche"><i class="fa fa-check"></i><b>13.1.2</b> Un esempio pratico</a></li>
+<li class="chapter" data-level="13.1.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:aspett_future_beta2_10"><i class="fa fa-check"></i><b>13.1.3</b> Un esempio pratico (versione 2)</a></li>
+<li class="chapter" data-level="13.1.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sommario-della-funzione-a-posteriori"><i class="fa fa-check"></i><b>13.1.4</b> Sommario della funzione a posteriori</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#approssimazione-quadratica"><i class="fa fa-check"></i><b>13.2</b> Approssimazione quadratica</a></li>
+<li class="chapter" data-level="13.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:integr_MC"><i class="fa fa-check"></i><b>13.3</b> Integrazione con metodo Monte Carlo</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:legge_forte_grandi_numeri"><i class="fa fa-check"></i><b>13.3.1</b> Legge forte dei grandi numeri</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:mmmc"><i class="fa fa-check"></i><b>13.4</b> Metodi MC basati su Catena di Markov</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:turista_viagg"><i class="fa fa-check"></i><b>13.4.1</b> Il problema del turista viaggiatore</a></li>
+<li class="chapter" data-level="13.4.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#lalgoritmo-di-metropolis"><i class="fa fa-check"></i><b>13.4.2</b> L’algoritmo di Metropolis</a></li>
+<li class="chapter" data-level="13.4.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:metropolis_one_mean"><i class="fa fa-check"></i><b>13.4.3</b> Una applicazione concreta</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:pregi_inferenza_bayes"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="chapter-reglin.html"><a href="chapter-reglin.html"><i class="fa fa-check"></i><b>14</b> Regressione lineare semplice</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="14.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#la-funzione-lineare"><i class="fa fa-check"></i><b>14.1</b> La funzione lineare</a></li>
+<li class="chapter" data-level="14.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#lerrore-di-misurazione"><i class="fa fa-check"></i><b>14.2</b> L’errore di misurazione</a></li>
+<li class="chapter" data-level="14.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#scopi-della-regressione-lineare"><i class="fa fa-check"></i><b>14.3</b> Scopi della regressione lineare</a></li>
+<li class="chapter" data-level="14.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#quantificare-lassociazione-fra-due-caratteri-quantitativi"><i class="fa fa-check"></i><b>14.4</b> Quantificare l’associazione fra due caratteri quantitativi</a></li>
+<li class="chapter" data-level="14.5" data-path="chapter-reglin.html"><a href="chapter-reglin.html#stime-dei-minimi-quadrati"><i class="fa fa-check"></i><b>14.5</b> Stime dei minimi quadrati</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#monotwinsiq"><i class="fa fa-check"></i><b>14.5.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="14.5.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#sec:beta_r"><i class="fa fa-check"></i><b>14.5.2</b> Coefficiente angolare e correlazione di Pearson</a></li>
+<li class="chapter" data-level="14.5.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#regressione-verso-la-media"><i class="fa fa-check"></i><b>14.5.3</b> Regressione verso la media</a></li>
+<li class="chapter" data-level="14.5.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#punti-influenti-e-valori-anomali"><i class="fa fa-check"></i><b>14.5.4</b> Punti influenti e valori anomali</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="chapter-reglin.html"><a href="chapter-reglin.html#bontà-delladattamento"><i class="fa fa-check"></i><b>14.6</b> Bontà dell’adattamento</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#errore-standard-della-stima"><i class="fa fa-check"></i><b>14.6.1</b> Errore standard della stima</a></li>
+<li class="chapter" data-level="14.6.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#indice-di-determinazione"><i class="fa fa-check"></i><b>14.6.2</b> Indice di determinazione</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="chapter-reglin.html"><a href="chapter-reglin.html#inferenza-sullassociazione-tra-x-e-y-nella-popolazione"><i class="fa fa-check"></i><b>14.7</b> Inferenza sull’associazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> nella popolazione</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#modello-statistico-di-regressione-lineare"><i class="fa fa-check"></i><b>14.7.1</b> Modello statistico di regressione lineare</a></li>
+<li class="chapter" data-level="14.7.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#proprietà-degli-stimatori-dei-minimi-quadrati"><i class="fa fa-check"></i><b>14.7.2</b> Proprietà degli stimatori dei minimi quadrati</a></li>
+<li class="chapter" data-level="14.7.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#le-inferenze-sul-modello-di-regressione"><i class="fa fa-check"></i><b>14.7.3</b> Le inferenze sul modello di regressione</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-reglin.html"><a href="chapter-reglin.html#considerazioni-conclusive"><i class="fa fa-check"></i>Considerazioni conclusive</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html"><i class="fa fa-check"></i><b>15</b> Il modello lineare</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-binomiale"><i class="fa fa-check"></i><b>15.1</b> Modello Binomiale</a></li>
+<li class="chapter" data-level="15.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec:idrossi"><i class="fa fa-check"></i><b>15.2</b> Il presidente Trump e l’idrossiclorochina</a></li>
+<li class="chapter" data-level="15.3" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-normale"><i class="fa fa-check"></i><b>15.3</b> Modello Normale</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#il-modello-normale-con-quap"><i class="fa fa-check"></i><b>15.3.1</b> Il modello normale con <code>quap()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_mod_lin"><i class="fa fa-check"></i><b>15.4</b> Il modello di regressione lineare</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>15.4.1</b> Variabile indipendente dicotomica</a></li>
+<li class="chapter" data-level="15.4.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>15.4.2</b> Un esempio pratico</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>15.5</b> Una variabile indipendente continua</a></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html"><i class="fa fa-check"></i>Appendici</a>
 <ul>
@@ -358,6 +391,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#sec:prod_cartesiano"><i class="fa fa-check"></i>Coppie ordinate e prodotto cartesiano</a></li>
 <li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#cardinalità"><i class="fa fa-check"></i>Cardinalità</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#propr_coef_min_quad"><i class="fa fa-check"></i>Proprietà degli stimatori dei minimi quadrati</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
 <li class="divider"></li>
@@ -380,8 +414,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chapter:misurazione" class="section level1" number="5">
-<h1><span class="header-section-number">Capitolo 5</span> La misurazione in psicologia</h1>
+<div id="chapter:misurazione" class="section level1" number="8">
+<h1><span class="header-section-number">Capitolo 8</span> La misurazione in psicologia</h1>
 <p>Le osservazioni empiriche – osservazioni sul campo, sondaggi o
 risultati di esperimenti – forniscono il materiale che viene utilizzato
 in un’indagine statistica e sono chiamate <em>dati</em>. Quando parliamo di
@@ -391,8 +425,8 @@ del fenomeno esaminato? C’è un’intera disciplina che cerca di rispondere
 alla domanda precedente: la “teoria della misurazione.” Senza entrare
 nei dettagli, il presente capitolo intende fornire un’introduzione
 generale alle tematiche della misurazione in psicologia.</p>
-<div id="le-scale-di-misura" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Le scale di misura</h2>
+<div id="le-scale-di-misura" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Le scale di misura</h2>
 <p>I risultati delle misurazioni, ovvero le variabili, devono avere almeno
 due valori possibili (altrimenti sarebbero delle costanti). È importante
 notare che le modalità delle variabili sono in grado di descrivere
@@ -402,8 +436,8 @@ del fenomeno che esse rappresentano viene descritta dalla teoria delle
 scale di misura di <span class="citation"><a href="bibliografia.html#ref-stevens46" role="doc-biblioref">Stevens</a> (<a href="bibliografia.html#ref-stevens46" role="doc-biblioref">1946</a>)</span>. Secondo tale teoria, possiamo distinguere
 quattro scale di misura aventi proprietà diverse: le scale nominali (<em>nominal scales</em>), ordinali (<em>ordinal scales</em>), a intervalli (<em>interval scales</em>), di
 rapporti (<em>ratio scales</em>).</p>
-<div id="scala-nominale" class="section level3" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Scala nominale</h3>
+<div id="scala-nominale" class="section level3" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Scala nominale</h3>
 <p>La scala nominale raggruppa i dati in categorie qualitative <em>mutuamente
 esclusive</em> (cioè nessun dato si può collocare in più di una categoria).</p>
 <p>Esiste la sola relazione di equivalenza tra le misure delle u.s., cioè
@@ -421,8 +455,8 @@ che prendendo una variabile misurata su scala nominale e cambiando i
 nomi delle sue categorie otteniamo una nuova variabile esattamente
 corrispondente alla prima.</p>
 </div>
-<div id="scala-ordinale" class="section level3" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> Scala ordinale</h3>
+<div id="scala-ordinale" class="section level3" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Scala ordinale</h3>
 <p>La scala ordinale conserva la proprietà della scala nominale di
 classificare ciascun dato all’interno di una sola categoria, ma alla
 relazione di equivalenza tra elementi di una stessa classe aggiunge la
@@ -434,7 +468,7 @@ esempio, se la distanza tra le modalità <span class="math inline">\(a\)</span> 
 minore della distanza tra le modalità <span class="math inline">\(b\)</span> e <span class="math inline">\(c\)</span>.</p>
 
 <div class="example">
-<span id="exm:ex-scala-ord" class="example"><strong>Esempio 5.1  (Scala Mohs)  </strong></span>Un esempio classico di scala ordinale è quello della scala Mohs per la
+<span id="exm:ex-scala-ord" class="example"><strong>Esempio 8.1  (Scala Mohs)  </strong></span>Un esempio classico di scala ordinale è quello della scala Mohs per la
 determinazione della durezza dei minerali. Per stabilire la durezza dei
 minerali si usa il criterio empirico della scalfittura. Vengono
 stabiliti livelli di durezza crescente da 1 a 10 con riferimento a dieci
@@ -444,8 +478,8 @@ livelli se scalfisce quello di livello inferiore ed è scalfito da quello
 di livello superiore.
 </div>
 </div>
-<div id="scala-ad-intervalli" class="section level3" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> Scala ad intervalli</h3>
+<div id="scala-ad-intervalli" class="section level3" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> Scala ad intervalli</h3>
 <p>La scala ad intervalli include le proprietà di quella nominale e di
 quella ordinale, e in più consente di misurare le distanze tra le coppie
 di u.s. nei termini di un intervallo costante, chiamato <em>unità di
@@ -482,7 +516,7 @@ L’aspetto che rimane invariante a seguito di una trasformazione lineare
 è l’uguaglianza dei rapporti fra intervalli.</p>
 
 <div class="example">
-<p><span id="exm:ex-scala-temperatura" class="example"><strong>Esempio 5.2  (Temperatura)  </strong></span>Esempio di scala ad intervalli è la temperatura misurata in gradi
+<p><span id="exm:ex-scala-temperatura" class="example"><strong>Esempio 8.2  (Temperatura)  </strong></span>Esempio di scala ad intervalli è la temperatura misurata in gradi
 Celsius o Fahrenheit, ma non Kelvin. Come per la scala nominale, è
 possibile stabilire se due modalità sono uguali o diverse: 30<span class="math inline">\(^\circ\)</span>C
 <span class="math inline">\(\neq\)</span> 20<span class="math inline">\(^\circ\)</span>C. Come per la scala ordinale è possibile mettere due
@@ -519,8 +553,8 @@ quella Fahrenheit.</p>
 \]</span>
 </div>
 </div>
-<div id="scala-di-rapporti" class="section level3" number="5.1.4">
-<h3><span class="header-section-number">5.1.4</span> Scala di rapporti</h3>
+<div id="scala-di-rapporti" class="section level3" number="8.1.4">
+<h3><span class="header-section-number">8.1.4</span> Scala di rapporti</h3>
 <p>Nella scala a rapporti equivalenti la posizione dello zero non è
 arbitraria, ma corrisponde all’elemento dotato di intensità nulla
 rispetto alla proprietà misurata. Una scala a rapporti equivalenti si
@@ -541,8 +575,8 @@ trasformazioni di similarità: <span class="math display">\[y&#39; = by, \quad b
 di scala, a seguito delle trasformazioni ammissibili, rimangono
 invariati anche i rapporti: <span class="math display">\[\frac{y_i}{y_j} = \frac{y&#39;_i}{y&#39;_j}.\]</span></p>
 </div>
-<div id="gerarchia-dei-livelli-di-scala-di-misura" class="section level3" number="5.1.5">
-<h3><span class="header-section-number">5.1.5</span> Gerarchia dei livelli di scala di misura</h3>
+<div id="gerarchia-dei-livelli-di-scala-di-misura" class="section level3" number="8.1.5">
+<h3><span class="header-section-number">8.1.5</span> Gerarchia dei livelli di scala di misura</h3>
 <p><span class="citation"><a href="bibliografia.html#ref-stevens46" role="doc-biblioref">Stevens</a> (<a href="bibliografia.html#ref-stevens46" role="doc-biblioref">1946</a>)</span> parla di <em>livelli di scala</em> poiché i quattro tipi di scala di
 misura stanno in una precisa gerarchia: la scala nominale rappresenta il
 livello più basso della misurazione, la scala a rapporti equivalenti è
@@ -587,7 +621,7 @@ compiute sui valori della scala, come indicato nella figura seguente.</p>
 <div class="figure" style="text-align: center"><span id="fig:tikz-ex"></span>
 <img src="Psicometria_files/figure-html/tikz-ex-1.png" alt="I quattro livelli di scala secondo @stevens46." width="70%" />
 <p class="caption">
-Figura 5.1: I quattro livelli di scala secondo <span class="citation"><a href="bibliografia.html#ref-stevens46" role="doc-biblioref">Stevens</a> (<a href="bibliografia.html#ref-stevens46" role="doc-biblioref">1946</a>)</span>.
+Figura 8.1: I quattro livelli di scala secondo <span class="citation"><a href="bibliografia.html#ref-stevens46" role="doc-biblioref">Stevens</a> (<a href="bibliografia.html#ref-stevens46" role="doc-biblioref">1946</a>)</span>.
 </p>
 </div>
 <p>Per ciò che riguarda le trasformazioni ammissibili, più il livello di
@@ -597,8 +631,8 @@ Salendo la gerarchia, la natura delle funzioni di trasformazione si fa
 più restrittiva.</p>
 </div>
 </div>
-<div id="sec:DiscreteVsContinuous" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Variabili discrete vs. variabili continue</h2>
+<div id="sec:DiscreteVsContinuous" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Variabili discrete vs. variabili continue</h2>
 <p>Le variabili a livello di intervalli e di rapporti possono essere
 discrete o continue. Le variabili discrete possono assumere alcuni
 valori ma non altri. Una volta che l’elenco di valori accettabili è
@@ -612,19 +646,19 @@ raggiungere un livello di precisione qualsiasi. In pratica, a un certo
 punto dobbiamo arrotondare i numeri, rendendo tecnicamente la variabile
 discreta. In variabili veramente discrete, tuttavia, non è possibile
 aumentare a piacimento il livello di precisione della misurazione.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-49"></span>
-<img src="Psicometria_files/figure-html/unnamed-chunk-49-1.png" alt="Le variabili continue possono assumere un insieme continuo di valori, al contrario delle variabili discrete, per le quali l'insieme dei possibili valori ha cardinalità al più numerabile." width="70%" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-96"></span>
+<img src="Psicometria_files/figure-html/unnamed-chunk-96-1.png" alt="Le variabili continue possono assumere un insieme continuo di valori, al contrario delle variabili discrete, per le quali l'insieme dei possibili valori ha cardinalità al più numerabile." width="70%" />
 <p class="caption">
-Figura 5.2: Le variabili continue possono assumere un insieme continuo di valori, al contrario delle variabili discrete, per le quali l’insieme dei possibili valori ha cardinalità al più numerabile.
+Figura 8.2: Le variabili continue possono assumere un insieme continuo di valori, al contrario delle variabili discrete, per le quali l’insieme dei possibili valori ha cardinalità al più numerabile.
 </p>
 </div>
 
 <div class="example">
-<span id="exm:example-biciclette" class="example"><strong>Esempio 5.3  </strong></span>Il numero di biciclette possedute da una persona è una variabile discreta poiché tale variabile può assumere come modalità solo i numeri interi non negativi. Le frazioni di biciclette non sono sensate.
+<span id="exm:example-biciclette" class="example"><strong>Esempio 8.3  </strong></span>Il numero di biciclette possedute da una persona è una variabile discreta poiché tale variabile può assumere come modalità solo i numeri interi non negativi. Le frazioni di biciclette non sono sensate.
 </div>
 </div>
-<div id="perché-alcune-misurazioni-sono-migliori-di-altre" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Perché alcune misurazioni sono migliori di altre?</h2>
+<div id="perché-alcune-misurazioni-sono-migliori-di-altre" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> Perché alcune misurazioni sono migliori di altre?</h2>
 <p>In psicologia, ciò che vogliamo misurare non è una caratteristica
 fisica, ma invece è un concetto teorico inosservabile, ovvero un
 costrutto. Ad esempio, supponiamo che un docente voglia valutare quanto
@@ -645,8 +679,8 @@ proprietà delle quattro scale di misura.</p>
 <p>In generale non è possibile misurare un costrutto senza una certa
 quantità di errore. Poniamoci dunque il problema di determinare in che
 modo una misurazione possa dirsi adeguata.</p>
-<div id="sec:accuratezza_precisione" class="section level3" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Tipologie di errori</h3>
+<div id="sec:accuratezza_precisione" class="section level3" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> Tipologie di errori</h3>
 <p>L’errore è, per definizione, la differenza tra il valore vero e il
 valore misurato della grandezza in esame. Gli errori sono classificati
 come sistematici (o determinati) e casuali (o indeterminati). Gli errori
@@ -667,10 +701,10 @@ ottenuti sono concordanti, cioè differiscono in maniera irrilevante
 tra loro.</li>
 </ul>
 <p>La metafora del tiro a bersaglio illustra la relazione tra precisione e accuratezza.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-50"></span>
-<img src="Psicometria_files/figure-html/unnamed-chunk-50-1.png" alt="Illustrazione dei concetti di precisione e accuratezza: (a) bassa precisione e bassa accuratezza, (b) bassa precisione e alta accuratezza, (c) alta precisione e bassa accuratezza, (d) alta precisione e alta accuratezza." width="70%" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-97"></span>
+<img src="Psicometria_files/figure-html/unnamed-chunk-97-1.png" alt="Illustrazione dei concetti di precisione e accuratezza: (a) bassa precisione e bassa accuratezza, (b) bassa precisione e alta accuratezza, (c) alta precisione e bassa accuratezza, (d) alta precisione e alta accuratezza." width="70%" />
 <p class="caption">
-Figura 5.3: Illustrazione dei concetti di precisione e accuratezza: (a) bassa precisione e bassa accuratezza, (b) bassa precisione e alta accuratezza, (c) alta precisione e bassa accuratezza, (d) alta precisione e alta accuratezza.
+Figura 8.3: Illustrazione dei concetti di precisione e accuratezza: (a) bassa precisione e bassa accuratezza, (b) bassa precisione e alta accuratezza, (c) alta precisione e bassa accuratezza, (d) alta precisione e alta accuratezza.
 </p>
 </div>
 <p>Per tenere sotto controllo l’incidenza degli errori, sono stati
@@ -682,16 +716,16 @@ misurazioni indipendenti dello stesso costrutto psicologico<a href="#fn3" class=
 dice di misurare.</li>
 </ul>
 </div>
-<div id="sec:reliability" class="section level3" number="5.3.2">
-<h3><span class="header-section-number">5.3.2</span> Attendibilità</h3>
+<div id="sec:reliability" class="section level3" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> Attendibilità</h3>
 <p>Uno strumento si dice attendibile quando valuta in modo coerente e
 stabile la stessa variabile: i risultati ottenuti si mantengono costanti
 dopo ripetute somministrazione ed in assenza di variazioni psicologiche
 e fisiche dei soggetti sottoposti al test o cambiamenti dell’ambiente in
 cui ha luogo la somministrazione.</p>
 </div>
-<div id="sec:validity" class="section level3" number="5.3.3">
-<h3><span class="header-section-number">5.3.3</span> Validità</h3>
+<div id="sec:validity" class="section level3" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> Validità</h3>
 <p>L’attendibilità di uno strumento non è sufficiente: in primo luogo uno
 strumento di misura deve essere valido, laddove la validità rappresenta
 il grado in cui uno strumento misura effettivamente ciò che dovrebbe
@@ -765,11 +799,7 @@ verrà esposto nei capitoli successivi.</p>
 <div class="footnotes">
 <hr />
 <ol start="3">
-<li id="fn3"><p>Tale approssimazione si dice quadratica perché il logaritmo di una
-distribuzione gaussiana forma una parabola e la parabola è una
-funzione quadratica – dunque, mediante questa approssimazione
-descriviamo il logaritmo della distribuzione a posteriori mediante
-una parabola.<a href="chapter-misurazione.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>In seguito, quest’idea è stata completamente screditata.<a href="chapter-misurazione.html#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -778,7 +808,7 @@ una parabola.<a href="chapter-misurazione.html#fnref3" class="footnote-back">↩
         </div>
       </div>
 <a href="chapter-terminologia.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="chapter-descriptive-stats.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="chapter-prob-discreta.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

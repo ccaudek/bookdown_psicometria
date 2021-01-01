@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitolo 6 Input/Output | PSICOMETRIA</title>
+  <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitolo 6 Input/Output | PSICOMETRIA" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  <meta name="github-repo" content="ccaudek/bookdown_psicometria" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitolo 6 Input/Output | PSICOMETRIA" />
+  <meta name="twitter:site" content="@ccaudek" />
+  <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
+  
+
+<meta name="author" content="Corrado Caudek" />
+
+
+<meta name="date" content="2021-01-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="chapter-strutture-controllo.html"/>
+<link rel="next" href="chapter-terminologia.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A.A. 2020/2021</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefazione</a></li>
+<li class="part"><span><b>Introduzione</b></span></li>
+<li class="chapter" data-level="" data-path="obiettivi.html"><a href="obiettivi.html"><i class="fa fa-check"></i>Obiettivi</a></li>
+<li class="chapter" data-level="" data-path="perché-tanta-statistica-in-psicologia.html"><a href="perché-tanta-statistica-in-psicologia.html"><i class="fa fa-check"></i>Perché tanta statistica in psicologia?</a></li>
+<li class="chapter" data-level="" data-path="come-studiare.html"><a href="come-studiare.html"><i class="fa fa-check"></i>Come studiare?</a></li>
+<li class="part"><span><b>Introduzione al linguaggio R</b></span></li>
+<li class="chapter" data-level="1" data-path="chapter-pacchetti.html"><a href="chapter-pacchetti.html"><i class="fa fa-check"></i><b>1</b> Pacchetti</a></li>
+<li class="chapter" data-level="2" data-path="cha-install.html"><a href="cha-install.html"><i class="fa fa-check"></i><b>2</b> Per cominciare</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="2.1" data-path="cha-install.html"><a href="cha-install.html#installare-r-e-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installare R e RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="cha-install.html"><a href="cha-install.html#utilizzare-rstudio-per-semplificare-il-lavoro"><i class="fa fa-check"></i><b>2.2</b> Utilizzare RStudio per semplificare il lavoro</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="cha-install.html"><a href="cha-install.html#eseguire-il-codice"><i class="fa fa-check"></i><b>2.2.1</b> Eseguire il codice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html"><i class="fa fa-check"></i><b>3</b> Sintassi di base</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="3.1" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#utilizzare-la-console-r-come-calcolatrice"><i class="fa fa-check"></i><b>3.1</b> Utilizzare la console R come calcolatrice</a></li>
+<li class="chapter" data-level="3.2" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#le-parentesi"><i class="fa fa-check"></i><b>3.2</b> Le parentesi</a></li>
+<li class="chapter" data-level="3.3" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#i-nomi-degli-oggetti"><i class="fa fa-check"></i><b>3.3</b> I nomi degli oggetti</a></li>
+<li class="chapter" data-level="3.4" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#permanenza-dei-dati-e-rimozione-di-oggetti"><i class="fa fa-check"></i><b>3.4</b> Permanenza dei dati e rimozione di oggetti</a></li>
+<li class="chapter" data-level="3.5" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#chiudere-r"><i class="fa fa-check"></i><b>3.5</b> Chiudere R</a></li>
+<li class="chapter" data-level="3.6" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#sec:editor"><i class="fa fa-check"></i><b>3.6</b> Creare ed eseguire uno script R con un editore</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#commentare-il-codice"><i class="fa fa-check"></i><b>3.6.1</b> Commentare il codice</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#sec:change_dir"><i class="fa fa-check"></i><b>3.7</b> Cambiare la cartella di lavoro</a></li>
+<li class="chapter" data-level="3.8" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#loggetto-base-di-il-vettore"><i class="fa fa-check"></i><b>3.8</b> L’oggetto base di : il vettore</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#operazioni-vettorializzate"><i class="fa fa-check"></i><b>3.8.1</b> Operazioni vettorializzate</a></li>
+<li class="chapter" data-level="3.8.2" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#vettori-aritmetici"><i class="fa fa-check"></i><b>3.8.2</b> Vettori aritmetici</a></li>
+<li class="chapter" data-level="3.8.3" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#generazione-di-sequenze-regolari"><i class="fa fa-check"></i><b>3.8.3</b> Generazione di sequenze regolari</a></li>
+<li class="chapter" data-level="3.8.4" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#sec:gen_rand_numbers"><i class="fa fa-check"></i><b>3.8.4</b> Generazione di numeri casuali</a></li>
+<li class="chapter" data-level="3.8.5" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#vettori-logici"><i class="fa fa-check"></i><b>3.8.5</b> Vettori logici</a></li>
+<li class="chapter" data-level="3.8.6" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#dati-mancanti"><i class="fa fa-check"></i><b>3.8.6</b> Dati mancanti</a></li>
+<li class="chapter" data-level="3.8.7" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#vettori-di-caratteri-e-fattori"><i class="fa fa-check"></i><b>3.8.7</b> Vettori di caratteri e fattori</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#cap:sintassi_funzioni"><i class="fa fa-check"></i><b>3.9</b> Funzioni</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#scrivere-proprie-funzioni"><i class="fa fa-check"></i><b>3.9.1</b> Scrivere proprie funzioni</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#pacchetti"><i class="fa fa-check"></i><b>3.10</b> Pacchetti</a>
+<ul>
+<li class="chapter" data-level="3.10.1" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#istallazione-e-upgrade-dei-pacchetti"><i class="fa fa-check"></i><b>3.10.1</b> Istallazione e upgrade dei pacchetti</a></li>
+<li class="chapter" data-level="3.10.2" data-path="chapter-sintassi-R.html"><a href="chapter-sintassi-R.html#caricare-un-pacchetto-in-r"><i class="fa fa-check"></i><b>3.10.2</b> Caricare un pacchetto in R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html"><i class="fa fa-check"></i><b>4</b> Strutture di dati</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="4.1" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#classi-e-modi-degli-oggetti"><i class="fa fa-check"></i><b>4.1</b> Classi e modi degli oggetti</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#vettori"><i class="fa fa-check"></i><b>4.1.1</b> Vettori</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#matrici"><i class="fa fa-check"></i><b>4.2</b> Matrici</a></li>
+<li class="chapter" data-level="4.3" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#array"><i class="fa fa-check"></i><b>4.3</b> Array</a></li>
+<li class="chapter" data-level="4.4" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#operazioni-aritmetiche-su-vettori-matrici-e-array"><i class="fa fa-check"></i><b>4.4</b> Operazioni aritmetiche su vettori, matrici e array</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#operazioni-aritmetiche-su-vettori"><i class="fa fa-check"></i><b>4.4.1</b> Operazioni aritmetiche su vettori</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#operazioni-aritmetiche-su-matrici"><i class="fa fa-check"></i><b>4.4.2</b> Operazioni aritmetiche su matrici</a></li>
+<li class="chapter" data-level="4.4.3" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#operazioni-aritmetiche-su-array"><i class="fa fa-check"></i><b>4.4.3</b> Operazioni aritmetiche su array</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#liste"><i class="fa fa-check"></i><b>4.5</b> Liste</a></li>
+<li class="chapter" data-level="4.6" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#data-frame"><i class="fa fa-check"></i><b>4.6</b> Data frame</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#selezione-di-elementi"><i class="fa fa-check"></i><b>4.6.1</b> Selezione di elementi</a></li>
+<li class="chapter" data-level="4.6.2" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#giochi-di-carte"><i class="fa fa-check"></i><b>4.6.2</b> Giochi di carte</a></li>
+<li class="chapter" data-level="4.6.3" data-path="chapter-strutture-dati-R.html"><a href="chapter-strutture-dati-R.html#variabili-locali"><i class="fa fa-check"></i><b>4.6.3</b> Variabili locali</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapter-strutture-controllo.html"><a href="chapter-strutture-controllo.html"><i class="fa fa-check"></i><b>5</b> Strutture di controllo</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="5.1" data-path="chapter-strutture-controllo.html"><a href="chapter-strutture-controllo.html#il-ciclo-for"><i class="fa fa-check"></i><b>5.1</b> Il ciclo <code>for</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html"><i class="fa fa-check"></i><b>6</b> Input/Output</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="6.1" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html#la-funzione-read.table"><i class="fa fa-check"></i><b>6.1</b> La funzione <code>read.table()</code></a></li>
+<li class="chapter" data-level="6.2" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html#file-di-dati-forniti-da-r"><i class="fa fa-check"></i><b>6.2</b> File di dati forniti da R</a></li>
+<li class="chapter" data-level="6.3" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html#esportazione-di-un-file"><i class="fa fa-check"></i><b>6.3</b> Esportazione di un file</a></li>
+<li class="chapter" data-level="6.4" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html#pacchetto-rio"><i class="fa fa-check"></i><b>6.4</b> Pacchetto <code>rio</code></a></li>
+<li class="chapter" data-level="6.5" data-path="chapter-input-output-R.html"><a href="chapter-input-output-R.html#dove-sono-i-miei-file"><i class="fa fa-check"></i><b>6.5</b> Dove sono i miei file?</a></li>
+</ul></li>
+<li class="part"><span><b>Misurazione</b></span></li>
+<li class="chapter" data-level="7" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html"><i class="fa fa-check"></i><b>7</b> Terminologia</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#metodi-e-procedure-della-psicologia"><i class="fa fa-check"></i><b>7.1</b> Metodi e procedure della psicologia</a></li>
+<li class="chapter" data-level="7.2" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#variabili-e-costanti"><i class="fa fa-check"></i><b>7.2</b> Variabili e costanti</a></li>
+<li class="chapter" data-level="7.3" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#variabili-indipendenti-e-variabili-dipendenti"><i class="fa fa-check"></i><b>7.3</b> Variabili indipendenti e variabili dipendenti</a></li>
+<li class="chapter" data-level="7.4" data-path="chapter-terminologia.html"><a href="chapter-terminologia.html#la-matrice-dei-dati"><i class="fa fa-check"></i><b>7.4</b> La matrice dei dati</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html"><i class="fa fa-check"></i><b>8</b> La misurazione in psicologia</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#le-scale-di-misura"><i class="fa fa-check"></i><b>8.1</b> Le scale di misura</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-nominale"><i class="fa fa-check"></i><b>8.1.1</b> Scala nominale</a></li>
+<li class="chapter" data-level="8.1.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-ordinale"><i class="fa fa-check"></i><b>8.1.2</b> Scala ordinale</a></li>
+<li class="chapter" data-level="8.1.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-ad-intervalli"><i class="fa fa-check"></i><b>8.1.3</b> Scala ad intervalli</a></li>
+<li class="chapter" data-level="8.1.4" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#scala-di-rapporti"><i class="fa fa-check"></i><b>8.1.4</b> Scala di rapporti</a></li>
+<li class="chapter" data-level="8.1.5" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#gerarchia-dei-livelli-di-scala-di-misura"><i class="fa fa-check"></i><b>8.1.5</b> Gerarchia dei livelli di scala di misura</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:DiscreteVsContinuous"><i class="fa fa-check"></i><b>8.2</b> Variabili discrete vs. variabili continue</a></li>
+<li class="chapter" data-level="8.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#perché-alcune-misurazioni-sono-migliori-di-altre"><i class="fa fa-check"></i><b>8.3</b> Perché alcune misurazioni sono migliori di altre?</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:accuratezza_precisione"><i class="fa fa-check"></i><b>8.3.1</b> Tipologie di errori</a></li>
+<li class="chapter" data-level="8.3.2" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:reliability"><i class="fa fa-check"></i><b>8.3.2</b> Attendibilità</a></li>
+<li class="chapter" data-level="8.3.3" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#sec:validity"><i class="fa fa-check"></i><b>8.3.3</b> Validità</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="part"><span><b>Elementi di teoria della probabilità</b></span></li>
+<li class="chapter" data-level="9" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html"><i class="fa fa-check"></i><b>9</b> Che cos’è la probabilità?</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-naturale"><i class="fa fa-check"></i><b>9.1</b> Probabilità nel linguaggio naturale</a></li>
+<li class="chapter" data-level="9.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-scientifico"><i class="fa fa-check"></i><b>9.2</b> Probabilità nel linguaggio scientifico</a></li>
+<li class="chapter" data-level="9.3" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#terminologia"><i class="fa fa-check"></i><b>9.3</b> Terminologia</a></li>
+<li class="chapter" data-level="9.4" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#le-diverse-definizioni-della-probabilità"><i class="fa fa-check"></i><b>9.4</b> Le diverse definizioni della probabilità</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#sec:def_ing_prob"><i class="fa fa-check"></i><b>9.4.1</b> Una definizione “ingenua” della probabilità</a></li>
+<li class="chapter" data-level="9.4.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#una-definizione-non-ingenua-della-probabilità"><i class="fa fa-check"></i><b>9.4.2</b> Una definizione “non ingenua” della probabilità</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#assegnare-le-probabilità-agli-eventi"><i class="fa fa-check"></i><b>9.5</b> Assegnare le probabilità agli eventi</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-frequentista"><i class="fa fa-check"></i><b>9.5.1</b> Approccio frequentista</a></li>
+<li class="chapter" data-level="9.5.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-bayesiano"><i class="fa fa-check"></i><b>9.5.2</b> Approccio Bayesiano</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#proprietà-elementari-della-probabilità"><i class="fa fa-check"></i><b>9.6</b> Proprietà elementari della probabilità</a></li>
+<li class="chapter" data-level="9.7" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#variabili-aleatorie"><i class="fa fa-check"></i><b>9.7</b> Variabili aleatorie</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#a-cosa-servono-le-variabili-aleatorie"><i class="fa fa-check"></i><b>9.7.1</b> A cosa servono le variabili aleatorie?</a></li>
+<li class="chapter" data-level="9.7.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#funzione-di-massa-di-probabilità"><i class="fa fa-check"></i><b>9.7.2</b> Funzione di massa di probabilità</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#notazione"><i class="fa fa-check"></i><b>9.8</b> Notazione</a></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html"><i class="fa fa-check"></i><b>10</b> Probabilità condizionata</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#sec:prob_cond"><i class="fa fa-check"></i><b>10.1</b> Probabilità condizionata su altri eventi</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#la-fallacia-del-pubblico-ministero"><i class="fa fa-check"></i><b>10.1.1</b> La fallacia del pubblico ministero</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#legge-della-probabilità-composta"><i class="fa fa-check"></i><b>10.2</b> Legge della probabilità composta</a></li>
+<li class="chapter" data-level="10.3" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#lindipendendenza-stocastica"><i class="fa fa-check"></i><b>10.3</b> L’indipendendenza stocastica</a></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html"><i class="fa fa-check"></i><b>11</b> Il teorema di Bayes</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:tot_prob_theorem"><i class="fa fa-check"></i><b>11.1</b> Il teorema della probabilità totale</a></li>
+<li class="chapter" data-level="11.2" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:bayes_theorem"><i class="fa fa-check"></i><b>11.2</b> Il teorema della probabilità delle cause</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#aggiornamento-bayesiano"><i class="fa fa-check"></i><b>11.2.1</b> Aggiornamento Bayesiano</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html"><i class="fa fa-check"></i><b>12</b> Probabilità congiunta</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzione-di-probabilità-congiunta"><i class="fa fa-check"></i><b>12.1</b> Funzione di probabilità congiunta</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#proprietà"><i class="fa fa-check"></i><b>12.1.1</b> Proprietà</a></li>
+<li class="chapter" data-level="12.1.2" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#eventi"><i class="fa fa-check"></i><b>12.1.2</b> Eventi</a></li>
+<li class="chapter" data-level="12.1.3" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzioni-di-probabilità-marginali"><i class="fa fa-check"></i><b>12.1.3</b> Funzioni di probabilità marginali</a></li>
+<li class="chapter" data-level="12.1.4" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#indipendenza-stocastica"><i class="fa fa-check"></i><b>12.1.4</b> Indipendenza stocastica</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html"><i class="fa fa-check"></i><b>13</b> Stima della funzione a posteriori</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:met_numerici_convenzionali"><i class="fa fa-check"></i><b>13.1</b> Metodi numerici convenzionali</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:appross_numerica"><i class="fa fa-check"></i><b>13.1.1</b> La procedura dell’approssimazione numerica</a></li>
+<li class="chapter" data-level="13.1.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:es_pratico_zetsche"><i class="fa fa-check"></i><b>13.1.2</b> Un esempio pratico</a></li>
+<li class="chapter" data-level="13.1.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:aspett_future_beta2_10"><i class="fa fa-check"></i><b>13.1.3</b> Un esempio pratico (versione 2)</a></li>
+<li class="chapter" data-level="13.1.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sommario-della-funzione-a-posteriori"><i class="fa fa-check"></i><b>13.1.4</b> Sommario della funzione a posteriori</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#approssimazione-quadratica"><i class="fa fa-check"></i><b>13.2</b> Approssimazione quadratica</a></li>
+<li class="chapter" data-level="13.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:integr_MC"><i class="fa fa-check"></i><b>13.3</b> Integrazione con metodo Monte Carlo</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:legge_forte_grandi_numeri"><i class="fa fa-check"></i><b>13.3.1</b> Legge forte dei grandi numeri</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:mmmc"><i class="fa fa-check"></i><b>13.4</b> Metodi MC basati su Catena di Markov</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:turista_viagg"><i class="fa fa-check"></i><b>13.4.1</b> Il problema del turista viaggiatore</a></li>
+<li class="chapter" data-level="13.4.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#lalgoritmo-di-metropolis"><i class="fa fa-check"></i><b>13.4.2</b> L’algoritmo di Metropolis</a></li>
+<li class="chapter" data-level="13.4.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:metropolis_one_mean"><i class="fa fa-check"></i><b>13.4.3</b> Una applicazione concreta</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:pregi_inferenza_bayes"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="chapter-reglin.html"><a href="chapter-reglin.html"><i class="fa fa-check"></i><b>14</b> Regressione lineare semplice</a>
+<ul>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
+<li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
+<li class="chapter" data-level="14.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#la-funzione-lineare"><i class="fa fa-check"></i><b>14.1</b> La funzione lineare</a></li>
+<li class="chapter" data-level="14.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#lerrore-di-misurazione"><i class="fa fa-check"></i><b>14.2</b> L’errore di misurazione</a></li>
+<li class="chapter" data-level="14.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#scopi-della-regressione-lineare"><i class="fa fa-check"></i><b>14.3</b> Scopi della regressione lineare</a></li>
+<li class="chapter" data-level="14.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#quantificare-lassociazione-fra-due-caratteri-quantitativi"><i class="fa fa-check"></i><b>14.4</b> Quantificare l’associazione fra due caratteri quantitativi</a></li>
+<li class="chapter" data-level="14.5" data-path="chapter-reglin.html"><a href="chapter-reglin.html#stime-dei-minimi-quadrati"><i class="fa fa-check"></i><b>14.5</b> Stime dei minimi quadrati</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#monotwinsiq"><i class="fa fa-check"></i><b>14.5.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="14.5.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#sec:beta_r"><i class="fa fa-check"></i><b>14.5.2</b> Coefficiente angolare e correlazione di Pearson</a></li>
+<li class="chapter" data-level="14.5.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#regressione-verso-la-media"><i class="fa fa-check"></i><b>14.5.3</b> Regressione verso la media</a></li>
+<li class="chapter" data-level="14.5.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#punti-influenti-e-valori-anomali"><i class="fa fa-check"></i><b>14.5.4</b> Punti influenti e valori anomali</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="chapter-reglin.html"><a href="chapter-reglin.html#bontà-delladattamento"><i class="fa fa-check"></i><b>14.6</b> Bontà dell’adattamento</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#errore-standard-della-stima"><i class="fa fa-check"></i><b>14.6.1</b> Errore standard della stima</a></li>
+<li class="chapter" data-level="14.6.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#indice-di-determinazione"><i class="fa fa-check"></i><b>14.6.2</b> Indice di determinazione</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="chapter-reglin.html"><a href="chapter-reglin.html#inferenza-sullassociazione-tra-x-e-y-nella-popolazione"><i class="fa fa-check"></i><b>14.7</b> Inferenza sull’associazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> nella popolazione</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#modello-statistico-di-regressione-lineare"><i class="fa fa-check"></i><b>14.7.1</b> Modello statistico di regressione lineare</a></li>
+<li class="chapter" data-level="14.7.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#proprietà-degli-stimatori-dei-minimi-quadrati"><i class="fa fa-check"></i><b>14.7.2</b> Proprietà degli stimatori dei minimi quadrati</a></li>
+<li class="chapter" data-level="14.7.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#le-inferenze-sul-modello-di-regressione"><i class="fa fa-check"></i><b>14.7.3</b> Le inferenze sul modello di regressione</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-reglin.html"><a href="chapter-reglin.html#considerazioni-conclusive"><i class="fa fa-check"></i>Considerazioni conclusive</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html"><i class="fa fa-check"></i><b>15</b> Il modello lineare</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-binomiale"><i class="fa fa-check"></i><b>15.1</b> Modello Binomiale</a></li>
+<li class="chapter" data-level="15.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec:idrossi"><i class="fa fa-check"></i><b>15.2</b> Il presidente Trump e l’idrossiclorochina</a></li>
+<li class="chapter" data-level="15.3" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-normale"><i class="fa fa-check"></i><b>15.3</b> Modello Normale</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#il-modello-normale-con-quap"><i class="fa fa-check"></i><b>15.3.1</b> Il modello normale con <code>quap()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_mod_lin"><i class="fa fa-check"></i><b>15.4</b> Il modello di regressione lineare</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>15.4.1</b> Variabile indipendente dicotomica</a></li>
+<li class="chapter" data-level="15.4.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>15.4.2</b> Un esempio pratico</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>15.5</b> Una variabile indipendente continua</a></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html"><i class="fa fa-check"></i>Appendici</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#simbologia-di-base"><i class="fa fa-check"></i>Simbologia di base</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-binari-interi-razionali-irrazionali-e-reali"><i class="fa fa-check"></i>Numeri binari, interi, razionali, irrazionali e reali</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-binari"><i class="fa fa-check"></i>Numeri binari</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-interi"><i class="fa fa-check"></i>Numeri interi</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-razionali"><i class="fa fa-check"></i>Numeri razionali</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-irrazionali"><i class="fa fa-check"></i>Numeri irrazionali</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#numeri-reali"><i class="fa fa-check"></i>Numeri reali</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#intervalli"><i class="fa fa-check"></i>Intervalli</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#cap:insiemi"><i class="fa fa-check"></i>Insiemi</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#operazioni-tra-insiemi"><i class="fa fa-check"></i>Operazioni tra insiemi</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#diagrammi-di-eulero-venn"><i class="fa fa-check"></i>Diagrammi di Eulero-Venn</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#sec:prod_cartesiano"><i class="fa fa-check"></i>Coppie ordinate e prodotto cartesiano</a></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#cardinalità"><i class="fa fa-check"></i>Cardinalità</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html#propr_coef_min_quad"><i class="fa fa-check"></i>Proprietà degli stimatori dei minimi quadrati</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PSICOMETRIA</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter:input_output_R" class="section level1" number="6">
+<h1><span class="header-section-number">Capitolo 6</span> Input/Output</h1>
+<div id="obiettivi-di-apprendimento" class="section level2 unnumbered">
+<h2>Obiettivi di apprendimento</h2>
+<p>Lo studio di questo capitolo dovrebbe insegnare allo studente come:</p>
+<ul>
+<li>Importare i dati da un file esterno in R.</li>
+</ul>
+</div>
+<div id="motivazione" class="section level2 unnumbered">
+<h2>Motivazione</h2>
+<p>I dati raccolti dallo psicologo sono contenuti in file aventi formati
+diversi: solo testo, CSV, Excel, eccetera. R  prevede diverse funzioni
+di importazione dei dati. Esamineremo qui la funzione <code>read.table()</code> per
+l’importazione di dati in formato solo testo, ma funzioni analoghe
+possono essere usate per molti altri formati possibili.</p>
+</div>
+<div id="la-funzione-read.table" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> La funzione <code>read.table()</code></h2>
+<p>Ci sono tanti modi per importare un file dal nostro computer. R 
+permette di utilizzare delle funzioni che sono già nella libreria di
+base, oppure possiamo utilizzare delle funzioni specifiche, a seconda
+del tipo di file da importare, che sono contenute in pacchetti
+aggiuntivi. Per leggere i dati da file in R  è conveniente
+preliminarmente generare un file di dati in formato ASCII, disponendoli
+come si farebbe in una matrice di dati, e mettere questo file nella
+cartella di lavoro corrente. Fatto questo, si può utilizzare la funzione
+<code>read.table()</code> presente nella libreria di base per leggere l’intero
+dataset. Se la prima riga del file contiene l’intestazione delle
+variabili, allora <code>read.table("my_file.txt", header = TRUE)</code>
+interpreterà la prima riga del file come una riga dove sono contenuti i
+nomi delle variabili, assegnando ciascun nome alle variabili del data
+frame:</p>
+<pre><code>mydata &lt;- read.table(&quot;my_file.txt&quot;, header = TRUE)</code></pre>
+<p>In alternativa, si può impiegare la funzione <code>read.csv()</code>, che è adatta
+a leggere dati salvati in <code>.csv</code>. Utilizzando altre funzioni, si possono
+leggere in R  i dati contenuti in file aventi formati diversi da quelli
+considerati qui, quali Excel, SPSS, ecc.</p>
+</div>
+<div id="file-di-dati-forniti-da-r" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> File di dati forniti da R</h2>
+<p>In R  esistono comunque oltre 50 insiemi di dati contenuti nel package
+<code>base</code> e altri sono disponibili in altri packages. Per vedere l’elenco
+degli insiemi di dati disponibili nel package <code>base</code> basta usare
+l’istruzione <code>data()</code>; per caricare un particolare insieme di dati, ad
+esempio <code>cars</code>, basta utilizzare l’istruzione</p>
+<pre><code>data(cars)</code></pre>
+<p>Nella maggior parte dei casi questo corrisponde a caricare un oggetto,
+solitamente un data.frame dello stesso nome: per l’esempio considerato
+si avrebbe un data frame di nome <code>cars</code>.</p>
+</div>
+<div id="esportazione-di-un-file" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Esportazione di un file</h2>
+<p>Per esportare un data.frame in formato <code>.csv</code> possiamo scrivere il
+seguente codice</p>
+<pre><code>write.csv(df_esempio, file = &quot;esempio.csv&quot;, row.names = FALSE)</code></pre>
+<p>dove <code>df_esempio</code> è il data.frame da salvare e <code>esempio.csv</code> è il file
+che verrà salvato all’interno della nostra cartellla di lavoro.</p>
+</div>
+<div id="pacchetto-rio" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Pacchetto <code>rio</code></h2>
+<p>Un’alternativa più semplice è fornita dalle funzioni fornite dal pacchetto <code>rio</code>. Per importare i dati da un file in qualsiasi formato si usa</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="chapter-input-output-R.html#cb89-1" aria-hidden="true" tabindex="-1"></a>my_data_frame <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">&quot;my_file.csv&quot;</span>)</span></code></pre></div>
+<p>Per esportare i dati in un file avente qualsiasi formato si usa invece</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="chapter-input-output-R.html#cb90-1" aria-hidden="true" tabindex="-1"></a>rio<span class="sc">::</span><span class="fu">export</span>(my_data_frame, <span class="st">&quot;my_file.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="dove-sono-i-miei-file" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> Dove sono i miei file?</h2>
+<p>Quello che abbiamo detto finora, a proposito dell’importazione ed esportazione dei file, si riferisce a file che si trovano nella cartella di lavoro (<em>working directory</em>). Ma non sempre ci troviamo in questa situazione, il che è anche una buona cosa, perché se dobbiamo gestire un progetto anche leggermente complesso è sempre una buona idea salvare i file che usiamo in cartelle diverse. Per esempio, possiamo usare una cartella chiamata <code>psicometria</code> dove salviamo tutto il materiale di questo insegnamento. Nella cartella <code>psicometria</code> ci potrà essere una cartella chiamata <code>scripts</code> dove salveremo gli script con il codice R utilizzato per i vari esercizi, e una cartella chiamata <code>data</code> dove possiamo salvare i dati. Questa organizzazione minimale ci pone, però, difronte ad un problema: i dati che vogliamo caricare in R non si trovano più nella cartella dove sono contenuti gli script. Quando importiamo un file di dati dobbiamo dunque specificare il percorso che identifica la posizione sul nostro computer del file che ci interessa.</p>
+<p>Questo problema può essere risolto in due modi: speficicando l’inridizzo del file in modo assoluto o relativo. Specificare l’indirizzo di un file in modo assoluto ha una serie di limiti. Il più grande è che non sarà possibile utilizzare quell’istruzione su una macchina diversa. Dunque, è molto più conveniente specificare l’indirizzo dei file in modo relativo. Ma relativo rispetto a cosa? Rispetto alla <em>working directory</em> che definirà l’origine del nostro percorso.</p>
+<p>Ma è facile immaginare che progetti diversi possano avere diverse <em>working directory</em>. Infatti le cose stanno proprio in questo modo: per ciascun progetto dobbiamo specificare una diversa <em>working directory</em>. Per esempio, potremmo avere un progetto relativo all’insegnamento di Psicometria e un progetto relativo alla prova finale.</p>
+<p>Per organizzaere il lavoro in questo modo, si procede come segue. Supponiamo di creare una cartella chiamata <code>psicometria</code> che contiene, al suo interno, le cartelle <code>scripts</code> e <code>data</code>:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="chapter-input-output-R.html#cb91-1" aria-hidden="true" tabindex="-1"></a>psicometria<span class="sc">/</span></span>
+<span id="cb91-2"><a href="chapter-input-output-R.html#cb91-2" aria-hidden="true" tabindex="-1"></a>  ├── data</span>
+<span id="cb91-3"><a href="chapter-input-output-R.html#cb91-3" aria-hidden="true" tabindex="-1"></a>  ├── scripts</span></code></pre></div>
+<p>Queste cartelle conterranno i file che ho specificato sopra.</p>
+<p>Chiudiamo RStudio, se è aperto e lo riapriamo di nuovo. Dal menu selezioniamo File -&gt; New Project… Questo aprirà un altro menu che ci chiederà, tra le altre cose se vogliamo creare un nuovo progetto (<code>New project</code>). Selezioniamo quell’opzione e navighiamo fino alla cartella <code>psicometria</code> e selezioniamo <code>open</code>. Questo creerà un file chiamato <code>psicometria.Rproj</code> nella cartella <code>psicometria</code>.</p>
+<p>Chiudiamo RStudio. Se vogliamo accedere al progetto “psicometria” dobbiamo cliccare sul file <code>psicometria.Rproj</code>. Questo aprirà RStudio e farà in modo che la <em>working directory</em> coincida con la cartalla <code>psicometria</code>. Ogni volta che vogliamo lavorare sui dati del progetto “psicometria” dobbiamo chiudere RStudio (se è già aperto) e riaprirlo cliccando sul file <code>psicometria.Rproj</code>.</p>
+<p>A questo punto possiamo definire l’indirizzo dei file in modo relativo – relativo alla cartella <code>psicometria</code>. Per fare questo usiamo le funzionalità del pacchetto <code>here</code>. Supponiamo di volere caricare un file di dati che si chiama <code>dati_depressione.txt</code> e si trova nella cartella <code>data</code> contenuta nella cartella <code>psicometria</code>. Per importare questi dati (dopo avere caricato i pacchetti <code>rio</code> e <code>here</code>) useremo l’istruzione seguente:</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="chapter-input-output-R.html#cb92-1" aria-hidden="true" tabindex="-1"></a>rio<span class="sc">::</span><span class="fu">import</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;dati_depressione.txt&quot;</span>))</span></code></pre></div>
+<p>In altre parole, così facendo specifichiamo il percorso relativo del file <code>dati_depressione.txt</code>. L’istruzione precedente significa che, partendo dalla cartella che coincide con la <em>working directory</em> dobbiamo spostarci nella cartella <code>data</code> e lì dentro troviamo il file chiamato <code>dati_depressione.txt</code>.</p>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chapter-strutture-controllo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-terminologia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ccaudek/bookdown_psicometria/edit/master/06_R_input_output.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/ccaudek/bookdown_psicometria/blob/master/06_R_input_output.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

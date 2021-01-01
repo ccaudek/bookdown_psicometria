@@ -29,86 +29,10 @@ favicon: "images/favicon/favicon.ico"
 source("_common.R")
 ```
 
-**Questo LIBRO-IN-PROGRESS è stato aggiornato il giorno: `r format (Sys.Date(), '%d %b %Y')`**.
+**Questo WORK-IN-PROGRESS è stato aggiornato il giorno: `r format (Sys.Date(), '%d %b %Y')`**.
 
-Queste dispense contengono il materiale delle lezioni dell'insegnamento Psicometria  B000286 (A.A. 2020/2021) rivolto agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche dell'Università di Firenze. 
+Le presenti dispense contengono il materiale delle lezioni dell'insegnamento Psicometria  B000286 (A.A. 2020/2021) rivolto agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche dell'Università di Firenze. 
 
-L'insegnamento di Psicometria si propone di fornire agli studenti un'introduzione all'analisi dei dati in psicologia. Alcuni degli argomenti trattati richiedono delle conoscenze pregresse, soprattutto di tipo matematico. 
-Tali conoscenze sono state aggiunte delle appendici di queste dispense. 
-La lettura di tale materiale è consigliata a tutti, sia a chi sta studiando gli argomenti proposti per la prima volta, sia a chi deve ripassare per colmare eventuali lacune pregresse. 
-
-## Perché tanta statistica in psicologia? {-}
-
-Sembra sensato spendere due parole su un tema che è importante per gli studenti: quello indicato dal titolo di questa sezione.
-È ovvio che agli studenti di psicologia la statistica non piace.
-Se piacesse, forse studierebbero statistica e non psicologia; ma non lo fanno.
-Di conseguenza, gli studenti di psicologia si chiedono: ``perché dobbiamo perdere tanto tempo a studiare queste cose quando in realtà quello che ci interessa è tutt'altro?''
-Questa è una bella domanda. 
-Per cercare di rispondere a questa domanda introduco il __paradosso di Simpson__. 
-
-Consideriamo un fenomeno sociale che ha suscitato un enorme interesse in tempi recenti: la brutalità della polizia e le diseguaglianze razziali messe in evidenza dalle uccisioni da parte della polizia statunitense. 
-Per affrontare questo tema, esaminiamo l'analisi statistica descritta in un articolo di @ross2020racial. 
-La logica di tale analisi statistica può essere descritta nel modo seguente.
-Immaginiamo due gruppi di individui: Montechi e Capuleti.
-Il 10% dei Montechi e il 20% dei Capuleti commette crimini violenti (ovvero, sono dei criminali). 
-In un anno, il 14% dei Montechi viene ucciso dalla polizia contro il 26% dei Capuleti. 
-Come si fa a capire se c'è un pregiudizio verso uno dei due gruppi?  
-
-@cesario2019there sostengono che è necessario dividere la frequenza relativa di uccisioni da parte della polizia per la percentuale di criminali in ciascun gruppo. 
-Quindi, secondo questa logica, il tasso di uccisioni da parte della polizia è di 14/10 = 1.4% per i Capuleti e di 26/20 = 1.3% per i Montechi. 
-Questo indica una discriminazione contro i Capuleti e ci fornisce la risposta alla nostra domanda. 
-Ma le cose stanno effettivamente così? 
-
-Forse no.
-Se decomponiamo il numero di uccisioni da parte della polizia in ciascuna delle modalità della variabile __criminalità__ (ovvero, criminali vs. non criminali), scopriamo che, per i Capuleti, i 14 morti possono essere suddivisi in 5 morti di criminali e 9 morti di non criminali. 
-Per Montechi, i 26 morti si suddividono in 10 morti di criminali e 16 morti di non criminali. 
-Quindi, i criminali Capuleti vengono uccisi dalla polizia ad un tasso del 5/10 = 50% e i criminali Montechi vengono uccisi ad un tasso del 10/20 = 50% -- lo stesso tasso nei due gruppi. 
-Ma i non criminali Capuleti vengono uccisi dalla polizia ad un tasso del 9/90 = 10%, mentre i  non criminali Montechi vengono uccisi ad un tasso del 16/80 = 20%. 
-
-Ciò significa che i criminali di entrambi i gruppi hanno la stessa probabilità di essere uccisi dalla polizia, ma i non criminali Montechi hanno due volte la probabilità di essere uccisi dalla polizia dei non criminali Capuleti. 
-Questo indica un'enorme discriminazione contro i Montechi! 
-Eppure, l'analisi precedente aveva prodotto il risultato opposto.
-
-Lasciando perdere Shakespeare, @ross2020racial hanno dimostrato che questo è esattamente ciò che sta succedendo con i dati reali sulle sparatorie della polizia negli Stati Uniti: i neri disarmati negli Stati Uniti vengono uccisi a tassi molto più alti rispetto ai bianchi disarmati, sebbene i tassi siano simili nei due gruppi quando si considerano solo le sparatorie con individui armati; se tuttavia si riassumono i dati considerando solo la frequenza totale dei morti scalata per il tasso di criminalità questo fatto viene oscurato. 
-
-L'articolo di \citet{ross2020racial} ci fa vedere come sia necessario stare molto attenti con l'uso della statistica, specialmente quando gli errori statistici possono avere un impatto enorme sulla percezione pubblica -- e, nella psicologia, sulla pratica dello psicologo. 
-Le analisi statistiche precedenti sono un esempio di ciò che viene chiamato il paradosso di Simpson, ovvero il fatto che, alle volte, quando si riassumono i dati in un modo apparentemente ragionevole, si finisce per giungere ad una conclusione del tutto sbagliata.
-Il paradosso di Simpson illustra il fatto che non è semplice neppure \emph{riassumere} i dati, figurarsi poi fare delle inferenze!
-Queste considerazioni ci fanno capire che, senza un certo livello di consapevolezza metodologica, lo psicologo (e non solo) si espone al rischio di fare errori gravissimi.
-
-Ma c'è un'altra ragione ancora più semplice che dovrebbe farci capire perché la statistica è così importante per la psicologia.
-Infatti, a ben pensarci, la psicologia è una disciplina intrinsecamente __statistica__, se per statistica intendiamo quella disciplina che studia la variazione delle caratteristiche degli individui nella popolazione. 
-La psicologia studia __gli individui__ ed è proprio la variabilità  inter- e intra-individuale ciò che vogliamo descrivere e, in certi casi, predire.
-In questo senso, la psicologia è molto diversa dall'ingegneria, per esempio.
-Le proprietà di un determinato ponte, sotto certe condizioni, sono molto simili a quelle di un altro ponte, sotto le medesime condizioni.
-Quindi, per un ingegnere la statistica è poco importante: le proprietà dei materiali sono unicamente dipendenti dalla loro composizione e restano costanti.
-Ma lo stesso non si può dire degli individui: ogni individuo è unico e cambia nel tempo.
-E le variazioni tra gli individui, e di un individuo nel tempo, sono l'oggetto di studio proprio della psicologia: è dunque chiaro che i problemi che la psicologia si pone sono molto diversi da quelli affrontati, per esempio, dagli ingegneri.
-Questa è la ragione per cui abbiamo tanto bisogno della statistica in psicologia: perché la statistica ci consente di descrivere la variazione e il cambiamento.
-E queste sono appunto le caratteristiche di base dei fenomeni psicologici.
-
-Sono sicuro che, leggendo queste righe, a molti studenti sarà venuta in mente la seguente domanda: perché non chiediamo a qualche esperto di fare il "lavoro sporco" (ovvero le analisi statistiche) per noi, mentre noi (psicologi) ci occupiamo solo di ciò che ci interessa, ovvero dei problemi psicologici slegati dai dettagli `tecnici' della statistica?
-La risposta a questa domanda è che non è possibile progettare uno studio psicologico sensato senza avere almeno una comprensione rudimentale della teoria statistica.
-Ma non possiamo liberarci della statistica anche se non vogliamo diventare dei ricercatori e ci accontentiamo di svolgere la professione di psicologo.
-Infatti, anche in questo secondo caso, non possiamo fare a meno di leggere la letteratura psicologica più recente: il continuo aggiornamento delle nostre conoscenze è infatti richiesto dalla deontologia della professione.
-Ma è necessario conoscere un bel po' di statistica per potere fare questo.
-Per rendersi conto di quanto ciò sia vero basta aprire a caso una rivista specialistica di psicologia: gli articoli che riportano i risultati delle ricerche psicologiche sono zeppi di analisi statistiche e di modelli formali. 
-E la comprensione della letteratura psicologica è proprio uno dei requisiti minimi del bagaglio professionale dello psicologo.
-
-Le considerazioni precedenti cercano di chiarire il seguente punto: la statistica non è qualcosa che, in un singolo insegnamento universitario, dobbiamo studiare a malincuore, per poi potercela tranquillamente dimenticare.
-Nel bene e nel male, gli psicologi usano strumenti statistici in tantissime fasi della loro attività professionale: in particolare quando costruiscono, somministrano e interpretano i test psicometrici.
-È dunque chiaro che possedere delle solide basi di statistica è un tassello imprescindibile del bagaglio professionale dello psicologo.
-
-## Come studiare? {-}
-
-Il giusto metodo di studio per prepararsi all'esame di Psicometria è quello di seguire attivamente le lezioni, assimilare i concetti via via che essi vengono presentati e verificare in autonomia le procedure presentate a lezione. 
-È importante fare domande a lezione per sviluppare la capacità di mettere in relazione tra loro i diversi argomenti trattati, prendere parte  alle esercitazioni organizzate dai Peer Tutor, utilizzare i forum attivi su Moodle e, soprattutto, svolgere gli esercizi proposti su Moodle. 
-I problemi forniti su Moodle rappresentano la difficoltà richiesta per superare l'esame e consentono allo studente di capire se le competenze sviluppate risultino essere sufficienti rispetto alle richieste dell'insegnamento.
-Incoraggio inoltre gli studenti a venire a ricevimento e parlare con me per per chiarire ciò che non si è capito appieno.
-
-```{r, echo = F, message = F, warning = F, results = "hide"}
-# pacman::p_unload(pacman::p_loaded(), character.only = TRUE)
-```
 
 
 

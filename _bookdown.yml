@@ -28,17 +28,31 @@ language:
 # comment-out below when building HTML book, un-comment for PDF and full-length Markdown
 rmd_files: [
   "index.rmd",
-  "01_pacchetti.Rmd",
-  "02_installazione.Rmd",
+  "00_introduzione.Rmd",
+  # ------------------------- sintassi R
+  "01_R_pacchetti.Rmd",
+  "02_R_installazione.Rmd",
   "03_R_sintassi.Rmd",
+  "04_R_classi.Rmd",
+  "05_R_controllo.Rmd",
+  "06_R_input_output.Rmd",
+  # ------------------------- misurazione
   "12_terminologia.Rmd",
   "13_misurazione.Rmd",
-  "14_stat_descrittive.Rmd",
+  # ------------------------- statistica descrittiva
+  # "14_stat_descrittive.Rmd",
+  # ------------------------- teoria della probabilità
   "15_prob_intro.Rmd",
   "16_prob_condiz.Rmd",
   "17_theo_bayes.Rmd",
   "18_prob_congiunta.Rmd",
+  # ------------------------- approccio frequentista
+  # ------------------------- approccio bayesiano
   "23_grid_approx.Rmd",
+  "40_reglin.Rmd",
+  "41_reglin_bayes.Rmd",
+  # ------------------------- appendici
   "98_appendici.Rmd",
+  # ------------------------- bibliografia
   "99_References.Rmd"
 ]

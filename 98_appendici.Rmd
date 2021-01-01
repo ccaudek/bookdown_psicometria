@@ -271,3 +271,46 @@ Si definisce __cardinalità__ (o potenza) di un insieme finito il numero
 degli elementi dell'insieme. Viene indicata con $\vert A\vert, \#(A)$ o
 $\text{c}(A)$.
 
+
+## Proprietà degli stimatori dei minimi quadrati {#propr_coef_min_quad .unnumbered}
+
+Il coefficiente dei minimi quadrati $b$ è una combinazione lineare delle
+osservazioni $y_i$. Tale proprietà è importante perché consente di
+derivare la distribuzione di $b$ dalla distribuzione delle $y_i$. Può
+essere dimostrato che la formula per il calcolo di $b$ si può scrivere
+nel modo seguente: $$\begin{aligned}
+b &= \sum_i \left[\frac{x_i-\bar{x}}{\sum_j(x_j-\bar{x})^2}\right]y_i = \textstyle\sum m_i y_i,\end{aligned}$$
+dove $m_i \triangleq (x_i-\bar{x}) / \sum (x_j-\bar{x})^2$ è il peso
+associato a ciascun valore $y_i$. Dato che i valori $x_i$ sono fissi e
+$m_i$ dipende solo da $x_i$, anche i pesi $m_i$ sono fissi.
+
+Il valore atteso di $b$ è uguale a $$\begin{aligned}
+E(b) &= \textstyle\sum m_i E(y_i)\notag\\ 
+&= \textstyle\sum m_i (\alpha + \beta x_i)\notag\\ 
+&= \textstyle\alpha\sum m_i + \beta \sum m_i x_i\notag\\
+&= \frac{\alpha \sum(x_i-\bar{x})}{\sum(x_i-\bar{x})^2} + \beta \frac{\sum(x_i-\bar{x})x_i}{\sum(x_i-\bar{x})^2}\notag\\
+&= 0 + \beta \frac{\sum x_i^2 -\bar{x}\sum x_i}{\sum(x_i-\bar{x})^2}\notag\\ 
+&= \beta \frac{\sum x_i^2 - n\bar{x}^2}{\sum(x_i-\bar{x})^2}\notag\\ 
+&= \beta.\end{aligned}$$ Il coefficiente dei minimi quadrati $b$ è
+dunque uno stimatore corretto di $\beta$. In maniera equivalente si può
+dimostrare che $E(a) = \alpha$.
+
+Sotto le ipotesi di omoschedasticità
+$\big[ \var(y_i) = \var(\varepsilon_i)=\sigma^2_{\varepsilon}\big]$ e
+indipendenza, la varianza di $b$ è $$\begin{aligned}
+\var(b) &= \textstyle\var\big(\sum m_i y_i\big)\notag\\
+&= \textstyle\mathop{\sum m_i^2} \var(y_i)\notag\\ 
+&= \textstyle\mathop{\sum m_i^2} \sigma^2_{\varepsilon}\notag\\
+&= \frac{\mathop{\sigma^2_{\varepsilon}} \textstyle\sum(x_i-\bar{x})^2}{\big[\textstyle\sum(x_i-\bar{x})^2\big]^2}\notag\\
+&= \frac{\sigma^2_{\varepsilon}}{\sum(x_i-\bar{x})^2}.\end{aligned}$$ In
+maniera simile si dimostra che la varianza di $a$ è
+$$\var(a)= \frac{\sigma^2_{\varepsilon} \textstyle\sum x_i^2}{n \textstyle\sum (x_i-\bar{x})^2}.$$
+
+Dato che sia $a$ che $b$ sono funzioni lineari di $y_i$, se i valori
+$y_i$ seguono la distribuzione gaussiana, allora anche $a$ e $b$ saranno
+distribuiti secondo una distribuzione normale. In conclusione,
+$$\begin{aligned}
+b &\sim \mathcal{N}\bigg(\beta,  \frac{\sigma^2_{\varepsilon}}{\sum(x_i-\bar{x})^2}\bigg),\\
+a &\sim \mathcal{N}\bigg(\alpha, \frac{\sigma^2_{\varepsilon}\textstyle\sum x_i^2}{n \textstyle\sum (x_i-\bar{x})^2} \bigg).\end{aligned}$$
+
+
