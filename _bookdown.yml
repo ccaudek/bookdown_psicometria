@@ -47,8 +47,9 @@ rmd_files: [
   "17_theo_bayes.Rmd",
   "18_prob_congiunta.Rmd",
   # ------------------------- approccio frequentista
+  25_distr_camp_mean.Rmd,
   # ------------------------- approccio bayesiano
-  "23_grid_approx.Rmd",
+  "35_grid_approx.Rmd",
   "40_reglin.Rmd",
   "41_reglin_bayes.Rmd",
   # ------------------------- appendici

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capitolo 13 Stima della funzione a posteriori | PSICOMETRIA</title>
+  <title>Capitolo 14 Stima della funzione a posteriori | PSICOMETRIA</title>
   <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capitolo 13 Stima della funzione a posteriori | PSICOMETRIA" />
+  <meta property="og:title" content="Capitolo 14 Stima della funzione a posteriori | PSICOMETRIA" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ccaudek/bookdown_psicometria" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capitolo 13 Stima della funzione a posteriori | PSICOMETRIA" />
+  <meta name="twitter:title" content="Capitolo 14 Stima della funzione a posteriori | PSICOMETRIA" />
   <meta name="twitter:site" content="@ccaudek" />
   <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2021-01-01" />
+<meta name="date" content="2021-01-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon" />
-<link rel="prev" href="chapter-distr-congiunta.html"/>
+<link rel="prev" href="chapter-distrcampmean.html"/>
 <link rel="next" href="chapter-reglin.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -306,70 +306,93 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html"><i class="fa fa-check"></i><b>13</b> Stima della funzione a posteriori</a>
+<li class="chapter" data-level="13" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html"><i class="fa fa-check"></i><b>13</b> Distribuzione campionaria della media dei campioni</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:met_numerici_convenzionali"><i class="fa fa-check"></i><b>13.1</b> Metodi numerici convenzionali</a>
+<li class="chapter" data-level="13.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#sec:pars_and_sample_stats"><i class="fa fa-check"></i><b>13.1</b> Parametri e statistiche</a></li>
+<li class="chapter" data-level="13.2" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#la-legge-dei-grandi-numeri"><i class="fa fa-check"></i><b>13.2</b> La legge dei grandi numeri</a></li>
+<li class="chapter" data-level="13.3" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#distribuzione-campionaria"><i class="fa fa-check"></i><b>13.3</b> Distribuzione campionaria</a>
 <ul>
-<li class="chapter" data-level="13.1.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:appross_numerica"><i class="fa fa-check"></i><b>13.1.1</b> La procedura dell’approssimazione numerica</a></li>
-<li class="chapter" data-level="13.1.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:es_pratico_zetsche"><i class="fa fa-check"></i><b>13.1.2</b> Un esempio pratico</a></li>
-<li class="chapter" data-level="13.1.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:aspett_future_beta2_10"><i class="fa fa-check"></i><b>13.1.3</b> Un esempio pratico (versione 2)</a></li>
-<li class="chapter" data-level="13.1.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sommario-della-funzione-a-posteriori"><i class="fa fa-check"></i><b>13.1.4</b> Sommario della funzione a posteriori</a></li>
+<li class="chapter" data-level="13.3.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#simulazione"><i class="fa fa-check"></i><b>13.3.1</b> Simulazione</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#approssimazione-quadratica"><i class="fa fa-check"></i><b>13.2</b> Approssimazione quadratica</a></li>
-<li class="chapter" data-level="13.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:integr_MC"><i class="fa fa-check"></i><b>13.3</b> Integrazione con metodo Monte Carlo</a>
+<li class="chapter" data-level="13.4" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#distribuzione-campionaria-della-media"><i class="fa fa-check"></i><b>13.4</b> Distribuzione campionaria della media</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:legge_forte_grandi_numeri"><i class="fa fa-check"></i><b>13.3.1</b> Legge forte dei grandi numeri</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#valore-atteso-della-media-campionaria"><i class="fa fa-check"></i><b>13.4.1</b> Valore atteso della media campionaria</a></li>
+<li class="chapter" data-level="13.4.2" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#varianza-della-media-campionaria"><i class="fa fa-check"></i><b>13.4.2</b> Varianza della media campionaria</a></li>
+<li class="chapter" data-level="13.4.3" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#errore-standard"><i class="fa fa-check"></i><b>13.4.3</b> Errore standard</a></li>
+<li class="chapter" data-level="13.4.4" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#distribuzioni-delle-statistiche-campionarie"><i class="fa fa-check"></i><b>13.4.4</b> Distribuzioni delle statistiche campionarie</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:mmmc"><i class="fa fa-check"></i><b>13.4</b> Metodi MC basati su Catena di Markov</a>
+<li class="chapter" data-level="13.5" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#sec:tlc"><i class="fa fa-check"></i><b>13.5</b> Teorema del limite centrale</a></li>
+<li class="chapter" data-level="13.6" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#intervalli-di-confidenza"><i class="fa fa-check"></i><b>13.6</b> Intervalli di confidenza</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:turista_viagg"><i class="fa fa-check"></i><b>13.4.1</b> Il problema del turista viaggiatore</a></li>
-<li class="chapter" data-level="13.4.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#lalgoritmo-di-metropolis"><i class="fa fa-check"></i><b>13.4.2</b> L’algoritmo di Metropolis</a></li>
-<li class="chapter" data-level="13.4.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:metropolis_one_mean"><i class="fa fa-check"></i><b>13.4.3</b> Una applicazione concreta</a></li>
+<li class="chapter" data-level="13.6.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#parametri-di-un-modello-statistico"><i class="fa fa-check"></i><b>13.6.1</b> Parametri di un modello statistico</a></li>
+<li class="chapter" data-level="13.6.2" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#lincertezza-della-stima"><i class="fa fa-check"></i><b>13.6.2</b> L’incertezza della stima</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html"><i class="fa fa-check"></i><b>14</b> Stima della funzione a posteriori</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:met_numerici_convenzionali"><i class="fa fa-check"></i><b>14.1</b> Metodi numerici convenzionali</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:appross_numerica"><i class="fa fa-check"></i><b>14.1.1</b> La procedura dell’approssimazione numerica</a></li>
+<li class="chapter" data-level="14.1.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:es_pratico_zetsche"><i class="fa fa-check"></i><b>14.1.2</b> Un esempio pratico</a></li>
+<li class="chapter" data-level="14.1.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:aspett_future_beta2_10"><i class="fa fa-check"></i><b>14.1.3</b> Un esempio pratico (versione 2)</a></li>
+<li class="chapter" data-level="14.1.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sommario-della-funzione-a-posteriori"><i class="fa fa-check"></i><b>14.1.4</b> Sommario della funzione a posteriori</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#approssimazione-quadratica"><i class="fa fa-check"></i><b>14.2</b> Approssimazione quadratica</a></li>
+<li class="chapter" data-level="14.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:integr_MC"><i class="fa fa-check"></i><b>14.3</b> Integrazione con metodo Monte Carlo</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:legge_forte_grandi_numeri"><i class="fa fa-check"></i><b>14.3.1</b> Legge forte dei grandi numeri</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:mmmc"><i class="fa fa-check"></i><b>14.4</b> Metodi MC basati su Catena di Markov</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:turista_viagg"><i class="fa fa-check"></i><b>14.4.1</b> Il problema del turista viaggiatore</a></li>
+<li class="chapter" data-level="14.4.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#lalgoritmo-di-metropolis"><i class="fa fa-check"></i><b>14.4.2</b> L’algoritmo di Metropolis</a></li>
+<li class="chapter" data-level="14.4.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:metropolis_one_mean"><i class="fa fa-check"></i><b>14.4.3</b> Una applicazione concreta</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:pregi_inferenza_bayes"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="chapter-reglin.html"><a href="chapter-reglin.html"><i class="fa fa-check"></i><b>14</b> Regressione lineare semplice</a>
+<li class="chapter" data-level="15" data-path="chapter-reglin.html"><a href="chapter-reglin.html"><i class="fa fa-check"></i><b>15</b> Regressione lineare semplice</a>
 <ul>
 <li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
 <li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
-<li class="chapter" data-level="14.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#la-funzione-lineare"><i class="fa fa-check"></i><b>14.1</b> La funzione lineare</a></li>
-<li class="chapter" data-level="14.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#lerrore-di-misurazione"><i class="fa fa-check"></i><b>14.2</b> L’errore di misurazione</a></li>
-<li class="chapter" data-level="14.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#scopi-della-regressione-lineare"><i class="fa fa-check"></i><b>14.3</b> Scopi della regressione lineare</a></li>
-<li class="chapter" data-level="14.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#quantificare-lassociazione-fra-due-caratteri-quantitativi"><i class="fa fa-check"></i><b>14.4</b> Quantificare l’associazione fra due caratteri quantitativi</a></li>
-<li class="chapter" data-level="14.5" data-path="chapter-reglin.html"><a href="chapter-reglin.html#stime-dei-minimi-quadrati"><i class="fa fa-check"></i><b>14.5</b> Stime dei minimi quadrati</a>
+<li class="chapter" data-level="15.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#la-funzione-lineare"><i class="fa fa-check"></i><b>15.1</b> La funzione lineare</a></li>
+<li class="chapter" data-level="15.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#lerrore-di-misurazione"><i class="fa fa-check"></i><b>15.2</b> L’errore di misurazione</a></li>
+<li class="chapter" data-level="15.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#scopi-della-regressione-lineare"><i class="fa fa-check"></i><b>15.3</b> Scopi della regressione lineare</a></li>
+<li class="chapter" data-level="15.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#quantificare-lassociazione-fra-due-caratteri-quantitativi"><i class="fa fa-check"></i><b>15.4</b> Quantificare l’associazione fra due caratteri quantitativi</a></li>
+<li class="chapter" data-level="15.5" data-path="chapter-reglin.html"><a href="chapter-reglin.html#stime-dei-minimi-quadrati"><i class="fa fa-check"></i><b>15.5</b> Stime dei minimi quadrati</a>
 <ul>
-<li class="chapter" data-level="14.5.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#monotwinsiq"><i class="fa fa-check"></i><b>14.5.1</b> Un esempio concreto</a></li>
-<li class="chapter" data-level="14.5.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#sec:beta_r"><i class="fa fa-check"></i><b>14.5.2</b> Coefficiente angolare e correlazione di Pearson</a></li>
-<li class="chapter" data-level="14.5.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#regressione-verso-la-media"><i class="fa fa-check"></i><b>14.5.3</b> Regressione verso la media</a></li>
-<li class="chapter" data-level="14.5.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#punti-influenti-e-valori-anomali"><i class="fa fa-check"></i><b>14.5.4</b> Punti influenti e valori anomali</a></li>
+<li class="chapter" data-level="15.5.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#monotwinsiq"><i class="fa fa-check"></i><b>15.5.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="15.5.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#sec:beta_r"><i class="fa fa-check"></i><b>15.5.2</b> Coefficiente angolare e correlazione di Pearson</a></li>
+<li class="chapter" data-level="15.5.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#regressione-verso-la-media"><i class="fa fa-check"></i><b>15.5.3</b> Regressione verso la media</a></li>
+<li class="chapter" data-level="15.5.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#punti-influenti-e-valori-anomali"><i class="fa fa-check"></i><b>15.5.4</b> Punti influenti e valori anomali</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="chapter-reglin.html"><a href="chapter-reglin.html#bontà-delladattamento"><i class="fa fa-check"></i><b>14.6</b> Bontà dell’adattamento</a>
+<li class="chapter" data-level="15.6" data-path="chapter-reglin.html"><a href="chapter-reglin.html#bontà-delladattamento"><i class="fa fa-check"></i><b>15.6</b> Bontà dell’adattamento</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#errore-standard-della-stima"><i class="fa fa-check"></i><b>14.6.1</b> Errore standard della stima</a></li>
-<li class="chapter" data-level="14.6.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#indice-di-determinazione"><i class="fa fa-check"></i><b>14.6.2</b> Indice di determinazione</a></li>
+<li class="chapter" data-level="15.6.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#errore-standard-della-stima"><i class="fa fa-check"></i><b>15.6.1</b> Errore standard della stima</a></li>
+<li class="chapter" data-level="15.6.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#indice-di-determinazione"><i class="fa fa-check"></i><b>15.6.2</b> Indice di determinazione</a></li>
 </ul></li>
-<li class="chapter" data-level="14.7" data-path="chapter-reglin.html"><a href="chapter-reglin.html#inferenza-sullassociazione-tra-x-e-y-nella-popolazione"><i class="fa fa-check"></i><b>14.7</b> Inferenza sull’associazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> nella popolazione</a>
+<li class="chapter" data-level="15.7" data-path="chapter-reglin.html"><a href="chapter-reglin.html#inferenza-sullassociazione-tra-x-e-y-nella-popolazione"><i class="fa fa-check"></i><b>15.7</b> Inferenza sull’associazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> nella popolazione</a>
 <ul>
-<li class="chapter" data-level="14.7.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#modello-statistico-di-regressione-lineare"><i class="fa fa-check"></i><b>14.7.1</b> Modello statistico di regressione lineare</a></li>
-<li class="chapter" data-level="14.7.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#proprietà-degli-stimatori-dei-minimi-quadrati"><i class="fa fa-check"></i><b>14.7.2</b> Proprietà degli stimatori dei minimi quadrati</a></li>
-<li class="chapter" data-level="14.7.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#le-inferenze-sul-modello-di-regressione"><i class="fa fa-check"></i><b>14.7.3</b> Le inferenze sul modello di regressione</a></li>
+<li class="chapter" data-level="15.7.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#modello-statistico-di-regressione-lineare"><i class="fa fa-check"></i><b>15.7.1</b> Modello statistico di regressione lineare</a></li>
+<li class="chapter" data-level="15.7.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#proprietà-degli-stimatori-dei-minimi-quadrati"><i class="fa fa-check"></i><b>15.7.2</b> Proprietà degli stimatori dei minimi quadrati</a></li>
+<li class="chapter" data-level="15.7.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#le-inferenze-sul-modello-di-regressione"><i class="fa fa-check"></i><b>15.7.3</b> Le inferenze sul modello di regressione</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-reglin.html"><a href="chapter-reglin.html#considerazioni-conclusive"><i class="fa fa-check"></i>Considerazioni conclusive</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html"><i class="fa fa-check"></i><b>15</b> Il modello lineare</a>
+<li class="chapter" data-level="16" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html"><i class="fa fa-check"></i><b>16</b> Il modello lineare</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-binomiale"><i class="fa fa-check"></i><b>15.1</b> Modello Binomiale</a></li>
-<li class="chapter" data-level="15.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec:idrossi"><i class="fa fa-check"></i><b>15.2</b> Il presidente Trump e l’idrossiclorochina</a></li>
-<li class="chapter" data-level="15.3" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-normale"><i class="fa fa-check"></i><b>15.3</b> Modello Normale</a>
+<li class="chapter" data-level="16.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-binomiale"><i class="fa fa-check"></i><b>16.1</b> Modello Binomiale</a></li>
+<li class="chapter" data-level="16.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec:idrossi"><i class="fa fa-check"></i><b>16.2</b> Il presidente Trump e l’idrossiclorochina</a></li>
+<li class="chapter" data-level="16.3" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-normale"><i class="fa fa-check"></i><b>16.3</b> Modello Normale</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#il-modello-normale-con-quap"><i class="fa fa-check"></i><b>15.3.1</b> Il modello normale con <code>quap()</code></a></li>
+<li class="chapter" data-level="16.3.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#il-modello-normale-con-quap"><i class="fa fa-check"></i><b>16.3.1</b> Il modello normale con <code>quap()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_mod_lin"><i class="fa fa-check"></i><b>15.4</b> Il modello di regressione lineare</a>
+<li class="chapter" data-level="16.4" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_mod_lin"><i class="fa fa-check"></i><b>16.4</b> Il modello di regressione lineare</a>
 <ul>
-<li class="chapter" data-level="15.4.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>15.4.1</b> Variabile indipendente dicotomica</a></li>
-<li class="chapter" data-level="15.4.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>15.4.2</b> Un esempio pratico</a></li>
+<li class="chapter" data-level="16.4.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>16.4.1</b> Variabile indipendente dicotomica</a></li>
+<li class="chapter" data-level="16.4.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>16.4.2</b> Un esempio pratico</a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>15.5</b> Una variabile indipendente continua</a></li>
+<li class="chapter" data-level="16.5" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>16.5</b> Una variabile indipendente continua</a></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html"><i class="fa fa-check"></i>Appendici</a>
@@ -414,16 +437,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chapter:stima_funzione_aposteriori" class="section level1" number="13">
-<h1><span class="header-section-number">Capitolo 13</span> Stima della funzione a posteriori</h1>
+<div id="chapter:stima_funzione_aposteriori" class="section level1" number="14">
+<h1><span class="header-section-number">Capitolo 14</span> Stima della funzione a posteriori</h1>
 <p>Quando usiamo il teorema di Bayes per calcolare la distribuzione a posteriori del parametro di un modello statistico, al denominatore troviamo un integrale. Tale integrale, nella maggior parte dei casi, non si può risolvere per via analitica. L’inferenza bayesiana si sviluppa dunque mediante una stima numerica della funzione a posteriori. Dato che questi metodi sono “computazionalmente intensivi,” possono solo essere svolti mediante software. In anni recenti i metodi Bayesiani di analisi dei dati sono diventati sempre più popolari proprio perché la potenza di calcolo necessaria per svolgere tali calcoli è ora alla portata di tutti. Questo non era vero solo pochi decenni fa. Per capire come la distribuzione a posteriori possa essere approssimata per via numerica esamineremo qui tre diverse tecniche che possono essere utilizzate a questo scopo:</p>
 <ol style="list-style-type: decimal">
 <li><p>i metodi numerici convenzionali,</p></li>
 <li><p>il metodo dell’approssimazione quadratica,</p></li>
 <li><p>i metodi Monte Carlo basati su Catena di Markov (MCMC).</p></li>
 </ol>
-<div id="sec:met_numerici_convenzionali" class="section level2" number="13.1">
-<h2><span class="header-section-number">13.1</span> Metodi numerici convenzionali</h2>
+<div id="sec:met_numerici_convenzionali" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> Metodi numerici convenzionali</h2>
 <p>È possibile stimare l’intera distribuzione a posteriori mediante metodi
 numerici convenzionali. Questo è l’approccio più semplice. Tuttavia,
 anche se tali metodi possono fornire risultati accuratissimi, a causa
@@ -440,8 +463,8 @@ e intuitiva che rende molto trasparente il processo dell’aggiornamento
 Bayesiano. Per questa ragione esamineremo qui un esempio relativo a tale
 procedura esaminando un modello statistico che dipende da un solo
 parametro sconosciuto.</p>
-<div id="sec:appross_numerica" class="section level3" number="13.1.1">
-<h3><span class="header-section-number">13.1.1</span> La procedura dell’approssimazione numerica</h3>
+<div id="sec:appross_numerica" class="section level3" number="14.1.1">
+<h3><span class="header-section-number">14.1.1</span> La procedura dell’approssimazione numerica</h3>
 <p>È molto semplice trovare una approssimazione numerica della
 distribuzione a posteriori e ciò può essere fatto come indicato di
 seguito. Anche se la maggior parte dei parametri è continua (ovvero, in
@@ -456,8 +479,8 @@ corrispondenza di <span class="math inline">\(\theta&#39;\)</span>. Una stima de
 si genera ripetendo questo procedimento per ciascun valore nella
 griglia.</p>
 </div>
-<div id="sec:es_pratico_zetsche" class="section level3" number="13.1.2">
-<h3><span class="header-section-number">13.1.2</span> Un esempio pratico</h3>
+<div id="sec:es_pratico_zetsche" class="section level3" number="14.1.2">
+<h3><span class="header-section-number">14.1.2</span> Un esempio pratico</h3>
 <p>Facciamo un esempio concreto consideriando nuovamente la ricerca di
 <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>. Questi autori si sono chiesti se gli individui
 depressi manifestino delle aspettative accurate circa il loro umore
@@ -490,18 +513,18 @@ distorte negativamente.” Ci poniamo il problema di ottenere la stima a
 posteriori di <span class="math inline">\(\theta\)</span>, dati i 23 "successi" in 30 prove che sono
 stati osservati.</p>
 <p>Per questo esempio considereremo 50 valori egualmente spaziati per il parametro <span class="math inline">\(\theta\)</span>: 0.000, 0.0204, …, 0.978, 1.000. In R abbiamo:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="chapter-stima-funzione-aposteriori.html#cb95-1" aria-hidden="true" tabindex="-1"></a>n_points <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb95-2"><a href="chapter-stima-funzione-aposteriori.html#cb95-2" aria-hidden="true" tabindex="-1"></a>p_grid <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">length.out =</span> n_points)</span>
-<span id="cb95-3"><a href="chapter-stima-funzione-aposteriori.html#cb95-3" aria-hidden="true" tabindex="-1"></a>p_grid</span>
-<span id="cb95-4"><a href="chapter-stima-funzione-aposteriori.html#cb95-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0.00000000 0.02040816 0.04081633 0.06122449 0.08163265 0.10204082 0.12244898 0.14285714</span></span>
-<span id="cb95-5"><a href="chapter-stima-funzione-aposteriori.html#cb95-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] 0.16326531 0.18367347 0.20408163 0.22448980 0.24489796 0.26530612 0.28571429 0.30612245</span></span>
-<span id="cb95-6"><a href="chapter-stima-funzione-aposteriori.html#cb95-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [17] 0.32653061 0.34693878 0.36734694 0.38775510 0.40816327 0.42857143 0.44897959 0.46938776</span></span>
-<span id="cb95-7"><a href="chapter-stima-funzione-aposteriori.html#cb95-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] 0.48979592 0.51020408 0.53061224 0.55102041 0.57142857 0.59183673 0.61224490 0.63265306</span></span>
-<span id="cb95-8"><a href="chapter-stima-funzione-aposteriori.html#cb95-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [33] 0.65306122 0.67346939 0.69387755 0.71428571 0.73469388 0.75510204 0.77551020 0.79591837</span></span>
-<span id="cb95-9"><a href="chapter-stima-funzione-aposteriori.html#cb95-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [41] 0.81632653 0.83673469 0.85714286 0.87755102 0.89795918 0.91836735 0.93877551 0.95918367</span></span>
-<span id="cb95-10"><a href="chapter-stima-funzione-aposteriori.html#cb95-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [49] 0.97959184 1.00000000</span></span></code></pre></div>
-<div id="distribuzione-a-priori" class="section level4" number="13.1.2.1">
-<h4><span class="header-section-number">13.1.2.1</span> Distribuzione a priori</h4>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="chapter-stima-funzione-aposteriori.html#cb119-1" aria-hidden="true" tabindex="-1"></a>n_points <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb119-2"><a href="chapter-stima-funzione-aposteriori.html#cb119-2" aria-hidden="true" tabindex="-1"></a>p_grid <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">length.out =</span> n_points)</span>
+<span id="cb119-3"><a href="chapter-stima-funzione-aposteriori.html#cb119-3" aria-hidden="true" tabindex="-1"></a>p_grid</span>
+<span id="cb119-4"><a href="chapter-stima-funzione-aposteriori.html#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0.00000000 0.02040816 0.04081633 0.06122449 0.08163265 0.10204082 0.12244898 0.14285714</span></span>
+<span id="cb119-5"><a href="chapter-stima-funzione-aposteriori.html#cb119-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] 0.16326531 0.18367347 0.20408163 0.22448980 0.24489796 0.26530612 0.28571429 0.30612245</span></span>
+<span id="cb119-6"><a href="chapter-stima-funzione-aposteriori.html#cb119-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [17] 0.32653061 0.34693878 0.36734694 0.38775510 0.40816327 0.42857143 0.44897959 0.46938776</span></span>
+<span id="cb119-7"><a href="chapter-stima-funzione-aposteriori.html#cb119-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] 0.48979592 0.51020408 0.53061224 0.55102041 0.57142857 0.59183673 0.61224490 0.63265306</span></span>
+<span id="cb119-8"><a href="chapter-stima-funzione-aposteriori.html#cb119-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [33] 0.65306122 0.67346939 0.69387755 0.71428571 0.73469388 0.75510204 0.77551020 0.79591837</span></span>
+<span id="cb119-9"><a href="chapter-stima-funzione-aposteriori.html#cb119-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [41] 0.81632653 0.83673469 0.85714286 0.87755102 0.89795918 0.91836735 0.93877551 0.95918367</span></span>
+<span id="cb119-10"><a href="chapter-stima-funzione-aposteriori.html#cb119-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [49] 0.97959184 1.00000000</span></span></code></pre></div>
+<div id="distribuzione-a-priori" class="section level4" number="14.1.2.1">
+<h4><span class="header-section-number">14.1.2.1</span> Distribuzione a priori</h4>
 <p>Supponiamo che le nostre credenze a priori sulla tendenza di un
 individuo clinicamente depresso a manifestare delle aspettative distorte
 negativamente circa il suo umore futuro siano molto scarse. Assumiamo
@@ -511,35 +534,35 @@ quindi per <span class="math inline">\(\theta\)</span> una distribuzione inizial
 valori della distribuzione a priori (0.02, 0.02, …, 0.02, 0.02) sia
 uguale a 1.0 (in questo modo viene definita una funzione di massa di
 probabilità):</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="chapter-stima-funzione-aposteriori.html#cb96-1" aria-hidden="true" tabindex="-1"></a>prior1 <span class="ot">&lt;-</span> <span class="fu">dbeta</span>(p_grid, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">dbeta</span>(p_grid, <span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb96-2"><a href="chapter-stima-funzione-aposteriori.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(prior1)</span>
-<span id="cb96-3"><a href="chapter-stima-funzione-aposteriori.html#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="chapter-stima-funzione-aposteriori.html#cb120-1" aria-hidden="true" tabindex="-1"></a>prior1 <span class="ot">&lt;-</span> <span class="fu">dbeta</span>(p_grid, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">dbeta</span>(p_grid, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb120-2"><a href="chapter-stima-funzione-aposteriori.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(prior1)</span>
+<span id="cb120-3"><a href="chapter-stima-funzione-aposteriori.html#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 <p>Stampo i valori:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="chapter-stima-funzione-aposteriori.html#cb97-1" aria-hidden="true" tabindex="-1"></a>prior1</span>
-<span id="cb97-2"><a href="chapter-stima-funzione-aposteriori.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02</span></span>
-<span id="cb97-3"><a href="chapter-stima-funzione-aposteriori.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [18] 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02</span></span>
-<span id="cb97-4"><a href="chapter-stima-funzione-aposteriori.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [35] 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02</span></span></code></pre></div>
-<p>La distribuzione a priori così costruita è riportata nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr1">13.1</a>.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="chapter-stima-funzione-aposteriori.html#cb98-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(p_grid, prior1) <span class="sc">%&gt;%</span> </span>
-<span id="cb98-2"><a href="chapter-stima-funzione-aposteriori.html#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>p_grid, <span class="at">xend=</span>p_grid, <span class="at">y=</span><span class="dv">0</span>, <span class="at">yend=</span>prior1)) <span class="sc">+</span></span>
-<span id="cb98-3"><a href="chapter-stima-funzione-aposteriori.html#cb98-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb98-4"><a href="chapter-stima-funzione-aposteriori.html#cb98-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">color =</span> <span class="st">&quot;#8184FC&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb98-5"><a href="chapter-stima-funzione-aposteriori.html#cb98-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.17</span>) <span class="sc">+</span></span>
-<span id="cb98-6"><a href="chapter-stima-funzione-aposteriori.html#cb98-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb98-7"><a href="chapter-stima-funzione-aposteriori.html#cb98-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Parametro \U03B8&quot;</span>,</span>
-<span id="cb98-8"><a href="chapter-stima-funzione-aposteriori.html#cb98-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Probabilità a priori&quot;</span>,</span>
-<span id="cb98-9"><a href="chapter-stima-funzione-aposteriori.html#cb98-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;50 punti&quot;</span></span>
-<span id="cb98-10"><a href="chapter-stima-funzione-aposteriori.html#cb98-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb98-11"><a href="chapter-stima-funzione-aposteriori.html#cb98-11" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="chapter-stima-funzione-aposteriori.html#cb121-1" aria-hidden="true" tabindex="-1"></a>prior1</span>
+<span id="cb121-2"><a href="chapter-stima-funzione-aposteriori.html#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02</span></span>
+<span id="cb121-3"><a href="chapter-stima-funzione-aposteriori.html#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [18] 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02</span></span>
+<span id="cb121-4"><a href="chapter-stima-funzione-aposteriori.html#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [35] 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02</span></span></code></pre></div>
+<p>La distribuzione a priori così costruita è riportata nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr1">14.1</a>.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="chapter-stima-funzione-aposteriori.html#cb122-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(p_grid, prior1) <span class="sc">%&gt;%</span> </span>
+<span id="cb122-2"><a href="chapter-stima-funzione-aposteriori.html#cb122-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>p_grid, <span class="at">xend=</span>p_grid, <span class="at">y=</span><span class="dv">0</span>, <span class="at">yend=</span>prior1)) <span class="sc">+</span></span>
+<span id="cb122-3"><a href="chapter-stima-funzione-aposteriori.html#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb122-4"><a href="chapter-stima-funzione-aposteriori.html#cb122-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">color =</span> <span class="st">&quot;#8184FC&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb122-5"><a href="chapter-stima-funzione-aposteriori.html#cb122-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.17</span>) <span class="sc">+</span></span>
+<span id="cb122-6"><a href="chapter-stima-funzione-aposteriori.html#cb122-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb122-7"><a href="chapter-stima-funzione-aposteriori.html#cb122-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Parametro \U03B8&quot;</span>,</span>
+<span id="cb122-8"><a href="chapter-stima-funzione-aposteriori.html#cb122-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Probabilità a priori&quot;</span>,</span>
+<span id="cb122-9"><a href="chapter-stima-funzione-aposteriori.html#cb122-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;50 punti&quot;</span></span>
+<span id="cb122-10"><a href="chapter-stima-funzione-aposteriori.html#cb122-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb122-11"><a href="chapter-stima-funzione-aposteriori.html#cb122-11" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:gridappr1"></span>
 <img src="Psicometria_files/figure-html/gridappr1-1.png" alt="Rappresentazione della distribuzione a priori per il parametro $\theta$, ovvero la probabilità di aspettative future distorte negativamente [@zetsche_future_2019]." width="70%" />
 <p class="caption">
-Figura 13.1: Rappresentazione della distribuzione a priori per il parametro <span class="math inline">\(\theta\)</span>, ovvero la probabilità di aspettative future distorte negativamente <span class="citation">(<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al., 2019</a>)</span>.
+Figura 14.1: Rappresentazione della distribuzione a priori per il parametro <span class="math inline">\(\theta\)</span>, ovvero la probabilità di aspettative future distorte negativamente <span class="citation">(<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al., 2019</a>)</span>.
 </p>
 </div>
 </div>
-<div id="funzione-di-verosimiglianza" class="section level4" number="13.1.2.2">
-<h4><span class="header-section-number">13.1.2.2</span> Funzione di verosimiglianza</h4>
+<div id="funzione-di-verosimiglianza" class="section level4" number="14.1.2.2">
+<h4><span class="header-section-number">14.1.2.2</span> Funzione di verosimiglianza</h4>
 <p>Calcoliamo ora la funzione di verosimiglianza utilizzando i 50 valori
 <span class="math inline">\(\theta\)</span> che abbiamo considerato. Per ciascun valore <span class="math inline">\(\theta\)</span> applichiamo la formula della probabilità binomiale tendendo sempre costanti i valori dei dati (ovvero 23 “successi” in 30 prove).</p>
 <p>Per esempio, per il valore <span class="math inline">\(\theta = 0.816\)</span> l’ordinata della funzione di
@@ -554,36 +577,36 @@ e per <span class="math inline">\(\theta = 0.837\)</span> l’ordinata della fun
 \end{aligned}
 \]</span></p>
 <p>Svolgendo tutti i calcoli con R otteniamo i valori seguenti:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="chapter-stima-funzione-aposteriori.html#cb99-1" aria-hidden="true" tabindex="-1"></a>likelihood <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(<span class="dv">23</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> p_grid)</span>
-<span id="cb99-2"><a href="chapter-stima-funzione-aposteriori.html#cb99-2" aria-hidden="true" tabindex="-1"></a>likelihood</span>
-<span id="cb99-3"><a href="chapter-stima-funzione-aposteriori.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0.000000e+00 2.352564e-33 1.703051e-26 1.644169e-22 1.053708e-19 1.525217e-17</span></span>
-<span id="cb99-4"><a href="chapter-stima-funzione-aposteriori.html#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] 8.602222e-16 2.528440e-14 4.606907e-13 5.819027e-12 5.499269e-11 4.105534e-10</span></span>
-<span id="cb99-5"><a href="chapter-stima-funzione-aposteriori.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] 2.520191e-09 1.311195e-08 5.919348e-08 2.362132e-07 8.456875e-07 2.749336e-06</span></span>
-<span id="cb99-6"><a href="chapter-stima-funzione-aposteriori.html#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] 8.196948e-06 2.259614e-05 5.798673e-05 1.393165e-04 3.148623e-04 6.720574e-04</span></span>
-<span id="cb99-7"><a href="chapter-stima-funzione-aposteriori.html#cb99-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] 1.359225e-03 2.611870e-03 4.778973e-03 8.340230e-03 1.390025e-02 2.214199e-02</span></span>
-<span id="cb99-8"><a href="chapter-stima-funzione-aposteriori.html#cb99-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [31] 3.372227e-02 4.909974e-02 6.830377e-02 9.068035e-02 1.146850e-01 1.378206e-01</span></span>
-<span id="cb99-9"><a href="chapter-stima-funzione-aposteriori.html#cb99-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [37] 1.568244e-01 1.681749e-01 1.688979e-01 1.575211e-01 1.348746e-01 1.043545e-01</span></span>
-<span id="cb99-10"><a href="chapter-stima-funzione-aposteriori.html#cb99-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [43] 7.133007e-02 4.165680e-02 1.972669e-02 6.936821e-03 1.535082e-03 1.473375e-04</span></span>
-<span id="cb99-11"><a href="chapter-stima-funzione-aposteriori.html#cb99-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [49] 1.868105e-06 0.000000e+00</span></span></code></pre></div>
-<p>La funzione di verosimiglianza così ottenuta è riportata nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr2">13.2</a>.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="chapter-stima-funzione-aposteriori.html#cb100-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(p_grid, likelihood) <span class="sc">%&gt;%</span> </span>
-<span id="cb100-2"><a href="chapter-stima-funzione-aposteriori.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>p_grid, <span class="at">xend=</span>p_grid, <span class="at">y=</span><span class="dv">0</span>, <span class="at">yend=</span>likelihood)) <span class="sc">+</span></span>
-<span id="cb100-3"><a href="chapter-stima-funzione-aposteriori.html#cb100-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">color =</span> <span class="st">&quot;#8184FC&quot;</span>) <span class="sc">+</span></span>
-<span id="cb100-4"><a href="chapter-stima-funzione-aposteriori.html#cb100-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.17</span>) <span class="sc">+</span></span>
-<span id="cb100-5"><a href="chapter-stima-funzione-aposteriori.html#cb100-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb100-6"><a href="chapter-stima-funzione-aposteriori.html#cb100-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Parametro \U03B8&quot;</span>,</span>
-<span id="cb100-7"><a href="chapter-stima-funzione-aposteriori.html#cb100-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Verosimiglianza&quot;</span></span>
-<span id="cb100-8"><a href="chapter-stima-funzione-aposteriori.html#cb100-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb100-9"><a href="chapter-stima-funzione-aposteriori.html#cb100-9" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="chapter-stima-funzione-aposteriori.html#cb123-1" aria-hidden="true" tabindex="-1"></a>likelihood <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(<span class="dv">23</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> p_grid)</span>
+<span id="cb123-2"><a href="chapter-stima-funzione-aposteriori.html#cb123-2" aria-hidden="true" tabindex="-1"></a>likelihood</span>
+<span id="cb123-3"><a href="chapter-stima-funzione-aposteriori.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0.000000e+00 2.352564e-33 1.703051e-26 1.644169e-22 1.053708e-19 1.525217e-17</span></span>
+<span id="cb123-4"><a href="chapter-stima-funzione-aposteriori.html#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] 8.602222e-16 2.528440e-14 4.606907e-13 5.819027e-12 5.499269e-11 4.105534e-10</span></span>
+<span id="cb123-5"><a href="chapter-stima-funzione-aposteriori.html#cb123-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] 2.520191e-09 1.311195e-08 5.919348e-08 2.362132e-07 8.456875e-07 2.749336e-06</span></span>
+<span id="cb123-6"><a href="chapter-stima-funzione-aposteriori.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] 8.196948e-06 2.259614e-05 5.798673e-05 1.393165e-04 3.148623e-04 6.720574e-04</span></span>
+<span id="cb123-7"><a href="chapter-stima-funzione-aposteriori.html#cb123-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] 1.359225e-03 2.611870e-03 4.778973e-03 8.340230e-03 1.390025e-02 2.214199e-02</span></span>
+<span id="cb123-8"><a href="chapter-stima-funzione-aposteriori.html#cb123-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [31] 3.372227e-02 4.909974e-02 6.830377e-02 9.068035e-02 1.146850e-01 1.378206e-01</span></span>
+<span id="cb123-9"><a href="chapter-stima-funzione-aposteriori.html#cb123-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [37] 1.568244e-01 1.681749e-01 1.688979e-01 1.575211e-01 1.348746e-01 1.043545e-01</span></span>
+<span id="cb123-10"><a href="chapter-stima-funzione-aposteriori.html#cb123-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [43] 7.133007e-02 4.165680e-02 1.972669e-02 6.936821e-03 1.535082e-03 1.473375e-04</span></span>
+<span id="cb123-11"><a href="chapter-stima-funzione-aposteriori.html#cb123-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [49] 1.868105e-06 0.000000e+00</span></span></code></pre></div>
+<p>La funzione di verosimiglianza così ottenuta è riportata nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr2">14.2</a>.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="chapter-stima-funzione-aposteriori.html#cb124-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(p_grid, likelihood) <span class="sc">%&gt;%</span> </span>
+<span id="cb124-2"><a href="chapter-stima-funzione-aposteriori.html#cb124-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>p_grid, <span class="at">xend=</span>p_grid, <span class="at">y=</span><span class="dv">0</span>, <span class="at">yend=</span>likelihood)) <span class="sc">+</span></span>
+<span id="cb124-3"><a href="chapter-stima-funzione-aposteriori.html#cb124-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">color =</span> <span class="st">&quot;#8184FC&quot;</span>) <span class="sc">+</span></span>
+<span id="cb124-4"><a href="chapter-stima-funzione-aposteriori.html#cb124-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.17</span>) <span class="sc">+</span></span>
+<span id="cb124-5"><a href="chapter-stima-funzione-aposteriori.html#cb124-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb124-6"><a href="chapter-stima-funzione-aposteriori.html#cb124-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Parametro \U03B8&quot;</span>,</span>
+<span id="cb124-7"><a href="chapter-stima-funzione-aposteriori.html#cb124-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Verosimiglianza&quot;</span></span>
+<span id="cb124-8"><a href="chapter-stima-funzione-aposteriori.html#cb124-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb124-9"><a href="chapter-stima-funzione-aposteriori.html#cb124-9" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:gridappr2"></span>
 <img src="Psicometria_files/figure-html/gridappr2-1.png" alt="Rappresentazione della funzione di verosimiglianza per il parametro $\theta$, ovvero la probabilità di aspettative future distorte negativamente [@zetsche_future_2019]." width="70%" />
 <p class="caption">
-Figura 13.2: Rappresentazione della funzione di verosimiglianza per il parametro <span class="math inline">\(\theta\)</span>, ovvero la probabilità di aspettative future distorte negativamente <span class="citation">(<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al., 2019</a>)</span>.
+Figura 14.2: Rappresentazione della funzione di verosimiglianza per il parametro <span class="math inline">\(\theta\)</span>, ovvero la probabilità di aspettative future distorte negativamente <span class="citation">(<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al., 2019</a>)</span>.
 </p>
 </div>
 </div>
-<div id="la-stima-della-distribuzione-a-posteriori" class="section level4" number="13.1.2.3">
-<h4><span class="header-section-number">13.1.2.3</span> La stima della distribuzione a posteriori</h4>
+<div id="la-stima-della-distribuzione-a-posteriori" class="section level4" number="14.1.2.3">
+<h4><span class="header-section-number">14.1.2.3</span> La stima della distribuzione a posteriori</h4>
 <p>La distribuzione a posteriori del parametro <span class="math inline">\(\theta\)</span> è data dal prodotto
 della verosimiglianza e della distribuzione a priori, scalata per una
 costante di normalizzazione. Quindi, facendo il prodotto dei valori
@@ -593,69 +616,69 @@ Dato che la distribuzione a priori è uniforme, per ottenere questo
 risultato è sufficiente moltiplicare ciascun valore della funzione di
 verosimiglianza per 0.02. Per esempio, per il primo valore della funzione di verosimiglianza che abbiamo calcolato sopra, avremo <span class="math inline">\(0.135 \cdot 0.02\)</span>; per il secondo valore della funzione di verosimiglianza che abbiamo calcolato sopra avremo <span class="math inline">\(0.104 \cdot 0.02\)</span>.</p>
 <p>Usando R, la funzione a posteriori non standardizzata diventa:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="chapter-stima-funzione-aposteriori.html#cb101-1" aria-hidden="true" tabindex="-1"></a>unstd_posterior <span class="ot">&lt;-</span> likelihood <span class="sc">*</span> prior1</span>
-<span id="cb101-2"><a href="chapter-stima-funzione-aposteriori.html#cb101-2" aria-hidden="true" tabindex="-1"></a>unstd_posterior</span>
-<span id="cb101-3"><a href="chapter-stima-funzione-aposteriori.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0.000000e+00 4.705127e-35 3.406102e-28 3.288337e-24 2.107415e-21 3.050433e-19</span></span>
-<span id="cb101-4"><a href="chapter-stima-funzione-aposteriori.html#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] 1.720444e-17 5.056880e-16 9.213813e-15 1.163805e-13 1.099854e-12 8.211068e-12</span></span>
-<span id="cb101-5"><a href="chapter-stima-funzione-aposteriori.html#cb101-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] 5.040382e-11 2.622390e-10 1.183870e-09 4.724263e-09 1.691375e-08 5.498671e-08</span></span>
-<span id="cb101-6"><a href="chapter-stima-funzione-aposteriori.html#cb101-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] 1.639390e-07 4.519229e-07 1.159735e-06 2.786331e-06 6.297247e-06 1.344115e-05</span></span>
-<span id="cb101-7"><a href="chapter-stima-funzione-aposteriori.html#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] 2.718450e-05 5.223741e-05 9.557946e-05 1.668046e-04 2.780049e-04 4.428398e-04</span></span>
-<span id="cb101-8"><a href="chapter-stima-funzione-aposteriori.html#cb101-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [31] 6.744454e-04 9.819948e-04 1.366075e-03 1.813607e-03 2.293700e-03 2.756411e-03</span></span>
-<span id="cb101-9"><a href="chapter-stima-funzione-aposteriori.html#cb101-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [37] 3.136488e-03 3.363497e-03 3.377958e-03 3.150422e-03 2.697491e-03 2.087091e-03</span></span>
-<span id="cb101-10"><a href="chapter-stima-funzione-aposteriori.html#cb101-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [43] 1.426601e-03 8.331361e-04 3.945339e-04 1.387364e-04 3.070164e-05 2.946751e-06</span></span>
-<span id="cb101-11"><a href="chapter-stima-funzione-aposteriori.html#cb101-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [49] 3.736209e-08 0.000000e+00</span></span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="chapter-stima-funzione-aposteriori.html#cb125-1" aria-hidden="true" tabindex="-1"></a>unstd_posterior <span class="ot">&lt;-</span> likelihood <span class="sc">*</span> prior1</span>
+<span id="cb125-2"><a href="chapter-stima-funzione-aposteriori.html#cb125-2" aria-hidden="true" tabindex="-1"></a>unstd_posterior</span>
+<span id="cb125-3"><a href="chapter-stima-funzione-aposteriori.html#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0.000000e+00 4.705127e-35 3.406102e-28 3.288337e-24 2.107415e-21 3.050433e-19</span></span>
+<span id="cb125-4"><a href="chapter-stima-funzione-aposteriori.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] 1.720444e-17 5.056880e-16 9.213813e-15 1.163805e-13 1.099854e-12 8.211068e-12</span></span>
+<span id="cb125-5"><a href="chapter-stima-funzione-aposteriori.html#cb125-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] 5.040382e-11 2.622390e-10 1.183870e-09 4.724263e-09 1.691375e-08 5.498671e-08</span></span>
+<span id="cb125-6"><a href="chapter-stima-funzione-aposteriori.html#cb125-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] 1.639390e-07 4.519229e-07 1.159735e-06 2.786331e-06 6.297247e-06 1.344115e-05</span></span>
+<span id="cb125-7"><a href="chapter-stima-funzione-aposteriori.html#cb125-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] 2.718450e-05 5.223741e-05 9.557946e-05 1.668046e-04 2.780049e-04 4.428398e-04</span></span>
+<span id="cb125-8"><a href="chapter-stima-funzione-aposteriori.html#cb125-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [31] 6.744454e-04 9.819948e-04 1.366075e-03 1.813607e-03 2.293700e-03 2.756411e-03</span></span>
+<span id="cb125-9"><a href="chapter-stima-funzione-aposteriori.html#cb125-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [37] 3.136488e-03 3.363497e-03 3.377958e-03 3.150422e-03 2.697491e-03 2.087091e-03</span></span>
+<span id="cb125-10"><a href="chapter-stima-funzione-aposteriori.html#cb125-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [43] 1.426601e-03 8.331361e-04 3.945339e-04 1.387364e-04 3.070164e-05 2.946751e-06</span></span>
+<span id="cb125-11"><a href="chapter-stima-funzione-aposteriori.html#cb125-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [49] 3.736209e-08 0.000000e+00</span></span></code></pre></div>
 <p>Avendo svolto questo prodotto per tutti i 50 valori della funzione di verosimiglianza, dobbiamo poi dividere ciascuno dei 50 numeri così trovati per la costante di
 normalizzazione. Nel caso discreto, trovare il denominatore del teorema
 di Bayes è molto facile: esso è dato dalla somma di tutti i valori della
 distribuzione a posteriori non normalizzata. Per i dati presenti, tale
 costante di normalizzazione è uguale a 0.032.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="chapter-stima-funzione-aposteriori.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(unstd_posterior)</span>
-<span id="cb102-2"><a href="chapter-stima-funzione-aposteriori.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.0316129</span></span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="chapter-stima-funzione-aposteriori.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(unstd_posterior)</span>
+<span id="cb126-2"><a href="chapter-stima-funzione-aposteriori.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.0316129</span></span></code></pre></div>
 <p>Possiamo dunque standardizzare i due valori trovati sopra nel modo seguente:
 <span class="math inline">\(0.135 \cdot 0.02 / 0.032\)</span> e <span class="math inline">\(0.104 \cdot 0.02 / 0.032\)</span>. Così facendo,
 otterremo il risultato per cui la somma di tutti e 50 i valori della
 distribuzione a posteriori normalizzata sarà uguale a 1.0.</p>
 <p>Svolgiamo tutti i calcoli in R:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="chapter-stima-funzione-aposteriori.html#cb103-1" aria-hidden="true" tabindex="-1"></a>posterior <span class="ot">&lt;-</span> unstd_posterior <span class="sc">/</span> <span class="fu">sum</span>(unstd_posterior)</span>
-<span id="cb103-2"><a href="chapter-stima-funzione-aposteriori.html#cb103-2" aria-hidden="true" tabindex="-1"></a>posterior</span>
-<span id="cb103-3"><a href="chapter-stima-funzione-aposteriori.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0.000000e+00 1.488357e-33 1.077440e-26 1.040188e-22 6.666313e-20 9.649330e-18</span></span>
-<span id="cb103-4"><a href="chapter-stima-funzione-aposteriori.html#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] 5.442222e-16 1.599625e-14 2.914574e-13 3.681425e-12 3.479129e-11 2.597379e-10</span></span>
-<span id="cb103-5"><a href="chapter-stima-funzione-aposteriori.html#cb103-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] 1.594406e-09 8.295316e-09 3.744893e-08 1.494410e-07 5.350268e-07 1.739376e-06</span></span>
-<span id="cb103-6"><a href="chapter-stima-funzione-aposteriori.html#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] 5.185824e-06 1.429552e-05 3.668548e-05 8.813904e-05 1.991986e-04 4.251792e-04</span></span>
-<span id="cb103-7"><a href="chapter-stima-funzione-aposteriori.html#cb103-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] 8.599178e-04 1.652408e-03 3.023432e-03 5.276472e-03 8.794033e-03 1.400820e-02</span></span>
-<span id="cb103-8"><a href="chapter-stima-funzione-aposteriori.html#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [31] 2.133450e-02 3.106310e-02 4.321259e-02 5.736920e-02 7.255582e-02 8.719259e-02</span></span>
-<span id="cb103-9"><a href="chapter-stima-funzione-aposteriori.html#cb103-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [37] 9.921545e-02 1.063963e-01 1.068538e-01 9.965619e-02 8.532881e-02 6.602021e-02</span></span>
-<span id="cb103-10"><a href="chapter-stima-funzione-aposteriori.html#cb103-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [43] 4.512719e-02 2.635430e-02 1.248015e-02 4.388601e-03 9.711744e-04 9.321354e-05</span></span>
-<span id="cb103-11"><a href="chapter-stima-funzione-aposteriori.html#cb103-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [49] 1.181862e-06 0.000000e+00</span></span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="chapter-stima-funzione-aposteriori.html#cb127-1" aria-hidden="true" tabindex="-1"></a>posterior <span class="ot">&lt;-</span> unstd_posterior <span class="sc">/</span> <span class="fu">sum</span>(unstd_posterior)</span>
+<span id="cb127-2"><a href="chapter-stima-funzione-aposteriori.html#cb127-2" aria-hidden="true" tabindex="-1"></a>posterior</span>
+<span id="cb127-3"><a href="chapter-stima-funzione-aposteriori.html#cb127-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0.000000e+00 1.488357e-33 1.077440e-26 1.040188e-22 6.666313e-20 9.649330e-18</span></span>
+<span id="cb127-4"><a href="chapter-stima-funzione-aposteriori.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] 5.442222e-16 1.599625e-14 2.914574e-13 3.681425e-12 3.479129e-11 2.597379e-10</span></span>
+<span id="cb127-5"><a href="chapter-stima-funzione-aposteriori.html#cb127-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] 1.594406e-09 8.295316e-09 3.744893e-08 1.494410e-07 5.350268e-07 1.739376e-06</span></span>
+<span id="cb127-6"><a href="chapter-stima-funzione-aposteriori.html#cb127-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] 5.185824e-06 1.429552e-05 3.668548e-05 8.813904e-05 1.991986e-04 4.251792e-04</span></span>
+<span id="cb127-7"><a href="chapter-stima-funzione-aposteriori.html#cb127-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] 8.599178e-04 1.652408e-03 3.023432e-03 5.276472e-03 8.794033e-03 1.400820e-02</span></span>
+<span id="cb127-8"><a href="chapter-stima-funzione-aposteriori.html#cb127-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [31] 2.133450e-02 3.106310e-02 4.321259e-02 5.736920e-02 7.255582e-02 8.719259e-02</span></span>
+<span id="cb127-9"><a href="chapter-stima-funzione-aposteriori.html#cb127-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [37] 9.921545e-02 1.063963e-01 1.068538e-01 9.965619e-02 8.532881e-02 6.602021e-02</span></span>
+<span id="cb127-10"><a href="chapter-stima-funzione-aposteriori.html#cb127-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [43] 4.512719e-02 2.635430e-02 1.248015e-02 4.388601e-03 9.711744e-04 9.321354e-05</span></span>
+<span id="cb127-11"><a href="chapter-stima-funzione-aposteriori.html#cb127-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [49] 1.181862e-06 0.000000e+00</span></span></code></pre></div>
 <p>Verifichiamo:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="chapter-stima-funzione-aposteriori.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(posterior)</span>
-<span id="cb104-2"><a href="chapter-stima-funzione-aposteriori.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="chapter-stima-funzione-aposteriori.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(posterior)</span>
+<span id="cb128-2"><a href="chapter-stima-funzione-aposteriori.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 <p>In questo particolare esempio, la distribuzione a posteriori trovata come
 descritto sopra non è altro che la versione normalizzata della funzione
 di verosimiglianza: questo avviene perché la distribuzione a priori
 uniforme non ha aggiunto altre informazioni oltre a quelle che erano già
 fornite dalla funzione di verosimiglianza.</p>
-<p>La funzione a posteriori che abbiamo calcolato con il metodo dell’approssimazione numerica è riportata nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr3">13.3</a>.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="chapter-stima-funzione-aposteriori.html#cb105-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(p_grid, posterior) <span class="sc">%&gt;%</span> </span>
-<span id="cb105-2"><a href="chapter-stima-funzione-aposteriori.html#cb105-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>p_grid, <span class="at">xend=</span>p_grid, <span class="at">y=</span><span class="dv">0</span>, <span class="at">yend=</span>posterior)) <span class="sc">+</span></span>
-<span id="cb105-3"><a href="chapter-stima-funzione-aposteriori.html#cb105-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">color =</span> <span class="st">&quot;#8184FC&quot;</span>) <span class="sc">+</span></span>
-<span id="cb105-4"><a href="chapter-stima-funzione-aposteriori.html#cb105-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.17</span>) <span class="sc">+</span></span>
-<span id="cb105-5"><a href="chapter-stima-funzione-aposteriori.html#cb105-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb105-6"><a href="chapter-stima-funzione-aposteriori.html#cb105-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Parametro \U03B8&quot;</span>,</span>
-<span id="cb105-7"><a href="chapter-stima-funzione-aposteriori.html#cb105-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Probabilità a posteriori&quot;</span></span>
-<span id="cb105-8"><a href="chapter-stima-funzione-aposteriori.html#cb105-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb105-9"><a href="chapter-stima-funzione-aposteriori.html#cb105-9" aria-hidden="true" tabindex="-1"></a>p3</span></code></pre></div>
+<p>La funzione a posteriori che abbiamo calcolato con il metodo dell’approssimazione numerica è riportata nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr3">14.3</a>.</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="chapter-stima-funzione-aposteriori.html#cb129-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(p_grid, posterior) <span class="sc">%&gt;%</span> </span>
+<span id="cb129-2"><a href="chapter-stima-funzione-aposteriori.html#cb129-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>p_grid, <span class="at">xend=</span>p_grid, <span class="at">y=</span><span class="dv">0</span>, <span class="at">yend=</span>posterior)) <span class="sc">+</span></span>
+<span id="cb129-3"><a href="chapter-stima-funzione-aposteriori.html#cb129-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">color =</span> <span class="st">&quot;#8184FC&quot;</span>) <span class="sc">+</span></span>
+<span id="cb129-4"><a href="chapter-stima-funzione-aposteriori.html#cb129-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.17</span>) <span class="sc">+</span></span>
+<span id="cb129-5"><a href="chapter-stima-funzione-aposteriori.html#cb129-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb129-6"><a href="chapter-stima-funzione-aposteriori.html#cb129-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Parametro \U03B8&quot;</span>,</span>
+<span id="cb129-7"><a href="chapter-stima-funzione-aposteriori.html#cb129-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Probabilità a posteriori&quot;</span></span>
+<span id="cb129-8"><a href="chapter-stima-funzione-aposteriori.html#cb129-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb129-9"><a href="chapter-stima-funzione-aposteriori.html#cb129-9" aria-hidden="true" tabindex="-1"></a>p3</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:gridappr3"></span>
 <img src="Psicometria_files/figure-html/gridappr3-1.png" alt="Rappresentazione della distribuzione a posteriori per il parametro $\theta$, ovvero la probabilità di aspettative future distorte negativamente [@zetsche_future_2019]." width="70%" />
 <p class="caption">
-Figura 13.3: Rappresentazione della distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span>, ovvero la probabilità di aspettative future distorte negativamente <span class="citation">(<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al., 2019</a>)</span>.
+Figura 14.3: Rappresentazione della distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span>, ovvero la probabilità di aspettative future distorte negativamente <span class="citation">(<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al., 2019</a>)</span>.
 </p>
 </div>
-<p>Le funzioni rappresentate nelle figure <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr1">13.1</a>, <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr2">13.2</a> e <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr3">13.3</a> sono state calcolate utilizzando 50 modalità equi-spaziate per il parametro <span class="math inline">\(\theta\)</span>. I segmenti verticali rappresentano l’intensità della funzione in corrispondenza di ciascuna modalità parametro <span class="math inline">\(\theta\)</span>. Nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr1">13.1</a> e nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr3">13.3</a> la somma delle lunghezze dei segmenti verticali è pari ad 1.0; ciò non si verifica, invece, nel caso della figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr3">13.3</a>.</p>
+<p>Le funzioni rappresentate nelle figure <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr1">14.1</a>, <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr2">14.2</a> e <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr3">14.3</a> sono state calcolate utilizzando 50 modalità equi-spaziate per il parametro <span class="math inline">\(\theta\)</span>. I segmenti verticali rappresentano l’intensità della funzione in corrispondenza di ciascuna modalità parametro <span class="math inline">\(\theta\)</span>. Nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr1">14.1</a> e nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr3">14.3</a> la somma delle lunghezze dei segmenti verticali è pari ad 1.0; ciò non si verifica, invece, nel caso della figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr3">14.3</a>.</p>
 </div>
 </div>
-<div id="sec:aspett_future_beta2_10" class="section level3" number="13.1.3">
-<h3><span class="header-section-number">13.1.3</span> Un esempio pratico (versione 2)</h3>
+<div id="sec:aspett_future_beta2_10" class="section level3" number="14.1.3">
+<h3><span class="header-section-number">14.1.3</span> Un esempio pratico (versione 2)</h3>
 <p>Continuiamo la discussione dell’esempio precedente supponendo che la
 letteratura precedente ci fornisca delle informazioni a proposito di
 <span class="math inline">\(\theta\)</span>, ovvero sulla probabilità che le aspettative future di un
@@ -675,68 +698,68 @@ giustificare. La esamino qui, non perché abbia senso nel contesto dei
 dati di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>, ma soltanto per fare un esempio che mostra
 come la distribuzione a posteriori fornisca una sorta di “compromesso”
 tra la distribuzione a priori e la verosimiglianza.</p>
-<p>Con calcoli del tutto simili a quelli descritti sopra si giunge alla distribuzione a posteriori rappresentata nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr4">13.4</a>. Iniziamo a definire una griglia unidimensionale equispaziata di possibili valori del parametro <span class="math inline">\(\theta\)</span>. Anche in questo caso usiamo 50 valori possibili del parametro <span class="math inline">\(\theta\)</span>:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="chapter-stima-funzione-aposteriori.html#cb106-1" aria-hidden="true" tabindex="-1"></a>n_points <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb106-2"><a href="chapter-stima-funzione-aposteriori.html#cb106-2" aria-hidden="true" tabindex="-1"></a>p_grid <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">length.out =</span> n_points)</span></code></pre></div>
+<p>Con calcoli del tutto simili a quelli descritti sopra si giunge alla distribuzione a posteriori rappresentata nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr4">14.4</a>. Iniziamo a definire una griglia unidimensionale equispaziata di possibili valori del parametro <span class="math inline">\(\theta\)</span>. Anche in questo caso usiamo 50 valori possibili del parametro <span class="math inline">\(\theta\)</span>:</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="chapter-stima-funzione-aposteriori.html#cb130-1" aria-hidden="true" tabindex="-1"></a>n_points <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb130-2"><a href="chapter-stima-funzione-aposteriori.html#cb130-2" aria-hidden="true" tabindex="-1"></a>p_grid <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">length.out =</span> n_points)</span></code></pre></div>
 <p>Per la distribuzione a priori scelgo una Beta(2, 10).</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="chapter-stima-funzione-aposteriori.html#cb107-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb107-2"><a href="chapter-stima-funzione-aposteriori.html#cb107-2" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb107-3"><a href="chapter-stima-funzione-aposteriori.html#cb107-3" aria-hidden="true" tabindex="-1"></a>prior2 <span class="ot">&lt;-</span> <span class="fu">dbeta</span>(p_grid, alpha, beta) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">dbeta</span>(p_grid, alpha, beta))</span>
-<span id="cb107-4"><a href="chapter-stima-funzione-aposteriori.html#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(prior2)</span>
-<span id="cb107-5"><a href="chapter-stima-funzione-aposteriori.html#cb107-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
-<p>Tale distribuzione a priori è rappresentata nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr4">13.4</a>.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="chapter-stima-funzione-aposteriori.html#cb108-1" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(p_grid, prior2) </span>
-<span id="cb108-2"><a href="chapter-stima-funzione-aposteriori.html#cb108-2" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> plot_df <span class="sc">%&gt;%</span> </span>
-<span id="cb108-3"><a href="chapter-stima-funzione-aposteriori.html#cb108-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>p_grid, <span class="at">xend=</span>p_grid, <span class="at">y=</span><span class="dv">0</span>, <span class="at">yend=</span>prior2)) <span class="sc">+</span></span>
-<span id="cb108-4"><a href="chapter-stima-funzione-aposteriori.html#cb108-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">color =</span> <span class="st">&quot;#8184FC&quot;</span>) <span class="sc">+</span></span>
-<span id="cb108-5"><a href="chapter-stima-funzione-aposteriori.html#cb108-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.17</span>) <span class="sc">+</span></span>
-<span id="cb108-6"><a href="chapter-stima-funzione-aposteriori.html#cb108-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb108-7"><a href="chapter-stima-funzione-aposteriori.html#cb108-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb108-8"><a href="chapter-stima-funzione-aposteriori.html#cb108-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Probabilità a priori&quot;</span>,</span>
-<span id="cb108-9"><a href="chapter-stima-funzione-aposteriori.html#cb108-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;50 punti&quot;</span></span>
-<span id="cb108-10"><a href="chapter-stima-funzione-aposteriori.html#cb108-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb108-11"><a href="chapter-stima-funzione-aposteriori.html#cb108-11" aria-hidden="true" tabindex="-1"></a>p4</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="chapter-stima-funzione-aposteriori.html#cb131-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb131-2"><a href="chapter-stima-funzione-aposteriori.html#cb131-2" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb131-3"><a href="chapter-stima-funzione-aposteriori.html#cb131-3" aria-hidden="true" tabindex="-1"></a>prior2 <span class="ot">&lt;-</span> <span class="fu">dbeta</span>(p_grid, alpha, beta) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">dbeta</span>(p_grid, alpha, beta))</span>
+<span id="cb131-4"><a href="chapter-stima-funzione-aposteriori.html#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(prior2)</span>
+<span id="cb131-5"><a href="chapter-stima-funzione-aposteriori.html#cb131-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
+<p>Tale distribuzione a priori è rappresentata nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr4">14.4</a>.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="chapter-stima-funzione-aposteriori.html#cb132-1" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(p_grid, prior2) </span>
+<span id="cb132-2"><a href="chapter-stima-funzione-aposteriori.html#cb132-2" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> plot_df <span class="sc">%&gt;%</span> </span>
+<span id="cb132-3"><a href="chapter-stima-funzione-aposteriori.html#cb132-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>p_grid, <span class="at">xend=</span>p_grid, <span class="at">y=</span><span class="dv">0</span>, <span class="at">yend=</span>prior2)) <span class="sc">+</span></span>
+<span id="cb132-4"><a href="chapter-stima-funzione-aposteriori.html#cb132-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">color =</span> <span class="st">&quot;#8184FC&quot;</span>) <span class="sc">+</span></span>
+<span id="cb132-5"><a href="chapter-stima-funzione-aposteriori.html#cb132-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.17</span>) <span class="sc">+</span></span>
+<span id="cb132-6"><a href="chapter-stima-funzione-aposteriori.html#cb132-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb132-7"><a href="chapter-stima-funzione-aposteriori.html#cb132-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb132-8"><a href="chapter-stima-funzione-aposteriori.html#cb132-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Probabilità a priori&quot;</span>,</span>
+<span id="cb132-9"><a href="chapter-stima-funzione-aposteriori.html#cb132-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;50 punti&quot;</span></span>
+<span id="cb132-10"><a href="chapter-stima-funzione-aposteriori.html#cb132-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb132-11"><a href="chapter-stima-funzione-aposteriori.html#cb132-11" aria-hidden="true" tabindex="-1"></a>p4</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:gridappr4"></span>
 <img src="Psicometria_files/figure-html/gridappr4-1.png" alt="Rappresentazione di una funzione a priori informativa per il parametro $\theta$." width="70%" />
 <p class="caption">
-Figura 13.4: Rappresentazione di una funzione a priori informativa per il parametro <span class="math inline">\(\theta\)</span>.
+Figura 14.4: Rappresentazione di una funzione a priori informativa per il parametro <span class="math inline">\(\theta\)</span>.
 </p>
 </div>
 <p>Calcoliamo il valore della funzione di verosimiglianza in corrispondenza di ciascun punto della griglia. La funzione di verosimiglianza è identica a quella considerata nell’esempio precedente.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="chapter-stima-funzione-aposteriori.html#cb109-1" aria-hidden="true" tabindex="-1"></a>likelihood <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(<span class="dv">23</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> p_grid)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="chapter-stima-funzione-aposteriori.html#cb133-1" aria-hidden="true" tabindex="-1"></a>likelihood <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(<span class="dv">23</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> p_grid)</span></code></pre></div>
 <p>Calcolo il prodotto tra la verosimiglianza e la distribuzione a priori, per ciascun punto della griglia:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="chapter-stima-funzione-aposteriori.html#cb110-1" aria-hidden="true" tabindex="-1"></a>unstd_posterior2 <span class="ot">&lt;-</span> likelihood <span class="sc">*</span> prior2</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="chapter-stima-funzione-aposteriori.html#cb134-1" aria-hidden="true" tabindex="-1"></a>unstd_posterior2 <span class="ot">&lt;-</span> likelihood <span class="sc">*</span> prior2</span></code></pre></div>
 <p>Normalizzo la distribuzione a posteriori in modo tale che la somma sia 1.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="chapter-stima-funzione-aposteriori.html#cb111-1" aria-hidden="true" tabindex="-1"></a>posterior2 <span class="ot">&lt;-</span> unstd_posterior2 <span class="sc">/</span> <span class="fu">sum</span>(unstd_posterior2)</span>
-<span id="cb111-2"><a href="chapter-stima-funzione-aposteriori.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(posterior2)</span>
-<span id="cb111-3"><a href="chapter-stima-funzione-aposteriori.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
-<p>La nuova funzione a posteriori è rappresentata nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr5">13.5</a>.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="chapter-stima-funzione-aposteriori.html#cb112-1" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(p_grid, posterior2)</span>
-<span id="cb112-2"><a href="chapter-stima-funzione-aposteriori.html#cb112-2" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> plot_df <span class="sc">%&gt;%</span></span>
-<span id="cb112-3"><a href="chapter-stima-funzione-aposteriori.html#cb112-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> p_grid, <span class="at">xend =</span> p_grid, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> posterior2)) <span class="sc">+</span></span>
-<span id="cb112-4"><a href="chapter-stima-funzione-aposteriori.html#cb112-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">color =</span> <span class="st">&quot;#8184FC&quot;</span>) <span class="sc">+</span></span>
-<span id="cb112-5"><a href="chapter-stima-funzione-aposteriori.html#cb112-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.17</span>) <span class="sc">+</span></span>
-<span id="cb112-6"><a href="chapter-stima-funzione-aposteriori.html#cb112-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb112-7"><a href="chapter-stima-funzione-aposteriori.html#cb112-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Parametro \U03B8&quot;</span>,</span>
-<span id="cb112-8"><a href="chapter-stima-funzione-aposteriori.html#cb112-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Probabilità a posteriori&quot;</span></span>
-<span id="cb112-9"><a href="chapter-stima-funzione-aposteriori.html#cb112-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb112-10"><a href="chapter-stima-funzione-aposteriori.html#cb112-10" aria-hidden="true" tabindex="-1"></a>p5</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="chapter-stima-funzione-aposteriori.html#cb135-1" aria-hidden="true" tabindex="-1"></a>posterior2 <span class="ot">&lt;-</span> unstd_posterior2 <span class="sc">/</span> <span class="fu">sum</span>(unstd_posterior2)</span>
+<span id="cb135-2"><a href="chapter-stima-funzione-aposteriori.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(posterior2)</span>
+<span id="cb135-3"><a href="chapter-stima-funzione-aposteriori.html#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
+<p>La nuova funzione a posteriori è rappresentata nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr5">14.5</a>.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="chapter-stima-funzione-aposteriori.html#cb136-1" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(p_grid, posterior2)</span>
+<span id="cb136-2"><a href="chapter-stima-funzione-aposteriori.html#cb136-2" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> plot_df <span class="sc">%&gt;%</span></span>
+<span id="cb136-3"><a href="chapter-stima-funzione-aposteriori.html#cb136-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> p_grid, <span class="at">xend =</span> p_grid, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> posterior2)) <span class="sc">+</span></span>
+<span id="cb136-4"><a href="chapter-stima-funzione-aposteriori.html#cb136-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">color =</span> <span class="st">&quot;#8184FC&quot;</span>) <span class="sc">+</span></span>
+<span id="cb136-5"><a href="chapter-stima-funzione-aposteriori.html#cb136-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.17</span>) <span class="sc">+</span></span>
+<span id="cb136-6"><a href="chapter-stima-funzione-aposteriori.html#cb136-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb136-7"><a href="chapter-stima-funzione-aposteriori.html#cb136-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Parametro \U03B8&quot;</span>,</span>
+<span id="cb136-8"><a href="chapter-stima-funzione-aposteriori.html#cb136-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Probabilità a posteriori&quot;</span></span>
+<span id="cb136-9"><a href="chapter-stima-funzione-aposteriori.html#cb136-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb136-10"><a href="chapter-stima-funzione-aposteriori.html#cb136-10" aria-hidden="true" tabindex="-1"></a>p5</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:gridappr5"></span>
 <img src="Psicometria_files/figure-html/gridappr5-1.png" alt="Rappresentazione della funzione a posteriori per il parametro $\theta$ calcolata utilizzando una distribuzione a priori informativa." width="70%" />
 <p class="caption">
-Figura 13.5: Rappresentazione della funzione a posteriori per il parametro <span class="math inline">\(\theta\)</span> calcolata utilizzando una distribuzione a priori informativa.
+Figura 14.5: Rappresentazione della funzione a posteriori per il parametro <span class="math inline">\(\theta\)</span> calcolata utilizzando una distribuzione a priori informativa.
 </p>
 </div>
-<p>Facendo un confronto tra le figure <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr4">13.4</a> e <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr5">13.5</a> si nota come la distribuzione a priori per il parametro <span class="math inline">\(\theta\)</span> e la distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span> sono molto diverse. In particolare, si noti che la distribuzione a posteriori rappresentata nella <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr5">13.5</a> risulta spostata verso destra su
-posizioni più vicine a quelle della verosimiglianza, rappresentata nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr2">13.2</a>. Si noti anche, a causa dell’effetto della distribuzione a priori, le distribuzioni a posteriori riportate nelle figure <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr3">13.3</a> e <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr5">13.5</a> sono molto diverse tra loro. Discuteremo in seguito l’influenza della distribuzione a priori sull’inferenza finale.</p>
+<p>Facendo un confronto tra le figure <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr4">14.4</a> e <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr5">14.5</a> si nota come la distribuzione a priori per il parametro <span class="math inline">\(\theta\)</span> e la distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span> sono molto diverse. In particolare, si noti che la distribuzione a posteriori rappresentata nella <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr5">14.5</a> risulta spostata verso destra su
+posizioni più vicine a quelle della verosimiglianza, rappresentata nella figura <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr2">14.2</a>. Si noti anche, a causa dell’effetto della distribuzione a priori, le distribuzioni a posteriori riportate nelle figure <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr3">14.3</a> e <a href="chapter-stima-funzione-aposteriori.html#fig:gridappr5">14.5</a> sono molto diverse tra loro. Discuteremo in seguito l’influenza della distribuzione a priori sull’inferenza finale.</p>
 </div>
-<div id="sommario-della-funzione-a-posteriori" class="section level3" number="13.1.4">
-<h3><span class="header-section-number">13.1.4</span> Sommario della funzione a posteriori</h3>
+<div id="sommario-della-funzione-a-posteriori" class="section level3" number="14.1.4">
+<h3><span class="header-section-number">14.1.4</span> Sommario della funzione a posteriori</h3>
 <p>Una volta calcolata la distribuzione a posteriori dobbiamo riassumerla in qualche modo. Nel caso in cui venga usato il metodo di approssimazione numerica, il problema del calcolo delle aree sottese alla funzione a posteriori in qualunque intervallo può essere risolto in vari modi. Tuttavia, questo problema trova una soluzione molto più semplice se viene utilizzato un metodo diverso per la stima della distribuzione a posteriori, come vedremo di seguito. Non discuteremo dunque la possibile soluzione di questo problema nel caso presente, in quanto il metodo dell’approssimazione numerica per il calcolo della distribuzione a posteriori è solo un esempio didattico.</p>
 </div>
 </div>
-<div id="approssimazione-quadratica" class="section level2" number="13.2">
-<h2><span class="header-section-number">13.2</span> Approssimazione quadratica</h2>
+<div id="approssimazione-quadratica" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> Approssimazione quadratica</h2>
 <p>I metodi numerici convenzionali possono essere usati solo quando il numero di parametri da stimare è piccolo. La ragione di ciò sta nella cosiddetta “maledizione della dimensionalità.” Vediamo cosa significa. Nel caso di un solo parametro, supponiamo di utilizzare una griglia di
 100 valori. Per due parametri avremo bisogno di <span class="math inline">\(100^2\)</span> valori. Ma già per 10 parametri avremo bisogno di <span class="math inline">\(10^{10}\)</span> valori – è facile capire che una tale quantità di valori è troppo grande anche per un computer potente come quello che utilizziamo normalmente. Dobbiamo dunque affrontare il problema in un altro modo.</p>
 <p>Una possibile soluzione al nostro problema ci viene fornita dal metodo dell’approssimazione quadratica. La motivazione di tale metodo è la seguente. Sappiamo che, in generale, la regione della distribuzione a posteriori che si trova in prossimità del suo massimo può essere ben
@@ -753,17 +776,17 @@ casi, questi calcoli possono essere fatti seguendo una procedura
 analitica, ma solitamente vengono usate delle tecniche numeriche.</p></li>
 </ol>
 <p>Una descrizione della distribuzione a posteriori ottenuta mediante l’approssimazione quadratica si ottiene mediante la funzione <code>quap()</code> contenuta nel pacchetto <code>rethinking</code>. Tale pacchetto, creato da Richard McElreath per accompagnare il suo testo <em>Statistical Rethinking</em><span class="math inline">\(^2\)</span>, può essere scaricato utilizzando le istruzioni seguenti<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>:</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="chapter-stima-funzione-aposteriori.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;coda&quot;</span>, <span class="st">&quot;mvtnorm&quot;</span>, <span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;loo&quot;</span>, <span class="st">&quot;dagitty&quot;</span>))</span>
-<span id="cb113-2"><a href="chapter-stima-funzione-aposteriori.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;devtools&quot;</span>)</span>
-<span id="cb113-3"><a href="chapter-stima-funzione-aposteriori.html#cb113-3" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;rmcelreath/rethinking&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="chapter-stima-funzione-aposteriori.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;coda&quot;</span>, <span class="st">&quot;mvtnorm&quot;</span>, <span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;loo&quot;</span>, <span class="st">&quot;dagitty&quot;</span>))</span>
+<span id="cb137-2"><a href="chapter-stima-funzione-aposteriori.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb137-3"><a href="chapter-stima-funzione-aposteriori.html#cb137-3" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;rmcelreath/rethinking&quot;</span>)</span></code></pre></div>
 <p>Vedremo nel capitolo XX come tale funzione possa essere usata<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>. Dal nostro punto di vista non è importante capire come si svolgono in pratica i calcoli necessari per la stima della distribuzione a posteriori con il metodo dell’approssimazione quadratica. Quello che è importante capire è il significato della distribuzione a posteriori e questo significato è stato chiarito nella sezione <a href="chapter-stima-funzione-aposteriori.html#sec:appross_numerica">La procedura dell’approssimazione numerica</a>. L’approssimazione quadratica fornisce risultati simili (o identici) a quelli ottenuti con il metodo descritto nella sezione <a href="chapter-stima-funzione-aposteriori.html#sec:appross_numerica">La procedura dell’approssimazione numerica</a>. Il vantaggio dell’approssimazione quadratica è che disponiamo di una serie di funzioni R che svolgono tutti i calcoli per noi.</p>
 <p>In realtà, l’approssimazione quadratica è poco usata in pratica, perché per problemi complessi è più conveniente usare i metodi Monte Carlo basati su Catena di Markov (MCMC) che verranno descritti nella successiva sezione <a href="chapter-stima-funzione-aposteriori.html#sec:integr_MC">Integrazione con metodo Monte Carlo</a>. Per potere utilizzare i metodi MCMC è necessario installare sul proprio computer del software aggiuntivo e tale operazione, talvolta, può risultare complessa. Non è l’obiettivo di questo insegnamento affrontare questo problema Per questa ragione, per svolgere gli esercizi che discuteremo sarà sufficiente fare ricorso al metodo dell’approssimazione quadratica; ovvero sarà sufficiente usare la funzione <code>rethinking::quap()</code>.</p>
 </div>
-<div id="sec:integr_MC" class="section level2" number="13.3">
-<h2><span class="header-section-number">13.3</span> Integrazione con metodo Monte Carlo</h2>
+<div id="sec:integr_MC" class="section level2" number="14.3">
+<h2><span class="header-section-number">14.3</span> Integrazione con metodo Monte Carlo</h2>
 <p>Prima di introdurre i metodi MCMC per la stima della funzione a posteriori, spendiamo due parole sul metodo Monte Carlo quale tecnica che consente il calcolo degli integrali mediante simulazione numerica. Il termine Monte-Carlo si riferisce al fatto che per la computazione si ricorre ad un ripetuto campionamento casuale attraverso la generazioni di sequenze di numeri casuali.</p>
-<div id="sec:legge_forte_grandi_numeri" class="section level3" number="13.3.1">
-<h3><span class="header-section-number">13.3.1</span> Legge forte dei grandi numeri</h3>
+<div id="sec:legge_forte_grandi_numeri" class="section level3" number="14.3.1">
+<h3><span class="header-section-number">14.3.1</span> Legge forte dei grandi numeri</h3>
 <p>L’integrazione con metodo Monte Carlo trova la sua giustificazione nella <em>Legge forte dei grandi numeri</em> la quale può essere espressa nei termini seguenti. Data una successione di variabili casuali <span class="math inline">\(Y_{1}, Y_{2},\dots, Y_{n},\dots\)</span> indipendenti e identicamente distribuite con media <span class="math inline">\(\mu\)</span>, ne segue che
 <span class="math display">\[
 P\left( \lim_{n \rightarrow \infty} \frac{1}{n} \sum_{i=1}^n Y_i = \mu \right) = 1.
@@ -777,8 +800,8 @@ con probabilità di uno.</p>
 <p>Quello che è stato detto sopra non è che un modo sofisticato per dire che, se vogliamo calcolare un’approssimazione del valore atteso di una variabile aleatoria, non dobbiamo fare altro che la media aritmetica di un grande numero di realizzazione di tale variabile aleatoria. Come è facile intuire, l’approssimazione migliora al crescere del numero di dati che abbiamo a disposizione.</p>
 </div>
 </div>
-<div id="sec:mmmc" class="section level2" number="13.4">
-<h2><span class="header-section-number">13.4</span> Metodi MC basati su Catena di Markov</h2>
+<div id="sec:mmmc" class="section level2" number="14.4">
+<h2><span class="header-section-number">14.4</span> Metodi MC basati su Catena di Markov</h2>
 <p>I metodi Monte Carlo basati su Catena di Markov consentono di costruire sequenze di punti (le “catene”) nello spazio dei parametri, la cui densità è proporzionale alla distribuzione di probabilità a posteriori a cui siamo interessati. Questo, evidentemente, è il risultato vorremmo
 ottenere. Ma cosa sono le catene di Markov? In termini formali possiamo dire che una catena di Markov è una sequenza di variabili aleatorie <span class="math inline">\(Y_{1}, Y_{2},\dots, Y_{n}\)</span> tale che la dipendenza della distribuzione di <span class="math inline">\(Y_{i+1}\)</span> dai valori di <span class="math inline">\(Y_{1}, \dots, Y_{i}\)</span> è interamente dovuta al
 valore di <span class="math inline">\(Y_i\)</span>, cioè il passaggio ad uno stato del sistema dipende unicamente dallo stato immediatamente precedente e non dal come si è giunti a tale stato (dalla storia). Per questo motivo si dice che un processo markoviano è senza memoria.</p>
@@ -787,8 +810,8 @@ valore di <span class="math inline">\(Y_i\)</span>, cioè il passaggio ad uno st
 <p>Normalmente, un algoritmo MCMC genera catene di Markov di campioni, ognuno dei quali è autocorrelato a quelli generati immediatamente prima e dopo di lui. Conseguentemente campioni successivi non sono indipendenti ma formano una catena di Markov con un certo grado di
 correlazione. Questa correlazione introduce una distorsione nella soluzione che si ottiene con questo metodo. L’arte dei diversi algoritmi MCMC risiede nel rendere il meccanismo efficiente e capace di produrre un risultato non distorto, il che implica la riduzione al minimo del tempo di <em>burn-in</em> e della correlazione tra i diversi campioni.</p>
 <p>Presentiamo ora, in una forma intuitiva, l’algoritmo di Metropolis, ovvero il primo algoritmo MCMC che è stato proposto. Tale algoritmo è stato sviluppato in seguito per renderlo via via più efficiente. Il nostro obiettivo, però, è solo quello di capire la logica sottostante – lasciamo che siano gli ingegneri a risolvere il problema di rendere l’algoritmo più efficiente.</p>
-<div id="sec:turista_viagg" class="section level3" number="13.4.1">
-<h3><span class="header-section-number">13.4.1</span> Il problema del turista viaggiatore</h3>
+<div id="sec:turista_viagg" class="section level3" number="14.4.1">
+<h3><span class="header-section-number">14.4.1</span> Il problema del turista viaggiatore</h3>
 <p>L’algoritmo di Metropolis è stato presentato usando varie metafore: quella di un politico che viaggia tra isole diverse <span class="citation">(<a href="bibliografia.html#ref-doing_bayesian_data_an" role="doc-biblioref">Kruschke, 2014</a>)</span>, o quella di un re che, anche lui, si sposta tra le isole di un arcipelago <span class="citation">(<a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">McElreath, 2020</a>)</span>. Qui mutiamo leggermente la metafora e immaginiamo un turista in vacanza su un’isola che dispone di 10 spiagge di grandezza diversa. Muovendosi in senso orario, la grandezza delle spiagge aumenta: partendo dalla spiaggia più piccola si arriva ad una spiaggia un po’ più grande, via via fino ad arrivare all’ultima spiaggia, la decima, che è la più grande di tutte. Quindi indicheremo con i numeri da 1 a 10 le spiagge dell’isola. Tali numeri rappresentano anche la grandezza (relativa) di ciascuna spiaggia. Dato che l’isola è circolare, la decima spiaggia confina con la prima spiaggia.</p>
 <p>Nella nostra metafora, immaginiamo un turista in vacanza sull’isola che abbiamo appena descritto. Per non annoiarsi, il nostro turista vuole passare un po’ di tempo su ogni spiaggia, ma con il vincolo che il tempo passato su ciascuna spiaggia deve essere proporzionale alla grandezza della spiaggia. Infatti, il turista preferisce le spiagge più grandi; nel contempo, però, vuole anche visitare spiagge diverse, quindi il vincolo descritto sopra sembra un buon compromesso tra il desiderio di cambiare spiaggia di tanto in tanto e il desiderio di passare più tempo sulle spiagge più grandi.</p>
 <p>Essendo in vacanza, il turista non vuole preparare un calendario che stabilisca in anticipo la spiaggia da visitare ogni giorno, ma vuole decidere in maniera rilassata e un po’ casuale, ogni mattina, restando però fedele al vincolo che si è dato. Al bar incontra un altro turista, l’ingegnere Metropolis, che gli suggerisce come fare per ottenere l’obiettivo che si è prefissato. Seguendo le istruzioni di Metropolis, il nostro turista decide di comportarsi nel modo seguente.</p>
@@ -825,59 +848,59 @@ conchiglie diviso per il numero originale di sassolini.</p></li>
 <p>Decidere di procedere in questo modo potrebbe sembrare un modo per rovinarsi le vacanze. Invece, questo algoritmo funziona! Seguendo la proposta di Metropolis, il turista passerà su ciascuna
 spiaggia un numero di giorni proporzionale alla grandezza della spiaggia.</p>
 <p><span class="citation"><a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">McElreath</a> (<a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span> ha implementato in R l’algoritmo di Metropolis che abbiamo descritto sopra nel modo seguente:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="chapter-stima-funzione-aposteriori.html#cb114-1" aria-hidden="true" tabindex="-1"></a>num_weeks <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
-<span id="cb114-2"><a href="chapter-stima-funzione-aposteriori.html#cb114-2" aria-hidden="true" tabindex="-1"></a>positions <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, num_weeks)</span>
-<span id="cb114-3"><a href="chapter-stima-funzione-aposteriori.html#cb114-3" aria-hidden="true" tabindex="-1"></a>current <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb114-4"><a href="chapter-stima-funzione-aposteriori.html#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_weeks) {</span>
-<span id="cb114-5"><a href="chapter-stima-funzione-aposteriori.html#cb114-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># record current position</span></span>
-<span id="cb114-6"><a href="chapter-stima-funzione-aposteriori.html#cb114-6" aria-hidden="true" tabindex="-1"></a>  positions[i] <span class="ot">&lt;-</span> current</span>
-<span id="cb114-7"><a href="chapter-stima-funzione-aposteriori.html#cb114-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># flip coin to generate proposal</span></span>
-<span id="cb114-8"><a href="chapter-stima-funzione-aposteriori.html#cb114-8" aria-hidden="true" tabindex="-1"></a>  proposal <span class="ot">&lt;-</span> current <span class="sc">+</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="at">size =</span> <span class="dv">1</span>)</span>
-<span id="cb114-9"><a href="chapter-stima-funzione-aposteriori.html#cb114-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># now make sure he loops around the archipelago</span></span>
-<span id="cb114-10"><a href="chapter-stima-funzione-aposteriori.html#cb114-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (proposal <span class="sc">&lt;</span> <span class="dv">1</span>) proposal <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb114-11"><a href="chapter-stima-funzione-aposteriori.html#cb114-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (proposal <span class="sc">&gt;</span> <span class="dv">10</span>) proposal <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb114-12"><a href="chapter-stima-funzione-aposteriori.html#cb114-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># move?</span></span>
-<span id="cb114-13"><a href="chapter-stima-funzione-aposteriori.html#cb114-13" aria-hidden="true" tabindex="-1"></a>  prob_move <span class="ot">&lt;-</span> proposal <span class="sc">/</span> current</span>
-<span id="cb114-14"><a href="chapter-stima-funzione-aposteriori.html#cb114-14" aria-hidden="true" tabindex="-1"></a>  current <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">&lt;</span> prob_move, proposal, current)</span>
-<span id="cb114-15"><a href="chapter-stima-funzione-aposteriori.html#cb114-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Le istruzioni seguenti sono state usate per generare la figura <a href="chapter-stima-funzione-aposteriori.html#fig:turista1">13.6</a>. Se guardiamo la figura e consideriamo un giorno qualsiasi è difficile capire qual è la spiaggia scelta dal turista.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="chapter-stima-funzione-aposteriori.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
-<span id="cb115-2"><a href="chapter-stima-funzione-aposteriori.html#cb115-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">y =</span> positions[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>]),</span>
-<span id="cb115-3"><a href="chapter-stima-funzione-aposteriori.html#cb115-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(x, y)</span>
-<span id="cb115-4"><a href="chapter-stima-funzione-aposteriori.html#cb115-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb115-5"><a href="chapter-stima-funzione-aposteriori.html#cb115-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#8184FC&quot;</span>) <span class="sc">+</span></span>
-<span id="cb115-6"><a href="chapter-stima-funzione-aposteriori.html#cb115-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb115-7"><a href="chapter-stima-funzione-aposteriori.html#cb115-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Giorno&quot;</span>,</span>
-<span id="cb115-8"><a href="chapter-stima-funzione-aposteriori.html#cb115-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Isola&quot;</span></span>
-<span id="cb115-9"><a href="chapter-stima-funzione-aposteriori.html#cb115-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb115-10"><a href="chapter-stima-funzione-aposteriori.html#cb115-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="chapter-stima-funzione-aposteriori.html#cb138-1" aria-hidden="true" tabindex="-1"></a>num_weeks <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
+<span id="cb138-2"><a href="chapter-stima-funzione-aposteriori.html#cb138-2" aria-hidden="true" tabindex="-1"></a>positions <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, num_weeks)</span>
+<span id="cb138-3"><a href="chapter-stima-funzione-aposteriori.html#cb138-3" aria-hidden="true" tabindex="-1"></a>current <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb138-4"><a href="chapter-stima-funzione-aposteriori.html#cb138-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_weeks) {</span>
+<span id="cb138-5"><a href="chapter-stima-funzione-aposteriori.html#cb138-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># record current position</span></span>
+<span id="cb138-6"><a href="chapter-stima-funzione-aposteriori.html#cb138-6" aria-hidden="true" tabindex="-1"></a>  positions[i] <span class="ot">&lt;-</span> current</span>
+<span id="cb138-7"><a href="chapter-stima-funzione-aposteriori.html#cb138-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># flip coin to generate proposal</span></span>
+<span id="cb138-8"><a href="chapter-stima-funzione-aposteriori.html#cb138-8" aria-hidden="true" tabindex="-1"></a>  proposal <span class="ot">&lt;-</span> current <span class="sc">+</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="at">size =</span> <span class="dv">1</span>)</span>
+<span id="cb138-9"><a href="chapter-stima-funzione-aposteriori.html#cb138-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># now make sure he loops around the archipelago</span></span>
+<span id="cb138-10"><a href="chapter-stima-funzione-aposteriori.html#cb138-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (proposal <span class="sc">&lt;</span> <span class="dv">1</span>) proposal <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb138-11"><a href="chapter-stima-funzione-aposteriori.html#cb138-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (proposal <span class="sc">&gt;</span> <span class="dv">10</span>) proposal <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb138-12"><a href="chapter-stima-funzione-aposteriori.html#cb138-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># move?</span></span>
+<span id="cb138-13"><a href="chapter-stima-funzione-aposteriori.html#cb138-13" aria-hidden="true" tabindex="-1"></a>  prob_move <span class="ot">&lt;-</span> proposal <span class="sc">/</span> current</span>
+<span id="cb138-14"><a href="chapter-stima-funzione-aposteriori.html#cb138-14" aria-hidden="true" tabindex="-1"></a>  current <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">&lt;</span> prob_move, proposal, current)</span>
+<span id="cb138-15"><a href="chapter-stima-funzione-aposteriori.html#cb138-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Le istruzioni seguenti sono state usate per generare la figura <a href="chapter-stima-funzione-aposteriori.html#fig:turista1">14.6</a>. Se guardiamo la figura e consideriamo un giorno qualsiasi è difficile capire qual è la spiaggia scelta dal turista.</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="chapter-stima-funzione-aposteriori.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb139-2"><a href="chapter-stima-funzione-aposteriori.html#cb139-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">y =</span> positions[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>]),</span>
+<span id="cb139-3"><a href="chapter-stima-funzione-aposteriori.html#cb139-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(x, y)</span>
+<span id="cb139-4"><a href="chapter-stima-funzione-aposteriori.html#cb139-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb139-5"><a href="chapter-stima-funzione-aposteriori.html#cb139-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#8184FC&quot;</span>) <span class="sc">+</span></span>
+<span id="cb139-6"><a href="chapter-stima-funzione-aposteriori.html#cb139-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb139-7"><a href="chapter-stima-funzione-aposteriori.html#cb139-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Giorno&quot;</span>,</span>
+<span id="cb139-8"><a href="chapter-stima-funzione-aposteriori.html#cb139-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Isola&quot;</span></span>
+<span id="cb139-9"><a href="chapter-stima-funzione-aposteriori.html#cb139-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb139-10"><a href="chapter-stima-funzione-aposteriori.html#cb139-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:turista1"></span>
 <img src="Psicometria_files/figure-html/turista1-1.png" alt="Risultati dell'algoritmo di Metropolis utilizzato dal turista viaggiatore. La figura mostra la spiaggia scelta dal turista (asse verticale) in funzione di ciascun giorno della sua vacanza (asse orizzontale). " width="70%" />
 <p class="caption">
-Figura 13.6: Risultati dell’algoritmo di Metropolis utilizzato dal turista viaggiatore. La figura mostra la spiaggia scelta dal turista (asse verticale) in funzione di ciascun giorno della sua vacanza (asse orizzontale).
+Figura 14.6: Risultati dell’algoritmo di Metropolis utilizzato dal turista viaggiatore. La figura mostra la spiaggia scelta dal turista (asse verticale) in funzione di ciascun giorno della sua vacanza (asse orizzontale).
 </p>
 </div>
-<p>Tuttavia, se esaminiamo la figura <a href="chapter-stima-funzione-aposteriori.html#fig:turista2">13.7</a> che descrive il comportamento a lungo termine dell’algoritmo, ci rendiamo conto che l’algoritmo ha prodotto il risultato che si voleva ottenere: il tempo trascorso dal turista su ciascuna spiaggia è proporzionale alla grandezza della spiaggia.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="chapter-stima-funzione-aposteriori.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
-<span id="cb116-2"><a href="chapter-stima-funzione-aposteriori.html#cb116-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y =</span> <span class="fu">as.numeric</span>(<span class="fu">table</span>(positions))),</span>
-<span id="cb116-3"><a href="chapter-stima-funzione-aposteriori.html#cb116-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">xend =</span> x, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> y)</span>
-<span id="cb116-4"><a href="chapter-stima-funzione-aposteriori.html#cb116-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb116-5"><a href="chapter-stima-funzione-aposteriori.html#cb116-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">color =</span> <span class="st">&quot;#8184FC&quot;</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb116-6"><a href="chapter-stima-funzione-aposteriori.html#cb116-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb116-7"><a href="chapter-stima-funzione-aposteriori.html#cb116-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Isola&quot;</span>,</span>
-<span id="cb116-8"><a href="chapter-stima-funzione-aposteriori.html#cb116-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Numero di giorni&quot;</span></span>
-<span id="cb116-9"><a href="chapter-stima-funzione-aposteriori.html#cb116-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb116-10"><a href="chapter-stima-funzione-aposteriori.html#cb116-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
+<p>Tuttavia, se esaminiamo la figura <a href="chapter-stima-funzione-aposteriori.html#fig:turista2">14.7</a> che descrive il comportamento a lungo termine dell’algoritmo, ci rendiamo conto che l’algoritmo ha prodotto il risultato che si voleva ottenere: il tempo trascorso dal turista su ciascuna spiaggia è proporzionale alla grandezza della spiaggia.</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="chapter-stima-funzione-aposteriori.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb140-2"><a href="chapter-stima-funzione-aposteriori.html#cb140-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y =</span> <span class="fu">as.numeric</span>(<span class="fu">table</span>(positions))),</span>
+<span id="cb140-3"><a href="chapter-stima-funzione-aposteriori.html#cb140-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">xend =</span> x, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> y)</span>
+<span id="cb140-4"><a href="chapter-stima-funzione-aposteriori.html#cb140-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb140-5"><a href="chapter-stima-funzione-aposteriori.html#cb140-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">color =</span> <span class="st">&quot;#8184FC&quot;</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb140-6"><a href="chapter-stima-funzione-aposteriori.html#cb140-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb140-7"><a href="chapter-stima-funzione-aposteriori.html#cb140-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Isola&quot;</span>,</span>
+<span id="cb140-8"><a href="chapter-stima-funzione-aposteriori.html#cb140-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Numero di giorni&quot;</span></span>
+<span id="cb140-9"><a href="chapter-stima-funzione-aposteriori.html#cb140-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb140-10"><a href="chapter-stima-funzione-aposteriori.html#cb140-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:turista2"></span>
 <img src="Psicometria_files/figure-html/turista2-1.png" alt="Risultati dell'algoritmo di Metropolis utilizzato dal turista viaggiatore. La figura mostra che il numero di volte in cui ciascuna spiaggia è stata visitata è proporzionale alla grandezza della spiaggia." width="70%" />
 <p class="caption">
-Figura 13.7: Risultati dell’algoritmo di Metropolis utilizzato dal turista viaggiatore. La figura mostra che il numero di volte in cui ciascuna spiaggia è stata visitata è proporzionale alla grandezza della spiaggia.
+Figura 14.7: Risultati dell’algoritmo di Metropolis utilizzato dal turista viaggiatore. La figura mostra che il numero di volte in cui ciascuna spiaggia è stata visitata è proporzionale alla grandezza della spiaggia.
 </p>
 </div>
 <p>L’algoritmo di Metropolis funziona anche se il turista decide di spostarsi dalla spiaggia corrente a qualunque altra spiaggia, non solo su quelle confinanti. Inoltre, l’algoritmo funziona per qualunque numero di spiagge e anche se il turista non sa quante spiagge ci sono sull’isola. Affinché l’algoritmo funzioni è solo necessario conoscere la grandezza della spiaggia “corrente” e quella della spiaggia “proposta.”</p>
 </div>
-<div id="lalgoritmo-di-metropolis" class="section level3" number="13.4.2">
-<h3><span class="header-section-number">13.4.2</span> L’algoritmo di Metropolis</h3>
+<div id="lalgoritmo-di-metropolis" class="section level3" number="14.4.2">
+<h3><span class="header-section-number">14.4.2</span> L’algoritmo di Metropolis</h3>
 <p>L’algoritmo descritto nella sezione <a href="chapter-stima-funzione-aposteriori.html#sec:turista_viagg">Il problema del turista viaggiatore</a> è un caso speciale dell’algoritmo di Metropolis e l’algoritmo di Metropolis è un caso speciale dei
 metodi MCMC. L’algoritmo di Metropolis, al di là dell’uso che ne fa il fortunato turista dell’esempio discusso in precedenza, viene in realtà impiegato per per ottenere una sequenza di campioni casuali da una distribuzione a posteriori la cui forma è, solitamente, sconosciuta. Fuor di metafora:</p>
 <ul>
@@ -887,8 +910,8 @@ metodi MCMC. L’algoritmo di Metropolis, al di là dell’uso che ne fa il fort
 </ul>
 <p>L’aspetto cruciale di questa discussione è il fatto che, all’aumentare delle ripetizioni dell’algoritmo di Metropolis, la distribuzione dei valori così ottenuti diventa via via più simile alla distribuzione a posteriori del parametro <span class="math inline">\(\theta\)</span>, anche se questa è sconosciuta. Per un grande numero di passi della catena l’approssimazione è sufficiente. Con questo metodo è dunque possibile generare un grande numero di campioni casuali dalla distribuzione a posteriori per poi poterne calcolare misure di sintesi e potere fare inferenza.</p>
 </div>
-<div id="sec:metropolis_one_mean" class="section level3" number="13.4.3">
-<h3><span class="header-section-number">13.4.3</span> Una applicazione concreta</h3>
+<div id="sec:metropolis_one_mean" class="section level3" number="14.4.3">
+<h3><span class="header-section-number">14.4.3</span> Una applicazione concreta</h3>
 <!-- https://www.youtube.com/watch?app=desktop&v=U561HGMWjcw -->
 <p>L’algoritmo di Metropolis consente di effettuare quello che viene chiamato un <em>dependent sampling</em>, ovvero ci consente di generare campioni casuali dalla distribuzione a posteriori utilizzando soltanto il numeratore del teorema di Bayes:</p>
 <p><span class="math display">\[
@@ -906,126 +929,126 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
 <li><p>Utilizziamo poi il valore del rapporto <span class="math inline">\(r\)</span> per decidere se dobbiamo effettivamente muoverci nella nuova posizione <span class="math inline">\(\theta&#39;_t\)</span>, oppure se dobbiamo campionare un diverso valore <span class="math inline">\(\theta&#39;_t\)</span>. Per decidere, confrontiamo il valore <span class="math inline">\(r\)</span> con un valore casuale estratto da una distribuzione uniforme che assume valori tra zero e uno: <span class="math inline">\(U(0, 1)\)</span>. Se <span class="math inline">\(r &gt; u \sim U(0, 1)\)</span> allora accettiamo <span class="math inline">\(\theta&#39;_t\)</span> e la catena si muove in quella nuova posizione, ovvero <span class="math inline">\(\theta_t = \theta&#39;_t\)</span>. Altrimenti <span class="math inline">\(\theta_t = \theta_{t-1}\)</span> e ripetiamo la procedura descritta sopra campionando un nuovo valore <span class="math inline">\(\theta&#39;_t\)</span>.</p></li>
 </ul>
 <p>Per fare un esempio concreto, consideriamo nuovamente i 30 pazienti esaminati da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> e discussi nella sezione <a href="chapter-stima-funzione-aposteriori.html#sec:es_pratico_zetsche">Un esempio pratico</a>. Di essi, 23 hanno manifestato delle aspettative distorte negativamente sul loro stato d’animo futuro. Utilizzando l’algoritmo di Metropolis, ci poniamo il problema di ottenere la stima a posteriori di <span class="math inline">\(\theta\)</span> (probabilità di manifestare un’aspettativa distorta negativamente) dati i 23 “successi” in 30 prove e usando la stessa distribuzione a priori per <span class="math inline">\(\theta\)</span> che è stata usata nella sezione <a href="chapter-stima-funzione-aposteriori.html#sec:aspett_future_beta2_10">Un esempio pratico (versione 2)</a>.</p>
-<div id="verosimiglianza" class="section level4" number="13.4.3.1">
-<h4><span class="header-section-number">13.4.3.1</span> Verosimiglianza</h4>
+<div id="verosimiglianza" class="section level4" number="14.4.3.1">
+<h4><span class="header-section-number">14.4.3.1</span> Verosimiglianza</h4>
 <p>Per trovare la funzione di verosimiglianza usando i 30 valori di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> definisco la funzione <code>likelihood()</code> come indicato sotto. Tale funzione ritorna l’ordinata della funzione di verosimiglianza binomiale per ciascun valore del vettore <code>param</code> che viene dato in input alla funzione.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="chapter-stima-funzione-aposteriori.html#cb117-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">23</span></span>
-<span id="cb117-2"><a href="chapter-stima-funzione-aposteriori.html#cb117-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb117-3"><a href="chapter-stima-funzione-aposteriori.html#cb117-3" aria-hidden="true" tabindex="-1"></a>param <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
-<span id="cb117-4"><a href="chapter-stima-funzione-aposteriori.html#cb117-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb117-5"><a href="chapter-stima-funzione-aposteriori.html#cb117-5" aria-hidden="true" tabindex="-1"></a>likelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(param, <span class="at">x =</span> <span class="dv">23</span>, <span class="at">N =</span> <span class="dv">30</span>) {</span>
-<span id="cb117-6"><a href="chapter-stima-funzione-aposteriori.html#cb117-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dbinom</span>(x, N, param)</span>
-<span id="cb117-7"><a href="chapter-stima-funzione-aposteriori.html#cb117-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb117-8"><a href="chapter-stima-funzione-aposteriori.html#cb117-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb117-9"><a href="chapter-stima-funzione-aposteriori.html#cb117-9" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x=</span>param, <span class="at">y=</span><span class="fu">likelihood</span>(param)) <span class="sc">%&gt;%</span> </span>
-<span id="cb117-10"><a href="chapter-stima-funzione-aposteriori.html#cb117-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
-<span id="cb117-11"><a href="chapter-stima-funzione-aposteriori.html#cb117-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb117-12"><a href="chapter-stima-funzione-aposteriori.html#cb117-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb117-13"><a href="chapter-stima-funzione-aposteriori.html#cb117-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(theta),</span>
-<span id="cb117-14"><a href="chapter-stima-funzione-aposteriori.html#cb117-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Verosimiglianza&quot;</span></span>
-<span id="cb117-15"><a href="chapter-stima-funzione-aposteriori.html#cb117-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="Psicometria_files/figure-html/unnamed-chunk-131-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="chapter-stima-funzione-aposteriori.html#cb141-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">23</span></span>
+<span id="cb141-2"><a href="chapter-stima-funzione-aposteriori.html#cb141-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb141-3"><a href="chapter-stima-funzione-aposteriori.html#cb141-3" aria-hidden="true" tabindex="-1"></a>param <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb141-4"><a href="chapter-stima-funzione-aposteriori.html#cb141-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-5"><a href="chapter-stima-funzione-aposteriori.html#cb141-5" aria-hidden="true" tabindex="-1"></a>likelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(param, <span class="at">x =</span> <span class="dv">23</span>, <span class="at">N =</span> <span class="dv">30</span>) {</span>
+<span id="cb141-6"><a href="chapter-stima-funzione-aposteriori.html#cb141-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dbinom</span>(x, N, param)</span>
+<span id="cb141-7"><a href="chapter-stima-funzione-aposteriori.html#cb141-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb141-8"><a href="chapter-stima-funzione-aposteriori.html#cb141-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-9"><a href="chapter-stima-funzione-aposteriori.html#cb141-9" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x=</span>param, <span class="at">y=</span><span class="fu">likelihood</span>(param)) <span class="sc">%&gt;%</span> </span>
+<span id="cb141-10"><a href="chapter-stima-funzione-aposteriori.html#cb141-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb141-11"><a href="chapter-stima-funzione-aposteriori.html#cb141-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb141-12"><a href="chapter-stima-funzione-aposteriori.html#cb141-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb141-13"><a href="chapter-stima-funzione-aposteriori.html#cb141-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(theta),</span>
+<span id="cb141-14"><a href="chapter-stima-funzione-aposteriori.html#cb141-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Verosimiglianza&quot;</span></span>
+<span id="cb141-15"><a href="chapter-stima-funzione-aposteriori.html#cb141-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="Psicometria_files/figure-html/unnamed-chunk-145-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="distribuzione-a-priori-1" class="section level4" number="13.4.3.2">
-<h4><span class="header-section-number">13.4.3.2</span> Distribuzione a priori</h4>
+<div id="distribuzione-a-priori-1" class="section level4" number="14.4.3.2">
+<h4><span class="header-section-number">14.4.3.2</span> Distribuzione a priori</h4>
 <p>Se abbiamo ragioni forti per avere delle aspettative rispetto al valore possibile della nostra stima, una distribuzione a priori <em>informativa</em> verrà combinata con le informazioni fornite dal campione per produrre una stima ``razionale’’ a posteriori. Nel caso presente utilizziamo la distribuzione informativa presentata nella sezione <a href="chapter-stima-funzione-aposteriori.html#sec:aspett_future_beta2_10">Un esempio pratico (versione 2)</a> unicamente a scopo esemplicativo, ovvero per fare in modo da “allontanare” la distribuzione a posteriori dalla distribuzione di verosimiglianza.</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="chapter-stima-funzione-aposteriori.html#cb118-1" aria-hidden="true" tabindex="-1"></a>prior <span class="ot">&lt;-</span> <span class="cf">function</span>(param, <span class="at">alpha =</span> <span class="dv">2</span>, <span class="at">beta =</span> <span class="dv">10</span>) {</span>
-<span id="cb118-2"><a href="chapter-stima-funzione-aposteriori.html#cb118-2" aria-hidden="true" tabindex="-1"></a>  param_vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
-<span id="cb118-3"><a href="chapter-stima-funzione-aposteriori.html#cb118-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dbeta</span>(param, alpha, beta) <span class="co"># / sum(dbeta(param_vals, alpha, beta))</span></span>
-<span id="cb118-4"><a href="chapter-stima-funzione-aposteriori.html#cb118-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb118-5"><a href="chapter-stima-funzione-aposteriori.html#cb118-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-6"><a href="chapter-stima-funzione-aposteriori.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x=</span>param, <span class="at">y=</span><span class="fu">prior</span>(param)) <span class="sc">%&gt;%</span> </span>
-<span id="cb118-7"><a href="chapter-stima-funzione-aposteriori.html#cb118-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
-<span id="cb118-8"><a href="chapter-stima-funzione-aposteriori.html#cb118-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb118-9"><a href="chapter-stima-funzione-aposteriori.html#cb118-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb118-10"><a href="chapter-stima-funzione-aposteriori.html#cb118-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(theta),</span>
-<span id="cb118-11"><a href="chapter-stima-funzione-aposteriori.html#cb118-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Densità&quot;</span></span>
-<span id="cb118-12"><a href="chapter-stima-funzione-aposteriori.html#cb118-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="Psicometria_files/figure-html/unnamed-chunk-132-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="chapter-stima-funzione-aposteriori.html#cb142-1" aria-hidden="true" tabindex="-1"></a>prior <span class="ot">&lt;-</span> <span class="cf">function</span>(param, <span class="at">alpha =</span> <span class="dv">2</span>, <span class="at">beta =</span> <span class="dv">10</span>) {</span>
+<span id="cb142-2"><a href="chapter-stima-funzione-aposteriori.html#cb142-2" aria-hidden="true" tabindex="-1"></a>  param_vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb142-3"><a href="chapter-stima-funzione-aposteriori.html#cb142-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dbeta</span>(param, alpha, beta) <span class="co"># / sum(dbeta(param_vals, alpha, beta))</span></span>
+<span id="cb142-4"><a href="chapter-stima-funzione-aposteriori.html#cb142-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb142-5"><a href="chapter-stima-funzione-aposteriori.html#cb142-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb142-6"><a href="chapter-stima-funzione-aposteriori.html#cb142-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x=</span>param, <span class="at">y=</span><span class="fu">prior</span>(param)) <span class="sc">%&gt;%</span> </span>
+<span id="cb142-7"><a href="chapter-stima-funzione-aposteriori.html#cb142-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb142-8"><a href="chapter-stima-funzione-aposteriori.html#cb142-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb142-9"><a href="chapter-stima-funzione-aposteriori.html#cb142-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb142-10"><a href="chapter-stima-funzione-aposteriori.html#cb142-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(theta),</span>
+<span id="cb142-11"><a href="chapter-stima-funzione-aposteriori.html#cb142-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Densità&quot;</span></span>
+<span id="cb142-12"><a href="chapter-stima-funzione-aposteriori.html#cb142-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="Psicometria_files/figure-html/unnamed-chunk-146-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="distribuzione-a-posteriori" class="section level4" number="13.4.3.3">
-<h4><span class="header-section-number">13.4.3.3</span> Distribuzione a posteriori</h4>
+<div id="distribuzione-a-posteriori" class="section level4" number="14.4.3.3">
+<h4><span class="header-section-number">14.4.3.3</span> Distribuzione a posteriori</h4>
 <p>Abbiamo visto in precedenza come la funzione a posteriori è data dal prodotto della densità a priori e della verosimiglianza.</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="chapter-stima-funzione-aposteriori.html#cb119-1" aria-hidden="true" tabindex="-1"></a>posterior <span class="ot">&lt;-</span> <span class="cf">function</span>(param) {</span>
-<span id="cb119-2"><a href="chapter-stima-funzione-aposteriori.html#cb119-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">likelihood</span>(param) <span class="sc">*</span> <span class="fu">prior</span>(param)</span>
-<span id="cb119-3"><a href="chapter-stima-funzione-aposteriori.html#cb119-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb119-4"><a href="chapter-stima-funzione-aposteriori.html#cb119-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-5"><a href="chapter-stima-funzione-aposteriori.html#cb119-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x=</span>param, <span class="at">y=</span><span class="fu">posterior</span>(param)) <span class="sc">%&gt;%</span> </span>
-<span id="cb119-6"><a href="chapter-stima-funzione-aposteriori.html#cb119-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
-<span id="cb119-7"><a href="chapter-stima-funzione-aposteriori.html#cb119-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb119-8"><a href="chapter-stima-funzione-aposteriori.html#cb119-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb119-9"><a href="chapter-stima-funzione-aposteriori.html#cb119-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(theta),</span>
-<span id="cb119-10"><a href="chapter-stima-funzione-aposteriori.html#cb119-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Densità&quot;</span></span>
-<span id="cb119-11"><a href="chapter-stima-funzione-aposteriori.html#cb119-11" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="Psicometria_files/figure-html/unnamed-chunk-133-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="chapter-stima-funzione-aposteriori.html#cb143-1" aria-hidden="true" tabindex="-1"></a>posterior <span class="ot">&lt;-</span> <span class="cf">function</span>(param) {</span>
+<span id="cb143-2"><a href="chapter-stima-funzione-aposteriori.html#cb143-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">likelihood</span>(param) <span class="sc">*</span> <span class="fu">prior</span>(param)</span>
+<span id="cb143-3"><a href="chapter-stima-funzione-aposteriori.html#cb143-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb143-4"><a href="chapter-stima-funzione-aposteriori.html#cb143-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb143-5"><a href="chapter-stima-funzione-aposteriori.html#cb143-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x=</span>param, <span class="at">y=</span><span class="fu">posterior</span>(param)) <span class="sc">%&gt;%</span> </span>
+<span id="cb143-6"><a href="chapter-stima-funzione-aposteriori.html#cb143-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb143-7"><a href="chapter-stima-funzione-aposteriori.html#cb143-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb143-8"><a href="chapter-stima-funzione-aposteriori.html#cb143-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb143-9"><a href="chapter-stima-funzione-aposteriori.html#cb143-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(theta),</span>
+<span id="cb143-10"><a href="chapter-stima-funzione-aposteriori.html#cb143-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Densità&quot;</span></span>
+<span id="cb143-11"><a href="chapter-stima-funzione-aposteriori.html#cb143-11" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="Psicometria_files/figure-html/unnamed-chunk-147-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Questo è il risultato che vogliamo ottenere utilizzando l’algoritmo di Metropolis. Dalla figura precedente vediamo che la moda della distribuzione a posteriori è pari a circa 0.6. Questo è il valore più verosimile a posteriori per il parametro <span class="math inline">\(\theta\)</span>.</p>
 </div>
-<div id="algoritmo-di-metropolis" class="section level4" number="13.4.3.4">
-<h4><span class="header-section-number">13.4.3.4</span> Algoritmo di Metropolis</h4>
+<div id="algoritmo-di-metropolis" class="section level4" number="14.4.3.4">
+<h4><span class="header-section-number">14.4.3.4</span> Algoritmo di Metropolis</h4>
 <p>Implementiamo ora l’algoritmo di Metropolis. Utilizziamo una distribuzione proposta gaussiana. Il valore proposto da tale distribuzione ausiliaria corrisponde ad un valore selezionato a caso da una distribuzione gaussiana con media uguale al valore del parametro attualmente considerato nella catena e con una deviazione standard ``adeguata’’. In questo esempio, la deviazione standard è stata scelta empiricamente in modo tale da ottenere un tasso di accettazione sensato. È stato mostrato che un tasso di accettazione ottimale dovrebbe essere tra il 20% e il 30%. Se il tasso di accettazione è troppo grande, infatti, l’algoritmo esplora uno spazio troppo ristretto della distribuzione a posteriori. Il tasso di accettazione è influenzato dalla distribuzione proposta: in generale, tanto più la distribuzione proposta è simile alla distribuzione target, tanto più alto diventa il tasso di accettazione.</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="chapter-stima-funzione-aposteriori.html#cb120-1" aria-hidden="true" tabindex="-1"></a>proposal_distribution <span class="ot">&lt;-</span> <span class="cf">function</span>(param) {</span>
-<span id="cb120-2"><a href="chapter-stima-funzione-aposteriori.html#cb120-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span>(<span class="dv">1</span>) {</span>
-<span id="cb120-3"><a href="chapter-stima-funzione-aposteriori.html#cb120-3" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> param, <span class="at">sd =</span> <span class="fl">0.9</span>)</span>
-<span id="cb120-4"><a href="chapter-stima-funzione-aposteriori.html#cb120-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (res <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> res <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
-<span id="cb120-5"><a href="chapter-stima-funzione-aposteriori.html#cb120-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
-<span id="cb120-6"><a href="chapter-stima-funzione-aposteriori.html#cb120-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb120-7"><a href="chapter-stima-funzione-aposteriori.html#cb120-7" aria-hidden="true" tabindex="-1"></a>  res</span>
-<span id="cb120-8"><a href="chapter-stima-funzione-aposteriori.html#cb120-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="chapter-stima-funzione-aposteriori.html#cb144-1" aria-hidden="true" tabindex="-1"></a>proposal_distribution <span class="ot">&lt;-</span> <span class="cf">function</span>(param) {</span>
+<span id="cb144-2"><a href="chapter-stima-funzione-aposteriori.html#cb144-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span>(<span class="dv">1</span>) {</span>
+<span id="cb144-3"><a href="chapter-stima-funzione-aposteriori.html#cb144-3" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> param, <span class="at">sd =</span> <span class="fl">0.9</span>)</span>
+<span id="cb144-4"><a href="chapter-stima-funzione-aposteriori.html#cb144-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (res <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> res <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
+<span id="cb144-5"><a href="chapter-stima-funzione-aposteriori.html#cb144-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
+<span id="cb144-6"><a href="chapter-stima-funzione-aposteriori.html#cb144-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb144-7"><a href="chapter-stima-funzione-aposteriori.html#cb144-7" aria-hidden="true" tabindex="-1"></a>  res</span>
+<span id="cb144-8"><a href="chapter-stima-funzione-aposteriori.html#cb144-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>In questa implementazione molto semplice della distribuzione proposta ho inserito dei controlli che fanno in modo che il valore proposto da tale distribuzione ausiliaria sia incluso nell’intervallo [0, 1]. Si possono trovare implementazioni migliori di questa idea di quella fornita qui. Ma lo scopo è solo quello di spiegare la struttura logica dell’algoritmo di Metropolis, non quella di proporre un’implementazione efficente dell’algoritmo. Per i nostri scopi, tale implementazione “ingenua” funziona, e tanto basta.</p>
 <p>L’algoritmo di Metropolis è implementato nella funzione seguente:</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="chapter-stima-funzione-aposteriori.html#cb121-1" aria-hidden="true" tabindex="-1"></a>run_metropolis_MCMC <span class="ot">&lt;-</span> <span class="cf">function</span>(startvalue, iterations) {</span>
-<span id="cb121-2"><a href="chapter-stima-funzione-aposteriori.html#cb121-2" aria-hidden="true" tabindex="-1"></a>  chain <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> iterations <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb121-3"><a href="chapter-stima-funzione-aposteriori.html#cb121-3" aria-hidden="true" tabindex="-1"></a>  chain[<span class="dv">1</span>] <span class="ot">&lt;-</span> startvalue</span>
-<span id="cb121-4"><a href="chapter-stima-funzione-aposteriori.html#cb121-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>iterations) {</span>
-<span id="cb121-5"><a href="chapter-stima-funzione-aposteriori.html#cb121-5" aria-hidden="true" tabindex="-1"></a>    proposal <span class="ot">&lt;-</span> <span class="fu">proposal_distribution</span>(chain[i])</span>
-<span id="cb121-6"><a href="chapter-stima-funzione-aposteriori.html#cb121-6" aria-hidden="true" tabindex="-1"></a>    r <span class="ot">&lt;-</span> <span class="fu">posterior</span>(proposal) <span class="sc">/</span> <span class="fu">posterior</span>(chain[i])</span>
-<span id="cb121-7"><a href="chapter-stima-funzione-aposteriori.html#cb121-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">&lt;</span> r) {</span>
-<span id="cb121-8"><a href="chapter-stima-funzione-aposteriori.html#cb121-8" aria-hidden="true" tabindex="-1"></a>      chain[i <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> proposal</span>
-<span id="cb121-9"><a href="chapter-stima-funzione-aposteriori.html#cb121-9" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb121-10"><a href="chapter-stima-funzione-aposteriori.html#cb121-10" aria-hidden="true" tabindex="-1"></a>      chain[i <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> chain[i]</span>
-<span id="cb121-11"><a href="chapter-stima-funzione-aposteriori.html#cb121-11" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb121-12"><a href="chapter-stima-funzione-aposteriori.html#cb121-12" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb121-13"><a href="chapter-stima-funzione-aposteriori.html#cb121-13" aria-hidden="true" tabindex="-1"></a>  chain</span>
-<span id="cb121-14"><a href="chapter-stima-funzione-aposteriori.html#cb121-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="chapter-stima-funzione-aposteriori.html#cb145-1" aria-hidden="true" tabindex="-1"></a>run_metropolis_MCMC <span class="ot">&lt;-</span> <span class="cf">function</span>(startvalue, iterations) {</span>
+<span id="cb145-2"><a href="chapter-stima-funzione-aposteriori.html#cb145-2" aria-hidden="true" tabindex="-1"></a>  chain <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> iterations <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb145-3"><a href="chapter-stima-funzione-aposteriori.html#cb145-3" aria-hidden="true" tabindex="-1"></a>  chain[<span class="dv">1</span>] <span class="ot">&lt;-</span> startvalue</span>
+<span id="cb145-4"><a href="chapter-stima-funzione-aposteriori.html#cb145-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>iterations) {</span>
+<span id="cb145-5"><a href="chapter-stima-funzione-aposteriori.html#cb145-5" aria-hidden="true" tabindex="-1"></a>    proposal <span class="ot">&lt;-</span> <span class="fu">proposal_distribution</span>(chain[i])</span>
+<span id="cb145-6"><a href="chapter-stima-funzione-aposteriori.html#cb145-6" aria-hidden="true" tabindex="-1"></a>    r <span class="ot">&lt;-</span> <span class="fu">posterior</span>(proposal) <span class="sc">/</span> <span class="fu">posterior</span>(chain[i])</span>
+<span id="cb145-7"><a href="chapter-stima-funzione-aposteriori.html#cb145-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">&lt;</span> r) {</span>
+<span id="cb145-8"><a href="chapter-stima-funzione-aposteriori.html#cb145-8" aria-hidden="true" tabindex="-1"></a>      chain[i <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> proposal</span>
+<span id="cb145-9"><a href="chapter-stima-funzione-aposteriori.html#cb145-9" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb145-10"><a href="chapter-stima-funzione-aposteriori.html#cb145-10" aria-hidden="true" tabindex="-1"></a>      chain[i <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> chain[i]</span>
+<span id="cb145-11"><a href="chapter-stima-funzione-aposteriori.html#cb145-11" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb145-12"><a href="chapter-stima-funzione-aposteriori.html#cb145-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb145-13"><a href="chapter-stima-funzione-aposteriori.html#cb145-13" aria-hidden="true" tabindex="-1"></a>  chain</span>
+<span id="cb145-14"><a href="chapter-stima-funzione-aposteriori.html#cb145-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Generiamo dunqe una catena di valori <span class="math inline">\(\theta\)</span> con le seguenti istruzioni:</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="chapter-stima-funzione-aposteriori.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb122-2"><a href="chapter-stima-funzione-aposteriori.html#cb122-2" aria-hidden="true" tabindex="-1"></a>startvalue <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb122-3"><a href="chapter-stima-funzione-aposteriori.html#cb122-3" aria-hidden="true" tabindex="-1"></a>niter <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
-<span id="cb122-4"><a href="chapter-stima-funzione-aposteriori.html#cb122-4" aria-hidden="true" tabindex="-1"></a>chain <span class="ot">&lt;-</span> <span class="fu">run_metropolis_MCMC</span>(startvalue, niter)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="chapter-stima-funzione-aposteriori.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb146-2"><a href="chapter-stima-funzione-aposteriori.html#cb146-2" aria-hidden="true" tabindex="-1"></a>startvalue <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb146-3"><a href="chapter-stima-funzione-aposteriori.html#cb146-3" aria-hidden="true" tabindex="-1"></a>niter <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
+<span id="cb146-4"><a href="chapter-stima-funzione-aposteriori.html#cb146-4" aria-hidden="true" tabindex="-1"></a>chain <span class="ot">&lt;-</span> <span class="fu">run_metropolis_MCMC</span>(startvalue, niter)</span></code></pre></div>
 <p>Otteniamo così 4,000 valori della distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span>. Di questi valori, 2,000 vengono considerati burn-in e vengono esclusi. Ci restano dunque con 2,000 stime a posteriori di <span class="math inline">\(\theta\)</span>.</p>
 <p>Il tasso di accettazione è pari a</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="chapter-stima-funzione-aposteriori.html#cb123-1" aria-hidden="true" tabindex="-1"></a>burnIn <span class="ot">&lt;-</span> niter <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb123-2"><a href="chapter-stima-funzione-aposteriori.html#cb123-2" aria-hidden="true" tabindex="-1"></a>acceptance <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">mean</span>(<span class="fu">duplicated</span>(chain[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burnIn)]))</span>
-<span id="cb123-3"><a href="chapter-stima-funzione-aposteriori.html#cb123-3" aria-hidden="true" tabindex="-1"></a>acceptance</span>
-<span id="cb123-4"><a href="chapter-stima-funzione-aposteriori.html#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.2511498</span></span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="chapter-stima-funzione-aposteriori.html#cb147-1" aria-hidden="true" tabindex="-1"></a>burnIn <span class="ot">&lt;-</span> niter <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb147-2"><a href="chapter-stima-funzione-aposteriori.html#cb147-2" aria-hidden="true" tabindex="-1"></a>acceptance <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">mean</span>(<span class="fu">duplicated</span>(chain[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burnIn)]))</span>
+<span id="cb147-3"><a href="chapter-stima-funzione-aposteriori.html#cb147-3" aria-hidden="true" tabindex="-1"></a>acceptance</span>
+<span id="cb147-4"><a href="chapter-stima-funzione-aposteriori.html#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.2511498</span></span></code></pre></div>
 <p>il che conferma che la deviazione standard che abbiamo scelto per la distribuzione proposta (<span class="math inline">\(\sigma\)</span> = 0.9) è adeguata.</p>
 <p>Una figura che rappresenta la distribuzione a posteriori per <span class="math inline">\(\theta\)</span>, insieme alla rappresentazione dei valori della catena di Markov realizzata dall’algoritmo di Metropolis, può essere prodotta mediante le seguenti istruzioni:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="chapter-stima-funzione-aposteriori.html#cb124-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>chain[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burnIn)]) <span class="sc">%&gt;%</span> </span>
-<span id="cb124-2"><a href="chapter-stima-funzione-aposteriori.html#cb124-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x)) <span class="sc">+</span></span>
-<span id="cb124-3"><a href="chapter-stima-funzione-aposteriori.html#cb124-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb124-4"><a href="chapter-stima-funzione-aposteriori.html#cb124-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb124-5"><a href="chapter-stima-funzione-aposteriori.html#cb124-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(theta),</span>
-<span id="cb124-6"><a href="chapter-stima-funzione-aposteriori.html#cb124-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Frequenza&quot;</span>, </span>
-<span id="cb124-7"><a href="chapter-stima-funzione-aposteriori.html#cb124-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Distribuzione a posteriori&quot;</span></span>
-<span id="cb124-8"><a href="chapter-stima-funzione-aposteriori.html#cb124-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb124-9"><a href="chapter-stima-funzione-aposteriori.html#cb124-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(chain[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burnIn)]))</span>
-<span id="cb124-10"><a href="chapter-stima-funzione-aposteriori.html#cb124-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-11"><a href="chapter-stima-funzione-aposteriori.html#cb124-11" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(chain[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burnIn)]), <span class="at">y=</span>chain[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burnIn)]) <span class="sc">%&gt;%</span> </span>
-<span id="cb124-12"><a href="chapter-stima-funzione-aposteriori.html#cb124-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
-<span id="cb124-13"><a href="chapter-stima-funzione-aposteriori.html#cb124-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb124-14"><a href="chapter-stima-funzione-aposteriori.html#cb124-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb124-15"><a href="chapter-stima-funzione-aposteriori.html#cb124-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Numero di passi&quot;</span>,</span>
-<span id="cb124-16"><a href="chapter-stima-funzione-aposteriori.html#cb124-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">expression</span>(theta), </span>
-<span id="cb124-17"><a href="chapter-stima-funzione-aposteriori.html#cb124-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Valori della catena&quot;</span></span>
-<span id="cb124-18"><a href="chapter-stima-funzione-aposteriori.html#cb124-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb124-19"><a href="chapter-stima-funzione-aposteriori.html#cb124-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(chain[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burnIn)]))</span>
-<span id="cb124-20"><a href="chapter-stima-funzione-aposteriori.html#cb124-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-21"><a href="chapter-stima-funzione-aposteriori.html#cb124-21" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span>
-<span id="cb124-22"><a href="chapter-stima-funzione-aposteriori.html#cb124-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span></code></pre></div>
-<p><img src="Psicometria_files/figure-html/unnamed-chunk-138-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="chapter-stima-funzione-aposteriori.html#cb148-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>chain[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burnIn)]) <span class="sc">%&gt;%</span> </span>
+<span id="cb148-2"><a href="chapter-stima-funzione-aposteriori.html#cb148-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb148-3"><a href="chapter-stima-funzione-aposteriori.html#cb148-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb148-4"><a href="chapter-stima-funzione-aposteriori.html#cb148-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb148-5"><a href="chapter-stima-funzione-aposteriori.html#cb148-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(theta),</span>
+<span id="cb148-6"><a href="chapter-stima-funzione-aposteriori.html#cb148-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Frequenza&quot;</span>, </span>
+<span id="cb148-7"><a href="chapter-stima-funzione-aposteriori.html#cb148-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Distribuzione a posteriori&quot;</span></span>
+<span id="cb148-8"><a href="chapter-stima-funzione-aposteriori.html#cb148-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb148-9"><a href="chapter-stima-funzione-aposteriori.html#cb148-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(chain[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burnIn)]))</span>
+<span id="cb148-10"><a href="chapter-stima-funzione-aposteriori.html#cb148-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-11"><a href="chapter-stima-funzione-aposteriori.html#cb148-11" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(chain[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burnIn)]), <span class="at">y=</span>chain[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burnIn)]) <span class="sc">%&gt;%</span> </span>
+<span id="cb148-12"><a href="chapter-stima-funzione-aposteriori.html#cb148-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb148-13"><a href="chapter-stima-funzione-aposteriori.html#cb148-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb148-14"><a href="chapter-stima-funzione-aposteriori.html#cb148-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb148-15"><a href="chapter-stima-funzione-aposteriori.html#cb148-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Numero di passi&quot;</span>,</span>
+<span id="cb148-16"><a href="chapter-stima-funzione-aposteriori.html#cb148-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">expression</span>(theta), </span>
+<span id="cb148-17"><a href="chapter-stima-funzione-aposteriori.html#cb148-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Valori della catena&quot;</span></span>
+<span id="cb148-18"><a href="chapter-stima-funzione-aposteriori.html#cb148-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb148-19"><a href="chapter-stima-funzione-aposteriori.html#cb148-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(chain[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burnIn)]))</span>
+<span id="cb148-20"><a href="chapter-stima-funzione-aposteriori.html#cb148-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-21"><a href="chapter-stima-funzione-aposteriori.html#cb148-21" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span>
+<span id="cb148-22"><a href="chapter-stima-funzione-aposteriori.html#cb148-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span></code></pre></div>
+<p><img src="Psicometria_files/figure-html/unnamed-chunk-152-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>A questo punto è molto facile trovare il massimo a posteriori per il parametro <span class="math inline">\(\theta\)</span>:</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="chapter-stima-funzione-aposteriori.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(chain[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burnIn)])</span>
-<span id="cb125-2"><a href="chapter-stima-funzione-aposteriori.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5921799</span></span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="chapter-stima-funzione-aposteriori.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(chain[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burnIn)])</span>
+<span id="cb149-2"><a href="chapter-stima-funzione-aposteriori.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5921799</span></span></code></pre></div>
 <!-- Nella funzione precedente, le prime due righe definiscono un vettore, chiamato `chain`, dove vengono salvati i valori del parametro che sono campionati dalla distribuzione a posteriori, e inizializzano tale vettore utilizzando il valore iniziale che verrà prescelto in seguito. Il ciclo `for ()` viene utilizzato per specificare i valori della passeggiata aleatoria (*random walk*) che definisce l'insieme di punti che vengono campionati dalla distribuzione a posteriori. L'algoritmo procede nel modo seguente. -->
 <!-- - Si inizia scegliendo un valore a caso del parametro. -->
 <!-- - Si sceglie un nuovo valore del parametro, simile a quelo precedente, sulla base di una distribuzione di probabilità chiamata ``distribuzione proposta'' -- nell'algoritmo, la distribuzione proposta è una gaussiana centrata sul valore corrente della catena.  -->
@@ -1104,7 +1127,7 @@ sul loro computer.<a href="chapter-stima-funzione-aposteriori.html#fnref6" class
           </div>
         </div>
       </div>
-<a href="chapter-distr-congiunta.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-distrcampmean.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="chapter-reglin.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -1136,7 +1159,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ccaudek/bookdown_psicometria/edit/master/23_grid_approx.Rmd",
+"link": "https://github.com/ccaudek/bookdown_psicometria/edit/master/35_grid_approx.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -1144,7 +1167,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ccaudek/bookdown_psicometria/blob/master/23_grid_approx.Rmd",
+"link": "https://github.com/ccaudek/bookdown_psicometria/blob/master/35_grid_approx.Rmd",
 "text": null
 },
 "download": null,
