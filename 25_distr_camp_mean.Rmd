@@ -149,7 +149,9 @@ $\frac{1}{n}\sum_{i=1}^nX_i$, per $n$ crescente tende o converge al
 valore atteso teorico $\mu$. La Legge dei grandi numeri è uno degli
 strumenti più importanti della statistica.
 
+```{block2, leg-grandi-num, type = 'rmdnote'}
 Si noti che la Legge dei grandi numeri non può dirci se lo strumento o l'esperimento considerati stiano producendo dei dati utili o dei dati che è sensato riassumere tramite la media. Ad esempio, se il dispositivo di misurazione è difettoso, la media di molte misurazioni sarà una stima molto accurata della cosa sbagliata! Questo è un esempio di errore sistematico, o errore di campionamento, che sono qualcosa di molto diverso dal fenomeno di fluttuazione casuale che viene descritto dalla Legge dei grandi numeri.
+```
 
 ## Distribuzione campionaria
 
@@ -293,16 +295,13 @@ osservata in un singolo campione) varia di molto tra i diversi campioni
 che possono essere estratti dalla popolazione. Di conseguenza, se il
 nostro obiettivo è quello di stimare la media della popolazione, allora
 non dobbiamo fidarci troppo del risultato ottenuto *per caso* da un
-singolo campione di numerosità $n$ = 5.
+singolo campione di numerosità $n$ = 5. Nella discussione seguente mostreremo come sia possibile utilizzare la stima della distribuzione campionaria per descrivere le proprietà statistiche delle stime (ovvero, il grado di incertezza che è associato alle stime che otteniamo).
 
-Si noti che la distribuzione campionaria, in generale, non è nota, poiché
-dipende dalle caratteristiche della popolazione, non solo dai dati
-osservati nel campione. In pratica, quindi, non possiamo conoscere la distribuzione
-campionaria di una statistica; possiamo solo stimarla. Nella
-discussione seguente mostreremo come sia possibile utilizzare la stima
-della distribuzione campionaria per descrivere le proprietà statistiche
-delle stime (ovvero, il grado di incertezza che è associato alle stime
-che otteniamo).
+```{block2, type = "rmdtip"}
+**La distribuzione campionaria può essere solo stimata**
+  
+In generale, la distribuzione campionaria non è nota, poiché dipende dalle caratteristiche della popolazione e non solo dai dati osservati nel campione. In pratica, quindi, non possiamo mai conoscere le caratteristiche esatte della distribuzione campionaria di una statistica; tali caratteristiche possono solo essere stimate. 
+```
 
 ## Distribuzione campionaria della media
 
@@ -679,4 +678,5 @@ $$
 \mathbb{E}(\bar{X}) = \mu, \quad var(\bar{X}) = \frac{\sigma^2}{n}.
 $$
 Se le $X_i$ seguono la distribuzione normale, ne segue che $\bar{X} \sim \mathcal{N}(\mu, \sigma/\sqrt{n})$, in quanto qualunque combinazione lineare di variabili aleatorie Normali è ancora una variabile aleatoria Normale. Invece, se le $X_i$ non seguono la distribuzione normale, il Teorema del limite centrale ci consente comunque di dire che $\bar{X}$ tende a $\mathcal{N}(\mu, \sigma/\sqrt{n})$ al crescere di $n$. I risultati precedenti sono estremamente importanti perché specificano completamente la distribuzione della media campionaria e vengono utilizzati dall'approccio frequentista per l'inferenza sulla media di una popolazione.
+
 

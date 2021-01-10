@@ -40,14 +40,14 @@ rmd_files: [
   "12_terminologia.Rmd",
   "13_misurazione.Rmd",
   # ------------------------- statistica descrittiva
-  # "14_stat_descrittive.Rmd",
+   "14_stat_descrittive.Rmd",
   # ------------------------- teoria della probabilità
   "15_prob_intro.Rmd",
   "16_prob_condiz.Rmd",
   "17_theo_bayes.Rmd",
   "18_prob_congiunta.Rmd",
   # ------------------------- approccio frequentista
-  25_distr_camp_mean.Rmd,
+  "25_distr_camp_mean.Rmd",
   # ------------------------- approccio bayesiano
   "35_grid_approx.Rmd",
   "40_reglin.Rmd",

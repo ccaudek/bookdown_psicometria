@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capitolo 9 Che cos’è la probabilità? | PSICOMETRIA</title>
+  <title>Capitolo 10 Che cos’è la probabilità? | PSICOMETRIA</title>
   <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21.4 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capitolo 9 Che cos’è la probabilità? | PSICOMETRIA" />
+  <meta property="og:title" content="Capitolo 10 Che cos’è la probabilità? | PSICOMETRIA" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ccaudek/bookdown_psicometria" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capitolo 9 Che cos’è la probabilità? | PSICOMETRIA" />
+  <meta name="twitter:title" content="Capitolo 10 Che cos’è la probabilità? | PSICOMETRIA" />
   <meta name="twitter:site" content="@ccaudek" />
   <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   
@@ -24,16 +24,16 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2021-01-03" />
+<meta name="date" content="2021-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon" />
-<link rel="prev" href="chapter-misurazione.html"/>
+<link rel="prev" href="chapter-descriptive-stats.html"/>
 <link rel="next" href="chapter-prob-cond.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -251,148 +251,200 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
+<li class="part"><span><b>Descrizione</b></span></li>
+<li class="chapter" data-level="9" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html"><i class="fa fa-check"></i><b>9</b> Statistica descrittiva</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#perché-riassumere-i-dati"><i class="fa fa-check"></i><b>9.1</b> Perché riassumere i dati?</a></li>
+<li class="chapter" data-level="9.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#sec:distr_freq"><i class="fa fa-check"></i><b>9.2</b> Distribuzioni di frequenze</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r"><i class="fa fa-check"></i><b>9.2.1</b> Esercizio con R</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#istogramma"><i class="fa fa-check"></i><b>9.3</b> Istogramma</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r-1"><i class="fa fa-check"></i><b>9.3.1</b> Esercizio con R</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#funzione-di-densità-empirica"><i class="fa fa-check"></i><b>9.4</b> Funzione di densità empirica</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r-2"><i class="fa fa-check"></i><b>9.4.1</b> Esercizio con R</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#forma-di-una-distribuzione"><i class="fa fa-check"></i><b>9.5</b> Forma di una distribuzione</a></li>
+<li class="chapter" data-level="9.6" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-posizione"><i class="fa fa-check"></i><b>9.6</b> Indici di posizione</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#quantili"><i class="fa fa-check"></i><b>9.6.1</b> Quantili</a></li>
+<li class="chapter" data-level="9.6.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#box-plot"><i class="fa fa-check"></i><b>9.6.2</b> Box-plot</a></li>
+<li class="chapter" data-level="9.6.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#leccellenza-grafica"><i class="fa fa-check"></i><b>9.6.3</b> L’eccellenza grafica</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-tendenza-centrale"><i class="fa fa-check"></i><b>9.7</b> Indici di tendenza centrale</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#media"><i class="fa fa-check"></i><b>9.7.1</b> Media</a></li>
+<li class="chapter" data-level="9.7.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#media-spuntata"><i class="fa fa-check"></i><b>9.7.2</b> Media spuntata</a></li>
+<li class="chapter" data-level="9.7.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#moda-e-mediana"><i class="fa fa-check"></i><b>9.7.3</b> Moda e mediana</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-dispersione"><i class="fa fa-check"></i><b>9.8</b> Indici di dispersione</a>
+<ul>
+<li class="chapter" data-level="9.8.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-basati-sullordinamento-dei-dati"><i class="fa fa-check"></i><b>9.8.1</b> Indici basati sull’ordinamento dei dati</a></li>
+<li class="chapter" data-level="9.8.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#scostamento-medio-semplice-dalla-media"><i class="fa fa-check"></i><b>9.8.2</b> Scostamento medio semplice dalla media</a></li>
+<li class="chapter" data-level="9.8.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#varianza"><i class="fa fa-check"></i><b>9.8.3</b> Varianza</a></li>
+<li class="chapter" data-level="9.8.4" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#deviazione-standard"><i class="fa fa-check"></i><b>9.8.4</b> Deviazione standard</a></li>
+<li class="chapter" data-level="9.8.5" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-variabilità-relativi"><i class="fa fa-check"></i><b>9.8.5</b> Indici di variabilità relativi</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#le-relazioni-tra-variabili"><i class="fa fa-check"></i><b>9.9</b> Le relazioni tra variabili</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#diagramma-a-dispersione"><i class="fa fa-check"></i><b>9.9.1</b> Diagramma a dispersione</a></li>
+<li class="chapter" data-level="9.9.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#covarianza"><i class="fa fa-check"></i><b>9.9.2</b> Covarianza</a></li>
+<li class="chapter" data-level="9.9.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione"><i class="fa fa-check"></i><b>9.9.3</b> Correlazione</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-e-causazione"><i class="fa fa-check"></i><b>9.10</b> Correlazione e causazione</a>
+<ul>
+<li class="chapter" data-level="9.10.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#usi-della-correlazione"><i class="fa fa-check"></i><b>9.10.1</b> Usi della correlazione</a></li>
+<li class="chapter" data-level="9.10.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-di-spearman"><i class="fa fa-check"></i><b>9.10.2</b> Correlazione di Spearman</a></li>
+<li class="chapter" data-level="9.10.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-nulla"><i class="fa fa-check"></i><b>9.10.3</b> Correlazione nulla</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+<li class="chapter" data-level="9.11" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizi1"><i class="fa fa-check"></i><b>9.11</b> Esercizi</a></li>
+</ul></li>
 <li class="part"><span><b>Elementi di teoria della probabilità</b></span></li>
-<li class="chapter" data-level="9" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html"><i class="fa fa-check"></i><b>9</b> Che cos’è la probabilità?</a>
+<li class="chapter" data-level="10" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html"><i class="fa fa-check"></i><b>10</b> Che cos’è la probabilità?</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-naturale"><i class="fa fa-check"></i><b>9.1</b> Probabilità nel linguaggio naturale</a></li>
-<li class="chapter" data-level="9.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-scientifico"><i class="fa fa-check"></i><b>9.2</b> Probabilità nel linguaggio scientifico</a></li>
-<li class="chapter" data-level="9.3" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#terminologia"><i class="fa fa-check"></i><b>9.3</b> Terminologia</a></li>
-<li class="chapter" data-level="9.4" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#le-diverse-definizioni-della-probabilità"><i class="fa fa-check"></i><b>9.4</b> Le diverse definizioni della probabilità</a>
+<li class="chapter" data-level="10.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-naturale"><i class="fa fa-check"></i><b>10.1</b> Probabilità nel linguaggio naturale</a></li>
+<li class="chapter" data-level="10.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-scientifico"><i class="fa fa-check"></i><b>10.2</b> Probabilità nel linguaggio scientifico</a></li>
+<li class="chapter" data-level="10.3" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#terminologia"><i class="fa fa-check"></i><b>10.3</b> Terminologia</a></li>
+<li class="chapter" data-level="10.4" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#le-diverse-definizioni-della-probabilità"><i class="fa fa-check"></i><b>10.4</b> Le diverse definizioni della probabilità</a>
 <ul>
-<li class="chapter" data-level="9.4.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#sec:def_ing_prob"><i class="fa fa-check"></i><b>9.4.1</b> Una definizione “ingenua” della probabilità</a></li>
-<li class="chapter" data-level="9.4.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#una-definizione-non-ingenua-della-probabilità"><i class="fa fa-check"></i><b>9.4.2</b> Una definizione “non ingenua” della probabilità</a></li>
+<li class="chapter" data-level="10.4.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#sec:def_ing_prob"><i class="fa fa-check"></i><b>10.4.1</b> Una definizione “ingenua” della probabilità</a></li>
+<li class="chapter" data-level="10.4.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#una-definizione-non-ingenua-della-probabilità"><i class="fa fa-check"></i><b>10.4.2</b> Una definizione “non ingenua” della probabilità</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#assegnare-le-probabilità-agli-eventi"><i class="fa fa-check"></i><b>9.5</b> Assegnare le probabilità agli eventi</a>
+<li class="chapter" data-level="10.5" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#assegnare-le-probabilità-agli-eventi"><i class="fa fa-check"></i><b>10.5</b> Assegnare le probabilità agli eventi</a>
 <ul>
-<li class="chapter" data-level="9.5.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-frequentista"><i class="fa fa-check"></i><b>9.5.1</b> Approccio frequentista</a></li>
-<li class="chapter" data-level="9.5.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-bayesiano"><i class="fa fa-check"></i><b>9.5.2</b> Approccio Bayesiano</a></li>
+<li class="chapter" data-level="10.5.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-frequentista"><i class="fa fa-check"></i><b>10.5.1</b> Approccio frequentista</a></li>
+<li class="chapter" data-level="10.5.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-bayesiano"><i class="fa fa-check"></i><b>10.5.2</b> Approccio Bayesiano</a></li>
 </ul></li>
-<li class="chapter" data-level="9.6" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#proprietà-elementari-della-probabilità"><i class="fa fa-check"></i><b>9.6</b> Proprietà elementari della probabilità</a></li>
-<li class="chapter" data-level="9.7" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#variabili-aleatorie"><i class="fa fa-check"></i><b>9.7</b> Variabili aleatorie</a>
+<li class="chapter" data-level="10.6" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#proprietà-elementari-della-probabilità"><i class="fa fa-check"></i><b>10.6</b> Proprietà elementari della probabilità</a></li>
+<li class="chapter" data-level="10.7" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#variabili-aleatorie"><i class="fa fa-check"></i><b>10.7</b> Variabili aleatorie</a>
 <ul>
-<li class="chapter" data-level="9.7.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#a-cosa-servono-le-variabili-aleatorie"><i class="fa fa-check"></i><b>9.7.1</b> A cosa servono le variabili aleatorie?</a></li>
-<li class="chapter" data-level="9.7.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#funzione-di-massa-di-probabilità"><i class="fa fa-check"></i><b>9.7.2</b> Funzione di massa di probabilità</a></li>
+<li class="chapter" data-level="10.7.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#a-cosa-servono-le-variabili-aleatorie"><i class="fa fa-check"></i><b>10.7.1</b> A cosa servono le variabili aleatorie?</a></li>
+<li class="chapter" data-level="10.7.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#funzione-di-massa-di-probabilità"><i class="fa fa-check"></i><b>10.7.2</b> Funzione di massa di probabilità</a></li>
 </ul></li>
-<li class="chapter" data-level="9.8" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#notazione"><i class="fa fa-check"></i><b>9.8</b> Notazione</a></li>
+<li class="chapter" data-level="10.8" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#notazione"><i class="fa fa-check"></i><b>10.8</b> Notazione</a></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html"><i class="fa fa-check"></i><b>10</b> Probabilità condizionata</a>
+<li class="chapter" data-level="11" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html"><i class="fa fa-check"></i><b>11</b> Probabilità condizionata</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#sec:prob_cond"><i class="fa fa-check"></i><b>10.1</b> Probabilità condizionata su altri eventi</a>
+<li class="chapter" data-level="11.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#sec:prob_cond"><i class="fa fa-check"></i><b>11.1</b> Probabilità condizionata su altri eventi</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#la-fallacia-del-pubblico-ministero"><i class="fa fa-check"></i><b>10.1.1</b> La fallacia del pubblico ministero</a></li>
+<li class="chapter" data-level="11.1.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#la-fallacia-del-pubblico-ministero"><i class="fa fa-check"></i><b>11.1.1</b> La fallacia del pubblico ministero</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#legge-della-probabilità-composta"><i class="fa fa-check"></i><b>10.2</b> Legge della probabilità composta</a></li>
-<li class="chapter" data-level="10.3" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#lindipendendenza-stocastica"><i class="fa fa-check"></i><b>10.3</b> L’indipendendenza stocastica</a></li>
+<li class="chapter" data-level="11.2" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#legge-della-probabilità-composta"><i class="fa fa-check"></i><b>11.2</b> Legge della probabilità composta</a></li>
+<li class="chapter" data-level="11.3" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#lindipendendenza-stocastica"><i class="fa fa-check"></i><b>11.3</b> L’indipendendenza stocastica</a></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html"><i class="fa fa-check"></i><b>11</b> Il teorema di Bayes</a>
+<li class="chapter" data-level="12" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html"><i class="fa fa-check"></i><b>12</b> Il teorema di Bayes</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:tot_prob_theorem"><i class="fa fa-check"></i><b>11.1</b> Il teorema della probabilità totale</a></li>
-<li class="chapter" data-level="11.2" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:bayes_theorem"><i class="fa fa-check"></i><b>11.2</b> Il teorema della probabilità delle cause</a>
+<li class="chapter" data-level="12.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:tot_prob_theorem"><i class="fa fa-check"></i><b>12.1</b> Il teorema della probabilità totale</a></li>
+<li class="chapter" data-level="12.2" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:bayes_theorem"><i class="fa fa-check"></i><b>12.2</b> Il teorema della probabilità delle cause</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#aggiornamento-bayesiano"><i class="fa fa-check"></i><b>11.2.1</b> Aggiornamento Bayesiano</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html"><i class="fa fa-check"></i><b>12</b> Probabilità congiunta</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzione-di-probabilità-congiunta"><i class="fa fa-check"></i><b>12.1</b> Funzione di probabilità congiunta</a>
-<ul>
-<li class="chapter" data-level="12.1.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#proprietà"><i class="fa fa-check"></i><b>12.1.1</b> Proprietà</a></li>
-<li class="chapter" data-level="12.1.2" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#eventi"><i class="fa fa-check"></i><b>12.1.2</b> Eventi</a></li>
-<li class="chapter" data-level="12.1.3" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzioni-di-probabilità-marginali"><i class="fa fa-check"></i><b>12.1.3</b> Funzioni di probabilità marginali</a></li>
-<li class="chapter" data-level="12.1.4" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#indipendenza-stocastica"><i class="fa fa-check"></i><b>12.1.4</b> Indipendenza stocastica</a></li>
+<li class="chapter" data-level="12.2.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#aggiornamento-bayesiano"><i class="fa fa-check"></i><b>12.2.1</b> Aggiornamento Bayesiano</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html"><i class="fa fa-check"></i><b>13</b> Distribuzione campionaria della media dei campioni</a>
+<li class="chapter" data-level="13" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html"><i class="fa fa-check"></i><b>13</b> Probabilità congiunta</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#sec:pars_and_sample_stats"><i class="fa fa-check"></i><b>13.1</b> Parametri e statistiche</a></li>
-<li class="chapter" data-level="13.2" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#la-legge-dei-grandi-numeri"><i class="fa fa-check"></i><b>13.2</b> La legge dei grandi numeri</a></li>
-<li class="chapter" data-level="13.3" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#distribuzione-campionaria"><i class="fa fa-check"></i><b>13.3</b> Distribuzione campionaria</a>
+<li class="chapter" data-level="13.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzione-di-probabilità-congiunta"><i class="fa fa-check"></i><b>13.1</b> Funzione di probabilità congiunta</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#simulazione"><i class="fa fa-check"></i><b>13.3.1</b> Simulazione</a></li>
-</ul></li>
-<li class="chapter" data-level="13.4" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#distribuzione-campionaria-della-media"><i class="fa fa-check"></i><b>13.4</b> Distribuzione campionaria della media</a>
-<ul>
-<li class="chapter" data-level="13.4.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#valore-atteso-della-media-campionaria"><i class="fa fa-check"></i><b>13.4.1</b> Valore atteso della media campionaria</a></li>
-<li class="chapter" data-level="13.4.2" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#varianza-della-media-campionaria"><i class="fa fa-check"></i><b>13.4.2</b> Varianza della media campionaria</a></li>
-<li class="chapter" data-level="13.4.3" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#errore-standard"><i class="fa fa-check"></i><b>13.4.3</b> Errore standard</a></li>
-<li class="chapter" data-level="13.4.4" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#distribuzioni-delle-statistiche-campionarie"><i class="fa fa-check"></i><b>13.4.4</b> Distribuzioni delle statistiche campionarie</a></li>
-</ul></li>
-<li class="chapter" data-level="13.5" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#sec:tlc"><i class="fa fa-check"></i><b>13.5</b> Teorema del limite centrale</a></li>
-<li class="chapter" data-level="13.6" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#intervalli-di-confidenza"><i class="fa fa-check"></i><b>13.6</b> Intervalli di confidenza</a>
-<ul>
-<li class="chapter" data-level="13.6.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#parametri-di-un-modello-statistico"><i class="fa fa-check"></i><b>13.6.1</b> Parametri di un modello statistico</a></li>
-<li class="chapter" data-level="13.6.2" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#lincertezza-della-stima"><i class="fa fa-check"></i><b>13.6.2</b> L’incertezza della stima</a></li>
+<li class="chapter" data-level="13.1.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#proprietà"><i class="fa fa-check"></i><b>13.1.1</b> Proprietà</a></li>
+<li class="chapter" data-level="13.1.2" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#eventi"><i class="fa fa-check"></i><b>13.1.2</b> Eventi</a></li>
+<li class="chapter" data-level="13.1.3" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzioni-di-probabilità-marginali"><i class="fa fa-check"></i><b>13.1.3</b> Funzioni di probabilità marginali</a></li>
+<li class="chapter" data-level="13.1.4" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#indipendenza-stocastica"><i class="fa fa-check"></i><b>13.1.4</b> Indipendenza stocastica</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html"><i class="fa fa-check"></i><b>14</b> Stima della funzione a posteriori</a>
+<li class="chapter" data-level="14" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html"><i class="fa fa-check"></i><b>14</b> Distribuzione campionaria della media dei campioni</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:met_numerici_convenzionali"><i class="fa fa-check"></i><b>14.1</b> Metodi numerici convenzionali</a>
+<li class="chapter" data-level="14.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#sec:pars_and_sample_stats"><i class="fa fa-check"></i><b>14.1</b> Parametri e statistiche</a></li>
+<li class="chapter" data-level="14.2" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#la-legge-dei-grandi-numeri"><i class="fa fa-check"></i><b>14.2</b> La legge dei grandi numeri</a></li>
+<li class="chapter" data-level="14.3" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#distribuzione-campionaria"><i class="fa fa-check"></i><b>14.3</b> Distribuzione campionaria</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:appross_numerica"><i class="fa fa-check"></i><b>14.1.1</b> La procedura dell’approssimazione numerica</a></li>
-<li class="chapter" data-level="14.1.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:es_pratico_zetsche"><i class="fa fa-check"></i><b>14.1.2</b> Un esempio pratico</a></li>
-<li class="chapter" data-level="14.1.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:aspett_future_beta2_10"><i class="fa fa-check"></i><b>14.1.3</b> Un esempio pratico (versione 2)</a></li>
-<li class="chapter" data-level="14.1.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sommario-della-funzione-a-posteriori"><i class="fa fa-check"></i><b>14.1.4</b> Sommario della funzione a posteriori</a></li>
+<li class="chapter" data-level="14.3.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#simulazione"><i class="fa fa-check"></i><b>14.3.1</b> Simulazione</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#approssimazione-quadratica"><i class="fa fa-check"></i><b>14.2</b> Approssimazione quadratica</a></li>
-<li class="chapter" data-level="14.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:integr_MC"><i class="fa fa-check"></i><b>14.3</b> Integrazione con metodo Monte Carlo</a>
+<li class="chapter" data-level="14.4" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#distribuzione-campionaria-della-media"><i class="fa fa-check"></i><b>14.4</b> Distribuzione campionaria della media</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:legge_forte_grandi_numeri"><i class="fa fa-check"></i><b>14.3.1</b> Legge forte dei grandi numeri</a></li>
+<li class="chapter" data-level="14.4.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#valore-atteso-della-media-campionaria"><i class="fa fa-check"></i><b>14.4.1</b> Valore atteso della media campionaria</a></li>
+<li class="chapter" data-level="14.4.2" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#varianza-della-media-campionaria"><i class="fa fa-check"></i><b>14.4.2</b> Varianza della media campionaria</a></li>
+<li class="chapter" data-level="14.4.3" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#errore-standard"><i class="fa fa-check"></i><b>14.4.3</b> Errore standard</a></li>
+<li class="chapter" data-level="14.4.4" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#distribuzioni-delle-statistiche-campionarie"><i class="fa fa-check"></i><b>14.4.4</b> Distribuzioni delle statistiche campionarie</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:mmmc"><i class="fa fa-check"></i><b>14.4</b> Metodi MC basati su Catena di Markov</a>
+<li class="chapter" data-level="14.5" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#sec:tlc"><i class="fa fa-check"></i><b>14.5</b> Teorema del limite centrale</a></li>
+<li class="chapter" data-level="14.6" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#intervalli-di-confidenza"><i class="fa fa-check"></i><b>14.6</b> Intervalli di confidenza</a>
 <ul>
-<li class="chapter" data-level="14.4.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:turista_viagg"><i class="fa fa-check"></i><b>14.4.1</b> Il problema del turista viaggiatore</a></li>
-<li class="chapter" data-level="14.4.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#lalgoritmo-di-metropolis"><i class="fa fa-check"></i><b>14.4.2</b> L’algoritmo di Metropolis</a></li>
-<li class="chapter" data-level="14.4.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:metropolis_one_mean"><i class="fa fa-check"></i><b>14.4.3</b> Una applicazione concreta</a></li>
+<li class="chapter" data-level="14.6.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#parametri-di-un-modello-statistico"><i class="fa fa-check"></i><b>14.6.1</b> Parametri di un modello statistico</a></li>
+<li class="chapter" data-level="14.6.2" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#lincertezza-della-stima"><i class="fa fa-check"></i><b>14.6.2</b> L’incertezza della stima</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html"><i class="fa fa-check"></i><b>15</b> Stima della funzione a posteriori</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:met_numerici_convenzionali"><i class="fa fa-check"></i><b>15.1</b> Metodi numerici convenzionali</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:appross_numerica"><i class="fa fa-check"></i><b>15.1.1</b> La procedura dell’approssimazione numerica</a></li>
+<li class="chapter" data-level="15.1.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:es_pratico_zetsche"><i class="fa fa-check"></i><b>15.1.2</b> Un esempio pratico</a></li>
+<li class="chapter" data-level="15.1.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:aspett_future_beta2_10"><i class="fa fa-check"></i><b>15.1.3</b> Un esempio pratico (versione 2)</a></li>
+<li class="chapter" data-level="15.1.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sommario-della-funzione-a-posteriori"><i class="fa fa-check"></i><b>15.1.4</b> Sommario della funzione a posteriori</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#approssimazione-quadratica"><i class="fa fa-check"></i><b>15.2</b> Approssimazione quadratica</a></li>
+<li class="chapter" data-level="15.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:integr_MC"><i class="fa fa-check"></i><b>15.3</b> Integrazione con metodo Monte Carlo</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:legge_forte_grandi_numeri"><i class="fa fa-check"></i><b>15.3.1</b> Legge forte dei grandi numeri</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:mmmc"><i class="fa fa-check"></i><b>15.4</b> Metodi MC basati su Catena di Markov</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:turista_viagg"><i class="fa fa-check"></i><b>15.4.1</b> Il problema del turista viaggiatore</a></li>
+<li class="chapter" data-level="15.4.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#lalgoritmo-di-metropolis"><i class="fa fa-check"></i><b>15.4.2</b> L’algoritmo di Metropolis</a></li>
+<li class="chapter" data-level="15.4.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:metropolis_one_mean"><i class="fa fa-check"></i><b>15.4.3</b> Una applicazione concreta</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:pregi_inferenza_bayes"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="chapter-reglin.html"><a href="chapter-reglin.html"><i class="fa fa-check"></i><b>15</b> Regressione lineare semplice</a>
+<li class="chapter" data-level="16" data-path="chapter-reglin.html"><a href="chapter-reglin.html"><i class="fa fa-check"></i><b>16</b> Regressione lineare semplice</a>
 <ul>
 <li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
 <li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
-<li class="chapter" data-level="15.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#la-funzione-lineare"><i class="fa fa-check"></i><b>15.1</b> La funzione lineare</a></li>
-<li class="chapter" data-level="15.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#lerrore-di-misurazione"><i class="fa fa-check"></i><b>15.2</b> L’errore di misurazione</a></li>
-<li class="chapter" data-level="15.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#scopi-della-regressione-lineare"><i class="fa fa-check"></i><b>15.3</b> Scopi della regressione lineare</a></li>
-<li class="chapter" data-level="15.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#quantificare-lassociazione-fra-due-caratteri-quantitativi"><i class="fa fa-check"></i><b>15.4</b> Quantificare l’associazione fra due caratteri quantitativi</a></li>
-<li class="chapter" data-level="15.5" data-path="chapter-reglin.html"><a href="chapter-reglin.html#stime-dei-minimi-quadrati"><i class="fa fa-check"></i><b>15.5</b> Stime dei minimi quadrati</a>
+<li class="chapter" data-level="16.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#la-funzione-lineare"><i class="fa fa-check"></i><b>16.1</b> La funzione lineare</a></li>
+<li class="chapter" data-level="16.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#lerrore-di-misurazione"><i class="fa fa-check"></i><b>16.2</b> L’errore di misurazione</a></li>
+<li class="chapter" data-level="16.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#scopi-della-regressione-lineare"><i class="fa fa-check"></i><b>16.3</b> Scopi della regressione lineare</a></li>
+<li class="chapter" data-level="16.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#quantificare-lassociazione-fra-due-caratteri-quantitativi"><i class="fa fa-check"></i><b>16.4</b> Quantificare l’associazione fra due caratteri quantitativi</a></li>
+<li class="chapter" data-level="16.5" data-path="chapter-reglin.html"><a href="chapter-reglin.html#stime-dei-minimi-quadrati"><i class="fa fa-check"></i><b>16.5</b> Stime dei minimi quadrati</a>
 <ul>
-<li class="chapter" data-level="15.5.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#monotwinsiq"><i class="fa fa-check"></i><b>15.5.1</b> Un esempio concreto</a></li>
-<li class="chapter" data-level="15.5.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#sec:beta_r"><i class="fa fa-check"></i><b>15.5.2</b> Coefficiente angolare e correlazione di Pearson</a></li>
-<li class="chapter" data-level="15.5.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#regressione-verso-la-media"><i class="fa fa-check"></i><b>15.5.3</b> Regressione verso la media</a></li>
-<li class="chapter" data-level="15.5.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#punti-influenti-e-valori-anomali"><i class="fa fa-check"></i><b>15.5.4</b> Punti influenti e valori anomali</a></li>
+<li class="chapter" data-level="16.5.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#monotwinsiq"><i class="fa fa-check"></i><b>16.5.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="16.5.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#sec:beta_r"><i class="fa fa-check"></i><b>16.5.2</b> Coefficiente angolare e correlazione di Pearson</a></li>
+<li class="chapter" data-level="16.5.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#regressione-verso-la-media"><i class="fa fa-check"></i><b>16.5.3</b> Regressione verso la media</a></li>
+<li class="chapter" data-level="16.5.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#punti-influenti-e-valori-anomali"><i class="fa fa-check"></i><b>16.5.4</b> Punti influenti e valori anomali</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="chapter-reglin.html"><a href="chapter-reglin.html#bontà-delladattamento"><i class="fa fa-check"></i><b>15.6</b> Bontà dell’adattamento</a>
+<li class="chapter" data-level="16.6" data-path="chapter-reglin.html"><a href="chapter-reglin.html#bontà-delladattamento"><i class="fa fa-check"></i><b>16.6</b> Bontà dell’adattamento</a>
 <ul>
-<li class="chapter" data-level="15.6.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#errore-standard-della-stima"><i class="fa fa-check"></i><b>15.6.1</b> Errore standard della stima</a></li>
-<li class="chapter" data-level="15.6.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#indice-di-determinazione"><i class="fa fa-check"></i><b>15.6.2</b> Indice di determinazione</a></li>
+<li class="chapter" data-level="16.6.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#errore-standard-della-stima"><i class="fa fa-check"></i><b>16.6.1</b> Errore standard della stima</a></li>
+<li class="chapter" data-level="16.6.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#indice-di-determinazione"><i class="fa fa-check"></i><b>16.6.2</b> Indice di determinazione</a></li>
 </ul></li>
-<li class="chapter" data-level="15.7" data-path="chapter-reglin.html"><a href="chapter-reglin.html#inferenza-sullassociazione-tra-x-e-y-nella-popolazione"><i class="fa fa-check"></i><b>15.7</b> Inferenza sull’associazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> nella popolazione</a>
+<li class="chapter" data-level="16.7" data-path="chapter-reglin.html"><a href="chapter-reglin.html#inferenza-sullassociazione-tra-x-e-y-nella-popolazione"><i class="fa fa-check"></i><b>16.7</b> Inferenza sull’associazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> nella popolazione</a>
 <ul>
-<li class="chapter" data-level="15.7.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#modello-statistico-di-regressione-lineare"><i class="fa fa-check"></i><b>15.7.1</b> Modello statistico di regressione lineare</a></li>
-<li class="chapter" data-level="15.7.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#proprietà-degli-stimatori-dei-minimi-quadrati"><i class="fa fa-check"></i><b>15.7.2</b> Proprietà degli stimatori dei minimi quadrati</a></li>
-<li class="chapter" data-level="15.7.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#le-inferenze-sul-modello-di-regressione"><i class="fa fa-check"></i><b>15.7.3</b> Le inferenze sul modello di regressione</a></li>
+<li class="chapter" data-level="16.7.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#modello-statistico-di-regressione-lineare"><i class="fa fa-check"></i><b>16.7.1</b> Modello statistico di regressione lineare</a></li>
+<li class="chapter" data-level="16.7.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#proprietà-degli-stimatori-dei-minimi-quadrati"><i class="fa fa-check"></i><b>16.7.2</b> Proprietà degli stimatori dei minimi quadrati</a></li>
+<li class="chapter" data-level="16.7.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#le-inferenze-sul-modello-di-regressione"><i class="fa fa-check"></i><b>16.7.3</b> Le inferenze sul modello di regressione</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-reglin.html"><a href="chapter-reglin.html#considerazioni-conclusive"><i class="fa fa-check"></i>Considerazioni conclusive</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html"><i class="fa fa-check"></i><b>16</b> Il modello lineare</a>
+<li class="chapter" data-level="17" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html"><i class="fa fa-check"></i><b>17</b> Il modello lineare</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-binomiale"><i class="fa fa-check"></i><b>16.1</b> Modello Binomiale</a></li>
-<li class="chapter" data-level="16.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec:idrossi"><i class="fa fa-check"></i><b>16.2</b> Il presidente Trump e l’idrossiclorochina</a></li>
-<li class="chapter" data-level="16.3" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-normale"><i class="fa fa-check"></i><b>16.3</b> Modello Normale</a>
+<li class="chapter" data-level="17.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-binomiale"><i class="fa fa-check"></i><b>17.1</b> Modello Binomiale</a></li>
+<li class="chapter" data-level="17.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec:idrossi"><i class="fa fa-check"></i><b>17.2</b> Il presidente Trump e l’idrossiclorochina</a></li>
+<li class="chapter" data-level="17.3" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-normale"><i class="fa fa-check"></i><b>17.3</b> Modello Normale</a>
 <ul>
-<li class="chapter" data-level="16.3.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#il-modello-normale-con-quap"><i class="fa fa-check"></i><b>16.3.1</b> Il modello normale con <code>quap()</code></a></li>
+<li class="chapter" data-level="17.3.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#il-modello-normale-con-quap"><i class="fa fa-check"></i><b>17.3.1</b> Il modello normale con <code>quap()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="16.4" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_mod_lin"><i class="fa fa-check"></i><b>16.4</b> Il modello di regressione lineare</a>
+<li class="chapter" data-level="17.4" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_mod_lin"><i class="fa fa-check"></i><b>17.4</b> Il modello di regressione lineare</a>
 <ul>
-<li class="chapter" data-level="16.4.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>16.4.1</b> Variabile indipendente dicotomica</a></li>
-<li class="chapter" data-level="16.4.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>16.4.2</b> Un esempio pratico</a></li>
+<li class="chapter" data-level="17.4.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>17.4.1</b> Variabile indipendente dicotomica</a></li>
+<li class="chapter" data-level="17.4.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>17.4.2</b> Un esempio pratico</a></li>
 </ul></li>
-<li class="chapter" data-level="16.5" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>16.5</b> Una variabile indipendente continua</a></li>
+<li class="chapter" data-level="17.5" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>17.5</b> Una variabile indipendente continua</a></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html"><i class="fa fa-check"></i>Appendici</a>
@@ -437,8 +489,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chapter:prob_discreta" class="section level1" number="9">
-<h1><span class="header-section-number">Capitolo 9</span> Che cos’è la probabilità?</h1>
+<div id="chapter:prob_discreta" class="section level1" number="10">
+<h1><span class="header-section-number">Capitolo 10</span> Che cos’è la probabilità?</h1>
 <p>È normale fare delle congetture rispetto a ciò di cui non siamo sicuri.
 Ma perché facciamo questo? Molto spesso perché, anche se sappiamo che le
 nostre conoscenze sono incomplete, dobbiamo comunque prendere delle
@@ -481,8 +533,8 @@ comprensione per chiarire i concetti di base della teoria della
 probabilità è però necessario per mettersi nelle condizioni di capire le
 caratteristiche dell’inferenza statistica che verranno discusse in
 seguito.</p>
-<div id="probabilità-nel-linguaggio-naturale" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Probabilità nel linguaggio naturale</h2>
+<div id="probabilità-nel-linguaggio-naturale" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Probabilità nel linguaggio naturale</h2>
 <p>In un articolo pubblicato su Harward Business Review nel 2018,
 Mauboussin e Mauboussin ci ricordano come, nel marzo del 1951, l’<em>Office
 of National Estimates</em> della CIA pubblicò un documento che suggeriva che
@@ -521,8 +573,8 @@ procedere in modo diverso nel linguaggio scientifico. Vedremo in questo
 capitolo come sia possibile assegnare al termine “probabilità” un
 significato preciso.</p>
 </div>
-<div id="probabilità-nel-linguaggio-scientifico" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Probabilità nel linguaggio scientifico</h2>
+<div id="probabilità-nel-linguaggio-scientifico" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> Probabilità nel linguaggio scientifico</h2>
 <p>La teoria della probabilità nasce nel 1654. Fu infatti in questa data
 che Antoine Gombaud Cavalier De Méré, un nobile francese, nonché
 accanito giocatore d’azzardo scrisse una lettera al suo amico Pascal per
@@ -558,70 +610,70 @@ diverso ogni volta che si ripete una certa operazione, in modo tale da
 rappresentare il grado di casualità che si osserva quando si lancia di
 un dado. Per ora ci limitiamo ad esaminare i risultati che vengono
 prodotti in questo modo e che sono illustrati nella
-figura <a href="chapter-prob-discreta.html#fig:demere">9.1</a>.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="chapter-prob-discreta.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Game A: Throw a fair die at most four times, and win if you get a six.</span></span>
-<span id="cb93-2"><a href="chapter-prob-discreta.html#cb93-2" aria-hidden="true" tabindex="-1"></a>experiment_a <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
-<span id="cb93-3"><a href="chapter-prob-discreta.html#cb93-3" aria-hidden="true" tabindex="-1"></a>  rolls <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb93-4"><a href="chapter-prob-discreta.html#cb93-4" aria-hidden="true" tabindex="-1"></a>  condition <span class="ot">&lt;-</span> <span class="fu">sum</span>(rolls <span class="sc">==</span> <span class="dv">6</span>) <span class="sc">&gt;</span> <span class="dv">0</span></span>
-<span id="cb93-5"><a href="chapter-prob-discreta.html#cb93-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(condition)</span>
-<span id="cb93-6"><a href="chapter-prob-discreta.html#cb93-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb93-7"><a href="chapter-prob-discreta.html#cb93-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-8"><a href="chapter-prob-discreta.html#cb93-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Game B: Throw two fair dice at most twenty-four times, and win if you get a double-six.</span></span>
-<span id="cb93-9"><a href="chapter-prob-discreta.html#cb93-9" aria-hidden="true" tabindex="-1"></a>experiment_b <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
-<span id="cb93-10"><a href="chapter-prob-discreta.html#cb93-10" aria-hidden="true" tabindex="-1"></a>  first.die <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">24</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb93-11"><a href="chapter-prob-discreta.html#cb93-11" aria-hidden="true" tabindex="-1"></a>  second.die <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">24</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb93-12"><a href="chapter-prob-discreta.html#cb93-12" aria-hidden="true" tabindex="-1"></a>  condition <span class="ot">&lt;-</span> <span class="fu">sum</span>((first.die <span class="sc">==</span> second.die) <span class="sc">&amp;</span> (first.die <span class="sc">==</span> <span class="dv">6</span>)) <span class="sc">&gt;</span> <span class="dv">0</span></span>
-<span id="cb93-13"><a href="chapter-prob-discreta.html#cb93-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(condition)</span>
-<span id="cb93-14"><a href="chapter-prob-discreta.html#cb93-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb93-15"><a href="chapter-prob-discreta.html#cb93-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-16"><a href="chapter-prob-discreta.html#cb93-16" aria-hidden="true" tabindex="-1"></a><span class="co"># number of replications</span></span>
-<span id="cb93-17"><a href="chapter-prob-discreta.html#cb93-17" aria-hidden="true" tabindex="-1"></a>nrep <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
-<span id="cb93-18"><a href="chapter-prob-discreta.html#cb93-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Play game A nrep times. We get a vector of nrep elements. Eeach element of </span></span>
-<span id="cb93-19"><a href="chapter-prob-discreta.html#cb93-19" aria-hidden="true" tabindex="-1"></a><span class="co"># of the simsA vector is the outcome obtained by playing game A once: TRUE if</span></span>
-<span id="cb93-20"><a href="chapter-prob-discreta.html#cb93-20" aria-hidden="true" tabindex="-1"></a><span class="co"># the output is a win, FALSE if the output of the game is a loss. Remember than</span></span>
-<span id="cb93-21"><a href="chapter-prob-discreta.html#cb93-21" aria-hidden="true" tabindex="-1"></a><span class="co"># TRUE = 1 and FALSE = 0.</span></span>
-<span id="cb93-22"><a href="chapter-prob-discreta.html#cb93-22" aria-hidden="true" tabindex="-1"></a>sims_a <span class="ot">&lt;-</span> <span class="fu">replicate</span>(nrep, <span class="fu">experiment_a</span>())</span>
-<span id="cb93-23"><a href="chapter-prob-discreta.html#cb93-23" aria-hidden="true" tabindex="-1"></a><span class="co"># The proportion of wins in game A </span></span>
-<span id="cb93-24"><a href="chapter-prob-discreta.html#cb93-24" aria-hidden="true" tabindex="-1"></a>prop_wins_a <span class="ot">&lt;-</span> <span class="fu">sum</span>(sims_a)<span class="sc">/</span><span class="fu">length</span>(sims_a)</span>
-<span id="cb93-25"><a href="chapter-prob-discreta.html#cb93-25" aria-hidden="true" tabindex="-1"></a>prop_wins_a</span>
-<span id="cb93-26"><a href="chapter-prob-discreta.html#cb93-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5193</span></span>
-<span id="cb93-27"><a href="chapter-prob-discreta.html#cb93-27" aria-hidden="true" tabindex="-1"></a><span class="co"># To plot the results, we compute the </span></span>
-<span id="cb93-28"><a href="chapter-prob-discreta.html#cb93-28" aria-hidden="true" tabindex="-1"></a>nwins_a <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(sims_a)</span>
-<span id="cb93-29"><a href="chapter-prob-discreta.html#cb93-29" aria-hidden="true" tabindex="-1"></a>ntrials <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>nrep</span>
-<span id="cb93-30"><a href="chapter-prob-discreta.html#cb93-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-31"><a href="chapter-prob-discreta.html#cb93-31" aria-hidden="true" tabindex="-1"></a>sims_b <span class="ot">&lt;-</span> <span class="fu">replicate</span>(nrep, <span class="fu">experiment_b</span>())</span>
-<span id="cb93-32"><a href="chapter-prob-discreta.html#cb93-32" aria-hidden="true" tabindex="-1"></a>prop_wins_b <span class="ot">&lt;-</span> <span class="fu">sum</span>(sims_b)<span class="sc">/</span><span class="fu">length</span>(sims_b) </span>
-<span id="cb93-33"><a href="chapter-prob-discreta.html#cb93-33" aria-hidden="true" tabindex="-1"></a>prop_wins_b</span>
-<span id="cb93-34"><a href="chapter-prob-discreta.html#cb93-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.493</span></span>
-<span id="cb93-35"><a href="chapter-prob-discreta.html#cb93-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-36"><a href="chapter-prob-discreta.html#cb93-36" aria-hidden="true" tabindex="-1"></a>nwins_b <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(sims_b)</span>
-<span id="cb93-37"><a href="chapter-prob-discreta.html#cb93-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-38"><a href="chapter-prob-discreta.html#cb93-38" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb93-39"><a href="chapter-prob-discreta.html#cb93-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(ntrials, ntrials), </span>
-<span id="cb93-40"><a href="chapter-prob-discreta.html#cb93-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">pwin =</span> <span class="fu">c</span>(nwins_a<span class="sc">/</span>ntrials, nwins_b<span class="sc">/</span>ntrials),</span>
-<span id="cb93-41"><a href="chapter-prob-discreta.html#cb93-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">game =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Scommessa A&quot;</span>, <span class="st">&quot;Scommessa B&quot;</span>), <span class="at">each =</span> nrep)</span>
-<span id="cb93-42"><a href="chapter-prob-discreta.html#cb93-42" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb93-43"><a href="chapter-prob-discreta.html#cb93-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-44"><a href="chapter-prob-discreta.html#cb93-44" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
-<span id="cb93-45"><a href="chapter-prob-discreta.html#cb93-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb93-46"><a href="chapter-prob-discreta.html#cb93-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> pwin, <span class="at">col =</span> game)</span>
-<span id="cb93-47"><a href="chapter-prob-discreta.html#cb93-47" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb93-48"><a href="chapter-prob-discreta.html#cb93-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
-<span id="cb93-49"><a href="chapter-prob-discreta.html#cb93-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb93-50"><a href="chapter-prob-discreta.html#cb93-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">200</span>, <span class="dv">1000</span>, <span class="dv">3000</span>,  <span class="dv">10000</span>)) <span class="sc">+</span></span>
-<span id="cb93-51"><a href="chapter-prob-discreta.html#cb93-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb93-52"><a href="chapter-prob-discreta.html#cb93-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb93-53"><a href="chapter-prob-discreta.html#cb93-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">&quot;Numero di ripetizioni del gioco di De Méré&quot;</span>, </span>
-<span id="cb93-54"><a href="chapter-prob-discreta.html#cb93-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">&quot;Proporzione di vincite&quot;</span>) <span class="sc">+</span></span>
-<span id="cb93-55"><a href="chapter-prob-discreta.html#cb93-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;gray80&quot;</span>, <span class="st">&quot;skyblue&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb93-56"><a href="chapter-prob-discreta.html#cb93-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
+figura <a href="chapter-prob-discreta.html#fig:demere">10.1</a>.</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="chapter-prob-discreta.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Game A: Throw a fair die at most four times, and win if you get a six.</span></span>
+<span id="cb115-2"><a href="chapter-prob-discreta.html#cb115-2" aria-hidden="true" tabindex="-1"></a>experiment_a <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
+<span id="cb115-3"><a href="chapter-prob-discreta.html#cb115-3" aria-hidden="true" tabindex="-1"></a>  rolls <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb115-4"><a href="chapter-prob-discreta.html#cb115-4" aria-hidden="true" tabindex="-1"></a>  condition <span class="ot">&lt;-</span> <span class="fu">sum</span>(rolls <span class="sc">==</span> <span class="dv">6</span>) <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb115-5"><a href="chapter-prob-discreta.html#cb115-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(condition)</span>
+<span id="cb115-6"><a href="chapter-prob-discreta.html#cb115-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb115-7"><a href="chapter-prob-discreta.html#cb115-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-8"><a href="chapter-prob-discreta.html#cb115-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Game B: Throw two fair dice at most twenty-four times, and win if you get a double-six.</span></span>
+<span id="cb115-9"><a href="chapter-prob-discreta.html#cb115-9" aria-hidden="true" tabindex="-1"></a>experiment_b <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
+<span id="cb115-10"><a href="chapter-prob-discreta.html#cb115-10" aria-hidden="true" tabindex="-1"></a>  first.die <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">24</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb115-11"><a href="chapter-prob-discreta.html#cb115-11" aria-hidden="true" tabindex="-1"></a>  second.die <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">24</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb115-12"><a href="chapter-prob-discreta.html#cb115-12" aria-hidden="true" tabindex="-1"></a>  condition <span class="ot">&lt;-</span> <span class="fu">sum</span>((first.die <span class="sc">==</span> second.die) <span class="sc">&amp;</span> (first.die <span class="sc">==</span> <span class="dv">6</span>)) <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb115-13"><a href="chapter-prob-discreta.html#cb115-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(condition)</span>
+<span id="cb115-14"><a href="chapter-prob-discreta.html#cb115-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb115-15"><a href="chapter-prob-discreta.html#cb115-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-16"><a href="chapter-prob-discreta.html#cb115-16" aria-hidden="true" tabindex="-1"></a><span class="co"># number of replications</span></span>
+<span id="cb115-17"><a href="chapter-prob-discreta.html#cb115-17" aria-hidden="true" tabindex="-1"></a>nrep <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
+<span id="cb115-18"><a href="chapter-prob-discreta.html#cb115-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Play game A nrep times. We get a vector of nrep elements. Eeach element of </span></span>
+<span id="cb115-19"><a href="chapter-prob-discreta.html#cb115-19" aria-hidden="true" tabindex="-1"></a><span class="co"># of the simsA vector is the outcome obtained by playing game A once: TRUE if</span></span>
+<span id="cb115-20"><a href="chapter-prob-discreta.html#cb115-20" aria-hidden="true" tabindex="-1"></a><span class="co"># the output is a win, FALSE if the output of the game is a loss. Remember than</span></span>
+<span id="cb115-21"><a href="chapter-prob-discreta.html#cb115-21" aria-hidden="true" tabindex="-1"></a><span class="co"># TRUE = 1 and FALSE = 0.</span></span>
+<span id="cb115-22"><a href="chapter-prob-discreta.html#cb115-22" aria-hidden="true" tabindex="-1"></a>sims_a <span class="ot">&lt;-</span> <span class="fu">replicate</span>(nrep, <span class="fu">experiment_a</span>())</span>
+<span id="cb115-23"><a href="chapter-prob-discreta.html#cb115-23" aria-hidden="true" tabindex="-1"></a><span class="co"># The proportion of wins in game A </span></span>
+<span id="cb115-24"><a href="chapter-prob-discreta.html#cb115-24" aria-hidden="true" tabindex="-1"></a>prop_wins_a <span class="ot">&lt;-</span> <span class="fu">sum</span>(sims_a)<span class="sc">/</span><span class="fu">length</span>(sims_a)</span>
+<span id="cb115-25"><a href="chapter-prob-discreta.html#cb115-25" aria-hidden="true" tabindex="-1"></a>prop_wins_a</span>
+<span id="cb115-26"><a href="chapter-prob-discreta.html#cb115-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5193</span></span>
+<span id="cb115-27"><a href="chapter-prob-discreta.html#cb115-27" aria-hidden="true" tabindex="-1"></a><span class="co"># To plot the results, we compute the </span></span>
+<span id="cb115-28"><a href="chapter-prob-discreta.html#cb115-28" aria-hidden="true" tabindex="-1"></a>nwins_a <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(sims_a)</span>
+<span id="cb115-29"><a href="chapter-prob-discreta.html#cb115-29" aria-hidden="true" tabindex="-1"></a>ntrials <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>nrep</span>
+<span id="cb115-30"><a href="chapter-prob-discreta.html#cb115-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-31"><a href="chapter-prob-discreta.html#cb115-31" aria-hidden="true" tabindex="-1"></a>sims_b <span class="ot">&lt;-</span> <span class="fu">replicate</span>(nrep, <span class="fu">experiment_b</span>())</span>
+<span id="cb115-32"><a href="chapter-prob-discreta.html#cb115-32" aria-hidden="true" tabindex="-1"></a>prop_wins_b <span class="ot">&lt;-</span> <span class="fu">sum</span>(sims_b)<span class="sc">/</span><span class="fu">length</span>(sims_b) </span>
+<span id="cb115-33"><a href="chapter-prob-discreta.html#cb115-33" aria-hidden="true" tabindex="-1"></a>prop_wins_b</span>
+<span id="cb115-34"><a href="chapter-prob-discreta.html#cb115-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.493</span></span>
+<span id="cb115-35"><a href="chapter-prob-discreta.html#cb115-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-36"><a href="chapter-prob-discreta.html#cb115-36" aria-hidden="true" tabindex="-1"></a>nwins_b <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(sims_b)</span>
+<span id="cb115-37"><a href="chapter-prob-discreta.html#cb115-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-38"><a href="chapter-prob-discreta.html#cb115-38" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb115-39"><a href="chapter-prob-discreta.html#cb115-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(ntrials, ntrials), </span>
+<span id="cb115-40"><a href="chapter-prob-discreta.html#cb115-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">pwin =</span> <span class="fu">c</span>(nwins_a<span class="sc">/</span>ntrials, nwins_b<span class="sc">/</span>ntrials),</span>
+<span id="cb115-41"><a href="chapter-prob-discreta.html#cb115-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">game =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Scommessa A&quot;</span>, <span class="st">&quot;Scommessa B&quot;</span>), <span class="at">each =</span> nrep)</span>
+<span id="cb115-42"><a href="chapter-prob-discreta.html#cb115-42" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb115-43"><a href="chapter-prob-discreta.html#cb115-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-44"><a href="chapter-prob-discreta.html#cb115-44" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb115-45"><a href="chapter-prob-discreta.html#cb115-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb115-46"><a href="chapter-prob-discreta.html#cb115-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> pwin, <span class="at">col =</span> game)</span>
+<span id="cb115-47"><a href="chapter-prob-discreta.html#cb115-47" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb115-48"><a href="chapter-prob-discreta.html#cb115-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb115-49"><a href="chapter-prob-discreta.html#cb115-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb115-50"><a href="chapter-prob-discreta.html#cb115-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">200</span>, <span class="dv">1000</span>, <span class="dv">3000</span>,  <span class="dv">10000</span>)) <span class="sc">+</span></span>
+<span id="cb115-51"><a href="chapter-prob-discreta.html#cb115-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb115-52"><a href="chapter-prob-discreta.html#cb115-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb115-53"><a href="chapter-prob-discreta.html#cb115-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">&quot;Numero di ripetizioni del gioco di De Méré&quot;</span>, </span>
+<span id="cb115-54"><a href="chapter-prob-discreta.html#cb115-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">&quot;Proporzione di vincite&quot;</span>) <span class="sc">+</span></span>
+<span id="cb115-55"><a href="chapter-prob-discreta.html#cb115-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;gray80&quot;</span>, <span class="st">&quot;skyblue&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb115-56"><a href="chapter-prob-discreta.html#cb115-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:demere"></span>
 <img src="Psicometria_files/figure-html/demere-1.png" alt="Risultati ottenuti da 10000 ripetizioni delle due scommesse di De Méré." width="80%" />
 <p class="caption">
-Figura 9.1: Risultati ottenuti da 10000 ripetizioni delle due scommesse di De Méré.
+Figura 10.1: Risultati ottenuti da 10000 ripetizioni delle due scommesse di De Méré.
 </p>
 </div>
-<p>La figura <a href="chapter-prob-discreta.html#fig:demere">9.1</a> riportata la proporzione di vittorie in funzione
+<p>La figura <a href="chapter-prob-discreta.html#fig:demere">10.1</a> riportata la proporzione di vittorie in funzione
 del numero di ripetizioni di ciascuna scommessa e rivela che, a lungo
 termine (ovvero, se consideriamo un grande numero di ripetizioni del
 gioco di De Méré), la scommessa A risulta più conveniente della
@@ -648,8 +700,8 @@ probabilità può infatti essere definita come la quantificazione del
 livello di “casualità” di un evento, laddove viene detto casuale ciò che
 non è noto o non può essere predetto con certezza.</p>
 </div>
-<div id="terminologia" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> Terminologia</h2>
+<div id="terminologia" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> Terminologia</h2>
 <p>Come qualsiasi altra branca della matematica, la teoria delle
 probabilità fa uso di una specifica terminologia i cui concetti di base
 sono descritti di seguito.</p>
@@ -661,34 +713,34 @@ sono descritti di seguito.</p>
 <li>Si dice <em>evento composto</em> (o non-elementare) un sottoinsieme dello spazio campionario, ovvero un insieme che può essere a sua volta scomposto in più eventi elementari. Per esempio, il numero 4 è un evento elementare dello spazio campionario finito <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5, 6\}\)</span> che corrisponde all’esperimento casuale del lancio di un dado. L’evento composto <span class="math inline">\(A\)</span> “il risultato è pari” è <span class="math inline">\(A = \{2, 4, 6\}\)</span>.</li>
 </ul>
 </div>
-<div id="le-diverse-definizioni-della-probabilità" class="section level2" number="9.4">
-<h2><span class="header-section-number">9.4</span> Le diverse definizioni della probabilità</h2>
+<div id="le-diverse-definizioni-della-probabilità" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> Le diverse definizioni della probabilità</h2>
 <p>Ma, nello specifico, che cos’è la probabilità? A questa domanda si può rispondere in modi diversi.</p>
-<div id="sec:def_ing_prob" class="section level3" number="9.4.1">
-<h3><span class="header-section-number">9.4.1</span> Una definizione “ingenua” della probabilità</h3>
+<div id="sec:def_ing_prob" class="section level3" number="10.4.1">
+<h3><span class="header-section-number">10.4.1</span> Una definizione “ingenua” della probabilità</h3>
 <p>Storicamente, la prima definizione della probabilità di un evento è
 stata quella che richiede di contare il numero di modi nei quali un
 evento può manifestarsi e di dividere tale numero per il numero totale
 di eventi dello spazio campionario <span class="math inline">\(\Omega\)</span>.</p>
 
 <div class="definition">
-<span id="def:def-ing-prob" class="definition"><strong>Definizione 9.1  </strong></span>Dato uno spazio campionario finito, la definizione ingenua della probabilità dell’evento <span class="math inline">\(A\)</span> è <span class="math display">\[
+<span id="def:def-ing-prob" class="definition"><strong>Definizione 10.1  </strong></span>Dato uno spazio campionario finito, la definizione ingenua della probabilità dell’evento <span class="math inline">\(A\)</span> è <span class="math display">\[
 \begin{aligned}
 P_{\text{ing}} = \frac{|A|}{|\Omega|}
 = \frac{\text{numero eventi elementari favorevoli all&#39;evento }A}{\text{numero totale  eventi elementari dello spazio campionario }\Omega}.\notag\end{aligned}
 \]</span>
 </div>
-<p>La definizione <a href="chapter-prob-discreta.html#def:def-ing-prob">9.1</a> rende chiaro che il calcolo delle probabilità richiede di contare il numero di modi in cui un evento può realizzarsi.
+<p>La definizione <a href="chapter-prob-discreta.html#def:def-ing-prob">10.1</a> rende chiaro che il calcolo delle probabilità richiede di contare il numero di modi in cui un evento può realizzarsi.
 Per esempio, nell’esperimento casuale corrispondente al lancio di due dadi equilibrati, l’evento <span class="math inline">\(A\)</span> = “la somma dei due dati è 5” si può realizzare in 4 modi diversi: <span class="math inline">\(A = \{ (1, 4), (2, 3), (3, 2), (4, 1) \}\)</span>.
 Contare il numero di modi in cui un evento può realizzarsi può essere semplice, nel caso di alcuni eventi (come il presente), oppure estremamente complesso, nel caso di altri eventi. In questo secondo caso, per contare il numero di modi in cui un evento può realizzarsi, al fine di calcolare la probabilità definita come indicato sopra, è necessario fare uso del calcolo combinatorio. In queste dispense ci accontenteremo di presentare alcune nozioni di base del calcolo combinatorio, ma non entreremo nei dettagli di questo argomento.</p>
 </div>
-<div id="una-definizione-non-ingenua-della-probabilità" class="section level3" number="9.4.2">
-<h3><span class="header-section-number">9.4.2</span> Una definizione “non ingenua” della probabilità</h3>
+<div id="una-definizione-non-ingenua-della-probabilità" class="section level3" number="10.4.2">
+<h3><span class="header-section-number">10.4.2</span> Una definizione “non ingenua” della probabilità</h3>
 <p>Il calcolo combinatorio ci consente di contare il numero di casi nello spazio campionario e di applicare la definizione “ingenua” di probabilità descritta nella
-definizione <a href="chapter-prob-discreta.html#def:def-ing-prob">9.1</a>. È però facile rendersi conto che tale definizione di probabilità ha un grosso problema: non può essere applicata al caso di uno spazio campionario infinito. Dobbiamo dunque trovare una definizione che risolva un tale problema. Per fare ciò vengono specificate alcune proprietà che vorremmo potere attribuire alla probabilità – in matematica, tali proprietà sono dette <em>assiomi</em> – per poi definire una funzione di probabilità che soddisfi tali proprietà. Arriviamo in questo modo alla seguente definizione non ingenua della probabilità.</p>
+definizione <a href="chapter-prob-discreta.html#def:def-ing-prob">10.1</a>. È però facile rendersi conto che tale definizione di probabilità ha un grosso problema: non può essere applicata al caso di uno spazio campionario infinito. Dobbiamo dunque trovare una definizione che risolva un tale problema. Per fare ciò vengono specificate alcune proprietà che vorremmo potere attribuire alla probabilità – in matematica, tali proprietà sono dette <em>assiomi</em> – per poi definire una funzione di probabilità che soddisfi tali proprietà. Arriviamo in questo modo alla seguente definizione non ingenua della probabilità.</p>
 
 <div class="definition">
-<span id="def:def-assiomi-Kolmogorov" class="definition"><strong>Definizione 9.2  </strong></span>Uno spazio di probabilità è una terna (<span class="math inline">\(\Omega\)</span>, <span class="math inline">\(\mathcal{A}\)</span>, <span class="math inline">\(P\)</span>), dove <span class="math inline">\(\Omega\)</span> è l’insieme dei risultati possibili di un esperimento casuale, <span class="math inline">\(\mathcal{A}\)</span> è detta <span class="math inline">\(\sigma\)</span>-algebra, ovvero un insieme di insiemi (gli eventi) per i quali si può calcolare una probabilità, e <span class="math inline">\(P()\)</span> è una misura di probabilità su <span class="math inline">\(\Omega\)</span>, ovvero <span class="math inline">\(P: \Omega \rightarrow [0, 1]\)</span>.
+<span id="def:def-assiomi-Kolmogorov" class="definition"><strong>Definizione 10.2  </strong></span>Uno spazio di probabilità è una terna (<span class="math inline">\(\Omega\)</span>, <span class="math inline">\(\mathcal{A}\)</span>, <span class="math inline">\(P\)</span>), dove <span class="math inline">\(\Omega\)</span> è l’insieme dei risultati possibili di un esperimento casuale, <span class="math inline">\(\mathcal{A}\)</span> è detta <span class="math inline">\(\sigma\)</span>-algebra, ovvero un insieme di insiemi (gli eventi) per i quali si può calcolare una probabilità, e <span class="math inline">\(P()\)</span> è una misura di probabilità su <span class="math inline">\(\Omega\)</span>, ovvero <span class="math inline">\(P: \Omega \rightarrow [0, 1]\)</span>.
 </div>
 <p>Per la precisione, una <span class="math inline">\(\sigma\)</span>-algebra è una famiglia di insiemi tali
 che <span class="math inline">\(\emptyset \in \mathcal{A}\)</span>; se <span class="math inline">\(A \in \mathcal{A}\)</span> allora anche il suo complementare <span class="math inline">\(A^C\)</span> è in <span class="math inline">\(\mathcal{A}\)</span>; unioni numerabili di elementi di <span class="math inline">\(\mathcal{A}\)</span> appartengono ancora ad <span class="math inline">\(\mathcal{A}\)</span>.</p>
@@ -702,10 +754,10 @@ probabilità che uno di essi si verifichi è pari alla somma delle
 loro separate probabilità:
 <span class="math display" id="eq:probcomposte">\[\begin{equation}
 P(A_1 \text{ o } A_1 \dots \text{ o } A_k) = P(A_1) + P(A_2) +\dots + P(A_k).
-\tag{9.1}
+\tag{10.1}
 \end{equation}\]</span></li>
 </ol>
-<p>La definizione <a href="chapter-prob-discreta.html#def:def-assiomi-Kolmogorov">9.2</a> corrisponde al cosiddetto <em>approccio assiomatico</em> messo a punto da Kolmogorov intorno al 1930, il quale è alla base della moderna teoria della probabilità.</p>
+<p>La definizione <a href="chapter-prob-discreta.html#def:def-assiomi-Kolmogorov">10.2</a> corrisponde al cosiddetto <em>approccio assiomatico</em> messo a punto da Kolmogorov intorno al 1930, il quale è alla base della moderna teoria della probabilità.</p>
 <p>Nonostante l’enorme complessità dell’approccio assiomatico alla
 probabilità, per gli scopi dell’analisi dei dati psicologici le cose che
 dobbiamo capire sono molto semplici. I vincoli della <span class="math inline">\(\sigma\)</span>-algebra
@@ -733,13 +785,13 @@ di tali eventi è la somma delle due singole frequenze relative. Lo
 stesso si vale per la probabilità.</p>
 </div>
 </div>
-<div id="assegnare-le-probabilità-agli-eventi" class="section level2" number="9.5">
-<h2><span class="header-section-number">9.5</span> Assegnare le probabilità agli eventi</h2>
+<div id="assegnare-le-probabilità-agli-eventi" class="section level2" number="10.5">
+<h2><span class="header-section-number">10.5</span> Assegnare le probabilità agli eventi</h2>
 <p>È importante capire che l’approccio assiomatico non ci dice come sia
 possibile assegnare un valore di probabilità a un evento definito in
 <span class="math inline">\(\Omega\)</span>. A questo proposito esistono due diverse scuole di pensiero.</p>
-<div id="approccio-frequentista" class="section level3" number="9.5.1">
-<h3><span class="header-section-number">9.5.1</span> Approccio frequentista</h3>
+<div id="approccio-frequentista" class="section level3" number="10.5.1">
+<h3><span class="header-section-number">10.5.1</span> Approccio frequentista</h3>
 <p>Una prima possibilità è di definire la nozione di probabilità in termini
 empirici. La probabilità di un evento <span class="math inline">\(A\)</span> può essere concepita come il
 limite cui tende la frequenza relativa dell’evento, al tendere
@@ -771,15 +823,15 @@ ripetizioni dell’esperimento casuale. È molto facile utilizzare   per
 calcolare una tale probabilità. Per esempio, se vogliamo calcolare la
 probabilità di ottenere 3 nel lancio di un dado equilibrato, possiamo
 eseguire la seguente simulazione.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="chapter-prob-discreta.html#cb94-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
-<span id="cb94-2"><a href="chapter-prob-discreta.html#cb94-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb94-3"><a href="chapter-prob-discreta.html#cb94-3" aria-hidden="true" tabindex="-1"></a>x_01 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb94-4"><a href="chapter-prob-discreta.html#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x_01)</span>
-<span id="cb94-5"><a href="chapter-prob-discreta.html#cb94-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.1676</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="chapter-prob-discreta.html#cb116-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
+<span id="cb116-2"><a href="chapter-prob-discreta.html#cb116-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb116-3"><a href="chapter-prob-discreta.html#cb116-3" aria-hidden="true" tabindex="-1"></a>x_01 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb116-4"><a href="chapter-prob-discreta.html#cb116-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x_01)</span>
+<span id="cb116-5"><a href="chapter-prob-discreta.html#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.1676</span></span></code></pre></div>
 <p>Il risultato è ovviamente molto simile a <span class="math inline">\(1/6\)</span>.</p>
 </div>
-<div id="approccio-bayesiano" class="section level3" number="9.5.2">
-<h3><span class="header-section-number">9.5.2</span> Approccio Bayesiano</h3>
+<div id="approccio-bayesiano" class="section level3" number="10.5.2">
+<h3><span class="header-section-number">10.5.2</span> Approccio Bayesiano</h3>
 <p>Esistono però degli eventi per i quali non è possibile calcolare una frequenza relativa, ovvero quelli che si verificano una volta soltanto. Che cos’è allora la probabilità in questi casi? In base all’approccio Bayesiano la probabilità è una misura del grado di plausibilità di una proposizione. Questa definizione è applicabile a qualsiasi evento. Ciò consente di assegnare una probabilità anche a proposizioni quali “il candidato <span class="math inline">\(A\)</span> vincerà le elezioni” oppure “l’accusato è innocente,” anche se non è possibile ripetere più volte un’elezione o un evento criminoso.</p>
 <p>Per assegnare le probabilità agli eventi, nell’approccio Bayesiano si
 utilizzano considerazioni “soggettive” che derivano dalle informazioni
@@ -794,8 +846,8 @@ successivamente all’osservazione dei dati. Questo processo di
 discusso in dettaglio nel seguito delle dispense.</p>
 </div>
 </div>
-<div id="proprietà-elementari-della-probabilità" class="section level2" number="9.6">
-<h2><span class="header-section-number">9.6</span> Proprietà elementari della probabilità</h2>
+<div id="proprietà-elementari-della-probabilità" class="section level2" number="10.6">
+<h2><span class="header-section-number">10.6</span> Proprietà elementari della probabilità</h2>
 <p>Indipendentemente da come decidiamo di interpretare la probabilità (in
 termini frequentisti o Bayesiani), alla probabilità possono essere
 assegnate le seguenti proprietà.</p>
@@ -818,12 +870,12 @@ alla somma delle singole probabilità dei due eventi meno la
 probabilità dell’intersezione:
 <span class="math display" id="eq:probunione">\[\begin{equation}
 P(A \text{ o } B) = P(A \cup B) = P(A) + P(B) - P(A \cap B).
-\tag{9.2}
+\tag{10.2}
 \end{equation}\]</span></p></li>
 </ol>
 
 <div class="exercise">
-<span id="exr:ex-parlamento-londra" class="exercise"><strong>Exercizio 9.1  </strong></span>Nel 2012, a 97 deputati al Parlamento di Londra è stato chiesto: “Se lanci una moneta due volte, qual è la probabilità di ottenere due volte testa?” La maggioranza, 60 su 97, non ha saputo dare la risposta corretta. Come possiamo dare a questo problema una risposta migliore di quella fornita da questi politici?
+<span id="exr:ex-parlamento-londra" class="exercise"><strong>Exercizio 10.1  </strong></span>Nel 2012, a 97 deputati al Parlamento di Londra è stato chiesto: “Se lanci una moneta due volte, qual è la probabilità di ottenere due volte testa?” La maggioranza, 60 su 97, non ha saputo dare la risposta corretta. Come possiamo dare a questo problema una risposta migliore di quella fornita da questi politici?
 </div>
 
 <div class="solution">
@@ -831,7 +883,7 @@ P(A \text{ o } B) = P(A \cup B) = P(A) + P(B) - P(A \cap B).
 </div>
 
 <div class="exercise">
-<span id="exr:ex-urna-10b-10r-10g" class="exercise"><strong>Exercizio 9.2  </strong></span>Un’urna contiene <span class="math inline">\(30\)</span> palline: <span class="math inline">\(10\)</span> bianche numerate da <span class="math inline">\(1\)</span> a <span class="math inline">\(10\)</span>, <span class="math inline">\(10\)</span>
+<span id="exr:ex-urna-10b-10r-10g" class="exercise"><strong>Exercizio 10.2  </strong></span>Un’urna contiene <span class="math inline">\(30\)</span> palline: <span class="math inline">\(10\)</span> bianche numerate da <span class="math inline">\(1\)</span> a <span class="math inline">\(10\)</span>, <span class="math inline">\(10\)</span>
 rosse e <span class="math inline">\(10\)</span> gialle numerate allo stesso modo. Qual è la probabilità
 che, estraendo una pallina a caso, venga estratta una pallina gialla o
 una pallina pari?
@@ -848,8 +900,8 @@ dunque
 <span class="math inline">\(P(\text{gialla} \cup \text{pari}) = \frac{1}{3} + \frac{1}{2} - \frac{5}{30} = \frac{2}{3}\)</span>.
 </div>
 </div>
-<div id="variabili-aleatorie" class="section level2" number="9.7">
-<h2><span class="header-section-number">9.7</span> Variabili aleatorie</h2>
+<div id="variabili-aleatorie" class="section level2" number="10.7">
+<h2><span class="header-section-number">10.7</span> Variabili aleatorie</h2>
 <p>Il concetto di “variabile aleatoria” è estremamente utile per estendere
 la nostra capacità di quantificare l’incertezza e di riassumere i
 risultati di un esperimento casuale. Le variabili aleatorie sono un
@@ -857,7 +909,7 @@ concetto fondamentale di tutta la teoria statistica; è quindi cruciale
 capire quale sia il loro significano. Iniziamo con una definizione.</p>
 
 <div class="definition">
-<span id="def:def-var-aleatoria" class="definition"><strong>Definizione 9.3  </strong></span>Una variabile aleatoria è una funzione sullo spazio campionario <span class="math inline">\(\Omega\)</span>
+<span id="def:def-var-aleatoria" class="definition"><strong>Definizione 10.3  </strong></span>Una variabile aleatoria è una funzione sullo spazio campionario <span class="math inline">\(\Omega\)</span>
 che associa ad ogni evento elementare <span class="math inline">\(\omega_i\)</span> un unico numero
 <span class="math inline">\(X(\omega_i) = x_i\)</span>, ovvero <span class="math inline">\(X: \Omega \rightarrow \Re\)</span>.
 </div>
@@ -881,7 +933,7 @@ e variabili aleatorie continue. Consideriamo innanzitutto il caso delle
 variabili aleatorie discrete.</p>
 
 <div class="definition">
-<span id="def:def-var-aleatoria-discr" class="definition"><strong>Definizione 9.4  </strong></span>Una variabile aleatoria <span class="math inline">\(X\)</span> viene detta discreta se può assumere un
+<span id="def:def-var-aleatoria-discr" class="definition"><strong>Definizione 10.4  </strong></span>Una variabile aleatoria <span class="math inline">\(X\)</span> viene detta discreta se può assumere un
 insieme discreto (finito o numerabile) di numeri reali.
 </div>
 <p>Se <span class="math inline">\(X\)</span> è una variabile aleatoria discreta allora l’insieme dei possibili
@@ -893,8 +945,8 @@ individuo, il numero dei punti che si osservano nel lancio di due dadi e
 il guadagno (la perdita) che un giocatore realizzerà in <span class="math inline">\(n\)</span> partite. Si
 noti che, in tutti questi casi, la variabile aleatoria considerata viene
 rappresentata mediante un numero.</p>
-<div id="a-cosa-servono-le-variabili-aleatorie" class="section level3" number="9.7.1">
-<h3><span class="header-section-number">9.7.1</span> A cosa servono le variabili aleatorie?</h3>
+<div id="a-cosa-servono-le-variabili-aleatorie" class="section level3" number="10.7.1">
+<h3><span class="header-section-number">10.7.1</span> A cosa servono le variabili aleatorie?</h3>
 <p>Facendo riferimento agli esempi elencati sopra, possiamo chiederci
 perché questi numeri vengono considerati come “aleatori.” È ovvio che
 noi non conosciamo, ad esempio, il voto di Psicometria di Mario Rossi
@@ -910,8 +962,8 @@ proprietà delle variabili aleatorie ci consentono di sistematizzare
 questo tipo di opinioni. Ovviamente, una volta che Mario Rossi avrà
 fatto l’esame, questa materia non avrà più alcuna componente aleatoria.</p>
 </div>
-<div id="funzione-di-massa-di-probabilità" class="section level3" number="9.7.2">
-<h3><span class="header-section-number">9.7.2</span> Funzione di massa di probabilità</h3>
+<div id="funzione-di-massa-di-probabilità" class="section level3" number="10.7.2">
+<h3><span class="header-section-number">10.7.2</span> Funzione di massa di probabilità</h3>
 <p>Per entrare nel merito di questa discussione, chiediamoci ora come sia
 possibile associare delle probabilità ai valori che vengono assunti
 dalle variabili aleatorie. Ad esempio, qual è la probabilità che Mario
@@ -938,7 +990,7 @@ suddividere la nostra certezza (cioè 1) tra i valori che la variabile
 aleatoria può assumere. In modo più formale, possiamo dire quanto segue.</p>
 
 <div class="definition">
-<span id="def:def-distr-prob-va-discr" class="definition"><strong>Definizione 9.5  </strong></span>Se <span class="math inline">\(X\)</span> è una variabile aleatoria discreta, una distribuzione di
+<span id="def:def-distr-prob-va-discr" class="definition"><strong>Definizione 10.5  </strong></span>Se <span class="math inline">\(X\)</span> è una variabile aleatoria discreta, una distribuzione di
 probabilità può essere rappresentata mediante una funzione di massa di
 probabilità che associa a ciascuno dei valori <span class="math inline">\(x\)</span> che la variabile
 aleatoria <span class="math inline">\(X\)</span> può assumere la corrispondente probabilità <span class="math inline">\(P_{\pi}(X=x)\)</span>.
@@ -956,7 +1008,7 @@ possibile determinare la probabilità di ciascun sottoinsieme
 facciamo altro che applicare il terzo assioma di Kolmogorov.</p>
 
 <div class="exercise">
-<span id="exr:ex-va-discr-2dice" class="exercise"><strong>Exercizio 9.3  </strong></span>Consideriamo nuovamente lo spazio campionario <span class="math inline">\(\Omega\)</span> dell’esercizio precedente e definiamo la variabile aleatoria <span class="math inline">\(S(\omega)\)</span> come la somma dei puntini che si ottengono dal lancio di due dadi. Per esempio, <span class="math inline">\(S(\{(6, 3)\}) = 6 + 3 = 9\)</span>. Iniziamo a chiederci qual è la probabilità dell’evento <span class="math inline">\(S = 7\)</span>.
+<span id="exr:ex-va-discr-2dice" class="exercise"><strong>Exercizio 10.3  </strong></span>Consideriamo nuovamente lo spazio campionario <span class="math inline">\(\Omega\)</span> dell’esercizio precedente e definiamo la variabile aleatoria <span class="math inline">\(S(\omega)\)</span> come la somma dei puntini che si ottengono dal lancio di due dadi. Per esempio, <span class="math inline">\(S(\{(6, 3)\}) = 6 + 3 = 9\)</span>. Iniziamo a chiederci qual è la probabilità dell’evento <span class="math inline">\(S = 7\)</span>.
 </div>
 
 <div class="solution">
@@ -1033,8 +1085,8 @@ Si noti che, a partire dalla funzione di massa di probabilità di <em>S</em>, è
 </div>
 </div>
 </div>
-<div id="notazione" class="section level2" number="9.8">
-<h2><span class="header-section-number">9.8</span> Notazione</h2>
+<div id="notazione" class="section level2" number="10.8">
+<h2><span class="header-section-number">10.8</span> Notazione</h2>
 <p>Qui sotto è riportata la notazione che verrà usata per fare riferimento
 ad eventi e probabilità, nel caso discreto e continuo, in maniera tale
 che queste convenzioni siano elencate tutte in un posto solo.</p>
@@ -1069,7 +1121,7 @@ notazione qui introdotta.</p>
           </div>
         </div>
       </div>
-<a href="chapter-misurazione.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-descriptive-stats.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="chapter-prob-cond.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

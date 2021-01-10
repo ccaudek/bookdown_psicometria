@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capitolo 16 Il modello lineare | PSICOMETRIA</title>
+  <title>Capitolo 17 Il modello lineare | PSICOMETRIA</title>
   <meta name="description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21.4 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capitolo 16 Il modello lineare | PSICOMETRIA" />
+  <meta property="og:title" content="Capitolo 17 Il modello lineare | PSICOMETRIA" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ccaudek/bookdown_psicometria" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capitolo 16 Il modello lineare | PSICOMETRIA" />
+  <meta name="twitter:title" content="Capitolo 17 Il modello lineare | PSICOMETRIA" />
   <meta name="twitter:site" content="@ccaudek" />
   <meta name="twitter:description" content="Queste dispense si propongono di fornire un’introduzione all’analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche. Particolare attenzione sarà posta ai seguenti aspetti: l’uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l’inferenza Bayesiana." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Corrado Caudek" />
 
 
-<meta name="date" content="2021-01-03" />
+<meta name="date" content="2021-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon" />
 <link rel="prev" href="chapter-reglin.html"/>
 <link rel="next" href="appendici.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -251,148 +251,200 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
+<li class="part"><span><b>Descrizione</b></span></li>
+<li class="chapter" data-level="9" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html"><i class="fa fa-check"></i><b>9</b> Statistica descrittiva</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#perché-riassumere-i-dati"><i class="fa fa-check"></i><b>9.1</b> Perché riassumere i dati?</a></li>
+<li class="chapter" data-level="9.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#sec:distr_freq"><i class="fa fa-check"></i><b>9.2</b> Distribuzioni di frequenze</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r"><i class="fa fa-check"></i><b>9.2.1</b> Esercizio con R</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#istogramma"><i class="fa fa-check"></i><b>9.3</b> Istogramma</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r-1"><i class="fa fa-check"></i><b>9.3.1</b> Esercizio con R</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#funzione-di-densità-empirica"><i class="fa fa-check"></i><b>9.4</b> Funzione di densità empirica</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizio-con-r-2"><i class="fa fa-check"></i><b>9.4.1</b> Esercizio con R</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#forma-di-una-distribuzione"><i class="fa fa-check"></i><b>9.5</b> Forma di una distribuzione</a></li>
+<li class="chapter" data-level="9.6" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-posizione"><i class="fa fa-check"></i><b>9.6</b> Indici di posizione</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#quantili"><i class="fa fa-check"></i><b>9.6.1</b> Quantili</a></li>
+<li class="chapter" data-level="9.6.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#box-plot"><i class="fa fa-check"></i><b>9.6.2</b> Box-plot</a></li>
+<li class="chapter" data-level="9.6.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#leccellenza-grafica"><i class="fa fa-check"></i><b>9.6.3</b> L’eccellenza grafica</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-tendenza-centrale"><i class="fa fa-check"></i><b>9.7</b> Indici di tendenza centrale</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#media"><i class="fa fa-check"></i><b>9.7.1</b> Media</a></li>
+<li class="chapter" data-level="9.7.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#media-spuntata"><i class="fa fa-check"></i><b>9.7.2</b> Media spuntata</a></li>
+<li class="chapter" data-level="9.7.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#moda-e-mediana"><i class="fa fa-check"></i><b>9.7.3</b> Moda e mediana</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-dispersione"><i class="fa fa-check"></i><b>9.8</b> Indici di dispersione</a>
+<ul>
+<li class="chapter" data-level="9.8.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-basati-sullordinamento-dei-dati"><i class="fa fa-check"></i><b>9.8.1</b> Indici basati sull’ordinamento dei dati</a></li>
+<li class="chapter" data-level="9.8.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#scostamento-medio-semplice-dalla-media"><i class="fa fa-check"></i><b>9.8.2</b> Scostamento medio semplice dalla media</a></li>
+<li class="chapter" data-level="9.8.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#varianza"><i class="fa fa-check"></i><b>9.8.3</b> Varianza</a></li>
+<li class="chapter" data-level="9.8.4" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#deviazione-standard"><i class="fa fa-check"></i><b>9.8.4</b> Deviazione standard</a></li>
+<li class="chapter" data-level="9.8.5" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#indici-di-variabilità-relativi"><i class="fa fa-check"></i><b>9.8.5</b> Indici di variabilità relativi</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#le-relazioni-tra-variabili"><i class="fa fa-check"></i><b>9.9</b> Le relazioni tra variabili</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#diagramma-a-dispersione"><i class="fa fa-check"></i><b>9.9.1</b> Diagramma a dispersione</a></li>
+<li class="chapter" data-level="9.9.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#covarianza"><i class="fa fa-check"></i><b>9.9.2</b> Covarianza</a></li>
+<li class="chapter" data-level="9.9.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione"><i class="fa fa-check"></i><b>9.9.3</b> Correlazione</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-e-causazione"><i class="fa fa-check"></i><b>9.10</b> Correlazione e causazione</a>
+<ul>
+<li class="chapter" data-level="9.10.1" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#usi-della-correlazione"><i class="fa fa-check"></i><b>9.10.1</b> Usi della correlazione</a></li>
+<li class="chapter" data-level="9.10.2" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-di-spearman"><i class="fa fa-check"></i><b>9.10.2</b> Correlazione di Spearman</a></li>
+<li class="chapter" data-level="9.10.3" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#correlazione-nulla"><i class="fa fa-check"></i><b>9.10.3</b> Correlazione nulla</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+<li class="chapter" data-level="9.11" data-path="chapter-descriptive-stats.html"><a href="chapter-descriptive-stats.html#esercizi1"><i class="fa fa-check"></i><b>9.11</b> Esercizi</a></li>
+</ul></li>
 <li class="part"><span><b>Elementi di teoria della probabilità</b></span></li>
-<li class="chapter" data-level="9" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html"><i class="fa fa-check"></i><b>9</b> Che cos’è la probabilità?</a>
+<li class="chapter" data-level="10" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html"><i class="fa fa-check"></i><b>10</b> Che cos’è la probabilità?</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-naturale"><i class="fa fa-check"></i><b>9.1</b> Probabilità nel linguaggio naturale</a></li>
-<li class="chapter" data-level="9.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-scientifico"><i class="fa fa-check"></i><b>9.2</b> Probabilità nel linguaggio scientifico</a></li>
-<li class="chapter" data-level="9.3" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#terminologia"><i class="fa fa-check"></i><b>9.3</b> Terminologia</a></li>
-<li class="chapter" data-level="9.4" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#le-diverse-definizioni-della-probabilità"><i class="fa fa-check"></i><b>9.4</b> Le diverse definizioni della probabilità</a>
+<li class="chapter" data-level="10.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-naturale"><i class="fa fa-check"></i><b>10.1</b> Probabilità nel linguaggio naturale</a></li>
+<li class="chapter" data-level="10.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#probabilità-nel-linguaggio-scientifico"><i class="fa fa-check"></i><b>10.2</b> Probabilità nel linguaggio scientifico</a></li>
+<li class="chapter" data-level="10.3" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#terminologia"><i class="fa fa-check"></i><b>10.3</b> Terminologia</a></li>
+<li class="chapter" data-level="10.4" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#le-diverse-definizioni-della-probabilità"><i class="fa fa-check"></i><b>10.4</b> Le diverse definizioni della probabilità</a>
 <ul>
-<li class="chapter" data-level="9.4.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#sec:def_ing_prob"><i class="fa fa-check"></i><b>9.4.1</b> Una definizione “ingenua” della probabilità</a></li>
-<li class="chapter" data-level="9.4.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#una-definizione-non-ingenua-della-probabilità"><i class="fa fa-check"></i><b>9.4.2</b> Una definizione “non ingenua” della probabilità</a></li>
+<li class="chapter" data-level="10.4.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#sec:def_ing_prob"><i class="fa fa-check"></i><b>10.4.1</b> Una definizione “ingenua” della probabilità</a></li>
+<li class="chapter" data-level="10.4.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#una-definizione-non-ingenua-della-probabilità"><i class="fa fa-check"></i><b>10.4.2</b> Una definizione “non ingenua” della probabilità</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#assegnare-le-probabilità-agli-eventi"><i class="fa fa-check"></i><b>9.5</b> Assegnare le probabilità agli eventi</a>
+<li class="chapter" data-level="10.5" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#assegnare-le-probabilità-agli-eventi"><i class="fa fa-check"></i><b>10.5</b> Assegnare le probabilità agli eventi</a>
 <ul>
-<li class="chapter" data-level="9.5.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-frequentista"><i class="fa fa-check"></i><b>9.5.1</b> Approccio frequentista</a></li>
-<li class="chapter" data-level="9.5.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-bayesiano"><i class="fa fa-check"></i><b>9.5.2</b> Approccio Bayesiano</a></li>
+<li class="chapter" data-level="10.5.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-frequentista"><i class="fa fa-check"></i><b>10.5.1</b> Approccio frequentista</a></li>
+<li class="chapter" data-level="10.5.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#approccio-bayesiano"><i class="fa fa-check"></i><b>10.5.2</b> Approccio Bayesiano</a></li>
 </ul></li>
-<li class="chapter" data-level="9.6" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#proprietà-elementari-della-probabilità"><i class="fa fa-check"></i><b>9.6</b> Proprietà elementari della probabilità</a></li>
-<li class="chapter" data-level="9.7" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#variabili-aleatorie"><i class="fa fa-check"></i><b>9.7</b> Variabili aleatorie</a>
+<li class="chapter" data-level="10.6" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#proprietà-elementari-della-probabilità"><i class="fa fa-check"></i><b>10.6</b> Proprietà elementari della probabilità</a></li>
+<li class="chapter" data-level="10.7" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#variabili-aleatorie"><i class="fa fa-check"></i><b>10.7</b> Variabili aleatorie</a>
 <ul>
-<li class="chapter" data-level="9.7.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#a-cosa-servono-le-variabili-aleatorie"><i class="fa fa-check"></i><b>9.7.1</b> A cosa servono le variabili aleatorie?</a></li>
-<li class="chapter" data-level="9.7.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#funzione-di-massa-di-probabilità"><i class="fa fa-check"></i><b>9.7.2</b> Funzione di massa di probabilità</a></li>
+<li class="chapter" data-level="10.7.1" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#a-cosa-servono-le-variabili-aleatorie"><i class="fa fa-check"></i><b>10.7.1</b> A cosa servono le variabili aleatorie?</a></li>
+<li class="chapter" data-level="10.7.2" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#funzione-di-massa-di-probabilità"><i class="fa fa-check"></i><b>10.7.2</b> Funzione di massa di probabilità</a></li>
 </ul></li>
-<li class="chapter" data-level="9.8" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#notazione"><i class="fa fa-check"></i><b>9.8</b> Notazione</a></li>
+<li class="chapter" data-level="10.8" data-path="chapter-prob-discreta.html"><a href="chapter-prob-discreta.html#notazione"><i class="fa fa-check"></i><b>10.8</b> Notazione</a></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html"><i class="fa fa-check"></i><b>10</b> Probabilità condizionata</a>
+<li class="chapter" data-level="11" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html"><i class="fa fa-check"></i><b>11</b> Probabilità condizionata</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#sec:prob_cond"><i class="fa fa-check"></i><b>10.1</b> Probabilità condizionata su altri eventi</a>
+<li class="chapter" data-level="11.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#sec:prob_cond"><i class="fa fa-check"></i><b>11.1</b> Probabilità condizionata su altri eventi</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#la-fallacia-del-pubblico-ministero"><i class="fa fa-check"></i><b>10.1.1</b> La fallacia del pubblico ministero</a></li>
+<li class="chapter" data-level="11.1.1" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#la-fallacia-del-pubblico-ministero"><i class="fa fa-check"></i><b>11.1.1</b> La fallacia del pubblico ministero</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#legge-della-probabilità-composta"><i class="fa fa-check"></i><b>10.2</b> Legge della probabilità composta</a></li>
-<li class="chapter" data-level="10.3" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#lindipendendenza-stocastica"><i class="fa fa-check"></i><b>10.3</b> L’indipendendenza stocastica</a></li>
+<li class="chapter" data-level="11.2" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#legge-della-probabilità-composta"><i class="fa fa-check"></i><b>11.2</b> Legge della probabilità composta</a></li>
+<li class="chapter" data-level="11.3" data-path="chapter-prob-cond.html"><a href="chapter-prob-cond.html#lindipendendenza-stocastica"><i class="fa fa-check"></i><b>11.3</b> L’indipendendenza stocastica</a></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html"><i class="fa fa-check"></i><b>11</b> Il teorema di Bayes</a>
+<li class="chapter" data-level="12" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html"><i class="fa fa-check"></i><b>12</b> Il teorema di Bayes</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:tot_prob_theorem"><i class="fa fa-check"></i><b>11.1</b> Il teorema della probabilità totale</a></li>
-<li class="chapter" data-level="11.2" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:bayes_theorem"><i class="fa fa-check"></i><b>11.2</b> Il teorema della probabilità delle cause</a>
+<li class="chapter" data-level="12.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:tot_prob_theorem"><i class="fa fa-check"></i><b>12.1</b> Il teorema della probabilità totale</a></li>
+<li class="chapter" data-level="12.2" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#sec:bayes_theorem"><i class="fa fa-check"></i><b>12.2</b> Il teorema della probabilità delle cause</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#aggiornamento-bayesiano"><i class="fa fa-check"></i><b>11.2.1</b> Aggiornamento Bayesiano</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html"><i class="fa fa-check"></i><b>12</b> Probabilità congiunta</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzione-di-probabilità-congiunta"><i class="fa fa-check"></i><b>12.1</b> Funzione di probabilità congiunta</a>
-<ul>
-<li class="chapter" data-level="12.1.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#proprietà"><i class="fa fa-check"></i><b>12.1.1</b> Proprietà</a></li>
-<li class="chapter" data-level="12.1.2" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#eventi"><i class="fa fa-check"></i><b>12.1.2</b> Eventi</a></li>
-<li class="chapter" data-level="12.1.3" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzioni-di-probabilità-marginali"><i class="fa fa-check"></i><b>12.1.3</b> Funzioni di probabilità marginali</a></li>
-<li class="chapter" data-level="12.1.4" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#indipendenza-stocastica"><i class="fa fa-check"></i><b>12.1.4</b> Indipendenza stocastica</a></li>
+<li class="chapter" data-level="12.2.1" data-path="chapter-bayes-theo.html"><a href="chapter-bayes-theo.html#aggiornamento-bayesiano"><i class="fa fa-check"></i><b>12.2.1</b> Aggiornamento Bayesiano</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html"><i class="fa fa-check"></i><b>13</b> Distribuzione campionaria della media dei campioni</a>
+<li class="chapter" data-level="13" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html"><i class="fa fa-check"></i><b>13</b> Probabilità congiunta</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#sec:pars_and_sample_stats"><i class="fa fa-check"></i><b>13.1</b> Parametri e statistiche</a></li>
-<li class="chapter" data-level="13.2" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#la-legge-dei-grandi-numeri"><i class="fa fa-check"></i><b>13.2</b> La legge dei grandi numeri</a></li>
-<li class="chapter" data-level="13.3" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#distribuzione-campionaria"><i class="fa fa-check"></i><b>13.3</b> Distribuzione campionaria</a>
+<li class="chapter" data-level="13.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzione-di-probabilità-congiunta"><i class="fa fa-check"></i><b>13.1</b> Funzione di probabilità congiunta</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#simulazione"><i class="fa fa-check"></i><b>13.3.1</b> Simulazione</a></li>
-</ul></li>
-<li class="chapter" data-level="13.4" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#distribuzione-campionaria-della-media"><i class="fa fa-check"></i><b>13.4</b> Distribuzione campionaria della media</a>
-<ul>
-<li class="chapter" data-level="13.4.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#valore-atteso-della-media-campionaria"><i class="fa fa-check"></i><b>13.4.1</b> Valore atteso della media campionaria</a></li>
-<li class="chapter" data-level="13.4.2" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#varianza-della-media-campionaria"><i class="fa fa-check"></i><b>13.4.2</b> Varianza della media campionaria</a></li>
-<li class="chapter" data-level="13.4.3" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#errore-standard"><i class="fa fa-check"></i><b>13.4.3</b> Errore standard</a></li>
-<li class="chapter" data-level="13.4.4" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#distribuzioni-delle-statistiche-campionarie"><i class="fa fa-check"></i><b>13.4.4</b> Distribuzioni delle statistiche campionarie</a></li>
-</ul></li>
-<li class="chapter" data-level="13.5" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#sec:tlc"><i class="fa fa-check"></i><b>13.5</b> Teorema del limite centrale</a></li>
-<li class="chapter" data-level="13.6" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#intervalli-di-confidenza"><i class="fa fa-check"></i><b>13.6</b> Intervalli di confidenza</a>
-<ul>
-<li class="chapter" data-level="13.6.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#parametri-di-un-modello-statistico"><i class="fa fa-check"></i><b>13.6.1</b> Parametri di un modello statistico</a></li>
-<li class="chapter" data-level="13.6.2" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#lincertezza-della-stima"><i class="fa fa-check"></i><b>13.6.2</b> L’incertezza della stima</a></li>
+<li class="chapter" data-level="13.1.1" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#proprietà"><i class="fa fa-check"></i><b>13.1.1</b> Proprietà</a></li>
+<li class="chapter" data-level="13.1.2" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#eventi"><i class="fa fa-check"></i><b>13.1.2</b> Eventi</a></li>
+<li class="chapter" data-level="13.1.3" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#funzioni-di-probabilità-marginali"><i class="fa fa-check"></i><b>13.1.3</b> Funzioni di probabilità marginali</a></li>
+<li class="chapter" data-level="13.1.4" data-path="chapter-distr-congiunta.html"><a href="chapter-distr-congiunta.html#indipendenza-stocastica"><i class="fa fa-check"></i><b>13.1.4</b> Indipendenza stocastica</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html"><i class="fa fa-check"></i><b>14</b> Stima della funzione a posteriori</a>
+<li class="chapter" data-level="14" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html"><i class="fa fa-check"></i><b>14</b> Distribuzione campionaria della media dei campioni</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:met_numerici_convenzionali"><i class="fa fa-check"></i><b>14.1</b> Metodi numerici convenzionali</a>
+<li class="chapter" data-level="14.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#sec:pars_and_sample_stats"><i class="fa fa-check"></i><b>14.1</b> Parametri e statistiche</a></li>
+<li class="chapter" data-level="14.2" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#la-legge-dei-grandi-numeri"><i class="fa fa-check"></i><b>14.2</b> La legge dei grandi numeri</a></li>
+<li class="chapter" data-level="14.3" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#distribuzione-campionaria"><i class="fa fa-check"></i><b>14.3</b> Distribuzione campionaria</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:appross_numerica"><i class="fa fa-check"></i><b>14.1.1</b> La procedura dell’approssimazione numerica</a></li>
-<li class="chapter" data-level="14.1.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:es_pratico_zetsche"><i class="fa fa-check"></i><b>14.1.2</b> Un esempio pratico</a></li>
-<li class="chapter" data-level="14.1.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:aspett_future_beta2_10"><i class="fa fa-check"></i><b>14.1.3</b> Un esempio pratico (versione 2)</a></li>
-<li class="chapter" data-level="14.1.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sommario-della-funzione-a-posteriori"><i class="fa fa-check"></i><b>14.1.4</b> Sommario della funzione a posteriori</a></li>
+<li class="chapter" data-level="14.3.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#simulazione"><i class="fa fa-check"></i><b>14.3.1</b> Simulazione</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#approssimazione-quadratica"><i class="fa fa-check"></i><b>14.2</b> Approssimazione quadratica</a></li>
-<li class="chapter" data-level="14.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:integr_MC"><i class="fa fa-check"></i><b>14.3</b> Integrazione con metodo Monte Carlo</a>
+<li class="chapter" data-level="14.4" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#distribuzione-campionaria-della-media"><i class="fa fa-check"></i><b>14.4</b> Distribuzione campionaria della media</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:legge_forte_grandi_numeri"><i class="fa fa-check"></i><b>14.3.1</b> Legge forte dei grandi numeri</a></li>
+<li class="chapter" data-level="14.4.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#valore-atteso-della-media-campionaria"><i class="fa fa-check"></i><b>14.4.1</b> Valore atteso della media campionaria</a></li>
+<li class="chapter" data-level="14.4.2" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#varianza-della-media-campionaria"><i class="fa fa-check"></i><b>14.4.2</b> Varianza della media campionaria</a></li>
+<li class="chapter" data-level="14.4.3" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#errore-standard"><i class="fa fa-check"></i><b>14.4.3</b> Errore standard</a></li>
+<li class="chapter" data-level="14.4.4" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#distribuzioni-delle-statistiche-campionarie"><i class="fa fa-check"></i><b>14.4.4</b> Distribuzioni delle statistiche campionarie</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:mmmc"><i class="fa fa-check"></i><b>14.4</b> Metodi MC basati su Catena di Markov</a>
+<li class="chapter" data-level="14.5" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#sec:tlc"><i class="fa fa-check"></i><b>14.5</b> Teorema del limite centrale</a></li>
+<li class="chapter" data-level="14.6" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#intervalli-di-confidenza"><i class="fa fa-check"></i><b>14.6</b> Intervalli di confidenza</a>
 <ul>
-<li class="chapter" data-level="14.4.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:turista_viagg"><i class="fa fa-check"></i><b>14.4.1</b> Il problema del turista viaggiatore</a></li>
-<li class="chapter" data-level="14.4.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#lalgoritmo-di-metropolis"><i class="fa fa-check"></i><b>14.4.2</b> L’algoritmo di Metropolis</a></li>
-<li class="chapter" data-level="14.4.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:metropolis_one_mean"><i class="fa fa-check"></i><b>14.4.3</b> Una applicazione concreta</a></li>
+<li class="chapter" data-level="14.6.1" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#parametri-di-un-modello-statistico"><i class="fa fa-check"></i><b>14.6.1</b> Parametri di un modello statistico</a></li>
+<li class="chapter" data-level="14.6.2" data-path="chapter-distrcampmean.html"><a href="chapter-distrcampmean.html#lincertezza-della-stima"><i class="fa fa-check"></i><b>14.6.2</b> L’incertezza della stima</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html"><i class="fa fa-check"></i><b>15</b> Stima della funzione a posteriori</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:met_numerici_convenzionali"><i class="fa fa-check"></i><b>15.1</b> Metodi numerici convenzionali</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:appross_numerica"><i class="fa fa-check"></i><b>15.1.1</b> La procedura dell’approssimazione numerica</a></li>
+<li class="chapter" data-level="15.1.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:es_pratico_zetsche"><i class="fa fa-check"></i><b>15.1.2</b> Un esempio pratico</a></li>
+<li class="chapter" data-level="15.1.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:aspett_future_beta2_10"><i class="fa fa-check"></i><b>15.1.3</b> Un esempio pratico (versione 2)</a></li>
+<li class="chapter" data-level="15.1.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sommario-della-funzione-a-posteriori"><i class="fa fa-check"></i><b>15.1.4</b> Sommario della funzione a posteriori</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#approssimazione-quadratica"><i class="fa fa-check"></i><b>15.2</b> Approssimazione quadratica</a></li>
+<li class="chapter" data-level="15.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:integr_MC"><i class="fa fa-check"></i><b>15.3</b> Integrazione con metodo Monte Carlo</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:legge_forte_grandi_numeri"><i class="fa fa-check"></i><b>15.3.1</b> Legge forte dei grandi numeri</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:mmmc"><i class="fa fa-check"></i><b>15.4</b> Metodi MC basati su Catena di Markov</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:turista_viagg"><i class="fa fa-check"></i><b>15.4.1</b> Il problema del turista viaggiatore</a></li>
+<li class="chapter" data-level="15.4.2" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#lalgoritmo-di-metropolis"><i class="fa fa-check"></i><b>15.4.2</b> L’algoritmo di Metropolis</a></li>
+<li class="chapter" data-level="15.4.3" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:metropolis_one_mean"><i class="fa fa-check"></i><b>15.4.3</b> Una applicazione concreta</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-stima-funzione-aposteriori.html"><a href="chapter-stima-funzione-aposteriori.html#sec:pregi_inferenza_bayes"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="chapter-reglin.html"><a href="chapter-reglin.html"><i class="fa fa-check"></i><b>15</b> Regressione lineare semplice</a>
+<li class="chapter" data-level="16" data-path="chapter-reglin.html"><a href="chapter-reglin.html"><i class="fa fa-check"></i><b>16</b> Regressione lineare semplice</a>
 <ul>
 <li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#obiettivi-di-apprendimento"><i class="fa fa-check"></i>Obiettivi di apprendimento</a></li>
 <li class="chapter" data-level="" data-path="cha-install.html"><a href="cha-install.html#motivazione"><i class="fa fa-check"></i>Motivazione</a></li>
-<li class="chapter" data-level="15.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#la-funzione-lineare"><i class="fa fa-check"></i><b>15.1</b> La funzione lineare</a></li>
-<li class="chapter" data-level="15.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#lerrore-di-misurazione"><i class="fa fa-check"></i><b>15.2</b> L’errore di misurazione</a></li>
-<li class="chapter" data-level="15.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#scopi-della-regressione-lineare"><i class="fa fa-check"></i><b>15.3</b> Scopi della regressione lineare</a></li>
-<li class="chapter" data-level="15.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#quantificare-lassociazione-fra-due-caratteri-quantitativi"><i class="fa fa-check"></i><b>15.4</b> Quantificare l’associazione fra due caratteri quantitativi</a></li>
-<li class="chapter" data-level="15.5" data-path="chapter-reglin.html"><a href="chapter-reglin.html#stime-dei-minimi-quadrati"><i class="fa fa-check"></i><b>15.5</b> Stime dei minimi quadrati</a>
+<li class="chapter" data-level="16.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#la-funzione-lineare"><i class="fa fa-check"></i><b>16.1</b> La funzione lineare</a></li>
+<li class="chapter" data-level="16.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#lerrore-di-misurazione"><i class="fa fa-check"></i><b>16.2</b> L’errore di misurazione</a></li>
+<li class="chapter" data-level="16.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#scopi-della-regressione-lineare"><i class="fa fa-check"></i><b>16.3</b> Scopi della regressione lineare</a></li>
+<li class="chapter" data-level="16.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#quantificare-lassociazione-fra-due-caratteri-quantitativi"><i class="fa fa-check"></i><b>16.4</b> Quantificare l’associazione fra due caratteri quantitativi</a></li>
+<li class="chapter" data-level="16.5" data-path="chapter-reglin.html"><a href="chapter-reglin.html#stime-dei-minimi-quadrati"><i class="fa fa-check"></i><b>16.5</b> Stime dei minimi quadrati</a>
 <ul>
-<li class="chapter" data-level="15.5.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#monotwinsiq"><i class="fa fa-check"></i><b>15.5.1</b> Un esempio concreto</a></li>
-<li class="chapter" data-level="15.5.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#sec:beta_r"><i class="fa fa-check"></i><b>15.5.2</b> Coefficiente angolare e correlazione di Pearson</a></li>
-<li class="chapter" data-level="15.5.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#regressione-verso-la-media"><i class="fa fa-check"></i><b>15.5.3</b> Regressione verso la media</a></li>
-<li class="chapter" data-level="15.5.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#punti-influenti-e-valori-anomali"><i class="fa fa-check"></i><b>15.5.4</b> Punti influenti e valori anomali</a></li>
+<li class="chapter" data-level="16.5.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#monotwinsiq"><i class="fa fa-check"></i><b>16.5.1</b> Un esempio concreto</a></li>
+<li class="chapter" data-level="16.5.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#sec:beta_r"><i class="fa fa-check"></i><b>16.5.2</b> Coefficiente angolare e correlazione di Pearson</a></li>
+<li class="chapter" data-level="16.5.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#regressione-verso-la-media"><i class="fa fa-check"></i><b>16.5.3</b> Regressione verso la media</a></li>
+<li class="chapter" data-level="16.5.4" data-path="chapter-reglin.html"><a href="chapter-reglin.html#punti-influenti-e-valori-anomali"><i class="fa fa-check"></i><b>16.5.4</b> Punti influenti e valori anomali</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="chapter-reglin.html"><a href="chapter-reglin.html#bontà-delladattamento"><i class="fa fa-check"></i><b>15.6</b> Bontà dell’adattamento</a>
+<li class="chapter" data-level="16.6" data-path="chapter-reglin.html"><a href="chapter-reglin.html#bontà-delladattamento"><i class="fa fa-check"></i><b>16.6</b> Bontà dell’adattamento</a>
 <ul>
-<li class="chapter" data-level="15.6.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#errore-standard-della-stima"><i class="fa fa-check"></i><b>15.6.1</b> Errore standard della stima</a></li>
-<li class="chapter" data-level="15.6.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#indice-di-determinazione"><i class="fa fa-check"></i><b>15.6.2</b> Indice di determinazione</a></li>
+<li class="chapter" data-level="16.6.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#errore-standard-della-stima"><i class="fa fa-check"></i><b>16.6.1</b> Errore standard della stima</a></li>
+<li class="chapter" data-level="16.6.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#indice-di-determinazione"><i class="fa fa-check"></i><b>16.6.2</b> Indice di determinazione</a></li>
 </ul></li>
-<li class="chapter" data-level="15.7" data-path="chapter-reglin.html"><a href="chapter-reglin.html#inferenza-sullassociazione-tra-x-e-y-nella-popolazione"><i class="fa fa-check"></i><b>15.7</b> Inferenza sull’associazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> nella popolazione</a>
+<li class="chapter" data-level="16.7" data-path="chapter-reglin.html"><a href="chapter-reglin.html#inferenza-sullassociazione-tra-x-e-y-nella-popolazione"><i class="fa fa-check"></i><b>16.7</b> Inferenza sull’associazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> nella popolazione</a>
 <ul>
-<li class="chapter" data-level="15.7.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#modello-statistico-di-regressione-lineare"><i class="fa fa-check"></i><b>15.7.1</b> Modello statistico di regressione lineare</a></li>
-<li class="chapter" data-level="15.7.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#proprietà-degli-stimatori-dei-minimi-quadrati"><i class="fa fa-check"></i><b>15.7.2</b> Proprietà degli stimatori dei minimi quadrati</a></li>
-<li class="chapter" data-level="15.7.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#le-inferenze-sul-modello-di-regressione"><i class="fa fa-check"></i><b>15.7.3</b> Le inferenze sul modello di regressione</a></li>
+<li class="chapter" data-level="16.7.1" data-path="chapter-reglin.html"><a href="chapter-reglin.html#modello-statistico-di-regressione-lineare"><i class="fa fa-check"></i><b>16.7.1</b> Modello statistico di regressione lineare</a></li>
+<li class="chapter" data-level="16.7.2" data-path="chapter-reglin.html"><a href="chapter-reglin.html#proprietà-degli-stimatori-dei-minimi-quadrati"><i class="fa fa-check"></i><b>16.7.2</b> Proprietà degli stimatori dei minimi quadrati</a></li>
+<li class="chapter" data-level="16.7.3" data-path="chapter-reglin.html"><a href="chapter-reglin.html#le-inferenze-sul-modello-di-regressione"><i class="fa fa-check"></i><b>16.7.3</b> Le inferenze sul modello di regressione</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chapter-reglin.html"><a href="chapter-reglin.html#considerazioni-conclusive"><i class="fa fa-check"></i>Considerazioni conclusive</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html"><i class="fa fa-check"></i><b>16</b> Il modello lineare</a>
+<li class="chapter" data-level="17" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html"><i class="fa fa-check"></i><b>17</b> Il modello lineare</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-binomiale"><i class="fa fa-check"></i><b>16.1</b> Modello Binomiale</a></li>
-<li class="chapter" data-level="16.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec:idrossi"><i class="fa fa-check"></i><b>16.2</b> Il presidente Trump e l’idrossiclorochina</a></li>
-<li class="chapter" data-level="16.3" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-normale"><i class="fa fa-check"></i><b>16.3</b> Modello Normale</a>
+<li class="chapter" data-level="17.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-binomiale"><i class="fa fa-check"></i><b>17.1</b> Modello Binomiale</a></li>
+<li class="chapter" data-level="17.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec:idrossi"><i class="fa fa-check"></i><b>17.2</b> Il presidente Trump e l’idrossiclorochina</a></li>
+<li class="chapter" data-level="17.3" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#modello-normale"><i class="fa fa-check"></i><b>17.3</b> Modello Normale</a>
 <ul>
-<li class="chapter" data-level="16.3.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#il-modello-normale-con-quap"><i class="fa fa-check"></i><b>16.3.1</b> Il modello normale con <code>quap()</code></a></li>
+<li class="chapter" data-level="17.3.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#il-modello-normale-con-quap"><i class="fa fa-check"></i><b>17.3.1</b> Il modello normale con <code>quap()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="16.4" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_mod_lin"><i class="fa fa-check"></i><b>16.4</b> Il modello di regressione lineare</a>
+<li class="chapter" data-level="17.4" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_mod_lin"><i class="fa fa-check"></i><b>17.4</b> Il modello di regressione lineare</a>
 <ul>
-<li class="chapter" data-level="16.4.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>16.4.1</b> Variabile indipendente dicotomica</a></li>
-<li class="chapter" data-level="16.4.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>16.4.2</b> Un esempio pratico</a></li>
+<li class="chapter" data-level="17.4.1" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>17.4.1</b> Variabile indipendente dicotomica</a></li>
+<li class="chapter" data-level="17.4.2" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>17.4.2</b> Un esempio pratico</a></li>
 </ul></li>
-<li class="chapter" data-level="16.5" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>16.5</b> Una variabile indipendente continua</a></li>
+<li class="chapter" data-level="17.5" data-path="chapter-stat-models.html"><a href="chapter-stat-models.html#sec_var_ind_dico"><i class="fa fa-check"></i><b>17.5</b> Una variabile indipendente continua</a></li>
 <li class="chapter" data-level="" data-path="chapter-misurazione.html"><a href="chapter-misurazione.html#conclusioni"><i class="fa fa-check"></i>Conclusioni</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="appendici.html"><a href="appendici.html"><i class="fa fa-check"></i>Appendici</a>
@@ -437,11 +489,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chapter:stat_models" class="section level1" number="16">
-<h1><span class="header-section-number">Capitolo 16</span> Il modello lineare</h1>
+<div id="chapter:stat_models" class="section level1" number="17">
+<h1><span class="header-section-number">Capitolo 17</span> Il modello lineare</h1>
 <p>Prima di descrivere come il modello di regressione lineare possa essere applicato ai dati mediante l’approccio Bayesiano, esamineremo i modelli statistici Bayesiani che vengono utilizzati in alcuni casi più semplici, ovvero (1) il modello statistico per una proporzione e (2) il modello statistico utilizzato per il confronto tra due proporzioni. Estenderemo poi la discussione al caso in cui viene considerato (3) un campione di osservazioni misurate su scala continua, assumendo che ciascuna osservazione provenga da una distribuzione Normale. In tali circostanze, l’oggetto dell’inferenza sarà il parametro <span class="math inline">\(\mu\)</span> che rappresenta la media della popolazione da cui le osservazioni sono state tratte. A questo punto saremo nelle condizioni di discutere (4) l’inferenza Bayesiana sulla differenza tra le medie di due popolazioni. Tale problema verrà affrontato specificando un modello di regressione lineare che include una variabile dipendente continua e una variabile indipendente dicotomica. Una volta chiarite le proprietà del modello di regressione in questo caso semplice, sarà immediato estendere la discussione (5) al caso di una variabile indipendente continua.</p>
-<div id="modello-binomiale" class="section level2" number="16.1">
-<h2><span class="header-section-number">16.1</span> Modello Binomiale</h2>
+<div id="modello-binomiale" class="section level2" number="17.1">
+<h2><span class="header-section-number">17.1</span> Modello Binomiale</h2>
 <p>Se facciamo nuovamente riferimento all’esempio del mappamondo di <span class="citation"><a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">McElreath</a> (<a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span>, nel quale abbiamo osservato <span class="math inline">\(A = 6\)</span> volte “acqua” in <span class="math inline">\(N = 9\)</span> prove Bernoulliane indipendenti, allora il modello statistico che descrive l’esperimento casuale può essere
 formulato nei termini seguenti:</p>
 <p><span class="math display" id="eq:mappamondomodel">\[\begin{equation}
@@ -449,17 +501,17 @@ formulato nei termini seguenti:</p>
 A &amp;\sim \text{Binomiale}(N, p) \\
 p &amp;\sim \text{Uniforme}(0, 1) 
 \end{aligned}
-\tag{16.1}
+\tag{17.1}
 \end{equation}\]</span></p>
 <p>dove la prima riga definisce la funzione di verosimiglianza e la seconda riga definisce la distribuzione a priori. Il segno <span class="math inline">\(\sim\)</span> (tilde) si può leggere “si distribuisce come.” La prima riga, dunque, ci dice che la variabile aleatoria <span class="math inline">\(Y\)</span> segue la distribuzione Binomiale di parametri <span class="math inline">\(N\)</span> e <span class="math inline">\(p\)</span>. La seconda riga specifica che, quale distribuzione a priori, assumiamo una distribuzione uniforme in (0 e 1) per il parametro <span class="math inline">\(p\)</span>.</p>
 </div>
-<div id="sec:idrossi" class="section level2" number="16.2">
-<h2><span class="header-section-number">16.2</span> Il presidente Trump e l’idrossiclorochina</h2>
+<div id="sec:idrossi" class="section level2" number="17.2">
+<h2><span class="header-section-number">17.2</span> Il presidente Trump e l’idrossiclorochina</h2>
 <p>Cito dal <em>Washington Post</em> del 7 aprile 2020:</p>
 <blockquote>
 <p>One of the most bizarre and disturbing aspects of President Trump’s nightly press briefings on the coronavirus pandemic is when he turns into a drug salesman. Like a cable TV pitchman hawking ‘male enhancement’ pills, Trump regularly extols the virtues of taking hydroxychloroquine, a drug used to treat malaria and lupus, as a potential ‘game changer’ that just might cure Covid-19.</p>
 </blockquote>
-<p>Tralasciamo qui il fatto che il presidente Trump non è un esperto in questo campo. Esaminiamo invece le evidenze iniziali a supporto dell’ipotesi che l’idrossiclorochina possa essere utile per la cura del Covid-19, evidenze disponibili nel momento in cui il presidente Trump ha fatto le affermazioni riportate sopra.<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> Tali evidenze sono state
+<p>Tralasciamo qui il fatto che il presidente Trump non è un esperto in questo campo. Esaminiamo invece le evidenze iniziali a supporto dell’ipotesi che l’idrossiclorochina possa essere utile per la cura del Covid-19, evidenze disponibili nel momento in cui il presidente Trump ha fatto le affermazioni riportate sopra.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> Tali evidenze sono state
 fornite da <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>.</p>
 <p>Il disegno sperimentale di <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> comprende, tra le altre cose, il confronto tra una condizione sperimentale e una condizione di controllo. Un articolo pubblicato da <span class="citation"><a href="bibliografia.html#ref-Hulme_2020" role="doc-biblioref">Hulme et al.</a> (<a href="bibliografia.html#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span> si è posto il problema di rianalizzare i dati di <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> – si veda
 <a href="https://osf.io/5dgmx/" class="uri">https://osf.io/5dgmx/</a>. Tra gli autori di questo secondo articolo figura anche Eric-Jan Wagenmakers, uno psicologo molto conosciuto per i suoi contributi metodologici. <span class="citation"><a href="bibliografia.html#ref-Hulme_2020" role="doc-biblioref">Hulme et al.</a> (<a href="bibliografia.html#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span> sottolineano il fatto che <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> si sono concentrati, nella loro analisi dei dati, soltanto su una parte del loro campione. Se però vengono considerati anche i pazienti che sono stati esclusi dall’analisi dei dati, le conclusioni a cui sono giunti <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> risultano fortemente indebolite.</p>
@@ -482,78 +534,78 @@ contiene i dati del gruppo a cui è stata somministrata
 l’idrossiclorochina e il vettore <code>yc</code> i dati del gruppo di controllo. Il
 valore <span class="math inline">\(y = 1\)</span> indica che il paziente è positivo al virus SARS-CoV-2
 (l’ordine di 0 e 1 è irrilevante).</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="chapter-stat-models.html#cb171-1" aria-hidden="true" tabindex="-1"></a>ym <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">6</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">8</span>))</span>
-<span id="cb171-2"><a href="chapter-stat-models.html#cb171-2" aria-hidden="true" tabindex="-1"></a>ym</span>
-<span id="cb171-3"><a href="chapter-stat-models.html#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 1 1 1 1 0 0 0 0 0 0 0 0</span></span>
-<span id="cb171-4"><a href="chapter-stat-models.html#cb171-4" aria-hidden="true" tabindex="-1"></a>yc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">14</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">2</span>))</span>
-<span id="cb171-5"><a href="chapter-stat-models.html#cb171-5" aria-hidden="true" tabindex="-1"></a>yc</span>
-<span id="cb171-6"><a href="chapter-stat-models.html#cb171-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="chapter-stat-models.html#cb193-1" aria-hidden="true" tabindex="-1"></a>ym <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">6</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">8</span>))</span>
+<span id="cb193-2"><a href="chapter-stat-models.html#cb193-2" aria-hidden="true" tabindex="-1"></a>ym</span>
+<span id="cb193-3"><a href="chapter-stat-models.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 1 1 1 1 0 0 0 0 0 0 0 0</span></span>
+<span id="cb193-4"><a href="chapter-stat-models.html#cb193-4" aria-hidden="true" tabindex="-1"></a>yc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">14</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">2</span>))</span>
+<span id="cb193-5"><a href="chapter-stat-models.html#cb193-5" aria-hidden="true" tabindex="-1"></a>yc</span>
+<span id="cb193-6"><a href="chapter-stat-models.html#cb193-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0</span></span></code></pre></div>
 <p>Utilizzando la sintassi di <code>rethinking</code>, definiamo ora il modello statistico per una proporzione specificando una distribuzione a priori non informativa:</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="chapter-stat-models.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(<span class="st">&quot;rethinking&quot;</span>))</span>
-<span id="cb172-2"><a href="chapter-stat-models.html#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">mc.cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>())</span>
-<span id="cb172-3"><a href="chapter-stat-models.html#cb172-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb172-4"><a href="chapter-stat-models.html#cb172-4" aria-hidden="true" tabindex="-1"></a>flist <span class="ot">&lt;-</span> <span class="fu">alist</span>(</span>
-<span id="cb172-5"><a href="chapter-stat-models.html#cb172-5" aria-hidden="true" tabindex="-1"></a>  y <span class="sc">~</span> <span class="fu">dbinom</span>(<span class="dv">1</span>, p),</span>
-<span id="cb172-6"><a href="chapter-stat-models.html#cb172-6" aria-hidden="true" tabindex="-1"></a>  p <span class="sc">~</span> <span class="fu">dbeta</span>(<span class="dv">1</span>, <span class="dv">1</span>) </span>
-<span id="cb172-7"><a href="chapter-stat-models.html#cb172-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="chapter-stat-models.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(<span class="st">&quot;rethinking&quot;</span>))</span>
+<span id="cb194-2"><a href="chapter-stat-models.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">mc.cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>())</span>
+<span id="cb194-3"><a href="chapter-stat-models.html#cb194-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-4"><a href="chapter-stat-models.html#cb194-4" aria-hidden="true" tabindex="-1"></a>flist <span class="ot">&lt;-</span> <span class="fu">alist</span>(</span>
+<span id="cb194-5"><a href="chapter-stat-models.html#cb194-5" aria-hidden="true" tabindex="-1"></a>  y <span class="sc">~</span> <span class="fu">dbinom</span>(<span class="dv">1</span>, p),</span>
+<span id="cb194-6"><a href="chapter-stat-models.html#cb194-6" aria-hidden="true" tabindex="-1"></a>  p <span class="sc">~</span> <span class="fu">dbeta</span>(<span class="dv">1</span>, <span class="dv">1</span>) </span>
+<span id="cb194-7"><a href="chapter-stat-models.html#cb194-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Calcoliamo la distribuzione a posteriori per il parametro <span class="math inline">\(p\)</span> nel caso del gruppo sperimentale</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="chapter-stat-models.html#cb173-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">quap</span>( </span>
-<span id="cb173-2"><a href="chapter-stat-models.html#cb173-2" aria-hidden="true" tabindex="-1"></a>  flist, </span>
-<span id="cb173-3"><a href="chapter-stat-models.html#cb173-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="fu">list</span>(<span class="at">y =</span> ym)</span>
-<span id="cb173-4"><a href="chapter-stat-models.html#cb173-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="chapter-stat-models.html#cb195-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">quap</span>( </span>
+<span id="cb195-2"><a href="chapter-stat-models.html#cb195-2" aria-hidden="true" tabindex="-1"></a>  flist, </span>
+<span id="cb195-3"><a href="chapter-stat-models.html#cb195-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="fu">list</span>(<span class="at">y =</span> ym)</span>
+<span id="cb195-4"><a href="chapter-stat-models.html#cb195-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Così facendo troviamo il seguente intervallo di credibilità al 95%:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="chapter-stat-models.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">precis</span>(m, <span class="at">prob =</span> <span class="fl">0.95</span>)</span>
-<span id="cb174-2"><a href="chapter-stat-models.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        mean        sd      2.5%     97.5%</span></span>
-<span id="cb174-3"><a href="chapter-stat-models.html#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; p 0.4285716 0.1322594 0.1693479 0.6877954</span></span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="chapter-stat-models.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">precis</span>(m, <span class="at">prob =</span> <span class="fl">0.95</span>)</span>
+<span id="cb196-2"><a href="chapter-stat-models.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        mean        sd      2.5%     97.5%</span></span>
+<span id="cb196-3"><a href="chapter-stat-models.html#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; p 0.4285716 0.1322594 0.1693479 0.6877954</span></span></code></pre></div>
 <p>Creiamo ora un grafico che rappresenta la distribuzione a posteriori del parametro <span class="math inline">\(p\)</span>:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="chapter-stat-models.html#cb175-1" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> <span class="fu">extract.samples</span>(m)</span>
-<span id="cb175-2"><a href="chapter-stat-models.html#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
-<span id="cb175-3"><a href="chapter-stat-models.html#cb175-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">density</span>(post<span class="sc">$</span>p), </span>
-<span id="cb175-4"><a href="chapter-stat-models.html#cb175-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb175-5"><a href="chapter-stat-models.html#cb175-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>),</span>
-<span id="cb175-6"><a href="chapter-stat-models.html#cb175-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb175-7"><a href="chapter-stat-models.html#cb175-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Parametro p&quot;</span>,</span>
-<span id="cb175-8"><a href="chapter-stat-models.html#cb175-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Densità&quot;</span></span>
-<span id="cb175-9"><a href="chapter-stat-models.html#cb175-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="Psicometria_files/figure-html/unnamed-chunk-177-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="chapter-stat-models.html#cb197-1" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> <span class="fu">extract.samples</span>(m)</span>
+<span id="cb197-2"><a href="chapter-stat-models.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb197-3"><a href="chapter-stat-models.html#cb197-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">density</span>(post<span class="sc">$</span>p), </span>
+<span id="cb197-4"><a href="chapter-stat-models.html#cb197-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb197-5"><a href="chapter-stat-models.html#cb197-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>),</span>
+<span id="cb197-6"><a href="chapter-stat-models.html#cb197-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb197-7"><a href="chapter-stat-models.html#cb197-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Parametro p&quot;</span>,</span>
+<span id="cb197-8"><a href="chapter-stat-models.html#cb197-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Densità&quot;</span></span>
+<span id="cb197-9"><a href="chapter-stat-models.html#cb197-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="Psicometria_files/figure-html/unnamed-chunk-199-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Ripetiamo quindi la stessa procedura seguita sopra, usando però i dati del gruppo di controllo, e rappresentiamo la nuova distribuzione a posteriori del parametro <span class="math inline">\(p\)</span> come abbiamo fatto in precedenza:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="chapter-stat-models.html#cb176-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">quap</span>( </span>
-<span id="cb176-2"><a href="chapter-stat-models.html#cb176-2" aria-hidden="true" tabindex="-1"></a>  flist, </span>
-<span id="cb176-3"><a href="chapter-stat-models.html#cb176-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="fu">list</span>(<span class="at">y =</span> yc)</span>
-<span id="cb176-4"><a href="chapter-stat-models.html#cb176-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb176-5"><a href="chapter-stat-models.html#cb176-5" aria-hidden="true" tabindex="-1"></a><span class="fu">precis</span>(m, <span class="at">prob =</span> <span class="fl">0.95</span>)</span>
-<span id="cb176-6"><a href="chapter-stat-models.html#cb176-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        mean         sd      2.5%   97.5%</span></span>
-<span id="cb176-7"><a href="chapter-stat-models.html#cb176-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; p 0.8750014 0.08267432 0.7129627 1.03704</span></span>
-<span id="cb176-8"><a href="chapter-stat-models.html#cb176-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-9"><a href="chapter-stat-models.html#cb176-9" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> <span class="fu">extract.samples</span>(m)</span>
-<span id="cb176-10"><a href="chapter-stat-models.html#cb176-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
-<span id="cb176-11"><a href="chapter-stat-models.html#cb176-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">density</span>(post<span class="sc">$</span>p), </span>
-<span id="cb176-12"><a href="chapter-stat-models.html#cb176-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb176-13"><a href="chapter-stat-models.html#cb176-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>),</span>
-<span id="cb176-14"><a href="chapter-stat-models.html#cb176-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb176-15"><a href="chapter-stat-models.html#cb176-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Parametro p&quot;</span>,</span>
-<span id="cb176-16"><a href="chapter-stat-models.html#cb176-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Densità&quot;</span></span>
-<span id="cb176-17"><a href="chapter-stat-models.html#cb176-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb176-18"><a href="chapter-stat-models.html#cb176-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(post<span class="sc">$</span>p), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code></pre></div>
-<p><img src="Psicometria_files/figure-html/unnamed-chunk-178-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="chapter-stat-models.html#cb198-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">quap</span>( </span>
+<span id="cb198-2"><a href="chapter-stat-models.html#cb198-2" aria-hidden="true" tabindex="-1"></a>  flist, </span>
+<span id="cb198-3"><a href="chapter-stat-models.html#cb198-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="fu">list</span>(<span class="at">y =</span> yc)</span>
+<span id="cb198-4"><a href="chapter-stat-models.html#cb198-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb198-5"><a href="chapter-stat-models.html#cb198-5" aria-hidden="true" tabindex="-1"></a><span class="fu">precis</span>(m, <span class="at">prob =</span> <span class="fl">0.95</span>)</span>
+<span id="cb198-6"><a href="chapter-stat-models.html#cb198-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        mean         sd      2.5%   97.5%</span></span>
+<span id="cb198-7"><a href="chapter-stat-models.html#cb198-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; p 0.8750014 0.08267432 0.7129627 1.03704</span></span>
+<span id="cb198-8"><a href="chapter-stat-models.html#cb198-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-9"><a href="chapter-stat-models.html#cb198-9" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> <span class="fu">extract.samples</span>(m)</span>
+<span id="cb198-10"><a href="chapter-stat-models.html#cb198-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb198-11"><a href="chapter-stat-models.html#cb198-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">density</span>(post<span class="sc">$</span>p), </span>
+<span id="cb198-12"><a href="chapter-stat-models.html#cb198-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb198-13"><a href="chapter-stat-models.html#cb198-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>),</span>
+<span id="cb198-14"><a href="chapter-stat-models.html#cb198-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb198-15"><a href="chapter-stat-models.html#cb198-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Parametro p&quot;</span>,</span>
+<span id="cb198-16"><a href="chapter-stat-models.html#cb198-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Densità&quot;</span></span>
+<span id="cb198-17"><a href="chapter-stat-models.html#cb198-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb198-18"><a href="chapter-stat-models.html#cb198-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(post<span class="sc">$</span>p), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code></pre></div>
+<p><img src="Psicometria_files/figure-html/unnamed-chunk-200-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Le due figure che abbiamo realizzato presentano le distribuzioni a posteriori del parametro <span class="math inline">\(p\)</span> (cioè la probabilità di risultare positivo al virus SARS-CoV-2) per i due gruppi di pazienti considerati nella ricerca di <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>. Le figure mostrano che le due distribuzioni a posteriori sono chiaramente separate, il che suggerisce che il parametro <span class="math inline">\(p\)</span> assume valori diversi nei due gruppi. Coerentemente con la conclusioni di <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>, le stime a posteriori per il parametro <span class="math inline">\(p\)</span> che abbiamo trovato suggeriscono dunque che i pazienti del gruppo sperimentale (a cui è stata somministrata l’idrossiclorochina) hanno una minore probabilità di risultare positivi al SARS-CoV-2 rispetto ai pazienti del gruppo di controllo (a cui non è stata somministrata l’idrossiclorochina).</p>
 <p>Possiamo giungere a questa conclusione senza guardare le due figure ma confrontando gli intervalli di credibilità al 95% dei due gruppi. Gli intervalli di credibilità non si sovrappongono e questo suggerisce che il parametro <span class="math inline">\(p\)</span> è diverso nei due gruppi. Possiamo dunque concludere, con un grado di certezza soggettiva del 95%, che nel gruppo sperimentale vi è una probabilità più bassa di risultare positivi al SARS-CoV-2 rispetto al gruppo di controllo.</p>
 <p>Fino a questo punto non abbiamo fatto altro che replicare le conclusioni a cui sono giunti <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>, sia pur utilizzando una procedura statistica diversa. Tuttavia, in questa anlisi dei dati c’è un aspetto che non abbiamo considerato. <span class="citation"><a href="bibliografia.html#ref-Hulme_2020" role="doc-biblioref">Hulme et al.</a> (<a href="bibliografia.html#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span> hanno osservato che <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>, nella loro analisi statistica, hanno escluso alcuni pazienti i quali, nel gruppo sperimentale, sono in realtà peggiorati, anziché essere migliorati. Se consideriamo dunque i dati di tutti i pazienti del campione che è stato raccolto (non solo quelli selezionati da <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>, la situazione è la seguente. Gruppo sperimentale: 10 positivi su 18; gruppo di controllo: 14 positivi su 16. Ripetiamo dunque l’analisi descritta sopra utilizzando, per il gruppo sperimentale, tutti i dati che abbiamo a disposizione. Così facendo otteniamo il seguente intervallo di credibilità al 95%:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="chapter-stat-models.html#cb177-1" aria-hidden="true" tabindex="-1"></a>ym <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">8</span>))</span>
-<span id="cb177-2"><a href="chapter-stat-models.html#cb177-2" aria-hidden="true" tabindex="-1"></a>ym</span>
-<span id="cb177-3"><a href="chapter-stat-models.html#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0</span></span>
-<span id="cb177-4"><a href="chapter-stat-models.html#cb177-4" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">quap</span>( </span>
-<span id="cb177-5"><a href="chapter-stat-models.html#cb177-5" aria-hidden="true" tabindex="-1"></a>  flist, </span>
-<span id="cb177-6"><a href="chapter-stat-models.html#cb177-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="fu">list</span>(<span class="at">y =</span> ym)</span>
-<span id="cb177-7"><a href="chapter-stat-models.html#cb177-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb177-8"><a href="chapter-stat-models.html#cb177-8" aria-hidden="true" tabindex="-1"></a><span class="fu">precis</span>(m, <span class="at">prob =</span> <span class="fl">0.95</span>)</span>
-<span id="cb177-9"><a href="chapter-stat-models.html#cb177-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        mean        sd      2.5%    97.5%</span></span>
-<span id="cb177-10"><a href="chapter-stat-models.html#cb177-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; p 0.5555876 0.1171192 0.3260382 0.785137</span></span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="chapter-stat-models.html#cb199-1" aria-hidden="true" tabindex="-1"></a>ym <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">8</span>))</span>
+<span id="cb199-2"><a href="chapter-stat-models.html#cb199-2" aria-hidden="true" tabindex="-1"></a>ym</span>
+<span id="cb199-3"><a href="chapter-stat-models.html#cb199-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0</span></span>
+<span id="cb199-4"><a href="chapter-stat-models.html#cb199-4" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">quap</span>( </span>
+<span id="cb199-5"><a href="chapter-stat-models.html#cb199-5" aria-hidden="true" tabindex="-1"></a>  flist, </span>
+<span id="cb199-6"><a href="chapter-stat-models.html#cb199-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="fu">list</span>(<span class="at">y =</span> ym)</span>
+<span id="cb199-7"><a href="chapter-stat-models.html#cb199-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb199-8"><a href="chapter-stat-models.html#cb199-8" aria-hidden="true" tabindex="-1"></a><span class="fu">precis</span>(m, <span class="at">prob =</span> <span class="fl">0.95</span>)</span>
+<span id="cb199-9"><a href="chapter-stat-models.html#cb199-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        mean        sd      2.5%    97.5%</span></span>
+<span id="cb199-10"><a href="chapter-stat-models.html#cb199-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; p 0.5555876 0.1171192 0.3260382 0.785137</span></span></code></pre></div>
 <p>Quando utilizziamo <em>tutti i dati</em> (e non soltanto i pazienti selezionati da <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>) notiamo che l’intervallo di credibilità al 95% per il gruppo sperimentale, ovvero [0.33, 0.79], si sovrappone all’intervallo di credibilità al 95% per il gruppo di controllo, ovvero [0.71 1.04]. In base agli standard correnti, un risultato di questo tipo non viene considerato come evidenza sufficiente per potere concludere che il parametro <span class="math inline">\(p\)</span> assume un valore diverso nei due gruppi.</p>
 <p>Concludiamo dicendo che questo, ovviamente, è solo un esercizio didattico: la ricerca di <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> include tante altre informazioni che qui non sono state considerate. Tuttavia, notiamo che la semplice analisi statistica che abbiamo descritto è stata in grado di replicare le conclusioni a cui sono giunti (per altra via) <span class="citation"><a href="bibliografia.html#ref-Hulme_2020" role="doc-biblioref">Hulme et al.</a> (<a href="bibliografia.html#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span>.</p>
 </div>
-<div id="modello-normale" class="section level2" number="16.3">
-<h2><span class="header-section-number">16.3</span> Modello Normale</h2>
+<div id="modello-normale" class="section level2" number="17.3">
+<h2><span class="header-section-number">17.3</span> Modello Normale</h2>
 <p>Facciamo ora un altro esempio considerando, in questo caso, la distribuzione Normale</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -563,42 +615,42 @@ Y_i &amp;\sim \mathcal{N}(\mu, \sigma) \\
 \end{aligned}
 \]</span>
 Questo secondo modello statistico ci dice che la variabile aleatoria <span class="math inline">\(Y\)</span> segue la distribuzione Normale di parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span>. Il parametro <span class="math inline">\(\mu\)</span> è sconosciuto e abbiamo deciso di descrivere la nostra incertezza a priori relativa ad esso mediante una distribuzione a priori che segue la legge Normale con media uguale alla media campionaria e con deviazione standard 100. Il parametro <span class="math inline">\(\sigma\)</span> è fissato ad un valore pari alla deviazione standard del campione, <span class="math inline">\(s_y\)</span>. In generale, però, anche il parametro <span class="math inline">\(\sigma\)</span> viene considerato ignoto e ad esso potrebbe essere assegnata una distribuzione a priori come, ad esempio, <span class="math inline">\(\sigma \sim \text{Unif}(0, 100)\)</span>.</p>
-<div id="il-modello-normale-con-quap" class="section level3" number="16.3.1">
-<h3><span class="header-section-number">16.3.1</span> Il modello normale con <code>quap()</code></h3>
+<div id="il-modello-normale-con-quap" class="section level3" number="17.3.1">
+<h3><span class="header-section-number">17.3.1</span> Il modello normale con <code>quap()</code></h3>
 <p>Per fare un esempio, consideriamo i 30 valori del BDI-II dei soggetti clinici di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>:</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="chapter-stat-models.html#cb178-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb178-2"><a href="chapter-stat-models.html#cb178-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">26</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">44</span>, <span class="dv">30</span>, <span class="dv">33</span>, <span class="dv">43</span>, <span class="dv">22</span>, <span class="dv">43</span>, <span class="dv">24</span>, <span class="dv">19</span>, <span class="dv">39</span>, <span class="dv">31</span>, <span class="dv">25</span>, <span class="dv">28</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">26</span>, <span class="dv">31</span>, <span class="dv">41</span>, <span class="dv">36</span>, <span class="dv">26</span>, <span class="dv">35</span>, <span class="dv">33</span>, <span class="dv">28</span>, <span class="dv">27</span>, <span class="dv">34</span>, <span class="dv">27</span>, <span class="dv">22</span>)</span>
-<span id="cb178-3"><a href="chapter-stat-models.html#cb178-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="chapter-stat-models.html#cb200-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb200-2"><a href="chapter-stat-models.html#cb200-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">26</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">44</span>, <span class="dv">30</span>, <span class="dv">33</span>, <span class="dv">43</span>, <span class="dv">22</span>, <span class="dv">43</span>, <span class="dv">24</span>, <span class="dv">19</span>, <span class="dv">39</span>, <span class="dv">31</span>, <span class="dv">25</span>, <span class="dv">28</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">26</span>, <span class="dv">31</span>, <span class="dv">41</span>, <span class="dv">36</span>, <span class="dv">26</span>, <span class="dv">35</span>, <span class="dv">33</span>, <span class="dv">28</span>, <span class="dv">27</span>, <span class="dv">34</span>, <span class="dv">27</span>, <span class="dv">22</span>)</span>
+<span id="cb200-3"><a href="chapter-stat-models.html#cb200-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Calcoliamo le statistiche descrittive:</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="chapter-stat-models.html#cb179-1" aria-hidden="true" tabindex="-1"></a>true_sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(df<span class="sc">$</span>x)</span>
-<span id="cb179-2"><a href="chapter-stat-models.html#cb179-2" aria-hidden="true" tabindex="-1"></a>true_sd</span>
-<span id="cb179-3"><a href="chapter-stat-models.html#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6.606858</span></span>
-<span id="cb179-4"><a href="chapter-stat-models.html#cb179-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb179-5"><a href="chapter-stat-models.html#cb179-5" aria-hidden="true" tabindex="-1"></a>sample_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(df<span class="sc">$</span>x)</span>
-<span id="cb179-6"><a href="chapter-stat-models.html#cb179-6" aria-hidden="true" tabindex="-1"></a>sample_mean</span>
-<span id="cb179-7"><a href="chapter-stat-models.html#cb179-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 30.93333</span></span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="chapter-stat-models.html#cb201-1" aria-hidden="true" tabindex="-1"></a>true_sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(df<span class="sc">$</span>x)</span>
+<span id="cb201-2"><a href="chapter-stat-models.html#cb201-2" aria-hidden="true" tabindex="-1"></a>true_sd</span>
+<span id="cb201-3"><a href="chapter-stat-models.html#cb201-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6.606858</span></span>
+<span id="cb201-4"><a href="chapter-stat-models.html#cb201-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-5"><a href="chapter-stat-models.html#cb201-5" aria-hidden="true" tabindex="-1"></a>sample_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(df<span class="sc">$</span>x)</span>
+<span id="cb201-6"><a href="chapter-stat-models.html#cb201-6" aria-hidden="true" tabindex="-1"></a>sample_mean</span>
+<span id="cb201-7"><a href="chapter-stat-models.html#cb201-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 30.93333</span></span></code></pre></div>
 <p>Definiamo ora il modello statistico mediante la funzione <code>alist()</code></p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="chapter-stat-models.html#cb180-1" aria-hidden="true" tabindex="-1"></a>flist <span class="ot">&lt;-</span> <span class="fu">alist</span>(</span>
-<span id="cb180-2"><a href="chapter-stat-models.html#cb180-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">~</span> <span class="fu">dnorm</span>(mu, sigma), </span>
-<span id="cb180-3"><a href="chapter-stat-models.html#cb180-3" aria-hidden="true" tabindex="-1"></a>  mu <span class="sc">~</span> a,</span>
-<span id="cb180-4"><a href="chapter-stat-models.html#cb180-4" aria-hidden="true" tabindex="-1"></a>  a <span class="sc">~</span> <span class="fu">dnorm</span>(sample_mean, <span class="dv">100</span>),</span>
-<span id="cb180-5"><a href="chapter-stat-models.html#cb180-5" aria-hidden="true" tabindex="-1"></a>  sigma <span class="sc">~</span> true_sd</span>
-<span id="cb180-6"><a href="chapter-stat-models.html#cb180-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="chapter-stat-models.html#cb202-1" aria-hidden="true" tabindex="-1"></a>flist <span class="ot">&lt;-</span> <span class="fu">alist</span>(</span>
+<span id="cb202-2"><a href="chapter-stat-models.html#cb202-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">~</span> <span class="fu">dnorm</span>(mu, sigma), </span>
+<span id="cb202-3"><a href="chapter-stat-models.html#cb202-3" aria-hidden="true" tabindex="-1"></a>  mu <span class="sc">~</span> a,</span>
+<span id="cb202-4"><a href="chapter-stat-models.html#cb202-4" aria-hidden="true" tabindex="-1"></a>  a <span class="sc">~</span> <span class="fu">dnorm</span>(sample_mean, <span class="dv">100</span>),</span>
+<span id="cb202-5"><a href="chapter-stat-models.html#cb202-5" aria-hidden="true" tabindex="-1"></a>  sigma <span class="sc">~</span> true_sd</span>
+<span id="cb202-6"><a href="chapter-stat-models.html#cb202-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>e stimiamo la distribuzione a posteriori di <span class="math inline">\(\mu\)</span>:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="chapter-stat-models.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb181-2"><a href="chapter-stat-models.html#cb181-2" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">quap</span>( </span>
-<span id="cb181-3"><a href="chapter-stat-models.html#cb181-3" aria-hidden="true" tabindex="-1"></a>    flist,</span>
-<span id="cb181-4"><a href="chapter-stat-models.html#cb181-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> df </span>
-<span id="cb181-5"><a href="chapter-stat-models.html#cb181-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="chapter-stat-models.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb203-2"><a href="chapter-stat-models.html#cb203-2" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">quap</span>( </span>
+<span id="cb203-3"><a href="chapter-stat-models.html#cb203-3" aria-hidden="true" tabindex="-1"></a>    flist,</span>
+<span id="cb203-4"><a href="chapter-stat-models.html#cb203-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> df </span>
+<span id="cb203-5"><a href="chapter-stat-models.html#cb203-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Esaminando il risultato ottenuto mediante <code>precis()</code>:</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="chapter-stat-models.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">precis</span>(m1)</span>
-<span id="cb182-2"><a href="chapter-stat-models.html#cb182-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       mean       sd     5.5%  94.5%</span></span>
-<span id="cb182-3"><a href="chapter-stat-models.html#cb182-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; a 30.93333 1.206154 29.00567 32.861</span></span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="chapter-stat-models.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">precis</span>(m1)</span>
+<span id="cb204-2"><a href="chapter-stat-models.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       mean       sd     5.5%  94.5%</span></span>
+<span id="cb204-3"><a href="chapter-stat-models.html#cb204-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; a 30.93333 1.206154 29.00567 32.861</span></span></code></pre></div>
 <p>Possiamo così stabilire che l’intervallo di credibilità al 95% per il valore medio del BDI-II è compreso tra [29.0, 32.8]. Questo esempio ci mostra come possiamo calcolare l’intervallo di credibilità nel caso della media di un campione. Nella sezione successiva ci porremo il problema di come sia possibile fare il confronto tra le medie di due campioni indipendenti.</p>
 </div>
 </div>
-<div id="sec_mod_lin" class="section level2" number="16.4">
-<h2><span class="header-section-number">16.4</span> Il modello di regressione lineare</h2>
+<div id="sec_mod_lin" class="section level2" number="17.4">
+<h2><span class="header-section-number">17.4</span> Il modello di regressione lineare</h2>
 <p>I due modelli statistici che abbiamo presentato sopra descrivono il comportamento di una singola variabile aleatoria: una proporzione di “successi” o la media del livello BDI-II in un campione. Se la distribuzione a priori non è informativa, la distribuzione a posteriori risulta centrata sul valore della statistica campionaria utilizzata per la stima del parametro (<span class="math inline">\(\bar{y}\)</span> o <span class="math inline">\(p\)</span>). Quello che “guadagnamo” calcolando la distribuzione a posteriori del parametro è la possibilità di quantificare la nostra incertezza rispetto alla stima del parametro (<span class="math inline">\(\mu\)</span> o <span class="math inline">\(\pi\)</span>): se l’intervallo di credibilità è grande, questo significa che i dati del campione sono poco informativi rispetto al valore del parametro; se invece l’intervallo di credibilità è piccolo, allora concludiamo che siamo piuttosto certi del valore della nostra stima.</p>
 <p>Tuttavia, i modelli di interesse per la psicologia (e per le altre scienze) descrivono le <em>relazioni</em> tra due o più variabili, e non soltanto il valore di una singola variabile. Per esempio, nel suo studio <em>Regression towards mediocrity in hereditary stature</em>, Galton (1886) si è chiesto come sia possibile descrivere la relazione tra l’altezza dei figli e l’altezza dei padri. Il modo più semplice per rispondere ad una domanda di questo tipo è quello di formulare la risposta nei termini di un <em>modello di regressione lineare</em> – infatti, la tecnica statistica della regressione lineare fu inventata da Galton proprio per questo scopo.</p>
 <p>Il modello di regressione lineare è dunque il più semplice dei modelli statistici che descrivono la relazione tra due (o più) variabili. Usando la notazione che abbiamo introdotto in questo capitolo, il modello di regressione può essere descritto nel modo seguente:</p>
@@ -619,8 +671,8 @@ La verosimiglianza indica che ciascun valore <span class="math inline">\(Y_i\)</
 </ol>
 <p>Nel modello statistico presentato sopra, la nostra incertezza su <span class="math inline">\(\beta\)</span> è stata quantificata mediante una distribuzione a priori centrata sullo zero e con una deviazione standard pari a <span class="math inline">\(\sigma_{\beta}\)</span>. La nostra incertezza su <span class="math inline">\(\alpha\)</span> è stata quantificata mediante una distribuzione a priori centrata sullo zero e con una deviazione standard pari a <span class="math inline">\(\sigma_{\alpha}\)</span>. Infine, la nostra incertezza su <span class="math inline">\(\sigma\)</span> è stata quantificata mediante una distribuzione uniforme compresa tra 0 e 50.</p>
 <p>Per ora ci siamo limitati a descrivere la formulazione Bayesiana del modello di regressione mediante la sintassi di <code>rethinking</code>, così come fa <span class="citation"><a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">McElreath</a> (<a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span>. Nelle sezioni seguenti vedremo come sia possibile svolgere l’analisi di regressione in termini Bayesiani. Inizieremo considerando il caso più semplice, ovvero quello nel quale la variabile <span class="math inline">\(X\)</span> è una variabile dicotomica; considereremo poi il caso in cui <span class="math inline">\(X\)</span> è una variabile continua.</p>
-<div id="sec_var_ind_dico" class="section level3" number="16.4.1">
-<h3><span class="header-section-number">16.4.1</span> Variabile indipendente dicotomica</h3>
+<div id="sec_var_ind_dico" class="section level3" number="17.4.1">
+<h3><span class="header-section-number">17.4.1</span> Variabile indipendente dicotomica</h3>
 <p>Solitamente, in un modello di regressione lineare come quello descritto nella sezione <a href="chapter-stat-models.html#sec_mod_lin">Il modello di regressione lineare</a>, la variabile <span class="math inline">\(X\)</span> è una variabile continua. Tuttavia, è anche possibile che <span class="math inline">\(X\)</span> sia una variabile discreta. Consideriamo qui il caso più semplice, ovvero quello in cui <span class="math inline">\(X\)</span> assume solo due valori: 0 e 1. In tali circostanze, il modello lineare può essere usato per il confronto tra le medie di due gruppi. Vediamo perché.</p>
 <p>Se <span class="math inline">\(X\)</span> è una variabile dicotomica (con valori 0 e 1), allora per il modello lineare <span class="math inline">\(\mu_i = \alpha + \beta x_i\)</span> abbiamo quanto segue. Quando <span class="math inline">\(X=0\)</span>, il modello diventa</p>
 <p><span class="math display">\[\mu_i = \alpha\]</span>
@@ -629,8 +681,8 @@ mentre, quando <span class="math inline">\(X=1\)</span>, il modello diventa</p>
 Ciò significa che il parametro <span class="math inline">\(\alpha\)</span> è uguale alla media del gruppo codificato con <span class="math inline">\(X=0\)</span> e il parametro <span class="math inline">\(\beta\)</span> è uguale alla differenza tra le medie dei due gruppi (essendo la media del secondo gruppo uguale a <span class="math inline">\(\alpha + \beta\)</span>).</p>
 <p>In tali circostanze, il parametro <span class="math inline">\(\beta\)</span> risulta particolarmente utile in quanto, nel caso di due gruppi, codifica direttamente l’effetto di una manipolazione sperimentale o di un trattamento (ovvero, esprime la differenza tra le medie di due gruppi). Per “effetto di un trattamento” si intende appunto la differenza tra le medie di due gruppi (per esempio, il gruppo “sperimentale” e il gruppo “di controllo”). L’inferenza su <span class="math inline">\(\beta\)</span> può dunque aiutarci a capire quanto può essere considerato “robusto” l’effetto di un trattamento o di una manipolazione sperimentale.</p>
 </div>
-<div id="sec_var_ind_dico" class="section level3" number="16.4.2">
-<h3><span class="header-section-number">16.4.2</span> Un esempio pratico</h3>
+<div id="sec_var_ind_dico" class="section level3" number="17.4.2">
+<h3><span class="header-section-number">17.4.2</span> Un esempio pratico</h3>
 <p>Esaminiamo un sottoinsieme di dati tratto dal <em>National Longitudinal Survey of Youth</em> i quali fanno parte di un esempio discusso da <span class="citation"><a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">Gelman et al.</a> (<a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">2020</a>)</span>. I soggetti sono bambini di 3 e 4 anni. La variabile dipendente, <code>kid_score</code>, è il punteggio totale del <em>Peabody Individual Achievement Test</em> (PIAT) costituito dalla somma dei punteggi di tre sottoscale (Mathematics, Reading comprehension, Reading recognition). La variabile indipendente, <code>mom_hs</code>, è il livello di istruzione della madre, codificato con due livelli: scuola media superiore completata oppure no. La domanda della ricerca è se il QI del figlio (misurato con la scala PIAT) risulta o meno associato al livello di istruzione della madre.</p>
 <p>Codifichiamo il livello di istruzione della madre (<span class="math inline">\(X\)</span>) con una <em>variabile indicatrice</em> (ovvero, una variabile che assume solo i valori 0 e 1) tale per cui:</p>
 <ul>
@@ -638,38 +690,38 @@ Ciò significa che il parametro <span class="math inline">\(\alpha\)</span> è u
 <li><p><span class="math inline">\(X=1\)</span>: la madre ha completato la scuola media superiore.</p></li>
 </ul>
 <p>Supponiamo che i dati siano contenuti nel data.frame <code>df</code>.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="chapter-stat-models.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;foreign&quot;</span>)</span>
-<span id="cb183-2"><a href="chapter-stat-models.html#cb183-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.dta</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;kidiq.dta&quot;</span>))</span>
-<span id="cb183-3"><a href="chapter-stat-models.html#cb183-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
-<span id="cb183-4"><a href="chapter-stat-models.html#cb183-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   kid_score mom_hs    mom_iq mom_work mom_age</span></span>
-<span id="cb183-5"><a href="chapter-stat-models.html#cb183-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        65      1 121.11753        4      27</span></span>
-<span id="cb183-6"><a href="chapter-stat-models.html#cb183-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2        98      1  89.36188        4      25</span></span>
-<span id="cb183-7"><a href="chapter-stat-models.html#cb183-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3        85      1 115.44316        4      27</span></span>
-<span id="cb183-8"><a href="chapter-stat-models.html#cb183-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4        83      1  99.44964        3      25</span></span>
-<span id="cb183-9"><a href="chapter-stat-models.html#cb183-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5       115      1  92.74571        4      27</span></span>
-<span id="cb183-10"><a href="chapter-stat-models.html#cb183-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6        98      0 107.90184        1      18</span></span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="chapter-stat-models.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;foreign&quot;</span>)</span>
+<span id="cb205-2"><a href="chapter-stat-models.html#cb205-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.dta</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;kidiq.dta&quot;</span>))</span>
+<span id="cb205-3"><a href="chapter-stat-models.html#cb205-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb205-4"><a href="chapter-stat-models.html#cb205-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   kid_score mom_hs    mom_iq mom_work mom_age</span></span>
+<span id="cb205-5"><a href="chapter-stat-models.html#cb205-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        65      1 121.11753        4      27</span></span>
+<span id="cb205-6"><a href="chapter-stat-models.html#cb205-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2        98      1  89.36188        4      25</span></span>
+<span id="cb205-7"><a href="chapter-stat-models.html#cb205-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3        85      1 115.44316        4      27</span></span>
+<span id="cb205-8"><a href="chapter-stat-models.html#cb205-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4        83      1  99.44964        3      25</span></span>
+<span id="cb205-9"><a href="chapter-stat-models.html#cb205-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5       115      1  92.74571        4      27</span></span>
+<span id="cb205-10"><a href="chapter-stat-models.html#cb205-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6        98      0 107.90184        1      18</span></span></code></pre></div>
 <p>Calcoliamo le statistiche descrittive per i due gruppi:</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="chapter-stat-models.html#cb184-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb184-2"><a href="chapter-stat-models.html#cb184-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(mom_hs) <span class="sc">%&gt;%</span> </span>
-<span id="cb184-3"><a href="chapter-stat-models.html#cb184-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb184-4"><a href="chapter-stat-models.html#cb184-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_kid_score =</span> <span class="fu">mean</span>(kid_score),</span>
-<span id="cb184-5"><a href="chapter-stat-models.html#cb184-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">std =</span> <span class="fu">sqrt</span>(<span class="fu">var</span>(kid_score))</span>
-<span id="cb184-6"><a href="chapter-stat-models.html#cb184-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb184-7"><a href="chapter-stat-models.html#cb184-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` ungrouping output (override with `.groups` argument)</span></span>
-<span id="cb184-8"><a href="chapter-stat-models.html#cb184-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 3</span></span>
-<span id="cb184-9"><a href="chapter-stat-models.html#cb184-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   mom_hs mean_kid_score   std</span></span>
-<span id="cb184-10"><a href="chapter-stat-models.html#cb184-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb184-11"><a href="chapter-stat-models.html#cb184-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      0           77.5  22.6</span></span>
-<span id="cb184-12"><a href="chapter-stat-models.html#cb184-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      1           89.3  19.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="chapter-stat-models.html#cb206-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb206-2"><a href="chapter-stat-models.html#cb206-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(mom_hs) <span class="sc">%&gt;%</span> </span>
+<span id="cb206-3"><a href="chapter-stat-models.html#cb206-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb206-4"><a href="chapter-stat-models.html#cb206-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_kid_score =</span> <span class="fu">mean</span>(kid_score),</span>
+<span id="cb206-5"><a href="chapter-stat-models.html#cb206-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">std =</span> <span class="fu">sqrt</span>(<span class="fu">var</span>(kid_score))</span>
+<span id="cb206-6"><a href="chapter-stat-models.html#cb206-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb206-7"><a href="chapter-stat-models.html#cb206-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` ungrouping output (override with `.groups` argument)</span></span>
+<span id="cb206-8"><a href="chapter-stat-models.html#cb206-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 3</span></span>
+<span id="cb206-9"><a href="chapter-stat-models.html#cb206-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   mom_hs mean_kid_score   std</span></span>
+<span id="cb206-10"><a href="chapter-stat-models.html#cb206-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb206-11"><a href="chapter-stat-models.html#cb206-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      0           77.5  22.6</span></span>
+<span id="cb206-12"><a href="chapter-stat-models.html#cb206-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      1           89.3  19.0</span></span></code></pre></div>
 <p>Il punteggio PIAT medio è 77.5 per i bambini la cui madre non ha il diploma di scuola media superiore, e pari a 89.3 per i bambini la cui madre ha completato la scuola media superiore. Questa differenza suggerisce un’associazione tra le variabili, ma tale differenza potrebbe essere soltanto la conseguenza della variabilità campionaria, senza riflettere una caratteristica generale della popolazione. Come possiamo usare il modello statistico lineare per fare inferenza sulla differenza osservata tra i due gruppi?</p>
 <p>Per rispondere a questa domanda specifichiamo il modello statistico che descrive la differenza tra i punteggi PIAT dei due gruppi mediante un modello di regressione lineare:</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="chapter-stat-models.html#cb185-1" aria-hidden="true" tabindex="-1"></a>flist <span class="ot">&lt;-</span> <span class="fu">alist</span>(</span>
-<span id="cb185-2"><a href="chapter-stat-models.html#cb185-2" aria-hidden="true" tabindex="-1"></a>  kid_score <span class="sc">~</span> <span class="fu">dnorm</span>(mu, sigma),</span>
-<span id="cb185-3"><a href="chapter-stat-models.html#cb185-3" aria-hidden="true" tabindex="-1"></a>  mu <span class="sc">~</span> a <span class="sc">+</span> b <span class="sc">*</span> mom_hs,</span>
-<span id="cb185-4"><a href="chapter-stat-models.html#cb185-4" aria-hidden="true" tabindex="-1"></a>  a <span class="sc">~</span> <span class="fu">dnorm</span>(<span class="fl">86.8</span>, <span class="dv">100</span>),</span>
-<span id="cb185-5"><a href="chapter-stat-models.html#cb185-5" aria-hidden="true" tabindex="-1"></a>  b <span class="sc">~</span> <span class="fu">dnorm</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
-<span id="cb185-6"><a href="chapter-stat-models.html#cb185-6" aria-hidden="true" tabindex="-1"></a>  sigma <span class="sc">~</span> <span class="fu">dunif</span>(<span class="dv">0</span>, <span class="dv">100</span>)</span>
-<span id="cb185-7"><a href="chapter-stat-models.html#cb185-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="chapter-stat-models.html#cb207-1" aria-hidden="true" tabindex="-1"></a>flist <span class="ot">&lt;-</span> <span class="fu">alist</span>(</span>
+<span id="cb207-2"><a href="chapter-stat-models.html#cb207-2" aria-hidden="true" tabindex="-1"></a>  kid_score <span class="sc">~</span> <span class="fu">dnorm</span>(mu, sigma),</span>
+<span id="cb207-3"><a href="chapter-stat-models.html#cb207-3" aria-hidden="true" tabindex="-1"></a>  mu <span class="sc">~</span> a <span class="sc">+</span> b <span class="sc">*</span> mom_hs,</span>
+<span id="cb207-4"><a href="chapter-stat-models.html#cb207-4" aria-hidden="true" tabindex="-1"></a>  a <span class="sc">~</span> <span class="fu">dnorm</span>(<span class="fl">86.8</span>, <span class="dv">100</span>),</span>
+<span id="cb207-5"><a href="chapter-stat-models.html#cb207-5" aria-hidden="true" tabindex="-1"></a>  b <span class="sc">~</span> <span class="fu">dnorm</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
+<span id="cb207-6"><a href="chapter-stat-models.html#cb207-6" aria-hidden="true" tabindex="-1"></a>  sigma <span class="sc">~</span> <span class="fu">dunif</span>(<span class="dv">0</span>, <span class="dv">100</span>)</span>
+<span id="cb207-7"><a href="chapter-stat-models.html#cb207-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Si noti che abbiamo specificato tale modello statistico seguendo la stessa logica descritta all’inizio della sezione <a href="chapter-stat-models.html#sec_mod_lin">Il modello di regressione lineare</a>. Ovvero, abbiamo esplicitato:</p>
 <ul>
 <li><p>la verosimiglianza dei dati;</p></li>
@@ -681,91 +733,91 @@ Ciò significa che il parametro <span class="math inline">\(\alpha\)</span> è u
 con <span class="math inline">\(X = 1\)</span>), né l’ipotesi opposta. Specificando per <span class="math inline">\(b\)</span> una distribuzione a priori simmetrica centrata sullo zero non introduciamo dunque alcuna distorsione nella distribuzione a posteriori: non favoriamo né l’ipotesi a cui potremmo essere interessati (ad esempio, <span class="math inline">\(a &gt; 0\)</span>), né l’ipotesi opposta.</p>
 <p>Infine, specifichiamo distribuzione a priori uniforme nell’intervallo (0, 100) per il parametro <span class="math inline">\(\sigma\)</span> che descrive la distribuzione dei dati attorno al loro valore atteso (ovvero, attorno alla retta di regressione).</p>
 <p>Adattiamo il modello ai dati utilizzando la funzione <code>quap()</code>:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="chapter-stat-models.html#cb186-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">quap</span>(</span>
-<span id="cb186-2"><a href="chapter-stat-models.html#cb186-2" aria-hidden="true" tabindex="-1"></a>  flist,</span>
-<span id="cb186-3"><a href="chapter-stat-models.html#cb186-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df</span>
-<span id="cb186-4"><a href="chapter-stat-models.html#cb186-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="chapter-stat-models.html#cb208-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">quap</span>(</span>
+<span id="cb208-2"><a href="chapter-stat-models.html#cb208-2" aria-hidden="true" tabindex="-1"></a>  flist,</span>
+<span id="cb208-3"><a href="chapter-stat-models.html#cb208-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df</span>
+<span id="cb208-4"><a href="chapter-stat-models.html#cb208-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Estraiamo alcuni campioni dalla distribuzione a posteriori:</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="chapter-stat-models.html#cb187-1" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> <span class="fu">extract.samples</span>(m1)</span>
-<span id="cb187-2"><a href="chapter-stat-models.html#cb187-2" aria-hidden="true" tabindex="-1"></a>post[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, ]</span>
-<span id="cb187-3"><a href="chapter-stat-models.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          a         b    sigma</span></span>
-<span id="cb187-4"><a href="chapter-stat-models.html#cb187-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 80.07328  9.006764 19.73586</span></span>
-<span id="cb187-5"><a href="chapter-stat-models.html#cb187-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 77.26278 11.935567 19.77395</span></span>
-<span id="cb187-6"><a href="chapter-stat-models.html#cb187-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 76.66754 11.448966 19.31510</span></span>
-<span id="cb187-7"><a href="chapter-stat-models.html#cb187-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 77.23189 10.742990 19.97299</span></span>
-<span id="cb187-8"><a href="chapter-stat-models.html#cb187-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 80.54546  9.255061 19.83349</span></span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="chapter-stat-models.html#cb209-1" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> <span class="fu">extract.samples</span>(m1)</span>
+<span id="cb209-2"><a href="chapter-stat-models.html#cb209-2" aria-hidden="true" tabindex="-1"></a>post[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, ]</span>
+<span id="cb209-3"><a href="chapter-stat-models.html#cb209-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          a         b    sigma</span></span>
+<span id="cb209-4"><a href="chapter-stat-models.html#cb209-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 80.07328  9.006764 19.73586</span></span>
+<span id="cb209-5"><a href="chapter-stat-models.html#cb209-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 77.26278 11.935567 19.77395</span></span>
+<span id="cb209-6"><a href="chapter-stat-models.html#cb209-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 76.66754 11.448966 19.31510</span></span>
+<span id="cb209-7"><a href="chapter-stat-models.html#cb209-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 77.23189 10.742990 19.97299</span></span>
+<span id="cb209-8"><a href="chapter-stat-models.html#cb209-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 80.54546  9.255061 19.83349</span></span></code></pre></div>
 <p>Esaminiamo la distribuzione a posteriori dei parametri mediante le istruzioni seguenti.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="chapter-stat-models.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
-<span id="cb188-2"><a href="chapter-stat-models.html#cb188-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb188-3"><a href="chapter-stat-models.html#cb188-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dens</span>(</span>
-<span id="cb188-4"><a href="chapter-stat-models.html#cb188-4" aria-hidden="true" tabindex="-1"></a>  post<span class="sc">$</span>a, <span class="at">lwd =</span> <span class="fl">2.5</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb188-5"><a href="chapter-stat-models.html#cb188-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Densità&quot;</span>, <span class="at">main =</span> <span class="st">&quot;p(a | x, y)&quot;</span>,</span>
-<span id="cb188-6"><a href="chapter-stat-models.html#cb188-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.axis =</span> <span class="fl">1.35</span>, <span class="at">cex.main =</span> <span class="fl">1.5</span>,</span>
-<span id="cb188-7"><a href="chapter-stat-models.html#cb188-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.sub =</span> <span class="fl">1.5</span></span>
-<span id="cb188-8"><a href="chapter-stat-models.html#cb188-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb188-9"><a href="chapter-stat-models.html#cb188-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dens</span>(</span>
-<span id="cb188-10"><a href="chapter-stat-models.html#cb188-10" aria-hidden="true" tabindex="-1"></a>  post<span class="sc">$</span>b, <span class="at">lwd =</span> <span class="fl">2.5</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb188-11"><a href="chapter-stat-models.html#cb188-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">main =</span> <span class="st">&quot;p(b | x, y)&quot;</span>,</span>
-<span id="cb188-12"><a href="chapter-stat-models.html#cb188-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.axis =</span> <span class="fl">1.35</span>, <span class="at">cex.main =</span> <span class="fl">1.5</span>,</span>
-<span id="cb188-13"><a href="chapter-stat-models.html#cb188-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.sub =</span> <span class="fl">1.5</span></span>
-<span id="cb188-14"><a href="chapter-stat-models.html#cb188-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb188-15"><a href="chapter-stat-models.html#cb188-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dens</span>(</span>
-<span id="cb188-16"><a href="chapter-stat-models.html#cb188-16" aria-hidden="true" tabindex="-1"></a>  post<span class="sc">$</span>sigma, <span class="at">lwd =</span> <span class="fl">2.5</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb188-17"><a href="chapter-stat-models.html#cb188-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">main =</span> <span class="st">&quot;p(sigma | x, y)&quot;</span>,</span>
-<span id="cb188-18"><a href="chapter-stat-models.html#cb188-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.axis =</span> <span class="fl">1.35</span>, <span class="at">cex.main =</span> <span class="fl">1.5</span>,</span>
-<span id="cb188-19"><a href="chapter-stat-models.html#cb188-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.sub =</span> <span class="fl">1.5</span></span>
-<span id="cb188-20"><a href="chapter-stat-models.html#cb188-20" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb188-21"><a href="chapter-stat-models.html#cb188-21" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb188-22"><a href="chapter-stat-models.html#cb188-22" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="chapter-stat-models.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb210-2"><a href="chapter-stat-models.html#cb210-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb210-3"><a href="chapter-stat-models.html#cb210-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dens</span>(</span>
+<span id="cb210-4"><a href="chapter-stat-models.html#cb210-4" aria-hidden="true" tabindex="-1"></a>  post<span class="sc">$</span>a, <span class="at">lwd =</span> <span class="fl">2.5</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb210-5"><a href="chapter-stat-models.html#cb210-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Densità&quot;</span>, <span class="at">main =</span> <span class="st">&quot;p(a | x, y)&quot;</span>,</span>
+<span id="cb210-6"><a href="chapter-stat-models.html#cb210-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.axis =</span> <span class="fl">1.35</span>, <span class="at">cex.main =</span> <span class="fl">1.5</span>,</span>
+<span id="cb210-7"><a href="chapter-stat-models.html#cb210-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.sub =</span> <span class="fl">1.5</span></span>
+<span id="cb210-8"><a href="chapter-stat-models.html#cb210-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb210-9"><a href="chapter-stat-models.html#cb210-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dens</span>(</span>
+<span id="cb210-10"><a href="chapter-stat-models.html#cb210-10" aria-hidden="true" tabindex="-1"></a>  post<span class="sc">$</span>b, <span class="at">lwd =</span> <span class="fl">2.5</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb210-11"><a href="chapter-stat-models.html#cb210-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">main =</span> <span class="st">&quot;p(b | x, y)&quot;</span>,</span>
+<span id="cb210-12"><a href="chapter-stat-models.html#cb210-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.axis =</span> <span class="fl">1.35</span>, <span class="at">cex.main =</span> <span class="fl">1.5</span>,</span>
+<span id="cb210-13"><a href="chapter-stat-models.html#cb210-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.sub =</span> <span class="fl">1.5</span></span>
+<span id="cb210-14"><a href="chapter-stat-models.html#cb210-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb210-15"><a href="chapter-stat-models.html#cb210-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dens</span>(</span>
+<span id="cb210-16"><a href="chapter-stat-models.html#cb210-16" aria-hidden="true" tabindex="-1"></a>  post<span class="sc">$</span>sigma, <span class="at">lwd =</span> <span class="fl">2.5</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb210-17"><a href="chapter-stat-models.html#cb210-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">main =</span> <span class="st">&quot;p(sigma | x, y)&quot;</span>,</span>
+<span id="cb210-18"><a href="chapter-stat-models.html#cb210-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.axis =</span> <span class="fl">1.35</span>, <span class="at">cex.main =</span> <span class="fl">1.5</span>,</span>
+<span id="cb210-19"><a href="chapter-stat-models.html#cb210-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.sub =</span> <span class="fl">1.5</span></span>
+<span id="cb210-20"><a href="chapter-stat-models.html#cb210-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb210-21"><a href="chapter-stat-models.html#cb210-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb210-22"><a href="chapter-stat-models.html#cb210-22" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:postkids"></span>
 <img src="Psicometria_files/figure-html/postkids-1.png" alt="Distribuzioni a posteriori dei parametri _a_, _b_ e $\sigma$ del modello statistico lineare che descrive i punteggi del _Peabody Individual Achievement Test_ come funzione del gruppo di appartenenza: i bambini la cui madre non ha completato la scuola media superiore e i bambini la cui madre ha completato la scuola media superiore. I dati sono tratti da @gelman2020regression." width="70%" />
 <p class="caption">
-Figura 16.1: Distribuzioni a posteriori dei parametri <em>a</em>, <em>b</em> e <span class="math inline">\(\sigma\)</span> del modello statistico lineare che descrive i punteggi del <em>Peabody Individual Achievement Test</em> come funzione del gruppo di appartenenza: i bambini la cui madre non ha completato la scuola media superiore e i bambini la cui madre ha completato la scuola media superiore. I dati sono tratti da <span class="citation"><a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">Gelman et al.</a> (<a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">2020</a>)</span>.
+Figura 17.1: Distribuzioni a posteriori dei parametri <em>a</em>, <em>b</em> e <span class="math inline">\(\sigma\)</span> del modello statistico lineare che descrive i punteggi del <em>Peabody Individual Achievement Test</em> come funzione del gruppo di appartenenza: i bambini la cui madre non ha completato la scuola media superiore e i bambini la cui madre ha completato la scuola media superiore. I dati sono tratti da <span class="citation"><a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">Gelman et al.</a> (<a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">2020</a>)</span>.
 </p>
 </div>
 <p>I risultati possono anche essere esaminati mediante la funzione <code>precis()</code> che fornisce la stima a posteriori del parametro e l’intervallo di credibilità al livello desiderato:</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="chapter-stat-models.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">precis</span>(m1, <span class="at">prob =</span> <span class="fl">0.95</span>)</span>
-<span id="cb189-2"><a href="chapter-stat-models.html#cb189-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           mean        sd      2.5%    97.5%</span></span>
-<span id="cb189-3"><a href="chapter-stat-models.html#cb189-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; a     77.55837 2.0528231 73.534910 81.58183</span></span>
-<span id="cb189-4"><a href="chapter-stat-models.html#cb189-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; b     11.75868 2.3158682  7.219661 16.29770</span></span>
-<span id="cb189-5"><a href="chapter-stat-models.html#cb189-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sigma 19.80505 0.6721414 18.487679 21.12243</span></span></code></pre></div>
-<p>I risultati confermano ciò che ci aspettavamo: il coefficiente <span class="math inline">\(a\)</span> corrisponde alla media del gruppo codificato con <span class="math inline">\(X = 0\)</span>, ovvero la media dei punteggi PIAT per i bambini la cui madre non ha completato la scuola media superiore; il coefficiente <span class="math inline">\(b\)</span> corrisponde alla differenza tra le medie dei due gruppi, ovvero 89.32 - 77.55 = 11.77. Il coefficiente <span class="math inline">\(b\)</span> ci dice dunque che i bambini la cui madre ha completato la scuola superiore ottengono in media 12 punti in più rispetto ai bambini la cui madre non ha completato la scuola superiore. Per ora non consideriamo l’interpretazione del parametro <span class="math inline">\(\sigma\)</span> (si veda più sotto). Una rappresentazione grafica dell’interpretazione che abbiamo fornito ai parametri del modello lineare è fornita nella figura <a href="chapter-stat-models.html#fig:kids2groups">16.2</a>.</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="chapter-stat-models.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">precis</span>(m1, <span class="at">prob =</span> <span class="fl">0.95</span>)</span>
+<span id="cb211-2"><a href="chapter-stat-models.html#cb211-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           mean        sd      2.5%    97.5%</span></span>
+<span id="cb211-3"><a href="chapter-stat-models.html#cb211-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; a     77.55837 2.0528231 73.534910 81.58183</span></span>
+<span id="cb211-4"><a href="chapter-stat-models.html#cb211-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; b     11.75868 2.3158682  7.219661 16.29770</span></span>
+<span id="cb211-5"><a href="chapter-stat-models.html#cb211-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sigma 19.80505 0.6721414 18.487679 21.12243</span></span></code></pre></div>
+<p>I risultati confermano ciò che ci aspettavamo: il coefficiente <span class="math inline">\(a\)</span> corrisponde alla media del gruppo codificato con <span class="math inline">\(X = 0\)</span>, ovvero la media dei punteggi PIAT per i bambini la cui madre non ha completato la scuola media superiore; il coefficiente <span class="math inline">\(b\)</span> corrisponde alla differenza tra le medie dei due gruppi, ovvero 89.32 - 77.55 = 11.77. Il coefficiente <span class="math inline">\(b\)</span> ci dice dunque che i bambini la cui madre ha completato la scuola superiore ottengono in media 12 punti in più rispetto ai bambini la cui madre non ha completato la scuola superiore. Per ora non consideriamo l’interpretazione del parametro <span class="math inline">\(\sigma\)</span> (si veda più sotto). Una rappresentazione grafica dell’interpretazione che abbiamo fornito ai parametri del modello lineare è fornita nella figura <a href="chapter-stat-models.html#fig:kids2groups">17.2</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:kids2groups"></span>
 <img src="images/kid_scores.pdf" alt="Distribuzione dei punteggi del _Peabody Individual Achievement Test_ in due gruppi di bambini facenti parte del campione discusso da @gelman2020regression: bambini la cui madre non hanno completato la scuola media superiore ($X$ = 0) e bambini la cui madre ha completato la scuola media superiore ($X$ = 1)." width="70%" />
 <p class="caption">
-Figura 16.2: Distribuzione dei punteggi del <em>Peabody Individual Achievement Test</em> in due gruppi di bambini facenti parte del campione discusso da <span class="citation"><a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">Gelman et al.</a> (<a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">2020</a>)</span>: bambini la cui madre non hanno completato la scuola media superiore (<span class="math inline">\(X\)</span> = 0) e bambini la cui madre ha completato la scuola media superiore (<span class="math inline">\(X\)</span> = 1).
+Figura 17.2: Distribuzione dei punteggi del <em>Peabody Individual Achievement Test</em> in due gruppi di bambini facenti parte del campione discusso da <span class="citation"><a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">Gelman et al.</a> (<a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">2020</a>)</span>: bambini la cui madre non hanno completato la scuola media superiore (<span class="math inline">\(X\)</span> = 0) e bambini la cui madre ha completato la scuola media superiore (<span class="math inline">\(X\)</span> = 1).
 </p>
 </div>
 <p>Abbiamo visto sopra che il parametro <span class="math inline">\(b\)</span> = 11.77 riflette semplicemente la differenza tra le medie dei due gruppi. Ma il modello statistico lineare ci dice qualcosa in più: esso quantifica la nostra incertezza relativamente a tale differenza, al di là delle caratteristiche specifiche del particolare campione che abbiamo esaminato. È ovvio chiedersi: se esaminassimo un altro campione, quanto sarebbe grande questa differenza? E in un altro campione ancora? Il modello statistico lineare ci dice che, indipendentemente da quale campione di dati verrà esaminiamo, ci possiamo aspettare, con un grado di certezza del 95%, che la differenza tra le medie dei due gruppi sia compresa nell’intervallo tra 7.2 e 16.3 punti PIAT. Questo è il significato dell’<em>intervallo di credibilità</em> al 95% che è stato calcolato e che ci viene fornito dalla funzione <code>precis()</code>.</p>
-<p>L’intervallo di credibilità al 95% rappresenta una stima dell’intervallo di valori che contengono il 95% dell’area della distribuzione a posteriori del parametro <span class="math inline">\(b\)</span>. Nella figura <a href="chapter-stat-models.html#fig:postkids">16.1</a> si vedono le distribuzioni a posteriori dei parametri <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>. Tali distribuzioni sono state generate estraendo un numero molto grande di campioni dalle
-distribuzioni a posteriori di <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>. Solitamente tali stime sono ottenute mediante una variante dell’algoritmo di Metropolis; l’approssimazione quadratica qui usata fornisce un’approssimazione a questo processo. Dalla figura <a href="chapter-stat-models.html#fig:postkids">16.1</a> vediamo che le distribuzioni a posteriori tendono ad essere Normali. Vediamo inoltre che i valori più plausibili per il parametro <span class="math inline">\(b\)</span> sono compresi tra 7.2 e 16.3, come ci dice l’intervallo di credibilità al 95%. Il problema di come sia possibile specificare un intervallo di credibilità sulla base delle informazioni fornite dalla distribuzione a posteriori è
-discusso nel capitolo XX.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p>
+<p>L’intervallo di credibilità al 95% rappresenta una stima dell’intervallo di valori che contengono il 95% dell’area della distribuzione a posteriori del parametro <span class="math inline">\(b\)</span>. Nella figura <a href="chapter-stat-models.html#fig:postkids">17.1</a> si vedono le distribuzioni a posteriori dei parametri <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>. Tali distribuzioni sono state generate estraendo un numero molto grande di campioni dalle
+distribuzioni a posteriori di <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>. Solitamente tali stime sono ottenute mediante una variante dell’algoritmo di Metropolis; l’approssimazione quadratica qui usata fornisce un’approssimazione a questo processo. Dalla figura <a href="chapter-stat-models.html#fig:postkids">17.1</a> vediamo che le distribuzioni a posteriori tendono ad essere Normali. Vediamo inoltre che i valori più plausibili per il parametro <span class="math inline">\(b\)</span> sono compresi tra 7.2 e 16.3, come ci dice l’intervallo di credibilità al 95%. Il problema di come sia possibile specificare un intervallo di credibilità sulla base delle informazioni fornite dalla distribuzione a posteriori è
+discusso nel capitolo XX.<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
 <p>In conclusione, il modello statistico lineare riassume la differenza nei punteggi medi del test PIAT nei due gruppi di bambini: i bambini la cui madre ha completato la scuola media superiore e bambini la cui madre non ha completato la scuola media superiore. Il modello statistico lineare ci consente inoltre di fare inferenza sulla differenza nei punteggi medi
 del test PIAT nei due gruppi di bambini. Viene infatti definito un livello di credibilità che descrive, ad un determinato grado di certezza, quelli che sono i valori plausibili di tale differenza, al di là delle idiosincrasie del particolare campione che abbiamo esaminato, ovvero tenendo in considerazione il fenomeno della variabilità campionaria. Questo è il processo di inferenza Bayesiana che viene svolta mediante l’uso di un modello statistico lineare.</p>
-<div id="quale-distribuzione-a-priori-è-corretta" class="section level4" number="16.4.2.1">
-<h4><span class="header-section-number">16.4.2.1</span> Quale distribuzione a priori è corretta?</h4>
+<div id="quale-distribuzione-a-priori-è-corretta" class="section level4" number="17.4.2.1">
+<h4><span class="header-section-number">17.4.2.1</span> Quale distribuzione a priori è corretta?</h4>
 <p>Un grave problema che è emerso negli anni recenti relativamente all’analisi dei dati psicologici (e non solo) è il cosiddetto “<span class="math inline">\(p\)</span>-hacking,” ovvero la pratica di adattare il modello e i dati allo scopo di ottenere il risultato desiderato. Il risultato desiderato è
 generalmente un valore-<span class="math inline">\(p\)</span> inferiore al 5%. Il problema è che quando il modello statistico viene modificato alla luce dei dati osservati, i valori-<span class="math inline">\(p\)</span> non mantengono più il loro significato originario: in altre parole, il “<span class="math inline">\(p\)</span>-hacking” aumenta la probabilità di ottenere dei risultati falsi. L’approccio Bayesiano non prevede i valori-<span class="math inline">\(p\)</span>, ma il rischio rimane se scegliamo le distribuzioni a priori in base alle proprietà del campione allo scopo di ottenere il risultato desiderato. La procedura che invece deve essere seguita è quella di scegliere le distribuzioni a priori sulla base di considerazioni generali, indipendentemente dalle specifiche caratteristiche del campione.</p>
 </div>
 </div>
 </div>
-<div id="sec_var_ind_dico" class="section level2" number="16.5">
-<h2><span class="header-section-number">16.5</span> Una variabile indipendente continua</h2>
+<div id="sec_var_ind_dico" class="section level2" number="17.5">
+<h2><span class="header-section-number">17.5</span> Una variabile indipendente continua</h2>
 <p>Continuiamo ora con l’esempio relativo al <em>National Longitudinal Survey of Youth</em> discusso da <span class="citation"><a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">Gelman et al.</a> (<a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">2020</a>)</span> e poniamoci ora il problema di descrivere l’associazione tra
 l’intelligenza del bambino, <code>kid_score</code> (ovvero il punteggio totale del <em>Peabody Individual Achievement Test</em>,PIAT), e <code>mom_iq</code> (ovvero il quoziente di intelligenza della madre), che rappresenta una variabile continua.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="chapter-stat-models.html#cb190-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb190-2"><a href="chapter-stat-models.html#cb190-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mom_iq, <span class="at">y =</span> kid_score)) <span class="sc">+</span></span>
-<span id="cb190-3"><a href="chapter-stat-models.html#cb190-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb190-4"><a href="chapter-stat-models.html#cb190-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb190-5"><a href="chapter-stat-models.html#cb190-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb190-6"><a href="chapter-stat-models.html#cb190-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;QI della madre&quot;</span>,</span>
-<span id="cb190-7"><a href="chapter-stat-models.html#cb190-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Peabody Individual Achievement Test&quot;</span></span>
-<span id="cb190-8"><a href="chapter-stat-models.html#cb190-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb190-9"><a href="chapter-stat-models.html#cb190-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="chapter-stat-models.html#cb212-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb212-2"><a href="chapter-stat-models.html#cb212-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mom_iq, <span class="at">y =</span> kid_score)) <span class="sc">+</span></span>
+<span id="cb212-3"><a href="chapter-stat-models.html#cb212-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb212-4"><a href="chapter-stat-models.html#cb212-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb212-5"><a href="chapter-stat-models.html#cb212-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb212-6"><a href="chapter-stat-models.html#cb212-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;QI della madre&quot;</span>,</span>
+<span id="cb212-7"><a href="chapter-stat-models.html#cb212-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Peabody Individual Achievement Test&quot;</span></span>
+<span id="cb212-8"><a href="chapter-stat-models.html#cb212-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb212-9"><a href="chapter-stat-models.html#cb212-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:kidsqimother"></span>
 <img src="Psicometria_files/figure-html/kidsqimother-1.png" alt="Punteggio del test PIAT come funzione del QI materno con sovrapposta la retta di regressione. Ogni punto sulla retta di regressione può essere concepito come un punteggio il punteggio predetto per un bambino la cui madri ha il QI corrispondente o come il punteggio PIAT medio per una sottopopolazione di bambini le cui madri hanno tutte quel particolare valore di QI. I dati sono tratti da @gelman2020regression.)" width="70%" />
 <p class="caption">
-Figura 16.3: Punteggio del test PIAT come funzione del QI materno con sovrapposta la retta di regressione. Ogni punto sulla retta di regressione può essere concepito come un punteggio il punteggio predetto per un bambino la cui madri ha il QI corrispondente o come il punteggio PIAT medio per una sottopopolazione di bambini le cui madri hanno tutte quel particolare valore di QI. I dati sono tratti da <span class="citation"><a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">Gelman et al.</a> (<a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">2020</a>)</span>.)
+Figura 17.3: Punteggio del test PIAT come funzione del QI materno con sovrapposta la retta di regressione. Ogni punto sulla retta di regressione può essere concepito come un punteggio il punteggio predetto per un bambino la cui madri ha il QI corrispondente o come il punteggio PIAT medio per una sottopopolazione di bambini le cui madri hanno tutte quel particolare valore di QI. I dati sono tratti da <span class="citation"><a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">Gelman et al.</a> (<a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">2020</a>)</span>.)
 </p>
 </div>
 <p>Il modello statistico lineare diventa:</p>
@@ -780,60 +832,60 @@ Y_i &amp;\sim \mathcal{N}(\mu_i, \sigma) \\
 \]</span></p>
 <p>Abbiamo descritto <span class="math inline">\(X\)</span> nei termini degli scostamenti dalla media (<span class="math inline">\(X_i - \bar{X}\)</span>) per fare in modo che il coefficiente <span class="math inline">\(\alpha\)</span> corrisponda al valore atteso della <span class="math inline">\(Y\)</span> in corrispondenza della media di <span class="math inline">\(X\)</span> (quoziente di intelligenza della madre) – questa è una conseguenza del fatto che la retta di regressione passa per il punto <span class="math inline">\((\bar{X}, \bar{Y})\)</span>. Infatti, avrebbe poco senso chiederci qual è il valore atteso del punteggio PIAT quando il quoziente d’intelligenza della madre è uguale a zero.</p>
 <p>Specifichiamo dunque il modello statistico lineare con la sintassi richiesta da <code>rethinking</code>:</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="chapter-stat-models.html#cb191-1" aria-hidden="true" tabindex="-1"></a>flist <span class="ot">&lt;-</span> <span class="fu">alist</span>(</span>
-<span id="cb191-2"><a href="chapter-stat-models.html#cb191-2" aria-hidden="true" tabindex="-1"></a>  kid_score <span class="sc">~</span> <span class="fu">dnorm</span>(mu, sigma),</span>
-<span id="cb191-3"><a href="chapter-stat-models.html#cb191-3" aria-hidden="true" tabindex="-1"></a>  mu <span class="sc">~</span> a <span class="sc">+</span> b <span class="sc">*</span> (mom_iq <span class="sc">-</span> <span class="fu">mean</span>(mom_iq)),</span>
-<span id="cb191-4"><a href="chapter-stat-models.html#cb191-4" aria-hidden="true" tabindex="-1"></a>  a <span class="sc">~</span> <span class="fu">dnorm</span>(<span class="fu">mean</span>(kid_score), <span class="dv">100</span>),</span>
-<span id="cb191-5"><a href="chapter-stat-models.html#cb191-5" aria-hidden="true" tabindex="-1"></a>  b <span class="sc">~</span> <span class="fu">dnorm</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
-<span id="cb191-6"><a href="chapter-stat-models.html#cb191-6" aria-hidden="true" tabindex="-1"></a>  sigma <span class="sc">~</span> <span class="fu">dunif</span>(<span class="dv">0</span>, <span class="dv">100</span>)</span>
-<span id="cb191-7"><a href="chapter-stat-models.html#cb191-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="chapter-stat-models.html#cb213-1" aria-hidden="true" tabindex="-1"></a>flist <span class="ot">&lt;-</span> <span class="fu">alist</span>(</span>
+<span id="cb213-2"><a href="chapter-stat-models.html#cb213-2" aria-hidden="true" tabindex="-1"></a>  kid_score <span class="sc">~</span> <span class="fu">dnorm</span>(mu, sigma),</span>
+<span id="cb213-3"><a href="chapter-stat-models.html#cb213-3" aria-hidden="true" tabindex="-1"></a>  mu <span class="sc">~</span> a <span class="sc">+</span> b <span class="sc">*</span> (mom_iq <span class="sc">-</span> <span class="fu">mean</span>(mom_iq)),</span>
+<span id="cb213-4"><a href="chapter-stat-models.html#cb213-4" aria-hidden="true" tabindex="-1"></a>  a <span class="sc">~</span> <span class="fu">dnorm</span>(<span class="fu">mean</span>(kid_score), <span class="dv">100</span>),</span>
+<span id="cb213-5"><a href="chapter-stat-models.html#cb213-5" aria-hidden="true" tabindex="-1"></a>  b <span class="sc">~</span> <span class="fu">dnorm</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
+<span id="cb213-6"><a href="chapter-stat-models.html#cb213-6" aria-hidden="true" tabindex="-1"></a>  sigma <span class="sc">~</span> <span class="fu">dunif</span>(<span class="dv">0</span>, <span class="dv">100</span>)</span>
+<span id="cb213-7"><a href="chapter-stat-models.html#cb213-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Adattiamo il modello di regressione ai dati</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="chapter-stat-models.html#cb192-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">quap</span>(</span>
-<span id="cb192-2"><a href="chapter-stat-models.html#cb192-2" aria-hidden="true" tabindex="-1"></a>  flist,</span>
-<span id="cb192-3"><a href="chapter-stat-models.html#cb192-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df</span>
-<span id="cb192-4"><a href="chapter-stat-models.html#cb192-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="chapter-stat-models.html#cb214-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">quap</span>(</span>
+<span id="cb214-2"><a href="chapter-stat-models.html#cb214-2" aria-hidden="true" tabindex="-1"></a>  flist,</span>
+<span id="cb214-3"><a href="chapter-stat-models.html#cb214-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df</span>
+<span id="cb214-4"><a href="chapter-stat-models.html#cb214-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Esaminiamo il risultato ottenuto mediante la funzione <code>precis()</code>:</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="chapter-stat-models.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">precis</span>(m2, <span class="at">prob =</span> <span class="fl">0.95</span>)</span>
-<span id="cb193-2"><a href="chapter-stat-models.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             mean         sd       2.5%      97.5%</span></span>
-<span id="cb193-3"><a href="chapter-stat-models.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; a     86.7973283 0.87475112 85.0828476 88.5118090</span></span>
-<span id="cb193-4"><a href="chapter-stat-models.html#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; b      0.6099751 0.05838627  0.4955402  0.7244101</span></span>
-<span id="cb193-5"><a href="chapter-stat-models.html#cb193-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sigma 18.2240956 0.61857167 17.0117174 19.4364738</span></span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="chapter-stat-models.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">precis</span>(m2, <span class="at">prob =</span> <span class="fl">0.95</span>)</span>
+<span id="cb215-2"><a href="chapter-stat-models.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             mean         sd       2.5%      97.5%</span></span>
+<span id="cb215-3"><a href="chapter-stat-models.html#cb215-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; a     86.7973283 0.87475112 85.0828476 88.5118090</span></span>
+<span id="cb215-4"><a href="chapter-stat-models.html#cb215-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; b      0.6099751 0.05838627  0.4955402  0.7244101</span></span>
+<span id="cb215-5"><a href="chapter-stat-models.html#cb215-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sigma 18.2240956 0.61857167 17.0117174 19.4364738</span></span></code></pre></div>
 <p>Troviamo così che
 <span class="math display">\[
 \mathbb{E}(\text{kid_score}) = 86 + 0.61 \cdot x,
 \]</span>
-laddove <span class="math inline">\(x\)</span> è la variabile <code>kid_score</code> espressa come scostamento rispetto al suo valore medio. Tale retta di regressione stimata è mostrata assieme ai dati nella figura <a href="chapter-stat-models.html#fig:kidsqimother">16.3</a>.</p>
+laddove <span class="math inline">\(x\)</span> è la variabile <code>kid_score</code> espressa come scostamento rispetto al suo valore medio. Tale retta di regressione stimata è mostrata assieme ai dati nella figura <a href="chapter-stat-models.html#fig:kidsqimother">17.3</a>.</p>
 <p>Il coefficiente <span class="math inline">\(b\)</span> ci dice che, all’aumentare di un punto del quoziente d’intelligenza della madre, la media dei punteggi PIAT cresce di 0.61 unità. Il parametro <span class="math inline">\(\sigma\)</span> ci dice che la deviazione standard che quantifica la dispersione dei dati attorno alla retta di regressione è pari a 18.22.</p>
 <p>L’intervallo di credibilità di questo coefficiente ci dice che, con un livello di certezza del 95%, possiamo essere sicuri che, all’aumentare di un punto del quoziente d’intelligenza della madre, la media dei punteggi PIAT crescerà, come minimo, di 0.50 punti e, come massimo, di 0.72 punti. La differenza 0.72 - 0.50 esprime il nostro grado di incertezza rispetto alla stima del parametro, quando vogliamo che la nostra stima sia “credibile” al livello di 0.95. Ma non c’è niente di “magico” o necessario relativamente al livello di 0.95. Infatti, il default della funzione <code>precis()</code> è 0.89. Ciascuno di questi valori è
 arbitrario. Sono possibili tantissime soglie per quantificare la nostra incertezza: alcuni ricercatori usano il livello di 0.5. Il nostro obiettivo è quello di descrivere il livello della nostra incertezza relativamente alla stima del parametro. E la nostra incertezza è
-descritta dall’<em>intera</em> distribuzione a posteriori. Per cui il metodo più semplice, più diretto e più completo per descrivere la nostra incertezza rispetto alla stima dei parametri è quello di riportare graficamente tutta la distribuzione a posteriori, come indicato per esempio nella figura <a href="chapter-stat-models.html#fig:post2kids">16.4</a>.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="chapter-stat-models.html#cb194-1" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> <span class="fu">extract.samples</span>(m2)</span>
-<span id="cb194-2"><a href="chapter-stat-models.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
-<span id="cb194-3"><a href="chapter-stat-models.html#cb194-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb194-4"><a href="chapter-stat-models.html#cb194-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dens</span>(</span>
-<span id="cb194-5"><a href="chapter-stat-models.html#cb194-5" aria-hidden="true" tabindex="-1"></a>  post<span class="sc">$</span>a, <span class="at">lwd =</span> <span class="fl">2.5</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb194-6"><a href="chapter-stat-models.html#cb194-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Densità&quot;</span>, <span class="at">main =</span> <span class="st">&quot;p(a | x, y)&quot;</span>,</span>
-<span id="cb194-7"><a href="chapter-stat-models.html#cb194-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.axis =</span> <span class="fl">1.35</span>, <span class="at">cex.main =</span> <span class="fl">1.5</span>,</span>
-<span id="cb194-8"><a href="chapter-stat-models.html#cb194-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.sub =</span> <span class="fl">1.5</span></span>
-<span id="cb194-9"><a href="chapter-stat-models.html#cb194-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb194-10"><a href="chapter-stat-models.html#cb194-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dens</span>(</span>
-<span id="cb194-11"><a href="chapter-stat-models.html#cb194-11" aria-hidden="true" tabindex="-1"></a>  post<span class="sc">$</span>b, <span class="at">lwd =</span> <span class="fl">2.5</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb194-12"><a href="chapter-stat-models.html#cb194-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">main =</span> <span class="st">&quot;p(b | x, y)&quot;</span>,</span>
-<span id="cb194-13"><a href="chapter-stat-models.html#cb194-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.axis =</span> <span class="fl">1.35</span>, <span class="at">cex.main =</span> <span class="fl">1.5</span>,</span>
-<span id="cb194-14"><a href="chapter-stat-models.html#cb194-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.sub =</span> <span class="fl">1.5</span></span>
-<span id="cb194-15"><a href="chapter-stat-models.html#cb194-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb194-16"><a href="chapter-stat-models.html#cb194-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dens</span>(</span>
-<span id="cb194-17"><a href="chapter-stat-models.html#cb194-17" aria-hidden="true" tabindex="-1"></a>  post<span class="sc">$</span>sigma, <span class="at">lwd =</span> <span class="fl">2.5</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb194-18"><a href="chapter-stat-models.html#cb194-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">main =</span> <span class="st">&quot;p(sigma | x, y)&quot;</span>,</span>
-<span id="cb194-19"><a href="chapter-stat-models.html#cb194-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.axis =</span> <span class="fl">1.35</span>, <span class="at">cex.main =</span> <span class="fl">1.5</span>,</span>
-<span id="cb194-20"><a href="chapter-stat-models.html#cb194-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.sub =</span> <span class="fl">1.5</span></span>
-<span id="cb194-21"><a href="chapter-stat-models.html#cb194-21" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb194-22"><a href="chapter-stat-models.html#cb194-22" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb194-23"><a href="chapter-stat-models.html#cb194-23" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+descritta dall’<em>intera</em> distribuzione a posteriori. Per cui il metodo più semplice, più diretto e più completo per descrivere la nostra incertezza rispetto alla stima dei parametri è quello di riportare graficamente tutta la distribuzione a posteriori, come indicato per esempio nella figura <a href="chapter-stat-models.html#fig:post2kids">17.4</a>.</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="chapter-stat-models.html#cb216-1" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> <span class="fu">extract.samples</span>(m2)</span>
+<span id="cb216-2"><a href="chapter-stat-models.html#cb216-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb216-3"><a href="chapter-stat-models.html#cb216-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb216-4"><a href="chapter-stat-models.html#cb216-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dens</span>(</span>
+<span id="cb216-5"><a href="chapter-stat-models.html#cb216-5" aria-hidden="true" tabindex="-1"></a>  post<span class="sc">$</span>a, <span class="at">lwd =</span> <span class="fl">2.5</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb216-6"><a href="chapter-stat-models.html#cb216-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Densità&quot;</span>, <span class="at">main =</span> <span class="st">&quot;p(a | x, y)&quot;</span>,</span>
+<span id="cb216-7"><a href="chapter-stat-models.html#cb216-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.axis =</span> <span class="fl">1.35</span>, <span class="at">cex.main =</span> <span class="fl">1.5</span>,</span>
+<span id="cb216-8"><a href="chapter-stat-models.html#cb216-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.sub =</span> <span class="fl">1.5</span></span>
+<span id="cb216-9"><a href="chapter-stat-models.html#cb216-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb216-10"><a href="chapter-stat-models.html#cb216-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dens</span>(</span>
+<span id="cb216-11"><a href="chapter-stat-models.html#cb216-11" aria-hidden="true" tabindex="-1"></a>  post<span class="sc">$</span>b, <span class="at">lwd =</span> <span class="fl">2.5</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb216-12"><a href="chapter-stat-models.html#cb216-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">main =</span> <span class="st">&quot;p(b | x, y)&quot;</span>,</span>
+<span id="cb216-13"><a href="chapter-stat-models.html#cb216-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.axis =</span> <span class="fl">1.35</span>, <span class="at">cex.main =</span> <span class="fl">1.5</span>,</span>
+<span id="cb216-14"><a href="chapter-stat-models.html#cb216-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.sub =</span> <span class="fl">1.5</span></span>
+<span id="cb216-15"><a href="chapter-stat-models.html#cb216-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb216-16"><a href="chapter-stat-models.html#cb216-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dens</span>(</span>
+<span id="cb216-17"><a href="chapter-stat-models.html#cb216-17" aria-hidden="true" tabindex="-1"></a>  post<span class="sc">$</span>sigma, <span class="at">lwd =</span> <span class="fl">2.5</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb216-18"><a href="chapter-stat-models.html#cb216-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">main =</span> <span class="st">&quot;p(sigma | x, y)&quot;</span>,</span>
+<span id="cb216-19"><a href="chapter-stat-models.html#cb216-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.axis =</span> <span class="fl">1.35</span>, <span class="at">cex.main =</span> <span class="fl">1.5</span>,</span>
+<span id="cb216-20"><a href="chapter-stat-models.html#cb216-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.sub =</span> <span class="fl">1.5</span></span>
+<span id="cb216-21"><a href="chapter-stat-models.html#cb216-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb216-22"><a href="chapter-stat-models.html#cb216-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb216-23"><a href="chapter-stat-models.html#cb216-23" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:post2kids"></span>
 <img src="Psicometria_files/figure-html/post2kids-1.png" alt="Distribuzione a posteriori dei parametri $a$, $b$ e $sigma$ del modello statistico lineare che descrive i punteggi del _Peabody Individual Achievement Test_ come funzione del quoziente d'intelligenza della madre espresso come scostamento rispetto al suo valore medio. I dati sono tratti da @gelman2020regression." width="70%" />
 <p class="caption">
-Figura 16.4: Distribuzione a posteriori dei parametri <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> e <span class="math inline">\(sigma\)</span> del modello statistico lineare che descrive i punteggi del <em>Peabody Individual Achievement Test</em> come funzione del quoziente d’intelligenza della madre espresso come scostamento rispetto al suo valore medio. I dati sono tratti da <span class="citation"><a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">Gelman et al.</a> (<a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">2020</a>)</span>.
+Figura 17.4: Distribuzione a posteriori dei parametri <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> e <span class="math inline">\(sigma\)</span> del modello statistico lineare che descrive i punteggi del <em>Peabody Individual Achievement Test</em> come funzione del quoziente d’intelligenza della madre espresso come scostamento rispetto al suo valore medio. I dati sono tratti da <span class="citation"><a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">Gelman et al.</a> (<a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">2020</a>)</span>.
 </p>
 </div>
 </div>
@@ -847,16 +899,16 @@ modo di contare in quanti diversi modi diverse combinazioni di <span class="math
 </div>
 <div class="footnotes">
 <hr />
-<ol start="7">
-<li id="fn7"><p>In seguito, quest’idea è stata completamente screditata.<a href="chapter-stat-models.html#fnref7" class="footnote-back">↩︎</a></p></li>
-<li id="fn8"><p>I metodi di stima MCMC costituiscono la modalità usuale per
+<ol start="8">
+<li id="fn8"><p>In seguito, quest’idea è stata completamente screditata.<a href="chapter-stat-models.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>I metodi di stima MCMC costituiscono la modalità usuale per
 generare la distribuzione a posteriori nell’analisi Bayesiana. In
 queste dispense, però, ci limitiamo ai metodi di stima basati
 sull’approssimazione quadratica. Abbiamo deciso di svolgere gli
 esercizi mediante l’approssimazione quadratica piuttosto che con il
 metodo MCMC perché l’installazione sul proprio computer del software
 necessario per le analisi MCMC costituisce un problema di tipo
-informatico che esula dagli scopi di questo insegnamento.<a href="chapter-stat-models.html#fnref8" class="footnote-back">↩︎</a></p></li>
+informatico che esula dagli scopi di questo insegnamento.<a href="chapter-stat-models.html#fnref9" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

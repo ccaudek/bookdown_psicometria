@@ -507,6 +507,8 @@ bysubj %>%
 La figura \@ref(fig:violin-zetsche) fornisce due rappresentazioni grafiche che possono essere utilizzate per rispondere a questa domanda.
 
 ```{r violin-zetsche, out.width="95%", fig.cap = "Due versioni di un violin plot per i valori BDI-II di ciascuno dei due gruppi di soggetti esaminati da @zetsche_future_2019."}
+library("patchwork")
+
 bysubj <- df %>% 
   group_by(esm_id, group) %>% 
   summarise(
@@ -523,8 +525,7 @@ p1 <- bysubj %>%
     x = "Gruppo",
     y = "BDI-II"
     #, caption = "Fonte: Zetsche, Buerkner, & Renneberg (2020)"
-  ) +
-  theme_apa()
+  ) 
 
 p2 <- bysubj %>% 
   ggplot(aes(x=group, y=bdi)) + 
@@ -534,8 +535,7 @@ p2 <- bysubj %>%
     x = "Gruppo",
     y = "BDI-II"
     #, caption = "Fonte: Zetsche, Buerkner, & Renneberg (2020)"
-  ) +
-  theme_apa()
+  ) 
 
 p1 + p2
 ```
@@ -1113,6 +1113,7 @@ solo che tra esse non c'è una relazione *lineare*. Un esempio di questo
 fatto è fornito dalla figura \@ref(fig:zerocorr).
 
 ```{r zerocorr, out.width="80%", fig.cap = "Due insiemi di dati (fittizi) per i quali i coefficienti di correlazione di Pearson sono entrambi 0. Ma questo non significa che non vi sia alcuna relazione tra le variabili."}
+library("datasauRus")
 slant <- ggplot(datasaurus_dozen_wide, aes(x=slant_down_x,y=slant_down_y),   colour=dataset) 
 # loads slant-pattern dataset of datasauRus package into data frame slant
 slant <- slant + 
@@ -1160,4 +1161,29 @@ utile procedere con delle rappresentazioni grafiche dei dati. Dovrebbe
 essere chiaro che, quando disponiamo di grandi moli di dati (come è
 sempre il caso in psicologia), per fare questo è necessario usare un
 software statistico.
+
+## Esercizi {#esercizi1}
+ 
+Scarica gli esercizi: 
+
+```{r echo = FALSE} 
+xfun::embed_file(
+  here::here("exercises", "14_descr_exercises.Rmd"),
+  "14_descr_exercises.Rmd", 
+  text = paste("Download", "14_descr_exercises.Rmd")
+)
+```
+
+\
+
+Guarda le risposte solo dopo avere provato a rispondere a tutte le domande: 
+
+```{r echo = FALSE} 
+xfun::embed_file(
+  here::here("exercises", "14_descr_answers.Rmd"),
+  "14_descr_answers.Rmd", 
+  text = paste("Download", "14_descr_answers.Rmd")
+)
+```
+
 
