@@ -1,8 +1,8 @@
 book_filename: "Psicometria"
 output_dir: _book
-
 delete_merged_file: true
-new_session: yes
+edit: https://github.com/ccaudek/bookdown_psicometria/edit/master/%s
+view: https://github.com/ccaudek/bookdown_psicometria/blob/master/%s
 
 language:
   label:

@@ -6,6 +6,9 @@ description: "Queste dispense si propongono di fornire un'introduzione all'anali
 github-repo: ccaudek/bookdown_psicometria
 twitter-handle: ccaudek
 site: bookdown::bookdown_site
+output: 
+  bookdown::gitbook:
+    split_bib: yes
 documentclass: book
 bibliography: psicom.bib
 biblio-style: apalike
