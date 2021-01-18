@@ -87,11 +87,6 @@
 <span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/leeper/rio">"rio"</a></span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/crsh/papaja">"papaja"</a></span><span class="op">)</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://patchwork.data-imaginist.com">"patchwork"</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'patchwork'</span>
-<span class="co">#&gt; The following object is masked from 'package:cowplot':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     align_plots</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
@@ -110,49 +105,50 @@
 <span class="co">#&gt; [1] parallel  stats     graphics  grDevices utils     datasets  methods   base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt;  [1] patchwork_1.1.1      rio_0.5.16           RColorBrewer_1.1-2   datasauRus_0.1.4    </span>
-<span class="co">#&gt;  [5] tidybayes_2.3.1      cowplot_1.1.1        car_3.0-10           carData_3.0-4       </span>
-<span class="co">#&gt;  [9] ggExtra_0.9          ggpubr_0.4.0         psychTools_2.0.8     sjmisc_2.8.6        </span>
-<span class="co">#&gt; [13] sjPlot_2.8.7         rethinking_2.01      dagitty_0.3-0        rstan_2.21.2        </span>
-<span class="co">#&gt; [17] StanHeaders_2.21.0-7 papaja_0.1.0.9997    here_1.0.1           forcats_0.5.0       </span>
-<span class="co">#&gt; [21] stringr_1.4.0        dplyr_1.0.3          purrr_0.3.4          readr_1.4.0         </span>
-<span class="co">#&gt; [25] tidyr_1.1.2          tibble_3.0.5         ggplot2_3.3.3        tidyverse_1.3.0     </span>
-<span class="co">#&gt; [29] goodshirt_0.2.2     </span>
+<span class="co">#&gt;  [1] foreign_0.8-75       ggfortify_0.4.11     patchwork_1.1.1      rio_0.5.16          </span>
+<span class="co">#&gt;  [5] RColorBrewer_1.1-2   datasauRus_0.1.4     tidybayes_2.3.1      cowplot_1.1.1       </span>
+<span class="co">#&gt;  [9] car_3.0-10           carData_3.0-4        ggExtra_0.9          ggpubr_0.4.0        </span>
+<span class="co">#&gt; [13] psychTools_2.0.8     sjmisc_2.8.6         sjPlot_2.8.7         rethinking_2.01     </span>
+<span class="co">#&gt; [17] dagitty_0.3-0        rstan_2.21.2         StanHeaders_2.21.0-7 papaja_0.1.0.9997   </span>
+<span class="co">#&gt; [21] here_1.0.1           forcats_0.5.0        stringr_1.4.0        dplyr_1.0.3         </span>
+<span class="co">#&gt; [25] purrr_0.3.4          readr_1.4.0          tidyr_1.1.2          tibble_3.0.5        </span>
+<span class="co">#&gt; [29] ggplot2_3.3.3        tidyverse_1.3.0      goodshirt_0.2.2     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
 <span class="co">#&gt;   [1] readxl_1.3.1         backports_1.2.1      plyr_1.8.6           svUnit_1.0.3        </span>
 <span class="co">#&gt;   [5] splines_3.6.3        TH.data_1.0-10       inline_0.3.17        digest_0.6.27       </span>
-<span class="co">#&gt;   [9] htmltools_0.5.1.9000 fansi_0.4.2          magrittr_2.0.1       openxlsx_4.2.3      </span>
-<span class="co">#&gt;  [13] modelr_0.1.8         RcppParallel_5.0.2   matrixStats_0.57.0   sandwich_3.0-0      </span>
-<span class="co">#&gt;  [17] prettyunits_1.1.1    colorspace_2.0-0     rvest_0.3.6          rappdirs_0.3.1      </span>
-<span class="co">#&gt;  [21] ggdist_2.4.0         haven_2.3.1          xfun_0.20            callr_3.5.1         </span>
-<span class="co">#&gt;  [25] crayon_1.3.4         jsonlite_1.7.2       lme4_1.1-26          survival_3.2-7      </span>
-<span class="co">#&gt;  [29] zoo_1.8-8            glue_1.4.2           gtable_0.3.0         emmeans_1.5.3       </span>
-<span class="co">#&gt;  [33] V8_3.4.0             sjstats_0.18.1       distributional_0.2.1 pkgbuild_1.2.0      </span>
-<span class="co">#&gt;  [37] shape_1.4.5          abind_1.4-5          scales_1.1.1         mvtnorm_1.1-1       </span>
-<span class="co">#&gt;  [41] DBI_1.1.1            rstatix_0.6.0        ggeffects_1.0.1      miniUI_0.1.1.1      </span>
-<span class="co">#&gt;  [45] Rcpp_1.0.6           xtable_1.8-4         performance_0.6.1.1  tmvnsim_1.0-2       </span>
-<span class="co">#&gt;  [49] foreign_0.8-75       stats4_3.6.3         httr_1.4.2           arrayhelpers_1.1-0  </span>
-<span class="co">#&gt;  [53] ellipsis_0.3.1       pkgconfig_2.0.3      loo_2.4.1            farver_2.0.3        </span>
-<span class="co">#&gt;  [57] sass_0.3.0.9000      dbplyr_2.0.0         utf8_1.1.4           cowsay_0.8.0        </span>
-<span class="co">#&gt;  [61] later_1.1.0.1        tidyselect_1.1.0     labeling_0.4.2       rlang_0.4.10        </span>
-<span class="co">#&gt;  [65] effectsize_0.4.1.2   munsell_0.5.0        cellranger_1.1.0     tools_3.6.3         </span>
-<span class="co">#&gt;  [69] fortunes_1.5-4       cli_2.2.0            generics_0.1.0       sjlabelled_1.1.7    </span>
-<span class="co">#&gt;  [73] broom_0.7.3          fastmap_1.0.1        evaluate_0.14        yaml_2.2.1          </span>
-<span class="co">#&gt;  [77] processx_3.4.5       knitr_1.30.2         fs_1.5.0             zip_2.1.1           </span>
-<span class="co">#&gt;  [81] nlme_3.1-151         mime_0.9             xml2_1.3.2           compiler_3.6.3      </span>
-<span class="co">#&gt;  [85] rstudioapi_0.13      curl_4.3             ggsignif_0.6.0       reprex_0.3.0        </span>
-<span class="co">#&gt;  [89] statmod_1.4.35       bslib_0.2.3.9000     stringi_1.5.3        ps_1.5.0            </span>
-<span class="co">#&gt;  [93] parameters_0.10.1.1  lattice_0.20-41      Matrix_1.3-2         psych_2.0.12        </span>
-<span class="co">#&gt;  [97] nloptr_1.2.2.2       vctrs_0.3.6          pillar_1.4.7         lifecycle_0.2.0     </span>
-<span class="co">#&gt; [101] rmsfact_0.0.3        jquerylib_0.1.3      estimability_1.3     data.table_1.13.6   </span>
-<span class="co">#&gt; [105] insight_0.12.0       httpuv_1.5.5         R6_2.5.0             promises_1.1.1      </span>
-<span class="co">#&gt; [109] bookdown_0.21.6      gridExtra_2.3        codetools_0.2-18     boot_1.3-25         </span>
-<span class="co">#&gt; [113] MASS_7.3-53          assertthat_0.2.1     rprojroot_2.0.2      withr_2.4.0         </span>
-<span class="co">#&gt; [117] mnormt_2.0.2         multcomp_1.4-15      mgcv_1.8-33          bayestestR_0.8.0.1  </span>
-<span class="co">#&gt; [121] hms_1.0.0            grid_3.6.3           coda_0.19-4          minqa_1.2.4         </span>
-<span class="co">#&gt; [125] rmarkdown_2.6.4      snakecase_0.11.0     downlit_0.2.1        shiny_1.5.0         </span>
-<span class="co">#&gt; [129] lubridate_1.7.9.2</span></code></pre></div>
+<span class="co">#&gt;   [9] htmltools_0.5.1.9000 magick_2.6.0         fansi_0.4.2          magrittr_2.0.1      </span>
+<span class="co">#&gt;  [13] openxlsx_4.2.3       modelr_0.1.8         RcppParallel_5.0.2   matrixStats_0.57.0  </span>
+<span class="co">#&gt;  [17] sandwich_3.0-0       askpass_1.1          prettyunits_1.1.1    colorspace_2.0-0    </span>
+<span class="co">#&gt;  [21] rvest_0.3.6          rappdirs_0.3.1       ggdist_2.4.0         haven_2.3.1         </span>
+<span class="co">#&gt;  [25] xfun_0.20            callr_3.5.1          crayon_1.3.4         jsonlite_1.7.2      </span>
+<span class="co">#&gt;  [29] lme4_1.1-26          survival_3.2-7       zoo_1.8-8            glue_1.4.2          </span>
+<span class="co">#&gt;  [33] gtable_0.3.0         emmeans_1.5.3        V8_3.4.0             sjstats_0.18.1      </span>
+<span class="co">#&gt;  [37] distributional_0.2.1 pkgbuild_1.2.0       shape_1.4.5          abind_1.4-5         </span>
+<span class="co">#&gt;  [41] scales_1.1.1         mvtnorm_1.1-1        qpdf_1.1             DBI_1.1.1           </span>
+<span class="co">#&gt;  [45] rstatix_0.6.0        ggeffects_1.0.1      miniUI_0.1.1.1       Rcpp_1.0.6          </span>
+<span class="co">#&gt;  [49] xtable_1.8-4         performance_0.6.1.1  tmvnsim_1.0-2        stats4_3.6.3        </span>
+<span class="co">#&gt;  [53] pdftools_2.3.1       httr_1.4.2           arrayhelpers_1.1-0   ellipsis_0.3.1      </span>
+<span class="co">#&gt;  [57] pkgconfig_2.0.3      loo_2.4.1            farver_2.0.3         sass_0.3.0.9000     </span>
+<span class="co">#&gt;  [61] dbplyr_2.0.0         utf8_1.1.4           cowsay_0.8.0         later_1.1.0.1       </span>
+<span class="co">#&gt;  [65] tidyselect_1.1.0     labeling_0.4.2       rlang_0.4.10         effectsize_0.4.1.2  </span>
+<span class="co">#&gt;  [69] munsell_0.5.0        cellranger_1.1.0     tools_3.6.3          fortunes_1.5-4      </span>
+<span class="co">#&gt;  [73] cli_2.2.0            generics_0.1.0       sjlabelled_1.1.7     broom_0.7.3         </span>
+<span class="co">#&gt;  [77] fastmap_1.0.1        evaluate_0.14        yaml_2.2.1           processx_3.4.5      </span>
+<span class="co">#&gt;  [81] knitr_1.30.2         fs_1.5.0             zip_2.1.1            nlme_3.1-151        </span>
+<span class="co">#&gt;  [85] mime_0.9             xml2_1.3.2           compiler_3.6.3       rstudioapi_0.13     </span>
+<span class="co">#&gt;  [89] curl_4.3             ggsignif_0.6.0       reprex_0.3.0         statmod_1.4.35      </span>
+<span class="co">#&gt;  [93] bslib_0.2.3.9000     stringi_1.5.3        highr_0.8            ps_1.5.0            </span>
+<span class="co">#&gt;  [97] parameters_0.10.1.1  lattice_0.20-41      Matrix_1.3-2         psych_2.0.12        </span>
+<span class="co">#&gt; [101] nloptr_1.2.2.2       vctrs_0.3.6          pillar_1.4.7         lifecycle_0.2.0     </span>
+<span class="co">#&gt; [105] rmsfact_0.0.3        jquerylib_0.1.3      estimability_1.3     data.table_1.13.6   </span>
+<span class="co">#&gt; [109] insight_0.12.0       httpuv_1.5.5         R6_2.5.0             promises_1.1.1      </span>
+<span class="co">#&gt; [113] bookdown_0.21.6      gridExtra_2.3        codetools_0.2-18     boot_1.3-25         </span>
+<span class="co">#&gt; [117] MASS_7.3-53          assertthat_0.2.1     rprojroot_2.0.2      withr_2.4.0         </span>
+<span class="co">#&gt; [121] mnormt_2.0.2         multcomp_1.4-15      mgcv_1.8-33          bayestestR_0.8.0.1  </span>
+<span class="co">#&gt; [125] hms_1.0.0            grid_3.6.3           coda_0.19-4          minqa_1.2.4         </span>
+<span class="co">#&gt; [129] rmarkdown_2.6.4      snakecase_0.11.0     downlit_0.2.1        shiny_1.5.0         </span>
+<span class="co">#&gt; [133] lubridate_1.7.9.2    tinytex_0.28</span></code></pre></div>
 
 </div>
   <div class="chapter-nav">

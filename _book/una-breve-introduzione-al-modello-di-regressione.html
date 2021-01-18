@@ -312,13 +312,13 @@ e = y - (a + b \times x) = y - \hat{y}
     <span class="va">sigma</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Cauchy.html">dcauchy</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span><span class="op">)</span>
 <span class="op">)</span>
 
-<span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">quap</span><span class="op">(</span>
+<span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap</a></span><span class="op">(</span>
   <span class="va">flist</span>, 
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">seaice</span><span class="op">$</span><span class="va">y</span>, x<span class="op">=</span><span class="va">seaice</span><span class="op">$</span><span class="va">x</span><span class="op">)</span>, 
   start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a<span class="op">=</span><span class="fl">0</span>, b<span class="op">=</span><span class="fl">0</span>, sigma<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>
 <span class="op">)</span>
 
-<span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu">precis</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span>
+<span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span>
 <span class="va">out</span>
 <span class="co">#&gt;         mean    sd   5.5%  94.5%</span>
 <span class="co">#&gt; a     12.487 0.068 12.379 12.595</span>
@@ -327,7 +327,7 @@ e = y - (a + b \times x) = y - \hat{y}
 <p>L’intervallo di credibilità per <span class="math inline">\(b\)</span> così ottenuto, ovvero [-0.059, -0.049], non include lo zero. Possiamo dunque concludere, con un livello di certezza dell’89%, che nella popolazione c’è una relazione negativa tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>. In altre parole, siamo certi, con un livello di certezza dell’89%, che dal 1979 al 2017 l’estensione del ghiaccio marino artico è diminuita.</p>
 <p>Se vogliamo, possiamo anche ottenere una stima di <span class="math inline">\(b\)</span> che corrisponde ad un livello di certezza più alto, il che porterà ad un aumento dell’ampiezza dell’interallo di credibilità. Stimiamo dunque l’interallo di credibilità ad un livello di certezza del 99%:</p>
 <div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">out1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu">precis</span><span class="op">(</span><span class="va">fit</span>, prob<span class="op">=</span><span class="fl">0.99</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">out1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">fit</span>, prob<span class="op">=</span><span class="fl">0.99</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span>
 <span class="va">out1</span>
 <span class="co">#&gt;         mean    sd   0.5%  99.5%</span>
 <span class="co">#&gt; a     12.487 0.068 12.313 12.661</span>
@@ -347,14 +347,14 @@ e = y - (a + b \times x) = y - \hat{y}
 <h3>
 <span class="header-section-number">16.4.1</span> Errore standard della stima<a class="anchor" aria-label="anchor" href="#errore-standard-della-stima"><i class="fas fa-link"></i></a>
 </h3>
-<p>Il parametto <code>sigma</code> nell’output di <code>precis()</code> ci fornisce un altro utile pezzo di informazione: esso stima infatti quanto sono distanti, in media, le osservazioni dalla retta di regressione <em>nella popolazione</em>. Il valore <code>sigma</code>, chiamato <em>errore standard della stima</em>, ci dice che il modello di regressione, stimando la relazione tra <span class="math inline">\(y\)</span> e <span class="math inline">\(x\)</span>, compie un errore medio di 0.215 milioni di chilometri quadrati – laddove 0.215 è la stima della distanza media (in milioni di chilometri quadrati) tra ciascuno dei punti del diagramma a dispersione e la retta di regressione <em>nella popolazione</em>.</p>
+<p>Il parametto <code>sigma</code> nell’output di <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis()</a></code> ci fornisce un altro utile pezzo di informazione: esso stima infatti quanto sono distanti, in media, le osservazioni dalla retta di regressione <em>nella popolazione</em>. Il valore <code>sigma</code>, chiamato <em>errore standard della stima</em>, ci dice che il modello di regressione, stimando la relazione tra <span class="math inline">\(y\)</span> e <span class="math inline">\(x\)</span>, compie un errore medio di 0.215 milioni di chilometri quadrati – laddove 0.215 è la stima della distanza media (in milioni di chilometri quadrati) tra ciascuno dei punti del diagramma a dispersione e la retta di regressione <em>nella popolazione</em>.</p>
 </div>
 <div id="errori-standard-delle-stime-a-e-b" class="section level3" number="16.4.2">
 <h3>
 <span class="header-section-number">16.4.2</span> Errori standard delle stime <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span><a class="anchor" aria-label="anchor" href="#errori-standard-delle-stime-a-e-b"><i class="fas fa-link"></i></a>
 </h3>
-<p>Il valore <code>sd</code> associato a <span class="math inline">\(b\)</span> nell’output di <code>precis()</code> ci dice invece invece di quanto dobbiamo aspettarci che vari la stima di <span class="math inline">\(b\)</span> da campione a campione. In altri termini, a causa della variabilità campionaria, la stima di <span class="math inline">\(b\)</span> assume un valore diverso in ciascuno degli infinti campioni di <span class="math inline">\(n\)</span> osservazioni che descrivono la relazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>, nel periodo temporale considerato. Il valore <code>sd</code> uguale a 0.003 ci dice che, in media, la stima della pendenza della retta di regressione differirà dal vero valore di questo parametro di una quantità pari a 0.003 milioni di chilometri quadrati.
-Una affermazione simile può essere fatta a proposito del valore <code>sd</code> associato ad <span class="math inline">\(a\)</span> nell’output di <code>precis()</code>.</p>
+<p>Il valore <code>sd</code> associato a <span class="math inline">\(b\)</span> nell’output di <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis()</a></code> ci dice invece invece di quanto dobbiamo aspettarci che vari la stima di <span class="math inline">\(b\)</span> da campione a campione. In altri termini, a causa della variabilità campionaria, la stima di <span class="math inline">\(b\)</span> assume un valore diverso in ciascuno degli infinti campioni di <span class="math inline">\(n\)</span> osservazioni che descrivono la relazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>, nel periodo temporale considerato. Il valore <code>sd</code> uguale a 0.003 ci dice che, in media, la stima della pendenza della retta di regressione differirà dal vero valore di questo parametro di una quantità pari a 0.003 milioni di chilometri quadrati.
+Una affermazione simile può essere fatta a proposito del valore <code>sd</code> associato ad <span class="math inline">\(a\)</span> nell’output di <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis()</a></code>.</p>
 </div>
 </div>
 <div id="una-variabile-indipendente-qualitativa" class="section level2" number="16.5">
@@ -518,13 +518,13 @@ y &amp;= \alpha + \beta x + \gamma D + \zeta DX + \varepsilon,\notag\\
     <span class="va">sigma</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fit1</span> <span class="op">&lt;-</span> <span class="fu">quap</span><span class="op">(</span>
+<code class="sourceCode R"><span class="va">fit1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap</a></span><span class="op">(</span>
   <span class="va">flist1</span>, 
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">d</span><span class="op">$</span><span class="va">y</span>, x<span class="op">=</span><span class="va">d</span><span class="op">$</span><span class="va">x</span>, d<span class="op">=</span><span class="va">d</span><span class="op">$</span><span class="va">gr</span>, DX<span class="op">=</span><span class="va">d</span><span class="op">$</span><span class="va">DX</span><span class="op">)</span>, 
   start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a<span class="op">=</span><span class="fl">0</span>, b<span class="op">=</span><span class="fl">0</span>, gamma<span class="op">=</span><span class="fl">0</span>, zeta<span class="op">=</span><span class="fl">0</span>, sigma<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span>
   <span class="op">)</span>
 
-<span class="fu">precis</span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span>
 <span class="co">#&gt;            mean        sd       5.5%     94.5%</span>
 <span class="co">#&gt; a      5.202783 0.8167093   3.897524  6.508043</span>
 <span class="co">#&gt; b      4.967164 0.2057473   4.638340  5.295988</span>
