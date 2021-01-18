@@ -1,8 +1,14 @@
-# Distribuzione campionaria della media dei campioni {#chapter:distrcampmean}
+# (PART\*) Inferenza frequentista {-}
+
+# Distribuzione campionaria della media dei campioni 
+
+```{r, include = FALSE}
+source("_common.R")
+```
 
 L'inferenza statistica può essere descritta come un insieme di operazioni sui dati che producono delle stime e delle affermazioni sul grado di incertezza che il ricercatore attribuisce alle sue previsioni e ai parametri di processi e/o popolazioni. L'obiettivo di questo capitolo è quello di fornire un'introduzione alle basi teoriche della stima e dell'interpretazione che può essere fornita alle inferenze statistiche.
 
-## Parametri e statistiche {#sec:pars_and_sample_stats}
+## Parametri e statistiche 
 
 In statistica, per *popolazione* si intende un insieme di elementi che
 presenta caratteristiche aleatorie, mentre per *campione* si intende un
@@ -671,7 +677,7 @@ $$
 $$ 
 Dalla distribuzione normale sappiamo che una stima del parametro $\pm$ 1 errore standard corrisponde ad un intervallo del 68% e una stima del parametro $\pm$ $\frac{2}{3}$ di un errore standard corrisponde ad un intervallo del 50%. Un intervallo del 50% è particolarmente facile da interpretare dato che il vero valore del parametro ha la stessa probabilità di essere incluso o escluso dall'intervallo. Un intervallo del 95% basato sulla distribuzione normale è circa tre volte più ampio di un intervallo del 50%.
 
-## Conclusioni {#conclusioni .unnumbered}
+## Conclusioni {-}
 
 I risultati precedenti consentono le seguenti conclusioni. Se $X_1, \dots, X_n$ è un insieme di variabili aleatorie i.i.d., tutte con media $\mu$ e varianza $\sigma^2$, allora
 $$

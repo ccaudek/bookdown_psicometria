@@ -1,4 +1,4 @@
-# Il modello lineare {#chapter:stat_models}
+# La modellizzazione Bayesiana
 
 Prima di descrivere come il modello di regressione lineare possa essere applicato ai dati mediante l'approccio Bayesiano, esamineremo i modelli statistici Bayesiani che vengono utilizzati in alcuni casi più semplici, ovvero (1) il modello statistico per una proporzione e (2) il modello statistico utilizzato per il confronto tra due proporzioni. Estenderemo poi la discussione al caso in cui viene considerato (3) un campione di osservazioni misurate su scala continua, assumendo che ciascuna osservazione provenga da una distribuzione Normale. In tali circostanze, l'oggetto dell'inferenza sarà il parametro $\mu$ che rappresenta la media della popolazione da cui le osservazioni sono state tratte. A questo punto saremo nelle condizioni di discutere (4) l'inferenza Bayesiana sulla differenza tra le medie di due popolazioni. Tale problema verrà affrontato specificando un modello di regressione lineare che include una variabile dipendente continua e una variabile indipendente dicotomica. Una volta chiarite le proprietà del modello di regressione in questo caso semplice, sarà immediato estendere la discussione (5) al caso di una variabile indipendente continua.
 
@@ -25,8 +25,7 @@ Cito dal *Washington Post* del 7 aprile 2020:
 
 > One of the most bizarre and disturbing aspects of President Trump's nightly press briefings on the coronavirus pandemic is when he turns into a drug salesman. Like a cable TV pitchman hawking 'male enhancement' pills, Trump regularly extols the virtues of taking hydroxychloroquine, a drug used to treat malaria and lupus, as a potential 'game changer' that just might cure Covid-19.
 
-Tralasciamo qui il fatto che il presidente Trump non è un esperto in questo campo. Esaminiamo invece le evidenze iniziali a supporto dell'ipotesi che l'idrossiclorochina possa essere utile per la cura del Covid-19, evidenze disponibili nel momento in cui il presidente Trump ha fatto le affermazioni riportate sopra.[^1] Tali evidenze sono state
-fornite da @Gautret_2020.
+Tralasciamo qui il fatto che il presidente Trump non è un esperto in questo campo. Esaminiamo invece le evidenze iniziali a supporto dell'ipotesi che l'idrossiclorochina possa essere utile per la cura del Covid-19, ovvero le evidenze che erano disponibili nel momento in cui il presidente Trump ha fatto le affermazioni riportate sopra (in seguito, quest'idea è stata completamente screditata). Tali evidenze sono state fornite da @Gautret_2020.
 
 Il disegno sperimentale di @Gautret_2020 comprende, tra le altre cose, il confronto tra una condizione sperimentale e una condizione di controllo. Un articolo pubblicato da @Hulme_2020 si è posto il problema di rianalizzare i dati di @Gautret_2020 -- si veda
 <https://osf.io/5dgmx/>. Tra gli autori di questo secondo articolo figura anche Eric-Jan Wagenmakers, uno psicologo molto conosciuto per i suoi contributi metodologici. @Hulme_2020 sottolineano il fatto che @Gautret_2020 si sono concentrati, nella loro analisi dei dati, soltanto su una parte del loro campione. Se però vengono considerati anche i pazienti che sono stati esclusi dall'analisi dei dati, le conclusioni a cui sono giunti @Gautret_2020 risultano fortemente indebolite.
@@ -368,7 +367,7 @@ Abbiamo visto sopra che il parametro $b$ = 11.77 riflette semplicemente la diffe
 
 L'intervallo di credibilità al 95% rappresenta una stima dell'intervallo di valori che contengono il 95% dell'area della distribuzione a posteriori del parametro $b$. Nella figura \@ref(fig:postkids) si vedono le distribuzioni a posteriori dei parametri $a$ e $b$. Tali distribuzioni sono state generate estraendo un numero molto grande di campioni dalle
 distribuzioni a posteriori di $a$ e $b$. Solitamente tali stime sono ottenute mediante una variante dell'algoritmo di Metropolis; l'approssimazione quadratica qui usata fornisce un'approssimazione a questo processo. Dalla figura \@ref(fig:postkids) vediamo che le distribuzioni a posteriori tendono ad essere Normali. Vediamo inoltre che i valori più plausibili per il parametro $b$ sono compresi tra 7.2 e 16.3, come ci dice l'intervallo di credibilità al 95%. Il problema di come sia possibile specificare un intervallo di credibilità sulla base delle informazioni fornite dalla distribuzione a posteriori è 
-discusso nel capitolo XX [^2].
+discusso nel capitolo XX. I metodi di stima MCMC costituiscono la modalità usuale per generare la distribuzione a posteriori nell'analisi Bayesiana. In queste dispense, però, ci limitiamo ai metodi di stima basati sull'approssimazione quadratica. Abbiamo deciso di svolgere gli esercizi mediante l'approssimazione quadratica piuttosto che con il metodo MCMC perché l'installazione sul proprio computer del software necessario per le analisi MCMC costituisce un problema di tipo informatico che esula dagli scopi di questo insegnamento.
 
 In conclusione, il modello statistico lineare riassume la differenza nei punteggi medi del test PIAT nei due gruppi di bambini: i bambini la cui madre ha completato la scuola media superiore e bambini la cui madre non ha completato la scuola media superiore. Il modello statistico lineare ci consente inoltre di fare inferenza sulla differenza nei punteggi medi
 del test PIAT nei due gruppi di bambini. Viene infatti definito un livello di credibilità che descrive, ad un determinato grado di certezza, quelli che sono i valori plausibili di tale differenza, al di là delle idiosincrasie del particolare campione che abbiamo esaminato, ovvero tenendo in considerazione il fenomeno della variabilità campionaria. Questo è il processo di inferenza Bayesiana che viene svolta mediante l'uso di un modello statistico lineare.
@@ -483,13 +482,3 @@ modo di contare in quanti diversi modi diverse combinazioni di $\mu$ e $\sigma$ 
 
 Si noti che, per definire la distribuzione a priori del parametro $p$ di una distribuzione di Bernoulli, abbiamo usato una distribuzione uniforme (a priori non informativa), ovvero una Beta(1, 1). In tali circostanze, l'intervallo di credibilità è praticamente identico all'intervallo di confidenza di tipo frequentista. L'intervallo di credibilità, invece, differisce dall'intervallo di confidenza frequentista quando il modello statistico Bayesiano include una distribuzione a priori informativa o debolmente informativa. L'analisi dei dati Bayesiana fa quasi sempre uso di distribuzioni a priori debolmente informative, mentre le distribuzioni a priori informative sono più rare. Le distribuzioni a priori debolmente informative hanno quale scopo la regolarizzazione, cioè, l'obiettivo di mantenere le inferenze in una gamma ragionevole di valori; ciò contribuisce nel contempo a limitare l'influenza eccessiva delle osservazioni estreme (valori anomali).
 
-[^1]: In seguito, quest'idea è stata completamente screditata.
-
-[^2]: I metodi di stima MCMC costituiscono la modalità usuale per
-    generare la distribuzione a posteriori nell'analisi Bayesiana. In
-    queste dispense, però, ci limitiamo ai metodi di stima basati
-    sull'approssimazione quadratica. Abbiamo deciso di svolgere gli
-    esercizi mediante l'approssimazione quadratica piuttosto che con il
-    metodo MCMC perché l'installazione sul proprio computer del software
-    necessario per le analisi MCMC costituisce un problema di tipo
-    informatico che esula dagli scopi di questo insegnamento.

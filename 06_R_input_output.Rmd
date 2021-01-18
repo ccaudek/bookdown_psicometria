@@ -1,12 +1,4 @@
-# Input/Output {#chapter:input_output_R}
-
-## Obiettivi di apprendimento {#obiettivi-di-apprendimento .unnumbered}
-
-Lo studio di questo capitolo dovrebbe insegnare allo studente come:
-
--   Importare i dati da un file esterno in R.
-
-## Motivazione {#motivazione .unnumbered}
+# Input/Output 
 
 I dati raccolti dallo psicologo sono contenuti in file aventi formati
 diversi: solo testo, CSV, Excel, eccetera. R  prevede diverse funzioni

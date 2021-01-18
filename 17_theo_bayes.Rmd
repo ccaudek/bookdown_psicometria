@@ -1,4 +1,4 @@
-# Il teorema di Bayes {#chapter:bayes_theo}
+# Il teorema di Bayes 
 
 ```{r, include = FALSE}
 source("_common.R")
@@ -10,7 +10,7 @@ anche se viene utilizzato anche dall'approccio frequentista. Prima di
 esaminare il teorema di Bayes introdurremo una sua componente, ovvero il
 teorema della probabilità totale.
 
-## Il teorema della probabilità totale {#sec:tot_prob_theorem}
+## Il teorema della probabilità totale 
 
 Il teorema della probabilità totale fa uso della legge della probabilità
 composta \@ref(eq:probcomposte) per calcolare le probabilità di casi più

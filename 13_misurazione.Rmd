@@ -1,4 +1,4 @@
-# La misurazione in psicologia {#chapter:misurazione}
+# La misurazione in psicologia 
 
 ```{r, include = FALSE}
 source("_common.R")
@@ -292,10 +292,11 @@ Il numero di biciclette possedute da una persona è una variabile discreta poich
 
 In psicologia, ciò che vogliamo misurare non è una caratteristica
 fisica, ma invece è un concetto teorico inosservabile, ovvero un
-costrutto. Ad esempio, supponiamo che un docente voglia valutare quanto
-bene uno studente comprenda la distinzione tra le quattro diverse scale
-di misura che sono state descritte sopra. Il docente potrebbe
-predisporre un test costituito da un insieme di domande e potrebbe
+costrutto. 
+
+> Un costrutto rappresenta il risultato di una fondata riflessione scientifica, non è per definizione accessibile all'osservazione diretta, ma viene inferito dall'osservazione di opportuni indicatori (Sartori, 2005). 
+
+Ad esempio, supponiamo che un docente voglia valutare quanto bene uno studente comprenda la distinzione tra le quattro diverse scale di misura che sono state descritte sopra. Il docente potrebbe predisporre un test costituito da un insieme di domande e potrebbe
 contare a quante domande lo studente risponde correttamente. Questo
 test, però, può o può non essere una buona misura del costrutto relativo
 alla conoscenza effettiva delle quattro scale di misura. Per esempio, se
@@ -463,7 +464,4 @@ superficie di questi problemi. I concetti qui introdotti, però, devono
 sempre essere tenuti a mente e costituiscono il fondamento di quanto
 verrà esposto nei capitoli successivi.
 
-[^1]: Un costrutto rappresenta il risultato di una fondata riflessione
-    scientifica, non è per definizione accessibile all'osservazione
-    diretta, ma viene inferito dall'osservazione di opportuni indicatori
-    (Sartori, 2005).
+

@@ -1,0 +1,19 @@
+bookdown::bs4_book:
+  theme:
+    primary: "#637238"
+includes:
+    in_header: [ga_script.html]
+
+bookdown::gitbook:
+  includes:
+    in_header: [ga_script.html]
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li><strong><a href="./">Psicometria</a></strong></li>
+  css: r4ds.css
+
+bookdown::pdf_book:
+  latex_engine: "xelatex"
+  citation_package: natbib

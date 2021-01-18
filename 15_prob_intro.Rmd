@@ -1,11 +1,11 @@
 # (PART\*) Elementi di teoria della probabilità {-}
 
+# Che cos'è la probabilità? 
+
 ```{r, include = FALSE}
 source("_common.R")
 knitr::opts_chunk$set(fig.align="center")
 ```
-
-# Che cos'è la probabilità? {#chapter:prob_discreta}
 
 È normale fare delle congetture rispetto a ciò di cui non siamo sicuri.
 Ma perché facciamo questo? Molto spesso perché, anche se sappiamo che le
@@ -239,7 +239,7 @@ sono descritti di seguito.
 
 Ma, nello specifico, che cos'è la probabilità? A questa domanda si può rispondere in modi diversi.
 
-### Una definizione "ingenua" della probabilità {#sec:def_ing_prob}
+### Una definizione "ingenua" della probabilità 
 
 Storicamente, la prima definizione della probabilità di un evento è
 stata quella che richiede di contare il numero di modi nei quali un
@@ -616,7 +616,7 @@ che queste convenzioni siano elencate tutte in un posto solo.
     $P(X=x) = p(x)$.
 
 
-## Conclusioni {#conclusioni .unnumbered}
+## Conclusioni 
 
 In questo capitolo abbiamo visto come si costruisce lo spazio
 campionario di un esperimento casuale, quali sono le proprietà di base

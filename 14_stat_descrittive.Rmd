@@ -1,11 +1,11 @@
 # (PART\*) Descrizione {-}
 
+# Statistica descrittiva 
+
 ```{r, include = FALSE}
 source("_common.R")
 knitr::opts_chunk$set(fig.align="center")
 ```
-
-# Statistica descrittiva {#chapter:descriptive-stats}
 
 Nel 1907 Francis Galton, cugino di Charles Darwin, matematico e
 statistico autodidatta, geografo, esploratore, teorico della
@@ -91,7 +91,7 @@ gli istogrammi, i diagrammi a dispersione o i box-plot, e gli indici
 sintetici più comuni sono la media, la mediana, la varianza e la
 deviazione standard.
 
-## Distribuzioni di frequenze {#sec:distr_freq}
+## Distribuzioni di frequenze 
 
 Per introdurre i principali strumenti della statistica descrittiva
 considereremo qui i dati raccolti da @zetsche_future_2019. Questi autori
@@ -259,10 +259,9 @@ dei singoli rettangoli e quindi vale 1.0.
 
 Poniamoci il problema di costruire un istogramma per i dati del BDI-II.
 Nell'istogramma viene rappresentata la frequenza relativa delle classi: l'area di ogni barra dell'istogramma è proporzionale alla frequenza relativa della classe che la barra rappresenta. 
-Come si trova l'altezza delle barre dell'istogramma? Per la classe [0, 13.5), ad esempio, la frequenza relativa è 36/66. Tale valore corrisponde all'__area__ del rettangolo.  Dato che la base del rettangolo è 13.5, l'altezza sarà 36/66 / 13.5, ovvero {r 36/66 / 13.5}. E così via per le altre barre dell'istogramma.
+Come si trova l'altezza delle barre dell'istogramma? Per la classe [0, 13.5), ad esempio, la frequenza relativa è 36/66. Tale valore corrisponde all'__area__ del rettangolo.  Dato che la base del rettangolo è 13.5, l'altezza sarà 36/66 / 13.5, ovvero `r round(36/66 / 13.5, 4)`. E così via per le altre barre dell'istogramma.
 
-Una rappresentazione grafica dell'istogramma delle frequenze relative si può ottenere con R utilizzando le funzioni di `ggplot2`.
-Il pacchetto `ggplot2` è un potente strumento per rappresentare graficamente i dati. Le iniziali del nome, `gg`, si riferiscono alla ''Grammar of Graphics'', che è un modo di pensare le figure come una serie di layer stratificati. Originariamente descritta da Leland Wilkinson, la grammatica dei grafici è stata aggiornata e applicata in R da Hadley Wickham, il creatore del pacchetto. Per chiarezza, precisiamo che la funzione `ggplot()` utilizza intervalli aperti a destra.
+Una rappresentazione grafica dell'istogramma delle frequenze relative si può ottenere con R utilizzando le funzioni di `ggplot2`. Il pacchetto `ggplot2` è un potente strumento per rappresentare graficamente i dati. Le iniziali del nome, `gg`, si riferiscono alla ''Grammar of Graphics'', che è un modo di pensare le figure come una serie di layer stratificati. Originariamente descritta da Leland Wilkinson, la grammatica dei grafici è stata aggiornata e applicata in R da Hadley Wickham, il creatore del pacchetto. Per chiarezza, precisiamo che la funzione `ggplot()` utilizza intervalli aperti a destra.
 
 ```{r hist1zetsche, out.width="80%", fig.cap="Istogramma per i valori BDI-II riportati da @zetsche_future_2019."}
 p1 <- bysubj %>%
@@ -1066,7 +1065,7 @@ seconda domanda possono risultare molte preziose conoscenze.
 
 Che alla seconda domanda posta da Pearson sia facile rispondere è indubbio. Che
 la nostra comprensione di un fenomeno possa aumentare sulla base delle
-informazioni fornite dalle correlazioni, invece, è molto dubbio e quasi
+informazioni fornite unicamente dalle correlazioni, invece, è molto dubbio e quasi
 certamente falso.
 
 
@@ -1142,7 +1141,7 @@ dino <- dino +
 slant + dino
 ```
 
-## Conclusioni {#conclusioni .unnumbered}
+## Conclusioni 
 
 La prima fase dell'analisi dei dati è sicuramente quella che ci porta a
 riassumere i dati mediante gli strumenti della statistica descrittiva.
@@ -1162,7 +1161,7 @@ essere chiaro che, quando disponiamo di grandi moli di dati (come è
 sempre il caso in psicologia), per fare questo è necessario usare un
 software statistico.
 
-## Esercizi {#esercizi1}
+## Esercizi 
  
 Scarica gli esercizi: 
 

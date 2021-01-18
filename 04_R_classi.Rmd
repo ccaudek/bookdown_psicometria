@@ -1,22 +1,12 @@
-# Strutture di dati {#chapter:strutture_dati_R}
-
-## Obiettivi di apprendimento {#obiettivi-di-apprendimento .unnumbered}
-
-Lo studio di questo capitolo dovrebbe insegnare allo studente come:
-
--   Distinguere tra classi e modi degli oggetti di R.
--   Creare un data.frame in cui inserire i dati da analizzare.
--   Estrarre un sottoinsieme di dati da un data.frame.
-
-## Motivazione {#motivazione .unnumbered}
+# Strutture di dati 
 
 Solitamente gli psicologi raccolgono grandi quantità di dati. Tali dati
 vengono codificati in R  all'interno di oggetti aventi proprietà
 diverse. Intuitivamente, in R un oggetto è qualsiasi cosa a cui è
 possibile assegnare un valore. I dati possono essere di tipo numerico o
-alfanumerico. Di conseguenza, R  distingue tra oggetti aventi 'modi'
+alfanumerico. Di conseguenza, R  distingue tra oggetti aventi _modi_
 diversi. Inoltre, i dati possono essere organizzati in righe e colonne
-in base a diversi tipi di strutture che R  chiama 'classi'.
+in base a diversi tipi di strutture che R  chiama _classi_.
 
 ## Classi e modi degli oggetti
 
@@ -46,7 +36,7 @@ mode(cards)
 Nel seguito verranno esaminate le cinque strutture di dati utilizzate da
 R.
 
-### Vettori
+### Vettori {#sec:vettori}
 
 I vettori sono la classe di oggetto più importante in R. Un vettore può
 essere creato usando la funzione `c()`:
@@ -56,14 +46,12 @@ y <- c(2, 1, 6, -3, 9)
 y
 ```
 
-
 Le dimensioni di un vettore presente nella memoria di lavoro possono
 essere trovare con la funzione `length()`; ad esempio,
 
 ```{r}
 length(y)
 ```
-
 
 ci dice che `y` è un vettore costituito da cinque elementi. La somma, il
 minimo e il massimo degli elementi contenuti in un vettore si trovano
@@ -74,7 +62,6 @@ sum(y)
 min(y)
 max(y)
 ```
-
 
 Mentre ci sono sei 'tipi' di vettori 'atomici' in R, noi ci
 focalizzeremo sui tipi seguenti: 'numeric' ('integer': *e.g.*, 5;
@@ -94,7 +81,6 @@ X <- matrix(1:20, nrow = 4, byrow = FALSE)
 X
 ```
 
-
 Il primo argomento è il vettore i cui elementi andranno a disporsi
 all'interno della matrice. È poi necessario specificare le dimensioni
 della matrice e il modo in cui R  dovrà riempire la matrice. Date le
@@ -108,7 +94,6 @@ usiamo `byrow = TRUE`:
 Y <- matrix(1:20, nrow = 4, byrow = TRUE)
 Y
 ```
-
 
 Le dimensioni di una matrice presente nella memoria di lavoro possono
 essere trovare con la funzione `dim()`; ad esempio,
@@ -134,7 +119,6 @@ ar <- array(
   dim = c(2, 2, 3)
 )
 ```
-
 
 Un sottoinsieme di questi dati può essere selezionato, per esempio, nel
 modo seguente:
@@ -205,12 +189,6 @@ M
 ```
 
 
-<!-- ![Le strutture di dati più comuni in R  sono i vettori, le matrici, gli -->
-<!-- array, le liste e i data.frame (figura riprodotta da Grolemund, -->
-<!-- 2014).](images/R_data_structures.pdf) -->
-
-
-
 ### Operazioni aritmetiche su array
 
 Le stesse considerazioni si estendono al caso degli array.
@@ -238,9 +216,7 @@ list1[[3]][2]
 ## Data frame
 
 I data.frame sono strutture tipo matrice, in cui le colonne possono
-essere vettori di tipi differenti (si veda la
-Figura [1.1](#fig:R_data_structures){reference-type="ref"
-reference="fig:R_data_structures"}). La funzione usata per generare un
+essere vettori di tipi differenti. La funzione usata per generare un
 data frame è `data.frame()`, che permette di unire più vettori di uguale
 lunghezza come colonne del data frame, ognuno dei quali si riferisce ad
 una diversa variabile. Ad esempio,
@@ -260,7 +236,7 @@ variabile `value` dal data.frame `df` si può indicare l'indice della
 terza colonna:
 
 ```{r}
- df[, 3]
+df[, 3]
 ```
 
 Dal momento che le colonne sono delle variabili, è possibile estrarle
@@ -271,8 +247,7 @@ anche indicando nome della variabile, scrivendo
 df$value
 ```
 
-Per fare un esempio, creiamo un data.frame che contenga tutte le informazioni di un mazzo di
-carte da poker [@grolemund2014hands]. In tale data.frame, ciascuna riga
+Per fare un esempio, creiamo un data.frame che contenga tutte le informazioni di un mazzo di carte da poker [@grolemund2014hands]. In tale data.frame, ciascuna riga
 corrisponde ad una carta -- in un mazzo da poker ci sono 52 carte,
 perciò il data.frame avrà 52 righe. Il vettore `face` indica con una
 stringa di caratteri il valore di ciascuna carta, il vettore `suit`
@@ -312,7 +287,6 @@ le contiene:
 deck
 ```
 
-
 Si noti che, a schermo, R  stampa un numero progressivo che corrisponde
 al numero della riga.
 
@@ -338,7 +312,7 @@ per esempio, dobbiamo scrivere il nome del data.frame seguito da una
 coppia di parentesi quadre:
 
 ```{r eval=FALSE}
-deck[ , ]
+deck[, ]
 ```
 
 All'interno delle parentesi quadre ci sono due indici separati da una
@@ -436,7 +410,7 @@ Per esempio,
 
 ```{r}
 deck[1, c("face", "suit", "value")]
-deck[ , "value"]
+deck[, "value"]
 ```
 
 

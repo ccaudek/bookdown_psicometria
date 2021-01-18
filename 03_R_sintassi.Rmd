@@ -1,12 +1,4 @@
-# Sintassi di base {#chapter:sintassi_R}
-
-## Obiettivi di apprendimento {#obiettivi-di-apprendimento .unnumbered}
-
-Lo studio di questo capitolo dovrebbe insegnare allo studente come:
-
--   Conoscere e sapere usare alcune delle funzioni di base di R.
-
-## Motivazione {#motivazione .unnumbered}
+# Sintassi di base 
 
 R è un linguaggio di programmazione orientato all'analisi dei dati, il
 calcolo e la visualizzazione grafica. È disponibile su Internet una
@@ -29,7 +21,7 @@ operazioni aritmetiche vengono eseguite mediante simboli "standard:" +,
 
 I comandi sono separati da un carattere di nuova linea (si immette un
 carattere di nuova linea digitando il tasto `Invio`). Se un comando non
-è completo alla fine della linea,  R darà un prompt differente che per
+è completo alla fine della linea, R darà un prompt differente che per
 default è il carattere `+` sulla linea seguente e continuerà a leggere
 l'input finché il comando non è sintatticamente completo. Ad esempio,
 
@@ -201,9 +193,10 @@ utilizzato in un momento successivo.
 
 L'editore comunica con  R nel modo seguente: dopo avere selezionato la
 porzione di codice che si vuole eseguire, si digita un'apposita sequenza
-di tasti (`Command + Enter` su Mac OS X e `ctrl + r` in Windows)[^1].
-Così facendo, R  eseguirà le istruzioni selezionate e l'output verrà
-stampato sulla console. Il Text Editor fornito da R  è piuttosto
+di tasti (`Command + Enter` su Mac OS X e `ctrl + r` in Windows).
+`ctrl + r` significa premere il tasto `ctrl` e, tenendolo premuto, premere il tasto `r` della tastiera.
+Così facendo, R eseguirà le istruzioni selezionate e l'output verrà
+stampato sulla console. Il Text Editor fornito da R è piuttosto
 primitivo: è fortemente consigliato utilizzare RStudio.
 
 ### Commentare il codice
@@ -662,5 +655,3 @@ library()
 ```
 
 
-[^1]: `ctrl + r` significa premere il tasto `ctrl` e, tenendolo premuto,
-    premere il tasto `r` della tastiera

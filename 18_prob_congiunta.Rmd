@@ -1,4 +1,4 @@
-# Probabilità congiunta {#chapter:distr_congiunta}
+# Probabilità congiunta
 
 ```{r, include = FALSE}
 source("_common.R")

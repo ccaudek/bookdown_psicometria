@@ -1,0 +1,15 @@
+una-breve-introduzione-al-modello-di-regressione
+regressione-bivariata
+scioglimento-del-ghiaccio-marino
+interpretazione-dei-coefficienti-a-e-b
+scomposizione-della-y
+metodo-di-stima-dei-coefficienti-del-modello-di-regressione
+inferenza-sul-modello-di-regressione
+errore-standard-della-stima
+errori-standard-delle-stime-a-e-b
+una-variabile-indipendente-qualitativa
+interazione
+regressione-multipla
+assenza-di-interazione
+significato-dei-coefficienti-parziali-di-regressione
+interazione-tra-i-regressone

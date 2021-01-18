@@ -1,18 +1,10 @@
-# Per cominciare {#cha:install}
+# Per cominciare 
 
 ```{r, include = FALSE}
 source("_common.R")
 knitr::opts_chunk$set(fig.align="center")
 ```
 
-
-## Obiettivi di apprendimento {#obiettivi-di-apprendimento .unnumbered}
-
-Lo studio di questo capitolo dovrebbe insegnare allo studente come:
-
--   Installare R e RStudio.
-
-## Motivazione {#motivazione .unnumbered}
 
 Al fine di utilizzare R è necessario eseguire le seguenti tre operazioni
 nell'ordine dato:
@@ -30,7 +22,7 @@ R è disponibile gratuitamente ed è scaricabile dal sito
 `r-project.org` andiamo sulla sezione `Download` e scegliamo un server a
 piacimento per scaricare il software d'installazione. Una volta
 scaricato l'installer, lo installiamo come un qualsiasi software,
-cliccando due volte sul file d'istallazione. Esistono versioni di   per
+cliccando due volte sul file d'istallazione. Esistono versioni di R  per
 tutti i più diffusi sistemi operativi (Windows, Mac OS X e Linux).
 
 Il R Core Development Team lavora continuamente per migliorare le
@@ -39,7 +31,9 @@ nuove tecnologie. Di conseguenza, periodicamente vengono rilasciate
 nuove versioni di R. Informazioni a questo proposito sono fornite sulla
 pagina web <https://www.r-project.org/>. Per installare una nuova
 versione di R si segue la stessa procedura che è stata seguita per la
-prima installazione. [^1]
+prima installazione. 
+
+Insieme al software si possono scaricare dal sito principale sia manuali d'uso che numerose dispense per approfondire diversi aspetti di R. In particolare, nel sito  <http://cran.r-project.org/other-docs.html> si possono trovare anche  numerose dispense in italiano (sezione "Other languages").
 
 Dopo avere installato R è opportuno installare anche RStudio. RStudio si
 può scaricare da <https://www.rstudio.com/>. Anche RStudio è disponibile
@@ -88,8 +82,4 @@ un R Notebook, un blocco di codice viene eseguito schiacciando il
 bottone con l'icona $\color{red}\blacktriangleright$ ("Run current
 chunk") posizionata a destra rispetto al codice.
 
-[^1]: Insieme al software si possono scaricare dal sito principale sia
-    manuali d'uso che numerose dispense per approfondire diversi aspetti
-    di . In particolare, nel sito
-    <http://cran.r-project.org/other-docs.html> si possono trovare anche
-    numerose dispense in italiano (sezione "Other languages").
+
