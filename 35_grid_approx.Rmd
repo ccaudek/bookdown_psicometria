@@ -1,345 +1,30 @@
-# (PART\*) Inferenza Bayesiana {-}
-
-# Stima della funzione a posteriori 
+# Stima della funzione a posteriori {#chapter-stima-distr-posteriori}
 
 Quando usiamo il teorema di Bayes per calcolare la distribuzione a posteriori del parametro di un modello statistico, al denominatore troviamo un integrale. Tale integrale, nella maggior parte dei casi, non si può risolvere per via analitica. L'inferenza bayesiana si sviluppa dunque mediante una stima numerica della funzione a posteriori. Dato che questi metodi sono "computazionalmente intensivi", possono solo essere svolti mediante software. In anni recenti i metodi Bayesiani di analisi dei dati sono diventati sempre più popolari proprio perché la potenza di calcolo necessaria per svolgere tali calcoli è ora alla portata di tutti. Questo non era vero solo pochi decenni fa. Per capire come la distribuzione a posteriori possa essere approssimata per via numerica esamineremo qui tre diverse tecniche che possono essere utilizzate a questo scopo:
 
-1.  i metodi numerici convenzionali,
+1.  i metodi *grid-based* approssimati,
 
 2.  il metodo dell'approssimazione quadratica,
 
 3.  i metodi Monte Carlo basati su Catena di Markov (MCMC).
 
 
-## Metodi numerici convenzionali {#sec:met_numerici_convenzionali}
+## Metodi basati su griglia 
 
-È possibile stimare l'intera distribuzione a posteriori mediante metodi
-numerici convenzionali. Questo è l'approccio più semplice. Tuttavia,
-anche se tali metodi possono fornire risultati accuratissimi, a causa
-della "maledizione della dimensionalità", tali procedure numeriche sono
-utilizzabili solo nel caso di modelli statistici semplici, con non più
-di due parametri. Nella pratica concreta tali metodi vengono sostituiti
-da altre tecniche più efficienti in quanto, anche in comuni modelli
-utilizzati in psicologia, vengono stimati centinaia se non migliaia di
-parametri. Nell'esempio che faremo in questa sezione risulterà chiara la
-ragione per cui, in tali circostanze, non è possibile usare una tale
-procedura. I metodi numerici convenzionali sono invece utili come
-strumento didattico in quanto ci forniscono una procedura molto diretta
-e intuitiva che rende molto trasparente il processo dell'aggiornamento
-Bayesiano. Per questa ragione esamineremo qui un esempio relativo a tale
-procedura esaminando un modello statistico che dipende da un solo
-parametro sconosciuto.
-
-### La procedura dell'approssimazione numerica {#sec:appross_numerica}
-
-È molto semplice trovare una approssimazione numerica della
-distribuzione a posteriori e ciò può essere fatto come indicato di
-seguito. Anche se la maggior parte dei parametri è continua (ovvero, in
-linea di principio ciascun parametro può assumere un numero infinito di
-valori), possiamo ottenere un'eccellente approssimazione della
-distribuzione a posteriori considerando solo una griglia finita di
-valori dei parametri. Per calcolare la probabilità a posteriori in
-corrispondenza di ciascun particolare valore del parametro, chiamiamolo
-$\theta'$, è sufficiente moltiplicare la probabilità a priori di
-$\theta'$ per il valore della funzione di verosimiglianza in
-corrispondenza di $\theta'$. Una stima della distribuzione a posteriori
-si genera ripetendo questo procedimento per ciascun valore nella
-griglia.
-
-### Un esempio pratico {#sec:es_pratico_zetsche}
-
-Facciamo un esempio concreto consideriando nuovamente la ricerca di
-@zetsche_future_2019. Questi autori si sono chiesti se gli individui
-depressi manifestino delle aspettative accurate circa il loro umore
-futuro, oppure se tali aspettative siano distorte negativamente.
-Consideriamo qui i 30 partecipanti dello studio di @zetsche_future_2019
-che hanno riportato la presenza di un episodio di depressione maggiore
-in atto. All'inizio della settimana di test a questi pazienti è stato
-chiesto di valutare l'umore che si aspettavano di sentire nei giorni
-seguenti della settimana. Mediante una app, i partecipanti dovevano poi
-valutare il proprio umore in cinque momenti diversi di ciascuno dei
-cinque giorni successivi. Lo studio considera diverse emozioni, ma qui
-ci concentriamo solo sulla tristezza.
-
-Sulla base dei dati forniti dagli autori, abbiamo calcolato la media dei
-giudizi relativi al livello di tristezza raccolti da ciascun
-partecipante tramite la app. Tale media è stata poi sottratta
-dall'aspettativa del livello di tristezza fornita all'inizio della
-settimana. Per semplificare l'analisi abbiamo considerato la discrepanza
-tra aspettative e realtà come un evento dicotomico: valori positivi di
-tale differenza indicano che le aspettative circa il livello di
-tristezza sono maggiori del livello di tristezza che in seguito viene
-effettivamente esperito; ciò significa che le aspettative sono
-negativamente distorte (evento codificato con "1"). Si può dire il
-contrario (le aspettative sono positivamente distorte) se tale
-differenza assume valori negativi (evento codificato con "0"). Nel
-campione dei 30 partecipanti clinici qui esaminati, 23 partecipanti
-manifestano delle aspettative negativamente distorte e 7 partecipanti
-manifestano delle aspettative positivamente distorte. Chiamiamo $\theta$
-la probabilità dell'evento "le aspettative del partecipante sono
-distorte negativamente". Ci poniamo il problema di ottenere la stima a
-posteriori di $\theta$, dati i 23 \"successi\" in 30 prove che sono
-stati osservati. 
-
-Per questo esempio considereremo 50 valori egualmente spaziati per il parametro $\theta$: 0.000, 0.0204, ..., 0.978, 1.000. In R abbiamo:
-
-```{r}
-n_points <- 50
-p_grid <- seq(from = 0, to = 1, length.out = n_points)
-p_grid
-```
-
-
-#### Distribuzione a priori
-
-Supponiamo che le nostre credenze a priori sulla tendenza di un
-individuo clinicamente depresso a manifestare delle aspettative distorte
-negativamente circa il suo umore futuro siano molto scarse. Assumiamo
-quindi per $\theta$ una distribuzione iniziale uniforme nell'intervallo
-[0, 1]. Dato che consideriamo soltanto $n = 50$ valori del parametro
-$\theta$, creiamo un vettore di 50 elementi che conterrà i valori della distribuzione a priori scalando ciascun valore di questo vettore per $n$ in modo tale che la somma di tutti i
-valori della distribuzione a priori (0.02, 0.02, ..., 0.02, 0.02) sia
-uguale a 1.0 (in questo modo viene definita una funzione di massa di
-probabilità):
-
-```{r}
-prior1 <- dbeta(p_grid, 1, 1) / sum(dbeta(p_grid, 1, 1))
-sum(prior1)
-```
-
-Stampo i valori:
-
-```{r}
-prior1
-```
-
-La distribuzione a priori così costruita è riportata nella figura \@ref(fig:gridappr1).
-
-```{r gridappr1, fig.cap="Rappresentazione della distribuzione a priori per il parametro $\\theta$, ovvero la probabilità di aspettative future distorte negativamente [@zetsche_future_2019]."}
+```{r, echo=FALSE}
 library("patchwork")
-
-p1 <- data.frame(p_grid, prior1) %>% 
-  ggplot(aes(x=p_grid, xend=p_grid, y=0, yend=prior1)) +
-  geom_line()+
-  geom_segment(color = "#8184FC") + 
-  ylim(0, 0.17) +
-  labs(
-    x = "Parametro \U03B8",
-    y = "Probabilità a priori",
-    title = "50 punti"
-  )
-p1
 ```
 
-#### Funzione di verosimiglianza
+È possibile stimare l'intera distribuzione a posteriori mediante metodi basati su griglia (*grid-based*), come abbiamo fatto nel capitolo [Modellistica bayesiana](#chapter-modellistica-bayesiana). Questo è l'approccio più semplice. Tuttavia, anche se tali metodi possono fornire risultati accuratissimi, a causa della "maledizione della dimensionalità", tali procedure numeriche sono utilizzabili solo nel caso di modelli statistici semplici, con non più di due parametri. Nella pratica concreta tali metodi vengono sostituiti da altre tecniche più efficienti in quanto, anche in comuni modelli
+utilizzati in psicologia, vengono stimati centinaia se non migliaia di
+parametri. 
 
-Calcoliamo ora la funzione di verosimiglianza utilizzando i 50 valori
-$\theta$ che abbiamo considerato. Per ciascun valore $\theta$ applichiamo la formula della probabilità binomiale tendendo sempre costanti i valori dei dati (ovvero 23 "successi" in 30 prove).
-
-Per esempio, per il valore $\theta = 0.816$ l'ordinata della funzione di
-verosimiglianza sarà 
-$$\begin{aligned}
-\binom{30}{23}& \cdot 0.816^{23} \cdot (1 - 0.816)^{7} = 0.135\notag
-\end{aligned}
-$$
-e per $\theta = 0.837$ l'ordinata della funzione di verosimiglianza sarà
-$$\begin{aligned}
-\binom{30}{23}& \cdot 0.837^{23} \cdot (1 - 0.837)^{7} = 0.104.\notag
-\end{aligned}
-$$
-
-Svolgendo tutti i calcoli con R otteniamo i valori seguenti:  
-
-```{r}
-likelihood <- dbinom(23, size = 30, prob = p_grid)
-likelihood
-```
-
-La funzione di verosimiglianza così ottenuta è riportata nella figura \@ref(fig:gridappr2).
-
-```{r gridappr2, fig.cap="Rappresentazione della funzione di verosimiglianza per il parametro $\\theta$, ovvero la probabilità di aspettative future distorte negativamente [@zetsche_future_2019]."}
-p2 <- data.frame(p_grid, likelihood) %>% 
-  ggplot(aes(x=p_grid, xend=p_grid, y=0, yend=likelihood)) +
-  geom_segment(color = "#8184FC") +
-  ylim(0, 0.17) +
-  labs(
-    x = "Parametro \U03B8",
-    y = "Verosimiglianza"
-  )
-p2
-```
-
-#### La stima della distribuzione a posteriori
-
-La distribuzione a posteriori del parametro $\theta$ è data dal prodotto
-della verosimiglianza e della distribuzione a priori, scalata per una
-costante di normalizzazione. Quindi, facendo il prodotto dei valori
-della distribuzione a priori e i valori della funzione di
-verosimiglianza otteniamo la funzione a posteriori non standardizzata.
-Dato che la distribuzione a priori è uniforme, per ottenere questo
-risultato è sufficiente moltiplicare ciascun valore della funzione di
-verosimiglianza per 0.02. Per esempio, per il primo valore della funzione di verosimiglianza che abbiamo calcolato sopra, avremo $0.135 \cdot 0.02$; per il secondo valore della funzione di verosimiglianza che abbiamo calcolato sopra avremo $0.104 \cdot 0.02$. 
-
-Usando R, la funzione a posteriori non standardizzata diventa:
-
-```{r}
-unstd_posterior <- likelihood * prior1
-unstd_posterior
-```
-
-Avendo svolto questo prodotto per tutti i 50 valori della funzione di verosimiglianza, dobbiamo poi dividere ciascuno dei 50 numeri così trovati per la costante di
-normalizzazione. Nel caso discreto, trovare il denominatore del teorema
-di Bayes è molto facile: esso è dato dalla somma di tutti i valori della
-distribuzione a posteriori non normalizzata. Per i dati presenti, tale
-costante di normalizzazione è uguale a 0.032. 
-
-```{r}
-sum(unstd_posterior)
-```
-
-Possiamo dunque standardizzare i due valori trovati sopra nel modo seguente:
-$0.135 \cdot 0.02 / 0.032$ e $0.104 \cdot 0.02 / 0.032$. Così facendo,
-otterremo il risultato per cui la somma di tutti e 50 i valori della
-distribuzione a posteriori normalizzata sarà uguale a 1.0. 
-
-Svolgiamo tutti i calcoli in R:
-
-```{r}
-posterior <- unstd_posterior / sum(unstd_posterior)
-posterior
-```
-
-Verifichiamo:
-
-```{r}
-sum(posterior)
-```
-
-In questo particolare esempio, la distribuzione a posteriori trovata come
-descritto sopra non è altro che la versione normalizzata della funzione
-di verosimiglianza: questo avviene perché la distribuzione a priori
-uniforme non ha aggiunto altre informazioni oltre a quelle che erano già
-fornite dalla funzione di verosimiglianza. 
-
-La funzione a posteriori che abbiamo calcolato con il metodo dell'approssimazione numerica è riportata nella figura \@ref(fig:gridappr3).
-
-```{r gridappr3, fig.cap="Rappresentazione della distribuzione a posteriori per il parametro $\\theta$, ovvero la probabilità di aspettative future distorte negativamente [@zetsche_future_2019]."}
-p3 <- data.frame(p_grid, posterior) %>% 
-  ggplot(aes(x=p_grid, xend=p_grid, y=0, yend=posterior)) +
-  geom_segment(color = "#8184FC") +
-  ylim(0, 0.17) +
-  labs(
-    x = "Parametro \U03B8",
-    y = "Probabilità a posteriori"
-  )
-p3
-```
-
-Le funzioni rappresentate nelle figure \@ref(fig:gridappr1), \@ref(fig:gridappr2) e \@ref(fig:gridappr3) sono state calcolate utilizzando 50 modalità equi-spaziate per il parametro $\theta$. I segmenti verticali rappresentano l'intensità della funzione in corrispondenza di ciascuna modalità parametro $\theta$. Nella figura \@ref(fig:gridappr1) e nella figura \@ref(fig:gridappr3) la somma delle lunghezze dei segmenti verticali è pari ad 1.0; ciò non si verifica, invece, nel caso della figura \@ref(fig:gridappr3).
-
-### Un esempio pratico (versione 2){#sec:aspett_future_beta2_10}
-
-Continuiamo la discussione dell'esempio precedente supponendo che la
-letteratura precedente ci fornisca delle informazioni a proposito di
-$\theta$, ovvero sulla probabilità che le aspettative future di un
-individuo clinicamente depresso siano distorte negativamente. In tali
-circostanze, invece di utilizzare la distribuzione uniforme per
-$p(\theta)$, definiamo la distribuzione a priori per $\theta$ come una
-distribuzione che ha la forma di una Beta di parametri $\alpha = 2$ e
-$\beta = 10$. In questo modo, la distribuzione a priori di $\theta$
-ritiene molto plausibili valori bassi di $\theta$, mentre i valori
-$\theta$ superiori a 0.5 vengono considerati impossibili. Questo è
-equivalente a dire che ci aspettiamo che le aspettative relative
-all'umore futuro siano distorte negativamente solo per pochissimi
-individui clinicamente depressi -- in altre parole, ci aspettiamo che la
-maggioranza degli individui clinicamente depressi sia inguaribilmente
-ottimista. Questa è, ovviamente, un'opinione a priori molto difficile da
-giustificare. La esamino qui, non perché abbia senso nel contesto dei
-dati di @zetsche_future_2019, ma soltanto per fare un esempio che mostra
-come la distribuzione a posteriori fornisca una sorta di "compromesso"
-tra la distribuzione a priori e la verosimiglianza.
-
-Con calcoli del tutto simili a quelli descritti sopra si giunge alla distribuzione a posteriori rappresentata nella figura \@ref(fig:gridappr4). Iniziamo a definire una griglia unidimensionale equispaziata di possibili valori del parametro $\theta$. Anche in questo caso usiamo 50 valori possibili del parametro $\theta$:
-
-```{r}
-n_points <- 50
-p_grid <- seq(from = 0, to = 1, length.out = n_points)
-```
-
-Per la distribuzione a priori scelgo una Beta(2, 10).
-
-```{r}
-alpha <- 2
-beta <- 10
-prior2 <- dbeta(p_grid, alpha, beta) / sum(dbeta(p_grid, alpha, beta))
-sum(prior2)
-```
-
-Tale distribuzione a priori è rappresentata nella figura \@ref(fig:gridappr4).
-
-```{r gridappr4, fig.cap="Rappresentazione di una funzione a priori informativa per il parametro $\\theta$."}
-plot_df <- data.frame(p_grid, prior2) 
-p4 <- plot_df %>% 
-  ggplot(aes(x=p_grid, xend=p_grid, y=0, yend=prior2)) +
-  geom_segment(color = "#8184FC") +
-  ylim(0, 0.17) +
-  labs(
-    x = "",
-    y = "Probabilità a priori",
-    title = "50 punti"
-  )
-p4
-```
-
-Calcoliamo il valore della funzione di verosimiglianza in corrispondenza di ciascun punto della griglia. La funzione di verosimiglianza è identica a quella considerata nell'esempio precedente.
-
-```{r}
-likelihood <- dbinom(23, size = 30, prob = p_grid)
-```
-
-Calcolo il prodotto tra la verosimiglianza e la distribuzione a priori, per ciascun punto della griglia:
-
-```{r}
-unstd_posterior2 <- likelihood * prior2
-```
-
-Normalizzo la distribuzione a posteriori in modo tale che la somma sia 1.
-
-```{r}
-posterior2 <- unstd_posterior2 / sum(unstd_posterior2)
-sum(posterior2)
-```
-
-La nuova funzione a posteriori è rappresentata nella figura \@ref(fig:gridappr5).
-
-```{r gridappr5, fig.cap="Rappresentazione della funzione a posteriori per il parametro $\\theta$ calcolata utilizzando una distribuzione a priori informativa."}
-plot_df <- data.frame(p_grid, posterior2)
-p5 <- plot_df %>%
-  ggplot(aes(x = p_grid, xend = p_grid, y = 0, yend = posterior2)) +
-  geom_segment(color = "#8184FC") +
-  ylim(0, 0.17) +
-  labs(
-    x = "Parametro \U03B8",
-    y = "Probabilità a posteriori"
-  )
-p5
-```
-
-Facendo un confronto tra le figure \@ref(fig:gridappr4) e \@ref(fig:gridappr5) si nota come la distribuzione a priori per il parametro $\theta$ e la distribuzione a posteriori per il parametro $\theta$ sono molto diverse. In particolare, si noti che la distribuzione a posteriori rappresentata nella \@ref(fig:gridappr5) risulta spostata verso destra su
-posizioni più vicine a quelle della verosimiglianza, rappresentata nella figura \@ref(fig:gridappr2). Si noti anche, a causa dell'effetto della distribuzione a priori, le distribuzioni a posteriori riportate nelle figure \@ref(fig:gridappr3) e \@ref(fig:gridappr5) sono molto diverse tra loro. Discuteremo in seguito l'influenza della distribuzione a priori sull'inferenza finale.
+Vediamo cosa significa la "maledizione della dimensionalità". Supponiamo di utilizzare una griglia di 100 punti equispaziati. Nel caso di un solo parametro, avremo dunque bisogno di calcolare 100 valori. Per due parametri sarà necessario calcolare $100^2$ valori. Ma già per 10 parametri avremo bisogno di $10^{10}$ valori -- è facile capire che una tale quantità di calcoli è troppo grande anche per un computer molto potente. Per modelli che richiedono la stima di un numero non piccolo di parametri è dunque necessario procedere in un altro modo.
 
 
-### Sommario della funzione a posteriori
+## Approssimazione quadratica 
 
-Una volta calcolata la distribuzione a posteriori dobbiamo riassumerla in qualche modo. Nel caso in cui venga usato il metodo di approssimazione numerica, il problema del calcolo delle aree sottese alla funzione a posteriori in qualunque intervallo può essere risolto in vari modi. Tuttavia, questo problema trova una soluzione molto più semplice se viene utilizzato un metodo diverso per la stima della distribuzione a posteriori, come vedremo di seguito. Non discuteremo dunque la possibile soluzione di questo problema nel caso presente, in quanto il metodo dell'approssimazione numerica per il calcolo della distribuzione a posteriori è solo un esempio didattico.
-
-
-## Approssimazione quadratica
-
-I metodi numerici convenzionali possono essere usati solo quando il numero di parametri da stimare è piccolo. La ragione di ciò sta nella cosiddetta "maledizione della dimensionalità". Vediamo cosa significa. Nel caso di un solo parametro, supponiamo di utilizzare una griglia di
-100 valori. Per due parametri avremo bisogno di $100^2$ valori. Ma già per 10 parametri avremo bisogno di $10^{10}$ valori -- è facile capire che una tale quantità di valori è troppo grande anche per un computer potente come quello che utilizziamo normalmente. Dobbiamo dunque affrontare il problema in un altro modo.
-
-Una possibile soluzione al nostro problema ci viene fornita dal metodo dell'approssimazione quadratica. La motivazione di tale metodo è la seguente. Sappiamo che, in generale, la regione della distribuzione a posteriori che si trova in prossimità del suo massimo può essere ben approssimata dalla forma di una distribuzione Normale. Descrivere la distribuzione a posteriori mediante la distribuzione Normale significa utilizzare un'approssimazione che viene, appunto, chiamata "quadratica" (tale approssimazione si dice quadratica perché il logaritmo di una distribuzione gaussiana forma una parabola e la parabola è una funzione quadratica -- dunque, mediante questa approssimazione descriviamo il logaritmo della distribuzione a posteriori mediante una parabola).
+L'approssimazione quadratica è uno dei metodi che possono essere usati per superare il problema della "maledizione della dimensionalità". La motivazione di tale metodo è la seguente. Sappiamo che, in generale, la regione della distribuzione a posteriori che si trova in prossimità del suo massimo può essere ben approssimata dalla forma di una distribuzione Normale. Descrivere la distribuzione a posteriori mediante la distribuzione Normale significa utilizzare un'approssimazione che viene, appunto, chiamata "quadratica" (tale approssimazione si dice quadratica perché il logaritmo di una distribuzione gaussiana forma una parabola e la parabola è una funzione quadratica -- dunque, mediante questa approssimazione descriviamo il logaritmo della distribuzione a posteriori mediante una parabola).
 
 L'approssimazione quadratica si pone due obiettivi.
 
@@ -365,17 +50,17 @@ devtools::install_github("rmcelreath/rethinking")
 
 Le analisi Bayesiane che discuteremo in queste dispense, per la maggior parte, faranno uso della funzione `rethinking::quap()`. È dunque fondamentale che gli studenti installino sul loro computer il pacchetto `rethinking`.
 
-Dal nostro punto di vista non è importante capire come si svolgono in pratica i calcoli necessari per la stima della distribuzione a posteriori con il metodo dell'approssimazione quadratica. Quello che è importante capire è il significato della distribuzione a posteriori e questo significato è stato chiarito nella sezione [La procedura dell’approssimazione numerica](#sec:appross_numerica). L'approssimazione quadratica fornisce risultati simili (o identici) a quelli ottenuti con il metodo descritto nella sezione [La procedura dell’approssimazione numerica](#sec:appross_numerica). Il vantaggio dell'approssimazione quadratica è che disponiamo di una serie di funzioni R che svolgono tutti i calcoli per noi.
+Dal nostro punto di vista non è importante capire come si svolgono in pratica i calcoli necessari per la stima della distribuzione a posteriori con il metodo dell'approssimazione quadratica. Quello che è importante capire è il significato della distribuzione a posteriori e questo significato è stato chiarito nell'esempio discusso nel capitolo [Modellistica bayesiana](#chapter-modellistica-bayesiana). L'approssimazione quadratica fornisce risultati simili (o identici) a quelli ottenuti con il metodo _grid-based_. Il vantaggio dell'approssimazione quadratica è che disponiamo di una serie di funzioni R che svolgono tutti i calcoli per noi.
 
-In realtà, l'approssimazione quadratica è poco usata in pratica, perché per problemi complessi è più conveniente usare i metodi Monte Carlo basati su Catena di Markov (MCMC) che verranno descritti nella successiva sezione [Integrazione con metodo Monte Carlo](#sec:integr_MC). Per potere utilizzare i metodi MCMC è necessario installare sul proprio computer del software aggiuntivo e tale operazione, talvolta, può risultare complessa. Non è l'obiettivo di questo insegnamento affrontare questo problema Per questa ragione, per svolgere gli esercizi che discuteremo sarà sufficiente fare ricorso al metodo dell'approssimazione quadratica; ovvero sarà sufficiente usare la funzione `rethinking::quap()`.
+In realtà, l'approssimazione quadratica è poco usata in pratica, perché per problemi complessi è più conveniente usare i metodi Monte Carlo basati su Catena di Markov (MCMC) che verranno descritti nella successiva sezione. Per potere utilizzare i metodi MCMC è necessario installare sul proprio computer del software aggiuntivo e tale operazione, talvolta, può risultare complessa. Non è l'obiettivo di questo insegnamento affrontare questo problema Per questa ragione, per svolgere gli esercizi che discuteremo sarà sufficiente fare ricorso al metodo dell'approssimazione quadratica; ovvero sarà sufficiente usare la funzione `rethinking::quap()`.
 
 
-## Integrazione con metodo Monte Carlo {#sec:integr_MC}
+## Integrazione con metodo Monte Carlo 
 
 Prima di introdurre i metodi MCMC per la stima della funzione a posteriori, spendiamo due parole sul metodo Monte Carlo quale tecnica che consente il calcolo degli integrali mediante simulazione numerica. Il termine Monte-Carlo si riferisce al fatto che per la computazione si ricorre ad un ripetuto campionamento casuale attraverso la generazioni di sequenze di numeri casuali.
 
 
-### Legge forte dei grandi numeri {#sec:legge_forte_grandi_numeri}
+## Legge forte dei grandi numeri 
 
 L'integrazione con metodo Monte Carlo trova la sua giustificazione nella *Legge forte dei grandi numeri* la quale può essere espressa nei termini seguenti. Data una successione di variabili casuali $Y_{1}, Y_{2},\dots, Y_{n},\dots$ indipendenti e identicamente distribuite con media $\mu$, ne segue che
 $$
@@ -392,7 +77,7 @@ con probabilità di uno.
 Quello che è stato detto sopra non è che un modo sofisticato per dire che, se vogliamo calcolare un'approssimazione del valore atteso di una variabile aleatoria, non dobbiamo fare altro che la media aritmetica di un grande numero di realizzazione di tale variabile aleatoria. Come è facile intuire, l'approssimazione migliora al crescere del numero di dati che abbiamo a disposizione.
 
 
-## Metodi MC basati su Catena di Markov {#sec:mmmc}
+## Metodi MC basati su Catena di Markov 
 
 I metodi Monte Carlo basati su Catena di Markov consentono di costruire sequenze di punti (le "catene") nello spazio dei parametri, la cui densità è proporzionale alla distribuzione di probabilità a posteriori a cui siamo interessati. Questo, evidentemente, è il risultato vorremmo
 ottenere. Ma cosa sono le catene di Markov? In termini formali possiamo dire che una catena di Markov è una sequenza di variabili aleatorie $Y_{1}, Y_{2},\dots, Y_{n}$ tale che la dipendenza della distribuzione di $Y_{i+1}$ dai valori di $Y_{1}, \dots, Y_{i}$ è interamente dovuta al
@@ -407,8 +92,7 @@ correlazione. Questa correlazione introduce una distorsione nella soluzione che 
 
 Presentiamo ora, in una forma intuitiva, l'algoritmo di Metropolis, ovvero il primo algoritmo MCMC che è stato proposto. Tale algoritmo è stato sviluppato in seguito per renderlo via via più efficiente. Il nostro obiettivo, però, è solo quello di capire la logica sottostante -- lasciamo che siano gli ingegneri a risolvere il problema di rendere l'algoritmo più efficiente.
 
-
-### Il problema del turista viaggiatore {#sec:turista_viagg}
+## Il problema del turista viaggiatore 
 
 L'algoritmo di Metropolis è stato presentato usando varie metafore: quella di un politico che viaggia tra isole diverse [@doing_bayesian_data_an], o quella di un re che, anche lui, si sposta tra le isole di un arcipelago [@McElreath_rethinking]. Qui mutiamo leggermente la metafora e immaginiamo un turista in vacanza su un'isola che dispone di 10 spiagge di grandezza diversa. Muovendosi in senso orario, la grandezza delle spiagge aumenta: partendo dalla spiaggia più piccola si arriva ad una spiaggia un po' più grande, via via fino ad arrivare all'ultima spiaggia, la decima, che è la più grande di tutte. Quindi indicheremo con i numeri da 1 a 10 le spiagge dell'isola. Tali numeri rappresentano anche la grandezza (relativa) di ciascuna spiaggia. Dato che l'isola è circolare, la decima spiaggia confina con la prima spiaggia.
 
@@ -504,7 +188,7 @@ ggplot(
 L'algoritmo di Metropolis funziona anche se il turista decide di spostarsi dalla spiaggia corrente a qualunque altra spiaggia, non solo su quelle confinanti. Inoltre, l'algoritmo funziona per qualunque numero di spiagge e anche se il turista non sa quante spiagge ci sono sull'isola. Affinché l'algoritmo funzioni è solo necessario conoscere la grandezza della spiaggia "corrente" e quella della spiaggia "proposta".
 
 
-### L'algoritmo di Metropolis
+## L'algoritmo di Metropolis 
 
 L'algoritmo descritto nella sezione [Il problema del turista viaggiatore](#sec:turista_viagg) è un caso speciale dell'algoritmo di Metropolis e l'algoritmo di Metropolis è un caso speciale dei
 metodi MCMC. L'algoritmo di Metropolis, al di là dell'uso che ne fa il fortunato turista dell'esempio discusso in precedenza, viene in realtà impiegato per per ottenere una sequenza di campioni casuali da una distribuzione a posteriori la cui forma è, solitamente, sconosciuta. Fuor di metafora:
@@ -517,8 +201,7 @@ metodi MCMC. L'algoritmo di Metropolis, al di là dell'uso che ne fa il fortunat
 
 L'aspetto cruciale di questa discussione è il fatto che, all'aumentare delle ripetizioni dell'algoritmo di Metropolis, la distribuzione dei valori così ottenuti diventa via via più simile alla distribuzione a posteriori del parametro $\theta$, anche se questa è sconosciuta. Per un grande numero di passi della catena l'approssimazione è sufficiente. Con questo metodo è dunque possibile generare un grande numero di campioni casuali dalla distribuzione a posteriori per poi poterne calcolare misure di sintesi e potere fare inferenza.
 
-
-### Una applicazione concreta {#sec:metropolis_one_mean}
+## Una applicazione concreta 
 
 <!-- https://www.youtube.com/watch?app=desktop&v=U561HGMWjcw -->
 
@@ -545,7 +228,7 @@ L'algoritmo di Metropolis è la versione più semplice e più conosciuta degli a
 Per fare un esempio concreto, consideriamo nuovamente i 30 pazienti esaminati da @zetsche_future_2019 e discussi nella sezione [Un esempio pratico](#sec:es_pratico_zetsche). Di essi, 23 hanno manifestato delle aspettative distorte negativamente sul loro stato d'animo futuro. Utilizzando l'algoritmo di Metropolis, ci poniamo il problema di ottenere la stima a posteriori di $\theta$ (probabilità di manifestare un'aspettativa distorta negativamente) dati i 23 "successi" in 30 prove e usando la stessa distribuzione a priori per $\theta$ che è stata usata nella sezione [Un esempio pratico (versione 2)](#sec:aspett_future_beta2_10). 
 
 
-#### Verosimiglianza
+## Verosimiglianza 
 
 Per trovare la funzione di verosimiglianza usando i 30 valori di @zetsche_future_2019 definisco la funzione  `likelihood()` come indicato sotto. Tale funzione ritorna l'ordinata della funzione di verosimiglianza binomiale per ciascun valore del vettore `param` che viene dato in input alla funzione.
 
@@ -568,7 +251,7 @@ data.frame(x=param, y=likelihood(param)) %>%
 ```
 
 
-#### Distribuzione a priori
+## Distribuzione a priori 
 
 Se abbiamo ragioni forti per avere delle aspettative rispetto al valore possibile della nostra stima, una distribuzione a priori *informativa* verrà combinata con le informazioni fornite dal campione per produrre una stima ``razionale'' a posteriori. Nel caso presente utilizziamo la distribuzione informativa presentata nella sezione [Un esempio pratico (versione 2)](#sec:aspett_future_beta2_10) unicamente a scopo esemplicativo, ovvero per fare in modo da "allontanare" la distribuzione a posteriori dalla distribuzione di verosimiglianza. 
 
@@ -587,7 +270,7 @@ data.frame(x=param, y=prior(param)) %>%
   )
 ```
 
-#### Distribuzione a posteriori
+## Distribuzione a posteriori 
 
 Abbiamo visto in precedenza come la funzione a posteriori è data dal prodotto della densità a priori e della verosimiglianza. 
 
@@ -608,7 +291,7 @@ data.frame(x=param, y=posterior(param)) %>%
 Questo è il risultato che vogliamo ottenere utilizzando l'algoritmo di Metropolis.  Dalla figura precedente vediamo che la moda della distribuzione a posteriori è pari a circa 0.6. Questo è il valore più verosimile a posteriori per il parametro $\theta$.
 
 
-#### Algoritmo di Metropolis
+## Algoritmo di Metropolis 
 
 Implementiamo ora l'algoritmo di Metropolis. Utilizziamo una distribuzione proposta gaussiana. Il valore proposto da tale distribuzione ausiliaria corrisponde ad un valore selezionato a caso da una distribuzione gaussiana con media uguale al valore del parametro attualmente considerato nella catena e con una deviazione standard ``adeguata''. In questo esempio, la deviazione standard è stata scelta empiricamente in modo tale da ottenere un tasso di accettazione sensato. È stato mostrato che un tasso di accettazione ottimale dovrebbe essere tra il 20% e il 30%. Se il tasso di accettazione è troppo grande, infatti, l'algoritmo esplora uno spazio troppo ristretto della distribuzione a posteriori. Il tasso di accettazione è influenzato dalla distribuzione proposta: in generale, tanto più la distribuzione proposta è simile alla distribuzione target, tanto più alto diventa il tasso di accettazione.
 
@@ -759,9 +442,7 @@ mean(chain[-(1:burnIn)])
 <!-- Ma l'algoritmo funziona abbastanza bene anche se la distribuzione proposta è molto diversa dalla distribuzione target. -->
 
 
-
-
-## Conclusioni {#sec:pregi_inferenza_bayes .unnumbered}
+## Conclusioni {-}
 
 Lo scopo di questa discussione è stato quello di mostrare come sia possibile combinare le nostre conoscenze a priori (espresse nei termini di una densità di probabilità) con le evidenze fornite dai dati (espresse nei termini della funzione di verosimiglianza), così da determinare, mediante il teorema di Bayes, una distribuzione a posteriori, la quale condensa l'incertezza che si ha sul parametro $\theta$. Per illustrare tale problema, nel caso più semplice abbiamo considerato una situazione nella quale $\theta$ corrisponde alla probabilità di successo in una sequenza di prove Bernoulliane. Abbiamo visto come, in queste circostanze, è ragionevole esprimere le nostre credenze a priori mediante la densità Beta, con opportuni parametri. L'inferenza rispetto ad una proporzione rappresenta un caso particolare, ovvero un caso nel quale la distribuzione a priori è Beta e la verosimiglianza è Binomiale. In tali circostanze, anche la distribuzione a posteriori sarà una distribuzione Beta. Per questa ragione, in questo caso specifico, i parametri della distribuzione a posteriori possono essere determinati analiticamente (la soluzione richiede una serie di passaggi algebrici che qui non vengono discussi). In generale, però, tale approccio non è perseguibile.
 

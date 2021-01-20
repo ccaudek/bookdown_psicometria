@@ -1,4 +1,4 @@
-# Il teorema di Bayes 
+# Il teorema di Bayes {#chapter-teo-bayes}
 
 ```{r, include = FALSE}
 source("_common.R")
@@ -106,7 +106,8 @@ probabilità di queti tre eventi. Ciò è illustrato nella figura seguente.
 ```
 
 
-```{exercise, tre-urne75r25b}
+__Esercizio.__
+
 Si considerino tre urne, ciascuna delle quali contiene 100 palline:
 
 -   Urna 1: 75 palline rosse e 25 palline blu,
@@ -115,9 +116,8 @@ Si considerino tre urne, ciascuna delle quali contiene 100 palline:
 
 Una pallina viene estratta a caso da un'urna anch'essa scelta a caso.
 Qual è la probabilità che la pallina estratta sia di colore rosso?
-``` 
 
-```{solution}
+_Soluzione._
 Sia $R$ l'evento "la pallina estratta è rossa" e sia $U_i$ l'evento che
 corrisponde alla scelta dell'$i$-esima urna. Sappiamo che
 $$
@@ -134,15 +134,14 @@ P(R) &= P(R \mid U_1)P(U_1)+P(R \mid U_2)P(U_2)+P(R \mid U_3)P(U_3)\notag\\
 &= 0.75 \cdot \frac{1}{3}+0.60 \cdot \frac{1}{3}+0.45 \cdot \frac{1}{3} =0.60.\notag
 \end{aligned}
 $$
-```
 
-```{exercise, urna5r2v}
+
+__Esercizio.__
 Consideriamo un'urna che contiene 5 palline rosse e 2 palline verdi. Due
 palline vengono estratte, una dopo l'altra. Vogliamo sapere la
 probabilità dell'evento "la seconda pallina estratta è rossa".
-```
 
-```{solution}
+_Soluzione._
 Lo spazio campionario è $\Omega = \{RR, RV, VR, VV\}$. Chiamiamo $R_1$
 l'evento "la prima pallina estratta è rossa", $V_1$ l'evento "la prima
 pallina estratta è verde", $R_2$ l'evento "la seconda pallina estratta è
@@ -165,9 +164,9 @@ quella di una pallina verde, nell'urna restano 5 palline rosse e una
 pallina verde, dunque, la probabilità che la seconda estrazione produca
 una pallina rossa è uguale a 5/6. La probabilità di una pallina verde
 nella prima estrazione è 2/7.
-```
 
-## Il teorema della probabilità delle cause {#sec:bayes_theorem}
+
+## Il teorema della probabilità delle cause 
 
 Il teorema di Bayes rappresenta uno dei fondamenti della teoria della
 probabilità e della statistica. Lo presentiamo qui considerando prima un
@@ -342,7 +341,7 @@ opposta. Il processo di aggiornamento Bayesiano ci fornisce dunque un
 metodo per modificare il livello di fiducia in una data ipotesi, alla
 luce di nuova informazione.
 
-## Conclusioni {#conclusioni .unnumbered}
+## Conclusioni {-}
 
 Il teorema di Bayes costituisce il fondamento dell'approccio più moderno
 della statistica, quello appunto detto Bayesiano. Chi usa il teorema di

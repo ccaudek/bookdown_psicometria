@@ -1,6 +1,6 @@
 # (PART\*) Introduzione al linguaggio R {-}
 
-# Pacchetti 
+# Pacchetti {#chapter-pacchetti}
 
 ```{r, include = FALSE}
 source("_common.R")

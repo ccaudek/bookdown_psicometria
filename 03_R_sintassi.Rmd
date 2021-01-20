@@ -1,4 +1,4 @@
-# Sintassi di base 
+# Sintassi di base {#chapter-sintassi}
 
 R è un linguaggio di programmazione orientato all'analisi dei dati, il
 calcolo e la visualizzazione grafica. È disponibile su Internet una
@@ -83,7 +83,6 @@ visualizzato un messaggio di errore; ad esempio,
 Errore: unexpected input in "3 % 9"
 ```
 
-
 ## Le parentesi
 
 Le parentesi in R  (come in generale in ogni linguaggio di programmazione) assegnano un significato diverso alle porzioni di codice che delimitano.
@@ -143,7 +142,7 @@ coincidano con nomi di funzioni. Si noti che R  è *case sensitive*, cioè
 `A` e `a` sono due simboli diversi e identificano due oggetti
 differenti.
 
-## Permanenza dei dati e rimozione di oggetti
+### Permanenza dei dati e rimozione di oggetti
 
 Gli oggetti vengono salvati nello "spazio di lavoro" (*workspace*). Il
 comando `ls()` può essere utilizzato per visualizzare i nomi degli
@@ -182,7 +181,7 @@ questa domanda.
     selezionare l'opzione `No` in corrispondenza dell'item
     `Save workspace on exit from R`.
 
-## Creare ed eseguire uno script R con un editore {#sec:editor}
+## Creare ed eseguire uno script R con un editore 
 
 È molto più facile interagire con   manipolando uno script con un
 editore piuttosto che inserendo direttamente le istruzioni nella
@@ -208,7 +207,7 @@ commenti e sono ignorate; ad esempio:
 # Questo e' un commento
 ```
 
-## Cambiare la cartella di lavoro {#sec:change_dir}
+## Cambiare la cartella di lavoro 
 
 Quando si inizia una sessione di lavoro,   sceglie una cartella quale
 "working directory". Sarà in tale cartella che andrà a cercare gli
@@ -226,9 +225,9 @@ si sceglie la voce `Set Working Directory` sul menù a tendina di RStudio
 e si selezione la voce `Choose Directory…` Nella finestra che compare,
 si cambia la cartella con quella che si vuole.
 
-## L'oggetto base di : il vettore
+## L'oggetto base di R: il vettore
 
-R  opera su strutture di dati; la più semplice di tali strutture è il
+R opera su strutture di dati; la più semplice di tali strutture è il
 vettore numerico, che consiste in un insieme ordinato di numeri; ad
 esempio:
 
@@ -312,7 +311,8 @@ primo vettore per il primo elemento del secondo vettore e così via. Il
 vettore risultante avrà la stessa dimensione dei due vettori che sono
 stati moltiplicati, come indicato qui sotto: 
 
-$$\begin{array}{ccccc}
+$$
+\begin{array}{ccccc}
 1 & \times & 1 & \to & 1 \\
 2 & \times & 2 & \to & 4 \\
 3 & \times & 3 & \to & 9 \\
@@ -321,8 +321,8 @@ $$\begin{array}{ccccc}
 6 & \times & 6 & \to & 36 \\
 \hline
 \verb+die+ & * & \verb+die+ & = & 
-\end{array}$$
-
+\end{array}
+$$
 Oltre agli operatori aritmetici elementari `+`, `-`, `*`, `/`, e `^` per
 l'elevamento a potenza, sono disponibili le più comuni funzioni
 matematiche: `log()`, `exp()`, `sin()`, `cos()`, `tan()`, `sqrt()`,
@@ -335,7 +335,7 @@ comune sono `mean(x)`, la media aritmetica, e `var(x)`, la varianza.
 
 ### Generazione di sequenze regolari
 
-R  possiede un ampio numero di funzioni per generare sequenze di numeri.
+R possiede un ampio numero di funzioni per generare sequenze di numeri.
 Ad esempio, `c(1:10)` è il vettore `c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)`.
 L'espressione `c(30:1)` può essere utilizzata per generare una sequenza
 all'indietro.
@@ -367,7 +367,7 @@ die3
 
 metterà tre copie di `die` nell'oggetto `die3`.
 
-### Generazione di numeri casuali {#sec:gen_rand_numbers}
+### Generazione di numeri casuali 
 
 La funzione `sample()` è una delle tante funzioni che possono essere
 usate per generare numeri casuali. Per esempio, la seguente istruzione
@@ -413,7 +413,6 @@ possiamo contare il numero di "5":
 sum(roll == 5)
 ```
 
-
 ### Dati mancanti
 
 Quando si è in presenza di un dato mancante,   assegna il valore
@@ -448,10 +447,9 @@ soc_status <-
 levels(soc_status)
 ```
 
+## Funzioni 
 
-## Funzioni {#cap:sintassi_funzioni}
-
-  offre la possibilità di utilizzare un'enorme libreria di funzioni che
+R offre la possibilità di utilizzare un'enorme libreria di funzioni che
 permettono di svolgere operazioni complicate, quali ad esempio, il
 campionamento casuale. Esaminiamo ora con più attenzione le proprietà
 delle funzioni di R utilizzando ancora l'esempio del lancio di un dado.
@@ -509,7 +507,7 @@ estrazione degli elementi del vettore. In generale, gli argomenti di una
 funzione possono essere oggetti come vettori, matrici, altre funzioni,
 parametri o operatori logici.
 
-R  ha un sistema di help interno in formato HTML che si richiama con
+R ha un sistema di help interno in formato HTML che si richiama con
 `help.start()`. Per avere informazioni su qualche funzione specifica,
 per esempio la funzione `sample()`, il comando da utilizzare è
 `help(sample)` oppure `?sample`.
@@ -543,7 +541,6 @@ nome_funzione <- function(arg1, arg2, ...) {
   return(risultato)
 } 
 ```
-
 
 Una chiamata di funzione è poi eseguita nel seguente modo:
 
@@ -629,7 +626,6 @@ Per eseguire l'upgrade di tutti i pacchetti l'istruzione è
 ```{r, eval=FALSE}
 update.packages()
 ```
-
 
 ### Caricare un pacchetto in R
 

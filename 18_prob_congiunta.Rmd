@@ -1,4 +1,4 @@
-# Probabilità congiunta
+# Probabilità congiunta {#chapter-prob-congiunta}
 
 ```{r, include = FALSE}
 source("_common.R")
@@ -133,12 +133,11 @@ probabilità di qualsiasi evento definito in base alle variabili
 aleatorie $X$ e $Y$. Per capire come questo possa essere fatto,
 consideriamo nuovamente l'esperimento discusso sopra.
 
-```{exercise}
+__Esercizio.__
 Per la distribuzione di massa di probabilità congiunta riportata nella
 tabella precedente si trovi la probabilità dell'evento $X+Y \leq 1$.
-```
 
-```{solution}
+_Soluzione._
 Per trovare la probabilità richiesta dobbiamo semplicemente sommare le
 probabilità associate a tutte le coppie $(x,y)$ che soddisfano la
 conzione $X+Y \leq 1$. Ovvero, 
@@ -147,7 +146,7 @@ $$
 P_{XY}(X+Y \leq 1) = &P_{XY}(0, 0) + P_{XY}(1, 0)= 3/8.\notag
 \end{aligned}
 $$
-```
+
 
 ### Funzioni di probabilità marginali
 
@@ -207,15 +206,14 @@ riportata in ciascuna cella della tabella di probabilità congiunta deve
 essere uguale al prodotto delle probabilità marginali di riga e di
 colonna: $$p(x_i, y_i)\, = p_X(x_i) p_Y(y_i).\notag$$
 
-```{exercise}
+__Esercizio.__
 Per la situazione rappresentata nella tabella qui sopra le variabili aleatorie $X$ e $Y$ sono indipendenti?
-```
 
-```{solution}
+_Soluzione._
 Nella tabellale variabili aleatorie $X$ e $Y$ non sono indipendenti: le probabilità congiunte non sono ricavabili dal prodotto delle marginali. Per esempio, nessuna delle probabilità marginali è uguale a $0$ per cui nessuno dei valori dentro la tabella (probabilità congiunte) che risulta essere uguale a $0$ può essere il prodotto delle probabilità marginali.
-```
 
-## Conclusioni {#conclusioni .unnumbered}
+
+## Conclusioni {-}
 
 La funzione di probabilità congiunta tiene simultaneamente conto del
 comportamento di due variabili aleatorie $X$ e $Y$ e di come esse si

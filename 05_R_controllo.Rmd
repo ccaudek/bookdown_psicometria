@@ -1,10 +1,10 @@
-# Strutture di controllo 
+# Strutture di controllo {#chapter-strut-contr}
 
 In R esistono strutture di controllo specifiche per regolare il flusso
 di esecuzione di un programma. I loop permettono di ripetere
 ciclicamente blocchi di istruzioni per un numero prefissato di volte o
 fino a che una determinata condizione logica viene soddisfatta. Questo
-li rende utili per la programmazione di simulazioni.
+li rende utili per la programmazione di simulazioni. Ci limitiamo qui ad introdurre il ciclo `for`.
 
 ## Il ciclo `for`
 
@@ -67,9 +67,11 @@ numeri pari. In ciascuna esecuzione del ciclo `for` l'operazione modulo
 viene eseguita, successivamente, su uno degli elementi di `x`. Se
 l'operazione modulo dà $0$ come risultato, ovvero se il valore
 considerato è un numero pari, allora la variabile `count` viene
-incrementata di un'unità. L'istruzione `return()` ritorna dunque il
-numero di valori pari contenuti nel vettore di input alla funzione. Per
-esempio:
+incrementata di un'unità. L'istruzione `return()` ritorna il
+numero di valori pari contenuti nel vettore di input alla funzione. 
+Si noti che è necessario usare `return()`: la funzione ritornerà qualunque cosa sia stampato nell'ultima riga della funzione stessa.
+
+Facciamo un esempio:
 
 ```{r}
 x <- c(1, 2, 1, 4, 6, 3, 9, 12)

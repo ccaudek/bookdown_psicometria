@@ -1,6 +1,6 @@
 # (PART\*) Descrizione {-}
 
-# Statistica descrittiva 
+# Statistica descrittiva {#chapter-descript}
 
 ```{r, include = FALSE}
 source("_common.R")
@@ -36,7 +36,7 @@ sommari dei dati mediante dei grafici. Ma prima di entrare nei dettagli,
 prendiamoci un momento per capire perché abbiamo bisogno della
 statistica descrittiva.
 
-## Perché riassumere i dati?
+## Riassumere i dati
 
 Quando riassumiamo i dati, necessariamente buttiamo via delle
 informazioni. Ma è una buona idea procedere in questo modo? Non sarebbe
@@ -305,7 +305,6 @@ p2 <- bysubj %>%
 p2
 ```
 
-
 ## Funzione di densità empirica
 
 Il confronto tra le figure \@ref(fig:hist1zetsche) e \@ref(fig:hist2zetsche) rende chiaro un limite degli istogrammi. È infatti ovvio che il profilo dell'istogramma è arbitrario: a seconda del numero e dei limiti delle classi che vengono scelte,
@@ -350,7 +349,6 @@ p3
 
 Che interpretazione possiamo attribuire alla funzione di densità empirica rappresentata nella figura \@ref(fig:zetschehist3)?
 La interpretiamo come abbiamo fatto con gli istogrammi: l'area sottesa al grafico della funzione di densità empirica in un certo intervallo rappresenta la proporzione dei casi della distribuzione che hanno valori compresi nell'intervallo considerato.
-
 
 ## Forma di una distribuzione
 
@@ -1141,7 +1139,7 @@ dino <- dino +
 slant + dino
 ```
 
-## Conclusioni 
+## Conclusioni {-}
 
 La prima fase dell'analisi dei dati è sicuramente quella che ci porta a
 riassumere i dati mediante gli strumenti della statistica descrittiva.
@@ -1172,8 +1170,6 @@ xfun::embed_file(
   text = paste("Download", "14_descr_exercises.Rmd")
 )
 ```
-
-\
 
 Guarda le risposte solo dopo avere provato a rispondere a tutte le domande: 
 

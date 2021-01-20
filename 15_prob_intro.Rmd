@@ -1,11 +1,11 @@
 # (PART\*) Elementi di teoria della probabilità {-}
 
-# Che cos'è la probabilità? 
-
 ```{r, include = FALSE}
 source("_common.R")
 knitr::opts_chunk$set(fig.align="center")
 ```
+
+# Il calcolo delle probabilità {#chapter-prob}
 
 È normale fare delle congetture rispetto a ciò di cui non siamo sicuri.
 Ma perché facciamo questo? Molto spesso perché, anche se sappiamo che le
@@ -51,6 +51,7 @@ comprensione per chiarire i concetti di base della teoria della
 probabilità è però necessario per mettersi nelle condizioni di capire le
 caratteristiche dell'inferenza statistica che verranno discusse in
 seguito.
+
 
 ## Probabilità nel linguaggio naturale
 
@@ -222,6 +223,7 @@ probabilità può infatti essere definita come la quantificazione del
 livello di "casualità" di un evento, laddove viene detto casuale ciò che
 non è noto o non può essere predetto con certezza.
 
+
 ## Terminologia
 
 Come qualsiasi altra branca della matematica, la teoria delle
@@ -239,7 +241,7 @@ sono descritti di seguito.
 
 Ma, nello specifico, che cos'è la probabilità? A questa domanda si può rispondere in modi diversi.
 
-### Una definizione "ingenua" della probabilità 
+### Una definizione ingenua della probabilità 
 
 Storicamente, la prima definizione della probabilità di un evento è
 stata quella che richiede di contare il numero di modi nei quali un
@@ -260,7 +262,7 @@ Per esempio, nell'esperimento casuale corrispondente al lancio di due dadi equil
 \}$. 
 Contare il numero di modi in cui un evento può realizzarsi può essere semplice, nel caso di alcuni eventi (come il presente), oppure estremamente complesso, nel caso di altri eventi. In questo secondo caso, per contare il numero di modi in cui un evento può realizzarsi, al fine di calcolare la probabilità definita come indicato sopra, è necessario fare uso del calcolo combinatorio. In queste dispense ci accontenteremo di presentare alcune nozioni di base del calcolo combinatorio, ma non entreremo nei dettagli di questo argomento.
 
-### Una definizione "non ingenua" della probabilità
+### Una definizione non ingenua della probabilità
 
 Il calcolo combinatorio ci consente di contare il numero di casi nello spazio campionario e di applicare la definizione "ingenua" di probabilità descritta nella
 definizione \@ref(def:def-ing-prob). È però facile rendersi conto che tale definizione di probabilità ha un grosso problema: non può essere applicata al caso di uno spazio campionario infinito. Dobbiamo dunque trovare una definizione che risolva un tale problema. Per fare ciò vengono specificate alcune proprietà che vorremmo potere attribuire alla probabilità -- in matematica, tali proprietà sono dette *assiomi* -- per poi definire una funzione di probabilità che soddisfi tali proprietà. Arriviamo in questo modo alla seguente definizione non ingenua della probabilità.
@@ -616,7 +618,7 @@ che queste convenzioni siano elencate tutte in un posto solo.
     $P(X=x) = p(x)$.
 
 
-## Conclusioni 
+## Conclusioni {-}
 
 In questo capitolo abbiamo visto come si costruisce lo spazio
 campionario di un esperimento casuale, quali sono le proprietà di base

@@ -5,12 +5,12 @@ source("_common.R")
 knitr::opts_chunk$set(fig.align="center")
 ```
 
-# Obiettivi {-}
+# Obiettivi formativi
 
 L'insegnamento di Psicometria si propone di fornire agli studenti un'introduzione all'analisi dei dati in psicologia. Alcuni degli argomenti trattati richiedono delle conoscenze pregresse, soprattutto di tipo matematico. Tali conoscenze sono state aggiunte delle appendici di queste dispense. La lettura di tale materiale è consigliata a tutti, sia a chi sta studiando gli argomenti proposti per la prima volta, sia a chi deve ripassare per colmare eventuali lacune pregresse. 
 
 
-# Perché tanta statistica in psicologia? {-}
+## Psicologia e statistica
 
 Sembra sensato spendere due parole su un tema che è importante per gli studenti: quello indicato dal titolo di questa sezione.
 È ovvio che agli studenti di psicologia la statistica non piace.
@@ -43,7 +43,6 @@ Questo indica un'enorme discriminazione contro i Montechi!
 Eppure, l'analisi precedente aveva prodotto il risultato opposto.
 
 Lasciando perdere Shakespeare, @ross2020racial hanno dimostrato che questo è esattamente ciò che sta succedendo con i dati reali sulle sparatorie della polizia negli Stati Uniti: i neri disarmati negli Stati Uniti vengono uccisi a tassi molto più alti rispetto ai bianchi disarmati, sebbene i tassi siano simili nei due gruppi quando si considerano solo le sparatorie con individui armati; se tuttavia si riassumono i dati considerando solo la frequenza totale dei morti scalata per il tasso di criminalità questo fatto viene oscurato. 
-
 L'articolo di \citet{ross2020racial} ci fa vedere come sia necessario stare molto attenti con l'uso della statistica, specialmente quando gli errori statistici possono avere un impatto enorme sulla percezione pubblica -- e, nella psicologia, sulla pratica dello psicologo. 
 Le analisi statistiche precedenti sono un esempio di ciò che viene chiamato il paradosso di Simpson, ovvero il fatto che, alle volte, quando si riassumono i dati in un modo apparentemente ragionevole, si finisce per giungere ad una conclusione del tutto sbagliata.
 Il paradosso di Simpson illustra il fatto che non è semplice neppure \emph{riassumere} i dati, figurarsi poi fare delle inferenze!
@@ -72,7 +71,7 @@ Le considerazioni precedenti cercano di chiarire il seguente punto: la statistic
 Nel bene e nel male, gli psicologi usano strumenti statistici in tantissime fasi della loro attività professionale: in particolare quando costruiscono, somministrano e interpretano i test psicometrici.
 È dunque chiaro che possedere delle solide basi di statistica è un tassello imprescindibile del bagaglio professionale dello psicologo.
 
-# Come studiare? {-}
+## Come studiare
 
 Il giusto metodo di studio per prepararsi all'esame di Psicometria è quello di seguire attivamente le lezioni, assimilare i concetti via via che essi vengono presentati e verificare in autonomia le procedure presentate a lezione. 
 È importante fare domande a lezione per sviluppare la capacità di mettere in relazione tra loro i diversi argomenti trattati, prendere parte  alle esercitazioni organizzate dai Peer Tutor, utilizzare i forum attivi su Moodle e, soprattutto, svolgere gli esercizi proposti su Moodle. 

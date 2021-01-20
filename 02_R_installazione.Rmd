@@ -1,10 +1,9 @@
-# Per cominciare 
+# Per cominciare {#chapter-install-r}
 
 ```{r, include = FALSE}
 source("_common.R")
 knitr::opts_chunk$set(fig.align="center")
 ```
-
 
 Al fine di utilizzare R è necessario eseguire le seguenti tre operazioni
 nell'ordine dato:
@@ -61,9 +60,9 @@ L'ambiente di lavoro di RStudio è costituito da quattro finestre: la finestra d
 output), la finestra degli oggetti (elenco oggetti-cronologia dei
 comandi) e la finestra dei pacchetti-dei grafici-dell'aiuto in linea.
 
-![La console di RStudio.](images/rstudio_pics.png){#fig:rstudio_pics width="\\textwidth"}
+![La console di RStudio.](images/rstudio_pics.png){#fig:rstudio_pics width=100%}
 
-### Eseguire il codice
+## Eseguire il codice
 
 Mediante il menu a tendina di RStudio, scegliendo il percorso
 

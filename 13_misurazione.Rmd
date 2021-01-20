@@ -1,4 +1,4 @@
-# La misurazione in psicologia 
+# La misurazione in psicologia {#chapter-misurazione}
 
 ```{r, include = FALSE}
 source("_common.R")
@@ -26,7 +26,6 @@ del fenomeno che esse rappresentano viene descritta dalla teoria delle
 scale di misura di @stevens46. Secondo tale teoria, possiamo distinguere
 quattro scale di misura aventi proprietà diverse: le scale nominali (*nominal scales*), ordinali (*ordinal scales*), a intervalli (*interval scales*), di
 rapporti (*ratio scales*).
-
 
 ### Scala nominale
 
@@ -71,7 +70,6 @@ topazio, corindone e diamante. Un minerale appartenente ad uno di questi
 livelli se scalfisce quello di livello inferiore ed è scalfito da quello
 di livello superiore.
 ```
-
 
 ### Scala ad intervalli
 
@@ -152,7 +150,6 @@ $$
   \frac{68^\circ F - 50^\circ F}{68^\circ F-59^\circ F} = 2.
 $$
 ```
-
   
 ### Scala di rapporti
   
@@ -178,7 +175,7 @@ trasformazioni di similarità: $$y' = by, \quad b > 0.$$ A questo livello
 di scala, a seguito delle trasformazioni ammissibili, rimangono
 invariati anche i rapporti: $$\frac{y_i}{y_j} = \frac{y'_i}{y'_j}.$$
 
-### Gerarchia dei livelli di scala di misura
+## Gerarchia dei livelli di scala di misura
 
 @stevens46 parla di *livelli di scala* poiché i quattro tipi di scala di
 misura stanno in una precisa gerarchia: la scala nominale rappresenta il
@@ -194,7 +191,6 @@ invece il livello più alto.
 |                   | le frequenze per ciascuna classe di equivalenza   |
 | intervallari      | differenze (rapporti tra differenze)              |
 | di rapporti       | rapporti diretti tra le misure                    |
-
 
 Passando da un livello di misurazione ad uno
 più alto aumenta il numero di operazioni aritmetiche che possono essere
@@ -237,15 +233,13 @@ per passare da una rappresentazione numerica ad un'altra equivalente).
 Salendo la gerarchia, la natura delle funzioni di trasformazione si fa
 più restrittiva.
 
-
-## Variabili discrete vs. variabili continue {#sec:DiscreteVsContinuous}
+## Variabili discrete o continue 
 
 Le variabili a livello di intervalli e di rapporti possono essere
 discrete o continue. Le variabili discrete possono assumere alcuni
 valori ma non altri. Una volta che l'elenco di valori accettabili è
 stato specificato, non ci sono casi che cadono tra questi valori. 
-Le variabili
-discrete di solito assumono valori interi.
+Le variabili discrete di solito assumono valori interi.
 
 Quando una variabile può assumere qualsiasi valore entro un intervallo
 specificato, allora si dice che la variabile è continua. In teoria, ciò
@@ -288,7 +282,7 @@ aumentare a piacimento il livello di precisione della misurazione.
 Il numero di biciclette possedute da una persona è una variabile discreta poiché tale variabile può assumere come modalità solo i numeri interi non negativi. Le frazioni di biciclette non sono sensate.
 ```
 
-## Perché alcune misurazioni sono migliori di altre?
+## Alcune misurazioni sono migliori di altre
 
 In psicologia, ciò che vogliamo misurare non è una caratteristica
 fisica, ma invece è un concetto teorico inosservabile, ovvero un
@@ -313,7 +307,7 @@ In generale non è possibile misurare un costrutto senza una certa
 quantità di errore. Poniamoci dunque il problema di determinare in che
 modo una misurazione possa dirsi adeguata.
 
-### Tipologie di errori {#sec:accuratezza_precisione}
+### Tipologie di errori 
 
 L'errore è, per definizione, la differenza tra il valore vero e il
 valore misurato della grandezza in esame. Gli errori sono classificati
@@ -383,25 +377,16 @@ La metafora del tiro a bersaglio illustra la relazione tra precisione e accurate
 ```
 
 Per tenere sotto controllo l'incidenza degli errori, sono stati
-introdotti in psicologia i concetti di attendibilità e validità:
-  
-*   l'__attendibilità__ esprime il grado di accordo o coerenza tra
-    misurazioni indipendenti dello stesso costrutto psicologico[^1];
-*   la __validità__ descrive il grado in cui uno strumento misura ciò che
-    dice di misurare.
+introdotti in psicologia i concetti di attendibilità e validità.
 
-### Attendibilità {#sec:reliability}
-
-Uno strumento si dice attendibile quando valuta in modo coerente e
+Uno strumento si dice __attendibile__ quando valuta in modo coerente e
 stabile la stessa variabile: i risultati ottenuti si mantengono costanti
 dopo ripetute somministrazione ed in assenza di variazioni psicologiche
 e fisiche dei soggetti sottoposti al test o cambiamenti dell'ambiente in
 cui ha luogo la somministrazione.
 
-### Validità {#sec:validity}
-
-L'attendibilità di uno strumento non è sufficiente: in primo luogo uno
-strumento di misura deve essere valido, laddove la validità rappresenta
+L'attendibilità di uno strumento, però, non è sufficiente: in primo luogo uno
+strumento di misura deve essere __valido__, laddove la validità rappresenta
 il grado in cui uno strumento misura effettivamente ciò che dovrebbe
 misurare. In genere, si fa riferimento ad almeno quattro tipi di
 validità.
@@ -439,7 +424,7 @@ all'attributo che il test intende misurare.
     altre cose. In generale, la validità di facciata non è utile, tranne
     in casi particolari.
 
-## Conclusioni {#conclusioni .unnumbered}
+## Conclusioni {-}
 
 Una domanda che uno psicologo spesso si pone è: "sulla base delle
 evidenze osservate, possiamo concludere dicendo che l'intervento

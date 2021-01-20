@@ -11,13 +11,7 @@ stringr
 forcats
 here
 papaja
-StanHeaders
-rstan
-dagitty
-rethinking
-sjPlot
-sjmisc
-psychTools
+patchwork
 ggpubr
 ggExtra
 carData
@@ -27,6 +21,3 @@ tidybayes
 datasauRus
 RColorBrewer
 rio
-patchwork
-ggfortify
-foreign

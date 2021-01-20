@@ -5,7 +5,7 @@ source("_common.R")
 knitr::opts_chunk$set(fig.align="center")
 ```
 
-# Terminologia 
+# Terminologia {#chapter-terminologia}
 
 ## Metodi e procedure della psicologia
 
@@ -80,8 +80,6 @@ presente nel campione, dalla *variabile dipendente*, che descrive ciò
 che varia al variare della variabile indipendente e che viene misurato
 nel campione.
 
-
-
 ```{exercise, prob-var-dip-indip}
 Uno psicologo convoca 120 studenti universitari per un test di memoria.
 Prima di iniziare l'esperimento, a metà dei soggetti viene detto che si
@@ -99,7 +97,6 @@ assegnando i soggetti (di solito in maniera causale) o alla condizione
 variabile dipendente è ciò che viene misurato nell'esperimento, ovvero
 il punteggio nella prova di memoria di ciascun soggetto.
 ```
-
 
 ## La matrice dei dati
 

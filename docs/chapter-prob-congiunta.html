@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capitolo 14 Probabilità congiunta | PSICOMETRIA</title>
+<meta name="author" content="Corrado Caudek">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">PSICOMETRIA</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Benvenuti</a></li>
+<li class="book-part">Introduzione</li>
+<li><a class="" href="obiettivi-formativi.html"><span class="header-section-number">1</span> Obiettivi formativi</a></li>
+<li class="book-part">Introduzione al linguaggio R</li>
+<li><a class="" href="chapter-pacchetti.html"><span class="header-section-number">2</span> Pacchetti</a></li>
+<li><a class="" href="chapter-install-r.html"><span class="header-section-number">3</span> Per cominciare</a></li>
+<li><a class="" href="chapter-sintassi.html"><span class="header-section-number">4</span> Sintassi di base</a></li>
+<li><a class="" href="chapter-strutture-dati.html"><span class="header-section-number">5</span> Strutture di dati</a></li>
+<li><a class="" href="chapter-strut-contr.html"><span class="header-section-number">6</span> Strutture di controllo</a></li>
+<li><a class="" href="chapter-input-output.html"><span class="header-section-number">7</span> Input/Output</a></li>
+<li class="book-part">Misurazione</li>
+<li><a class="" href="chapter-terminologia.html"><span class="header-section-number">8</span> Terminologia</a></li>
+<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">9</span> La misurazione in psicologia</a></li>
+<li class="book-part">Descrizione</li>
+<li><a class="" href="chapter-descript.html"><span class="header-section-number">10</span> Statistica descrittiva</a></li>
+<li class="book-part">Elementi di teoria della probabilità</li>
+<li><a class="" href="chapter-prob.html"><span class="header-section-number">11</span> Il calcolo delle probabilità</a></li>
+<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">12</span> Probabilità condizionata</a></li>
+<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">13</span> Il teorema di Bayes</a></li>
+<li><a class="active" href="chapter-prob-congiunta.html"><span class="header-section-number">14</span> Probabilità congiunta</a></li>
+<li class="book-part">Inferenza frequentista</li>
+<li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">15</span> Distribuzione campionaria della media dei campioni</a></li>
+<li class="book-part">Statistica Bayesiana</li>
+<li><a class="" href="chapter-modellistica-bayesiana.html"><span class="header-section-number">16</span> Modellistica bayesiana</a></li>
+<li><a class="" href="chapter-stima-distr-posteriori.html"><span class="header-section-number">17</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">18</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">19</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">20</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="appendici.html">Appendici</a></li>
+<li><a class="" href="bibliografia.html">Bibliografia</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="chapter-prob-congiunta" class="section level1" number="14">
+<h1>
+<span class="header-section-number">Capitolo 14</span> Probabilità congiunta<a class="anchor" aria-label="anchor" href="#chapter-prob-congiunta"><i class="fas fa-link"></i></a>
+</h1>
+<p>Finora abbiamo considerato unicamente le leggi di singole variabile
+aleatorie. Tuttavia, in psicologia e nella vita quotidiana, siamo spesso
+interessati a studiare problemi di probabilità legati al valore
+congiunto di due o più variabili aleatorie. Ad esempio, potremmo
+misurare il QI dei bambini e il loro peso alla nascita, o l’altezza e il
+peso delle giraffe, o il livello di inquinamento atmosferico e il tasso
+di malattie respiratorie nelle città, o il numero di amici di Facebook e
+l’età. Che relazione tra le variabili ci possiamo aspettare in ciascuno
+di questi esempi? Perché?</p>
+<p>Per capire la relazione che sussiste tra due variabili aleatorie è
+necessario calcolare gli indici di <em>covarianza</em> e <em>correlazione</em>. Per
+fare ciò è necessario utilizzare la funzione di probabilità congiunta.
+L’obiettivo di questo capitolo è quello di chiarire cosa si intende per
+funzione di probabilità congiunta di due variabili casuali <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.
+Esamineremo qui in dettaglio il caso discreto.</p>
+<div id="funzione-di-probabilità-congiunta" class="section level2" number="14.1">
+<h2>
+<span class="header-section-number">14.1</span> Funzione di probabilità congiunta<a class="anchor" aria-label="anchor" href="#funzione-di-probabilit%C3%A0-congiunta"><i class="fas fa-link"></i></a>
+</h2>
+<p>Dopo aver trattato delle distribuzioni di probabilità di una variabile
+aleatoria, che associa ad ogni evento elementare dello spazio
+campionario uno ed un solo numero reale, è naturale estendere questo
+concetto al caso di due o più dimensioni. Iniziamo a descrivere il caso
+discreto con un esempio. Consideriamo qui l’esperimento casuale
+corrispondente al lancio di tre monete equilibrate. Lo spazio
+campionario di tale esperimento casuale è
+<span class="math display">\[\Omega = \{TTT, TTC, TCT, CTT, CCT, CTC, TCC, CCC\}.\]</span> Dato che i tre
+lanci sono tra loro indipendenti, non c’è ragione di aspettarsi che uno
+degli otto risultati possibili dell’esperimento sia più probabile degli
+altri, dunque possiamo associare a ciascuno degli otto eventi elementari
+dello spazio campionario la stessa probabilità, ovvero 1/8.</p>
+<p>Su tale spazio campionario consideriamo le variabili aleatorie
+<span class="math inline">\(X \in \{0, 1, 2, 3\}\)</span>, che conta il numero delle teste nei tre lanci, e
+<span class="math inline">\(Y \in \{0, 1\}\)</span>, che conta il numero delle teste al primo lancio.
+Indicando con T = ‘testa’ e C = ‘croce,’ si ottiene dunque la situazione
+riportata nella tabella successiva.</p>
+<div id="tab:tre-monete-distr-cong-1">
+<div class="inline-table"><table class="table table-sm">
+<caption>Spazio campionario dell’esperimento consistente nel lancio di tre
+monete equilibrate su cui sono state definite le variabili aleatorie
+<span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</caption>
+<thead><tr class="header">
+<th align="center"><span class="math inline">\(\omega\)</span></th>
+<th align="center"><span class="math inline">\(X\)</span></th>
+<th align="center"><span class="math inline">\(Y\)</span></th>
+<th align="center"><span class="math inline">\(P(\omega)\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">
+<span class="math inline">\(\omega_1\)</span> = TTT</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">1/8</td>
+</tr>
+<tr class="even">
+<td align="center">
+<span class="math inline">\(\omega_2\)</span> = TTC</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">1/8</td>
+</tr>
+<tr class="odd">
+<td align="center">
+<span class="math inline">\(\omega_3\)</span> = TCT</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">1/8</td>
+</tr>
+<tr class="even">
+<td align="center">
+<span class="math inline">\(\omega_4\)</span> = CTT</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1/8</td>
+</tr>
+<tr class="odd">
+<td align="center">
+<span class="math inline">\(\omega_5\)</span> = CCT</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1/8</td>
+</tr>
+<tr class="even">
+<td align="center">
+<span class="math inline">\(\omega_6\)</span> = CTC</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1/8</td>
+</tr>
+<tr class="odd">
+<td align="center">
+<span class="math inline">\(\omega_7\)</span> = TCC</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1/8</td>
+</tr>
+<tr class="even">
+<td align="center">
+<span class="math inline">\(\omega_8\)</span> = CCC</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1/8</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Ci poniamo il problema di associare un livello di probabilità ad ogni
+coppia <span class="math inline">\((x, y)\)</span> definita su <span class="math inline">\(\Omega\)</span>. La coppia <span class="math inline">\((X = 0, Y = 0)\)</span> si
+realizza in corrispondenza di un solo evento elementare, ovvero CCC;
+avrà dunque una probabilità pari a <span class="math inline">\(Pr(X=0, Y=0) = Pr(CCC) = 1/8\)</span>. Nel
+caso della coppia <span class="math inline">\((X = 1, Y = 0)\)</span> ci sono due eventi elementari che
+danno luogo al risultato considerato, ovvero, CCT e CTC; la probabilità
+<span class="math inline">\(Pr(X=1, Y=0)\)</span> sarà dunque data dall’unione delle probabilità dei due
+eventi elementari corrispondenti, cioé
+<span class="math inline">\(Pr(X=1, Y=0) = Pr(CCT \:\cup\: CTC) = 1/8 + 1/8 = 1/4\)</span>. Riportiamo qui
+sotto i calcoli svolti per tutti i possibili valori di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.
+<span class="math display">\[
+\begin{aligned}
+P(X = 0, Y = 0) &amp;= P(\omega_8 = CCC) = 1/8; \notag\\
+P(X = 1, Y = 0) &amp;= P(\omega_5 = CCT) + P(\omega_6 = CTC) = 2/8; \notag\\
+P(X = 1, Y = 1) &amp;= P(\omega_7 = TCC) = 1/8; \notag\\
+P(X = 2, Y = 0) &amp;= P(\omega_4 = CTT) = 1/8; \notag\\
+P(X = 2, Y = 1) &amp;= P(\omega_3 = TCT) + P(\omega_2 = TTC) = 2/8; \notag\\
+P(X = 3, Y = 1) &amp;= P(\omega_1 = TTT) = 1/8; \notag
+\end{aligned}
+\]</span></p>
+<p>Le probabilità così trovate possono essere riportate nella
+tabella seguente.</p>
+<div id="tab:tre-monete-distr-cong">
+<div class="inline-table"><table class="table table-sm">
+<caption>Distribuzione di probabilità congiunta per i risultati
+dell’esperimento consistente nel lancio di tre monete equilibrate.</caption>
+<thead><tr class="header">
+<th align="center"><span class="math inline">\(x\y\)</span></th>
+<th align="center">0</th>
+<th align="center">1</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">1/8</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">2/8</td>
+<td align="center">1/8</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">1/8</td>
+<td align="center">2/8</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">1/8</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>La tabella qui sopra ci fornisce il risultato che cercavamo, ovvero la distribuzione di probabilità congiunta delle variabili aleatorie <span class="math inline">\(X\)</span> = “numero di realizzazioni con il risultato testa nei tre lanci” e <span class="math inline">\(Y\)</span> = “numero di realizzazioni con il risultato testa nel primo lancio” per l’esperimento casuale considerato.
+Una generica funzione di probabilità congiunta bivariata può essere
+rappresentata come qui indicato.</p>
+<p>In generale, possiamo dire che, dato uno spazio campionario discreto
+<span class="math inline">\(\Omega\)</span>, è possibile associare ad ogni evento elementare <span class="math inline">\(\omega_i\)</span>
+dello spazio campionario una coppia di numeri reali <span class="math inline">\((x, y)\)</span>, essendo
+<span class="math inline">\(x = X(\omega)\)</span> e <span class="math inline">\(y = Y(\omega)\)</span>, il che ci conduce alla seguente
+definizione.</p>
+<p>La funzione che associa ad ogni coppia <span class="math inline">\((x, y)\)</span> un livello di
+probabilità prende il nome di funzione di probabilità congiunta:
+<span class="math display">\[P(x, y) = P(X = x, Y = y).\]</span>
+Il termine “congiunta” deriva dal fatto che questa probabilità è legata
+al verificarsi di una coppia di valori, il primo associato alla
+variabile aleatoria <span class="math inline">\(X\)</span> ed il secondo alla variabile aleatoria <span class="math inline">\(Y\)</span>. Nel
+caso di due sole variabili, si parla di distribuzione bivariata, mentre
+nel caso di più variabili si parla di distribuzione multivariata.</p>
+<div id="proprietà" class="section level3" number="14.1.1">
+<h3>
+<span class="header-section-number">14.1.1</span> Proprietà<a class="anchor" aria-label="anchor" href="#propriet%C3%A0"><i class="fas fa-link"></i></a>
+</h3>
+<p>Una distribuzione di massa di probabilità congiunta bivariata deve
+soddisfare due proprietà:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(0 \leq p(x_i, y_j) \leq 1\)</span>;</p></li>
+<li><p>la probabilità totale deve essere uguale a <span class="math inline">\(1.0\)</span>. Tale proprietà può
+essere espressa nel modo seguente
+<span class="math display">\[\sum_{i} \sum_{j} p(x_i, y_j) = 1.0.\]</span></p></li>
+</ol>
+</div>
+<div id="eventi" class="section level3" number="14.1.2">
+<h3>
+<span class="header-section-number">14.1.2</span> Eventi<a class="anchor" aria-label="anchor" href="#eventi"><i class="fas fa-link"></i></a>
+</h3>
+<p>Si noti che dalla probabilità congiunta possiamo calcolare la
+probabilità di qualsiasi evento definito in base alle variabili
+aleatorie <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Per capire come questo possa essere fatto,
+consideriamo nuovamente l’esperimento discusso sopra.</p>
+<p><strong>Esercizio.</strong>
+Per la distribuzione di massa di probabilità congiunta riportata nella
+tabella precedente si trovi la probabilità dell’evento <span class="math inline">\(X+Y \leq 1\)</span>.</p>
+<p><em>Soluzione.</em>
+Per trovare la probabilità richiesta dobbiamo semplicemente sommare le
+probabilità associate a tutte le coppie <span class="math inline">\((x,y)\)</span> che soddisfano la
+conzione <span class="math inline">\(X+Y \leq 1\)</span>. Ovvero,
+<span class="math display">\[
+\begin{aligned}
+P_{XY}(X+Y \leq 1) = &amp;P_{XY}(0, 0) + P_{XY}(1, 0)= 3/8.\notag
+\end{aligned}
+\]</span></p>
+</div>
+<div id="funzioni-di-probabilità-marginali" class="section level3" number="14.1.3">
+<h3>
+<span class="header-section-number">14.1.3</span> Funzioni di probabilità marginali<a class="anchor" aria-label="anchor" href="#funzioni-di-probabilit%C3%A0-marginali"><i class="fas fa-link"></i></a>
+</h3>
+<p>Data la funzione di probabilità congiunta <span class="math inline">\(p(x, y)\)</span> è possibile pervenire alla costruzione della funzione di probabilità della singola variabile aleatoria, <span class="math inline">\(X\)</span> o <span class="math inline">\(Y\)</span>:
+<span class="math display">\[
+p_X(x) = P(X = x) = \sum_y p(x,y)
+\]</span>
+<span class="math display">\[
+p_Y(y) = P(Y = y) = \sum_x p(x,y)
+\]</span>
+che prendono, rispettivamente, il nome di funzione di probabilità marginale di <span class="math inline">\(X\)</span> funzione di probabilità marginale di <span class="math inline">\(Y\)</span>. Si noti che <span class="math inline">\(P_X\)</span> e <span class="math inline">\(P_Y\)</span> sono normalizzate:
+<span class="math display">\[
+\sum_x P_X(x) = 1.0, \quad \sum_y P_Y(y) = 1.0.
+\]</span></p>
+<p>Per l’esperimento casuale consistente nel lancio di tre monete equilibrate, si calcolino le probabilità marginali di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p>Nell’ultima colonna a destra e nell’ultima riga in basso della tabella seguente sono riportate le distribuzioni di probabilità marginali di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. <span class="math inline">\(P_X\)</span> si ottiene sommando su ciascuna riga fissata la colonna <span class="math inline">\(j\)</span>, <span class="math inline">\(P_X(X = j) = \sum_y p_{xy}(x = j, y)\)</span>. <span class="math inline">\(P_Y\)</span> si trova sommando su ciascuna colonna fissata la riga <span class="math inline">\(i,\)</span> <span class="math inline">\(P_Y (Y = i) = \sum_x p_{xy}(x, y = i)\)</span>. Si noti che:
+<span class="math display">\[
+\sum_x P_X(x) = 1, \quad \sum_y P_Y(y) = 1.
+\]</span></p>
+<div id="default">
+<div class="inline-table"><table class="table table-sm">
+<caption>Distribuzione di probabilità congiunta <span class="math inline">\(p(x,y)\)</span> per i risultati
+dell’esperimento consistente nel lancio di tre monete equilibrate e
+probabilità marginali <span class="math inline">\(p(x)\)</span> e <span class="math inline">\(p(y)\)</span>.</caption>
+<thead><tr class="header">
+<th align="center"><span class="math inline">\(x\y\)</span></th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="left"><span class="math inline">\(p(x)\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">1/8</td>
+<td align="center">0</td>
+<td align="left">1/8</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">2/8</td>
+<td align="center">1/8</td>
+<td align="left">3/8</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">1/8</td>
+<td align="center">2/8</td>
+<td align="left">3/8</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">1/8</td>
+<td align="left">1/8</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(p(y)\)</span></td>
+<td align="center">4/8</td>
+<td align="center">4/8</td>
+<td align="left">1.0</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div id="indipendenza-stocastica" class="section level3" number="14.1.4">
+<h3>
+<span class="header-section-number">14.1.4</span> Indipendenza stocastica<a class="anchor" aria-label="anchor" href="#indipendenza-stocastica"><i class="fas fa-link"></i></a>
+</h3>
+<p>Ora abbiamo tutti gli strumenti per potere dare una definizione
+statistica precisa al concetto di indipendenza. La definizione proposta
+sarà necessariamente coerente con la definizione di indipendenza che
+abbiamo usato fino ad ora. Ma, espressa in questi nuovi termini, potrà
+essere utilizzata in indagini probabilistiche e statistiche più
+complesse. Ricordiamo che gli eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> si dicono indipendenti se
+<span class="math inline">\(P (A \cap B)\, = P(A) P(B)\)</span>. Diciamo quindi che <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono
+indipendenti se qualsiasi evento definito da <span class="math inline">\(X\)</span> è indipendente da
+qualsiasi evento definito da <span class="math inline">\(Y\)</span>. La definizione formale che garantisce
+che ciò accada è la seguente.</p>
+<p>Le variabili aleatorie distribuite congiuntamente <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono
+indipendenti se la loro distribuzione congiunta è il prodotto delle
+distribuzioni marginali: <span class="math display">\[P(X, Y)\, = P_X(x)P_Y(y).\]</span></p>
+<p>Nel caso discreto, dunque, l’indipendenza implica che la probabilità
+riportata in ciascuna cella della tabella di probabilità congiunta deve
+essere uguale al prodotto delle probabilità marginali di riga e di
+colonna: <span class="math display">\[p(x_i, y_i)\, = p_X(x_i) p_Y(y_i).\notag\]</span></p>
+<p><strong>Esercizio.</strong>
+Per la situazione rappresentata nella tabella qui sopra le variabili aleatorie <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono indipendenti?</p>
+<p><em>Soluzione.</em>
+Nella tabellale variabili aleatorie <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> non sono indipendenti: le probabilità congiunte non sono ricavabili dal prodotto delle marginali. Per esempio, nessuna delle probabilità marginali è uguale a <span class="math inline">\(0\)</span> per cui nessuno dei valori dentro la tabella (probabilità congiunte) che risulta essere uguale a <span class="math inline">\(0\)</span> può essere il prodotto delle probabilità marginali.</p>
+</div>
+</div>
+<div id="conclusioni-5" class="section level2 unnumbered">
+<h2>Conclusioni<a class="anchor" aria-label="anchor" href="#conclusioni-5"><i class="fas fa-link"></i></a>
+</h2>
+<p>La funzione di probabilità congiunta tiene simultaneamente conto del
+comportamento di due variabili aleatorie <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> e di come esse si
+influenzano reciprocamente. In particolare, si osserva che se le due
+variabili non si influenzano, cioè se sono statisticamente indipendenti,
+allora la distribuzione di massa di probabilità congiunta si ottiene
+come prodotto delle funzioni di probabilità marginali di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>:
+<span class="math inline">\(P_{X, Y}(x, y) = P_X(x) P_Y(y)\)</span>.</p>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="chapter-teo-bayes.html"><span class="header-section-number">13</span> Il teorema di Bayes</a></div>
+<div class="next"><a href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">15</span> Distribuzione campionaria della media dei campioni</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#chapter-prob-congiunta"><span class="header-section-number">14</span> Probabilità congiunta</a></li>
+<li>
+<a class="nav-link" href="#funzione-di-probabilit%C3%A0-congiunta"><span class="header-section-number">14.1</span> Funzione di probabilità congiunta</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#propriet%C3%A0"><span class="header-section-number">14.1.1</span> Proprietà</a></li>
+<li><a class="nav-link" href="#eventi"><span class="header-section-number">14.1.2</span> Eventi</a></li>
+<li><a class="nav-link" href="#funzioni-di-probabilit%C3%A0-marginali"><span class="header-section-number">14.1.3</span> Funzioni di probabilità marginali</a></li>
+<li><a class="nav-link" href="#indipendenza-stocastica"><span class="header-section-number">14.1.4</span> Indipendenza stocastica</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#conclusioni-5">Conclusioni</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>PSICOMETRIA</strong>" was written by Corrado Caudek. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>
