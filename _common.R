@@ -16,8 +16,9 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 # Supress crayon output
 options(crayon.enabled = FALSE)
 
-library("tidyverse")
 library("here")
+library("tidyverse")
+library("bayesplot")
 
 # Se theme_papaja::apa() for all figures
 library("papaja")

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capitolo 15 Distribuzione campionaria della media dei campioni | PSICOMETRIA</title>
+<title>Capitolo 15 Distribuzione campionaria della media dei campioni | Data Science per psicologi</title>
 <meta name="author" content="Corrado Caudek">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">PSICOMETRIA</a>
+        <a href="index.html" title="">Data Science per psicologi</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -53,12 +53,15 @@
 <li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">14</span> Probabilità congiunta</a></li>
 <li class="book-part">Inferenza frequentista</li>
 <li><a class="active" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">15</span> Distribuzione campionaria della media dei campioni</a></li>
+<li class="book-part">Verosimiglianza</li>
+<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">16</span> La funzione di verosimiglianza</a></li>
 <li class="book-part">Statistica Bayesiana</li>
-<li><a class="" href="chapter-modellistica-bayesiana.html"><span class="header-section-number">16</span> Modellistica bayesiana</a></li>
-<li><a class="" href="chapter-stima-distr-posteriori.html"><span class="header-section-number">17</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">18</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">19</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">20</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="chapter-modellistica-bayesiana.html"><span class="header-section-number">17</span> Modellistica bayesiana</a></li>
+<li><a class="" href="chapter-stima-distr-posteriori.html"><span class="header-section-number">18</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">19</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">20</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">21</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="informazioni-generali.html">Informazioni generali</a></li>
 <li><a class="" href="appendici.html">Appendici</a></li>
 <li><a class="" href="bibliografia.html">Bibliografia</a></li>
 </ul>
@@ -109,7 +112,7 @@ molto alto di osservazioni.</p>
   <span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:qidensity"></span>
-<img src="Psicometria_files/figure-html/qidensity-1.png" alt="Grafico della distribuzione dei punteggi del QI nella popolazione." width="90%"><p class="caption">
+<img src="Data-Science-per-psicologi_files/figure-html/qidensity-1.png" alt="Grafico della distribuzione dei punteggi del QI nella popolazione." width="90%"><p class="caption">
 Figura 15.1: Grafico della distribuzione dei punteggi del QI nella popolazione.
 </p>
 </div>
@@ -134,11 +137,11 @@ campione casuale semplice consiste nel seguente insieme di 100 numeri:</p>
 <span class="co"># i valori QI sono numeri interi!</span>
 <span class="va">iq1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">iq1</span><span class="op">)</span> 
 <span class="va">iq1</span>
-<span class="co">#&gt;   [1]  92  97 123 101 102 126 107  81  90  93 118 105 106 102  92 127 107  71 111  93  84  97</span>
-<span class="co">#&gt;  [23]  85  89  91  75 113 102  83 119 106  96 113 113 112 110 108  99  95  94  90  97  81 133</span>
-<span class="co">#&gt;  [45] 118  83  94  93 112  99 104 100  99 121  97 123  77 109 102 103 106  92  95  85  84 105</span>
-<span class="co">#&gt;  [67] 107 101 114 131  93  65 115  89  90 115  96  82 103  98 100 106  94 110  97 105 116 107</span>
-<span class="co">#&gt;  [89]  95 117 115 108 104  91 120  91 133 123  96  85</span></code></pre></div>
+<span class="co">#&gt;   [1]  92  97 123 101 102 126 107  81  90  93 118 105 106 102  92 127 107  71 111  93</span>
+<span class="co">#&gt;  [21]  84  97  85  89  91  75 113 102  83 119 106  96 113 113 112 110 108  99  95  94</span>
+<span class="co">#&gt;  [41]  90  97  81 133 118  83  94  93 112  99 104 100  99 121  97 123  77 109 102 103</span>
+<span class="co">#&gt;  [61] 106  92  95  85  84 105 107 101 114 131  93  65 115  89  90 115  96  82 103  98</span>
+<span class="co">#&gt;  [81] 100 106  94 110  97 105 116 107  95 117 115 108 104  91 120  91 133 123  96  85</span></code></pre></div>
 <p>Tali valori sono stati trovati utilizzando la funzione <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> che genera numeri casuali estratti da una distribuzione normale. Nello specifico, abbiamo estratto 100 valori casuali dalla distribuzione normale con media 100 e deviazione standard 15. Se costruiamo un istogramma con i dati di un tale campione otteniamo il grafico mostrato nella figura <a href="distribuzione-campionaria-della-media-dei-campioni.html#fig:histogramqi">15.2</a>.</p>
 <div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">iq1</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -151,7 +154,7 @@ campione casuale semplice consiste nel seguente insieme di 100 numeri:</p>
 <span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:histogramqi"></span>
-<img src="Psicometria_files/figure-html/histogramqi-1.png" alt="Istogramma della distribuzione dei punteggi del QI in un campione di 100 osservazioni." width="90%"><p class="caption">
+<img src="Data-Science-per-psicologi_files/figure-html/histogramqi-1.png" alt="Istogramma della distribuzione dei punteggi del QI in un campione di 100 osservazioni." width="90%"><p class="caption">
 Figura 15.2: Istogramma della distribuzione dei punteggi del QI in un campione di 100 osservazioni.
 </p>
 </div>
@@ -208,7 +211,7 @@ più piccolo. Ciò si riflette anche nelle statistiche del campione:</p>
 <span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:histogramqi2"></span>
-<img src="Psicometria_files/figure-html/histogramqi2-1.png" alt="Istogramma della distribuzione dei punteggi del QI in un campione di 10000 osservazioni." width="90%"><p class="caption">
+<img src="Data-Science-per-psicologi_files/figure-html/histogramqi2-1.png" alt="Istogramma della distribuzione dei punteggi del QI in un campione di 10000 osservazioni." width="90%"><p class="caption">
 Figura 15.3: Istogramma della distribuzione dei punteggi del QI in un campione di 10000 osservazioni.
 </p>
 </div>
@@ -359,7 +362,7 @@ chiama <em>distribuzione campionaria della media</em>.</p>
 <span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:histmeaniq"></span>
-<img src="Psicometria_files/figure-html/histmeaniq-1.png" alt="Istogramma della distribuzione delle medie dei punteggi del QI calcolate su 10000 campioni casuali di ampiezza $n=5$." width="90%"><p class="caption">
+<img src="Data-Science-per-psicologi_files/figure-html/histmeaniq-1.png" alt="Istogramma della distribuzione delle medie dei punteggi del QI calcolate su 10000 campioni casuali di ampiezza $n=5$." width="90%"><p class="caption">
 Figura 15.4: Istogramma della distribuzione delle medie dei punteggi del QI calcolate su 10000 campioni casuali di ampiezza <span class="math inline">\(n=5\)</span>.
 </p>
 </div>
@@ -403,7 +406,7 @@ media? È facile mostrare che <span class="math inline">\(\mu_{\bar{X}_n}\)</spa
 medio <span class="math inline">\(\mu\)</span> della popolazione da cui i campioni di ampiezza <span class="math inline">\(n\)</span> sono
 stati estratti.</p>
 <div class="proof">
-<p><span id="unlabeled-div-22" class="proof"><em>Dimostrazione</em>. </span>Ponendo <span class="math inline">\(\bar{X}_n = S_n/n\)</span>, dove <span class="math inline">\(S_n = X_1 + X_2 + \dots + X_n\)</span> è la somma di <span class="math inline">\(n\)</span> variabili aleatorie iid, ne segue che:
+<p><span id="unlabeled-div-19" class="proof"><em>Dimostrazione</em>. </span>Ponendo <span class="math inline">\(\bar{X}_n = S_n/n\)</span>, dove <span class="math inline">\(S_n = X_1 + X_2 + \dots + X_n\)</span> è la somma di <span class="math inline">\(n\)</span> variabili aleatorie iid, ne segue che:
 <span class="math display">\[
 \mathbb{E}(\bar{X}_n) = \frac{1}{n} \mathbb{E}(S_n) = \frac{1}{n} \mathbb{E}(X_1 + X_2 + \dots + X_n ) =  \frac{1}{n} n \mu = \mu.
 \]</span></p>
@@ -429,7 +432,7 @@ var(a X) = a^2 var(X).
 \]</span>
 Possiamo ora comprendere la dimostrazione seguente.</p>
 <div class="proof">
-<p><span id="unlabeled-div-23" class="proof"><em>Dimostrazione</em>. </span><span class="math display">\[
+<p><span id="unlabeled-div-20" class="proof"><em>Dimostrazione</em>. </span><span class="math display">\[
 var(\bar{X}_n) = \frac{1}{n^2} var(S_n) = \frac{1}{n^2} n \sigma^2 
 = \frac{\sigma^2}{n}.
 \]</span></p>
@@ -487,7 +490,7 @@ utilizzata quale stima della deviazione standard della popolazione.</p>
 <span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:histmaxiq"></span>
-<img src="Psicometria_files/figure-html/histmaxiq-1.png" alt="Istogramma della distribuzione del QI massimo osservato in ciascun campione casuali di ampiezza $n=5$. Per creare la figura sono stati considerati 10000 campioni casuali." width="90%"><p class="caption">
+<img src="Data-Science-per-psicologi_files/figure-html/histmaxiq-1.png" alt="Istogramma della distribuzione del QI massimo osservato in ciascun campione casuali di ampiezza $n=5$. Per creare la figura sono stati considerati 10000 campioni casuali." width="90%"><p class="caption">
 Figura 15.5: Istogramma della distribuzione del QI massimo osservato in ciascun campione casuali di ampiezza <span class="math inline">\(n=5\)</span>. Per creare la figura sono stati considerati 10000 campioni casuali.
 </p>
 </div>
@@ -572,7 +575,7 @@ Figura 15.5: Istogramma della distribuzione del QI massimo osservato in ciascun 
 <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:tlcnavarro"></span>
-<img src="Psicometria_files/figure-html/tlcnavarro-1.png" alt="Nel primo pannello in alto a sinistra ciascun campione contiene una sola osservazione, per cui la media del campione è identica al valore del QI di una persona. Di conseguenza, la distribuzione campionaria della media è identica alla distribuzione dei valori del QI nella popolazione. Quando $n=2$ la media di ciascun campione tende ad essere più simile alla media della popolazione di quanto lo sia ciascuna singola osservazione della popolazione. Quindi anche l'ampiezza dell'istogramma (ovvero, la distribuzione campionaria della media) diminuisce, se confrontata con la dispersione della popolazione. Quando giungiamo ad una numerosità campionaria pari a $n=30$ vediamo che la maggior parte delle medie campionarie tende ad addensarsi intorno alla media della popolazione." width="190%"><p class="caption">
+<img src="Data-Science-per-psicologi_files/figure-html/tlcnavarro-1.png" alt="Nel primo pannello in alto a sinistra ciascun campione contiene una sola osservazione, per cui la media del campione è identica al valore del QI di una persona. Di conseguenza, la distribuzione campionaria della media è identica alla distribuzione dei valori del QI nella popolazione. Quando $n=2$ la media di ciascun campione tende ad essere più simile alla media della popolazione di quanto lo sia ciascuna singola osservazione della popolazione. Quindi anche l'ampiezza dell'istogramma (ovvero, la distribuzione campionaria della media) diminuisce, se confrontata con la dispersione della popolazione. Quando giungiamo ad una numerosità campionaria pari a $n=30$ vediamo che la maggior parte delle medie campionarie tende ad addensarsi intorno alla media della popolazione." width="190%"><p class="caption">
 Figura 15.6: Nel primo pannello in alto a sinistra ciascun campione contiene una sola osservazione, per cui la media del campione è identica al valore del QI di una persona. Di conseguenza, la distribuzione campionaria della media è identica alla distribuzione dei valori del QI nella popolazione. Quando <span class="math inline">\(n=2\)</span> la media di ciascun campione tende ad essere più simile alla media della popolazione di quanto lo sia ciascuna singola osservazione della popolazione. Quindi anche l’ampiezza dell’istogramma (ovvero, la distribuzione campionaria della media) diminuisce, se confrontata con la dispersione della popolazione. Quando giungiamo ad una numerosità campionaria pari a <span class="math inline">\(n=30\)</span> vediamo che la maggior parte delle medie campionarie tende ad addensarsi intorno alla media della popolazione.
 </p>
 </div>
@@ -650,7 +653,7 @@ distribuzione normale.</p>
 <code class="sourceCode R"><span class="fu">plot_one</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:tlctriangle1"></span>
-<img src="Psicometria_files/figure-html/tlctriangle1-1.png" alt="Dimostrazione del Teorema del limite centrale. Consideriamo una popolazione che non segue la distribuzione normale. La distribuzione di tale popolazione è rappresentata dall'istogramma grigio." width="90%"><p class="caption">
+<img src="Data-Science-per-psicologi_files/figure-html/tlctriangle1-1.png" alt="Dimostrazione del Teorema del limite centrale. Consideriamo una popolazione che non segue la distribuzione normale. La distribuzione di tale popolazione è rappresentata dall'istogramma grigio." width="90%"><p class="caption">
 Figura 15.7: Dimostrazione del Teorema del limite centrale. Consideriamo una popolazione che non segue la distribuzione normale. La distribuzione di tale popolazione è rappresentata dall’istogramma grigio.
 </p>
 </div>
@@ -659,7 +662,7 @@ Figura 15.7: Dimostrazione del Teorema del limite centrale. Consideriamo una pop
 <code class="sourceCode R"><span class="fu">plot_one</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:tlctriangle2"></span>
-<img src="Psicometria_files/figure-html/tlctriangle2-1.png" alt="Distribuzione campionaria di $ar{X}$ per campioni casuali di ampiezza $n=2$ estratti dalla popolazione rappresentata nella figura 1.7." width="90%"><p class="caption">
+<img src="Data-Science-per-psicologi_files/figure-html/tlctriangle2-1.png" alt="Distribuzione campionaria di $ar{X}$ per campioni casuali di ampiezza $n=2$ estratti dalla popolazione rappresentata nella figura 1.7." width="90%"><p class="caption">
 Figura 15.8: Distribuzione campionaria di <span class="math inline">\(ar{X}\)</span> per campioni casuali di ampiezza <span class="math inline">\(n=2\)</span> estratti dalla popolazione rappresentata nella figura 1.7.
 </p>
 </div>
@@ -668,7 +671,7 @@ Figura 15.8: Distribuzione campionaria di <span class="math inline">\(ar{X}\)</s
 <code class="sourceCode R"><span class="fu">plot_one</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:tlctriangle4"></span>
-<img src="Psicometria_files/figure-html/tlctriangle4-1.png" alt="Distribuzione campionaria di $ar{X}$ per campioni casuali di ampiezza $n=4$ estratti dalla popolazione rappresentata nella figura 1.7." width="90%"><p class="caption">
+<img src="Data-Science-per-psicologi_files/figure-html/tlctriangle4-1.png" alt="Distribuzione campionaria di $ar{X}$ per campioni casuali di ampiezza $n=4$ estratti dalla popolazione rappresentata nella figura 1.7." width="90%"><p class="caption">
 Figura 15.9: Distribuzione campionaria di <span class="math inline">\(ar{X}\)</span> per campioni casuali di ampiezza <span class="math inline">\(n=4\)</span> estratti dalla popolazione rappresentata nella figura 1.7.
 </p>
 </div>
@@ -677,7 +680,7 @@ Figura 15.9: Distribuzione campionaria di <span class="math inline">\(ar{X}\)</s
 <code class="sourceCode R"><span class="fu">plot_one</span><span class="op">(</span><span class="fl">8</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:tlctriangle8"></span>
-<img src="Psicometria_files/figure-html/tlctriangle8-1.png" alt="Distribuzione campionaria di $ar{X}$ per campioni casuali di ampiezza $n=8$ estratti dalla popolazione rappresentata nella figura 1.7." width="90%"><p class="caption">
+<img src="Data-Science-per-psicologi_files/figure-html/tlctriangle8-1.png" alt="Distribuzione campionaria di $ar{X}$ per campioni casuali di ampiezza $n=8$ estratti dalla popolazione rappresentata nella figura 1.7." width="90%"><p class="caption">
 Figura 15.10: Distribuzione campionaria di <span class="math inline">\(ar{X}\)</span> per campioni casuali di ampiezza <span class="math inline">\(n=8\)</span> estratti dalla popolazione rappresentata nella figura 1.7.
 </p>
 </div>
@@ -775,7 +778,7 @@ Se le <span class="math inline">\(X_i\)</span> seguono la distribuzione normale,
 
   <div class="chapter-nav">
 <div class="prev"><a href="chapter-prob-congiunta.html"><span class="header-section-number">14</span> Probabilità congiunta</a></div>
-<div class="next"><a href="chapter-modellistica-bayesiana.html"><span class="header-section-number">16</span> Modellistica bayesiana</a></div>
+<div class="next"><a href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">16</span> La funzione di verosimiglianza</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -817,7 +820,7 @@ Se le <span class="math inline">\(X_i\)</span> seguono la distribuzione normale,
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PSICOMETRIA</strong>" was written by Corrado Caudek. </p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. </p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

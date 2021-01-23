@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capitolo 5 Strutture di dati | PSICOMETRIA</title>
+<title>Capitolo 5 Strutture di dati | Data Science per psicologi</title>
 <meta name="author" content="Corrado Caudek">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">PSICOMETRIA</a>
+        <a href="index.html" title="">Data Science per psicologi</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -53,12 +53,15 @@
 <li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">14</span> Probabilità congiunta</a></li>
 <li class="book-part">Inferenza frequentista</li>
 <li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">15</span> Distribuzione campionaria della media dei campioni</a></li>
+<li class="book-part">Verosimiglianza</li>
+<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">16</span> La funzione di verosimiglianza</a></li>
 <li class="book-part">Statistica Bayesiana</li>
-<li><a class="" href="chapter-modellistica-bayesiana.html"><span class="header-section-number">16</span> Modellistica bayesiana</a></li>
-<li><a class="" href="chapter-stima-distr-posteriori.html"><span class="header-section-number">17</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">18</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">19</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">20</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="chapter-modellistica-bayesiana.html"><span class="header-section-number">17</span> Modellistica bayesiana</a></li>
+<li><a class="" href="chapter-stima-distr-posteriori.html"><span class="header-section-number">18</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">19</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">20</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">21</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="informazioni-generali.html">Informazioni generali</a></li>
 <li><a class="" href="appendici.html">Appendici</a></li>
 <li><a class="" href="bibliografia.html">Bibliografia</a></li>
 </ul>
@@ -544,8 +547,8 @@ Per esempio,</p>
 <span class="co">#&gt;   face   suit value</span>
 <span class="co">#&gt; 1 king spades    13</span>
 <span class="va">deck</span><span class="op">[</span>, <span class="st">"value"</span><span class="op">]</span>
-<span class="co">#&gt;  [1] 13 12 11 10  9  8  7  6  5  4  3  2  1 13 12 11 10  9  8  7  6  5  4  3  2  1 13 12 11 10</span>
-<span class="co">#&gt; [31]  9  8  7  6  5  4  3  2  1 13 12 11 10  9  8  7  6  5  4  3  2  1</span></code></pre></div>
+<span class="co">#&gt;  [1] 13 12 11 10  9  8  7  6  5  4  3  2  1 13 12 11 10  9  8  7  6  5  4  3  2  1 13 12</span>
+<span class="co">#&gt; [29] 11 10  9  8  7  6  5  4  3  2  1 13 12 11 10  9  8  7  6  5  4  3  2  1</span></code></pre></div>
 </div>
 </div>
 <div id="giochi-di-carte" class="section level2" number="5.9">
@@ -564,8 +567,8 @@ uguale alla dimensione del vettore che contiene gli indici da 1 a 52:</p>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">random</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">52</span>, size <span class="op">=</span> <span class="fl">52</span>, replace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="va">random</span>
-<span class="co">#&gt;  [1] 45 23 12 37 38 47 31  4 48  9  5 42 24 15 13  2 41 21 34  6 46 32 52 16 49  3 25 22 11  7</span>
-<span class="co">#&gt; [31] 35 33 43 10 28 17 30  8 26  1 14 18 27 44 20 51 40 36 29 39 50 19</span></code></pre></div>
+<span class="co">#&gt;  [1] 45 23 12 37 38 47 31  4 48  9  5 42 24 15 13  2 41 21 34  6 46 32 52 16 49  3 25 22</span>
+<span class="co">#&gt; [29] 11  7 35 33 43 10 28 17 30  8 26  1 14 18 27 44 20 51 40 36 29 39 50 19</span></code></pre></div>
 <p>Utilizzando il vettore <code>random</code> di indici permutati otteniamo il
 risultato cercato:</p>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
@@ -680,7 +683,7 @@ assegna il nome <code>cards</code> a qualunque oggetto venga passato alla funzio
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PSICOMETRIA</strong>" was written by Corrado Caudek. </p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. </p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

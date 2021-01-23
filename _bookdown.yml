@@ -1,4 +1,4 @@
-book_filename: "Psicometria"
+book_filename: "Data Science per psicologi"
 output_dir: docs
 delete_merged_file: true
 edit: https://github.com/ccaudek/bookdown_psicometria/edit/master/%s
@@ -44,6 +44,8 @@ rmd_files: [
   "18_prob_congiunta.Rmd",
   # ------------------------- approccio frequentista
   "25_distr_camp_mean.Rmd",
+  # ------------------------- verosimiglianza
+  "29_likelihood.Rmd",
   # ------------------------- approccio bayesiano
   "30_intro_bayes.Rmd",
   "35_grid_approx.Rmd",
@@ -51,6 +53,7 @@ rmd_files: [
   "40_reglin.Rmd",
   "41_reglin_bayes.Rmd",
   # ------------------------- appendici
+  "97_licenza.Rmd",
   "98_appendici.Rmd",
   # ------------------------- bibliografia
   "99_References.Rmd"

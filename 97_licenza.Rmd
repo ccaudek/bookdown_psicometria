@@ -1,0 +1,45 @@
+# Informazioni generali {-}
+
+
+## Feedback {-}
+
+Poiché questo testo è ancora in fase di revisione, e poiché il campo della Data Science è in continua evoluzione, è probabile che la versione corrente di _Data Science per psicologi_ contenga alcuni refusi ed errori, e comunque verrà cambiata in futuro. Vi sarei grato se poteste inviarmi un'e-mail (corrado.caudek [at] unifi.it) per segnalare eventuali errori, possibili miglioramenti, o qualsiasi altro feedback o osservazione che vogliate condividere.
+
+
+## Citazione {-}
+
+Sentitevi liberi di utilizzare _Data Science per psicologi_ per i vostri scopi, ma vi chiedo di riconoscerne la paternità. 
+
+Per citare _Data Science per psicologi_ potete usare:
+
+> Caudek Corrado (2021). _Data Science per psicologi_. 
+Dipartimento NEUROFARBA, Università degli Studi di Firenze, Italia.
+Estratto da https://github.com/ccaudek/bookdown_psicometria/
+
+Gli utenti $\LaTeX$ possono usare la seguente voce BibTeX:
+
+````
+@Manual{caudek_psicometria,
+  title = {Data Science per psicologi},
+  author = {Caudek Corrado},
+  year = {2021},
+  organization = {{Dipartimento NEUROFARBA, Università degli Studi di Firenze}},
+  address = {Firenze, Italia},
+  note = {Textbook},
+  url = {https://github.com/ccaudek/bookdown_psicometria/}
+}
+````
+
+L'URL di _Data Science per psicologi_ è https://github.com/ccaudek/bookdown_psicometria/.
+
+
+## Licenza {-}
+
+<!-- (a) Use online image: -->
+
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+<!-- License text:  -->
+
+<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Tutto il materiale del testo _Data Science per psicologi_ </span> di <a xmlns:cc="http://creativecommons.org/ns#" href="https://ccaudek.github.io" property="cc:attributionName" rel="cc:attributionURL">Corrado Caudek</a> è pubblicato sotto una Licenza <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>. 
+

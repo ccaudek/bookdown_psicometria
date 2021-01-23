@@ -2,7 +2,6 @@
 
 ```{r, include = FALSE}
 source("_common.R")
-knitr::opts_chunk$set(fig.align="center")
 ```
 
 Al fine di utilizzare R è necessario eseguire le seguenti tre operazioni
@@ -12,7 +11,7 @@ nell'ordine dato:
 2.  Installare RStudio;
 3.  Installare R-Packages (se necessario).
 
-Vedremo qui come installare  R e RStudio.
+Vedremo qui come installare R e RStudio.
 
 ## Installare R e RStudio
 
