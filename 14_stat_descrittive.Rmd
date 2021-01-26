@@ -237,6 +237,11 @@ Limiti delle classi Frequenza assoluta Frequenza relativa
 [19.5, 28.5)           12                    12/66
 [28.5, 63]             17                    17/66
 
+### Osservazione
+
+In una sezione successiva di questo capitolo discuteremo i principi che, secondo Edward Tufte, devono guidare la Data Science. Parlando delle rappresentazioni grafiche dei dati, Edward Tufte ci dice che la prima cosa da fare è "mostrare i dati". Questa può sembrare una tautologia, considerato che questo è lo scopo della statistica descrittiva: trasformare i dati attraverso vari indici riassuntivi o rappresentazioni grafiche, in modo tale da renderli __comprensibili__. Tuttavia, spesso le tecniche statistiche vengono usate per _nascondere_ e non per _mostrare_ i dati. 
+
+L'uso delle frequenze relative offre un chiaro esempio di questo. Di questi tempi capita spesso di incontrare, sulla stampa, notizie a proposito un nuovo farmaco che, in una prova clinica, ha mostrato risultati incoraggianti che suggeriscono la sua efficacia come possibile trattamento del COVID-19. Alle volte i risultati della sperimentazione clinica sono riportati nei termini di una _frequenza relativa_. Ad esempio, potremmo leggere che l'uso del farmaco ha portato ad una riduzione del 21% dei ricoveri o dei decessi. Sembra tanto.  Ma è necessario guardare i dati!  Ovvero, molto spesso, quello che __non__ viene riportato dai comunicati stampa. Infatti, una riduzione del 21% può corrispondere ad un cambiamento dal 5% al 4%. E una riduzione del 44% può corrispondere ad una differenza di 10 contro 18, o di 5 contro 9, o di 15 contro 27. In altri termini, una proporzione, anche grande, può corrispondere ad una differenza __assoluta__ piuttosto piccola: un piccolo passo in avanti, ma non ad un balzo! Per questa ragione, per capire cosa i dati significano, è necessario guardare i dati da diversi punti di vista, utilizzando diverse statistiche descrittive, senza limitarci alla statistica descrittiva che racconta la storia che piace di più. Perché la scelta della statistica descrittiva da utilizzare per riassumere i dati dipende dagli scopi di chi esegue l'analisi statisica: il nostro scopo è quelloi di capire se il farmaco funziona; lo scopo delle compagnie farmaceutiche è quello di vendere il farmaco. Sono obiettivi molto diversi.  
 
 ## Istogramma
 

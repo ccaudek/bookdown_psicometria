@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.9.25)  23 JAN 2021 19:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.9.25)  26 JAN 2021 10:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**tikz3b3267d7eb3.tex
-(./tikz3b3267d7eb3.tex
+**tikz7e23efc3855.tex
+(./tikz7e23efc3855.tex
 LaTeX2e <2020-02-02> patch level 5
 L3 programming layer <2020-09-24> (/usr/local/texlive/2020/texmf-dist/tex/latex
 /base/article.cls
@@ -409,8 +409,8 @@ File: tikzlibrarymatrix.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count276
 \l__pdf_internal_box=\box59
-) (./tikz3b3267d7eb3.aux)
-\openout1 = `tikz3b3267d7eb3.aux'.
+) (./tikz7e23efc3855.aux)
+\openout1 = `tikz7e23efc3855.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
@@ -613,26 +613,23 @@ ayersystems.code.tex
 ))
 Preview: Tightpage -32891 -32891 32891 32891
 [1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./ti
-kz3b3267d7eb3.aux) ) 
+kz7e23efc3855.aux) ) 
 Here is how much of TeX's memory you used:
- 16145 strings out of 480875
- 366267 string characters out of 5907566
- 594110 words of memory out of 5000000
- 31464 multiletter control sequences out of 15000+600000
+ 16098 strings out of 480875
+ 365245 string characters out of 5907566
+ 591685 words of memory out of 5000000
+ 31417 multiletter control sequences out of 15000+600000
  535542 words of font info for 31 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,7n,80p,419b,3290s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,7n,80p,419b,3101s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr5.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y7.pfb>
-Output written on tikz3b3267d7eb3.pdf (1 page, 46316 bytes).
+nts/cm/cmr7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb>
+Output written on tikz7e23efc3855.pdf (1 page, 23544 bytes).
 PDF statistics:
- 35 PDF objects out of 1000 (max. 8388607)
- 25 compressed objects within 1 object stream
+ 23 PDF objects out of 1000 (max. 8388607)
+ 16 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

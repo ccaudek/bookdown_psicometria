@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capitolo 17 Inferenza sulle medie | Data Science per psicologi</title>
+<meta name="author" content="Corrado Caudek">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Data Science per psicologi</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Benvenuti</a></li>
+<li class="book-part">Introduzione</li>
+<li><a class="" href="obiettivi-formativi.html"><span class="header-section-number">1</span> Obiettivi formativi</a></li>
+<li class="book-part">Introduzione al linguaggio R</li>
+<li><a class="" href="chapter-pacchetti.html"><span class="header-section-number">2</span> Pacchetti</a></li>
+<li><a class="" href="chapter-install-r.html"><span class="header-section-number">3</span> Per cominciare</a></li>
+<li><a class="" href="chapter-sintassi.html"><span class="header-section-number">4</span> Sintassi di base</a></li>
+<li><a class="" href="chapter-strutture-dati.html"><span class="header-section-number">5</span> Strutture di dati</a></li>
+<li><a class="" href="chapter-strut-contr.html"><span class="header-section-number">6</span> Strutture di controllo</a></li>
+<li><a class="" href="chapter-input-output.html"><span class="header-section-number">7</span> Input/Output</a></li>
+<li class="book-part">Misurazione</li>
+<li><a class="" href="chapter-terminologia.html"><span class="header-section-number">8</span> Terminologia</a></li>
+<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">9</span> La misurazione in psicologia</a></li>
+<li class="book-part">Descrizione</li>
+<li><a class="" href="chapter-descript.html"><span class="header-section-number">10</span> Statistica descrittiva</a></li>
+<li class="book-part">Elementi di teoria della probabilità</li>
+<li><a class="" href="chapter-prob.html"><span class="header-section-number">11</span> Il calcolo delle probabilità</a></li>
+<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">12</span> Probabilità condizionata</a></li>
+<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">13</span> Il teorema di Bayes</a></li>
+<li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">14</span> Probabilità congiunta</a></li>
+<li class="book-part">Inferenza frequentista</li>
+<li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">15</span> Distribuzione campionaria della media dei campioni</a></li>
+<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">16</span> Significatività statistica</a></li>
+<li><a class="active" href="inferenza-sulle-medie.html"><span class="header-section-number">17</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">18</span> Critiche e difese</a></li>
+<li class="book-part">Verosimiglianza</li>
+<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
+<li class="book-part">Statistica Bayesiana</li>
+<li><a class="" href="chapter-modellistica-bayesiana.html"><span class="header-section-number">20</span> Modellistica bayesiana</a></li>
+<li><a class="" href="chapter-stima-distr-posteriori.html"><span class="header-section-number">21</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">22</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">23</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">24</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="informazioni-generali.html">Informazioni generali</a></li>
+<li><a class="" href="appendici.html">Appendici</a></li>
+<li><a class="" href="bibliografia.html">Bibliografia</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inferenza-sulle-medie" class="section level1" number="17">
+<h1>
+<span class="header-section-number">Capitolo 17</span> Inferenza sulle medie<a class="anchor" aria-label="anchor" href="#inferenza-sulle-medie"><i class="fas fa-link"></i></a>
+</h1>
+<p>Molto spesso in psicologia ci troviamo in una situazione in cui la
+variabile dipendente è a livello di scala ad intervalli o superiore e
+ciò che ci interessa è stabilire se il valore medio della variabile
+dipendente sia più grande in un gruppo o in un altro. Ad esempio, uno
+psicologo potrebbe voler sapere se i livelli di ansia sono più alti tra
+i genitori o tra i non genitori, o se la capacità della memoria di
+lavoro si riduce quando si ascolta musica, rispetto alla condizione in
+cui non si ascolta musica. In queste situazioni, la variabile dipendente
+è continua a livello di scala ad intervalli o a rapporti e il nostro
+predittore è una variabile binaria. In altre parole, ciò che vogliamo
+fare in situazioni di questo tipo è confrontare le medie dei due gruppi.</p>
+<p>La risposta tradizionale al problema del confronto tra due medie è
+quella di usare il test statistico che va sotto il nome di <span class="math inline">\(t\)</span> di
+Student, di cui esistono diverse varianti a seconda del tipo di domanda
+a cui si vuole rispondere. In questo capitolo presenteremo le diverse
+varianti del test <span class="math inline">\(t\)</span> di Student: il test <span class="math inline">\(t\)</span> a campione unico, il test
+<span class="math inline">\(t\)</span> per campioni indipendenti e il test <span class="math inline">\(t\)</span> per il confronto tra le
+medie di due campioni appaiati.</p>
+<div id="modello-normale-varianza-nota" class="section level2" number="17.1">
+<h2>
+<span class="header-section-number">17.1</span> Modello Normale: varianza nota<a class="anchor" aria-label="anchor" href="#modello-normale-varianza-nota"><i class="fas fa-link"></i></a>
+</h2>
+<p>In questa sezione inizieremo ad esaminare il test <span class="math inline">\(z\)</span>, il quale ci
+fornisce una versione semplificata del test <span class="math inline">\(t\)</span> di Student, che
+probabilmente è in assoluto il test statistico più usato (più di una
+volta a sproposito) dall’approccio frequentista. Lo scopo di questa discussione è quello di presentare la logica che sta alla base della procedura di test di ipotesi frequentista. Il test <span class="math inline">\(z\)</span> chiarisce questa logica esaminando il caso più semplice – un caso che, per motivi che saranno chiariti in seguito, non trova molte applicazioni pratiche. Lo presentiamo qui perché rende trasparente la motivazione frequentista della procedura di test di ipotesi. Gli altri test frequentisti, quelli che si usano nelle applicazioni concrete, sono semplicemente degli sviluppi dell’idea sulla quale si basa il test <span class="math inline">\(z\)</span>. Per cui, se si capisce il test <span class="math inline">\(z\)</span>, si capiscono tutti i test frequentisti.</p>
+<p>Il test <span class="math inline">\(z\)</span> applica la procedura di test di ipotesi statistiche che è stata
+presentata nel capitolo precedente e si pone il problema di verificare
+un’ipotesi a proposito della media della popolazione utilizzando la media campionaria quale statistica test. In precedenza abbiamo discusso un teorema della teoria della probabilità il quale afferma che la media <span class="math inline">\(\bar{X}_n\)</span> di <span class="math inline">\(n\)</span> variabili aleatorie i.i.d., ciascuna distribuita come <span class="math inline">\(\mathcal{N}(\mu, \sigma^2)\)</span>, segue una distribuzione normale con parametri <span class="math inline">\(\mu_{\bar{X}_n} = \mu\)</span> e <span class="math inline">\(\sigma^2_{\,\bar{X}_n} = \sigma^2 / n\)</span>. Questo significa che, conoscendo i parametri (media e deviazione standard) della popolazione
+di origine, è possibile specificare completamente la distribuzione
+campionaria di <span class="math inline">\(\bar{X}_n\)</span>.</p>
+<p>Ovviamente il valore dei parametri è ignoto, ma è qui che interviene la procedura di test di ipotesi. In base all’approccio NHST, la distribuzione campionaria della statistica test viene costruita <em>assumendo come vera</em> l’ipotesi nulla. Il test <span class="math inline">\(z\)</span> – e
+lo stesso approccio viene seguito per tutti gli altri test di stampo
+frequentista – determina la distribuzione campionaria della statistica
+test (per esempio, la media del campione quale stimatore della media
+della popolazione) ipotizzando che il campione osservato provenga da una
+popolazione in cui l’ipotesi nulla è vera. La domanda di come determinare i valori dei parametri incogniti della popolazione trova quindi una facile risposta: il valore di tali parametri è fornito da <span class="math inline">\(H_0\)</span>!</p>
+<div id="un-test-bilaterale" class="section level3" number="17.1.1">
+<h3>
+<span class="header-section-number">17.1.1</span> Un test bilaterale<a class="anchor" aria-label="anchor" href="#un-test-bilaterale"><i class="fas fa-link"></i></a>
+</h3>
+<p>Per vedere come come si esegue il test <span class="math inline">\(z\)</span>, consideriamo il seguente
+esempio. I valori antropometrici medi della popolazione italiana adulta
+sono stati descritti, per esempio, da un’indagine nazionale condotta da
+Briziarelli et al. (1994). Ci concentriamo qui sull’altezza media delle
+donne adulte, la quale risulta essere pari a 162.5 cm tra 18 e 24 anni,
+con una deviazione standard di 12 cm. Sappiamo anche che la variabile
+“altezza” segue la distribuzione normale. Per qualche ragione,
+sospettiamo che, a Firenze, l’altezza media sia diversa da quella a
+livello nazionale e, per gli scopi di questo esempio, crediamo che possa essere o maggiore o minore di quella italiana.</p>
+</div>
+<div id="la-statistica-test" class="section level3" number="17.1.2">
+<h3>
+<span class="header-section-number">17.1.2</span> La statistica test<a class="anchor" aria-label="anchor" href="#la-statistica-test"><i class="fas fa-link"></i></a>
+</h3>
+<p>Per sottoporre a verifica la nostra ipotesi della ricerca, misuriamo l’altezza di 20 donne fiorentine scelte a caso. Supponiamo di avere ottenuto i seguenti risultati:</p>
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">173.53</span>, <span class="fl">175.01</span>, <span class="fl">165.19</span>, <span class="fl">161.06</span>, <span class="fl">173.77</span>, <span class="fl">144.68</span>, <span class="fl">174.06</span>, <span class="fl">163.19</span>, <span class="fl">163.09</span>, <span class="fl">155.47</span>, <span class="fl">165.11</span>, <span class="fl">188.31</span>, <span class="fl">170.95</span>, <span class="fl">172.74</span>, <span class="fl">157.49</span>, <span class="fl">176.30</span>, <span class="fl">155.86</span>, <span class="fl">162.52</span>, <span class="fl">179.95</span>, <span class="fl">170.08</span><span class="op">)</span></code></pre></div>
+<p>Calcoliamo la media del campione:</p>
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] 167.418</span></code></pre></div>
+<p>La media campionaria è un po’ più grande della media della popolazione
+<span class="math inline">\(\mu = 162.5\)</span> e questo suggerisce che, in effetti, le donne fiorentine
+potrebbero avere un altezza superiore alla media nazionale. Tuttavia, un
+campione di ampiezza <span class="math inline">\(n = 20\)</span> è molto piccolo, per cui la diffrenza tra il risultato
+osservato e il valore atteso (<span class="math inline">\(\mu = 162.5\)</span>) potrebbe essere soltano il prodotto del caso. Per verificare l’ipotesi, che l’altezza delle donne fiorentine sia diversa da quella delle altre donne italiane decidiamo di usare <span class="math inline">\(\bar{X}_{n}\)</span> quale statistica test, ovvero quale stima di <span class="math inline">\(\mu\)</span>.</p>
+<p>Per valutare la nostra ipotesi iniziamo ad elencare ciò che sappiamo. Chiamiamo <span class="math inline">\(X\)</span> l’altezza delle donne fiorentine. In primo luogo, sappiamo che la media campionaria è <span class="math inline">\(\bar{X}_{n} = 167.418\)</span>. Se siamo disposti ad assumere che la distribuzione dell’altezza delle donne fiorentine ha la stessa deviazione standard dell’altezza delle altre donne della popolazione italiana, allora possiamo dire che la deviazione standard dell’altezza delle donne fiorentine è <span class="math inline">\(\sigma = 12\)</span>. Inoltre, sappiamo che i valori dell’altezza delle donne fiorentine sono distribuiti in maniera normale dato che, in generale, i valori dell’altezza seguono la legge della distribuzione normale.</p>
+<p>Ora elenchiamo ciò che non sappiamo, ma che vorremmo sapere. La nostra ipotesi riguarda il valore incognito <span class="math inline">\(\mu\)</span>, ovvero la media dell’altezza della popolazione delle donne fiorentine – infatti, abbiamo misurato l’altezza di 20 donne fiorentine, non di tutte le donne fiorentine! La nostra ipotesi è <span class="math inline">\(X \sim \mathcal{N}(\mu \neq 162.5, \sigma = 12)\)</span>, con <span class="math inline">\(\mu\)</span> sconosciuto. Dato che, nella procedura NHST, l’ipotesi del ricercatore definisce “l’ipotesi alternativa” <span class="math inline">\(H_1\)</span>, possiamo scrivere:</p>
+<p><span class="math display">\[
+H_1: X \sim \mathcal{N}(\mu \neq 162.5, \sigma = 12).
+\]</span></p>
+<p>Una volta definita l’ipotesi alternativa risulta specificata anche l’ipotesi nulla, in quanto essa è l’ipotesi opposta e complementare a <span class="math inline">\(H_1\)</span>. Dunque possiamo scrivere:</p>
+<p><span class="math display">\[
+H_0: X \sim \mathcal{N}(\mu = 162.5, \sigma = 12).
+\]</span></p>
+<p>Le ipotesi nulla e alternativa riguardano i parametri della popolazione.
+In questo particolare esempio, il paraemtro <span class="math inline">\(\mu\)</span> (la media dell’altezza delle donne
+fiorentine) è incognito ma <span class="math inline">\(\sigma\)</span> è noto (in quanto abbiamo assunto che
+l’altezza delle donne fiorentine e l’altezza delle donne italiane sono
+due Normali con la stessa deviazione standard ma con medie diverse). Per
+stimare <span class="math inline">\(\mu\)</span> dobbiamo usare una qualche statistica test, e la statistica
+ovvia a questo riguardo è semplicemente la media del campione <span class="math inline">\(\bar{X}\)</span>. Decidiamo dunque di usare <span class="math inline">\(\bar{X}\)</span> quale statistica test. Quello che dobbiamo ancora stabilire sono le caratteristiche della distribuzione campionaria di <span class="math inline">\(\bar{X}\)</span> nel caso di campioni di ampiezza <span class="math inline">\(n=20\)</span>.</p>
+</div>
+<div id="la-distribuzione-campionaria-della-statistica-test" class="section level3" number="17.1.3">
+<h3>
+<span class="header-section-number">17.1.3</span> La distribuzione campionaria della statistica test<a class="anchor" aria-label="anchor" href="#la-distribuzione-campionaria-della-statistica-test"><i class="fas fa-link"></i></a>
+</h3>
+<p>In base all’approccio NHST, la distribuzione campionaria della statistica test viene determinata assumendo come vera l’ipotesi nulla. Nel caso del nostro esempio, l’ipotesi nulla afferma che <span class="math inline">\(X \sim \mathcal{N}(\mu = 162.5, \sigma = 12)\)</span>. Sotto <span class="math inline">\(H_0\)</span>, dunque, la distribuzione campionaria della media di campioni di ampiezza <span class="math inline">\(n=20\)</span> è:</p>
+<p><span class="math display">\[
+\bar{X} \sim \mathcal{N}\left(\mu_{\bar{X}} = \mu = 162.5, \sigma_{\bar{X}} = \frac{\sigma}{\sqrt{n}} = \frac{12}{\sqrt{20}}\right).
+\]</span></p>
+<p>Si noti che è l’ipotesi nulla a specificare la media <span class="math inline">\(\mu\)</span> e la deviazione standard <span class="math inline">\(\sigma\)</span> della popolazione da cui vengono estatti i campioni che formano la distribuzione campionaria di <span class="math inline">\(\bar{X}\)</span>. Per questa ragione diciamo che la distribuzione campionaria della statistica test, <span class="math inline">\(f(\bar{X} \mid H_0)\)</span>, è stata generata assumendo vera l’ipotesi nulla.</p>
+</div>
+<div id="la-decisione" class="section level3" number="17.1.4">
+<h3>
+<span class="header-section-number">17.1.4</span> La decisione<a class="anchor" aria-label="anchor" href="#la-decisione"><i class="fas fa-link"></i></a>
+</h3>
+<p>Nel problema che stiamo discutendo l’ipotesi alternativa <span class="math inline">\(H_1\)</span> è bilaterale. Ovvero, possiamo rigettare <span class="math inline">\(H_0\)</span> se troviamo che l’altezza media delle donne fiorentine è molto diverso dal valore postulato da <span class="math inline">\(H_0\)</span>, ovvero <span class="math inline">\(\mu_{\bar{X}} = \mu = 162.5\)</span>. Rifiuteremo <span class="math inline">\(H_0\)</span> se la statistica test <span class="math inline">\(\bar{X}\)</span> si dimostra essere di molto maggiore dell’altezza ipotizzata da <span class="math inline">\(H_0\)</span>, oppure di molto minore dell’altezza ipotizzata da <span class="math inline">\(H_0\)</span>.</p>
+<p>In altre parole, per valutare <span class="math inline">\(H_0\)</span> dobbiamo determinare se la statistica test cade o meno nella regione di rifiuto. È necessario dunque identificare la regione di rifiuto di <span class="math inline">\(H_0\)</span>. Per fare questo dobbiamo prima scegliere <span class="math inline">\(\alpha\)</span>. Seguendo la consuetudine usata in psicologia, poniamo <span class="math inline">\(\alpha = 0.05\)</span>. Dato che il test è bidirezinale, rigettiamo <span class="math inline">\(H_0\)</span> se la statistica test corrisponde ad un valore estremo che cade o nella coda di
+destra di <span class="math inline">\(f(\bar{X} \mid H_0)\)</span> <em>oppure</em> nella coda di sinistra di <span class="math inline">\(f(\bar{X} \mid H_0)\)</span>. La regione di rifiuto di <span class="math inline">\(H_0\)</span> sarà dunque divisa in due parti: metà sarà collocata nella coda di sinistra di <span class="math inline">\(f(\bar{X} \mid H_0)\)</span> e metà nella coda di destra di
+<span class="math inline">\(f(\bar{X} \mid H_0)\)</span>. Quali sono i valori critici che delimitano le due
+regioni di rifiuto di <span class="math inline">\(H_0\)</span>? Per trovarli, dobbiamo calcolare i quantili
+di ordine 0.025 e 0.975 della distribuzione normale di media 162.5 e
+deviazione standard <span class="math inline">\(\frac{12}{\sqrt{20}}\)</span>:</p>
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">162.5</span>, <span class="fl">12</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] 157.2409</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.975</span>, <span class="fl">162.5</span>, <span class="fl">12</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] 167.7591</span></code></pre></div>
+<p>Le due regioni di rifiuto di <span class="math inline">\(H_0\)</span> sono dunque <span class="math inline">\([-\infty, 157.24]\)</span> e <span class="math inline">\([167.76, +\infty]\)</span>, come indicato nella figura <a href="inferenza-sulle-medie.html#fig:regrifiutoaltezzabil">17.1</a>.</p>
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">55</span>, <span class="fl">145</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">162.5</span>, sd <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>
+    fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">162.5</span>, sd <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,
+    geom <span class="op">=</span> <span class="st">"area"</span>,
+    fill <span class="op">=</span> <span class="st">"steelblue"</span>,
+    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">162.5</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>
+    fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">162.5</span>, sd <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,
+    geom <span class="op">=</span> <span class="st">"area"</span>,
+    fill <span class="op">=</span> <span class="st">"steelblue"</span>,
+    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.975</span>, <span class="fl">162.5</span>, <span class="fl">12</span><span class="op">)</span>, <span class="fl">200</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">162.5</span><span class="op">-</span><span class="fl">3</span><span class="op">*</span><span class="fl">12</span>, <span class="fl">162.5</span><span class="op">+</span><span class="fl">3</span><span class="op">*</span><span class="fl">12</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    x <span class="op">=</span> <span class="st">"Altezza (cm)"</span>,
+    y <span class="op">=</span> <span class="st">"Densità"</span>
+  <span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span id="fig:regrifiutoaltezzabil"></span>
+<img src="Data-Science-per-psicologi_files/figure-html/regrifiutoaltezzabil-1.png" alt="Distribuzione campionaria delle medie di campioni di ampiezza n = 20 costruita assumendo vera l'ipotesi nulla $X \sim \mathcal{N}(\mu = 162.5, \sigma = 12)$. Le aree ombreggiate indicano le regioni di rifiuto di $H_0$ per un test bilaterale posto $\alpha$ = 0.05." width="90%"><p class="caption">
+Figura 17.1: Distribuzione campionaria delle medie di campioni di ampiezza n = 20 costruita assumendo vera l’ipotesi nulla <span class="math inline">\(X \sim \mathcal{N}(\mu = 162.5, \sigma = 12)\)</span>. Le aree ombreggiate indicano le regioni di rifiuto di <span class="math inline">\(H_0\)</span> per un test bilaterale posto <span class="math inline">\(\alpha\)</span> = 0.05.
+</p>
+</div>
+<p>Il valore osservato della statistica test, ovvero <span class="math inline">\(\bar{X} = 167.418\)</span>, non cade nella regione di rifiuto di <span class="math inline">\(H_0\)</span>. Pertanto, sulla base delle informazioni disponibili, non possiamo rigettare <span class="math inline">\(H_0\)</span>. E questo conclude la descrizione della logica del test <span class="math inline">\(z\)</span>.</p>
+</div>
+<div id="la-statistica-test-z" class="section level3" number="17.1.5">
+<h3>
+<span class="header-section-number">17.1.5</span> La statistica test Z<a class="anchor" aria-label="anchor" href="#la-statistica-test-z"><i class="fas fa-link"></i></a>
+</h3>
+<p>Solitamente, per giungere alla conclusione descritta sopra si procede in modo diverso, ovvero applicando una semplice formula. In tale formula non facciamo altro che standardizzare la media campionaria all’interno della distribuzione campionaria costruita assumendo come vera <span class="math inline">\(H_0\)</span>. In pratica, per eseguire tale standardizzazione sottraiamo dalla media campionaria la media della distribuzione ipotizzata da <span class="math inline">\(H_0\)</span> e
+dividiamo per la deviazione standard ipotizzata da <span class="math inline">\(H_0\)</span>:</p>
+<p><span class="math display" id="eq:testz">\[\begin{equation}
+Z = \frac{\bar{X}_n - \mu_{\bar{X}}}{\sigma_{\bar{X}}} = \frac{\bar{X}_n - \mu_{\bar{X}}}{\frac{\sigma}{\sqrt{n}}}, 
+\tag{17.1}
+\end{equation}\]</span></p>
+<p>ovvero</p>
+<p><span class="math display">\[
+Z = \frac{167.418 - 162.5}{\frac{12}{\sqrt{20}}} = 1.8328.
+\]</span>
+Il valore che abbiamo ottenuto corrisponde alla cosiddetta statistica test <span class="math inline">\(Z\)</span>. Il test <span class="math inline">\(z\)</span> si chiama così proprio perché è basato sulla statistica test <span class="math inline">\(Z\)</span>, e ovviamente <span class="math inline">\(Z\)</span> ha questo nome perché è una variabile aleatoria normale standard di media 0 e varianza 1.</p>
+</div>
+<div id="i-valori-critici" class="section level3" number="17.1.6">
+<h3>
+<span class="header-section-number">17.1.6</span> I valori critici<a class="anchor" aria-label="anchor" href="#i-valori-critici"><i class="fas fa-link"></i></a>
+</h3>
+<p>Quali sono i valori di una normale standard che lasciano in ciascuna delle due code il 2.5% dell’area sottesa alla funzione di densità <span class="math inline">\(f(\bar{X}_{20} \mid H_0)\)</span>? Usando R troviamo</p>
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; [1] -1.959964</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.975</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; [1] 1.959964</span></code></pre></div>
+<p>Risultano così specificate le due regioni di rifiuto <span class="math inline">\([-\infty, -1.96]\)</span>
+e <span class="math inline">\([1.96, +\infty]\)</span> illustrate nella figura <a href="inferenza-sulle-medie.html#fig:regrifiutoaltezzabil2">17.2</a>.</p>
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>
+    fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
+    geom <span class="op">=</span> <span class="st">"area"</span>,
+    fill <span class="op">=</span> <span class="st">"steelblue"</span>,
+    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>
+    fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
+    geom <span class="op">=</span> <span class="st">"area"</span>,
+    fill <span class="op">=</span> <span class="st">"steelblue"</span>,
+    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.975</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    x <span class="op">=</span> <span class="st">"Altezza (in unità di deviazione standard)"</span>,
+    y <span class="op">=</span> <span class="st">"Densità"</span>
+  <span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span id="fig:regrifiutoaltezzabil2"></span>
+<img src="Data-Science-per-psicologi_files/figure-html/regrifiutoaltezzabil2-1.png" alt="Distribuzione campionaria delle medie di campioni di ampiezza n = 20 costruita assumendo vera l'ipotesi nulla $X \sim \mathcal{N}(\mu = 0, \sigma = 1)$. Le aree ombreggiate indicano le regioni di rifiuto di $H_0$ per un test bilaterale posto $\alpha$ = 0.05." width="90%"><p class="caption">
+Figura 17.2: Distribuzione campionaria delle medie di campioni di ampiezza n = 20 costruita assumendo vera l’ipotesi nulla <span class="math inline">\(X \sim \mathcal{N}(\mu = 0, \sigma = 1)\)</span>. Le aree ombreggiate indicano le regioni di rifiuto di <span class="math inline">\(H_0\)</span> per un test bilaterale posto <span class="math inline">\(\alpha\)</span> = 0.05.
+</p>
+</div>
+<p>Non è una sorpresa che, facendo i calcoli in questo secondo modo, giungiamo alla stessa
+conclusione che avevamo trovato in precedenza: la statistica test non cade nella
+regione di rifiuto di <span class="math inline">\(H_0\)</span> e dunque non possiamo rifiutare l’ipotesi
+che i dati campionari provengano dalla popolazione specificata da <span class="math inline">\(H_0\)</span>,
+ovvero <span class="math inline">\(\mathcal{N}(\mu = 162.5, \sigma = 12)\)</span>.</p>
+</div>
+<div id="il-valore-p" class="section level3" number="17.1.7">
+<h3>
+<span class="header-section-number">17.1.7</span> Il valore-p<a class="anchor" aria-label="anchor" href="#il-valore-p"><i class="fas fa-link"></i></a>
+</h3>
+<p>Introduciamo ora un altro concetto centrale dell’inferenza frequentista: quello del valore-<span class="math inline">\(p\)</span>. Il valore-<span class="math inline">\(p\)</span> viene usato per il test dell’ipotesi nulla in base alla regola seguente: se il valore-<span class="math inline">\(p\)</span> è minore di <span class="math inline">\(\alpha\)</span>, allora rigettiamo <span class="math inline">\(H_0\)</span>. Ottenere un valore-<span class="math inline">\(p\)</span> minore di <span class="math inline">\(\alpha\)</span>, infatti, significa osservare una media campionaria molto distante dal valore ipotizzato dall’ipotesi nulla.</p>
+<p>Nelle parole di Neyman,</p>
+<blockquote>
+<p>il valore-<span class="math inline">\(p\)</span> è la probabilità di osservare un valore della statistica test uguale o più estremo di quello osservato qualora sia vera <span class="math inline">\(H_0\)</span>.</p>
+</blockquote>
+<p>Detto in un altro modo: se il mondo avesse le caratteristiche specificate da <span class="math inline">\(H_0\)</span>, il valore-<span class="math inline">\(p\)</span> descriverebbe la probabilità di osservare un campione che una media uguale a quella del campione osservato, o una media ancora più lontana da quella specificata da <span class="math inline">\(H_0\)</span>. Si noti il carattere ipotetico di questa affermazione: “se il mondo avesse le caratteristiche specificate da <span class="math inline">\(H_0\)</span>.”</p>
+<p>Per trovare il valore-<span class="math inline">\(p\)</span>, iniziamo a calcolare l’area sottesa alla funzione di densità <span class="math inline">\(f(\bar{X}_{20} \mid H_0)\)</span> nell’intervallo <span class="math inline">\([162.5, \infty]\)</span>:</p>
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">1.8328</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.03341616</span></code></pre></div>
+<p>Questo però non è il valore-<span class="math inline">\(p\)</span> per un test bidirezionale. Infatti, in un test bidirezionale noi rigettiamo <span class="math inline">\(H_0\)</span> sia quando troviamo valori estremi nella coda di destra di <span class="math inline">\(f(\bar{X} \mid H_0)\)</span> sia quando troviamo valori estremi nella coda di <em>sinistra</em> di <span class="math inline">\(f(\bar{X}_{20} \mid H_0)\)</span>. Dunque, dobbiamo calcolare il valore-<span class="math inline">\(p\)</span>
+utilizzando il <em>valore assoluto</em> della statistica test, ovvero sommando
+le aree sottese a <span class="math inline">\(f(\bar{X}_{20} \mid H_0)\)</span> negli intervalli
+<span class="math inline">\([-\infty, \mathcal{G}_n]\)</span> e <span class="math inline">\([\mathcal{G}_n, +\infty]\)</span>:</p>
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">1.8328</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1.8328</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.06683232</span></code></pre></div>
+<p>Dato che il valore-<span class="math inline">\(p\)</span> trovato nel test è maggiore di <span class="math inline">\(\alpha = 0.05\)</span>,
+non rigettiamo l’ipotesi nulla. Ovviamente, giungiamo alla stessa
+conclusione sia confrontando la statistica test <span class="math inline">\(\mathcal{G}_n\)</span> con il
+valore critico, sia confrontando il valore-<span class="math inline">\(p\)</span> con <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+<div id="il-test-unilaterale" class="section level3" number="17.1.8">
+<h3>
+<span class="header-section-number">17.1.8</span> Il test unilaterale<a class="anchor" aria-label="anchor" href="#il-test-unilaterale"><i class="fas fa-link"></i></a>
+</h3>
+<p>Proseguiamo la discussione considerando ora il caso di un test monodirezionale. Un tale test risulta appropriato quando l’ipotesi alternativa ha la forma</p>
+<p><span class="math display">\[
+H_1: X \sim \mathcal{N}(\mu &gt; 162.5, \sigma = 12),
+\]</span></p>
+<p>per cui, di conseguenza, <span class="math inline">\(H_0\)</span> è:</p>
+<p><span class="math display">\[
+H_0: X \sim \mathcal{N}(\mu \leq 162.5, \sigma = 12).
+\]</span></p>
+<p>Come specificata sopra, l’ipotesi alternativa corrisponde all’ipotesi della ricerca secondo la quale le donne fiorentine, in media, sono più alte delle donne italiane.</p>
+<p>Anche nel caso di un test unilaterale, è necessario usare la statistica test
+<span class="math inline">\(Z\)</span> = 162.5. Ciò che è diverso rispetto al caso di un test bilaterale è dove viene collocata la regione di rifiuto <span class="math inline">\(\mathcal{R}\)</span> di <span class="math inline">\(H_0\)</span>. Se l’ipotesi della ricerca è che le donne fiorentine, in media, sono più alte delle donne italiane, è chiaro che evidenze contrarie all’ipotesi nulla vengono fornite quando la media campionaria assume
+valori molto <em>superiori</em> al valore del parametro specificato da <span class="math inline">\(H_0\)</span>,
+la quale afferma che l’altezza media delle donne fiorentine è uguale a
+quella delle donne italiane, o addirittura inferiore. Nel caso del test
+unidirezionale specificato sopra, quindi, la regione di rifiuto
+<span class="math inline">\(\mathcal{R}\)</span> sarà collocata sulla sola coda destra della densità
+<span class="math inline">\(f(\bar{X}_{n} \mid H_0)\)</span> – si veda la figura <a href="inferenza-sulle-medie.html#fig:regrifiutoaltezzabil3">17.3</a>.</p>
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>
+    fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
+    geom <span class="op">=</span> <span class="st">"area"</span>,
+    fill <span class="op">=</span> <span class="st">"steelblue"</span>,
+    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.95</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    x <span class="op">=</span> <span class="st">"Altezza (in unità di deviazione standard)"</span>,
+    y <span class="op">=</span> <span class="st">"Densità"</span>
+  <span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span id="fig:regrifiutoaltezzabil3"></span>
+<img src="Data-Science-per-psicologi_files/figure-html/regrifiutoaltezzabil3-1.png" alt="Distribuzione campionaria delle medie di campioni di ampiezza n = 20 costruita assumendo vera l'ipotesi nulla $X \sim \mathcal{N}(\mu = 0, \sigma = 1)$. L'area ombreggiata indica la regione di rifiuto di $H_0$ per un test unilaterale destro posto $\alpha$ = 0.05." width="90%"><p class="caption">
+Figura 17.3: Distribuzione campionaria delle medie di campioni di ampiezza n = 20 costruita assumendo vera l’ipotesi nulla <span class="math inline">\(X \sim \mathcal{N}(\mu = 0, \sigma = 1)\)</span>. L’area ombreggiata indica la regione di rifiuto di <span class="math inline">\(H_0\)</span> per un test unilaterale destro posto <span class="math inline">\(\alpha\)</span> = 0.05.
+</p>
+</div>
+<p>In generale, in un test unidirezionale il valore-<span class="math inline">\(p\)</span> corrisponde
+all’area sottesa alla funzione di densità <span class="math inline">\(f(\mathcal{G}_{n} \mid H_0)\)</span>
+nell’intervallo <span class="math inline">\([\mathcal{G}_n, +\infty]\)</span>, se l’ipotesi nulla ha la
+forma <span class="math inline">\(H_0: \mu \leq \mu_0\)</span>, oppure nell’intervallo
+<span class="math inline">\([-\infty, \mathcal{G}_n]\)</span>, se l’ipotesi nulla ha la forma
+<span class="math inline">\(H_0: \mu \geq \mu_0\)</span>. A differenza del caso bidirezionale, dunque,
+tutta la regione di rifiuto <span class="math inline">\(\mathcal{R}\)</span> è collocata su una sola coda
+della distribuzione campionaria della statistica test
+<span class="math inline">\(f(\bar{X}_{n} \mid H_0)\)</span>.</p>
+<p>Nel caso dell’esempio che stiamo discutendo, <span class="math inline">\(Z = 1.8328\)</span> e, dunque,
+cade nella regione di rifiuto di <span class="math inline">\(H_0\)</span> per un test unilaterale
+superiore. Possiamo dunque rigettare <span class="math inline">\(H_0\)</span> e concludere che il campione
+esaminato fornisce evidenza che le donne fiorentine tendono ad essere
+più alte della media nazionale.</p>
+<p>Ma perché possiamo rifiutare <span class="math inline">\(H_0\)</span> nel caso di un test unidirezionale ma
+non possiamo farlo quando usiamo un test bidirezionale? Perché il test
+di ipotesi risulta più conservativo quando il test è bidirezionale.
+Questo ha senso. L’ipotesi della ricerca è molto vaga: dice
+semplicemente che succederà qualcosa di diverso dal caso di non
+interesse, ma non sa dire cosa. Di conseguenza, l’ipotesi nulla può
+essere rigettata solo quando osserviamo un risultato campionario
+veramente estremo. D’altra parte, invece, bastano evidenze “più deboli”
+per rigettare <span class="math inline">\(H_0\)</span> quando sappiamo dove guardare, quando possiamo fare
+delle predizioni su quello che succederà. La procedura di test di
+ipotesi, quindi, ci incoraggia ad essere precisi, ad avere la capacità
+di fare delle predizioni direzionali, piuttosto di chiederci
+semplicemente se è possibile osservare qualcosa, qualunque cosa, di
+diverso dall’evento di non interesse specificato da <span class="math inline">\(H_0\)</span>.</p>
+</div>
+</div>
+<div id="test-direzionali-e-non-direzionali" class="section level2" number="17.2">
+<h2>
+<span class="header-section-number">17.2</span> Test direzionali e non direzionali<a class="anchor" aria-label="anchor" href="#test-direzionali-e-non-direzionali"><i class="fas fa-link"></i></a>
+</h2>
+<p>Riassumendo, un test d’ipotesi può essere bidirezionale, unidirezionale
+superiore e unidirezionale inferiore.</p>
+<div id="test-bidirezionale" class="section level4" number="17.2.0.1">
+<h4>
+<span class="header-section-number">17.2.0.1</span> Test bidirezionale<a class="anchor" aria-label="anchor" href="#test-bidirezionale"><i class="fas fa-link"></i></a>
+</h4>
+<p>Per un’ipotesi nulla <span class="math display">\[H_0: \mu = \mu_0\]</span> nel caso di un test bidirezionale la regione di non rifiuto <span class="math inline">\(\mathcal{A}\)</span> di <span class="math inline">\(H_0\)</span> è</p>
+<p><span class="math display">\[
+\mathcal{A}: \quad \mu_0 - \frac{\sigma}{\sqrt{n}}z_{1-\alpha/2} \leq \mu_n \leq \mu_0 + \frac{\sigma}{\sqrt{n}}z_{1-\alpha/2},
+\]</span></p>
+<p>dove <span class="math inline">\(\mu_n\)</span> è la realizzazione della statistica test, ovvero la media campionaria, <span class="math inline">\(n\)</span> è l’ampiezza del campione e <span class="math inline">\(z_{1-\alpha/2}\)</span> è il quantile di ordine <span class="math inline">\(1-\alpha/2\)</span> per la variabile standardizzata</p>
+<p><span class="math display">\[
+Z_n = \frac{\mu_n - \mu_0}{\sigma/\sqrt{n}}.\notag
+\]</span></p>
+</div>
+<div id="test-unidirezionale-superiore" class="section level4" number="17.2.0.2">
+<h4>
+<span class="header-section-number">17.2.0.2</span> Test unidirezionale superiore<a class="anchor" aria-label="anchor" href="#test-unidirezionale-superiore"><i class="fas fa-link"></i></a>
+</h4>
+<p>La regione di non rifiuto di <span class="math inline">\(H_0: \mu \leq \mu_0\)</span>, con <span class="math inline">\(H_1: \mu &gt; \mu_0\)</span>, è l’intervallo aperto a sinistra:</p>
+<p><span class="math display">\[
+\mathcal{A}: \quad -\infty &lt; \mu_n \leq \mu_0 + \frac{\sigma}{\sqrt{n}}z_{1-\alpha},
+\]</span></p>
+<p>dove <span class="math inline">\(z_{1-\alpha}\)</span> è il quantile di ordine <span class="math inline">\(1-\alpha\)</span> della normale
+standard.</p>
+</div>
+<div id="test-unidirezionale-inferiore" class="section level4" number="17.2.0.3">
+<h4>
+<span class="header-section-number">17.2.0.3</span> Test unidirezionale inferiore<a class="anchor" aria-label="anchor" href="#test-unidirezionale-inferiore"><i class="fas fa-link"></i></a>
+</h4>
+<p>La regione di non rifiuto di <span class="math inline">\(H_0: \mu \geq \mu_0\)</span>, con <span class="math inline">\(H_1: \mu &lt; \mu_0\)</span>, è l’intervallo aperto a destra:</p>
+<p><span class="math display">\[
+\mathcal{A}: \quad \mu_0 - \frac{\sigma}{\sqrt{n}}z_{1-\alpha} \leq \mu_n &lt; +\infty,
+\]</span>
+dove <span class="math inline">\(z_{1-\alpha}\)</span> è il quantile di ordine <span class="math inline">\(1-\alpha\)</span> della normale standard.</p>
+</div>
+<div id="eseguire-il-test-z-con-r" class="section level3" number="17.2.1">
+<h3>
+<span class="header-section-number">17.2.1</span> Eseguire il test Z con R<a class="anchor" aria-label="anchor" href="#eseguire-il-test-z-con-r"><i class="fas fa-link"></i></a>
+</h3>
+<p>Come abbiamo detto in precedenza, nella pratica concreta dell’analisi dei dati il test <span class="math inline">\(Z\)</span> non viene quasi mai usato. Il suo uso è talmente raro che in R non c’è neppure una funzione che lo implementa. Vediamo comunque come svolgere i calcoli con R. Se i dati siano contenuti nel vettore <code>x</code>, non dobbiamo fare altro che calcolare il valore standardizzato della media campionaria assumendo come vera l’ipotesi nulla:</p>
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mu_0</span> <span class="op">&lt;-</span> <span class="fl">162.5</span>
+<span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fl">12</span>
+<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">20</span>
+<span class="va">z</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">-</span> <span class="va">mu_0</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">sigma</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span>
+<span class="va">z</span>
+<span class="co">#&gt; [1] 1.83283</span></code></pre></div>
+<p>Dato che il valore-<span class="math inline">\(p\)</span></p>
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="va">z</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.0334139</span></code></pre></div>
+<p>è minore di <span class="math inline">\(\alpha = 0.05\)</span>, rifiutiamo <span class="math inline">\(H_0\)</span>. Riportiamo il risultato nel modo seguente.</p>
+<blockquote>
+<p>Avendo osservato una media campionaria pari a 167.418 cm in un campione casuale di ampiezza <span class="math inline">\(n=20\)</span>, assumendo che la deviazione standard della popolazione sia uguale a 12 cm, possiamo concludere che le donne fiorentine tendono ad avere un’altezza maggiore della media nazionale (<span class="math inline">\(z = 1.8328\)</span>, <span class="math inline">\(n = 20\)</span>, <span class="math inline">\(p = 0.0334\)</span>, test unidirezionale).</p>
+</blockquote>
+</div>
+<div id="assunzioni-del-test-z" class="section level3" number="17.2.2">
+<h3>
+<span class="header-section-number">17.2.2</span> Assunzioni del test Z<a class="anchor" aria-label="anchor" href="#assunzioni-del-test-z"><i class="fas fa-link"></i></a>
+</h3>
+<p>Tutti i test statistici fanno delle assunzioni a proposito delle
+caratteristiche della popolazione da cui sono stati tratti i dati.
+Alcuni test fanno delle assunzioni ragionevoli, mentre altri test no. Il
+test <span class="math inline">\(z\)</span> che abbiamo appena descritto è basato sulle seguenti ipotesi:</p>
+<ol style="list-style-type: decimal">
+<li><p><em>Normalità</em>. Il test <span class="math inline">\(z\)</span> presuppone che la vera distribuzione della
+popolazione sia normale. Tale ipotesi è spesso soddisfatta e può
+essere verificata.</p></li>
+<li><p><em>Indipendenza</em>. La seconda ipotesi del test è che le osservazioni
+campionarie non sono correlate tra loro, né associate tra loro in
+qualunque modo. Tale assunzione è difficile da valutare con metodi
+statistici: deve invece essere garantita dal disegno sperimentale
+che viene utilizzato per raccogliere i dati. Un caso ovvio nel quale
+tale assunzione viene falsificata è quando i dati riguardano
+osservazioni compiute sugli stessi soggetti in condizioni diverse o
+in tempi diversi. È chiaro in questo caso che ci sarà una
+correlazione tra le osservazioni. Per esempio, se misuriamo i tempi
+di reazione, è ovvio che, se un soggetto tende ad essere più veloce
+della media nella condizione <span class="math inline">\(A\)</span>, tenderà anche ad essere più veloce
+della media nella condizione <span class="math inline">\(B\)</span>. Lo stesso si può dire per un
+soggetto che tende ad essere più lento della media. Pertanto, sapere
+se un soggetto è più veloce della media nella condizione <span class="math inline">\(A\)</span> ci
+consente di fare delle predizioni sul suo comportamento nella
+condizione <span class="math inline">\(B\)</span> – ovvero, i dati sono correlati e l’assunzione di
+indipendenza viene violata. L’assunzione di indipendenza, invece,
+non viene violata quando nelle condizioni <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> dell’esempio
+abbiamo i dati di soggetti diversi. Conoscendo come si sono
+comportanti i soggetti nella condizione <span class="math inline">\(A\)</span> non ci consente di fare
+alcuna predizione su come si comporteranno altri soggetti nella
+condizione <span class="math inline">\(B\)</span> – ovvero, i dati sono indipendenti.</p></li>
+<li><p><em>Deviazione standard nota</em>. La terza ipotesi del test <span class="math inline">\(z\)</span> è che la
+deviazione standard della popolazione sia nota al ricercatore.
+Questa assunzione è irragionevole: ciò non si verifica in nessuna
+applicazione concreta dell’analisi dei dati. In altre parole, questa
+ipotesi è sempre falsa.</p></li>
+</ol>
+<p>Dato che è sempre del tutto fuori luogo assumere che <span class="math inline">\(\sigma\)</span> sia nota,
+poniamoci il problema di cosa fare quando non vogliamo assumere qualcosa
+che è certamente falso. Questo ci conduce al cosiddetto test <span class="math inline">\(t\)</span> di
+Student.</p>
+</div>
+</div>
+<div id="modello-normale-varianza-sconosciuta" class="section level2" number="17.3">
+<h2>
+<span class="header-section-number">17.3</span> Modello Normale: varianza sconosciuta<a class="anchor" aria-label="anchor" href="#modello-normale-varianza-sconosciuta"><i class="fas fa-link"></i></a>
+</h2>
+<p>Se la varianza <span class="math inline">\(\sigma^2\)</span> della popolazione normale non è nota essa deve
+essere stimata con la statistica campionaria corretta <span class="math inline">\(s_n^2\)</span>. Il test
+di ipotesi si esegue valutando se il valore empirico della statistica
+<span class="math display">\[T_n = \frac{(\bar{X}_n -\mu_0)\sqrt{n}}{\hat{s}_n}\]</span> appartiene alla
+regione di accettazione di <span class="math inline">\(H_0\)</span> oppure alla regione di rifiuto
+dell’ipotesi nulla.</p>
+<p>Se il test è bidirezionale, la regione di non rifiuto di <span class="math inline">\(H_0\)</span> è fornita
+dal seguente intervallo:</p>
+<p><span class="math display">\[
+\mathcal{A}: \quad \mu_0 - \frac{s_n}{\sqrt{n}}t_{1-\alpha/2} \leq \mu_n \leq \mu_0 + \frac{s_n}{\sqrt{n}}t_{1-\alpha/2},
+\]</span></p>
+<p>dove <span class="math inline">\(s_n\)</span> è il valore empirico della stima di <span class="math inline">\(\sigma\)</span> e
+<span class="math inline">\(t_{1-\alpha/2}\)</span> è il quantile di ordine <span class="math inline">\(1-\alpha/2\)</span> della
+distribuzione <span class="math inline">\(t\)</span>-Student con <span class="math inline">\(n-1\)</span> gradi di libertà. In modo analogo,
+si ricavano le regioni di non rifiuto per un test unidirezionale
+superiore:</p>
+<p><span class="math display">\[
+\mathcal{A}: \quad -\infty &lt; \mu_n \leq \mu_0 + \frac{s_n}{\sqrt{n}}t_{1-\alpha},
+\]</span>
+oppure unidirezionale inferiore:</p>
+<p><span class="math display">\[
+\mathcal{A}: \quad \mu_0 - \frac{s_n}{\sqrt{n}}t_{1-\alpha} \leq \mu_n &lt; +\infty.
+\]</span></p>
+<p>Se il valore empirico della statistica <span class="math inline">\(T_n\)</span> ricavato dal campione
+ricade in una delle regioni sopra definite l’ipotesi nulla non può
+essere rifiutata.</p>
+<p>Quanto descritto sopra mostra che, quando ci basiamo su una <em>stima</em>
+della deviazione standard della popolazione, dobbiamo fare degli
+aggiustamenti alla procedura che abbiamo adottato in precedenza. Questi
+aggiustamenti furono introdotti nel 1908 da William Sealy Gosset, che
+all’epoca lavorava come chimico per il birrificio della Guinness. Dal
+momento che Guinness non vedeva di buon occhio il fatto che suoi
+dipendenti pubblicassero delle analisi statistiche di ciò che ritenevano
+essere un segreto commerciale, Gosset pubblicò il lavoro sotto lo
+pseudonimo “A Student,” da cui il nome “test <em>t</em> di Student.” Gosset
+capì che la stima di <span class="math inline">\(\sigma\)</span> introduce un ulteriore elemento di
+incertezza nella procedura di test di ipotesi. Di conseguenza, si rese
+conto che non è più possibile usare <span class="math inline">\(\mathcal{N}(0, 1)\)</span> quale funzione
+di densità che descrive <span class="math inline">\(f(\bar{X}_n \mid H_0)\)</span>, ma è invece necessario
+utilizzare una diversa funzione di densità che è, appunto, la <span class="math inline">\(t\)</span> di
+Student.</p>
+<p>In precedenza abbiamo visto che ci sono infinite distribuzioni <span class="math inline">\(t\)</span> di
+Student, ciascuna definita da un diverso numero di gradi di libertà.
+Abbiamo anche visto che la distribuzione <span class="math inline">\(t\)</span>-Student tende alla normale
+standard per <span class="math inline">\(n \rightarrow \infty\)</span>, per cui quando <span class="math inline">\(n\)</span> è
+sufficientemente grande (<span class="math inline">\(n &gt; 30\)</span>), facendo un’approssimazione, i
+quantili <span class="math inline">\(t_{1-\alpha/2}\)</span> e <span class="math inline">\(t_{1-\alpha}\)</span> possono essere sostituiti dai
+corrispondenti quantili <span class="math inline">\(z_{1-\alpha/2}\)</span> e <span class="math inline">\(z_{1-\alpha}\)</span> della normale
+standard.</p>
+<div id="effetto-stroop" class="section level3" number="17.3.1">
+<h3>
+<span class="header-section-number">17.3.1</span> Effetto Stroop<a class="anchor" aria-label="anchor" href="#effetto-stroop"><i class="fas fa-link"></i></a>
+</h3>
+<p>Per fare un esempio concreto, supponiamo che ad un campione di 59 studenti di psicologia sia stato chiesto di completare una variante del compito Stroop che utilizza come stimoli facce espressive e le parole “felice” o “triste” <span class="citation">(<a href="bibliografia.html#ref-caudek2014individual" role="doc-biblioref">Caudek, 2014</a>)</span>. In ogni prova dell’esperimento, i soggetti devono classificare l’immagine di un
+volto (sorridente o triste) nelle due categorie “volto felice” o “volto
+triste,” ignorando la parola sovrapposta all’immagine. La parola
+irrilevante per il compito poteva essere compatibile con l’espressione
+del volto (es., volto felice e parola “felice”: condizione congruente) o
+incompatibile con essa (es., volto felice e parola “triste”: condizione
+incongruente). L’effetto Stroop consiste nel ritardo di elaborazione
+dell’espressione del volto che si riflette in un rallentamento dei tempi
+di reazione e nell’aumento degli errori nella condizione incongruente
+rispetto a quella congruente.</p>
+<p>Per ciascun partecipante, su un totale di 180 prove, è stato calcolato
+l’effetto Stroop, ovvero la differenza tra la media dei tempi di
+reazione nella condizione incongruente e nella condizione congruente.
+Valori positivi significano che i tempi di reazione medi nella
+condizione incongruente sono maggiori di quelli nella condizione
+congruente.</p>
+<p>Per i <span class="math inline">\(59\)</span> soggetti dell’esperimento eseguito da <span class="citation"><a href="bibliografia.html#ref-caudek2014individual" role="doc-biblioref">Caudek</a> (<a href="bibliografia.html#ref-caudek2014individual" role="doc-biblioref">2014</a>)</span>, l’effetto Stroop è riportato qui sotto</p>
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">110</span>, <span class="fl">196</span>, <span class="op">-</span><span class="fl">58</span>, <span class="op">-</span><span class="fl">54</span>, <span class="op">-</span><span class="fl">162</span>, <span class="fl">11</span>, <span class="fl">6</span>, <span class="op">-</span><span class="fl">25</span>, <span class="fl">27</span>, <span class="fl">81</span>, <span class="op">-</span><span class="fl">40</span>, <span class="op">-</span><span class="fl">91</span>, <span class="op">-</span><span class="fl">40</span>, <span class="fl">39</span>, <span class="fl">23</span>, <span class="op">-</span><span class="fl">32</span>, <span class="fl">157</span>,  <span class="fl">72</span>, <span class="fl">89</span>, <span class="fl">9</span>, <span class="fl">60</span>, <span class="fl">239</span>, <span class="fl">139</span>, <span class="fl">8</span>, <span class="op">-</span><span class="fl">65</span>, <span class="fl">11</span>, <span class="fl">18</span>, <span class="fl">51</span>, <span class="fl">53</span>, <span class="fl">74</span>, <span class="fl">105</span>, <span class="fl">245</span>, <span class="op">-</span><span class="fl">16</span>, <span class="op">-</span><span class="fl">69</span>, <span class="fl">1</span>, <span class="op">-</span><span class="fl">11</span>, <span class="fl">65</span>, <span class="op">-</span><span class="fl">10</span>, <span class="fl">118</span>, <span class="op">-</span><span class="fl">62</span>, <span class="fl">48</span>, <span class="op">-</span><span class="fl">78</span>, <span class="fl">96</span>, <span class="op">-</span><span class="fl">122</span>, <span class="fl">7</span>, <span class="fl">83</span>, <span class="op">-</span><span class="fl">60</span>, <span class="fl">57</span>, <span class="fl">111</span>, <span class="op">-</span><span class="fl">11</span>, <span class="fl">34</span>, <span class="fl">27</span>, <span class="fl">84</span>, <span class="fl">240</span>, <span class="op">-</span><span class="fl">67</span>, <span class="fl">111</span>, <span class="fl">92</span>, <span class="op">-</span><span class="fl">93</span>, <span class="fl">13</span><span class="op">)</span></code></pre></div>
+<p>e vale, in media</p>
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] 27.52542</span></code></pre></div>
+<p>con una deviazione standard pari a</p>
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] 88.2878</span></code></pre></div>
+<p>L’ipotesi nulla è che la prestazione non subisca un effetto di
+interferenza da parte della parola irrilevante, ovvero che la media
+dell’effetto Stroop sia 0, <span class="math inline">\(H_0: \mu = 0\)</span>. In base all’ipotesi alternativa, invece,
+la media dell’effetto Stroop è diversa da 0, <span class="math inline">\(H_1: \mu \neq 0\)</span>.</p>
+<p>Poniamoci il problema di svolgere il test <span class="math inline">\(t\)</span> di Student per questi dati.</p>
+<p>Per calcolare il valore <span class="math inline">\(T\)</span> del test <span class="math inline">\(t\)</span> di Student dobbiamo
+standardizzare la media campionaria, ovvero dobbiamo specificare la
+posizione della statistica test all’interno della sua distribuzione
+avendo assunto come vera l’ipotesi nulla, ovvero avendo assunto che la
+media della popolazione sia <span class="math inline">\(0\)</span>. La statistica test dunque si ottiene
+dividendo la media campionaria per una stima dell’errore standard della
+media:</p>
+<p><span class="math display">\[
+T = \frac{\bar{X} - \mu}{\frac{s}{\sqrt{n}}} = \frac{27.52542 - 0}{\frac{88.2878}{\sqrt{59}}} = 2.394745.
+\]</span></p>
+<p>In R il calcolo si svolge nel modo seguente:</p>
+<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="cn">T</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="cn">T</span>
+<span class="co">#&gt; [1] 2.394745</span></code></pre></div>
+<p>Si noti che, nel test <span class="math inline">\(z\)</span> l’errore standard era dato da <span class="math inline">\(\sigma/\sqrt{n}\)</span>; nel test <span class="math inline">\(t\)</span> di Student, invece, non conoscendo <span class="math inline">\(\sigma\)</span>, otteniamo una stima dell’errore standard mediante il rapporto <span class="math inline">\(\hat{\sigma}/\sqrt{n} = s_n/\sqrt{n}\)</span>, dove <span class="math inline">\(s_n\)</span> è la stima corretta della deviazione standard della popolazione.</p>
+<p>Nel caso presente, per trovare il valore-<span class="math inline">\(p\)</span> è necessario calcolare
+l’area sottesa alla densità <span class="math inline">\(t_{59-1}\)</span> negli intervalli <span class="math inline">\([-\infty, -T]\)</span>
+e <span class="math inline">\([T, \infty]\)</span>, ovvero nel caso di valori della statistica <span class="math inline">\(T\)</span> maggiori
+in valore assoluto al valore osservato. Usando R otteniamo</p>
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="cn">T</span>, <span class="fl">59</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> 
+<span class="co">#&gt; [1] 0.01988317</span></code></pre></div>
+<p>Posto <span class="math inline">\(\alpha = 0.05\)</span>, i limiti della regione di rifiuto nel caso di un
+test bidirezionale sono dati dai quantili della distribuzione <span class="math inline">\(t\)</span> di
+Student con <span class="math inline">\(n-1\)</span> gradi di libertà a cui è associata una probabilità
+pari a 0.025 in ciascuna coda. Mediante</p>
+<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0.975</span><span class="op">)</span>, <span class="fl">59</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; [1] -2.001717  2.001717</span></code></pre></div>
+<p>si trovano i valori critici di <span class="math inline">\(-2.00\)</span> e <span class="math inline">\(2.00\)</span>. Tutti i valori della
+statistica <span class="math inline">\(T\)</span> minori di <span class="math inline">\(-2.00\)</span> o maggiori di <span class="math inline">\(2.00\)</span> portano dunque al
+rifiuto di <span class="math inline">\(H_0\)</span>.</p>
+<p>Come abbiamo visto in precedenza, ci sono due modi equivalenti per
+svolgere il test dell’ipotesi: confrontare il valore-<span class="math inline">\(p\)</span> con <span class="math inline">\(\alpha\)</span> o
+stabilire se il valore osservato della statistica <span class="math inline">\(T\)</span> cade nella regione
+di rifiuto di <span class="math inline">\(H_0\)</span>. Nel caso presente, il valore-<span class="math inline">\(p\)</span> è minore di
+<span class="math inline">\(\alpha\)</span> (<span class="math inline">\(0.0199 &lt; 0.05\)</span>) e dunque rifiutiamo <span class="math inline">\(H_0\)</span>. Oppure possiamo
+confrontare il valore della statistica test con i limiti della regione
+di rifiuto dell’ipotesi nulla. La statistica <span class="math inline">\(T = 2.39\)</span> ha un valore
+superiore del valore critico che delimita la regione di rifiuto nella
+coda di destra della distribuzione di <span class="math inline">\(T\)</span>: 2.39 &gt; 2.00. Dato che il
+valore <span class="math inline">\(T\)</span> osservato cade nella regione di rifiuto concludiamo
+rifiutando <span class="math inline">\(H_0\)</span>.</p>
+<p>Calcoliamo anche l’intervallo di confidenza al 95%:</p>
+<p><span class="math display">\[
+\bar{X}_n \pm t^*\frac{s_n}{\sqrt{n}} = 27.52542 \pm \frac{88.2878}{\sqrt{59}} = [4.52, 50.53],
+\]</span></p>
+<p>laddove <span class="math inline">\(t^*\)</span> è il quantile della <span class="math inline">\(t\)</span> di Student con <span class="math inline">\(n-1 = 59-1\)</span> gradi di libertà di ordine <span class="math inline">\(1 - \alpha/2\)</span>, ovvero</p>
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.975</span>, <span class="fl">58</span><span class="op">)</span>
+<span class="co">#&gt; [1] 2.001717</span></code></pre></div>
+<p>Possiamo riportare i risultati nel modo seguente.</p>
+<blockquote>
+<p>L’esperimento ci fornisce evidenze di un effetto di interferenza pari a 27.5 ms, <span class="math inline">\(t_{59} = 2.39\)</span>, <span class="math inline">\(p = 0.0199\)</span>, CI<span class="math inline">\(_{95}\)</span> = [4.52, 50.53].</p>
+</blockquote>
+<p>laddove la notazione <span class="math inline">\(t_{59}\)</span> indica il fatto che abbiamo eseguito un test <span class="math inline">\(t\)</span> di Student con 59 gradi di libertà.</p>
+</div>
+<div id="test-t-di-student-con-r" class="section level3" number="17.3.2">
+<h3>
+<span class="header-section-number">17.3.2</span> Test T di Student con R<a class="anchor" aria-label="anchor" href="#test-t-di-student-con-r"><i class="fas fa-link"></i></a>
+</h3>
+<p>La procedura del test <span class="math inline">\(t\)</span> di Student è quasi identica a quella del test
+<span class="math inline">\(z\)</span>, a parte il fatto che abbiamo usato la stima della deviazione
+standard della popolazione al posto di <span class="math inline">\(\sigma\)</span> e poi abbiamo valutato
+la nostra ipotesi usando la distribuzione <span class="math inline">\(t\)</span> con <span class="math inline">\(n-1\)</span> gradi di libertà
+al posto di <span class="math inline">\(\mathcal{N}(0, 1)\)</span>. Dato che è sempre possibile fare degli
+errori quando svolgiamo dei calcoli tediosi, controlliamo se i risultati
+ottenuti sono corretti. Dopo avere inserito i dati nel vettore <code>x</code>,
+confrontiamo i risultati che abbiamo svolto a mano
+nell’esercizio sull’effetto Stroop con quelli forniti dalla funzione
+<code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> di :</p>
+<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;  One Sample t-test</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; data:  x</span>
+<span class="co">#&gt; t = 2.3947, df = 58, p-value = 0.01988</span>
+<span class="co">#&gt; alternative hypothesis: true mean is not equal to 0</span>
+<span class="co">#&gt; 95 percent confidence interval:</span>
+<span class="co">#&gt;   4.517497 50.533351</span>
+<span class="co">#&gt; sample estimates:</span>
+<span class="co">#&gt; mean of x </span>
+<span class="co">#&gt;  27.52542</span></code></pre></div>
+<p>I risultati sono identici a quelli che abbiamo trovato svolgendo i calcoli “a mano.”</p>
+</div>
+</div>
+<div id="test-unidirezionale" class="section level2" number="17.4">
+<h2>
+<span class="header-section-number">17.4</span> Test unidirezionale<a class="anchor" aria-label="anchor" href="#test-unidirezionale"><i class="fas fa-link"></i></a>
+</h2>
+<p>In realtà, si parla di effetto Stroop solo quando i tempi di reazione
+sono maggiori, in media, nella condizione incongruente rispetto a quella
+congruente. Nel caso presente, dunque, è sensato porre tutta la regione
+di rifiuto nella coda di destra della distribuzione della statistica
+<span class="math inline">\(T\)</span>. Per calcolare il valore-<span class="math inline">\(p\)</span> di un test unidirezionale superiore è
+sufficiente calcolare l’area sottesa alla funzione di densità
+nell’intervallo <span class="math inline">\([T, +\infty]\)</span>. Posto <span class="math inline">\(\alpha = 0.05\)</span>, il valore critico
+della regione di rifiuto, nel caso di un test unidirezionale superiore,
+è dato dal quantile della distribuzione <span class="math inline">\(t\)</span> di Student con <span class="math inline">\(n-1\)</span> gradi
+di libertà a cui è associata una probabilità pari a 0.05 nella coda di
+destra. Utilizzando <code><a href="https://rdrr.io/r/stats/TDist.html">qt(0.95, 59 - 1)</a></code> tale valore risulta essere pari a
+<span class="math inline">\(1.67\)</span>. Tutti i valori della statistica <span class="math inline">\(T\)</span> maggiori di 1.67 portano al
+rifiuto di <span class="math inline">\(H_0\)</span>. È ovvio che, se abbiamo trovato un risultato
+statisticamente significativo con un test bilaterale la stessa
+conclusione sarà ottenuta, a maggior ragione, con un test unilaterale se
+la statistica test cade nella coda appropriata della distribuzione
+campionaria (ovvero, nel caso presente, nella coda di destra). In
+conclusione, il test dell’ipotesi nulla fornisce evidenze coerenti con
+l’idea che i tempi di reazione dei soggetti di questo esperimento
+tendano ad essere più lenti, in media, nella nella condizione
+incongruente rispetto a quella congruente.</p>
+<div id="assunzioni" class="section level3" number="17.4.1">
+<h3>
+<span class="header-section-number">17.4.1</span> Assunzioni<a class="anchor" aria-label="anchor" href="#assunzioni"><i class="fas fa-link"></i></a>
+</h3>
+<p>Dato che il test <span class="math inline">\(t\)</span> di Student per un campione non è altro che il test
+<span class="math inline">\(z\)</span> nel caso in cui <span class="math inline">\(\sigma\)</span> non viene considerata come nota, non
+dovrebbe sorprenderci che le assunzioni del test <span class="math inline">\(t\)</span> di Student siano
+molto simili a quelle del test <span class="math inline">\(z\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li><p><em>Normalità.</em> Assumiamo che la distribuzione della popolazione sia
+normale.</p></li>
+<li><p><em>Indipendenza.</em> Dobbiamo assumere che le osservazioni nel nostro
+campione siano generate indipendentemente le une dalle altre.</p></li>
+</ol>
+<p>Queste due assunzioni sembrano sensate. Di conseguenza, il test <span class="math inline">\(t\)</span> di
+Student per un campione viene ampiamente usato nella pratica corrente
+per svolgere il confronto tra una media campionaria e la media
+ipotizzata di una popolazione.</p>
+</div>
+<div id="popolazione-non-normale" class="section level3" number="17.4.2">
+<h3>
+<span class="header-section-number">17.4.2</span> Popolazione non Normale<a class="anchor" aria-label="anchor" href="#popolazione-non-normale"><i class="fas fa-link"></i></a>
+</h3>
+<p>Abbiamo visto in precedenza che la distribuzione campionaria della media, al crescere di <span class="math inline">\(n\)</span>, è ben approssimata dalla legge normale <span class="math inline">\(\mathcal{N}(\mu, \sigma^2/n)\)</span>, <em>indipendentemente dalla forma della distribuzione della popolazione</em>. Di conseguenza, se <span class="math inline">\(n\)</span> è sufficientemente grande (<span class="math inline">\(n &gt; 30\)</span>) e se <span class="math inline">\(H_0\)</span> è vera, la distribuzione
+delle medie campionarie si può approssimare con una legge normale avente
+media <span class="math inline">\(\mu_0\)</span> e varianza <span class="math inline">\(\sigma^2/n\)</span>, se <span class="math inline">\(\sigma^2\)</span> è nota, oppure
+<span class="math inline">\(\hat{s}_n^2/n\)</span>, se <span class="math inline">\(\sigma^2\)</span> sconosciuta. Pertanto, nel caso di grandi
+campioni, le regioni di accettazione dell’ipotesi nulla sono ancora
+quelle descritte nel presente capitolo, indipendentemente dalla forma
+della distribuzione della popolazione di origine. Nel caso di piccoli
+campioni tratti da una popolazione non normale, invece, non è possibile,
+in generale, procedere al test sul valore medio mediante la procedura qui descritta.</p>
+</div>
+</div>
+<div id="due-gruppi-indipendenti" class="section level2" number="17.5">
+<h2>
+<span class="header-section-number">17.5</span> Due gruppi indipendenti<a class="anchor" aria-label="anchor" href="#due-gruppi-indipendenti"><i class="fas fa-link"></i></a>
+</h2>
+<p>Anche se il <span class="math inline">\(t\)</span> di Student per un singolo campione viene spesso usato,
+non corrisponde al caso più comune di uso del test <span class="math inline">\(t\)</span> di Student. Una
+situazione molto più comune è quella nella quale vengono confrontati due
+gruppi di osservazioni indipendenti. In psicologia, questo corrisponde
+al caso di due gruppi diversi di partecipanti, un gruppo per ciascuna
+condizione sperimentale. Per ogni partecipante allo studio viene
+misurata una variabile di interesse e la domanda della ricerca è se i
+due gruppi provengano o meno da due popolazioni aventi la stessa media.
+In tale situazione viene applicato il test <span class="math inline">\(t\)</span> per campioni
+indipendenti.</p>
+<div id="test-bidirezionale-1" class="section level3" number="17.5.1">
+<h3>
+<span class="header-section-number">17.5.1</span> Test bidirezionale<a class="anchor" aria-label="anchor" href="#test-bidirezionale-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Supponiamo che due popolazioni abbiano distribuzioni normali, con la
+stessa varianza e con medie incognite. Le due popolazioni sono dunque
+distribuite come due variabili aleatorie indipendenti</p>
+<p><span class="math display">\[
+X \sim \mathcal{N}(\mu_1, \sigma^2), \quad Y \sim \mathcal{N}(\mu_2, \sigma^2).
+\]</span>
+Ci chiediamo se ci sono differenze fra le medie di queste due
+popolazioni e procediamo con il test della seguente ipotesi nulla:</p>
+<p><span class="math display">\[
+H_0: \mu_1 - \mu_2 = 0\quad \text{(non ci sono differenze fra le medie)}.
+\]</span>
+L’ipotesi alternativa bidirezionale è</p>
+<p><span class="math display">\[
+H_1: \mu_1  - \mu_2 \neq 0.
+\]</span>
+Avendo osservato i dati di due campioni indipendenti estratti dalle due
+popolazioni, possiamo calcolare la statistica</p>
+<p><span class="math display">\[
+T_n = \frac{(\bar{X} - \bar{Y}) - (\mu_1-\mu_2)}{\sqrt{s_p^2 \big(\frac{1}{n_1} + \frac{1}{n_2}\big) }} \notag
+\]</span>
+che si distribuisce come una variabile aleatoria <span class="math inline">\(t\)</span>-Student con
+<span class="math inline">\(\nu = n_1 + n_2 - 2\)</span> gradi di libertà, dove una stima combinata della
+varianza, <span class="math inline">\(s^2_p\)</span>, si trova come indicato all’interno della radice quadrata al denominatore della formula precedente. Se l’ipotesi nulla è vera, dunque, la
+statistica</p>
+<p><span class="math display">\[
+T_n = \frac{\bar{X} - \bar{Y}}{\sqrt{s_p^2 \big(\frac{1}{n_1} + \frac{1}{n_2}\big) }} \notag
+\]</span>
+si distribuirà come una variabile aleatoria <span class="math inline">\(t\)</span>-Student con <span class="math inline">\(\nu = n_1 + n_2 - 2\)</span> gradi di libertà.</p>
+<p>Fissato il livello <span class="math inline">\(\alpha\)</span>, la regione di non rifiuto dell’ipotesi nulla è data da:</p>
+<p><span class="math display">\[
+\mathcal{A}: \quad -t^{\ast} \cdot s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}} &lt; (\bar{X} - \bar{Y}) &lt; +t^{\ast} \cdot s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}},\notag
+\]</span></p>
+<p>dove <span class="math inline">\(t^{\ast} = t_{\nu, 1-\alpha/2}\)</span> è il quantile di ordine <span class="math inline">\((1-\alpha/2)\)</span> della distribuzione <span class="math inline">\(t\)</span>-Student con <span class="math inline">\(\nu = n_1 + n_2 - 2\)</span> gradi di libertà.</p>
+</div>
+<div id="la-durata-della-gravidanza" class="section level3" number="17.5.2">
+<h3>
+<span class="header-section-number">17.5.2</span> La durata della gravidanza<a class="anchor" aria-label="anchor" href="#la-durata-della-gravidanza"><i class="fas fa-link"></i></a>
+</h3>
+<p>Per fare un esempio, consideriamo uno studio svolto su 1408 donne ospedalizzate (1) per un ricovero ordinario o (2) per un ricovero d’urgenza relativo al parto. La durata della gravidanza (chiamiamola <span class="math inline">\(x\)</span>) è misurata in settimane complete dall’inizio dell’ultimo periodo mestruale. I dati sono riassunti nel modo seguente.</p>
+<ul>
+<li><p>Ricovero ordinario: 775 osservazioni con <span class="math inline">\(\bar{x}_o = 39.08\)</span> e
+<span class="math inline">\(\sigma^2 = 7.77\)</span>.</p></li>
+<li><p>Ricovero d’urgenza: 633 osservazioni con <span class="math inline">\(\bar{x}_u = 39.60\)</span> e
+<span class="math inline">\(\sigma^2 = 4.95\)</span>.</p></li>
+</ul>
+<p>Ci chiediamo se ci sono evidenze sufficienti per concludere che la
+durata della gravidanza sia diversa nel caso di un ricovero ordinario o
+nel caso di un ricovero d’urgenza.</p>
+<p>Se possiamo assumere che i dati provengano da due distribuzioni normali
+aventi uguale varianza, il test <span class="math inline">\(t\)</span> di Student si svolge nel modo
+seguente. Una stima combinata della varianza è data da</p>
+<p><span class="math display">\[
+s^2_p = \frac{774 \cdot 7.77 + 632 \cdot 4.95}{1406} \Big(\frac{1}{775} \frac{1}{633}\Big) = 0.0187.
+\]</span>
+La statistica test è</p>
+<p><span class="math display">\[
+T = \frac{\bar{x}_o - \bar{x}_u}{s_p} = -3.8064.
+\]</span>
+Abbiamo <span class="math inline">\(1,406\)</span> gradi di libertà. Usando R per calcolare il valore-<span class="math inline">\(p\)</span> di un test
+bilaterale otteniamo</p>
+<p><span class="math display">\[
+p = P(|T| &gt; |t|) = \texttt{2 * pt(-3.8064, 1406) = 0.00015}.
+\]</span></p>
+<p>Con <span class="math inline">\(\alpha = 0.05\)</span> possiamo dunque rigettare l’ipotesi nulla di eguaglianza della durata delle gravidanze per i due gruppi di donne.</p>
+</div>
+<div id="test-unidirezionale-1" class="section level3" number="17.5.3">
+<h3>
+<span class="header-section-number">17.5.3</span> Test unidirezionale<a class="anchor" aria-label="anchor" href="#test-unidirezionale-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Se invece siamo interessati a sapere se la media della prima popolazione
+è maggiore di quella della seconda popolazione, per esempio, le ipotesi
+statistiche diventano: <span class="math display">\[\begin{aligned}
+H_0: \mu_1 \leq \mu_2, \quad H_1: \mu_1 &gt; \mu_2. \notag\end{aligned}\]</span>
+Come in precedenza, la statistica test
+<span class="math display">\[T_n = \frac{\bar{X} - \bar{Y}}{\sqrt{s_p^2 \big(\frac{1}{n_1} + \frac{1}{n_2}\big) }} \notag\]</span>
+si distribuisce come una variabile aleatorie <span class="math inline">\(t\)</span>-Student con
+<span class="math inline">\(\nu = n_1 + n_2 - 2\)</span> gradi di libertà. In questo caso, però, fissato il
+livello <span class="math inline">\(\alpha\)</span>, la regione di accettazione del test è data da:
+<span class="math display">\[\mathcal{A}: \quad -\infty &lt; (\bar{X} - \bar{Y}) &lt; +t^{\ast} \cdot s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}},\notag\]</span>
+dove <span class="math inline">\(t^{\ast} = t_{\nu, 1 - \alpha}\)</span> è il quantile di ordine
+<span class="math inline">\((1 - \alpha)\)</span> della distribuzione <span class="math inline">\(t\)</span>-Student con <span class="math inline">\(\nu = n_1 + n_2 - 2\)</span>
+gradi di libertà.</p>
+</div>
+<div id="assunzioni-1" class="section level3" number="17.5.4">
+<h3>
+<span class="header-section-number">17.5.4</span> Assunzioni<a class="anchor" aria-label="anchor" href="#assunzioni-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Il test <span class="math inline">\(t\)</span> per campioni indipendenti si basa sulle seguenti ipotesi.</p>
+<ol style="list-style-type: decimal">
+<li><p><em>Normalità.</em> Come nel caso del test <span class="math inline">\(t\)</span> per un singolo campione,
+anche il test <span class="math inline">\(t\)</span> per campioni indipendenti presume che i dati siano
+normalmente distribuiti. Specificamente, assumiamo che entrambe le
+popolazioni da cui sono tratti i due gruppi siano normalmente
+distribuite. Vedremo in seguito come sia possibile verificare tale
+assunzione.</p></li>
+<li><p><em>Indipendenza.</em> Ancora una volta, si presume che le osservazioni
+siano campionate indipendentemente. Nel contesto del test <span class="math inline">\(t\)</span> per
+campioni indipendenti questa assunzione significa due cose diverse.
+In primo luogo, assumiamo che le osservazioni all’interno di ciascun
+campione siano indipendenti l’una dall’altra (esattamente come ne
+caso di un test <span class="math inline">\(t\)</span> per un singolo campione). In secondo luogo,
+assumiamo anche che non ci siano dipendenze tra i due campioni. Se,
+ad esempio, scopriamo di avere accidentalmente incluso alcuni
+partecipanti in entrambe le condizioni sperimentali dello studio (ad
+esempio, permettendo alla stessa persona di iscriversi a due
+condizioni diverse), allora questo introduce delle dipendenze le
+osservazioni dei due campioni e l’ipotesi di indipendenza viene
+violata.</p></li>
+<li><p><em>Omogeneità della varianza</em> (detta anche “omoscedasticità”). La
+terza ipotesi è che le due popolazioni abbiano la stessa la
+deviazione standard. È possibile verificare questa ipotesi usando il
+test di Levene. Tuttavia, c’è un rimedio più semplice per la
+violazione di questa assunzione, di cui parleremo nella prossima
+sezione.</p></li>
+</ol>
+</div>
+<div id="test-di-welch" class="section level3" number="17.5.5">
+<h3>
+<span class="header-section-number">17.5.5</span> Test di Welch<a class="anchor" aria-label="anchor" href="#test-di-welch"><i class="fas fa-link"></i></a>
+</h3>
+<p>Il problema più grande relativo all’uso del test <span class="math inline">\(t\)</span> di Student per
+campioni indipendenti ha a che fare con la terza ipotesi elencata nella
+sezione precedente: l’ipotesi che entrambe le popolazioni abbiano la
+stessa deviazione standard. Questo accade raramente nella vita reale: se
+due popolazioni non hanno la stessa media, perché dovrebbero avere la
+stessa deviazione standard? Non c’è davvero alcuna ragione per
+aspettarsi che questa ipotesi sia vera. Per superare tale difficoltà,
+Welch (1947) sviluppò una seconda forma del test <span class="math inline">\(t\)</span> di Student per
+campioni indipendenti la quale non richiede l’omogeneità della varianza.</p>
+<p>Il test di Welch è molto simile al test <span class="math inline">\(t\)</span> di Student per campioni
+indipendenti. La statistica test è identica a quella calcolata in
+precedenza</p>
+<p><span class="math display" id="eq:twelch">\[\begin{equation}
+T_n = \frac{\bar{X} - \bar{Y}}{\hat{\sigma}_{\bar{X} - \bar{Y}}}
+\tag{17.2}
+\end{equation}\]</span></p>
+<p>ovvero, è data dal rapporto tra la differenza tra le medie campionarie e l’errore standard di tale differenza. Ciò che distingue il test di Welch dalla procedura descritta in precedenza è il modo di calcolare l’errore standard della differenza tra due medie. Nel test di Welch, l’errore standard viene stimato nel modo seguente:</p>
+<p><span class="math display">\[
+\hat{\sigma}_{\bar{X} - \bar{Y}} = \sqrt{\frac{\hat{\sigma}_1^2}{n_1} + \frac{\hat{\sigma}_2^2}{n_2}}.
+\]</span></p>
+<p>La statistica test viene poi valutata utilizzando una correzione dei gradi di liberà fornita dall’equazione di Welch–Satterthwaite:</p>
+<p><span class="math display">\[
+gdl = \frac{
+(\hat{\sigma}_1^2/n_1 + \hat{\sigma}_2^2/n_2)^2
+}{
+(\hat{\sigma}_1^2/n_1)^2/(n_1-1) + (\hat{\sigma}_2^2/n_2)^2/(n_2-1)
+}.
+\]</span>
+Vediamo ora in un caso concreto come applicare il test di Welch.</p>
+<p>Consideriamo il seguente estratto dell’articolo di Mehr et al. (2014):</p>
+<blockquote>
+<p>The infants’ degree of song exposure was comparable across the two experiments: The estimated total number of song performances was similar in Experiment 1 (<span class="math inline">\(M\)</span> = 76.3, <span class="math inline">\(SD\)</span> = 56.2) and Experiment 2 (<span class="math inline">\(M\)</span> = 81.8, <span class="math inline">\(SD\)</span> = 50.5), <span class="math inline">\(t_{61.3}\)</span> = 0.41, <span class="math inline">\(p\)</span> = .68 (Satterthwaite’s <span class="math inline">\(t\)</span> test) …</p>
+</blockquote>
+<p>Senza entrare nei dettegli dello studio, poniamoci l’obiettivo di
+replicare l’analisi statistica descritta dagli autori. I dati del primo
+esperimento sono:</p>
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">35.0</span>, <span class="fl">239.0</span>, <span class="fl">102.0</span>, <span class="fl">27.0</span>, <span class="fl">60.0</span>, <span class="fl">126.0</span>, <span class="fl">134.6667</span>, <span class="fl">63.77777</span>, <span class="fl">44.0</span>, <span class="fl">55.0</span>, <span class="fl">88.0</span>, <span class="fl">53.66666</span>, <span class="fl">59.5</span>, <span class="fl">94.0</span>, <span class="fl">54.0</span>, <span class="fl">26.0</span>, <span class="fl">44.0</span>, <span class="fl">23.0</span>, <span class="fl">38.0</span>, <span class="fl">31.0</span>, <span class="fl">78.4</span>, <span class="fl">135.0</span>, <span class="fl">26.0</span>, <span class="fl">120.9091</span>, <span class="fl">13.0</span>, <span class="fl">245.0</span>, <span class="fl">66.5</span>, <span class="fl">63.0</span>, <span class="fl">57.16667</span>, <span class="fl">29.71428</span>, <span class="fl">70.0</span>, <span class="fl">140.0</span><span class="op">)</span></code></pre></div>
+<p>e i dati del secondo experimento sono:</p>
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">43.16666</span>, <span class="fl">63.0</span>, <span class="fl">35.0</span>, <span class="fl">100.8</span>, <span class="fl">69.0</span>, <span class="fl">66.0</span>, <span class="fl">105.0</span>, <span class="fl">270.6667</span>, <span class="fl">62.0</span>, <span class="fl">80.0</span>, <span class="fl">128.0</span>, <span class="fl">104.0</span>, <span class="fl">49.0</span>, <span class="fl">80.0</span>, <span class="fl">51.0</span>, <span class="fl">114.3333</span>, <span class="fl">168.0</span>, <span class="fl">105.0</span>, <span class="fl">37.0</span>, <span class="fl">38.0</span>,  <span class="fl">45.0</span>, <span class="fl">48.0</span>,  <span class="fl">84.0</span>, <span class="fl">99.0</span>,  <span class="fl">38.5</span>, <span class="fl">74.57143</span>, <span class="fl">49.0</span>, <span class="fl">28.0</span>, <span class="fl">64.0</span>, <span class="fl">86.8</span>, <span class="fl">49.0</span>, <span class="fl">182.0</span><span class="op">)</span></code></pre></div>
+<p>Dobbiamo eseguire un test <span class="math inline">\(t\)</span> di Student per campioni indipendenti con il metodo di Welch.</p>
+<p>In questo caso, <span class="math inline">\(n_1=n_2 = 32\)</span>. Abbiamo inoltre che <span class="math inline">\(\bar{X} = 76.32191\)</span>
+e <span class="math inline">\(\bar{Y} = 81.77619\)</span>, con <span class="math inline">\(s_1^2 = 3163.961\)</span> e <span class="math inline">\(s_2^2 = 2554.029\)</span>.
+L’errore standard stimato mediante la procedura di Welch è pari a 13.36739 per cui, utilizzando
+l’equazione del test di Welch otteniamo la statistica <span class="math inline">\(T = -0.4080286\)</span>. I
+gradi di libertà per il test di Welch sono pari a 61.30249 il che ci conduce ad un
+valore-<span class="math inline">\(p\)</span> pari a</p>
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.4080286</span>, <span class="fl">61.30249</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.6846743</span></code></pre></div>
+<p>Questi risultati riproducono perfettamente ciò che è stato riportato da Mehr et al. (2014). I calcoli si possono svolgere utilizzando la funzione <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> di R:</p>
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">x1</span>, <span class="va">x2</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;  Welch Two Sample t-test</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; data:  x1 and x2</span>
+<span class="co">#&gt; t = -0.40803, df = 61.302, p-value = 0.6847</span>
+<span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span>
+<span class="co">#&gt; 95 percent confidence interval:</span>
+<span class="co">#&gt;  -32.18136  21.27281</span>
+<span class="co">#&gt; sample estimates:</span>
+<span class="co">#&gt; mean of x mean of y </span>
+<span class="co">#&gt;  76.32191  81.77619</span></code></pre></div>
+<p>Si noti che R utilizza di default il test di Welch quando sottopone a verifica l’ipotesi nulla dell’eguaglianza di due medie.</p>
+<p>L’intervallo di confidenza al 95% è dato da</p>
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">se</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x1</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x1</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x2</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x2</span><span class="op">)</span><span class="op">)</span>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fl">61.302</span>
+<span class="va">ci</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.975</span>, <span class="va">df</span><span class="op">)</span> <span class="op">*</span> <span class="va">se</span> 
+<span class="va">ci</span>
+<span class="co">#&gt; [1] -32.18137  21.27281</span></code></pre></div>
+<p>il che riproduce il risultato trovato dalla funzione <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>.</p>
+<p>Il messaggio che si può ricavare dalla discussione sul test di Welch è
+che esso dovrebbe sempre essere eseguito al posto del “tradizionale”
+test <span class="math inline">\(t\)</span> di Student (infatti, questa è l’impostazione di default in ).
+Questo perché il test di Welch si comporta meglio del test <span class="math inline">\(t\)</span> di
+Student se le dimensioni e le varianze dei campioni non sono uguali tra
+i gruppi e dà lo stesso risultato del test <span class="math inline">\(t\)</span> di Student quando le
+dimensioni e le varianze del campione sono uguali. Un approccio che
+viene raccomandato nei testi di statistica è di verificare con il test
+di Levene l’ipotesi che le varianze siano uguali tra i gruppi, ma molti
+ricercatori ritengono che sia preferibile utilizzare sempre il test di
+Welch, indipendentemente dai risultati del test di Levene. Infatti, il
+test di Levene ha spesso una bassa potenza – ovvero non è in grado di
+respingere l’ipotesi nulla che le varianze siano uguali anche quando
+esse sono effettivamente diverse – il che rende problematico assumere
+che le varianze siano uguali anche se il risultato del test di Levene è
+nullo.</p>
+</div>
+<div id="assunzioni-del-test-di-welch" class="section level3" number="17.5.6">
+<h3>
+<span class="header-section-number">17.5.6</span> Assunzioni del test di Welch<a class="anchor" aria-label="anchor" href="#assunzioni-del-test-di-welch"><i class="fas fa-link"></i></a>
+</h3>
+<p>Le assunzioni alla base del test di Welch sono simili a quelle del test
+<span class="math inline">\(t\)</span> di Student per campioni indipendenti, ad eccezione del fatto
+che il test di Welch non presuppone l’omogeneità della varianza.
+Rimangono dunque solo l’assunzione di normalità e l’assunzione di
+indipendenza.</p>
+</div>
+</div>
+<div id="test-t-per-dati-appaiati" class="section level2" number="17.6">
+<h2>
+<span class="header-section-number">17.6</span> Test T per dati appaiati<a class="anchor" aria-label="anchor" href="#test-t-per-dati-appaiati"><i class="fas fa-link"></i></a>
+</h2>
+<p>Se consideriamo il test <span class="math inline">\(t\)</span> di Student per campioni indipendenti o il
+test di Welch è evidente che tali test possono essere usati in
+situazioni in cui i due campioni sono, appunto, indipendenti l’uno
+dall’altro. Una tale situazione si presenta, ad esempio, quando i
+partecipanti ad un esperimento vengono assegnati casualmente a una di
+due condizioni sperimentali. Ma ci possono anche essere disegni
+sperimentali con caratteristiche diverse. In particolare, in un disegno
+a misure ripetute ciascun partecipante viene valutato (rispetto alla
+stessa variabile dipendente) in tutte le condizioni sperimentali e, in
+tali circostanze, i due campioni non sono indipendenti. Ad esempio,
+potremmo essere interessati a sapere se ascoltare musica riduce la
+capacità della memoria di lavoro delle persone. A tal fine, potremmo
+misurare la capacità della memoria di lavoro di ciascun soggetto in due
+condizioni: con la musica e senza musica. In un disegno sperimentale di
+questo tipo ciascun partecipante fa parte di ciascuno dei due gruppi che
+vengono esaminati. Non possiamo dunque usare l’approccio descritto in
+precedenza e dobbiamo procedere in un modo diverso, ovvero mediante
+l’uso del test <span class="math inline">\(t\)</span> per dati appaiati</p>
+<p>Nel test <span class="math inline">\(t\)</span> per dati appaiati disponiamo di una coppia ordinata di
+osservazioni per ciascuna u.s. (per esempio, l’osservazione effettuata
+ad un pre-test e ad un post-test, oppure nelle condizioni con la musica
+e senza musica dell’esempio precedente) e diventa così possibile
+calcolare una misura della variazione <span class="math inline">\(D\)</span> della variabile di interesse
+rispetto alle due osservazioni. Avendo un insieme <span class="math inline">\(D_1, \dots, D_n\)</span> di
+variazioni, possiamo calcolarne la media <span class="math inline">\(\bar{D}\)</span> e la deviazione
+standard <span class="math inline">\(s_D\)</span>:</p>
+<p><span class="math display">\[
+\bar{D} = \frac{1}{n} \sum_{i = 1}^n D_i, \quad s_D = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (D_i - \bar{D})^2}.
+\]</span></p>
+<p>L’errore standard per la media delle differenze è dato da</p>
+<p><span class="math display">\[
+s_{\bar{D}} = \frac{s_D}{\sqrt{n}}.
+\]</span></p>
+<p>Se <span class="math inline">\(\delta\)</span> è la variazione media della popolazione, allora la statistica</p>
+<p><span class="math display">\[
+T_n = \frac{\bar{D} - \delta}{s_{\bar{D}}}
+\]</span>
+si distribuisce come una v.a. <span class="math inline">\(t\)</span>-Student con
+<span class="math inline">\(\nu = n - 1\)</span> gradi di libertà, sotto l’ipotesi che il campione (di
+variazioni) provenga da una popolazione distribuita in maniera normale.
+Per il test dell’ipotesi nulla <span class="math inline">\(H_0: \delta = 0\)</span>, si calcola il valore
+<span class="math inline">\(T_n = \bar{D}/s_{\bar{D}}\)</span> e si procede con il confronto con il valore
+critico per <span class="math inline">\(\nu = n - 1\)</span> gradi di libertà, dove <span class="math inline">\(n\)</span> è il numero di
+coppie di osservazioni. Come per tutti i test <span class="math inline">\(t\)</span>, la statistica <span class="math inline">\(T_n\)</span>
+tende a distribuirsi come una <span class="math inline">\(t\)</span>-Student, indipendentemente dalla forma
+della distribuzione della popolazione di origine, se <span class="math inline">\(n\)</span> è
+sufficientemente grande.</p>
+<div id="proporzione-di-maschi-e-femmine" class="section level3" number="17.6.1">
+<h3>
+<span class="header-section-number">17.6.1</span> Proporzione di maschi e femmine<a class="anchor" aria-label="anchor" href="#proporzione-di-maschi-e-femmine"><i class="fas fa-link"></i></a>
+</h3>
+<p>Per fare un esempio, consideriamo i dati forniti dal censimento indiano relativi rapporto numerico tra i due sessi nel 2001 e nel 2011 in 35 stati dell’India (i dati grezzi sono forniti sulla pagina Moodle di Psicometria).</p>
+<p>Al momento della nascita, la percentuale di bambini di sesso
+maschile varia nelle diverse zone del mondo, ma in media nascono 101
+maschi ogni 100 femmine <span class="citation">(<a href="bibliografia.html#ref-orzack2015human" role="doc-biblioref">Orzack et al., 2015</a>)</span>. Nonostante il fatto che
+le donne, in generale, vivano più a lungo degli uomini, ci sono due
+paesi nel mondo che hanno al loro interno un grande squilibrio nel
+rapporto tra i sessi: la Cina ha quasi 50 milioni di uomini in più
+rispetto alle donne e l’India 43 milioni. Lo squilibrio di Cina e
+India è dovuto alle pratiche ampiamente documentate degli aborti
+selettivi sulla base del genere (a causa anche della disponibilità
+di tecniche di diagnosi prenatale a prezzi accessibili) e
+all’infanticidio delle neonate <span class="citation">(<a href="bibliografia.html#ref-miller2001female" role="doc-biblioref">Miller, 2001</a>)</span>.</p>
+<p>Nell’insieme di dati considerato, ogni osservazione corrisponde ad uno stato dell’India. La variabile considerata (<code>child_sex_ratio</code>) è il numero medio di bambine femmine per ogni 1000 bambini maschi – ciò consente di escludere la maggiore longevità delle donne
+(l’età dei bambini non è specificata). Nel 2001, risultano esserci in
+media <span class="math inline">\(934\)</span> bambine rispetto a 1000 bambini maschi e nel 2011 risultano
+<span class="math inline">\(926\)</span> bambine, in media, per ogni 1000 bambini maschi. Per
+ciascuno stato, sottraiamo il numero medio di bambine calcolate rispetto a 1000
+bambini nel 2011 da quello del 2001. Le <span class="math inline">\(35\)</span> differenze così trovate
+hanno una media pari a <span class="math inline">\(-7.66\)</span> con una deviazione standard di <span class="math inline">\(22.92\)</span>.
+La statistica test diventa</p>
+<p><span class="math display">\[
+T = \frac{-7.66 - 0}{22.92/\sqrt{35}} = -1.976.
+\]</span></p>
+<p>Per un test bilaterale, il valore-<span class="math inline">\(p\)</span> è l’area sottesa alla funzione di densità <span class="math inline">\(t\)</span>
+con 34 gradi di libertà negli intervalli <span class="math inline">\([-\infty, T]\)</span> e <span class="math inline">\([T, +\infty]\)</span>
+e risulta essere uguale a <span class="math inline">\(0.056\)</span>. Essendo il valore-<span class="math inline">\(p\)</span> maggiore di
+<span class="math inline">\(\alpha = 0.05\)</span>, non possiamo rigettare l’ipotesi nulla <span class="math inline">\(H_0: \delta = 0\)</span> che la media della popolazione di differenze sia zero (ovvero che nell’arco temporale considerato non vi siano differenze nel rapporto numerico tra i sessi). In conclusione, non ci sono evidenze che nel decennio 2001-2011 la situazione sia migliorata. Addirittura, la
+differenza media è negativa, il che suggerisce il contrario.</p>
+</div>
+</div>
+<div id="conclusioni-7" class="section level2 unnumbered">
+<h2>Conclusioni<a class="anchor" aria-label="anchor" href="#conclusioni-7"><i class="fas fa-link"></i></a>
+</h2>
+<p>Il test <span class="math inline">\(t\)</span> di Student nelle sue varianti rappresenta senza dubbio lo
+strumento statistico di stampo frequentista più ampiamente usato nel
+mondo della ricerca. Abbiamo visto che è basato su assunzioni
+ragionevoli, in molte applicazioni pratiche, e quindi potremmo
+concludere che sia uno strumento utile. Tuttavia, le cose non sono così
+semplici – non lo sono mai. In questo capitolo abbiamo visto come il
+test <span class="math inline">\(t\)</span> di Student viene calcolato, come si giunge ad una decisione
+sulla base della statistica test e del livello di significatività,
+eccetera. Tali considerazioni, però, sono considerazioni di tipo
+statistico, ovvero non riguardano le pratiche del mondo reale, ma
+descrivono solo le proprietà di alcuni teoremi che fanno parte della
+teoria della probabilità. Il test <span class="math inline">\(t\)</span> di Student, però, non è solo una
+procedura astratta, che va valutata per la sua eleganza concettuale, ma
+è invece una procedura che viene usata nella pratica concreta
+dell’attività di ricerca per rispondere a domande che hanno una grande
+rilevanza pratica. Per esempio: la psicoterapia è in grado di ridurre lo
+stato di ansia e depressione? Oppure: l’idrossiclorochina contrasta in
+maniera efficace il Covid-19?</p>
+<p>Qualcuno, ingenuamente, potrebbe pensare che il mondo della ricerca sia
+una torre d’avorio all’interno della quale l’attività dei ricercatori è
+motivata, in primo luogo, e quasi soltanto, dal desiderio di fare
+avanzare le nostre conoscenze. Non è così. La sociologia della scienza
+ci fornisce un’immagina ben diversa di come stanno le cose. Le
+motivazioni dei ricercatori sono ben più prosaiche: l’avanzamento in
+carriera, il potere, il prestigio, il denaro; tutto ciò descrive molto
+meglio le motivazioni dei ricercatori del “desiderio di fare avanzare le
+nostre conoscenze.” Ma cosa c’entra il test <span class="math inline">\(t\)</span> di Student in tutto
+questo? È facile capire che, se lo stipendio dei ricercatori dipende
+dalle loro pubblicazioni, e se si possono pubblicare solo i risultati
+statisticamente significativi, allora i ricercatori faranno tutto quello
+che è in loro potere per ottenere risultati statisticamente
+significativi. Qui non faccio riferimento al problema della frode nel
+mondo scientifico, ma al fatto che è <em>inevitabile</em> che, dopo una lunga e
+onerosa fase di progettazione dello studio e di raccolta dati, i
+ricercatori eseguano il test <span class="math inline">\(t\)</span> di Student <em>più di una volta</em>, per
+confrontare tra loro più di due condizioni e per valutare se <em>da qualche
+parte</em> nei loro dati emerge un risultato statisticamente significativo.
+Nella pratica corrente, però, la consuetudine è quella di <em>non
+riportare</em> il fatto che il test sia stato eseguito più volte, quando
+esso non produce un risultato statisticamente significativo dove avrebbe
+dovuto, in base alle ipotesi iniziali dei ricercatori. Ma, se questo è
+quello che fanno i ricercatori nel mondo reale, dobbiamo chiederci: cosa
+succede in tali circostanze alla probabilità di errore di I tipo? Non
+occorre essere degli statistici per renderci conto che, così facendo, la
+probabilità di errore di I tipo non può rimanere al livello nominale
+<span class="math inline">\(\alpha\)</span>: nella pratica concreta, dunque, la probabilità di falsi
+positivi è ben più alta della famosa soglia del 5%.</p>
+<p>Per concludere, ricordiamoci che la giustificazione ultima
+dell’approccio NHST (di cui il test <span class="math inline">\(t\)</span> di Student è la procedura più
+nota) è proprio quella di mantenere sotto controllo la probabilità di
+errore di I tipo. Ma, alla luce di quanto abbiamo detto sopra, e
+considerando soprattutto le le considerazioni svolte da
+<span class="citation"><a href="bibliografia.html#ref-gelman2014beyond" role="doc-biblioref">Gelman &amp; Carlin</a> (<a href="bibliografia.html#ref-gelman2014beyond" role="doc-biblioref">2014</a>)</span> che esamineremo nel prossimo capitolo, la domanda
+(retorica) che dovrebbe venirci in mente è: l’approccio frequentista
+riesce a mantenere la sua promessa?</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="significativit%C3%A0-statistica.html"><span class="header-section-number">16</span> Significatività statistica</a></div>
+<div class="next"><a href="critiche-e-difese.html"><span class="header-section-number">18</span> Critiche e difese</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#inferenza-sulle-medie"><span class="header-section-number">17</span> Inferenza sulle medie</a></li>
+<li>
+<a class="nav-link" href="#modello-normale-varianza-nota"><span class="header-section-number">17.1</span> Modello Normale: varianza nota</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#un-test-bilaterale"><span class="header-section-number">17.1.1</span> Un test bilaterale</a></li>
+<li><a class="nav-link" href="#la-statistica-test"><span class="header-section-number">17.1.2</span> La statistica test</a></li>
+<li><a class="nav-link" href="#la-distribuzione-campionaria-della-statistica-test"><span class="header-section-number">17.1.3</span> La distribuzione campionaria della statistica test</a></li>
+<li><a class="nav-link" href="#la-decisione"><span class="header-section-number">17.1.4</span> La decisione</a></li>
+<li><a class="nav-link" href="#la-statistica-test-z"><span class="header-section-number">17.1.5</span> La statistica test Z</a></li>
+<li><a class="nav-link" href="#i-valori-critici"><span class="header-section-number">17.1.6</span> I valori critici</a></li>
+<li><a class="nav-link" href="#il-valore-p"><span class="header-section-number">17.1.7</span> Il valore-p</a></li>
+<li><a class="nav-link" href="#il-test-unilaterale"><span class="header-section-number">17.1.8</span> Il test unilaterale</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#test-direzionali-e-non-direzionali"><span class="header-section-number">17.2</span> Test direzionali e non direzionali</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#eseguire-il-test-z-con-r"><span class="header-section-number">17.2.1</span> Eseguire il test Z con R</a></li>
+<li><a class="nav-link" href="#assunzioni-del-test-z"><span class="header-section-number">17.2.2</span> Assunzioni del test Z</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#modello-normale-varianza-sconosciuta"><span class="header-section-number">17.3</span> Modello Normale: varianza sconosciuta</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#effetto-stroop"><span class="header-section-number">17.3.1</span> Effetto Stroop</a></li>
+<li><a class="nav-link" href="#test-t-di-student-con-r"><span class="header-section-number">17.3.2</span> Test T di Student con R</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#test-unidirezionale"><span class="header-section-number">17.4</span> Test unidirezionale</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#assunzioni"><span class="header-section-number">17.4.1</span> Assunzioni</a></li>
+<li><a class="nav-link" href="#popolazione-non-normale"><span class="header-section-number">17.4.2</span> Popolazione non Normale</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#due-gruppi-indipendenti"><span class="header-section-number">17.5</span> Due gruppi indipendenti</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#test-bidirezionale-1"><span class="header-section-number">17.5.1</span> Test bidirezionale</a></li>
+<li><a class="nav-link" href="#la-durata-della-gravidanza"><span class="header-section-number">17.5.2</span> La durata della gravidanza</a></li>
+<li><a class="nav-link" href="#test-unidirezionale-1"><span class="header-section-number">17.5.3</span> Test unidirezionale</a></li>
+<li><a class="nav-link" href="#assunzioni-1"><span class="header-section-number">17.5.4</span> Assunzioni</a></li>
+<li><a class="nav-link" href="#test-di-welch"><span class="header-section-number">17.5.5</span> Test di Welch</a></li>
+<li><a class="nav-link" href="#assunzioni-del-test-di-welch"><span class="header-section-number">17.5.6</span> Assunzioni del test di Welch</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#test-t-per-dati-appaiati"><span class="header-section-number">17.6</span> Test T per dati appaiati</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#proporzione-di-maschi-e-femmine"><span class="header-section-number">17.6.1</span> Proporzione di maschi e femmine</a></li></ul>
+</li>
+<li><a class="nav-link" href="#conclusioni-7">Conclusioni</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>

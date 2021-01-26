@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capitolo 16 Significatività statistica | Data Science per psicologi</title>
+<meta name="author" content="Corrado Caudek">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Data Science per psicologi</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Benvenuti</a></li>
+<li class="book-part">Introduzione</li>
+<li><a class="" href="obiettivi-formativi.html"><span class="header-section-number">1</span> Obiettivi formativi</a></li>
+<li class="book-part">Introduzione al linguaggio R</li>
+<li><a class="" href="chapter-pacchetti.html"><span class="header-section-number">2</span> Pacchetti</a></li>
+<li><a class="" href="chapter-install-r.html"><span class="header-section-number">3</span> Per cominciare</a></li>
+<li><a class="" href="chapter-sintassi.html"><span class="header-section-number">4</span> Sintassi di base</a></li>
+<li><a class="" href="chapter-strutture-dati.html"><span class="header-section-number">5</span> Strutture di dati</a></li>
+<li><a class="" href="chapter-strut-contr.html"><span class="header-section-number">6</span> Strutture di controllo</a></li>
+<li><a class="" href="chapter-input-output.html"><span class="header-section-number">7</span> Input/Output</a></li>
+<li class="book-part">Misurazione</li>
+<li><a class="" href="chapter-terminologia.html"><span class="header-section-number">8</span> Terminologia</a></li>
+<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">9</span> La misurazione in psicologia</a></li>
+<li class="book-part">Descrizione</li>
+<li><a class="" href="chapter-descript.html"><span class="header-section-number">10</span> Statistica descrittiva</a></li>
+<li class="book-part">Elementi di teoria della probabilità</li>
+<li><a class="" href="chapter-prob.html"><span class="header-section-number">11</span> Il calcolo delle probabilità</a></li>
+<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">12</span> Probabilità condizionata</a></li>
+<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">13</span> Il teorema di Bayes</a></li>
+<li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">14</span> Probabilità congiunta</a></li>
+<li class="book-part">Inferenza frequentista</li>
+<li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">15</span> Distribuzione campionaria della media dei campioni</a></li>
+<li><a class="active" href="significativit%C3%A0-statistica.html"><span class="header-section-number">16</span> Significatività statistica</a></li>
+<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">17</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">18</span> Critiche e difese</a></li>
+<li class="book-part">Verosimiglianza</li>
+<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
+<li class="book-part">Statistica Bayesiana</li>
+<li><a class="" href="chapter-modellistica-bayesiana.html"><span class="header-section-number">20</span> Modellistica bayesiana</a></li>
+<li><a class="" href="chapter-stima-distr-posteriori.html"><span class="header-section-number">21</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">22</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">23</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">24</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="informazioni-generali.html">Informazioni generali</a></li>
+<li><a class="" href="appendici.html">Appendici</a></li>
+<li><a class="" href="bibliografia.html">Bibliografia</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="significatività-statistica" class="section level1" number="16">
+<h1>
+<span class="header-section-number">Capitolo 16</span> Significatività statistica<a class="anchor" aria-label="anchor" href="#significativit%C3%A0-statistica"><i class="fas fa-link"></i></a>
+</h1>
+<p>Una regola decisionale comunemente usata, ma che la comunità statistica
+fortemente sconsiglia, è quella di considerare un risultato come stabile
+o reale se è “statisticamente significativo” e di considerare i
+risultati “non significativi” come rumorosi e da trattare con
+scetticismo. Per i motivi discussi in questo capitolo, è preferibile non
+concentrarsi sulla significatività statistica, ma il concetto è
+abbastanza importante nella statistica applicata da meritare di essere
+trattato qui.</p>
+<p>La significatività statistica è convenzionalmente definita come un
+<span class="math inline">\(p\)</span>-valore inferiore a 0.05, relativo a qualche ipotesi nulla o valore
+pre-specificato che indicherebbe l’assenza di effetto, come discusso di
+seguito nel contesto del test di ipotesi. Facendo riferimento al
+precedente esempio del QI, usando un linguaggio un po’ approssimativo
+(ma sostanzialmente corretto) possiamo dire che vengono etichettate come
+“statisticamente significative” le medie di quei campioni che risultano
+distanti di almeno due errori standard da un qualche valore atteso (per
+esempio, 100); altrimenti le medie dei campioni vengono dette “non
+statisticamente significative.”</p>
+<p>Parlando più in generale, una stima si dice “non statisticamente
+significativa” se il suo valore osservato può essere ragionevolmente
+spiegato con una semplice variazione casuale.</p>
+<p>Facciamo un primo esempio che illustra, senza spiegare i dettagli, il ragionamento frequentista che porta alla conclusione secondo la quale un risultato è, oppure non è, “statisticamente significativo.”</p>
+<p>Supponiamo di credere che una moneta sia equilibrata. La lanciamo 20 volte e
+osserviamo 8 volte testa e 12 volte croce, con una proporzione osservata di eventi “testa” <span class="math inline">\(p= 0.4\)</span>. L’ipotesi nulla è che la moneta sia equilibrata, ovvero <span class="math inline">\(\pi= 0.5\)</span>. Ovviamente, il campione di 8 volte testa e 12 volte croce è solo uno dei possibili campioni che è possibile ottenere lanciando una moneta per 20 volte. Dobbiamo dunque sapere di come variano, in media, i risultati ottenuti da campioni diversi. Tale variabilità va sotto il nome di “errore standard” (ovvero, rappresenta la deviazione standard della statistica in questione nell’universo dei campioni). L’errore standard di una proporzione si calcola come <span class="math inline">\(\sqrt{\frac{p (1-p)}{n}}\)</span>. Utilizzando questa formula, calcoliamo il seguente intervallo: la stima della statistica (nel nostro caso <span class="math inline">\(p\)</span> = 0.4) <span class="math inline">\(\pm\)</span> due errori standard:</p>
+<p><span class="math display">\[
+0.4 \pm 2 \times 0.11.
+\]</span></p>
+<p>La statistica osservata dista meno di due errori standard dall’ipotesi
+nulla del 50%. Di conseguenza, diciamo che il risultato non è “significativamente” diverso dal caso (ovvero, è <strong>troppo simile</strong> al risultato predetto dall’ipotesi nulla).</p>
+<div id="un-esempio-motivante" class="section level2" number="16.1">
+<h2>
+<span class="header-section-number">16.1</span> Un esempio motivante<a class="anchor" aria-label="anchor" href="#un-esempio-motivante"><i class="fas fa-link"></i></a>
+</h2>
+<p>Per introdurre in maggiore dettaglio il concetto di significatività statistica consideriamo una ricerca svolta da <span class="citation"><a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">Mehr et al.</a> (<a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">2016</a>)</span>. La ricerca di <span class="citation"><a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">Mehr et al.</a> (<a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">2016</a>)</span>
+riguarda la musica. L’ascolto musicale è presente in tutte le fasi della
+vita e anche nell’infanzia. Tra le altre cose, la musica può trasmettere
+informazioni relative all’appartenenza sociale – pensiamo alle canzoni
+popolari, ad esempio. <span class="citation"><a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">Mehr et al.</a> (<a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">2016</a>)</span> si sono chiesti se la musica sia
+capace di trasmettere messaggi di tipo sociale anche in bambini molto
+piccoli. Nello specifico, <span class="citation"><a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">Mehr et al.</a> (<a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">2016</a>)</span> si sono chiesti se i bambini di
+5 mesi mostrino una preferenza per individui sconosciuti che cantano una
+canzone a loro familiare, rispetto ad altri individui sconosciuti che
+cantano una canzone simile, con le stesse parole e lo stesso ritmo, ma
+con una diversa melodia. <span class="citation"><a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">Mehr et al.</a> (<a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">2016</a>)</span> hanno scoperto che, in effetti,
+le cose stanno veramente così, ma solo quando, nella fase di
+familiarizzazione, la canzone test veniva cantata dai genitori, ma non
+quando nella fase di familiarizzazione la stessa canzone veniva cantata
+da un estraneo. Secondo gli autori, questo mostra che il significato
+sociale è l’elemento cruciale della preferenza dei bambini, non
+semplicemente la familiarità con la canzone.</p>
+<div id="la-domanda-della-ricerca" class="section level3" number="16.1.1">
+<h3>
+<span class="header-section-number">16.1.1</span> La domanda della ricerca<a class="anchor" aria-label="anchor" href="#la-domanda-della-ricerca"><i class="fas fa-link"></i></a>
+</h3>
+<p>La domanda che <span class="citation"><a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">Mehr et al.</a> (<a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">2016</a>)</span> si sono posti si chiama <em>domanda della
+ricerca</em>. In psicologia, le domande della ricerca sono delle ipotesi che
+riguardano i costrutti psicologici. L’ascolto della musica certamente ha
+a che fare con la psicologia e il significato che attribuiamo
+all’ascolto della musica è certamente un fenomeno psicologico. Per cui
+la domanda che <span class="citation"><a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">Mehr et al.</a> (<a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">2016</a>)</span> si sono posti è certamente una domanda
+legittima nel contesto della ricerca psicologica.</p>
+<p>In psicologia, le ipotesi della ricerca sono delle proposizioni che
+descrivono le proprietà dei fenomeni psicologici. Tali proposizioni
+possono essere vere oppure false. Alcune volte le ipotesi della ricerca
+sono espresse in termini po’ vaghi – nel caso presente, per esempio, ci
+possono essere idee diverse a proposito di ciò che è musicale e di ciò
+che non lo è – in ultima analisi le ipotesi della ricerca vengono
+valutate in base alla loro utilità: si dimostrano utili solo se
+contribuiscono ad aggiungere qualcosa di importante rispetto a ciò che
+già sappiamo rispetto al fenomeno psicologico considerato.</p>
+</div>
+<div id="le-ipotesi-statistiche" class="section level3" number="16.1.2">
+<h3>
+<span class="header-section-number">16.1.2</span> Le ipotesi statistiche<a class="anchor" aria-label="anchor" href="#le-ipotesi-statistiche"><i class="fas fa-link"></i></a>
+</h3>
+<p>Quello che dobbiamo notare è che non è possibile verificare direttamente
+le ipotesi della ricerca. Le ipotesi della ricerca sono delle
+proposizioni relative alle caratteristiche o al funzionamento dei
+fenomeni psicologici. Tuttavia, in generale, le ipotesi psicologiche non
+sono abbastanza precise da poter essere valutate direttamente. Quello
+che i ricercatori possono fare, invece, è valutare delle <em>ipotesi
+statistiche</em>. Le ipotesi statistiche non coincidono con l’ipotesi della
+ricerca ma hanno il vantaggio di potere essere espresse in termini
+probabilistici.</p>
+<p>Nell’esperimento di <span class="citation"><a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">Mehr et al.</a> (<a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">2016</a>)</span>, due settimane dopo la fase di
+familiarizzazione con la canzone test, i bambini che facevano parte
+dell’esperimento venivano esaminati in laboratorio. Ad essi venivano
+mostrate due video-registrazioni. Una registrazione presentava un
+estraneo che cantava la canzone test; l’altra registrazione presentava
+un secondo individuo non conosciuto dai bambini che cantava una canzone
+simile alla prima, ma non familiare ai bambini. I ricercatori hanno
+misurato i tempi di fissazione dello sguardo dei bambini nei confronti
+di ciascuna delle due video-registrazioni. Nel primo esperimento, la
+variabile dipendente era uguale alla media, calcolata su 32 casi, della
+proporzione del tempo di fissazione rivolta al video “familiare”
+rispetto al tempo di fissazione totale (ovvero la somma del tempo di
+fissazione del video “familiare” e del tempo di fissazione del video
+“non familiare”).</p>
+<p>Dato che non è possibile valutare direttamente la domanda della ricerca
+è necessario stabilire una connessione tra l’ipotesi della ricerca e
+l’ipotesi statistica. Nel caso presente possiamo pensare a tre
+possibilità.</p>
+<ol style="list-style-type: decimal">
+<li><p>Se i bambini non hanno alcuna preferenza nei confronti di uno dei
+due tipi di video-registrazione, allora la media delle proporzioni
+dei tempi di fissazione di tutti i bambini possibili (ovvero, nella
+popolazione) sarà uguale a <span class="math inline">\(\mu = 0.5\)</span>, perché, in media, i tempi di
+fissazione per le due video-registazioni saranno uguali.</p></li>
+<li><p>Se <span class="citation"><a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">Mehr et al.</a> (<a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">2016</a>)</span> hanno ragione, allora i bambini preferiranno
+guardare il video con la canzone familiare piuttosto che il video
+con la canzone non familiare. Questa situazione si traduce
+nell’ipotesi statistica <span class="math inline">\(\mu &gt; 0.5\)</span> (con <span class="math inline">\(\mu = 0.5\)</span> che rappresenta
+il livello del caso).</p></li>
+<li><p>Una terza possibilità è che i bambini siano maggiormente attratti da
+una melodia non familiare – questo è il contrario di ciò che
+propongono gli autori della ricerca. Tale possibilità si traduce
+nell’ipotesi statistica <span class="math inline">\(\mu &lt; 0.5\)</span>.</p></li>
+</ol>
+<p>Le tre ipotesi precedenti sono esempi di ipotesi statistiche. Sono
+infatti delle proposizioni a proposito dei valori di un parametro di un
+modello statistico. Nel caso presente, il modello statistico è la
+distribuzione della proporzione dei tempi di fissazione in una
+popolazione virtuale di infiniti bambini di sei mesi d’età, come
+nell’esperiment di <span class="citation"><a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">Mehr et al.</a> (<a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">2016</a>)</span>. Se consideriamo uno specifico
+bambino, la proporzione dei tempi di fissazione avrà un certo valore,
+mentre per un’altro bambino avrà un valore diverso. Il modello
+statistico considerato descrive la distribuzione dei possibili valori
+della proporzione del tempo di fissazione nei confronti del video
+“familiare.” Un tale modello statistico può essere messo in relazione
+con i dati raccolti dagli sperimentatori perché <span class="citation"><a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">Mehr et al.</a> (<a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">2016</a>)</span> hanno
+misurato proprio questo aspetto, ovvero la media della proporzione del
+tempo di fissazione rivolto al video “familiare.”</p>
+</div>
+<div id="domanda-della-ricerca-e-ipotesi-statistiche" class="section level3" number="16.1.3">
+<h3>
+<span class="header-section-number">16.1.3</span> Domanda della ricerca e ipotesi statistiche<a class="anchor" aria-label="anchor" href="#domanda-della-ricerca-e-ipotesi-statistiche"><i class="fas fa-link"></i></a>
+</h3>
+<p>Ciò che la discussione precedente dovrebbe mettere in chiaro è che,
+nella procedura di test di ipotesi, possiamo distinguere tra due tipi di
+ipotesi molto diverse tra loro: da una parte abbiamo l’ipotesi della
+ricerca che è un’affermazione sulla natura dei fenomeni psicologici;
+dall’altra parte abbiamo un’ipotesi statistica che è una proposizione
+che riguarda il modello generativo dei dati, ovvero le caratteristiche
+della popolazione. Nell’esempio presente, l’ipotesi della ricerca è “le
+preferenze sociali dei bambini sono influenzate dalla musica; in
+particolare, sono favorite dalla familiarità con i materiali musicali.”
+L’ipotesi statistica, invece, è: <span class="math inline">\(\mu &gt; 0.5\)</span>.</p>
+<p>Ciò che dobbiamo avere ben chiaro è che i test vengono applicati alle
+ipotesi statistiche, <em>non</em> alle ipotesi della ricerca. Ciò significa
+che, se l’esperimento non viene condotto nella maniera appropriata,
+allora si spezza il collegamento tra l’ipotesi statistica e la domanda
+della ricerca. Per esempio, se l’attore che canta la melodia familiare
+assomiglia ad uno dei genitori del bambino, mentre l’altro attore ha un
+aspetto molto diverso da quello dei genitori, allora sarebbe molto
+facile trovare evidenze in supporto dell’ipotesi statistica secondo cui
+<span class="math inline">\(\mu &gt; 0.5\)</span>; ma questo non avrebbe nulla a che fare con la domanda della
+ricerca.</p>
+</div>
+</div>
+<div id="ipotesi-nulla-e-ipotesi-alternativa" class="section level2" number="16.2">
+<h2>
+<span class="header-section-number">16.2</span> Ipotesi nulla e ipotesi alternativa<a class="anchor" aria-label="anchor" href="#ipotesi-nulla-e-ipotesi-alternativa"><i class="fas fa-link"></i></a>
+</h2>
+<p>Fino a qui il ragionamento è stato semplice: il ricercatore ha
+un’ipotesi a proposito dei fenomeni psicologici e a tale ipotesi di
+ricerca corrisponde un’ipotesi statistica che riguarda il meccanismo
+generativo dei dati. Se il fenomeno psicologico possiede le proprietà
+suggerite dall’ipotesi della ricerca, allora il ricercatore può
+aspettarsi che i dati osservati abbiano alcune specifiche
+caratteristiche. A questo punto, però, il ragionamento diventa
+contro-intuitivo perché non è possibile verificare direttamente
+l’ipotesi statistica che corrisponde alla domanda della ricerca.</p>
+<div id="apagogia" class="section level3" number="16.2.1">
+<h3>
+<span class="header-section-number">16.2.1</span> Apagogia<a class="anchor" aria-label="anchor" href="#apagogia"><i class="fas fa-link"></i></a>
+</h3>
+<p>In linea di principio non è mai possibile dimostrare direttamente la
+verità d’una proposizione. Quello che possiamo fare, invece, è
+dimostrare la verità d’una proposizione in maniera indiretta, ovvero
+provando la falsità della proposizione contraddittoria.</p>
+<p>L’esempio classico è il seguente. Consideriamo la seguente proposizione:
+“Tutti i cigni sono bianchi” (questo è l’esempio ornitologico preferito
+da Popper). L’osservazione di un numero qualsiasi di cigni bianchi non è
+sufficiente a dimostrare la verità di questa proposizione – infatti, ci
+potrebbe essere da qualche parte un cigno non bianco che non abbiamo
+osservato (infatti, c’è). D’altra parte, invece, l’osservazione di un
+solo cigno che non sia bianco (ovvero, per esempio, l’osservazione di un
+cigno nero proveniente dall’Australia) può falsificare la proposizione
+considerata. Questa è la logica del falsificazionismo di Popper.</p>
+<p>Questo modo di pensare è stato trasferito nella procedura di test di
+ipotesi di stampo frequentista (ovvero, quello che stiamo discutendo
+ora). Dato che non possiamo dimostrare vera l’ipotesi statistica
+associata alla domanda della ricerca, seguiamo il percorso opposto.
+Ovvero, ci poniamo l’obiettivo di dimostrare falso l’evento
+complementare a quello specificato dall’ipotesi statistica associata
+alla domanda della ricerca. L’ipotesi statistica che vorremmo
+falsificare si chiama “ipotesi nulla” e viene denotata con <span class="math inline">\(H_0\)</span>. Nel
+caso dell’esempio che stiamo discutendo, l’ipotesi nulla è:
+<span class="math inline">\(\mu \leq 0.5\)</span>. Si noti che l’ipotesi nulla include tutte le possibili
+ipotesi statistiche che si possono formulare (ovvero, <span class="math inline">\(\mu = 0.5\)</span> e
+<span class="math inline">\(\mu &lt; 0.5\)</span>), ad eccezione di quella che è associata all’ipotesi della
+ricerca (ovvero, <span class="math inline">\(\mu &gt; 0.5\)</span>).</p>
+<p>In pratica, ciò che stiamo facendo qui è dividere tutti i possibili
+valori di <span class="math inline">\(\pi\)</span> in due gruppi: quei valori che sono coerenti con
+l’ipotesi della ricerca (ovvero, i valori che specificano l’ipotesi
+alternativa, denotata con <span class="math inline">\(H_1\)</span>) e quei valori che non sono coerenti con
+l’ipotesi della ricerca (ovvero, i valori che specificano l’ipotesi
+nulla).</p>
+<p>Avendo detto questo, la cosa importante da riconoscere è che l’obiettivo
+di un test di ipotesi non è quello di dimostrare che l’ipotesi
+alternativa è (probabilmente) vera; l’obiettivo è mostrare che l’ipotesi
+nulla è (probabilmente) falsa. La maggior parte delle persone ritiene
+che questo modo di ragionare sia piuttosto strano.</p>
+</div>
+<div id="la-similitudine-del-processo-penale" class="section level3" number="16.2.2">
+<h3>
+<span class="header-section-number">16.2.2</span> La similitudine del processo penale<a class="anchor" aria-label="anchor" href="#la-similitudine-del-processo-penale"><i class="fas fa-link"></i></a>
+</h3>
+<p>Un test di ipotesi è stato paragonato ad un processo penale, ovvero al
+processo nei confronti dell’ipotesi nulla. Possiamo immaginare che
+l’ipotesi nulla sia l’imputato, il ricercatore sia il pubblico ministero
+e il test statistico sia il giudice. Proprio come in un processo penale,
+c’è una presunzione di innocenza: l’ipotesi nulla si ritiene vera a meno
+che il ricercatore non dimostri, oltre ogni ragionevole dubbio, che è
+falsa. Il ricercatore progetta l’esperimento in modo da massimizzare la
+possibilità che i dati producano una condanna. Il test statistico
+(ovvero il giudice in questa similitudine) stabilisce le regole che
+devono essere seguite per giungere al verdetto e queste regole sono
+pensate per proteggere l’ipotesi nulla – in particolare, per garantire
+che sia piccola la probabilità di una condanna se l’ipotesi nulla è
+effettivamente vera. Questo aspetto è importante: all’ipotesi nulla deve
+essere fornita una qualche forma di protezione, dato che il ricercatore
+sta cercando disperatamente di dimostrare che è essa è falsa.</p>
+</div>
+</div>
+<div id="due-tipi-di-errori" class="section level2" number="16.3">
+<h2>
+<span class="header-section-number">16.3</span> Due tipi di errori<a class="anchor" aria-label="anchor" href="#due-tipi-di-errori"><i class="fas fa-link"></i></a>
+</h2>
+<p>Prima di entrare nei dettagli su come viene costruito un test statistico
+è utile capire la logica su cui esso è basato. In precedenza abbiamo
+paragonato il test di ipotesi nulla ad un processo penale, ma ora
+dobbiamo essere più espliciti. Idealmente, vorremmo costruire il nostro
+test in modo da non commettere errori. Sfortunatamente, però, questo non
+è possibile: a volte il ricercatore è sfortunato e finisce per prendere
+la decisione sbagliata, anche se adotta un processo decisionale
+razionale. Ad esempio, può succedere che una moneta venga lanciata 10
+volte di fila e produca testa tutte le 10 volte. Ciò sembra fornire una
+prova molto forte del fatto che la moneta è sbilanciata, ma ovviamente
+c’è una possibilità su 1024 che ciò accada anche se la moneta è
+equilibrata. In altre parole, nella vita reale dobbiamo sempre accettare
+la possibilità che le nostre scelte siano sbagliate, anche quando
+sembrano ragionevoli. Di conseguenza, l’obiettivo dei test delle ipotesi
+statistiche non è quello di eliminare completamente gli errori (questo è
+impossibile), ma di ridurre gli errori al minimo.</p>
+<p>A questo punto, dobbiamo precisare meglio cosa intendiamo per “errori.” Iniziamo con il rendere esplicito quello che è ovvio: l’ipotesi nulla può essere vera o falsa, e il nostro test ci può condurre a rifiutare l’ipotesi nulla o a non rifiutarla. La decisione di rigettare o non rigettare l’ipotesi nulla ci espone dunque al rischio di
+commettere uno di due tipi di errore, come indicato nella figura <a href="significativit%C3%A0-statistica.html#fig:dueerrori">16.1</a>. L’errore di I tipo, denotato con <span class="math inline">\(\alpha\)</span>, è quello che commettiamo se rigettiamo l’ipotesi nulla quando essa è vera. L’errore di II tipo, denotato con <span class="math inline">\(\beta\)</span>, è quello che commettiamo se accettiamo l’ipotesi nulla mentre invece è vera l’ipotesi
+alternativa.</p>
+<div class="figure" style="text-align: center">
+<span id="fig:dueerrori"></span>
+<img src="images/tab_due_errori.png" alt="Due tipi di errori." width="80%"><p class="caption">
+Figura 16.1: Due tipi di errori.
+</p>
+</div>
+<div id="errore-di-i-tipo-la-protezione-dei-diritti-dellimputato" class="section level3" number="16.3.1">
+<h3>
+<span class="header-section-number">16.3.1</span> Errore di I tipo: la protezione dei diritti dell’imputato<a class="anchor" aria-label="anchor" href="#errore-di-i-tipo-la-protezione-dei-diritti-dellimputato"><i class="fas fa-link"></i></a>
+</h3>
+<p>In precedenza abbiamo paragonato il test statistico ad un processo
+penale. Infatti, un processo penale richiede che si stabilisca la
+colpevolezza dell’imputato “oltre ogni ragionevole dubbio.” Le regole
+del processo penale sono state progettate per garantire che non ci sia
+(quasi) nessuna possibilità di condannare ingiustamente un imputato
+innocente: il processo penale è progettato (almeno in teoria) per
+proteggere i diritti dell’imputato. Detto in altri termini, il processo
+penale non mette sullo stesso piano i due tipi di errore che si possono
+commettere: punire un innocente o assolvere un colpevole. L’errore che
+consiste nel punire un innocente viene considerato assai più grave di
+quello che porta ad assolvere un colpevole.</p>
+<p>Un test statistico fa praticamente la stessa cosa: i test di ipotesi
+statistiche sono costruiti in modo tale da controllare la probabilità di
+un errore di I tipo, con l’obiettivo di mantenerla al di sotto di una
+certa soglia prefissata. Questa probabilità, denotata con <span class="math inline">\(\alpha\)</span>,
+viene chiamata “livello di significatività del test.” Usando parole
+diverse, possiamo dire che un test di ipotesi ha un livello di
+significatività <span class="math inline">\(\alpha\)</span> se il tasso di errore di I tipo non è più
+grande di <span class="math inline">\(\alpha\)</span>. Per convenzione, i ricercatori fanno uso di tre
+diversi livelli <span class="math inline">\(\alpha\)</span>: 0.05, 0.01 e 0.001.</p>
+</div>
+<div id="errore-di-ii-tipo-lasimmetria-del-giudizio" class="section level3" number="16.3.2">
+<h3>
+<span class="header-section-number">16.3.2</span> Errore di II tipo: l’asimmetria del giudizio<a class="anchor" aria-label="anchor" href="#errore-di-ii-tipo-lasimmetria-del-giudizio"><i class="fas fa-link"></i></a>
+</h3>
+<p>Che dire del tasso di errore di II tipo? In realtà, vorremmo tenere
+anche quello sotto controllo e denotiamo la probabilità di un errore di
+II tipo con <span class="math inline">\(\beta\)</span>. Il livello d’errore <span class="math inline">\(\beta\)</span> viene raramente
+discusso ed è molto più comune fare riferimento alla potenza del test,
+che è la probabilità dell’evento complementare, ovvero la probabilità
+con cui rifiutiamo l’ipotesi nulla quando è realmente falsa, ovvero
+<span class="math inline">\(1-\beta\)</span>. Un test viene detto “potente” quando è caratterizzato da un
+piccolo valore <span class="math inline">\(\beta\)</span> pur mantenendo il livello <span class="math inline">\(\alpha\)</span> sotto una
+piccola soglia di probabilità prefissata.</p>
+<p>Si noti l’asimmetria qui rivelata: i test di ipotesi sono progettati per
+garantire che il livello <span class="math inline">\(\alpha\)</span> sia mantenuto sotto la soglia
+prefissata, ma non esiste alcuna corrispondente garanzia a proposito di
+<span class="math inline">\(\beta\)</span>. Sicuramente è preferibile che il tasso di errore di II tipo sia
+piccolo, e in generale i ricercatori cercano di progettare i loro
+esperimenti in maniera tale da avere una ragionevole potenza del test
+(<span class="math inline">\(1 - \beta\)</span>) – questo si ottiene utilizzando un campione
+sufficientemente grande – ma nella logica della costruzione del test di
+ipotesi questo aspetto è secondario rispetto alla necessità di
+controllare il tasso di errore di I tipo.</p>
+</div>
+</div>
+<div id="come-si-costruisce-un-test-di-ipotesi" class="section level2" number="16.4">
+<h2>
+<span class="header-section-number">16.4</span> Come si costruisce un test di ipotesi?<a class="anchor" aria-label="anchor" href="#come-si-costruisce-un-test-di-ipotesi"><i class="fas fa-link"></i></a>
+</h2>
+<p>Ritorniamo all’esempio relativo allo studio di <span class="citation"><a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">Mehr et al.</a> (<a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">2016</a>)</span>. In questo
+caso, sulla base all’ipotesi della ricerca, l’ipotesi nulla può essere
+formulata come <span class="math inline">\(H_0: \mu \leq 0.5\)</span>. Esaminando un campione di 32 bambini
+di età media pari a 5.6 mesi, <span class="citation"><a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">Mehr et al.</a> (<a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">2016</a>)</span> hanno scoperto che, in
+media, i bambini dirigevano lo sguardo verso il video “familiare” nel
+59% del tempo totale di fissazione. Dunque, la media campionaria è
+<span class="math inline">\(\bar{X} = 0.59\)</span> Questo è il valore campionario rilevante per il test
+dell’ipotesi nulla.</p>
+<p>Ingenuamente, potremmo pensare che, per decidere se <span class="math inline">\(H_0\)</span> sia falsa o
+meno, sia sufficiente confrontare la proporzione calcolata nel campione
+con il valore <span class="math inline">\(\pi\)</span> specificato dall’ipotesi nulla. Nel caso presente,
+l’ipotesi nulla non specifica un unico valore <span class="math inline">\(\mu\)</span> ma bensì un
+intervallo di valori: <span class="math inline">\([0, 0.5]\)</span>. I dati campionari specificano un
+valore <span class="math inline">\(\bar{X} = 0.56\)</span>, ovvero un valore che non è incluso
+nell’intervallo specificato da <span class="math inline">\(H_0\)</span>. Questo è incoraggiante. Se invece
+avessimo osservato <span class="math inline">\(\bar{X} = 0.41\)</span>, per esempio, allora non ci sarebbe
+stato nient’altro da dire: se i dati osservati sono compatibili con
+<span class="math inline">\(H_0\)</span> non c’è bisogno di eseguire alcun test statistico – abbiamo già
+trovato la risposta alla domanda della ricerca.</p>
+<div id="la-variabilità-campionaria" class="section level3" number="16.4.1">
+<h3>
+<span class="header-section-number">16.4.1</span> La variabilità campionaria<a class="anchor" aria-label="anchor" href="#la-variabilit%C3%A0-campionaria"><i class="fas fa-link"></i></a>
+</h3>
+<p>Nel caso dell’esperimento <span class="citation"><a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">Mehr et al.</a> (<a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">2016</a>)</span> che stiamo discutendo,
+<span class="math inline">\(\bar{X}\)</span> non cade nell’intervallo specificato da <span class="math inline">\(H_0\)</span>. Sulla base del
+valore osservato <span class="math inline">\(\bar{X} = 0.59\)</span> possiamo dunque concludere che <span class="math inline">\(H_0\)</span> è
+falsa? Non così presto. Non è sufficiente trovare una differenza
+<span class="math inline">\(\bar{X} - \mu\)</span> nella direzione giusta (cioè positiva, nel nostro caso).
+È anche necessario tenere in considerazione il fenomeno della
+<em>variabilità campionaria</em>.</p>
+<p>Infatti, la media <span class="math inline">\(\bar{X}\)</span> osservata in ogni singolo campione di
+ampiezza <span class="math inline">\(n=32\)</span> è una variabile aleatoria: in ciascun possibile campione
+di ampiezza 32 i bambini si comportano in maniera diversa e, di
+conseguenza, <span class="math inline">\(\bar{X}\)</span> assumerà un valore diverso da campione a
+campione. Le statistiche campionarie – nel nostro caso la media
+<span class="math inline">\(\bar{X}\)</span> – sono di necessità diverse dai parametri. Ciò a cui noi
+siamo interessati è la media della popolazione, ovvero <span class="math inline">\(\mu\)</span>, ma
+sfortunatamente conosciamo solo una sua realizzazione campionaria,
+ovvero <span class="math inline">\(\bar{X}\)</span>.</p>
+<p>Risulta dunque chiaro che la nostra decisione rispetto ad <span class="math inline">\(H_0\)</span> non può
+essere unicamente basata sulla differenza tra <span class="math inline">\(\bar{X} - \mu\)</span>. Infatti,
+è ragionevole pensare che, indipendentemente dal fatto che l’ipotesi
+nulla sia vera o meno, in alcuni campioni la differenza <span class="math inline">\(\bar{X} - \mu\)</span>
+sarà positive mentre in altri campioni sarà negativa. Dobbiamo dunque
+trovare una procedura che riduca la possibilità di rifiutare <span class="math inline">\(H_0\)</span> <em>per
+effetto del caso soltanto</em>. Possiamo (e dobbiamo) fare di meglio che
+considerare unicamente la differenza <span class="math inline">\(\bar{X} - \mu\)</span>.</p>
+</div>
+<div id="le-distribuzioni-delle-statistiche-test" class="section level3" number="16.4.2">
+<h3>
+<span class="header-section-number">16.4.2</span> Le distribuzioni delle statistiche test<a class="anchor" aria-label="anchor" href="#le-distribuzioni-delle-statistiche-test"><i class="fas fa-link"></i></a>
+</h3>
+<p>Il metodo seguito dall’approccio frequentista per affrontare questo
+problema è quello di costruire la distribuzione della statistica test
+<span class="math inline">\(\mathcal{G}_n\)</span>, rilevante per il test di <span class="math inline">\(H_0\)</span>, <em>assumendo come vera
+l’ipotesi nulla</em>. Questo è il concetto più contro-intuitivo di tutta la
+procedura di test di ipotesi dell’approccio frequentista. Esaminiamolo
+più in dettaglio.</p>
+<p>È ovvio come calcolare la media delle proporzioni del tempo di
+fissazione in un singolo campione. Il problema è che tale media varia da
+campione a campione (fenomeno detto della <em>variabilità campionaria</em>).
+L’approccio frequentista affronta il problema di giungere ad una
+decisione rispetto ad <span class="math inline">\(H_0\)</span> <em>tenendo in considerazione</em> la variabilità
+campionaria nel modo seguente. Il punto di partenza è quello di
+descrivere le caratteristiche della distribuzione di tutti i possibili
+valori che la statistica test in esame (nel nostro caso, la media del
+campione, ovvero <span class="math inline">\(\bar{X}\)</span>) in tutti i infiniti possibili campioni di
+ampiezza <span class="math inline">\(n\)</span> (nel nostro caso <span class="math inline">\(n\)</span> = 32).</p>
+<p>È facile capire che, espresso in questi termini, il problema di
+stabilire quali sono le caratteristiche di tale distribuzione di medie
+campionarie non è risolvibile. Senza sapere nient’altro, non possiamo
+sapere come si distribuisce <span class="math inline">\(\bar{X}\)</span> nell’universo dei campioni.
+Ricordiamo però che lo scopo della procedura di test statistici
+dell’approccio frequentista non è quello di verificare l’ipotesi
+alternativa: questo non è logicamente possibile. Invece, come suggerito
+dalla similitudine del processo penale all’ipotesi nulla, l’approccio
+frequentista si pone l’obiettivo di determinare se ci siano indizi
+sufficienti per “condannare” l’ipotesi nulla, ovvero, per rigettarla.</p>
+<p>In questa <em>reductio ad absurdum</em>, la “presunzione di innocenza” di <span class="math inline">\(H_0\)</span>
+corrisponde all’idea che dobbiamo assumere come vera l’ipotesi nulla,
+<em>fino a prova contraria</em>. Nell’esempio che stiamo discutendo, assumere
+come vera l’ipotesi nulla significa assumere che il parametro <span class="math inline">\(\mu\)</span> (la
+media della popolazione) sia uguale a 0.5. Sulla base di questa
+assunzione è possibile costruire la distribuzione delle medie dei
+campioni di ampiezza 32.</p>
+<p>Per fare questo, <span class="citation"><a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">Mehr et al.</a> (<a href="bibliografia.html#ref-mehr_melodies" role="doc-biblioref">2016</a>)</span> utilizzano (implicitamente) ad un famoso
+teorema della teoria della probabilità che possiamo descrivere nel modo
+seguente. Se estraiamo infiniti campioni di ampiezza 32 da una
+popolazione gaussiana di media <span class="math inline">\(\mu = 0.5\)</span>, allora le medie
+standardizzate di tali campioni seguiranno la distribuzione teorica di
+probabilità chiamata distribuzione <span class="math inline">\(t\)</span> di Student con 32 - 1 = 31 gradi
+di libertà. Ricordiamo che standardizzare una variabile significa
+sottrarre dai valori della variabile il suo valore atteso e dividere per
+la deviazione standard. Si può dimostrare che il valore atteso delle
+medie dei campioni è uguale alla media della popolazione. Nel caso
+presente, avremo che <span class="math display">\[\mathbb{E}(\bar{X}) = \mu_{\bar{X}} = \mu\]</span> e la
+standardizzazione si effettua mediante il rapporto
+<span class="math display">\[
+T = \frac{\bar{X} - \mu}{\frac{s}{\sqrt{n}}},
+\]</span>
+dove <span class="math inline">\(\bar{X}\)</span> è la
+media del campione (nel nostro caso, 0.56), <span class="math inline">\(s\)</span> è la deviazione standard
+del campione (gli autori riportano <span class="math inline">\(s\)</span> = 0.179) e <span class="math inline">\(n\)</span> è l’ampiezza del
+campione (ovvero, <span class="math inline">\(n\)</span> = 32). In altre parole, la teoria della
+probabilità ci dice che la statistica <span class="math inline">\(T\)</span> si distribuisce come <span class="math inline">\(t\)</span> di
+Student con <span class="math inline">\(\nu = 31\)</span> gradi di libertà. Il punto cruciale è che, se
+assumiamo come vera l’ipotesi nulla che fissa <span class="math inline">\(\mu = 0.5\)</span>, allora la
+distribuzione della statistica test <span class="math inline">\(T\)</span> risulta completamente
+determinata.</p>
+<p>L’approccio frequentista fa uso di un insieme teoremi della teoria della
+probabilità che descrivono la distribuzione di varie statistiche test.
+Abbiamo visto sopra la descrizione di un teorema che specifica la
+distribuzione della statistica test <span class="math inline">\(T\)</span>. Un altro teorema specifica la
+distribuzione della statistica test che corrisponde alla differenze tra
+le medie di due campioni indipendenti; tale teorema viene utilizzato
+nella procedura statistica frequentista chiamata test sulla differenza
+tra le medie di due campioni indipendenti. Un altro teorema riguarda la
+distribuzione del rapporto tra la stima di una varianza <span class="math inline">\(\sigma^2\)</span>
+basata sulla variabilità delle medie di diversi campioni e la stima
+della stessa varianza basata sulla variabilità entro i campioni; tale
+teorema sta alla base del test statistico chiamato ANOVA, o Analisi
+della varianza. Un altro teorema ancora specifica la distribuzione di
+una proporzione campionaria; tale teorema sta alla base del test
+statistico frequentista chiamato test di ipotesi per la proporzione. E
+così via.</p>
+</div>
+<div id="regioni-di-rifiuto-e-regioni-di-non-rifiuto" class="section level3" number="16.4.3">
+<h3>
+<span class="header-section-number">16.4.3</span> Regioni di rifiuto e regioni di non rifiuto<a class="anchor" aria-label="anchor" href="#regioni-di-rifiuto-e-regioni-di-non-rifiuto"><i class="fas fa-link"></i></a>
+</h3>
+<p>Conoscendo la distribuzione dei valori della statistica test
+(distribuzione che viene determinata <em>assumendo come vera</em> <span class="math inline">\(H_0\)</span>)
+diventa poi possibile dividere l’insieme dei valori possibili di
+<span class="math inline">\(\mathcal{G}_n\)</span> (il nome che abbiamo assegnato ad una generica
+statistica test) in due regioni: i valori che ci portano a rigettare
+<span class="math inline">\(H_0\)</span> (regione di rifiuto) e quelli che non ci consentono di rigettare
+<span class="math inline">\(H_0\)</span> (regione di non rifiuto). Come facciamo a decidere quanto è grande
+la regione di rifiuto di <span class="math inline">\(H_0\)</span>? È semplice, basta collocare nella
+regione di rifiuto i valori estremi della statistica test
+<span class="math inline">\(\mathcal{G}_n\)</span>, ovvero quelli che sarebbe molto improbabile osservare
+se <span class="math inline">\(H_0\)</span> fosse vera. Questo è l’aspetto cruciale della procedura di test
+di ipotesi, perché così facendo possiamo definire la regione di rifiuto
+di <span class="math inline">\(H_0\)</span> come quell’intervallo di valori <span class="math inline">\(\mathcal{G}_n\)</span> a cui è
+associata la probabilità <span class="math inline">\(\alpha\)</span>, ovvero la probabilità di commettere
+un errore di I tipo.</p>
+</div>
+<div id="quando-rifiutare-lipotesi-nulla" class="section level3" number="16.4.4">
+<h3>
+<span class="header-section-number">16.4.4</span> Quando rifiutare l’ipotesi nulla<a class="anchor" aria-label="anchor" href="#quando-rifiutare-lipotesi-nulla"><i class="fas fa-link"></i></a>
+</h3>
+<p>Supponiamo che la figura <a href="significativit%C3%A0-statistica.html#fig:testipotesi1">16.2</a> rappresenti la distribuzione
+campionaria della statistica test <span class="math inline">\(\mathcal{G}_n\)</span>. Se i dati producono
+la statistica test <span class="math inline">\(\mathcal{G}_n^1\)</span>, non possiamo rifiutare l’ipotesi
+nulla <span class="math inline">\(H_0\)</span>. Se invece i dati producono <span class="math inline">\(\mathcal{G}_n^2\)</span> allora
+possiamo rifiutare l’ipotesi nulla in favore dell’ipotesi alternativa.
+Ci sono varie cose da notare.</p>
+<ol style="list-style-type: decimal">
+<li><p>La regione di rifiuto è costituita da valori lontani dal centro
+della distribuzione campionaria della statistica test, la quale è
+stata costruita assumendo come vera <span class="math inline">\(H_0\)</span>.</p></li>
+<li><p>La regione di rifiuto è situata nelle code della distribuzione.
+Vedremo in seguito anche degli esempi di regioni di rifiuto
+unilaterali.</p></li>
+<li><p>In questa discussione, l’ipotesi alternativa non è menzionata.
+Rifiutiamo o non rifiutiamo <span class="math inline">\(H_0\)</span> basandoci unicamente sulla
+distribuzione campionaria <span class="math inline">\(f(\mathcal{G}_n \mid H_0)\)</span>, cioè sulla
+probabilità della statistica test condizionata all’ipotesi nulla
+<span class="math inline">\(H_0\)</span>. L’ipotesi alternativa <span class="math inline">\(H_1\)</span> viene presa in considerazione
+quando si sceglie dove posizionare la regione di rifiuto di <span class="math inline">\(H_0\)</span>,
+ma formalmente non gioca alcun ruolo nel rigettare o meno <span class="math inline">\(H_0\)</span>.</p></li>
+</ol>
+<div class="figure" style="text-align: center">
+<span id="fig:testipotesi1"></span>
+<img src="images/test_ipotesi_1.png" alt="Distribuzione della statistica test condizionata all’ipotesi nulla $H_0$." width="100%"><p class="caption">
+Figura 16.2: Distribuzione della statistica test condizionata all’ipotesi nulla <span class="math inline">\(H_0\)</span>.
+</p>
+</div>
+</div>
+<div id="specificazione-delle-regioni-di-rifiuto" class="section level3" number="16.4.5">
+<h3>
+<span class="header-section-number">16.4.5</span> Specificazione delle regioni di rifiuto<a class="anchor" aria-label="anchor" href="#specificazione-delle-regioni-di-rifiuto"><i class="fas fa-link"></i></a>
+</h3>
+<p>L’ipotesi alternativa <span class="math inline">\(H_1\)</span> può assumere forme diverse e ciò conduce a
+specificazioni diverse della regione di rifiuto <span class="math inline">\(\mathcal{R}\)</span> di <span class="math inline">\(H_0\)</span>.
+La regione di rifiuto <span class="math inline">\(\mathcal{R}\)</span> dell’ipotesi nulla corrisponde ai
+valori collocati agli estremi della distribuzione secondo la direzione
+dell’ipotesi alternativa <span class="math inline">\(H_1\)</span>.</p>
+<ul>
+<li><p>Se l’ipotesi alternativa è <span class="math inline">\(H_1: \theta \neq \theta_0\)</span> (dove
+<span class="math inline">\(\theta\)</span> è un generico parametro e <span class="math inline">\(\theta_0\)</span> è uno specifico valore
+del parametro), allora le evidenze coerenti con l’ipotesi
+alternativa (e che portano al rigetto di <span class="math inline">\(H_0\)</span>) sono contenute negli
+intervalli <span class="math inline">\([-\infty, \theta_0]\)</span> e <span class="math inline">\([\theta_0, +\infty]\)</span>.</p></li>
+<li><p>Se l’ipotesi alternativa è <span class="math inline">\(H_1: \theta &lt; \theta_0\)</span>, allora le
+evidenze coerenti con l’ipotesi alternativa (e che portano al
+rigetto di <span class="math inline">\(H_0\)</span>) sono contenute nell’intervallo <span class="math inline">\([-\infty, \theta_0]\)</span> e l’intera regione di rifiuto <span class="math inline">\(\mathcal{R}\)</span> è collocata nella coda di sinistra della distribuzione.</p></li>
+<li><p>Se l’ipotesi alternativa è <span class="math inline">\(H_1: \theta &gt; \theta_0\)</span>, allora le
+evidenze coerenti con l’ipotesi alternativa (e che portano al
+rigetto di <span class="math inline">\(H_0\)</span>) sono contenute nell’intervallo <span class="math inline">\([\theta_0, \infty]\)</span> e l’intera regione di rifiuto <span class="math inline">\(\mathcal{R}\)</span> è collocata
+nella coda di destra della distribuzione.</p></li>
+</ul>
+<p>Si chiamano <em>valori critici</em> i valori che delimitano la regione di
+rifiuto <span class="math inline">\(\mathcal{R}\)</span> in un test unilaterale e i valori che delimitano
+le regioni di rifiuto <span class="math inline">\(\mathcal{R}\)</span> in un test bilaterale. In un test
+bidirezionale, i valori critici lasciano in ciascuna delle due code
+della distribuzione della statistica test una probabilità pari a
+<span class="math inline">\(\alpha/2\)</span>; in un test unidirezionale lasciano una probabilità pari ad
+<span class="math inline">\(\alpha\)</span> in una sola coda. Il risultato di un test si dice
+<em>statisticamente significativo</em> quando il valore della statistica test
+ricade nella regione di rifiuto <span class="math inline">\(\mathcal{R}\)</span>.</p>
+<div id="problema" class="section level4 unnumbered">
+<h4>Problema<a class="anchor" aria-label="anchor" href="#problema"><i class="fas fa-link"></i></a>
+</h4>
+<p>Supponiamo che <span class="math inline">\(f(\mathcal{G}_n \mid H_0) = \mathcal{N}(100, 15)\)</span>
+descriva la distribuzione della statistica test <span class="math inline">\(x\)</span>. Supponiamo inoltre
+che la regione di rifiuto sia posta nella coda di destra e che il
+livello di significatività sia <span class="math inline">\(\alpha = 0.05\)</span>. Si trovi il valore
+critico che delimita la regione di rifiuto di <span class="math inline">\(H_0\)</span>.</p>
+<div id="soluzione" class="section level5 unnumbered">
+<h5>Soluzione<a class="anchor" aria-label="anchor" href="#soluzione"><i class="fas fa-link"></i></a>
+</h5>
+<p>Usando R la risposta è: <code>qnorm(0.95, 100, 15) = 124.7</code>. La distribuzione
+<span class="math inline">\(\mathcal{N}(100, 15)\)</span> è mostrata nella figura figura <a href="significativit%C3%A0-statistica.html#fig:testipotesi2">16.3</a>. La regione di rifiuto è indicata dall’area ombreggiata.</p>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">55</span>, <span class="fl">145</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>
+    fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>,
+    geom <span class="op">=</span> <span class="st">"area"</span>,
+    fill <span class="op">=</span> <span class="st">"steelblue"</span>,
+    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.95</span>, <span class="fl">100</span>, <span class="fl">15</span><span class="op">)</span>, <span class="fl">200</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">55</span>, <span class="fl">145</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    x <span class="op">=</span> <span class="st">"QI"</span>,
+    y <span class="op">=</span> <span class="st">"Densità"</span>
+  <span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span id="fig:testipotesi2"></span>
+<img src="Data-Science-per-psicologi_files/figure-html/testipotesi2-1.png" alt="Distribuzione campionaria con regione di rifiuto unilaterale destra." width="90%"><p class="caption">
+Figura 16.3: Distribuzione campionaria con regione di rifiuto unilaterale destra.
+</p>
+</div>
+</div>
+</div>
+<div id="problema-1" class="section level4 unnumbered">
+<h4>Problema<a class="anchor" aria-label="anchor" href="#problema-1"><i class="fas fa-link"></i></a>
+</h4>
+<p>Supponiamo ora che <span class="math inline">\(f(\mathcal{G}_n \mid H_0) = \mathcal{N}(100, 15)\)</span>
+descriva la distribuzione della statistica test <span class="math inline">\(\mathcal{G}_n\)</span>.
+Supponiamo inoltre che la regione di rifiuto sia posta nella coda di
+sinistra e che il livello di significatività sia <span class="math inline">\(\alpha = 0.01\)</span>. Si
+trovi il valore critico che delimita la regione di rifiuto di <span class="math inline">\(H_0\)</span>.</p>
+<div id="soluzione-1" class="section level5 unnumbered">
+<h5>Soluzione<a class="anchor" aria-label="anchor" href="#soluzione-1"><i class="fas fa-link"></i></a>
+</h5>
+<p>Usando R, la risposta è <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm(0.01, 100, 15)</a></code> = 65.1 – si veda la figura <a href="significativit%C3%A0-statistica.html#fig:testipotesi3">16.4</a>.</p>
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">55</span>, <span class="fl">145</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>
+    fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>,
+    geom <span class="op">=</span> <span class="st">"area"</span>,
+    fill <span class="op">=</span> <span class="st">"steelblue"</span>,
+    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">100</span>, <span class="fl">15</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">55</span>, <span class="fl">145</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    x <span class="op">=</span> <span class="st">"QI"</span>,
+    y <span class="op">=</span> <span class="st">"Densità"</span>
+  <span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span id="fig:testipotesi3"></span>
+<img src="Data-Science-per-psicologi_files/figure-html/testipotesi3-1.png" alt="Distribuzione campionaria con regione di rifiuto unilaterale sinistra." width="90%"><p class="caption">
+Figura 16.4: Distribuzione campionaria con regione di rifiuto unilaterale sinistra.
+</p>
+</div>
+</div>
+</div>
+<div id="problema-2" class="section level4 unnumbered">
+<h4>Problema<a class="anchor" aria-label="anchor" href="#problema-2"><i class="fas fa-link"></i></a>
+</h4>
+<p>In un terzo esempio, supponiamo che <span class="math inline">\(f(\mathcal{G}_n \mid H_0) = \mathcal{N}(100, 15)\)</span> descriva la distribuzione della statistica test <span class="math inline">\(\mathcal{G}_n\)</span>. Supponiamo inoltre che la regione di rifiuto sia bilaterale e che il livello di
+significatività sia <span class="math inline">\(\alpha = 0.05\)</span>. Si trovino i valori critici che
+delimitano la regione di rifiuto di <span class="math inline">\(H_0\)</span>.</p>
+<div id="soluzione-2" class="section level5 unnumbered">
+<h5>Soluzione<a class="anchor" aria-label="anchor" href="#soluzione-2"><i class="fas fa-link"></i></a>
+</h5>
+<p>Con la seguente istruzione <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm(c(0.025, 0.975), 100, 15)</a></code> troviamo i
+valori <span class="math inline">\(70.6\)</span> e <span class="math inline">\(129.4\)</span> – si veda la figura <a href="significativit%C3%A0-statistica.html#fig:testipotesi4">16.5</a>.</p>
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">55</span>, <span class="fl">145</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>
+    fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>,
+    geom <span class="op">=</span> <span class="st">"area"</span>,
+    fill <span class="op">=</span> <span class="st">"steelblue"</span>,
+    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">100</span>, <span class="fl">15</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>
+    fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>,
+    geom <span class="op">=</span> <span class="st">"area"</span>,
+    fill <span class="op">=</span> <span class="st">"steelblue"</span>,
+    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.975</span>, <span class="fl">100</span>, <span class="fl">15</span><span class="op">)</span>, <span class="fl">200</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">55</span>, <span class="fl">145</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    x <span class="op">=</span> <span class="st">"QI"</span>,
+    y <span class="op">=</span> <span class="st">"Densità"</span>
+  <span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span id="fig:testipotesi4"></span>
+<img src="Data-Science-per-psicologi_files/figure-html/testipotesi4-1.png" alt="Distribuzione campionaria con regione di rifiuto bilaterale." width="90%"><p class="caption">
+Figura 16.5: Distribuzione campionaria con regione di rifiuto bilaterale.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="la-decisione-statistica" class="section level3" number="16.4.6">
+<h3>
+<span class="header-section-number">16.4.6</span> La decisione statistica<a class="anchor" aria-label="anchor" href="#la-decisione-statistica"><i class="fas fa-link"></i></a>
+</h3>
+<p>Il processo di decisione statistica viene descritto da von Mises (1964) nel modo seguente:</p>
+<blockquote>
+<p>Controllare (<em>checking</em>) o saggiare (<em>testing</em>) ha la forma seguente: se il “risultato osservato” ha una ‘piccola’ probabilità subordinatamente all’ipotesi assunta, respingiamo l’ipotesi. (p. 441)</p>
+</blockquote>
+<p>Ovviamente l’ipotesi a cui von Mises fa riferimento, la cui validità è
+solo ipotetica, è l’ipotesi nulla.</p>
+<p>In pratica, possiamo decidere se rigettare o meno l’ipotesi nulla in due
+modi: determinando se la statistica test <span class="math inline">\(\mathcal{G}_n\)</span> cade o meno
+nella regione di rifiuto (come abbiamo descritto sopra) o confrontando
+il valore-<span class="math inline">\(p\)</span> con <span class="math inline">\(\alpha\)</span> – i due metodi sono equivalenti.</p>
+<p>Il <em>valore-p</em> rappresenta la probabilità di osservare un valore della
+statistica test <span class="math inline">\(\mathcal{G}_n\)</span> pari a quello effettivamente osservato,
+o maggiore, quanto l’ipotesi nulla è vera. Se il valore-<span class="math inline">\(p\)</span> è <em>minore</em>
+del livello di significatività <span class="math inline">\(\alpha\)</span>, allora la statistica test cade
+nella regione di rifiuto di <span class="math inline">\(H_0\)</span> e ciò conduce al rifiuto dell’ipotesi
+nulla. Tali concetti sono riassunti nella figura <a href="significativit%C3%A0-statistica.html#fig:decisionestatistica">16.6</a>.</p>
+<div class="figure" style="text-align: center">
+<span id="fig:decisionestatistica"></span>
+<img src="images/decisione_statistica.png" alt="Relazione tra il valore-p e il livello di significatività alpha." width="100%"><p class="caption">
+Figura 16.6: Relazione tra il valore-p e il livello di significatività alpha.
+</p>
+</div>
+</div>
+</div>
+<div id="potenza-del-test" class="section level2" number="16.5">
+<h2>
+<span class="header-section-number">16.5</span> Potenza del test<a class="anchor" aria-label="anchor" href="#potenza-del-test"><i class="fas fa-link"></i></a>
+</h2>
+<p>Ritorniamo ora al concetto di potenza del test. Il livello di
+significatività e la potenza del test vengono usati per quantificare la
+qualità dell’inferenza statistica. Idealmente, la procedura di test di
+ipotesi non dovrebbe giungere alla conclusione sbagliata. Ovvero, non
+dovrebbe respingere <span class="math inline">\(H_0\)</span> quando essa è vera e dovrebbe respingere <span class="math inline">\(H_0\)</span>
+in favore dell’alternativa quando <span class="math inline">\(H_1\)</span> è vera. Ma questi sono solo due
+dei quattro esiti che, in principio, sono possibili, come indicato nella
+tabella <a href="significativit%C3%A0-statistica.html#fig:decisionestatistica">16.6</a> e corrispondono alle probabilità
+indicate nella figura <a href="significativit%C3%A0-statistica.html#fig:poterestatistico">16.7</a>.</p>
+<div class="figure" style="text-align: center">
+<span id="fig:poterestatistico"></span>
+<img src="images/potere_statistico.png" alt="Probabilità dei due tipi di errori nel test di ipotesi statistiche." width="60%"><p class="caption">
+Figura 16.7: Probabilità dei due tipi di errori nel test di ipotesi statistiche.
+</p>
+</div>
+<p>Possiamo pensare a <span class="math inline">\(H_0\)</span> come all’ipotesi che descrive l’evento “nulla
+di interessante sta succedendo” – ad esempio, “la moneta è bilanciata,”
+“il trattamento non è migliore del placebo,” ecc. – e pensare ad <span class="math inline">\(H_1\)</span>
+come al caso contrario, ovvero: “sta accadendo qualcosa di
+interessante.” Quindi la <em>potenza del test</em>, ovvero la probabilità
+<span class="math inline">\(1 - \beta\)</span> di rigettare <span class="math inline">\(H_0\)</span> quando essa è falsa, corrisponde alla
+probabilità di rilevare qualcosa di interessante, quando qualcosa di
+interessante è effettivamente successo, mentre il <em>livello di
+significatività</em> corrisponde alla probabilità di affermare che qualcosa
+di interessante si è verificato, quando in realtà non è successo nulla
+di interessante.</p>
+<p>Il calcolo della potenza di un test è spesso difficile, perché richiede
+la conoscenza della distribuzione campionaria di <span class="math inline">\(\mathcal{G}_n\)</span> quando
+è vera l’ipotesi alternativa <span class="math inline">\(H_1\)</span>. Nella figura <a href="significativit%C3%A0-statistica.html#fig:altopoterestatistico">16.8</a>, l’area ombreggiata sotto <span class="math inline">\(f(\mathcal{G}_n \mid H_0)\)</span> rappresenta il livello di significatività in un test unilaterale. Ricordiamo che il livello di significatività è la
+probabilità di rifiutare falsamente l’ipotesi nulla quando essa è vera.
+Invece, l’area sotto <span class="math inline">\(f(\mathcal{G}_n \mid H_1)\)</span> a sinistra della linea
+verticale che delimita la regione ombreggiata rappresenta la potenza del
+test, ovvero la probabilità che la statistica del test si trovi nella
+regione di rifiuto di <span class="math inline">\(H_0\)</span> quando è vera <span class="math inline">\(H_1\)</span>. Nella figura <a href="significativit%C3%A0-statistica.html#fig:altopoterestatistico">16.8</a> la potenza del test è alta.</p>
+<div class="figure" style="text-align: center">
+<span id="fig:altopoterestatistico"></span>
+<img src="images/alto_potere_statistico.png" alt="Probabilità dei due tipi di errori nel test di ipotesi statistiche." width="90%"><p class="caption">
+Figura 16.8: Probabilità dei due tipi di errori nel test di ipotesi statistiche.
+</p>
+</div>
+<p>Nella figura <a href="significativit%C3%A0-statistica.html#fig:bassopoterestatistico">16.9</a>, invece, la potenza del test è bassa.
+Entrambi i test hanno lo stesso livello di significatività, ma se <span class="math inline">\(f(\mathcal{G}_n \mid H_1)\)</span> si sovrappone di molto con <span class="math inline">\(f (\mathcal{G}_n \mid H_0)\)</span>, allora la potenza del test è bassa.</p>
+<div class="figure" style="text-align: center">
+<span id="fig:bassopoterestatistico"></span>
+<img src="images/basso_potere_statistico.png" alt="Probabilità dei due tipi di errori nel test di ipotesi statistiche." width="90%"><p class="caption">
+Figura 16.9: Probabilità dei due tipi di errori nel test di ipotesi statistiche.
+</p>
+</div>
+<p>Tipicamente possiamo aumentare la potenza di un test aumentando la numerosità del campione in maniera tale da diminuire la varianza delle distribuzioni della statistica test condizionate a <span class="math inline">\(H_0\)</span> e ad <span class="math inline">\(H_1\)</span>. In un disegno sperimentale è importante determinare in anticipo il numero di prove o dei soggetti necessari per raggiungere la potenza desiderata.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">15</span> Distribuzione campionaria della media dei campioni</a></div>
+<div class="next"><a href="inferenza-sulle-medie.html"><span class="header-section-number">17</span> Inferenza sulle medie</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#significativit%C3%A0-statistica"><span class="header-section-number">16</span> Significatività statistica</a></li>
+<li>
+<a class="nav-link" href="#un-esempio-motivante"><span class="header-section-number">16.1</span> Un esempio motivante</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#la-domanda-della-ricerca"><span class="header-section-number">16.1.1</span> La domanda della ricerca</a></li>
+<li><a class="nav-link" href="#le-ipotesi-statistiche"><span class="header-section-number">16.1.2</span> Le ipotesi statistiche</a></li>
+<li><a class="nav-link" href="#domanda-della-ricerca-e-ipotesi-statistiche"><span class="header-section-number">16.1.3</span> Domanda della ricerca e ipotesi statistiche</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#ipotesi-nulla-e-ipotesi-alternativa"><span class="header-section-number">16.2</span> Ipotesi nulla e ipotesi alternativa</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#apagogia"><span class="header-section-number">16.2.1</span> Apagogia</a></li>
+<li><a class="nav-link" href="#la-similitudine-del-processo-penale"><span class="header-section-number">16.2.2</span> La similitudine del processo penale</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#due-tipi-di-errori"><span class="header-section-number">16.3</span> Due tipi di errori</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#errore-di-i-tipo-la-protezione-dei-diritti-dellimputato"><span class="header-section-number">16.3.1</span> Errore di I tipo: la protezione dei diritti dell’imputato</a></li>
+<li><a class="nav-link" href="#errore-di-ii-tipo-lasimmetria-del-giudizio"><span class="header-section-number">16.3.2</span> Errore di II tipo: l’asimmetria del giudizio</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#come-si-costruisce-un-test-di-ipotesi"><span class="header-section-number">16.4</span> Come si costruisce un test di ipotesi?</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#la-variabilit%C3%A0-campionaria"><span class="header-section-number">16.4.1</span> La variabilità campionaria</a></li>
+<li><a class="nav-link" href="#le-distribuzioni-delle-statistiche-test"><span class="header-section-number">16.4.2</span> Le distribuzioni delle statistiche test</a></li>
+<li><a class="nav-link" href="#regioni-di-rifiuto-e-regioni-di-non-rifiuto"><span class="header-section-number">16.4.3</span> Regioni di rifiuto e regioni di non rifiuto</a></li>
+<li><a class="nav-link" href="#quando-rifiutare-lipotesi-nulla"><span class="header-section-number">16.4.4</span> Quando rifiutare l’ipotesi nulla</a></li>
+<li><a class="nav-link" href="#specificazione-delle-regioni-di-rifiuto"><span class="header-section-number">16.4.5</span> Specificazione delle regioni di rifiuto</a></li>
+<li><a class="nav-link" href="#la-decisione-statistica"><span class="header-section-number">16.4.6</span> La decisione statistica</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#potenza-del-test"><span class="header-section-number">16.5</span> Potenza del test</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>

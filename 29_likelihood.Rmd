@@ -7,31 +7,23 @@ source("_common.R")
 knitr::opts_chunk$set(fig.align="center")
 ```
 
-Per introdurre la funzione di verosimiglianza utilizzeremo un esempio proposto da @McElreath_rethinking -- per una trattazione più formale è possibile consultare il tutorial di @etz2018introduction. Supponiamo di avere in mano un mappamondo gonfiabile e di chiederci: "qual'è la proporzione della superficie terreste ricoperta d'acqua?" Sembra una domanda a cui è difficile rispondere. Ma ci viene in mente questa idea brillante: lanciamo in aria il mappamondo e, quando lo riprendiamo, osserviamo se la superfice del mappamondo sotto il nostro dito indice destro rappresenta acqua o terra. Possiamo ripetere questa procedura molte volte. In questo modo possiamo osservare un insieme di campioni causali della superficie dal mappamondo. 
-
-Immaginiamo di lanciare in aria il mappamondo nove volte e di osservare i seguenti risultati: A, T, A, A, A, T, A, T, A, dove "A" indica acqua e "T" indica terra. In questo esempio, @McElreath_rethinking illustra come analizzare questi dati per stimare la proporzione della superficie del globo terrestre che è ricoperta d'acqua. Questo esempio, inoltre, introduce il concetto di verosimiglianza.
+Per introdurre la funzione di verosimiglianza utilizzeremo un esempio proposto da @McElreath_rethinking -- per una trattazione più formale è possibile consultare il tutorial di @etz2018introduction. Supponiamo di tenere in mano un mappamondo gonfiabile e di chiederci: "qual'è la proporzione della superficie terreste ricoperta d'acqua?" Sembra una domanda a cui è difficile rispondere. Ma ci viene in mente questa idea brillante: lanciamo in aria il mappamondo e, quando lo riprendiamo, osserviamo se la superfice del mappamondo sotto il nostro dito indice destro rappresenta acqua o terra. Possiamo ripetere questa procedura più volte, così da ottenere un campione causale di diverse porzioni della superficie dal mappamondo. Eseguiamo il nostro esperimento lanciando in aria il mappamondo nove volte e osserviamo i seguenti risultati: A, T, A, A, A, T, A, T, A, dove "A" indica acqua e "T" indica terra. In questo esempio, @McElreath_rethinking illustra come sia possibile analizzare questi dati per stimare la proporzione della superficie del globo terrestre che è ricoperta d'acqua. Mediante questo esempio, @McElreath_rethinking introduce inoltre il concetto di verosimiglianza.
 
 ## La narrazione dei dati
 
-Seguendo @McElreath_rethinking, possiamo dire che l'analisi Bayesiana può essere descritta come la produzione di una storia che viene raccontata dai dati. Lo scopo di una tale narrazione è quello di chiarire come i dati sono stati generati. Per potere formulare la
-narrazione dei dati in questo modo dobbiamo descrivere le caratteristiche del mondo che ha generato il fenomeno di interesse e il processo attraverso il quale abbiamo ottenuti i dati. In altri termini, la narrazione dei dati corrisponde ad una descrizione del processo di
-campionamento. Per l'esempio del mappamondo possiamo dire quanto segue:
+Secondo @McElreath_rethinking l'analisi Bayesiana può essere descritta come la produzione di una storia che viene raccontata dai dati. Lo scopo di una tale narrazione è quello di chiarire come i dati sono stati generati. Per potere formulare la narrazione dei dati è necessario descrivere le caratteristiche del mondo che ha generato il fenomeno di interesse e il processo attraverso il quale abbiamo ottenuti i dati. In altri termini, la narrazione dei dati corrisponde alla descrizione del processo di campionamento. Per l'esempio del mappamondo possiamo dire quanto segue:
 
 1.  la proporzione del pianeta Terra ricoperta d'acqua è $p$;
-
 2.  un singolo lancio del mappamondo ha una probabilità $p$ di produrre
     l'osservazione "acqua" (A);
-
 3.  i lanci del mappamondo sono indipendenti (nel senso che il risultato
     di un lancio non influenza i risultati degli altri lanci).
 
-In una tale narrazione dei dati distinguiamo i dati dai parametri. I dati sono le frequenze degli eventi "acqua" e "terra". Abbiamo chiamato $A$ la frequenza del risultato "acqua" e $T$ la frequenza del risultato "terra". La somma degli eventi $A$ e $T$ è il numero totale dei lanci del mappamondo: $N = A + T$. 
+In una tale narrazione dei dati distinguiamo i _dati_ dai _parametri_. I dati sono le frequenze degli eventi $A$ ("acqua") e $T$ ("terra"). La somma delle frequenze di $A$ e $T$ è il numero totale dei lanci del mappamondo: $N = A + T$. 
 
-La narrazione dei dati fa riferimento, oltre ai dati, anche al parametro $p$, ovvero alla
-proporzione di acqua sul globo terrestre. La descrizione di tale parametro rappresenta l'obiettivo dell'inferenza. 
+La narrazione di cui ci occupiamo fa riferimento, oltre ai dati, anche al parametro $p$, ovvero alla proporzione di acqua sul globo terrestre. La descrizione di tale parametro rappresenta l'obiettivo dell'inferenza. 
 
-Anche se il parametro $p$ non può essere direttamente osservato è possibile inferire il suo valore a partire dai dati. Avendo specificato ciò che è stato detto sopra, la narrazione dei
-dati viene trasformata in un *modello probabilistico*. Un tale modello probabilistico è facile da costruire, e vedremo come si fa. Tuttavia, prima di descrivere questo modello probabilistico in termini formali, è utile visualizzare il suo comportamento. Dopo aver visto come questo modello apprende dai dati ci porremo il problema di capire come funziona.
+Anche se il parametro $p$ non può essere direttamente osservato è possibile inferire il suo valore a partire dai dati. Avendo specificato ciò che abbiamo stato detto sopra, la narrazione dei dati si trasforma in un *modello probabilistico* -- in questo caso, abbiamo una sequenza di prove Bernoulliane indipendenti e, dunque, il modello statistico è quello Binomiale. Un tale modello probabilistico è facile da costruire, e vedremo come si fa. Tuttavia, prima di descrivere questo modello probabilistico in dettaglio, è utile visualizzare il suo comportamento. Dopo aver visto come questo modello apprende dai dati ci porremo il problema di capire come funziona.
 
 ### Come impara un modello statistico?
 

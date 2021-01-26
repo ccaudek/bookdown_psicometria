@@ -44,6 +44,9 @@ rmd_files: [
   "18_prob_congiunta.Rmd",
   # ------------------------- approccio frequentista
   "25_distr_camp_mean.Rmd",
+  "26_test_ipotesi.Rmd",
+  "27_ttest.Rmd",
+  "28_limiti_stat_frequentista.Rmd",
   # ------------------------- verosimiglianza
   "29_likelihood.Rmd",
   # ------------------------- approccio bayesiano

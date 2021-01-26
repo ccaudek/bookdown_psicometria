@@ -8,7 +8,7 @@
 <meta name="author" content="Corrado Caudek">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
 </head>
 <body data-spy="scroll" data-target="#toc">
@@ -53,14 +53,17 @@
 <li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">14</span> Probabilità congiunta</a></li>
 <li class="book-part">Inferenza frequentista</li>
 <li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">15</span> Distribuzione campionaria della media dei campioni</a></li>
+<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">16</span> Significatività statistica</a></li>
+<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">17</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">18</span> Critiche e difese</a></li>
 <li class="book-part">Verosimiglianza</li>
-<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">16</span> La funzione di verosimiglianza</a></li>
+<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
 <li class="book-part">Statistica Bayesiana</li>
-<li><a class="" href="chapter-modellistica-bayesiana.html"><span class="header-section-number">17</span> Modellistica bayesiana</a></li>
-<li><a class="" href="chapter-stima-distr-posteriori.html"><span class="header-section-number">18</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">19</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">20</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">21</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="chapter-modellistica-bayesiana.html"><span class="header-section-number">20</span> Modellistica bayesiana</a></li>
+<li><a class="" href="chapter-stima-distr-posteriori.html"><span class="header-section-number">21</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">22</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">23</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">24</span> Inferenza Bayesiana</a></li>
 <li><a class="" href="informazioni-generali.html">Informazioni generali</a></li>
 <li><a class="" href="appendici.html">Appendici</a></li>
 <li><a class="" href="bibliografia.html">Bibliografia</a></li>
@@ -280,9 +283,9 @@ Leggiamo i dati assumendo che il file <code>data.mood.csv</code> si trovi nella 
 <p>Ci sono dunque 66 soggetti i quali hanno ottenuto i valori sulla scala del BDI-II stampati di seguito (li presento ordinati dal più piccolo al più grande).</p>
 <div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">bysubj</span><span class="op">$</span><span class="va">bdi</span><span class="op">)</span>
-<span class="co">#&gt;  [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  2  2  2</span>
-<span class="co">#&gt; [29]  2  3  3  3  5  7  9 12 19 22 22 24 25 25 26 26 26 27 27 28 28 30 30 30 31 31 33 33</span>
-<span class="co">#&gt; [57] 34 35 35 35 36 39 41 43 43 44</span></code></pre></div>
+<span class="co">#&gt;  [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  2  2  2  2</span>
+<span class="co">#&gt; [30]  3  3  3  5  7  9 12 19 22 22 24 25 25 26 26 26 27 27 28 28 30 30 30 31 31 33 33 34 35</span>
+<span class="co">#&gt; [59] 35 35 36 39 41 43 43 44</span></code></pre></div>
 <p>Calcolo ora le frequenze assolute per i seguenti intervalli aperti a destra: [0, 13.5), [13.5, 19.5), [19.5, 28.5), [28.5, 63). Esaminando i dati, possiamo notare che 36 soggetti cadono nella prima classe. È però necessario eseguire quest’operazione di conteggio utilizzando R.</p>
 <p>Uno dei modi possibili per calcolare le frequenze assolute è quello di usare la funzione <code><a href="https://rdrr.io/r/base/cut.html">cut()</a></code>. Mediante tal funzione è possibile dividere il <em>campo di variazione</em> (ovvero, la differenza tra il valore massimo di una distribuzione ed il valore minimo) di una variabile continua <code>x</code> in intervalli e codificare ciascun valore <code>x</code> nei termini dell’intervallo a cui appartiene. Tale risultato si ottiene nel modo seguente.</p>
 <div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
@@ -347,6 +350,13 @@ Leggiamo i dati assumendo che il file <code>data.mood.csv</code> si trovi nella 
 </tr>
 </tbody>
 </table></div>
+</div>
+<div id="osservazione" class="section level3" number="10.2.2">
+<h3>
+<span class="header-section-number">10.2.2</span> Osservazione<a class="anchor" aria-label="anchor" href="#osservazione"><i class="fas fa-link"></i></a>
+</h3>
+<p>In una sezione successiva di questo capitolo discuteremo i principi che, secondo Edward Tufte, devono guidare la Data Science. Parlando delle rappresentazioni grafiche dei dati, Edward Tufte ci dice che la prima cosa da fare è “mostrare i dati.” Questa può sembrare una tautologia, considerato che questo è lo scopo della statistica descrittiva: trasformare i dati attraverso vari indici riassuntivi o rappresentazioni grafiche, in modo tale da renderli <strong>comprensibili</strong>. Tuttavia, spesso le tecniche statistiche vengono usate per <em>nascondere</em> e non per <em>mostrare</em> i dati.</p>
+<p>L’uso delle frequenze relative offre un chiaro esempio di questo. Di questi tempi capita spesso di incontrare, sulla stampa, notizie a proposito un nuovo farmaco che, in una prova clinica, ha mostrato risultati incoraggianti che suggeriscono la sua efficacia come possibile trattamento del COVID-19. Alle volte i risultati della sperimentazione clinica sono riportati nei termini di una <em>frequenza relativa</em>. Ad esempio, potremmo leggere che l’uso del farmaco ha portato ad una riduzione del 21% dei ricoveri o dei decessi. Sembra tanto. Ma è necessario guardare i dati! Ovvero, molto spesso, quello che <strong>non</strong> viene riportato dai comunicati stampa. Infatti, una riduzione del 21% può corrispondere ad un cambiamento dal 5% al 4%. E una riduzione del 44% può corrispondere ad una differenza di 10 contro 18, o di 5 contro 9, o di 15 contro 27. In altri termini, una proporzione, anche grande, può corrispondere ad una differenza <strong>assoluta</strong> piuttosto piccola: un piccolo passo in avanti, ma non ad un balzo! Per questa ragione, per capire cosa i dati significano, è necessario guardare i dati da diversi punti di vista, utilizzando diverse statistiche descrittive, senza limitarci alla statistica descrittiva che racconta la storia che piace di più. Perché la scelta della statistica descrittiva da utilizzare per riassumere i dati dipende dagli scopi di chi esegue l’analisi statisica: il nostro scopo è quelloi di capire se il farmaco funziona; lo scopo delle compagnie farmaceutiche è quello di vendere il farmaco. Sono obiettivi molto diversi.</p>
 </div>
 </div>
 <div id="istogramma" class="section level2" number="10.3">
@@ -1312,7 +1322,10 @@ software statistico.</p>
 <li><a class="nav-link" href="#chapter-descript"><span class="header-section-number">10</span> Statistica descrittiva</a></li>
 <li><a class="nav-link" href="#riassumere-i-dati"><span class="header-section-number">10.1</span> Riassumere i dati</a></li>
 <li>
-<a class="nav-link" href="#distribuzioni-di-frequenze"><span class="header-section-number">10.2</span> Distribuzioni di frequenze</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#esercizio-con-r"><span class="header-section-number">10.2.1</span> Esercizio con R</a></li></ul>
+<a class="nav-link" href="#distribuzioni-di-frequenze"><span class="header-section-number">10.2</span> Distribuzioni di frequenze</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#esercizio-con-r"><span class="header-section-number">10.2.1</span> Esercizio con R</a></li>
+<li><a class="nav-link" href="#osservazione"><span class="header-section-number">10.2.2</span> Osservazione</a></li>
+</ul>
 </li>
 <li>
 <a class="nav-link" href="#istogramma"><span class="header-section-number">10.3</span> Istogramma</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#esercizio-con-r-1"><span class="header-section-number">10.3.1</span> Esercizio con R</a></li></ul>

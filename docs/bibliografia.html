@@ -8,7 +8,7 @@
 <meta name="author" content="Corrado Caudek">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
 </head>
 <body data-spy="scroll" data-target="#toc">
@@ -53,14 +53,17 @@
 <li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">14</span> Probabilità congiunta</a></li>
 <li class="book-part">Inferenza frequentista</li>
 <li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">15</span> Distribuzione campionaria della media dei campioni</a></li>
+<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">16</span> Significatività statistica</a></li>
+<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">17</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">18</span> Critiche e difese</a></li>
 <li class="book-part">Verosimiglianza</li>
-<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">16</span> La funzione di verosimiglianza</a></li>
+<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
 <li class="book-part">Statistica Bayesiana</li>
-<li><a class="" href="chapter-modellistica-bayesiana.html"><span class="header-section-number">17</span> Modellistica bayesiana</a></li>
-<li><a class="" href="chapter-stima-distr-posteriori.html"><span class="header-section-number">18</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">19</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">20</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">21</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="chapter-modellistica-bayesiana.html"><span class="header-section-number">20</span> Modellistica bayesiana</a></li>
+<li><a class="" href="chapter-stima-distr-posteriori.html"><span class="header-section-number">21</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">22</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">23</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">24</span> Inferenza Bayesiana</a></li>
 <li><a class="" href="informazioni-generali.html">Informazioni generali</a></li>
 <li><a class="" href="appendici.html">Appendici</a></li>
 <li><a class="active" href="bibliografia.html">Bibliografia</a></li>
@@ -76,8 +79,17 @@
 </h1>
 
 <div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-apa2010" class="csl-entry">
+American Psychological Association. (2010). <em>Publication manual of the <span>American Psychological Association</span> (6th ed.)</em>. Washington, DC: Author.
+</div>
 <div id="ref-anderson2012new" class="csl-entry">
 Anderson, T. W., &amp; Finn, J. D. (2012). <em>The new statistical analysis of data</em>. Springer Science &amp; Business Media.
+</div>
+<div id="ref-baker2016reproducibility" class="csl-entry">
+Baker, M. (2016). Reproducibility crisis? <em>Nature</em>, <em>533</em>(26), 353–366.
+</div>
+<div id="ref-caudek2014individual" class="csl-entry">
+Caudek, C. (2014). Individual differences in cognitive control on self-referenced and other-referenced memory. <em>Consciousness and Cognition</em>, <em>30</em>, 169–183.
 </div>
 <div id="ref-cesario2019there" class="csl-entry">
 Cesario, J., Johnson, D. J., &amp; Terrill, W. (2019). Is there evidence of racial disparity in police use of deadly force? Analyses of officer-involved fatal shootings in 2015–2016. <em>Social Psychological and Personality Science</em>, <em>10</em>(5), 586–595.
@@ -87,6 +99,9 @@ Etz, A. (2018). Introduction to the concept of likelihood and its applications. 
 </div>
 <div id="ref-Gautret_2020" class="csl-entry">
 Gautret, P., Lagier, J. C., Parola, P., Meddeb, L., Mailhe, M., Doudier, B., &amp; Honoré, S. (2020). Hydroxychloroquine and azithromycin as a treatment of COVID-19: Results of an open-label non-randomized clinical trial. <em>International Journal of Antimicrobial Agents</em>.
+</div>
+<div id="ref-gelman2014beyond" class="csl-entry">
+Gelman, A., &amp; Carlin, J. (2014). Beyond power calculations: Assessing type <span>S</span> (sign) and type <span>M</span> (magnitude) errors. <em>Perspectives on Psychological Science</em>, <em>9</em>(6), 641–651.
 </div>
 <div id="ref-gelman2020regression" class="csl-entry">
 Gelman, A., Hill, J., &amp; Vehtari, A. (2020). <em>Regression and other stories</em>. Cambridge University Press.
@@ -102,6 +117,15 @@ Kruschke, J. (2014). <em>Doing bayesian data analysis: A tutorial with r, JAGS, 
 </div>
 <div id="ref-McElreath_rethinking" class="csl-entry">
 McElreath, R. (2020). <em>Statistical rethinking: A bayesian course with examples in r and stan</em> (2nd Edition). CRC Press.
+</div>
+<div id="ref-mehr_melodies" class="csl-entry">
+Mehr, S. A., Song, L. A., &amp; Spelke, E. S. (2016). For 5-month-old infants, melodies are social. <em>Psychological Science</em>, <em>27</em>(4), 486–501.
+</div>
+<div id="ref-miller2001female" class="csl-entry">
+Miller, B. D. (2001). Female-selective abortion in <span>A</span>sia: Patterns, policies, and debates. <em>American Anthropologist</em>, <em>103</em>(4), 1083–1095.
+</div>
+<div id="ref-orzack2015human" class="csl-entry">
+Orzack, S. H., Stubblefield, J. W., Akmaev, V. R., Colls, P., Munné, S., Scholl, T., Steinsaltz, D., &amp; Zuckerman, J. E. (2015). The human sex ratio from conception to birth. <em>Proceedings of the National Academy of Sciences</em>, <em>112</em>(16), E2102–E2111.
 </div>
 <div id="ref-ross2020racial" class="csl-entry">
 Ross, C. T., Winterhalder, B., &amp; McElreath, R. (2020). Racial disparities in police use of deadly force against unarmed individuals persist after appropriately benchmarking shooting data on violent crime rates. <em>Social Psychological and Personality Science</em>, 1–10.

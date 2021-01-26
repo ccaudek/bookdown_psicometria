@@ -1,0 +1,157 @@
+# Critiche e difese 
+
+Nell'epoca della crisi della riproducibilità dei risultati della ricerca
+[@baker2016reproducibility] la pratica del test dell'ipotesi nulla e
+degli intervalli di confidenza frequentisti sono stati individuati come
+una delle cause della crisi, spingendo molti ricercatori a cercare
+un'alternativa altrove.
+
+## Limiti dell'inferenza frequentista
+
+All'approccio frequentista sono state rivolte le seguenti critiche.
+
+-   È un approccio ad-hoc che non è dotato del carattere cogente della
+    logica deduttiva. Il concetto di "dati più estremi di" non risulta
+    ben definito. Il valore-$p$ dipende dalla specifica ipotesi nulla
+    scelta dallo sperimentatore.
+
+-   Gli esperimenti devono essere completamente specificati in anticipo
+    -- una pratica estremamente onerosa e molto di rado seguita
+    nell'effettiva pratica della ricerca scientifica.
+
+-   Il valore-$p$ e il livello di significatività sono notoriamente
+    soggetti a grandi errori di interpretazione. Gli esperti sanno che
+    un livello di significatività di $0.05$ significa che la probabilità
+    di un errore di tipo I è del 5%. Cioè, se l'ipotesi nulla è vera, il
+    5% delle volte verrà rifiutata per effetto del caso soltanto. La
+    maggior parte di coloro che usano la logica del test dell'ipotesi
+    nulla invece pensa erroneamente che un valore-$p$ di $0.05$
+    significhi che la probabilità che l'ipotesi nulla sia vera è il 5%.
+    Si potrebbe sostenere che questa non è una critica all'inferenza
+    frequentista, ma piuttosto una critica ad una forma diffusa di
+    ignoranza. Tuttavia, sembra legittimo mettere in dubbio l'utilità di
+    uno strumento i cui risultati vengono continuamente fraintesi dalla
+    maggior parte di coloro che lo usano.
+
+A difesa dell'approccio frequentista sono stati presentati i seguenti
+argomenti.
+
+-   Fornisce uno strumento oggettivo per prendere delle decisioni: tutti
+    coloro che lo usano sono d'accordo sul significato del valore-$p$ e
+    concordano sul fatto che esso sia o meno sufficiente per rifiutare
+    l'ipotesi nulla.
+
+-   I test di ipotesi che seguono l'approccio frequentista vengono
+    applicati nell'analisi statistica delle indagini scientifiche,
+    valutando la forza dell'evidenza fornita dai dati rispetto ad
+    un'ipotesi nulla. L'interpretazione dei risultati è lasciata
+    all'utilizzatore dei test statistici. Ricercatori diversi possono
+    scegliere diversi livelli per la probabilità di errore di I tipo che
+    determina la significatività statistica. L'approccio frequentista
+    non pretende di fornire un metodo per scegliere il livello di
+    significatività; piuttosto descrive esplicitamente il *trade-off*
+    tra errori di I tipo e di II tipo.
+
+-   La progettazione degli esperimenti richiede un'attenta descrizione
+    di tutte le fasi dell'esperimento e di tutte le fasi dell'analisi
+    dei dati, prima che i dati vengano raccolti. Questa pratica
+    contribuisce a ridurre i bias interpretativi da parte del
+    ricercatore.
+
+-   L'approccio frequentista è stato usato per oltre $100$ anni in un
+    periodo storico che ha testimoniato progressi scientifici enormi.
+    Anche se i frequentisti non possono associare una probabilità
+    all'ipotesi che la statistica frequentista sia utile, la storia
+    recente forse dovrebbe costringere i bayesiani ad assegnare una
+    probabilità a priori alta all'ipotesi che i metodi frequentisti
+    funzionano.
+
+-   Recentemente, l'American Psychological Association ha proposto nuovi
+    standard per riportare i risultati dei test dell'ipotesi nulla,
+    raccomandando che vengano indicati la dimensione dell'effetto, gli
+    intervalli di confidenza (CI) e la stima della potenza del test
+    [@apa2010]. Queste raccomandazioni non sono però necessariamente
+    sufficienti per rispondere alle critiche che sono state rivolte
+    all'approccio frequentista.
+
+## Attenti al valore-$p$!
+
+Consideriamo il seguente problema.
+
+Eseguiamo un $t$-test per due campioni indipendenti e sottoponiamo a
+verifica l'ipotesi nulla dell'eguaglianza delle due medie. Sia
+$\alpha = 0.05$. Otteniamo un valore-$p$ di $0.04$. Qual è la
+probabilità che i due campioni siano tratti da distribuzioni con la
+stessa media?
+
+\(a\) $19/20; \quad$ (b) $1/19; \quad$ (c) $1/20; \quad$ (d)
+$95/100; \quad$ (e) sconosciuta.
+
+La risposta corretta è: (e) sconosciuta. La statistica frequentista
+definisce le probabilità dei dati condizionatamente alle ipotesi
+(assunte come vere). Non consente di stabilire la probabilità di
+un'ipotesi.
+
+## Conclusioni {#conclusioni .unnumbered}
+
+In anni recenti è stato sollevato il problema della non replicabilità
+dei risultati della ricerca, inclusa la ricerca psicologica. Questo tema
+è rilevante in questo contesto considerato che, tra gli aspetti del
+metodo scientifico che sono stati evidenziati quali potenziali
+responsabili di questa "crisi della ricerca scientifica," il concetto di
+*valore-p* e la pratica della verifica della significatività
+dell'ipotesi nulla (NHST, Null Hypothesis Significance Testing) figurano
+in modo prominente. Una breve introduzione a questo problema è fornita
+da Gelman (2016), il quale ritiene che la pratica NHST sia
+intrinsecamente problematica, ovvero sia problematico il tentativo del
+ricercatore di cercare di rigettare un'ipotesi "fantoccio" (*straw-man*)
+che è certamente falsa a priori o, almeno, poco interessante dal punto
+di vista scientifico, a favore di un'ipotesi alternativa favorita dal
+ricercatore. In generale, sembra più sensato dire che la differenza tra
+due condizioni sia molto piccola, piuttosto di dire che sia esattamente
+uguale a zero.
+
+Il messaggio che viene solitamente trasmesso dai libri di testo di
+statistica è che la NHST sia una forma di "alchimia", "*to convert
+randomness into a sort of certainty, as associated with words such as
+'confidence' and 'significance'*" (Gelman, 2016, p. 12). Viene raccolto
+un campione di dati, viene eseguita l'analisi statistica e l'inferenza
+statistica che ne risulta viene riassunta in una conclusione formulata
+nei termini di un *valore-p* e di un intervallo di confidenza che
+esclude lo zero, i quali trasmettono la falsa certezza che il
+ricercatore abbia compreso le proprietà del fenomeno esaminato. In
+realtà, il problema della NHST è che essa produce risultati
+"statisticamente significativi" in un grande numero di casi nei quali le
+caratteristiche del fenomeno in esame non giustificano la conclusione a
+cui giunge il ricercatore; ciò conduce, come ovvia conseguenza, alla non
+replicabilità dei risultati delle ricerche.
+
+La comunità degli statistici ha messo in evidenza come i problemi della
+non replicabilità dei risultati delle ricerche sono soprattutto evidenti
+quando le conclusioni (erronee) a cui giunge il ricercatore derivano,
+tramite l'uso della metodologia NHST, dall'osservazione di (1) piccoli
+campioni nei quali (2) la dimensione dell'effetto è piccola. Questo tipo
+di situazioni rendono estremamente problematica l'applicazione della
+NHST (anche se non sono le uniche). E, sfortunatamente, tali due
+condizioni descrivono le caratteristiche di molte (gran parte) delle
+recenti ricerche in psicologia.
+
+Una famosa definizione della statistica è che essa sia un metodo che ci
+consente di prendere delle decisioni razionali in una situazione di
+incertezza. Gli statistici suggeriscono ai ricercatori non soltanto di
+diventare buoni conoscitori delle tecniche statistiche, ma anche di
+imparare a convivere con l'incertezza, nonostante la sofisticazione
+sempre crescente delle tecniche statistiche disponibili. Convivere con
+l'incertezza significa evitare di pensare che l'avere ottenuto un
+valore-$p$ "statisticamente significativo" significhi avere risolto un
+problema scientifico. Alla luce di quanto abbiamo detto sopra, dovrebbe
+risultare evidente che le cose non stanno così.
+
+Come possiamo dunque avere alcuna fiducia in ciò che pensiamo di avere
+imparato dai dati? Una strategia possibile è la replicazione e la
+convalida esterna, ma questa strategia è spesso difficilmente
+perseguibile nel mondo reale della ricerca in psicologia e nelle scienze
+sociali per i grandi oneri che comporta. Il problema di quali siano gli
+strumenti metodologici e i metodi statistici più appropriati per
+indagare i fenomeni psicologici, senza essere ingannati, resta dunque un
+problema aperto.

@@ -1,0 +1,170 @@
+\chapter{Critiche e difese}
+\label{chapter:testipotesi_due_medie}
+
+%\begin{chapquote}{Paul Everett Meehl}
+%``Putting it crudely, if you have enough cases and your measures are not totally unreliable, the null hypothesis will always be falsified, regardless of the truth of the substantive theory. 
+%Of course, it could be falsified in the wrong direction, which means that as the power improves, the probability of a corroborative results approaches one-half. 
+%However, if the theory has no verisimilitude – such that we can imagine, so to speak, picking our empirical results randomly out of a directional hat apart from any theory – the probability of a refuting by getting a significant difference in the wrong direction also approaches one-half.  
+%Obviously, this is quite unlike the situation desired from either a Bayesian, a Popperian, or a commonsense scientific standpoint.''
+%\end{chapquote}
+
+%\section*{Obiettivi di apprendimento}
+%
+%Lo studio di questo capitolo dovrebbe insegnare allo studente come:
+%\begin{itemize}
+%\item Comprendere i rischi dell'inferenza frequentista.
+%\end{itemize}
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=6cm]{xkcd_sun_explode}
+%\caption{Frequentists vs. Bayesians.}
+%\end{figure}
+
+
+%Sia l'approccio frequentista che quello bayesiano consentono di valutare le evidenze a supporto di ipotesi contrapposte. Esaminiamo ora, più da vicino, in che modo questi due approcci si distinguono.
+
+%Abbiamo visto come il teorema di Bayes possa essere interpretato nel modo seguente:
+%\[
+%P(\mathcal{H} \mid \mathcal{D}) = \frac{P(\mathcal{D} \mid \mathcal{H}) P(\mathcal{H})}{P(\mathcal{D})},
+%\]
+%dove $\mathcal{H}$ è un'ipotesi e $\mathcal{D}$ sono i dati che possono essere a sostegno o contro l'ipotesi. Ciascun termine del teorema di Bayes ha un suo nome e ruolo:
+%\begin{itemize}
+%\item La probabilità a priori $P(\mathcal{H})$ è la probabilità che $\mathcal{H}$ sia vera prima che i dati vengano considerati.
+%\item La probabilità a posteriori $P(\mathcal{H} \mid \mathcal{D})$ è la probabilità che $\mathcal{H}$ sia vera dopo che i dati sono stati considerati.
+%\item La funzione di verosimiglianza $P(\mathcal{D} \mid \mathcal{H})$ è l'evidenza a favore di $\mathcal{H}$ che viene fornita dai dati $\mathcal{D}$. 
+%\item La probabilità $P(\mathcal{D})$ è la probabilità complessiva di osservare i dati, tenendo in considerazione tutte le possibili ipotesi.
+%\end{itemize}
+%
+%Se la probabilità a priori e la verosimiglianza sono note per tutte le possibili ipotesi, allora tramite il teorema di Bayes è possibile calcolare esattamente la probabilità a posteriori. Questo è il caso che si verifica nell'esercizio che abbiamo discusso, nel quale lanciamo un dado scelto a caso da un'urna il cui contenuto è conosciuto. L'approccio che abbiamo usato nel caso di quel esercizio può essere chiamata la logica deduttiva della teoria della probabilità e ci fornisce un modo diretto per confrontare diverse ipotesi, per trarre conclusioni e per giungere ad una decisione.
+%
+%Nella maggior parte dei casi, però, le probabilità a priori delle varie ipotesi non sono note. In tal caso, non è possibile seguire una logica deduttiva ma bensì necessario fare un'inferenza. Di conseguenza, la conclusione a cui giungiamo non è più certa. Quando dobbiamo fare un'inferenza e seguiamo l'approccio bayesiano ci serviamo di probabilità a priori plausibili; invece, l'approccio frequentista ignora del tutto le ipotesi a priori e si limita ad usare la funzione di verosimiglianza.
+%
+%La scuola bayesiana descrive l'incertezza utilizzando una distribuzione di probabilità applicata alle ipotesi. Le inferenze a cui giunge un individuo dipendono dal grado di fiducia che l'individuo assegna alla distribuzione a priori e la robustezza della conclusione a cui giunge può variare di molto come conseguenza delle distribuzioni a priori che sono state scelte. 
+
+%La scuola frequentista costruisce delle distribuzioni di probabilità dei dati condizionate a specifiche ipotesi. 
+%Assume che una qualche ipotesi sia vera (laddove l'ipotesi è il valore del parametro che specifica la distribuzione dei dati) e che i dati siano stati campionati dalla distribuzione risultante. 
+Nell'epoca della crisi della riproducibilità dei risultati della ricerca \citep{baker2016reproducibility} la pratica del test dell'ipotesi nulla e degli intervalli di confidenza frequentisti sono stati individuati come una delle cause della crisi, spingendo molti ricercatori a cercare un'alternativa altrove. 
+
+%Le due scuole differiscono anche per i seguenti punti.
+%
+%\paragraph{La scuola bayesiana}
+%\begin{itemize}
+%\item usa le distribuzioni di probabilità per caratterizzare sia le ipotesi che i dati;
+%\item dipende dalla probabilità a priori e dalla funzione di verosimiglianza dei dati osservati;
+%\item richiede che la distribuzione a priori sia conosciuta;
+%\item ha dominato la pratica statistica prima del XX secolo;
+%\item fa uso di metodi di calcolo intensivi dal punto di vista computazionale a causa della necessità di integrazione rispetto a parametri molteplici.
+%\end{itemize}
+%
+%\paragraph{La scuola frequentista}
+%\begin{itemize}
+%\item non assegna mai le probabilità alle ipotesi (né a priori né a posteriori);
+%%\item dipende unicamente dalla funzione di verosimiglianza $P(\mathcal{D} \mid \mathcal{H})$;
+%%\item non richiede la formulazione di distribuzioni a priori;
+%\item ha dominato la pratica statistica nel XX secolo;
+%%\item fa uso di metodi di calcolo più semplici dal punto di vista computazionale.
+%\end{itemize}
+
+%Le misure frequentiste quali i valori-$p$ e gli intervalli di confidenza continuano a dominare la ricerca, specialmente nelle scienze della vita e nella psicologia. Tuttavia, attualmente, i metodi bayesiani hanno subito un'enorme rinascita come conseguenza del fatto che abbiamo a disposizione computer sempre più potenti e dobbiamo confrontarci con campioni sempre più grandi di dati (``big data''). 
+%Nonostante permangano profonde divisioni tra i ricercatori che sostengono l'approccio frequentista e quello bayesiano, tra gli statistici sta maturando l'opinione che la soluzione di problemi complessi può trarre beneficio dagli strumenti forniti di concerto da entrambe le scuole. 
+
+%\section{Critiche e difese}
+%
+%\subsection{Critiche all'approccio bayesiano}
+%
+%\begin{itemize}
+%\item La principale critica all'inferenza bayesiana è che una distribuzione a priori soggettiva è appunto\dots\, soggettiva. Non esiste un unico metodo per scegliere una distribuzione a priori, quindi diversi ricercatori possono usare distribuzioni a priori diverse e possono giungere a conclusioni diverse.
+%\item Inoltre, vi sono obiezioni filosofiche all'assegnazione di probabilità alle ipotesi, in quanto le ipotesi non costituiscono esiti di esperimenti ripetibili di cui si può essere certi della frequenza a lungo termine. Piuttosto, un'ipotesi è vera o falsa, indipendentemente dal fatto che noi lo sappiamo o meno: un dado è bilanciato o sbilanciato; il trattamento $A$ è migliore o peggiore del trattamento $B$; domani il sole sorgerà oppure no.
+%\end{itemize}
+%
+%
+%\begin{itemize}
+%\item La probabilità delle ipotesi è esattamente ciò di cui abbiamo bisogno per prendere delle decisioni. Quando il dottore mi dice che un test di screening ha prodotto un risultato positivo, voglio sapere qual è la probabilità che questo significhi che sono malato. Cioè, voglio conoscere la probabilità dell'ipotesi ``sono ammalato''.
+%\item Il teorema di Bayes viene usato in maniera rigorosa. Una volta definite le distribuzioni a priori tutti i nostri calcoli hanno la certezza della logica deduttiva.
+%\item Verificare gli effetti di distribuzioni a priori diverse ci consente di stabilire  quanto i nostri risultati dipendano dalle credenze a priori. 
+%\item Descrivere le conclusioni nei termini della  probabilità delle ipotesi facilita la comunicazione.
+%\item Anche se la scelta della distribuzione a priori può essere soggettiva, è possibile specificare le ipotesi utilizzate per arrivare ad essa, il che consente ad altre persone di metterle in discussione o di verificare gli effetti che derivano dalla scelta di altre distribuzioni a priori.
+%\item Le conclusioni che vengono tratte dai dati sono indipendenti dall'idea di ``dati più estremi di'', idea che risulta ancorata ad una specifica concettualizzazione del problema. 
+%\item I dati possono essere analizzati via via che vengono raccolti. Non è necessario  pianificare in anticipo ogni fase della ricerca.
+%\end{itemize}
+
+\section{Limiti dell'inferenza frequentista}
+
+All'approccio frequentista sono state rivolte le seguenti critiche.
+
+\begin{itemize}
+\item È un approccio ad-hoc che non è dotato del carattere cogente della logica deduttiva. 
+Il concetto di ``dati più estremi di'' non risulta ben definito. 
+Il valore-$p$ dipende dalla specifica ipotesi nulla scelta dallo sperimentatore.
+\item Gli esperimenti devono essere completamente specificati in anticipo -- una pratica estremamente onerosa e molto di rado seguita nell'effettiva pratica della ricerca scientifica.
+\item Il valore-$p$ e il livello di significatività sono notoriamente soggetti a grandi errori di interpretazione. 
+Gli esperti sanno che un livello di significatività di $0.05$ significa che la probabilità di un errore di tipo I è del 5\%. 
+Cioè, se l'ipotesi nulla è vera, il 5\% delle volte verrà rifiutata per effetto del caso soltanto. 
+La maggior parte di coloro che usano la logica del test dell'ipotesi nulla invece pensa erroneamente che un valore-$p$ di $0.05$ significhi che la probabilità che l'ipotesi nulla sia vera è il 5\%.
+Si potrebbe sostenere che questa non è una critica all'inferenza frequentista, ma piuttosto una critica ad una forma diffusa di ignoranza. 
+Tuttavia, sembra legittimo mettere in dubbio l'utilità di uno strumento i cui risultati vengono continuamente fraintesi dalla maggior parte di coloro che lo usano. 
+\end{itemize}
+
+A difesa dell'approccio frequentista sono stati presentati i seguenti argomenti.
+
+\begin{itemize}
+\item Fornisce uno strumento oggettivo per prendere delle decisioni: tutti coloro che lo usano sono d'accordo sul significato del valore-$p$ e concordano sul fatto che esso sia o meno sufficiente per rifiutare l'ipotesi nulla.
+\item I test di ipotesi che seguono l'approccio frequentista vengono applicati nell'analisi statistica delle indagini scientifiche, valutando la forza dell'evidenza fornita dai dati rispetto ad un'ipotesi nulla. 
+L'interpretazione dei risultati è lasciata all'utilizzatore dei test statistici. 
+Ricercatori diversi possono scegliere diversi livelli per la probabilità di errore di I tipo che determina la significatività statistica. 
+L'approccio frequentista non pretende di fornire un metodo per scegliere il livello di significatività; piuttosto descrive esplicitamente il \emph{trade-off} tra errori di I tipo e di II tipo.
+\item La progettazione degli esperimenti richiede un'attenta descrizione di tutte le fasi dell'esperimento e di tutte le fasi dell'analisi dei dati, prima che i dati vengano raccolti. 
+Questa pratica contribuisce a ridurre i bias interpretativi da parte del ricercatore.
+\item L'approccio frequentista è stato usato per oltre $100$ anni in un periodo storico che ha testimoniato progressi scientifici enormi. Anche se i frequentisti non possono associare una probabilità all'ipotesi che la statistica frequentista sia utile, la storia recente forse dovrebbe costringere i bayesiani ad assegnare una probabilità a priori alta all'ipotesi che i metodi frequentisti funzionano.
+\item Recentemente, l'American Psychological Association ha proposto nuovi standard per riportare i risultati dei test dell'ipotesi nulla,  raccomandando che vengano indicati la dimensione dell'effetto, gli intervalli di confidenza (CI) e la stima della potenza del test \cite{apa2010}. Queste raccomandazioni non sono però necessariamente sufficienti per rispondere alle critiche che sono state rivolte all'approccio frequentista.
+\end{itemize}
+
+
+\section{Attenti al valore-$p$!}
+
+Consideriamo il seguente problema. 
+\begin{exmp}
+Eseguiamo un $t$-test per due campioni indipendenti e sottoponiamo a verifica l'ipotesi nulla dell'eguaglianza delle due medie. Sia $\alpha = 0.05$.  Otteniamo un valore-$p$ di $0.04$. Qual è la probabilità che i due campioni siano tratti da distribuzioni con la stessa media?
+
+\medskip
+\noindent
+(a) $19/20; \quad$ (b) $1/19; \quad$ (c) $1/20; \quad$ (d) $95/100; \quad$ (e) sconosciuta.
+\end{exmp}
+\begin{solu}
+La risposta corretta è: (e) sconosciuta. La statistica frequentista definisce le probabilità dei dati condizionatamente alle ipotesi (assunte come vere). Non consente di stabilire la probabilità di un'ipotesi.
+\end{solu}
+
+\section*{Conclusioni}
+
+In anni recenti è stato sollevato il problema della non replicabilità dei risultati della ricerca, inclusa la ricerca psicologica. 
+Questo tema è rilevante in questo contesto considerato che, tra gli aspetti del metodo scientifico che sono stati evidenziati quali potenziali responsabili di questa ``crisi della ricerca scientifica,'' il concetto di \emph{valore-p} e la pratica della verifica della significatività dell’ipotesi nulla (NHST, Null Hypothesis Significance Testing) figurano in modo prominente. 
+Una breve introduzione a questo problema è fornita da Gelman (2016), il quale ritiene che la pratica NHST sia intrinsecamente problematica, ovvero sia problematico  il tentativo del ricercatore di cercare di rigettare un'ipotesi ``fantoccio'' (\emph{straw-man}) che è certamente falsa a priori o, almeno, poco interessante dal punto di vista scientifico, a favore di un'ipotesi alternativa favorita dal ricercatore. 
+In generale, sembra più sensato dire che la differenza tra due condizioni sia molto piccola, piuttosto di dire che sia esattamente uguale a zero. 
+
+Il messaggio che viene solitamente trasmesso dai libri di testo di statistica è che la NHST sia una forma di ``alchimia'', ``\emph{to convert randomness into a sort of certainty, as associated with words such as `confidence' and `significance'}'' (Gelman, 2016, p. 12). 
+Viene raccolto un campione di dati, viene eseguita l'analisi statistica e l'inferenza statistica che ne risulta viene riassunta in una conclusione formulata nei termini di un \emph{valore-p} e di un intervallo di confidenza che esclude lo zero, i quali trasmettono la falsa certezza che il ricercatore abbia compreso le proprietà del fenomeno esaminato. 
+In realtà, il problema della NHST è che essa produce risultati ``statisticamente significativi'' in un grande numero di casi nei quali le caratteristiche del fenomeno in esame non giustificano la conclusione a cui giunge il ricercatore; ciò conduce, come ovvia conseguenza, alla non replicabilità dei risultati delle ricerche. 
+
+La comunità degli statistici ha messo in evidenza come i problemi della non replicabilità dei risultati delle ricerche sono soprattutto evidenti quando le conclusioni (erronee) a cui giunge il ricercatore derivano, tramite l'uso della metodologia NHST, dall'osservazione di (1) piccoli campioni nei quali (2) la dimensione dell'effetto è piccola. 
+Questo tipo di situazioni rendono estremamente problematica l'applicazione della NHST (anche se non sono le uniche). 
+E, sfortunatamente, tali due condizioni descrivono le caratteristiche di molte (gran parte) delle recenti ricerche in psicologia. 
+
+Una famosa definizione della statistica è che essa sia un metodo che ci consente di prendere delle decisioni razionali in una situazione di incertezza. 
+Gli statistici suggeriscono ai ricercatori non soltanto di diventare buoni conoscitori delle tecniche statistiche, ma anche di imparare a convivere con l'incertezza, nonostante la sofisticazione sempre crescente delle tecniche statistiche disponibili.
+Convivere con l'incertezza significa evitare di pensare che l'avere ottenuto un valore-$p$ ``statisticamente significativo'' significhi avere risolto un problema scientifico.
+Alla luce di quanto abbiamo detto sopra, dovrebbe risultare evidente che le cose non stanno così.
+
+Come possiamo dunque avere alcuna fiducia in ciò che pensiamo di avere imparato dai dati? 
+Una strategia possibile è la replicazione e la convalida esterna, ma questa strategia è spesso difficilmente perseguibile nel mondo reale della ricerca in psicologia e nelle scienze sociali per i grandi oneri che comporta. 
+Il problema di quali siano gli strumenti metodologici e i metodi statistici più appropriati per indagare i fenomeni psicologici, senza essere ingannati, resta dunque un problema aperto.
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=7cm]{xkcd_significant}
+%\caption{Significant.}
+%\label{fig:xkcd_significant}
+%\end{figure}
+
+
+
