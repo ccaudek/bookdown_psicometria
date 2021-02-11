@@ -5,7 +5,7 @@ source("_common.R")
 knitr::opts_chunk$set(fig.align="center")
 ```
 
-# Il calcolo delle probabilità {#chapter-prob}
+# Il calcolo delle probabilità 
 
 È normale fare delle congetture rispetto a ciò di cui non siamo sicuri.
 Ma perché facciamo questo? Molto spesso perché, anche se sappiamo che le
@@ -223,7 +223,6 @@ probabilità può infatti essere definita come la quantificazione del
 livello di "casualità" di un evento, laddove viene detto casuale ciò che
 non è noto o non può essere predetto con certezza.
 
-
 ## Terminologia
 
 Come qualsiasi altra branca della matematica, la teoria delle
@@ -235,7 +234,6 @@ sono descritti di seguito.
 * Prima che l'esperimento casuale venga eseguito non sappiamo quale esito verrà prodotto; dopo che l'esperimento casuale è stato eseguito, l'esito dell'esperimento si "cristallizza" nel risultato osservato.
 * Si dice *spazio campionario* $\Omega$ (probability space) l'insieme di tutti i possibili esiti di un esperimento casuale. Lo spazio campionario può essere finito, infinito o infinito numerabile. Eseguire un esperimento casuale significa scegliere in maniera casuale uno dei possibili eventi elementari dello spazio campionario.
 * Si dice *evento composto* (o non-elementare) un sottoinsieme dello spazio campionario, ovvero un insieme che può essere a sua volta scomposto in più eventi elementari. Per esempio, il numero 4 è un evento elementare dello spazio campionario finito $\Omega = \{1, 2, 3, 4, 5, 6\}$ che corrisponde all'esperimento casuale del lancio di un dado. L'evento composto $A$ "il risultato è pari" è $A = \{2, 4, 6\}$.
-
 
 ## Le diverse definizioni della probabilità
 
@@ -267,56 +265,16 @@ Contare il numero di modi in cui un evento può realizzarsi può essere semplice
 Il calcolo combinatorio ci consente di contare il numero di casi nello spazio campionario e di applicare la definizione "ingenua" di probabilità descritta nella
 definizione \@ref(def:def-ing-prob). È però facile rendersi conto che tale definizione di probabilità ha un grosso problema: non può essere applicata al caso di uno spazio campionario infinito. Dobbiamo dunque trovare una definizione che risolva un tale problema. Per fare ciò vengono specificate alcune proprietà che vorremmo potere attribuire alla probabilità -- in matematica, tali proprietà sono dette *assiomi* -- per poi definire una funzione di probabilità che soddisfi tali proprietà. Arriviamo in questo modo alla seguente definizione non ingenua della probabilità.
 
-```{definition, def-assiomi-Kolmogorov}
-Uno spazio di probabilità è una terna ($\Omega$, $\mathcal{A}$, $P$), dove $\Omega$ è l'insieme dei risultati possibili di un esperimento casuale, $\mathcal{A}$ è detta $\sigma$-algebra, ovvero un insieme di insiemi (gli eventi) per i quali si può calcolare una probabilità, e $P()$ è una misura di probabilità su $\Omega$, ovvero $P: \Omega \rightarrow [0, 1]$.
-```
+- La probabilità di un evento deve essere compresa tra 0 e 1, dove 0 significa che l'evento è impossibile e non può accadere, e 1 significa che l'evento è certo che accadrà.
 
-Per la precisione, una $\sigma$-algebra è una famiglia di insiemi tali
-che $\emptyset \in \mathcal{A}$; se $A \in \mathcal{A}$ allora anche il suo complementare $A^C$ è in $\mathcal{A}$; unioni numerabili di elementi di $\mathcal{A}$ appartengono ancora ad $\mathcal{A}$.
+- Per due eventi che si escludono a vicenda, la probabilità che si verifichi l'uno o l'altro è la somma delle loro separate probabilità.
 
-La funzione di probabilità $P()$ deve soddisfare i seguenti assiomi:
+- Due eventi sono indipendenti se e solo se la probabilità del verificarsi di entrambi gli eventi è uguale al prodotto delle probabilità del verificarsi di ciascun evento.
 
-1.  la probabilità $P(\omega)$ soddisfa la disuguaglianza $0 \leq P(\omega) \leq 1;$
-2.  la probabilità dell'evento certo (ovvero la probabilità dello spazio
-    campionario $\Omega$) è 1: $P(\Omega) = \sum_{\omega \in \Omega} P(\omega) = 1;$
-3.  se $A_1, A_2, \dots, A_k$ sono eventi disgiunti, allora la
-    probabilità che uno di essi si verifichi è pari alla somma delle
-    loro separate probabilità: 
-    \begin{equation}
-    P(A_1 \text{ o } A_1 \dots \text{ o } A_k) = P(A_1) + P(A_2) +\dots + P(A_k).
-    (\#eq:probcomposte)
-    \end{equation}
-    
+- La somma delle probabilità di tutti i possibili eventi nell'intero spazio campionario deve essere uguale a 1. 
 
-La definizione \@ref(def:def-assiomi-Kolmogorov) corrisponde al cosiddetto _approccio assiomatico_ messo a punto da Kolmogorov intorno al 1930, il quale è alla base della moderna teoria della probabilità.
+Le definizione precedenti corrispondono al cosiddetto _approccio assiomatico_ messo a punto da Kolmogorov intorno al 1930, il quale è alla base della moderna teoria della probabilità. Gli assiomi di Kolmogorov sono necessari per evitare i paradossi che si possono creare quando si manipolano gli insiemi -- ad esempio, l'utilizzo dell'"l'insieme di tutti gli insiemi" tipicamente conduce ad un paradosso. 
 
-Nonostante l'enorme complessità dell'approccio assiomatico alla
-probabilità, per gli scopi dell'analisi dei dati psicologici le cose che
-dobbiamo capire sono molto semplici. I vincoli della $\sigma$-algebra
-sono necessari per evitare i paradossi che si possono creare quando si
-manipolano gli insiemi (ad esempio, l'utilizzo dell'"l'insieme di tutti
-gli insiemi" tipicamente conduce ad un paradosso). Questi problemi sono
-però molto lontani dalle applicazioni della teoria della probabilità
-all'analisi dei dati psicologici. Gli psicologi tipicamente effettuano
-partizioni molto semplici dello spazio campionario: il trattamento ha
-funzionato oppure no? Per cui le aporie della teoria degli insiemi a cui
-la $\sigma$-algebra vuole porre un freno sono problemi che non ci
-riguardano.
-
-Gli altri aspetti della teoria assiomatica della probabilità, invece,
-sono molto intuitivi. I primi due assiomi possono essere interpretati
-nel modo seguente. Si assegna il valore 0 all'"evento impossibile",
-ovvero all'esito dell'esperimento casuale che non può verificarsi (ad
-esempio, il lancio di un dado a sei facce produce 7), e si assegna il
-valore 1 all'evento certo (ad esempio, il lancio di un dado a sei facce
-produce un numero compreso tra 1 e 6). Di conseguenza, la probabilità è
-un numero nell'intervallo $[0, 1]$.
-
-Il terzo assioma può essere compreso interpretando la probabilità come
-la frequenza relativa a lungo termine del verificarsi di un evento. Se
-due eventi sono incompatibili, allora la frequenza relativa dell'unione
-di tali eventi è la somma delle due singole frequenze relative. Lo
-stesso si vale per la probabilità.
 
 ## Assegnare le probabilità agli eventi
 
@@ -447,11 +405,7 @@ $P(\text{gialla} \cup \text{pari}) = \frac{1}{3} + \frac{1}{2} - \frac{5}{30} = 
 
 ## Variabili aleatorie
 
-Il concetto di "variabile aleatoria" è estremamente utile per estendere
-la nostra capacità di quantificare l'incertezza e di riassumere i
-risultati di un esperimento casuale. Le variabili aleatorie sono un
-concetto fondamentale di tutta la teoria statistica; è quindi cruciale
-capire quale sia il loro significano. Iniziamo con una definizione.
+Tutte le nozioni che abbiamo discusso in precedenza sono necessarie per potere definire il concetto di "variabile aleatoria". Le variabili aleatorie sono un concetto fondamentale della teoria statistica e delle sue applicazioni. Infatti, le variabili aleatorie sono lo strumento che usiamo per valutare, per esempio, l'efficacia di un intervento psicologico. Un intervento psicologico, infatti, può essere concepito come un "esperimento casuale" e le variabili aleatorie ci consentono di riassumere i risultati di un esperimento casuale e di quantificare il grado di certezza che possiamo assegnare all'esito osservato, nel contesto di tutti gli esiti possibili che, in linea di principio, sarebbe stato possibile osservare. Il significato di "variabile aleatoria" è semplice; meno semplice è capire come manipolare le variabili aleatorie. Ma iniziamo con una definizione.
 
 ```{definition, def-var-aleatoria}
 Una variabile aleatoria è una funzione sullo spazio campionario $\Omega$
@@ -464,7 +418,7 @@ punti dello spazio campionario $\Omega$. Ad ogni evento elementare
 $\omega_i$ attribuiamo il numero $X(\omega_i)$, ovvero il valore che la
 variabile aleatoria assume sul risultato $\omega_i$ dell'esperimento
 casuale. L'attributo "aleatoria" si riferisce al fatto che la variabile
-considerata trae origine da un esperimento di cui non siamo in grado di
+considerata trae origine da un esperimento casuale di cui non siamo in grado di
 prevedere l'esito con certezza.
 
 Mediante una variabile aleatoria trasformiamo lo spazio campionario

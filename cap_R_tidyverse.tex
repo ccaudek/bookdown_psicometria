@@ -1,0 +1,442 @@
+\chapter{Manipolazione dei dati}
+\label{chapter:tidyverse}  
+
+
+\section*{Obiettivi di apprendimento}
+
+Lo studio di questo capitolo dovrebbe insegnare allo studente come:
+\begin{itemize}
+\item 
+  Filtrare le righe di un data.frame.
+\item 
+  Selezionare le colonne di un data.frame.
+\item
+  Aggiungere una colonna ad un data.frame.
+\item 
+  Ordinare i dati di un data.frame.
+\item
+  Calcolare un sommario dei dati raggruppati in base a vari fattori.
+\item 
+  Creare grafici con \texttt{ggplot2()}.
+\end{itemize}
+
+
+\section*{Motivazione}
+
+Si chiamano ``dati grezzi'' quelli che provengono dal mondo circostanze, i dati raccolti per mezzo degli strumenti usati negli esperimenti, per mezzo di interviste, di questionari, ecc. 
+Questi dati (chiamati \emph{dataset}) raramente vengono forniti con una struttura logica precisa.  
+Per potere elaborarli mediante dei software dobbiamo prima trasformarli in maniera tale che abbiano una struttura logica organizzata. 
+La struttura che solitamente si utilizza è quella tabellare (matrice dei dati), ovvero si dispongono i dati in una tabella nella quale a ciascuna riga corrisponde ad un'osservazione e ciascuna colonna corrisponde ad una variabile rilevata. 
+In \R\, una tale struttura è chiamata \emph{data frame}. 
+Il pacchetto \verb+dplyr+, che è al momento uno dei pacchetti più famosi e utilizzati per la gestione dei dati, offre una serie di funzionalità che consentono di ottenere il risultato descritto in precedenza e consente inoltre di eseguire le operazioni più comuni di manipolazione dei dati in maniera più semplice rispetto a quanto succeda quando usiamo le funzioni base di \R. 
+
+\section{Trattamento dei dati con \texttt{dplyr}}
+
+Il pacchetto \verb+dplyr+ include cinque funzioni base: 
+\verb+filter()+,
+\verb+select()+,
+\verb+mutate()+,
+\verb+arrange()+ e
+\verb+summarise()+. 
+A queste cinque funzioni di base si aggiungono il pipe \texttt{\%>\%} che serve a concatenare più operazioni e \texttt{group\_by} che serve per il subsetting. 
+In particolare, considerando una matrice osservazioni per variabili, \texttt{select()} e \texttt{mutate()} si occupano di organizzare le variabili, \texttt{filter()} e \texttt{arrange()} i casi, e \texttt{summarise()} i gruppi. 
+
+Per introdurre le funzionalità di base di \verb+dplyr+, consideriamo i dati contenuti nel data frame \verb+msleep+ fornito dal pacchetto \verb+ggplot2+, che contiene le ore di sonno medie per 83 specie di mammiferi \cite{savage2007scaling}.
+Carichiamo il pacchetto \verb+tidyverse+ (che contiene \verb+ggplot2+) e leggiamo nella memoria di lavoro l'oggetto \verb+msleep+:
+\begin{lstlisting}
+library("tidyverse")
+data(msleep)
+dim(msleep)
+#> [1] 83 11
+\end{lstlisting}
+
+
+\subsection{Selezionare le colonne del data.frame con \texttt{select()}}
+
+La funzione \verb+select()+ consente di selezionare un sottoinsieme di variabili in un dataset. 
+L'operatore pipe, \texttt{\%>\%}, serve a concatenare varie funzioni insieme, in modo da inserire un'operazione dietro l'altra.
+Per esempio, possiamo selezionare solo le variabili \verb+name+, \verb+vore+ e \verb+sleep_total+:
+
+\begin{lstlisting}
+dt <- msleep %>%
+  select(name, vore, sleep_total)
+dt
+# A tibble: 83 x 3
+   name                       vore  sleep_total
+   <chr>                      <chr>       <dbl>
+ 1 Cheetah                    carni        12.1
+ 2 Owl monkey                 omni         17  
+ 3 Mountain beaver            herbi        14.4
+ 4 Greater short-tailed shrew omni         14.9
+ 5 Cow                        herbi         4  
+ 6 Three-toed sloth           herbi        14.4
+ 7 Northern fur seal          carni         8.7
+ 8 Vesper mouse               NA            7  
+ 9 Dog                        carni        10.1
+10 Roe deer                   herbi         3  
+# ... with 73 more rows
+\end{lstlisting}
+\noindent
+laddove la sequenza di istruzioni precedenti significa che il data.frame \verb+dt+ è stato passato alla funzione \verb+select()+.
+
+
+\subsection{Filtrare le righe del data.frame con \texttt{filter()}}
+
+La funzione \verb+filter()+ consente di selezionare un sottoinsieme di osservazioni in un dataset. 
+Per esempio, possiamo selezionare tutte le osservazioni nella variabile  \verb+vore+ contrassegnate come \verb+carni+ in questo modo (ovvero, tutti i carnivori):
+\begin{lstlisting}
+dt %>%
+  filter(vore == "carni")
+# A tibble: 19 x 3
+   name                       vore  sleep_total
+   <chr>                      <chr>       <dbl>
+ 1 Cheetah                    carni        12.1
+ 2 Northern fur seal          carni         8.7
+ 3 Dog                        carni        10.1
+ 4 Long-nosed armadillo       carni        17.4
+ 5 Domestic cat               carni        12.5
+ 6 Pilot whale                carni         2.7
+ 7 Gray seal                  carni         6.2
+ 8 Thick-tailed opposum       carni        19.4
+ 9 Slow loris                 carni        11  
+10 Northern grasshopper mouse carni        14.5
+11 Tiger                      carni        15.8
+12 Jaguar                     carni        10.4
+13 Lion                       carni        13.5
+14 Caspian seal               carni         3.5
+15 Common porpoise            carni         5.6
+16 Bottle-nosed dolphin       carni         5.2
+17 Genet                      carni         6.3
+18 Arctic fox                 carni        12.5
+19 Red fox                    carni         9.8
+\end{lstlisting}
+
+
+\subsection{Aggiungere una colonna al data.frame con \texttt{mutate()}}
+
+Talvolta vogliamo creare una nuova variabile in uno stesso dataset ad esempio sommando o dividendo due variabili, oppure calcolandone la media. 
+A questo scopo si usa la funzione \verb+mutate()+. 
+Per esempio, se vogliamo esprimere i valori di \verb+sleep_total+ in minuti, moltiplichiamo per 60:
+\begin{lstlisting}
+dt %>% 
+  mutate(sleep_minutes = sleep_total * 60) %>%
+  select(sleep_total, sleep_minutes)
+# A tibble: 83 x 2
+   sleep_total sleep_minutes
+         <dbl>         <dbl>
+ 1        12.1           726
+ 2        17            1020
+ 3        14.4           864
+ 4        14.9           894
+ 5         4             240
+ 6        14.4           864
+ 7         8.7           522
+ 8         7             420
+ 9        10.1           606
+10         3             180
+# ... with 73 more rows
+\end{lstlisting}
+
+
+\subsection{Ordinare i dati con \texttt{arrange()}}
+
+La funzione \texttt{arrange()} serve a ordinare i dati in base ai valori di una o più variabili.  
+Per esempio, possiamo ordinare la variabile \verb+sleep_total+ dal valore più alto al più basso in questo modo:
+
+\begin{lstlisting}
+dt %>% 
+  arrange(desc(sleep_total))
+# A tibble: 83 x 3
+   name                           vore    sleep_total
+   <chr>                          <chr>         <dbl>
+ 1 Little brown bat               insecti        19.9
+ 2 Big brown bat                  insecti        19.7
+ 3 Thick-tailed opposum           carni          19.4
+ 4 Giant armadillo                insecti        18.1
+ 5 North American Opossum         omni           18  
+ 6 Long-nosed armadillo           carni          17.4
+ 7 Owl monkey                     omni           17  
+ 8 Arctic ground squirrel         herbi          16.6
+ 9 Golden-mantled ground squirrel herbi          15.9
+10 Tiger                          carni          15.8
+# ... with 73 more rows
+\end{lstlisting}
+
+
+\subsection{Raggruppare i dati con \texttt{group\_by()}}
+
+La funzione \texttt{group\_by()} serve a raggruppare insieme i valori in base a una o più variabili. 
+La vedremo in uso in seguito insieme a \texttt{summarise()}.
+
+
+\subsection{Sommario dei dati con \texttt{summarise()}}
+
+La funzione \verb+summarise()+ collassa il dataset in una singola riga dove viene riportato il risultato della statistica richiesta. 
+Per esempio, la media del tempo totale del sonno è
+
+\begin{lstlisting}
+dt %>% 
+  summarise(
+  m_sleep = mean(sleep_total, na.rm = TRUE)
+  ) %>% 
+  unlist()
+ m_sleep 
+10.43373 
+\end{lstlisting}
+
+
+\subsection{Operazioni raggruppate}
+
+In precedenza abbiamo visto come i mammiferi considerati dormano, in media, 10.4 ore al giorno. 
+Troviamo ora il sonno medio in funzione di \verb+vore+:
+\begin{lstlisting}
+dt %>%
+  group_by(vore) %>%
+  summarise(
+    m_sleep = mean(sleep_total, na.rm = TRUE), 
+    n = n()
+  )
+  vore    m_sleep     n
+  <chr>     <dbl> <int>
+1 carni     10.4     19
+2 herbi      9.51    32
+3 insecti   14.9      5
+4 omni      10.9     20
+5 NA        10.2      7
+\end{lstlisting}
+Si noti che, nel caso di 7 osservazioni, il valore di \verb+vore+ non era specificato. 
+Per tali osservazioni, dunque, la classe di appartenenza è \verb+NA+.
+
+
+\section{Creare grafici con \texttt{ggplot2()}}
+
+Creata nel 2005 da Hadley Wickham, \verb+ggplot2()+ premette di generare dei grafici più raffinati e attraenti rispetto a quelli che si possono ottenere con il pacchetto grafico contenuto nella distribuzione base di \R. 
+
+La libreria \verb+ggplot2+ è un'implementazione della cosiddetta ``Grammar of Graphics'' di Wilkinson. 
+Tale ``grammatica'' consiste in uno schema generale da applicare alla visualizzazione dei dati, che permette di organizzare un grafico attraverso la combinazione di componenti semantiche distinte, come oggetti geometrici, scale e coordinate. 
+Per questa ragione, in \verb+ggplot2()+ un grafico è costituito da una serie di strati (\emph{layers}). 
+
+ \begin{figure}[h!]
+   \centering
+    \includegraphics[width=.65\textwidth]{ggplot_layers.pdf}
+   \caption{Una figura creata con \texttt{ggplot2} è costituita da una serie di strati.}
+    \label{fig:ggplot2_layers}
+  \end{figure}
+
+La funzione da cui si parte per inizializzare un grafico è \verb+ggplot()+. 
+La funzione \verb+ggplot()+ richiede due argomenti. 
+Il primo è l'oggetto di tipo data.frame che contiene i dati da visualizzare. 
+Il secondo è una particolare lista che viene generata dalla funzione \verb+aes()+, la quale determina l'aspetto (\emph{aesthetic}) del grafico. 
+La funzione \verb+aes()+ richiede necessariamente di specificare “x” e “y”, ovvero i nomi delle colonne del data.frame che è stato utilizzato quale primo argomento di \verb+ggplot()+, le quali rappresentano le variabili da porre rispettivamente sugli assi orizzontale e verticale.
+
+La definizione della tipologia di grafico e i vari parametri sono poi definiti successivamente, aggiungendo all'oggetto creato da \verb+ggplot()+ tutte le componenti necessarie. 
+Saranno quindi altre funzioni, come \verb+geom_bar()+, \verb+geom_line()+ o \verb+geom_point()+ a occuparsi di aggiungere al livello di base barre, linee, punti, e così via. 
+Infine, tramite altre funzioni, ad esempio \verb+labs()+, sarà possibile definire i dettagli più fini.
+
+Gli elementi grafici (bare, punti, segmenti, \dots) usati da \verb+ggplot2+ sono chiamati \verb+geoms+. Mediante queste funzioni è possibile costruire diverse tipologie di grafici:
+\begin{itemize}
+\item \verb+geom_bar()+ : crea un layer con delle barre;
+\item \verb+geom_point()+ : crea un layer con dei punti (diagramma a dispersione);
+\item \verb+geom_line()+ : crea un layer con una linea retta;
+\item \verb+geom_histogram()+ : crea un layer con un istogramma;
+\item \verb+geom_boxplot()+ : crea un layer con un box-plot;
+\item \verb+geom_errorbar()+ : crea un layer con barre che rappresentano intervalli di confidenza;
+\item \verb+geom_hline()+ e \verb+geom_vline()+ : crea un layer con una linea orizzontale o verticale definita dall'utente.
+\end{itemize}
+Un comando generico ha la seguente forma:
+\begin{lstlisting}
+my_graph <- ggplot(
+  my_data,
+  aes(x_var, y_var)
+) +
+  geom_...()
+\end{lstlisting}
+
+La prima volta che si usa il pacchetto \verb+ggplot2+ è necessario installarlo. Per fare questo possiamo installare \verb+tidyverse+ che, oltre a contenere  \verb+ggplot2+, fornisce altre utili funzioni per l'analisi dei dati:
+\begin{lstlisting}
+install.packages("tidyverse")
+\end{lstlisting}
+Per attivare il pacchetto si usa l'istruzione:
+\begin{lstlisting}
+library("tidyverse")
+\end{lstlisting}
+Ogni volta che si inizia una sessione \R\, è necessario attivare i pacchetti che si vogliono usare, ma non è necessario istallarli una nuova volta. 
+Se è necessario specificare il pacchetto nel quale è contenuta la funzione (o il data.frame) che vogliamo utilizzare, usiamo la sintassi \verb+package::function()+. Per esempio, l'istruzione \verb+ggplot2::ggplot()+ rende esplicito che stiamo usando la funzione \verb+ggplot()+ contenuta nel pacchetto \verb+ggplot2+.
+
+\subsection{Diagramma a dispersione}
+
+Consideriamo nuovamenti i dati contenuti nel data frame \verb+msleep+ 
+%fornito dal pacchetto \verb+ggplot2+, che contiene le ore di sonno medie per 83 specie di mammiferi \cite{savage2007scaling} 
+e poniamoci il problema di rappresentare graficamente la relazione tra il numero medio di ore di sonno giornaliero (\verb+sleep_total+) e il peso dell'animale (\verb+bodywt+). 
+Usando le impostazioni di default di \verb+ggplot2+, con le istruzioni seguenti, otteniamo il grafico fornito dalla Figura~\ref{fig:ggplot2_sleep1}.
+\begin{lstlisting}
+library("tidyverse")
+data(msleep)
+p <- ggplot(
+  data = msleep,
+  aes(x = bodywt, y = sleep_total)
+) +
+geom_point()
+print(p)
+\end{lstlisting}
+
+\begin{figure}[h!]
+   \centering
+    \includegraphics[width=.65\textwidth]{ggplot_sleep1.pdf}
+   \caption{Relazione tra peso corporeo e ore di sonno (versione 1).}
+    \label{fig:ggplot2_sleep1}
+\end{figure}
+  
+\noindent
+Coloriamo ora in maniera diversa i punti che rappresentano animali carnivori, erbivori, ecc. (Figura~\ref{fig:ggplot2_sleep2}).
+\begin{lstlisting}
+p <- ggplot(
+  data = msleep,
+  aes(x = bodywt, y = sleep_total, col = vore)
+) +
+geom_point()
+print(p)
+\end{lstlisting}
+
+\begin{figure}[h!]
+   \centering
+    \includegraphics[width=.65\textwidth]{ggplot_sleep2.pdf}
+   \caption{Relazione tra peso corporeo e ore di sonno (versione 2).}
+    \label{fig:ggplot2_sleep2}
+\end{figure}
+
+\noindent
+È chiaro, senza fare alcuna analisi statistica, che la relazione tra le due variabili non è lineare. 
+Trasformando in maniera logaritmica i valori dell'asse $x$ la relazione si linearizza (Figura~\ref{fig:ggplot2_sleep3}).
+\begin{lstlisting}
+p <- ggplot(
+  data = msleep,
+  aes(x = log(bodywt), y = sleep_total, col = vore)
+) +
+geom_point()
+print(p)
+\end{lstlisting}
+
+\begin{figure}[h!]
+   \centering
+    \includegraphics[width=.65\textwidth]{ggplot_sleep3.pdf}
+   \caption{Relazione tra peso corporeo e ore di sonno (versione 3).}
+    \label{fig:ggplot2_sleep3}
+\end{figure}
+
+\noindent
+Infine, aggiustiamo il ``tema'' del grafico, aggiungiamo le etichette sugli assi e il titolo (Figura~\ref{fig:ggplot2_sleep4}).
+\begin{lstlisting}
+library("ggthemes")
+ggplot(
+  data = msleep,
+  aes(x = log(bodywt), y = sleep_total, col = vore)
+) +
+geom_point(size = 2) +
+  theme_tufte(
+    base_size = 14,
+    base_family = "sans", ticks = TRUE
+) +
+theme(legend.title = element_blank()) +
+labs(
+  x = "Log Peso Corporeo",
+  y = "Totale Ore di Sonno",
+  title = "Il sonno in 83 specie di mammiferi",
+  subtitle = "Savage e West (2007)"
+ )
+\end{lstlisting}
+
+\begin{figure}[h!]
+   \centering
+    \includegraphics[width=.65\textwidth]{ggplot_sleep4.pdf}
+   \caption{Relazione tra peso corporeo e ore di sonno (versione 4).}
+    \label{fig:ggplot2_sleep4}
+\end{figure}
+
+\subsection{Istogramma}
+
+Creiamo ora un istogramma che rappresenta la distribuzione del (logaritmo del) peso medio del cervello delle 83 specie di mammiferi considerate da Savage e West (2007)  (Figura~\ref{fig:ggplot2_sleep5}). 
+\begin{lstlisting}
+ggplot(
+  data = msleep,
+  aes(log(brainwt))
+) +
+geom_histogram(aes(y = ..density..)) +
+labs(
+  x = "Log Peso Cervello",
+  y = "Frequenza Relativa"
+) +
+theme_tufte(
+  base_size = 14,
+  base_family = "sans", ticks = TRUE
+) +
+theme(legend.title = element_blank())
+\end{lstlisting}
+L'argomento \verb+aes(y=..density..)+ in \verb+geom_histogram()+ produce le frequenze relative. 
+L'opzione di default (senza questo argomento) porta \verb+ggplot()+ a rappresentare le frequenze assolute.
+
+\begin{figure}[h!]
+   \centering
+    \includegraphics[width=.65\textwidth]{ggplot_sleep5.pdf}
+   \caption{Istogramma per la distribuzione delle misure del logaritmo del peso del cervello.}
+    \label{fig:ggplot2_sleep5}
+\end{figure}
+
+
+\subsection*{Scrivere il codice in \R\, con stile}
+\label{chapter:R_stile}
+
+Uno stile di programmazione è un insieme di regole per la gestione dell'indentazione dei blocchi di codice, per la creazione dei nomi dei file e delle variabili e per le convenzioni tipografiche che vengono usate. 
+Scrivere il codice in \R\, con stile consente di creare listati più leggibili e semplici da modificare, minimizza la possibilità di errore, e consente correzioni e modifiche più rapide.
+Vi sono molteplici stili di programmazione che possono essere utilizzati dall'utente, anche se è bene attenersi a quelle che sono le convenzioni maggiormente diffuse, allo scopo di favorire la comunicazione. In ogni caso, l'importante è di essere coerenti, ovvero di adottare le stesse convenzioni in tutte le parti del codice che si scrive. 
+Ad esempio, se si sceglie di usare lo stile {\tt snake\_case} per il nome composto di una variabile (es., {\tt personality\_trait}), non è appropriato usare lo stile \emph{lower Camel case} per un'altra variabile (es., {\tt socialStatus}). 
+Dato che questo argomento è stato trattato ampiamente in varie sedi, mi limito qui a rimandare ad uno stile di programmazione molto popolare, quello proposto da Hadley Wickham, il creatore di {\tt tidyverse}. Maggiori informazioni possono essere trovate al seguente link: \url{http://style.tidyverse.org/}.
+
+
+
+%%-----------------------------------------------------------------------------
+%\section*{Problemi}
+%%-----------------------------------------------------------------------------
+%
+%\addcontentsline{toc}{section}{Problemi}
+%
+%%---------------------------------------------------------------------
+%
+%\begin{prob}
+%\label{prob:test_reading_data}
+%
+%Scarica un file di dati dal sito Moodle. Su Mac OS X il file verrà scaricato nella cartella Download. Salva il file in un'altra cartella, ad esempio $\sim$\verb+Dropbox/psicometria+, con il nome \verb+file_dati.txt+.  Usando la procedura descritta nel \ref{sec:change_dir}, cambia la cartella di lavoro. Con un editore di tua scelta, crea uno script con il nome \verb+Es_lettura_dati.R+ e salvalo nella cartella prescelta (es., $\sim$Dropbox/psicometria). Nello script, inserisci l'istruzione per leggere il file di dati e, usando l'operatore di assegnazione, salva i dati nell'oggetto \verb+df_test_reading+. Usando la sequenza di tasti descritta nel \ref{sec:editor}, esegui le istruzioni dello script necessarie per leggere il file dei dati. Usando le funzioni \verb+head()+ e \verb+tail()+, stampa sullo schermo le prime e le ultime righe del data.frame che hai creato. 
+%\end{prob}
+
+%
+%%%-----------------------------------------------------------------------------
+%\section*{Problemi}
+%%%-----------------------------------------------------------------------------
+%
+%\addcontentsline{toc}{section}{Problemi}
+%
+%
+%%---------------------------------------------------------------------
+%\begin{prob}
+%\label{prob_sintax_1}
+%Si raccolgano $20$ numeri in qualsiasi modo. Si scriva uno script \R\, nel quale tali numeri vengono immagazzinati in un vettore. Eseguendo lo script \R\, si calcoli (1) la somma degli elementi del vettore, (2) la media, (3) il valore minimo, (4) il valore massimo, (5) la media. 
+%\end{prob}
+%
+%%---------------------------------------------------------------------
+%\begin{prob}
+%\label{prob_sintax_2}
+%Per i numeri dell'esercizio precedente, si scriva una funzione che prenda come argomento un vettore e ritorni il numero dei numeri pari in esso contenuti. 
+%Suggerimento: l'operatore modulo \texttt{\%\%} fornisce il resto della divisione intera. Per esempio, 
+%\begin{lstlisting}
+%x <- 1:10
+%x
+%#> [1]  1  2  3  4  5  6  7  8  9 10
+%x %% 2 == 0
+%#> [1] FALSE TRUE FALSE TRUE FALSE TRUE FALSE TRUE FALSE TRUE
+%\end{lstlisting}
+%\end{prob}
+%
+%%
+
+
+

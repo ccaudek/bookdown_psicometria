@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capitolo 4 Sintassi di base | Data Science per psicologi</title>
 <meta name="author" content="Corrado Caudek">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.6/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
@@ -41,29 +41,30 @@
 <li><a class="" href="chapter-strutture-dati.html"><span class="header-section-number">5</span> Strutture di dati</a></li>
 <li><a class="" href="chapter-strut-contr.html"><span class="header-section-number">6</span> Strutture di controllo</a></li>
 <li><a class="" href="chapter-input-output.html"><span class="header-section-number">7</span> Input/Output</a></li>
+<li><a class="" href="manipolazione-dei-dati.html"><span class="header-section-number">8</span> Manipolazione dei dati</a></li>
 <li class="book-part">Misurazione</li>
-<li><a class="" href="chapter-terminologia.html"><span class="header-section-number">8</span> Terminologia</a></li>
-<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">9</span> La misurazione in psicologia</a></li>
+<li><a class="" href="terminologia.html"><span class="header-section-number">9</span> Terminologia</a></li>
+<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">10</span> La misurazione in psicologia</a></li>
 <li class="book-part">Descrizione</li>
-<li><a class="" href="chapter-descript.html"><span class="header-section-number">10</span> Statistica descrittiva</a></li>
+<li><a class="" href="chapter-descript.html"><span class="header-section-number">11</span> Statistica descrittiva</a></li>
 <li class="book-part">Elementi di teoria della probabilità</li>
-<li><a class="" href="chapter-prob.html"><span class="header-section-number">11</span> Il calcolo delle probabilità</a></li>
-<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">12</span> Probabilità condizionata</a></li>
-<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">13</span> Il teorema di Bayes</a></li>
-<li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">14</span> Probabilità congiunta</a></li>
+<li><a class="" href="il-calcolo-delle-probabilit%C3%A0.html"><span class="header-section-number">12</span> Il calcolo delle probabilità</a></li>
+<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">13</span> Probabilità condizionata</a></li>
+<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">14</span> Il teorema di Bayes</a></li>
+<li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">15</span> Probabilità congiunta</a></li>
 <li class="book-part">Inferenza frequentista</li>
-<li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">15</span> Distribuzione campionaria della media dei campioni</a></li>
-<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">16</span> Significatività statistica</a></li>
-<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">17</span> Inferenza sulle medie</a></li>
-<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">18</span> Critiche e difese</a></li>
+<li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">16</span> Distribuzione campionaria della media dei campioni</a></li>
+<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">17</span> Significatività statistica</a></li>
+<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">18</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">19</span> Critiche e difese</a></li>
 <li class="book-part">Verosimiglianza</li>
-<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
+<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">20</span> La funzione di verosimiglianza</a></li>
 <li class="book-part">Statistica Bayesiana</li>
-<li><a class="" href="chapter-modellistica-bayesiana.html"><span class="header-section-number">20</span> Modellistica bayesiana</a></li>
-<li><a class="" href="chapter-stima-distr-posteriori.html"><span class="header-section-number">21</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">22</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">23</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">24</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">21</span> Modellistica bayesiana</a></li>
+<li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">22</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">23</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">24</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">25</span> Inferenza Bayesiana</a></li>
 <li><a class="" href="informazioni-generali.html">Informazioni generali</a></li>
 <li><a class="" href="appendici.html">Appendici</a></li>
 <li><a class="" href="bibliografia.html">Bibliografia</a></li>
@@ -84,6 +85,10 @@ vasta gamma di materiali utile per avvicinarsi all’ambiente R e aiutare
 l’utente nell’apprendimento di questo software statistico. Cercheremo
 qui di fornire alcune indicazioni e una breve descrizione delle risorse
 di base di R.</p>
+<p>Aggiungo qui sotto alcune considerazioni che ho preso, pari pari, da un testo che tratta di un altro linguaggio di programmazione, ma che si applicano perfettamente anche al caso nostro.</p>
+<blockquote>
+<p>Come in ogni linguaggio, per parlare in R è necessario seguire un insieme di regole. Come in tutti i linguaggi di programmazione, queste regole sono del tutto inflessibili e inderogabili. In R, un enunciato o è sintatticamente corretto o è incomprensibile all’interprete, che lo segnalerà all’utente. Questo aspetto non è esattamente amichevole per chi non è abituato ai linguaggi di programmazione, e si trova così costretto ad una precisione di scrittura decisamente poco “analogica.” Tuttavia, ci sono due aspetti positivi nello scrivere codice, interrelati tra loro. Il primo è lo sforzo analitico necessario, che allena ad un’analisi precisa del problema che si vuole risolvere in modo da poterlo formalizzare linguisticamente. Il secondo concerne una forma di autoconsapevolezza specifica: salvo “bachi” nel linguaggio (rarissimi sebbene possibili), il mantra del programmatore è “Se qualcosa non ti funziona, è colpa tua” (testo adattato da Andrea Valle).</p>
+</blockquote>
 <div id="utilizzare-la-console-r-come-calcolatrice" class="section level2" number="4.1">
 <h2>
 <span class="header-section-number">4.1</span> Utilizzare la console R come calcolatrice<a class="anchor" aria-label="anchor" href="#utilizzare-la-console-r-come-calcolatrice"><i class="fas fa-link"></i></a>
@@ -106,36 +111,49 @@ l’input finché il comando non è sintatticamente completo. Ad esempio,</p>
 <span class="op">+</span> 
 <span class="op">+</span> <span class="fl">1</span>
 <span class="co">#&gt; [1] 3</span></code></pre></div>
-<p>R è un ambiente interattivo, ossia i comandi producono una risposta
-immediata. Se scriviamo <code>2 + 2</code> e premiamo il tasto di invio, comparirà
-nella riga successiva il risultato:</p>
+<p>R è un ambiente interattivo, ossia i comandi producono una risposta immediata. Se scriviamo <code>2 + 2</code> e premiamo il tasto di invio, comparirà nella riga successiva il risultato:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">2</span> <span class="op">+</span> <span class="fl">2</span>
 <span class="co">#&gt; [1] 4</span></code></pre></div>
-<p>Il risultato è preceduto da <code>[1]</code>, il che significa che il risultato
-dell’operazione che abbiamo appena eseguito è il primo valore di questa
-linea. Alcune funzioni ritornano più di un singolo numero e, in quel
-caso, l’informazione fornita da R  è più utile. Per esempio, l’istruzione
-<code>100:130</code> ritorna <span class="math inline">\(31\)</span> valori, ovvero i numeri da <span class="math inline">\(100\)</span> a <span class="math inline">\(130\)</span>:</p>
+<p>Il risultato è preceduto da <code>[1]</code>, il che significa che il risultato dell’operazione che abbiamo appena eseguito è il primo valore di questa linea. Alcune funzioni ritornano più di un singolo numero e, in quel caso, l’informazione fornita da R è più utile. Per esempio, l’istruzione <code>100:130</code> ritorna <span class="math inline">\(31\)</span> valori, ovvero i numeri da <span class="math inline">\(100\)</span> a <span class="math inline">\(130\)</span>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">100</span><span class="op">:</span><span class="fl">130</span>
 <span class="co">#&gt;  [1] 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120</span>
 <span class="co">#&gt; [22] 121 122 123 124 125 126 127 128 129 130</span></code></pre></div>
-<p>In questo caso, <code>[24]</code> indica che il valore <span class="math inline">\(123\)</span> è il ventiquattresimo numero
-che è stato stampato sulla console.</p>
-<p>R  è un linguaggio di programmazione a oggetti, quindi si basa sulla
-creazione di oggetti e sulla possibilità di salvarli nella memoria del
-programma. Quando creiamo un oggetto gli attribuiamo un nome usando il
-simbolo <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code>. Ad esempio, per creare un oggetto che contiene il
-risultato dell’operazione <code>2 + 2</code> procediamo nel modo seguente:</p>
+<p>In questo caso, sul mio computer, <code>[24]</code> indica che il valore <span class="math inline">\(123\)</span> è il ventiquattresimo numero che è stato stampato sulla console – su un altro computer le cose possono essere diverse in quanto il risultato, credo, dipende dalla grandezza dello schermo.</p>
+</div>
+<div id="espressioni" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> Espressioni<a class="anchor" aria-label="anchor" href="#espressioni"><i class="fas fa-link"></i></a>
+</h2>
+<p>Un’espressione in R è un enunciato finito e autonomo del linguaggio: una frase conclusa, si potrebbe dire. Si noti che le espressioni in R non sono delimitate dal <code>;</code> come succede in alcuni linguaggi di programmazione. L’ordine delle espressioni è l’ordine di esecuzione delle stesse.</p>
+<p>L’a capo non è rilevante per R. Questo permette di utilizzare l’a capo per migliorare la leggibilità del codice.</p>
+</div>
+<div id="oggetti" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> Oggetti<a class="anchor" aria-label="anchor" href="#oggetti"><i class="fas fa-link"></i></a>
+</h2>
+<p>R è un linguaggio di programmazione a oggetti, quindi si basa sulla creazione di oggetti e sulla possibilità di salvarli nella memoria del programma. Quando creiamo un oggetto gli attribuiamo un nome usando il simbolo <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code>. Ad esempio, per creare un oggetto che contiene il risultato dell’operazione <code>2 + 2</code> procediamo nel modo seguente:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">res_sum</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">+</span> <span class="fl">2</span>
 <span class="va">res_sum</span>
 <span class="co">#&gt; [1] 4</span></code></pre></div>
-<p>L’operazione di assegnazione (<code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code>) copia il contenuto dell’operando
-destro (detto <code>r-value</code>) nell’operando sinistro detto (<code>l-value</code>). Il
-valore dell’espressione assegnazione è <code>r-value</code>. Nell’esempio
-precedente, <code>res_sum</code> (<code>l-value</code>) assume il valore di <span class="math inline">\(4\)</span>.</p>
+<p>L’operazione di assegnazione (<code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code>) copia il contenuto dell’operando destro (detto <code>r-value</code>) nell’operando sinistro detto (<code>l-value</code>). Il valore dell’espressione assegnazione è <code>r-value</code>. Nell’esempio precedente, <code>res_sum</code> (<code>l-value</code>) assume il valore di <span class="math inline">\(4\)</span>.</p>
+</div>
+<div id="variabili" class="section level2" number="4.4">
+<h2>
+<span class="header-section-number">4.4</span> Variabili<a class="anchor" aria-label="anchor" href="#variabili"><i class="fas fa-link"></i></a>
+</h2>
+<p>L’oggetto <code>res_sum</code> è una <em>variabile</em>. Una spiegazione di ciò che questo significa è riportata qui sotto.</p>
+<blockquote>
+<p>Una variabile è un segnaposto. Tutte le volte che si memorizza un dato lo si assegna ad una variabile. Infatti, se il dato è nella memoria, per potervi accedere, è necessario conoscere il suo indirizzo, la sua “etichetta” (come in un grande magazzino in cui si va a cercare un oggetto in base alla sua collocazione). Se il dato è memorizzato ma inaccessibile (come nel caso di un oggetto sperso in un magazzino), allora non si può usare ed è soltanto uno spreco di spazio. La teoria delle variabili è un ambito molto complesso nella scienza della computazione. Ad esempio, una aspetto importante può concernere la tipizzazione delle variabili. Nei linguaggi “tipizzati” (ad esempio C), l’utente dichiara che userà quella etichetta (la variabile) per contenere solo ed esclusivamente un certo tipo di oggetto (ad esempio, un numero intero), e la variabile non potrà essere utilizzata per oggetti diversi (ad esempio, una stringa). In questo caso, prima di usare una variabile se ne dichiara l’esistenza e se ne specifica il tipo. I linguaggi non tipizzati non richiedono all’utente di specificare il tipo, che viene inferito in vario modo (ad esempio, in funzione dell’assegnazione del valore alla variabile). Alcuni linguaggi (ad esempio Python) non richiedono neppure la dichiarazione della variabile, che viene semplicemente usata. È l’interprete che inferisce che quella stringa è una variabile. La tipizzazione impone vincoli d’uso sulle variabili e maggiore scrittura del codice, ma assicura una chiara organizzazione dei dati. In assenza di tipizzazione, si lavora in maniera più rapida e snella, ma potenzialmente si può andare incontro a situazioni complicate, come quando si cambia il tipo di una variabile “in corsa” senza accorgersene (Andrea Valle).</p>
+</blockquote>
+<p>R è un linguaggio non tipicizzato, come Python. In R non è necessario dichiarare le variabili che si intendono utilizzare, né il loro tipo.</p>
+</div>
+<div id="r-console" class="section level2" number="4.5">
+<h2>
+<span class="header-section-number">4.5</span> R console<a class="anchor" aria-label="anchor" href="#r-console"><i class="fas fa-link"></i></a>
+</h2>
 <p>La console di RStudio fornisce la possibilità di richiamare e rieseguire
 i comandi. I tasti freccia verticale, <span class="math inline">\(\uparrow\)</span> e <span class="math inline">\(\downarrow\)</span>, sulla
 tastiera possono essere utilizzati per scorrere avanti e indietro i
@@ -147,9 +165,9 @@ visualizzato un messaggio di errore; ad esempio,</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="chapter-sintassi.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> % <span class="dv">9</span></span>
 <span id="cb9-2"><a href="chapter-sintassi.html#cb9-2" aria-hidden="true" tabindex="-1"></a>Errore<span class="sc">:</span> unexpected input <span class="cf">in</span> <span class="st">"3 % 9"</span></span></code></pre></div>
 </div>
-<div id="le-parentesi" class="section level2" number="4.2">
+<div id="parentesi" class="section level2" number="4.6">
 <h2>
-<span class="header-section-number">4.2</span> Le parentesi<a class="anchor" aria-label="anchor" href="#le-parentesi"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.6</span> Parentesi<a class="anchor" aria-label="anchor" href="#parentesi"><i class="fas fa-link"></i></a>
 </h2>
 <p>Le parentesi in R  (come in generale in ogni linguaggio di programmazione) assegnano un significato diverso alle porzioni di codice che delimitano.</p>
 <ul>
@@ -184,17 +202,16 @@ di un data.frame. L’argomento entro le parentesi quadre può essere
 generato da espressioni logiche.</p></li>
 </ul>
 </div>
-<div id="i-nomi-degli-oggetti" class="section level2" number="4.3">
+<div id="i-nomi-degli-oggetti" class="section level2" number="4.7">
 <h2>
-<span class="header-section-number">4.3</span> I nomi degli oggetti<a class="anchor" aria-label="anchor" href="#i-nomi-degli-oggetti"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.7</span> I nomi degli oggetti<a class="anchor" aria-label="anchor" href="#i-nomi-degli-oggetti"><i class="fas fa-link"></i></a>
 </h2>
 <p>Le entità create e manipolate da R si chiamano ‘oggetti.’ Tali oggetti
-possono essere variabili, array di numeri, caratteri, stringhe,
-funzioni, o più in generale strutture costruite a partire da tali
-componenti. Durante una sessione di  R gli oggetti sono creati e
+possono essere variabili (come nell’esempio che abbiamo visto sopra), array di numeri, caratteri, stringhe, funzioni, o più in generale strutture costruite a partire da tali
+componenti. Durante una sessione di R gli oggetti sono creati e
 memorizzati attraverso opportuni nomi.</p>
 <p>I nomi possono contenere un qualunque carattere alfanumerico e come
-carattere speciale il trattino basso (<code>_</code>) o il punto.  R fornisce i
+carattere speciale il trattino basso (<code>_</code>) o il punto. R fornisce i
 seguenti vincoli per i nomi degli oggetti: i nomi degli oggetti non
 possono mai iniziare con un carattere numerico e non possono contenere i
 seguenti simboli: <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code>, <code><a href="https://rdrr.io/r/base/slotOp.html">@</a></code>, <code><a href="https://rdrr.io/r/base/Logic.html">!</a></code>, <code><a href="https://rdrr.io/r/base/Arithmetic.html">^</a></code>, <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code>, <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>, <code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code>, <code><a href="https://rdrr.io/r/base/Arithmetic.html">*</a></code>. È buona
@@ -202,12 +219,12 @@ pratica usare nomi come <code>ratio_of_sums</code>. È fortemente sconsigliato
 utilizzare nei nomi degli oggetti caratteri accentati o, ancora peggio,
 apostrofi. Per questa ragione è sensato creare i nomi degli oggetti
 utilizzando la lingua inglese. È anche bene che i nomi degli oggetti non
-coincidano con nomi di funzioni. Si noti che R  è <em>case sensitive</em>, cioè
+coincidano con nomi di funzioni. Si noti che R è <em>case sensitive</em>, cioè
 <code>A</code> e <code>a</code> sono due simboli diversi e identificano due oggetti
 differenti.</p>
-<div id="permanenza-dei-dati-e-rimozione-di-oggetti" class="section level3" number="4.3.1">
+<div id="permanenza-dei-dati-e-rimozione-di-oggetti" class="section level3" number="4.7.1">
 <h3>
-<span class="header-section-number">4.3.1</span> Permanenza dei dati e rimozione di oggetti<a class="anchor" aria-label="anchor" href="#permanenza-dei-dati-e-rimozione-di-oggetti"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.7.1</span> Permanenza dei dati e rimozione di oggetti<a class="anchor" aria-label="anchor" href="#permanenza-dei-dati-e-rimozione-di-oggetti"><i class="fas fa-link"></i></a>
 </h3>
 <p>Gli oggetti vengono salvati nello “spazio di lavoro” (<em>workspace</em>). Il
 comando <code><a href="https://rdrr.io/r/base/ls.html">ls()</a></code> può essere utilizzato per visualizzare i nomi degli
@@ -223,9 +240,9 @@ seguente istruzione:</p>
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="chiudere-r" class="section level2" number="4.4">
+<div id="chiudere-r" class="section level2" number="4.8">
 <h2>
-<span class="header-section-number">4.4</span> Chiudere R<a class="anchor" aria-label="anchor" href="#chiudere-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.8</span> Chiudere R<a class="anchor" aria-label="anchor" href="#chiudere-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>Quando si chiude RStudio il programma ci chiederà se si desidera salvare
 l’area di lavoro sul computer. Tale operazione è da evitare in quanto
@@ -243,38 +260,39 @@ selezionare l’opzione <code>No</code> in corrispondenza dell’item
 <code>Save workspace on exit from R</code>.</p></li>
 </ul>
 </div>
-<div id="creare-ed-eseguire-uno-script-r-con-un-editore" class="section level2" number="4.5">
+<div id="creare-ed-eseguire-uno-script-r-con-un-editore" class="section level2" number="4.9">
 <h2>
-<span class="header-section-number">4.5</span> Creare ed eseguire uno script R con un editore<a class="anchor" aria-label="anchor" href="#creare-ed-eseguire-uno-script-r-con-un-editore"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.9</span> Creare ed eseguire uno script R con un editore<a class="anchor" aria-label="anchor" href="#creare-ed-eseguire-uno-script-r-con-un-editore"><i class="fas fa-link"></i></a>
 </h2>
-<p>È molto più facile interagire con   manipolando uno script con un
+<p>È molto più facile interagire con R manipolando uno script con un
 editore piuttosto che inserendo direttamente le istruzioni nella
-console. R  fornisce il Text Editor dove è possibile inserire il codice
+console. R fornisce il Text Editor dove è possibile inserire il codice
 (File <span class="math inline">\(\to\)</span> New Script). Per salvare il file basta utilizzare l’apposito
 menù a tendina (estensione <code>.R</code>). Tale file potrà poi essere riaperto ed
 utilizzato in un momento successivo.</p>
-<p>L’editore comunica con  R nel modo seguente: dopo avere selezionato la
+<p>L’editore comunica con R nel modo seguente: dopo avere selezionato la
 porzione di codice che si vuole eseguire, si digita un’apposita sequenza
 di tasti (<code>Command + Enter</code> su Mac OS X e <code>ctrl + r</code> in Windows).
 <code>ctrl + r</code> significa premere il tasto <code>ctrl</code> e, tenendolo premuto, premere il tasto <code>r</code> della tastiera.
 Così facendo, R eseguirà le istruzioni selezionate e l’output verrà
 stampato sulla console. Il Text Editor fornito da R è piuttosto
 primitivo: è fortemente consigliato utilizzare RStudio.</p>
-<div id="commentare-il-codice" class="section level3" number="4.5.1">
+<div id="commentare-il-codice" class="section level3" number="4.9.1">
 <h3>
-<span class="header-section-number">4.5.1</span> Commentare il codice<a class="anchor" aria-label="anchor" href="#commentare-il-codice"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.9.1</span> Commentare il codice<a class="anchor" aria-label="anchor" href="#commentare-il-codice"><i class="fas fa-link"></i></a>
 </h3>
-<p>I commenti sono parole in linguaggio naturale (nel nostro caso l’italiano), che permettono agli utilizzatori di capire il flusso logico del codice e a chi lo ha scritto di ricordare il perché di determinate istruzioni. In  R, le parole dopo il simbolo <code>#</code> sono considerate
-commenti e sono ignorate; ad esempio:</p>
+<p>Un “commento” è una parte di codice che l’interprete non tiene in considerazione. Quando l’interprete arriva ad un segnalatore di commento salta fino al segnalatore di fine commento e di lì riprende il normale processo esecutivo.</p>
+<p>I commenti sono parole in linguaggio naturale (nel nostro caso l’italiano), che permettono agli utilizzatori di capire il flusso logico del codice e a chi lo ha scritto di ricordare il perché di determinate istruzioni.</p>
+<p>In R, le parole dopo il simbolo <code>#</code> sono considerate commenti e sono ignorate; ad esempio:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Questo e' un commento</span></code></pre></div>
 </div>
 </div>
-<div id="cambiare-la-cartella-di-lavoro" class="section level2" number="4.6">
+<div id="cambiare-la-cartella-di-lavoro" class="section level2" number="4.10">
 <h2>
-<span class="header-section-number">4.6</span> Cambiare la cartella di lavoro<a class="anchor" aria-label="anchor" href="#cambiare-la-cartella-di-lavoro"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.10</span> Cambiare la cartella di lavoro<a class="anchor" aria-label="anchor" href="#cambiare-la-cartella-di-lavoro"><i class="fas fa-link"></i></a>
 </h2>
-<p>Quando si inizia una sessione di lavoro,   sceglie una cartella quale
+<p>Quando si inizia una sessione di lavoro, R sceglie una cartella quale
 “working directory.” Sarà in tale cartella che andrà a cercare gli
 script definiti dall’utilizzatore e i file dei dati. È possibile
 determinare quale sia la corrente “working directory” digitando sulla
@@ -287,16 +305,16 @@ si sceglie la voce <code>Set Working Directory</code> sul menù a tendina di RSt
 e si selezione la voce <code>Choose Directory…</code> Nella finestra che compare,
 si cambia la cartella con quella che si vuole.</p>
 </div>
-<div id="loggetto-base-di-r-il-vettore" class="section level2" number="4.7">
+<div id="loggetto-base-di-r-il-vettore" class="section level2" number="4.11">
 <h2>
-<span class="header-section-number">4.7</span> L’oggetto base di R: il vettore<a class="anchor" aria-label="anchor" href="#loggetto-base-di-r-il-vettore"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.11</span> L’oggetto base di R: il vettore<a class="anchor" aria-label="anchor" href="#loggetto-base-di-r-il-vettore"><i class="fas fa-link"></i></a>
 </h2>
 <p>R opera su strutture di dati; la più semplice di tali strutture è il
 vettore numerico, che consiste in un insieme ordinato di numeri; ad
 esempio:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7.0</span>, <span class="fl">10.2</span>, <span class="op">-</span><span class="fl">2.9</span>, <span class="fl">21.4</span><span class="op">)</span></code></pre></div>
-<p>Nell’istruzione precedente, <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> è una funzione. In   gli argomenti
+<p>Nell’istruzione precedente, <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> è una funzione. In R gli argomenti
 sono passati alle funzioni inserendoli all’interno delle parentesi
 tonde. Si noti che gli argomenti (in questo caso, i numeri
 <span class="math inline">\(7.0, 10.2, -2.9, 21.4\)</span>) sono separati a virgole. La funzione <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> può
@@ -313,18 +331,18 @@ visualizzare il vettore che abbiamo creato:</p>
 <span class="co">#&gt; [1]  7.0 10.2 -2.9 21.4</span></code></pre></div>
 <p>senza assegnazione, il valore dell’espressione sarà visualizzato nella
 console, ma il vettore non potrà essere utilizzato in nessun altro modo.</p>
-<div id="operazioni-vettorializzate" class="section level3" number="4.7.1">
+<div id="operazioni-vettorializzate" class="section level3" number="4.11.1">
 <h3>
-<span class="header-section-number">4.7.1</span> Operazioni vettorializzate<a class="anchor" aria-label="anchor" href="#operazioni-vettorializzate"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.11.1</span> Operazioni vettorializzate<a class="anchor" aria-label="anchor" href="#operazioni-vettorializzate"><i class="fas fa-link"></i></a>
 </h3>
-<p>Molte operazioni in   sono vettorializzate, il che significa che esse
+<p>Molte operazioni in R sono vettorializzate, il che significa che esse
 sono eseguite in parallelo in determinati oggetti . Ciò consente di
 scrivere codice che sia efficiente, conciso e più facile da leggere
 rispetto al codice che contiene istruzioni non vettorializzate.</p>
 </div>
-<div id="vettori-aritmetici" class="section level3" number="4.7.2">
+<div id="vettori-aritmetici" class="section level3" number="4.11.2">
 <h3>
-<span class="header-section-number">4.7.2</span> Vettori aritmetici<a class="anchor" aria-label="anchor" href="#vettori-aritmetici"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.11.2</span> Vettori aritmetici<a class="anchor" aria-label="anchor" href="#vettori-aritmetici"><i class="fas fa-link"></i></a>
 </h3>
 <p>L’esempio più semplice che illustra come si svolgono le operazioni
 vettorializzate riguarda le operazioni algebriche applicate ai vettori.
@@ -349,7 +367,7 @@ vettore. In maniera corrispondente, l’istruzione</p>
 <code class="sourceCode R"><span class="va">die</span> <span class="op">-</span> <span class="fl">1</span>
 <span class="co">#&gt; [1] 0 1 2 3 4 5</span></code></pre></div>
 <p>sottrarrà un’unità da ciascuno degli elementi del vettore <code>die</code>.</p>
-<p>Se l’operazione aritmetica coinvolge due o più vettori,   allinea i
+<p>Se l’operazione aritmetica coinvolge due o più vettori, R allinea i
 vettori ed esegue una sequenza di operazioni elemento per elemento. Per
 esempio, l’istruzione</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
@@ -382,9 +400,9 @@ di elementi di <code>x</code>; <code><a href="https://rdrr.io/r/base/sum.html">s
 mentre <code><a href="https://rdrr.io/r/base/prod.html">prod(x)</a></code> dà il loro prodotto. Due funzioni statistiche di uso
 comune sono <code><a href="https://rdrr.io/r/base/mean.html">mean(x)</a></code>, la media aritmetica, e <code><a href="https://rdrr.io/r/stats/cor.html">var(x)</a></code>, la varianza.</p>
 </div>
-<div id="generazione-di-sequenze-regolari" class="section level3" number="4.7.3">
+<div id="generazione-di-sequenze-regolari" class="section level3" number="4.11.3">
 <h3>
-<span class="header-section-number">4.7.3</span> Generazione di sequenze regolari<a class="anchor" aria-label="anchor" href="#generazione-di-sequenze-regolari"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.11.3</span> Generazione di sequenze regolari<a class="anchor" aria-label="anchor" href="#generazione-di-sequenze-regolari"><i class="fas fa-link"></i></a>
 </h3>
 <p>R possiede un ampio numero di funzioni per generare sequenze di numeri.
 Ad esempio, <code><a href="https://rdrr.io/r/base/c.html">c(1:10)</a></code> è il vettore <code><a href="https://rdrr.io/r/base/c.html">c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</a></code>.
@@ -416,9 +434,9 @@ utilizzata per replicare un oggetto in vari modi. Ad esempio:</p>
 <span class="co">#&gt;  [1] 1 2 3 4 5 6 1 2 3 4 5 6 1 2 3 4 5 6</span></code></pre></div>
 <p>metterà tre copie di <code>die</code> nell’oggetto <code>die3</code>.</p>
 </div>
-<div id="generazione-di-numeri-casuali" class="section level3" number="4.7.4">
+<div id="generazione-di-numeri-casuali" class="section level3" number="4.11.4">
 <h3>
-<span class="header-section-number">4.7.4</span> Generazione di numeri casuali<a class="anchor" aria-label="anchor" href="#generazione-di-numeri-casuali"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.11.4</span> Generazione di numeri casuali<a class="anchor" aria-label="anchor" href="#generazione-di-numeri-casuali"><i class="fas fa-link"></i></a>
 </h3>
 <p>La funzione <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> è una delle tante funzioni che possono essere
 usate per generare numeri casuali. Per esempio, la seguente istruzione
@@ -437,9 +455,9 @@ equivalente a lanciare un dado e osservare la faccia che si presenta.
 L’istruzione precedente corrisponde dunque alla simulazione di dieci
 lanci di un dado a sei facce.</p>
 </div>
-<div id="vettori-logici" class="section level3" number="4.7.5">
+<div id="vettori-logici" class="section level3" number="4.11.5">
 <h3>
-<span class="header-section-number">4.7.5</span> Vettori logici<a class="anchor" aria-label="anchor" href="#vettori-logici"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.11.5</span> Vettori logici<a class="anchor" aria-label="anchor" href="#vettori-logici"><i class="fas fa-link"></i></a>
 </h3>
 <p>Quando si manipolano i vettori, talvolta si vogliono trovare gli
 elementi che soddisfano determinate condizioni logiche. Per esempio, in
@@ -459,19 +477,19 @@ possiamo contare il numero di “5”:</p>
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">roll</span> <span class="op">==</span> <span class="fl">5</span><span class="op">)</span>
 <span class="co">#&gt; [1] 5</span></code></pre></div>
 </div>
-<div id="dati-mancanti" class="section level3" number="4.7.6">
+<div id="dati-mancanti" class="section level3" number="4.11.6">
 <h3>
-<span class="header-section-number">4.7.6</span> Dati mancanti<a class="anchor" aria-label="anchor" href="#dati-mancanti"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.11.6</span> Dati mancanti<a class="anchor" aria-label="anchor" href="#dati-mancanti"><i class="fas fa-link"></i></a>
 </h3>
-<p>Quando si è in presenza di un dato mancante,   assegna il valore
+<p>Quando si è in presenza di un dato mancante, R assegna il valore
 speciale <code>NA</code>, che sta per <em>Not Available</em>. In generale, un’operazione
 su un <code>NA</code> dà come risultato un <code>NA</code>. Nell’uso delle funzioni che
 operano sui dati sarà dunque necessario specificare che, qualunque
 operazione venga effettuata, gli <code>NA</code> devono essere esclusi.</p>
 </div>
-<div id="vettori-di-caratteri-e-fattori" class="section level3" number="4.7.7">
+<div id="vettori-di-caratteri-e-fattori" class="section level3" number="4.11.7">
 <h3>
-<span class="header-section-number">4.7.7</span> Vettori di caratteri e fattori<a class="anchor" aria-label="anchor" href="#vettori-di-caratteri-e-fattori"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.11.7</span> Vettori di caratteri e fattori<a class="anchor" aria-label="anchor" href="#vettori-di-caratteri-e-fattori"><i class="fas fa-link"></i></a>
 </h3>
 <p>I vettori di caratteri si creano formando una sequenza di caratteri
 delimitati da doppie virgolette e possono essere concatenati in un
@@ -495,16 +513,16 @@ dei livelli del fattore si usa la seguente sintassi:</p>
 <span class="co">#&gt; [1] "low"    "medium" "high"</span></code></pre></div>
 </div>
 </div>
-<div id="funzioni" class="section level2" number="4.8">
+<div id="funzioni" class="section level2" number="4.12">
 <h2>
-<span class="header-section-number">4.8</span> Funzioni<a class="anchor" aria-label="anchor" href="#funzioni"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.12</span> Funzioni<a class="anchor" aria-label="anchor" href="#funzioni"><i class="fas fa-link"></i></a>
 </h2>
 <p>R offre la possibilità di utilizzare un’enorme libreria di funzioni che
 permettono di svolgere operazioni complicate, quali ad esempio, il
 campionamento casuale. Esaminiamo ora con più attenzione le proprietà
 delle funzioni di R utilizzando ancora l’esempio del lancio di un dado.
 Abbiamo visto in precedenza come il lancio di un dado possa essere
-simulato da R  con la funzione <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>. La funzione <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> prende
+simulato da R con la funzione <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>. La funzione <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> prende
 tre argomenti: il nome di un vettore, un numero chiamato <code>size</code> e un
 argomento chiamato <code>replace</code>. La funzione <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> ritorna un numero
 di elementi del vettore pari a <code>size</code>. Ad esempio</p>
@@ -554,16 +572,16 @@ parametri o operatori logici.</p>
 <code><a href="https://rdrr.io/r/utils/help.start.html">help.start()</a></code>. Per avere informazioni su qualche funzione specifica,
 per esempio la funzione <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>, il comando da utilizzare è
 <code><a href="https://rdrr.io/r/base/sample.html">help(sample)</a></code> oppure <code><a href="https://rdrr.io/r/base/sample.html">?sample</a></code>.</p>
-<div id="scrivere-proprie-funzioni" class="section level3" number="4.8.1">
+<div id="scrivere-proprie-funzioni" class="section level3" number="4.12.1">
 <h3>
-<span class="header-section-number">4.8.1</span> Scrivere proprie funzioni<a class="anchor" aria-label="anchor" href="#scrivere-proprie-funzioni"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.12.1</span> Scrivere proprie funzioni<a class="anchor" aria-label="anchor" href="#scrivere-proprie-funzioni"><i class="fas fa-link"></i></a>
 </h3>
 <p>Abbiamo visto in precedenza come sia possibile simulare i risultati
 prodotti da dieci lanci di un dado o, in maniera equivalente, dal
 singolo lancio di dieci dadi. Possiamo replicare questo processo
 digitando ripetutamente le stesse istruzioni nella console. Otterremo
 ogni volta risultati diversi perché, ad ogni ripetizione, il generatore
-di numeri pseudo-casuali di   dipende dal valore ottenuto dal clock
+di numeri pseudo-casuali di R dipende dal valore ottenuto dal clock
 interno della macchina. La funzione <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> ci permette di
 replicare esattamente i risultati della generazione di numeri casuali.
 Per ottenere questo risultato, basta assegnare al seed un numero
@@ -572,9 +590,9 @@ praticamente difficile da perseguire se il numero di ripetizioni è alto.
 In tal caso è vantaggioso scrivere una funzione contenente il codice che
 specifica il numero di ripetizioni. In questo modo, per trovare il
 risultato cercato basterà chiamare la funzione una sola volta.</p>
-<p>Le funzioni di R  sono costituite da tre elementi: il nome, il blocco del
+<p>Le funzioni utilizzate da R sono costituite da tre elementi: il nome, il blocco del
 codice e una serie di argomenti. Per creare una funzione è necessario
-immagazzinare in R  questi tre elementi e <code>function()</code> consente di
+immagazzinare in R questi tre elementi e <code>function()</code> consente di
 ottenere tale risultato usando la sintassi seguente:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">nome_funzione</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">arg1</span>, <span class="va">arg2</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
@@ -621,15 +639,15 @@ necessaria ma è altamente raccomandata per minimizzare la probabilità di
 compiere errori.</p>
 </div>
 </div>
-<div id="pacchetti" class="section level2" number="4.9">
+<div id="pacchetti" class="section level2" number="4.13">
 <h2>
-<span class="header-section-number">4.9</span> Pacchetti<a class="anchor" aria-label="anchor" href="#pacchetti"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.13</span> Pacchetti<a class="anchor" aria-label="anchor" href="#pacchetti"><i class="fas fa-link"></i></a>
 </h2>
-<p>Le funzioni di  R sono organizzate in pacchetti, i più importanti dei
+<p>Le funzioni di R sono organizzate in pacchetti, i più importanti dei
 quali sono già disponibili quando si accede al programma.</p>
-<div id="istallazione-e-upgrade-dei-pacchetti" class="section level3" number="4.9.1">
+<div id="istallazione-e-upgrade-dei-pacchetti" class="section level3" number="4.13.1">
 <h3>
-<span class="header-section-number">4.9.1</span> Istallazione e upgrade dei pacchetti<a class="anchor" aria-label="anchor" href="#istallazione-e-upgrade-dei-pacchetti"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.13.1</span> Istallazione e upgrade dei pacchetti<a class="anchor" aria-label="anchor" href="#istallazione-e-upgrade-dei-pacchetti"><i class="fas fa-link"></i></a>
 </h3>
 <p>Alcuni pacchetti non sono presenti nella release di base di R. Per
 installare un pacchetto non presente è sufficiente scrivere nella
@@ -652,9 +670,9 @@ la seguente istruzione:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/update.packages.html">update.packages</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="caricare-un-pacchetto-in-r" class="section level3" number="4.9.2">
+<div id="caricare-un-pacchetto-in-r" class="section level3" number="4.13.2">
 <h3>
-<span class="header-section-number">4.9.2</span> Caricare un pacchetto in R<a class="anchor" aria-label="anchor" href="#caricare-un-pacchetto-in-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.13.2</span> Caricare un pacchetto in R<a class="anchor" aria-label="anchor" href="#caricare-un-pacchetto-in-r"><i class="fas fa-link"></i></a>
 </h3>
 <p>L’istallazione dei pacchetti non rende immediatamente disponibili le
 funzioni in essi contenute. L’istallazione di un pacchetto semplicemente
@@ -666,7 +684,7 @@ il pacchetto in . Ciò si ottiene con il comando:</p>
 <p>se si vuole caricare il pacchetto <code>ggplot2</code>. A questo punto diventa
 possibile usare le funzioni contenute in <code>ggplot2</code>. Queste operazioni si
 possono anche eseguire usando dal menu a tendina di RStudio.</p>
-<p>Per sapere quali sono i pacchetti già presenti nella release di  R con
+<p>Per sapere quali sono i pacchetti già presenti nella release di R con
 cui si sta lavorando, basta scrivere:</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -682,33 +700,37 @@ cui si sta lavorando, basta scrivere:</p>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#chapter-sintassi"><span class="header-section-number">4</span> Sintassi di base</a></li>
 <li><a class="nav-link" href="#utilizzare-la-console-r-come-calcolatrice"><span class="header-section-number">4.1</span> Utilizzare la console R come calcolatrice</a></li>
-<li><a class="nav-link" href="#le-parentesi"><span class="header-section-number">4.2</span> Le parentesi</a></li>
+<li><a class="nav-link" href="#espressioni"><span class="header-section-number">4.2</span> Espressioni</a></li>
+<li><a class="nav-link" href="#oggetti"><span class="header-section-number">4.3</span> Oggetti</a></li>
+<li><a class="nav-link" href="#variabili"><span class="header-section-number">4.4</span> Variabili</a></li>
+<li><a class="nav-link" href="#r-console"><span class="header-section-number">4.5</span> R console</a></li>
+<li><a class="nav-link" href="#parentesi"><span class="header-section-number">4.6</span> Parentesi</a></li>
 <li>
-<a class="nav-link" href="#i-nomi-degli-oggetti"><span class="header-section-number">4.3</span> I nomi degli oggetti</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#permanenza-dei-dati-e-rimozione-di-oggetti"><span class="header-section-number">4.3.1</span> Permanenza dei dati e rimozione di oggetti</a></li></ul>
+<a class="nav-link" href="#i-nomi-degli-oggetti"><span class="header-section-number">4.7</span> I nomi degli oggetti</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#permanenza-dei-dati-e-rimozione-di-oggetti"><span class="header-section-number">4.7.1</span> Permanenza dei dati e rimozione di oggetti</a></li></ul>
 </li>
-<li><a class="nav-link" href="#chiudere-r"><span class="header-section-number">4.4</span> Chiudere R</a></li>
+<li><a class="nav-link" href="#chiudere-r"><span class="header-section-number">4.8</span> Chiudere R</a></li>
 <li>
-<a class="nav-link" href="#creare-ed-eseguire-uno-script-r-con-un-editore"><span class="header-section-number">4.5</span> Creare ed eseguire uno script R con un editore</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#commentare-il-codice"><span class="header-section-number">4.5.1</span> Commentare il codice</a></li></ul>
+<a class="nav-link" href="#creare-ed-eseguire-uno-script-r-con-un-editore"><span class="header-section-number">4.9</span> Creare ed eseguire uno script R con un editore</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#commentare-il-codice"><span class="header-section-number">4.9.1</span> Commentare il codice</a></li></ul>
 </li>
-<li><a class="nav-link" href="#cambiare-la-cartella-di-lavoro"><span class="header-section-number">4.6</span> Cambiare la cartella di lavoro</a></li>
+<li><a class="nav-link" href="#cambiare-la-cartella-di-lavoro"><span class="header-section-number">4.10</span> Cambiare la cartella di lavoro</a></li>
 <li>
-<a class="nav-link" href="#loggetto-base-di-r-il-vettore"><span class="header-section-number">4.7</span> L’oggetto base di R: il vettore</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#operazioni-vettorializzate"><span class="header-section-number">4.7.1</span> Operazioni vettorializzate</a></li>
-<li><a class="nav-link" href="#vettori-aritmetici"><span class="header-section-number">4.7.2</span> Vettori aritmetici</a></li>
-<li><a class="nav-link" href="#generazione-di-sequenze-regolari"><span class="header-section-number">4.7.3</span> Generazione di sequenze regolari</a></li>
-<li><a class="nav-link" href="#generazione-di-numeri-casuali"><span class="header-section-number">4.7.4</span> Generazione di numeri casuali</a></li>
-<li><a class="nav-link" href="#vettori-logici"><span class="header-section-number">4.7.5</span> Vettori logici</a></li>
-<li><a class="nav-link" href="#dati-mancanti"><span class="header-section-number">4.7.6</span> Dati mancanti</a></li>
-<li><a class="nav-link" href="#vettori-di-caratteri-e-fattori"><span class="header-section-number">4.7.7</span> Vettori di caratteri e fattori</a></li>
+<a class="nav-link" href="#loggetto-base-di-r-il-vettore"><span class="header-section-number">4.11</span> L’oggetto base di R: il vettore</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#operazioni-vettorializzate"><span class="header-section-number">4.11.1</span> Operazioni vettorializzate</a></li>
+<li><a class="nav-link" href="#vettori-aritmetici"><span class="header-section-number">4.11.2</span> Vettori aritmetici</a></li>
+<li><a class="nav-link" href="#generazione-di-sequenze-regolari"><span class="header-section-number">4.11.3</span> Generazione di sequenze regolari</a></li>
+<li><a class="nav-link" href="#generazione-di-numeri-casuali"><span class="header-section-number">4.11.4</span> Generazione di numeri casuali</a></li>
+<li><a class="nav-link" href="#vettori-logici"><span class="header-section-number">4.11.5</span> Vettori logici</a></li>
+<li><a class="nav-link" href="#dati-mancanti"><span class="header-section-number">4.11.6</span> Dati mancanti</a></li>
+<li><a class="nav-link" href="#vettori-di-caratteri-e-fattori"><span class="header-section-number">4.11.7</span> Vettori di caratteri e fattori</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#funzioni"><span class="header-section-number">4.8</span> Funzioni</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#scrivere-proprie-funzioni"><span class="header-section-number">4.8.1</span> Scrivere proprie funzioni</a></li></ul>
+<a class="nav-link" href="#funzioni"><span class="header-section-number">4.12</span> Funzioni</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#scrivere-proprie-funzioni"><span class="header-section-number">4.12.1</span> Scrivere proprie funzioni</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#pacchetti"><span class="header-section-number">4.9</span> Pacchetti</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#istallazione-e-upgrade-dei-pacchetti"><span class="header-section-number">4.9.1</span> Istallazione e upgrade dei pacchetti</a></li>
-<li><a class="nav-link" href="#caricare-un-pacchetto-in-r"><span class="header-section-number">4.9.2</span> Caricare un pacchetto in R</a></li>
+<a class="nav-link" href="#pacchetti"><span class="header-section-number">4.13</span> Pacchetti</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#istallazione-e-upgrade-dei-pacchetti"><span class="header-section-number">4.13.1</span> Istallazione e upgrade dei pacchetti</a></li>
+<li><a class="nav-link" href="#caricare-un-pacchetto-in-r"><span class="header-section-number">4.13.2</span> Caricare un pacchetto in R</a></li>
 </ul>
 </li>
 </ul>

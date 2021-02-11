@@ -32,6 +32,7 @@ rmd_files: [
   "04_R_classi.Rmd",
   "05_R_controllo.Rmd",
   "06_R_input_output.Rmd",
+  "07_R_tidyverse.Rmd",
   # ------------------------- misurazione
   "12_terminologia.Rmd",
   "13_misurazione.Rmd",

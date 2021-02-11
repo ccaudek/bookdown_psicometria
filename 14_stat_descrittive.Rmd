@@ -34,15 +34,15 @@ di frequenze e le relazioni tra variabili. Vedremo inoltre quali sono le
 tecniche di visualizzazione che ci consentono di rappresentare questi
 sommari dei dati mediante dei grafici. Ma prima di entrare nei dettagli,
 prendiamoci un momento per capire perché abbiamo bisogno della
-statistica descrittiva.
+statistica e, per ciò che stiamo discutendo qui, della statistica descrittiva.
+
+Ma in generale, che cos'è la statistica? Esistono molti modi per definire la statistica. Fondamentalmente, la statistica è un insieme di tecniche che ci consentono di dare un senso al mondo attraverso i dati. Ciò avviene tramite il processo di analisi statistica. L'analisi statistica traduce le domande che abbiamo a proposito del mondo in modelli matematici, utilizza i dati per scegliere i modelli matematici che sono apppropriati per descrivere il mondo e, infine, applica tali modelli per trovare una risposta alle domande che ci siamo posti. La statistica consente quindi di collegare le nostre domande a proposito del mondo ai dati, di utilizzare i dati per trovare le risposte alle domande che ci siamo posti e di valutare l'impatto delle risposte trovate.
+
+Inizieremo la nostra discussione sulla Data Science esaminando la statistica descrittiva. Iniziamo con la statistica descrittiva non solo perché è la più facile da capire, ma anche perché essa ci fornisce gli strumenti che devono essere usati per primi in un qualsiasi progetto di analisi statistica. Nello specifico, la statistica descrittiva è un insieme di tecniche che possono essere usare per trasformare grandi (o piccole) masse di dati in indici sintetici. Tali indici sintecici ci consentono di capire le caratteristiche del mondo che sono riflesse nei dati, mentre ciò non è possibile se esaminiamo direttamente i dati grezzi. 
 
 ## Riassumere i dati
 
-Quando riassumiamo i dati, necessariamente buttiamo via delle
-informazioni. Ma è una buona idea procedere in questo modo? Non sarebbe
-meglio conservare le informazioni specifiche di ciascun soggetto che
-partecipa ad un esperimento psicologico, al di là di ciò che viene
-trasmesso dagli indici riassuntivi della statistica descrittiva? Che
+Quando riassumiamo i dati, necessariamente buttiamo via delle informazioni. Ma è una buona idea procedere in questo modo? Non sarebbe meglio conservare le informazioni specifiche di ciascun soggetto che partecipa ad un esperimento psicologico, al di là di ciò che viene trasmesso dagli indici riassuntivi della statistica descrittiva? Che
 dire delle informazioni che descrivono come sono stati raccolti i dati,
 come l'ora del giorno o l'umore del partecipante? Tutte queste
 informazioni vengono perdute quando riassumiamo i dati. La risposta alla
@@ -719,71 +719,12 @@ $x_{0.75}$). Pertanto non utilizzano tutte le informazioni che sono
 disponibili. Inoltre, l'intervallo di variazione ha il limite di essere
 pesantemente influenzato dalla presenza di valori anomali.
 
-### Scostamento medio semplice dalla media
-
-Dati i limiti delle statistiche precedenti è più comune misurare la
-variabilità di una variabile statistica come la dispersione dei dati
-attorno ad un indice di tendenza centrale. Scelto l'indice di tendenza
-centrale rispetto al quale si vuole misurare la dispersione, è possibile
-poi calcolare la media degli scostamenti dei singoli dati dal valore di
-riferimento. Ad esempio, se scegliamo la mediana quale misura di
-posizione centrale, è possibile calcolare la media aritmetica della
-distribuzione degli scarti in valore assoluto tra ciascuna modalità e la
-mediana stessa. Nel caso di una variabile statistica $X$ lo _scostamento
-medio semplice dalla media_ è la quantità
-
-\begin{equation}
-S_{Me} = \frac{1}{n} \sum_{i=1}^n |x_i - x_{0.5}|.
-(\#eq:scost-sempl-mediana)
-\end{equation}
-
-
-#### Esercizio con R
-
-Calcoliamo lo scostamento medio semplice dalla media per il BDI-II dei due gruppi di soggetti di @zetsche_future_2019.
-
-```{r}
-mean(abs(bysubj$bdi - median(bysubj$bdi)))
-```
-
-Oppure, per i due gruppi:
-
-```{r}
-mean_abs_dev <- function(x){
-  mean(abs(x - median(x)))
-}
-
-bysubj %>% 
-  group_by(group) %>% 
-  summarise(
-    Mean_abs_dev = mean_abs_dev(bdi)
-  ) 
-```
-
-La _deviazione mediana assoluta_ è una misura robusta della dispersione statistica di un campione. Per un insieme $x_1, x_2, \dots, x_n$, il valore di MAD è definito come la mediana del valore assoluto delle deviazioni dei dati dalla mediana, ovvero:
-
-\begin{equation}
-MAD = \text{med} (|x_i - \text{med}(x_i)|).
-(\#eq:mad)
-\end{equation}
-
-Per i dati di @zetsche_future_2019 abbiamo:
-
-```{r}
-bysubj %>% 
-  group_by(group) %>% 
-  summarise(
-    MAD = mad(bdi)
-  ) 
-```
-
 
 ### Varianza
 
-Anche se la statistica definita
-dall'eq. \@ref(eq:scost-sempl-mediana) è molto intuitiva, la misura di
-variabilità di gran lunga più usata per valutare la variabilità di una
-variabile statistica è senza dubbio la varianza. La varianza
+Dati i limiti delle statistiche precedenti è più comune misurare la
+variabilità di una variabile statistica come la dispersione dei dati
+attorno ad un indice di tendenza centrale. Infatt, la misura di variabilità di gran lunga più usata per valutare la variabilità di una variabile statistica è senza dubbio la varianza. La varianza
 \begin{equation}
 s^2 = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2
 (\#eq:var-descr)
@@ -811,7 +752,6 @@ Per le ragioni espresse sopra, la misura più usata della dispersione di una dis
 
 Alla deviazione standard può essere assegnata una semplice interpretazione: la deviazione standard è __simile__ (ma non identica) allo scostamento medio semplice dalla media. La deviazione standard ci dice, dunque, quanto sono distanti, in media, le singole osservazioni dal centro della distribuzione. 
 
-
 #### Esercizio con R
 
 Calcoliamo la deviazione standard per il BDI-II dei due gruppi di soggetti di @zetsche_future_2019.
@@ -821,6 +761,40 @@ bysubj %>%
   group_by(group) %>% 
   summarise(
     stdev = sd(bdi)
+  ) 
+```
+
+### Deviazione mediana assoluta 
+
+Una misura robusta della dispersione statistica di un campione è la deviazione mediana assoluta (Median Absolute Deviation, MAD) definita come la mediana del valore assoluto delle deviazioni dei dati dalla mediana, ovvero:
+
+$$
+{\displaystyle \operatorname {MAD} =\operatorname {median} \left(\ \left|X_{i}-\operatorname {median} (X)\right|\ \right)}
+$$
+Nel caso di una distribuzione dei dati unimodale simmetrica di forma campanulare (ovvero, normale), si ha che 
+
+$$
+{\displaystyle \text{deviazione standard} \approx 1.4826\ \operatorname {MAD} .\,}
+$$
+
+Pertanto, solitamente i software restituiscono il valore MAD moltiplicato per una tale costante.
+
+
+#### Esercizio con R
+
+Calcoliamo il valore MAD per il BDI-II dei due gruppi di soggetti di @zetsche_future_2019.
+
+```{r}
+1.4826 * median(abs(bysubj$bdi - median(bysubj$bdi)))
+```
+
+Oppure, per i due gruppi:
+
+```{r}
+bysubj %>% 
+  group_by(group) %>% 
+  summarise(
+    MAD = mad(bdi)
   ) 
 ```
 

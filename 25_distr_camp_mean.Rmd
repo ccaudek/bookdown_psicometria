@@ -6,7 +6,9 @@
 source("_common.R")
 ```
 
-L'inferenza statistica può essere descritta come un insieme di operazioni sui dati che producono delle stime e delle affermazioni sul grado di incertezza che il ricercatore attribuisce alle sue previsioni e ai parametri di processi e/o popolazioni. L'obiettivo di questo capitolo è quello di fornire un'introduzione alle basi teoriche della stima e dell'interpretazione che può essere fornita alle inferenze statistiche.
+La statistica inferenziale è un insieme di tecniche che ci consentono di fare inferenze da un campione ad una specifica popolazione.   
+In altri termini, l'inferenza statistica può essere descritta come un insieme di operazioni sui dati che producono delle stime e delle affermazioni sul grado di incertezza che il ricercatore attribuisce alle sue previsioni e ai parametri di processi e/o popolazioni. 
+Inizieremo la nostra discussione definendo alcuni concetti di base. 
 
 ## Parametri e statistiche 
 

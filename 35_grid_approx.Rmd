@@ -1,6 +1,11 @@
-# Stima della funzione a posteriori {#chapter-stima-distr-posteriori}
+# Stima della funzione a posteriori 
 
-Quando usiamo il teorema di Bayes per calcolare la distribuzione a posteriori del parametro di un modello statistico, al denominatore troviamo un integrale. Tale integrale, nella maggior parte dei casi, non si può risolvere per via analitica. L'inferenza bayesiana si sviluppa dunque mediante una stima numerica della funzione a posteriori. Dato che questi metodi sono "computazionalmente intensivi", possono solo essere svolti mediante software. In anni recenti i metodi Bayesiani di analisi dei dati sono diventati sempre più popolari proprio perché la potenza di calcolo necessaria per svolgere tali calcoli è ora alla portata di tutti. Questo non era vero solo pochi decenni fa. Per capire come la distribuzione a posteriori possa essere approssimata per via numerica esamineremo qui tre diverse tecniche che possono essere utilizzate a questo scopo:
+Quando usiamo il teorema di Bayes per calcolare la distribuzione a posteriori del parametro di un modello statistico, al denominatore troviamo un integrale. Tale integrale, nella maggior parte dei casi, non si può risolvere per via analitica.
+
+In altri termini, è possibile ottenere la distribuzione posteriore per via analitica solo per alcune specifiche combinazioni di distribuzioni a priori a verosimiglianza, il che sembra limitare considerevolmente la flessibilità della modellazione. 
+Tuttavia, con la maggiore potenza dei computer odierni, una stima della distribuzione a posteriori può essere ottenuta con metodi numerici, i metodi di campionamento  Monte-Carlo Markov-Chain (MCMC). Tali metodi quali costituiscono una potente e praticabile alternativa per la costruzione della distribuzione a posteriori per modelli complessi e ci consentono di decidere quali distribuzione a priori e quali distribuzioni di verosimiglianza usare sulla base di considerazioni teoriche, senza preoccuparti dei limiti dei metodi analitici attualmente disponibili. 
+
+L'inferenza Bayesiana si sviluppa dunque mediante una stima numerica della funzione a posteriori. Dato che questi metodi sono "computazionalmente intensivi", possono solo essere svolti mediante software. In anni recenti i metodi Bayesiani di analisi dei dati sono diventati sempre più popolari proprio perché la potenza di calcolo necessaria per svolgere tali calcoli è ora alla portata di tutti. Questo non era vero solo pochi decenni fa. Per capire come la distribuzione a posteriori possa essere approssimata per via numerica esamineremo qui tre diverse tecniche che possono essere utilizzate a questo scopo:
 
 1.  i metodi *grid-based* approssimati,
 

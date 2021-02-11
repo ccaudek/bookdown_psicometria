@@ -5,12 +5,13 @@ source("_common.R")
 knitr::opts_chunk$set(fig.align="center")
 ```
 
-# Terminologia {#chapter-terminologia}
+In questo breve capitolo introdurremo la terminologia che verrà usata in seguito. In particolare, verrà chiarito il significato di "variabile statistica" e verrà introdotto il concetto di "matrice dei dati", ovvero, verrà descritto quell'oggetto statistico che  consente di immagazzinare e organizzare le informazioni che sono state raccolte in un'indagine psicologica. 
+
+# Terminologia 
 
 ## Metodi e procedure della psicologia
 
-Una teoria psicologica di un qualche aspetto del comportamento umano o
-della mente ha le seguenti proprietà:
+Una teoria psicologica di un qualche aspetto del comportamento umano (o della mente) ha le seguenti proprietà:
 
 1.  descrive le caratteristiche del comportamento in questione,
 2.  formula predizioni sulle caratteristiche future del comportamento,
@@ -21,17 +22,13 @@ della mente ha le seguenti proprietà:
     portare a rigettare la teoria, se si dimostrassero incompatibili con
     essa).
 
-L'analisi dei dati si riferisce al punto 3 indicato sopra e, nelle sue
-fasi distinte, ovvero
+L'analisi dei dati consente di valutare una teoria psicologica utilizzando i seguenti strumenti statistici:
 
 -   la misurazione,
 -   l'analisi descrittiva,
--   l'inferenza causale,
+-   l'inferenza.
 
-ha un ruolo centrale nello sviluppo delle teorie psicologiche. Prima di
-affrontare il primo degli ambiti in cui abbiamo articolato l'analisi dei
-dati, ovvero quello della misurazione, prenderemo qui in esame la
-terminologia che viene utilizzata.
+Prima di affrontare il primo dei tre ambiti elencati sopra, ovvero quello della misurazione, prenderemo qui in esame la terminologia che verrà utilizzata.
 
 ## Variabili e costanti
 
@@ -74,11 +71,10 @@ reference="tab:term_st_desc"}).
 
 ## Variabili indipendenti e variabili dipendenti
 
-È importante distinguere il concetto di *variabile indipendente*, che
-descrive ciò che viene manipolato dallo sperimentatore o che è già
-presente nel campione, dalla *variabile dipendente*, che descrive ciò
-che varia al variare della variabile indipendente e che viene misurato
-nel campione.
+Un primo compito fondamentale in qualsiasi analisi statistica è l'identificazione delle variabili dipendenti ($Y$) e delle variabili indipendenti ($X$). Le variabili dipendenti sono anche chiamate variabili di esito o di risposta e le variabili indipendenti sono anche chiamate predittori o covariate. Ad esempio, nell'analisi di regressione, che esamineremo in seguito, la domanda centrale è quella di capire come $Y$ cambia al variare di $X$. Più precisamente, la domanda che viene posta è: se il valore della variabile indipendente $X$ cambia, qual è la conseguenza per la variabile dipendente $Y$? In parole povere, le variabili indipendenti e dipendenti sono analoghe a "cause" ed "effetti", laddove le virgolette usate qui sottolineano che questa è solo un'analogia e che la determinazione delle cause può avvenire soltanto mediante l'utilizzo di un appropriato disegno sperimentale e di un'adeguata analisi statistica.
+
+Se una variabile è una variabile indipendente o dipendente dipende dalla domanda di ricerca. A volte può essere difficile decidere quale variabile è dipendente e quale è indipendente, in particolare quando siamo specificamente interessati ai rapporti di causa/effetto. Ad esempio, supponiamo di indagare l'associazione tra esercizio fisico e insonnia. Vi sono evidenze che l'esercizio fisico (fatto al momento giusto della giornata) può ridurre l'insonnia. Ma l'insonnia può anche ridurre la capacità di una persona di fare esercizio fisico. In questo caso, dunque, non è facile capire quale sia la causa e quale l'effetto, quale sia la variabile dipendente e quale la variabile indipendente. La possibilità di identificare il ruolo delle variabili (dipendente/indipendente) dipende dalla nostra comprensione del fenomeno in esame. 
+
 
 ```{exercise, prob-var-dip-indip}
 Uno psicologo convoca 120 studenti universitari per un test di memoria.

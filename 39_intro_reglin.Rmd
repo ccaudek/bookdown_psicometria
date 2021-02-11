@@ -5,17 +5,21 @@ suppressPackageStartupMessages(library("tidyverse"))
 suppressPackageStartupMessages(library("rethinking"))
 ```
 
-
-In questo capitolo verrà presentata un'introduzione "pratica" all'analisi della regressione, nella quale ci preoccuperemo di capire a cosa serve a come si interpretano i risultati che tale metodo statistico produce. Nel capitolo successivo, gli stessi argomenti verranno trattati in un modo più "formale" e con maggiori approfondimenti teorici. Questo capitolo contiene _tutto quello che c'è da sapere_ e _non si può non sapere_ su questo argomento. L'ho pensato per i miei laureandi, ovvero per degli studenti che devono usare queste procedure statistiche per risolvere un problema pratico (quello di concludere la tesi). L'altro capitolo è più convenzionalmente "didattico" ed è stato pensato in primo luogo per chi deve dare l'esame di Psicometria. Questo primo capitolo su questo tema può essere dunque pensato come un'introduzione "gentile" a ciò che verrà discusso nel prossimo capitolo.
+In questo capitolo verrà presentata un'introduzione "pratica" all'analisi della regressione. Qui ci preoccuperemo solo di capire a cosa serve l'analisi di regressione e come si interpretano i risultati prodotti da tale metodo di analisi statistica. Nel capitolo successivo, gli stessi argomenti verranno trattati in un modo più "formale" e con maggiori approfondimenti teorici. Questo capitolo contiene _tutto quello che c'è da sapere_ e _non si può non sapere_ su questo argomento. 
+L'ho pensato per i miei laureandi, ovvero per degli studenti che devono usare queste procedure statistiche per risolvere un problema pratico (quello di concludere la tesi). L'altro capitolo è più convenzionalmente "didattico" ed è stato pensato in primo luogo per chi deve superare l'esame di Psicometria. Questo primo capitolo su questo tema può essere dunque pensato come un'introduzione "gentile" a ciò che verrà discusso nel prossimo capitolo.
 
 ## Regressione bivariata
 
-La regressione bivariata si pone il problema di descrivere la relazione statistica _lineare_ che intercorre tra due variabili, $x$ e $y$. Per relazione "statistica" intendo dire che, nel caso dei dati campionari $\{x, y\}$ di cui si occupa il modello di regressione, non c'è mai una "perfetta" relazione lineare (ovvero, i punti del diagramma a dispersione di $\{x, y\}$ non si situano su una retta).  In alcuni casi, quando guardiamo il diagramma a dispersione di $\{x, y\}$ ci rendiamo conto che, in effetti, i punti $\{x, y\}$, anche se non si dispongono su una retta, sono sparpagliati attorno ad una retta "virtuale" che passa attraverso la nube di punti. In una tale situazione (che è una delle tante possibili, non l'unica), è ragionevole descrivere la relazione tra le variabili $x$ e $y$ mediante la retta che, al meglio, __approssima__ la nube di punti nel diagramma a disperiosne.  L'analisi di regressione si pone il problema di trovare l'inclinazione di quella retta che passa il più vicino possibile ai punti del diagramma a dispersione di $\{x, y\}$. 
+La regressione è una classe di tecniche statistiche che si pongono il problema di  comprendere la relazione che intercorre tra una variabile di esito (chiamata anche criterio / risposta / variabile dipendente) e una o più predittori (chiamate anche variabili esplicative / indipendenti). Considereremo inizialmente il caso di una sola variabile esplicativa.
+
+In maniera più specifica, possiamo dire che la regressione bivariata si pone il problema di descrivere la relazione statistica _lineare_ che intercorre tra due variabili, $x$ e $y$. Per relazione "statistica" intendo dire che, in un campione di dati $\{x, y\}$, non c'è mai una "perfetta" relazione lineare. Consideriamo le le coppie $\{x_i, y_i\}$, con _i_ = 1, ..., _N_, dove _N_ è l'ampiezza campionaria. Se rappresentiamo queste coppie di numeri un un diagramma cartesiano, otteniamo quello che si chiama un diagramma a dispersione. Nel caso di dati reali, i punti del diagramma a dispersione di $\{x, y\}$ non si situeranno mai tutti su una retta ma, in alcuni casi, formeranno una nube di punti che può essere _approssimata_ da una retta che passa attraverso la nube di punti. In una tale situazione, è ragionevole descrivere la relazione tra le variabili $x$ e $y$ mediante la retta che __approssima__ al meglio la nube di punti nel diagramma a dispersione. 
+
+L'analisi di regressione si pone tre problemi. Il primo è quello di stabilire qual è l'inclinazione della retta che passa il più vicino possibile ai punti del diagramma a dispersione. Il secondo è quello di quantificare "la distanza media" tra i punti del diagramma a dispersione e la retta di regressione. Il terzo è quello di fare inferenza, ovvero di capire cosa ci dice la retta di regressione che abbiamo osservato nel campione a proposito della possibile relazione tra $x$ e $y$ nella popolazione da cui il campione è stato tratto.
 
 
 ### Scioglimento del ghiaccio marino
 
-Uno degli impatti più importanti dei cambiamenti climatici che stanno investendo il nostro Pianeta è la riduzione dell'estensione della calotta di ghiaccio marino artico. Esploriamo come l'estensione del ghiaccio marino artico sta cambiando nel tempo utilizzando un modello lineare. I dati sono forniti da [The National Snow and Ice Data Center](https://nsidc.org) e sono espressi in milioni di chilometri quadrati. 
+Iniziamo con un esempio. Uno degli impatti più importanti dei cambiamenti climatici che stanno investendo il nostro Pianeta è la riduzione dell'estensione della calotta di ghiaccio marino artico. Poniamoci il problema di usare il modello di regressione per esplorare come l'estensione del ghiaccio marino artico sta cambiando nel tempo. I dati sono forniti da [The National Snow and Ice Data Center](https://nsidc.org) e sono espressi in milioni di chilometri quadrati. 
 
 ```{r, echo=FALSE}
 seaice <- rio::import("data/seaice.csv")
@@ -27,24 +31,13 @@ I dati sono i seguenti:
 data.frame(seaice)
 ```
 
-```{r, echo=FALSE}
-# Per descrivere cosa fa l'analisi di regressione, iniziamo a considerare alcuni dati. Per semplicità, li simuliamo:
-# set.seed(1234)
-# n <- 100
-# x <- round(rnorm(n, 4, 1), 1)
-# y <- round(5 + 5 * x + rnorm(n, 0, 2), 1)
-
-# Salviamo questi dati nel data.frame `d` di cui stampiamo le prime righe:
-# d <- data.frame(x, y)
-# head(d)
-```
-
 Quale domanda di ricerca possiamo porci con questi dati? Propongo la seguente domanda.
 
 __Domanda di ricerca:__ l'estensione del ghiaccio marino artico sta diminuendo nel tempo?
 
 Per esplorare la risposta a questa domanda, iniziamo a creare una rappresentazione grafica dei dati. Dato che abbiamo due variabi continue (il tempo, espresso in anni, e l'estensione del ghiaccio marino artico, in milioni di chilometri quadrati), questi dati possono essere rappresentati graficamente mediante un diagramma a dispersione.
-Vogliamo sapere come varia l'estensione del ghiaccio marino artico in funzione del tempo e quindi disegnamo i dati ponendo la variabile tempo sull'asse delle ascisse e l'estensione del ghiaccio marino artico sull'asse delle ordinate.
+
+Vogliamo sapere come varia l'estensione del ghiaccio marino artico in funzione del tempo e quindi rappresentiamo i dati ponendo la variabile tempo sull'asse delle ascisse e l'estensione del ghiaccio marino artico sull'asse delle ordinate.
 
 ```{r}
 seaice %>% 

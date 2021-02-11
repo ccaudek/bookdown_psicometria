@@ -4,62 +4,43 @@
 source("_common.R")
 ```
 
-Le osservazioni empiriche -- osservazioni sul campo, sondaggi o
-risultati di esperimenti -- forniscono il materiale che viene utilizzato
-in un'indagine statistica e sono chiamate *dati*. Quando parliamo di
-dati dobbiamo chiederci: in che misura i dati che sono stati raccolti
-sono in grado di rappresentare in maniera veritiera le caratteristiche
-del fenomeno esaminato? C'è un'intera disciplina che cerca di rispondere
-alla domanda precedente: la "teoria della misurazione". Senza entrare
-nei dettagli, il presente capitolo intende fornire un'introduzione
-generale alle tematiche della misurazione in psicologia.
+Introduco il problema della misurazione in psicologia parlando dell'intelligenza. In quanto psicologi, siamo abituati a pensare alla misurazione dell'intelligenza, ma anche le persone che non sono psicologi sono ben familiari con la misurazione dell'intelligenza: tra le misurazioni delle caratteristiche psicologiche, infatti, la misurazione dell'intelligenza è forse la più conosciuta. 
+
+I test di intelligenza consistono in una serie di problemi di carattere verbale, numerico o simbolico. Come ci si può aspettare, alcune persone riescono a risolvere correttamente un numero maggiore di problemi di altre. Possiamo contare il numero di risposte corrette e osservare le differenze individuali nei punteggi calcolati. Scopriamo in questo modo che le differenze individuali nell'abilità di risolvere tali problemi risultano sorprendentemente stabili nell'età adulta. Inoltre, diversi test di intelligenza tendono ad essere correlati positivamente: le persone che risolvono un maggior numero di problemi verbali, in media, tenderanno anche a risolvere correttamente un numero più grande di numerici e simbolici. Esiste quindi una notevole coerenza delle differenze osservate tra le persone, sia nel tempo sia considerando diverse procedure di test e valutazione. 
+
+Avendo stabilito che ci sono differenze individuali tra le persone, è possibile esaminare le associazioni tra i punteggi dei test di intelligenza e altre variabili. Possiamo indagare se le persone con punteggi più alti nei test di intelligenza, rispetto a persone che ottengono punteggi più bassi, hanno più successo sul lavoro; se guadagnano di più; se votano in modo diverso; o se hanno un'aspettativa di vita più alta. Possiamo esaminare le differenze nei punteggi dei test di intelligenza in funzione di variabili come il genere, il gruppo etnico-razziale o lo stato socio-economico. Possiamo fare ricerche sull'associazione tra i punteggi dei test di intelligenza e l'efficienza dell'elaborazione neuronale, i tempi di reazione o la quantità di materia grigia all'interno della scatola cranica. Tutte queste ricerche sono state condotte e gli psicologi hanno scoperto una vasta gamma di associazioni tra le misure dell'intelligenza e altre variabili. Alcune di queste associazioni sono grandi e stabili, altre sono piccole e difficili da replicare. In riferimento all'intelligenza, dunque, gli psicologi hanno condotto un enorme numero di ricerche ponendosi domande diverse. In quali condizioni si verificano determinati effetti? Quali variabili mediano o moderano le relazioni tra i punteggi dei test di intelligenza e altre variabili? Queste relazioni si mantengono stabili in diversi gruppi di persone? Le ricerche sull'intelligenza umana sono un campo in continuo sviluppo.
+
+Tuttavia, tuttavia una domanda sorge spontanea: i test di intelligenza misurano davvero qualcosa e, in caso affermativo, che cos'è questo qualcosa? Infatti, dopo un secolo di teoria e ricerca sui punteggi dei test di intelligenza e, in generale, sui test psicologici, non sappiamo ancora con precisione cosa effettivamente questi test misurano.
+Queste considerazioni relative ai test di intelligenza ci conducono dunque alla domanda che ha motivato le precedenti considerazioni: cosa significa misurare un attributo psicologico? Questa è una domanda a cui è difficile rispondere, una domanda a cui è dedicata un'intera area di ricerca, quella della teoria della misurazione psicologica. 
+
+Non possiamo qui entrare nel merito delle complessità formali della teoria della misurazione psicologica -- questo argomento verrà approfondito nei successivi insegnamenti sulla testistica psicologica. Ci limiteremo invece a presentare alcune nozioni di base su un tema centrale della teoria della misurazione psicologica: il tema  delle scale delle misure psicologiche.
 
 ## Le scale di misura
 
-I risultati delle misurazioni, ovvero le variabili, devono avere almeno
-due valori possibili (altrimenti sarebbero delle costanti). È importante
-notare che le modalità delle variabili sono in grado di descrivere
-l'intensità del fenomeno misurato con livelli diversi di precisione. La
-capacità delle variabili di "catturare" in forma numerica le proprietà
-del fenomeno che esse rappresentano viene descritta dalla teoria delle
-scale di misura di @stevens46. Secondo tale teoria, possiamo distinguere
-quattro scale di misura aventi proprietà diverse: le scale nominali (*nominal scales*), ordinali (*ordinal scales*), a intervalli (*interval scales*), di
-rapporti (*ratio scales*).
+In generale possiamo dire che la teoria della misurazione si occupa dello studio delle relazioni esistenti tra due domini: il "mondo fisico" e il "mondo psicologico". Secondo la teoria della misurazione, la misurazione è un'attività rappresentativa, cioè è un processo di assegnazione di numeri in modo tale da preservare, all'interno del dominio numerico, le relazioni qualitative che sono state osservate nel mondo empirico. La teoria della misurazione ha lo scopo di specificare le condizioni necessarie per la costruzione di una rappresentazione adeguata delle relazioni empiriche all'interno di un sistema numerico. Da una prospettiva formale, le operazioni descritte dalla teoria della misurazione possono essere concettualizzate in termini di mappatura tra le relazioni esistenti all'interno di due insiemi (quello empirico e quello numerico). Il risultato di questa attività è chiamato "scala di misurazione". 
+
+Una famosa teoria delle scale di misura è stata proposta da @stevens46. Stevens ci fa notare che, in linea di principio, le variabili psicologiche sono in grado di rappresentare (preservare) con diversi gradi di accuratezza le relazioni qualitative che sono state osservate nei fenomeni psicologici. Secondo la teoria di Stevens, possiamo distinguere tra quattro scale di misura: le scale nominali (*nominal scales*), ordinali (*ordinal scales*), a intervalli (*interval scales*), di rapporti (*ratio scales*). Tali scale di misura consentono operazioni aritmetiche diverse, come indicato nella tabella successiva, in quanto ciasuna di esse è in grado di "catturare" soltanto alcune delle proprietà dei fenomeni psicologici che intende misurare.
 
 ![](images/misurazione_2.png){width=80%}
 
 ### Scala nominale
 
-La scala nominale raggruppa i dati in categorie qualitative *mutuamente
-esclusive* (cioè nessun dato si può collocare in più di una categoria).
+Il livello di misurazione più semplice è quello della scala nominale. Questa scala di misurazione corrisponde ad una tassonomia. I simoboli o numeri che costituiscono questa scala non sono altro che i nomi delle categorie che utilizziamo per classificare i fenomeni psicologici. In base alle misure fornite da una scala nominale, l'unica cosa che siamo in grado di dire a proposito di una caratteristica psicologica è se essa è uguale o no ad un'altra caratteristica psicologica.
 
+La scala nominale raggruppa dunque i dati in categorie qualitative *mutuamente esclusive* (cioè nessun dato si può collocare in più di una categoria).
 Esiste la sola relazione di equivalenza tra le misure delle u.s., cioè
 nella scala nominale gli elementi del campione appartenenti a classi
 diverse sono differenti, mentre tutti quelli della stessa classe sono
-tra loro equivalenti: $x_i = x_j$ oppure $x_i \neq x_j$. È ammessa
-l'operazione del conteggio delle u.s. presenti in ogni categoria e il
-conteggio delle classi di equivalenze, dunque la descrizione dei dati
-avviene tramite le frequenze assolute e le frequenze relative.
+tra loro equivalenti: $x_i = x_j$ oppure $x_i \neq x_j$. 
 
-A partire da una scala nominale è possibile costruire altre scale
-equivalenti trasformando i valori della scala di partenza in modo tale
-da cambiare i nomi delle modalità ma lasciando però inalterata la
-suddivisione u.s. nelle medesime classi di equivalenza. Questo significa
-che prendendo una variabile misurata su scala nominale e cambiando i
-nomi delle sue categorie otteniamo una nuova variabile esattamente
-corrispondente alla prima.
+L'unica operazione algebrica che possiamo compiere sulle modalità della scala nominale è quella di contare le u.s. che appartengono ad ogni modalità e contare il numero delle modalità (classi di equivalenza). Dunque la descrizione dei dati avviene tramite le frequenze assolute e le frequenze relative.
+
+A partire da una scala nominale è possibile costruire altre scale nominali che sono equivalenti alla prima trasformando i valori della scala di partenza in modo tale
+da cambiare i nomi delle modalità, ma lasciando però inalterata la suddivisione u.s. nelle medesime classi di equivalenza. Questo significa che prendendo una variabile misurata su scala nominale e cambiando i nomi delle sue categorie otteniamo una nuova variabile esattamente corrispondente alla prima.
 
 ### Scala ordinale
 
-La scala ordinale conserva la proprietà della scala nominale di
-classificare ciascun dato all'interno di una sola categoria, ma alla
-relazione di equivalenza tra elementi di una stessa classe aggiunge la
-relazione di ordinamento tra le varie classi di equivalenza. Essendo
-basata su una relazione d'ordine, una scala ordinale descrive soltanto
-l'ordine di rango tra le modalità, ma non dà alcuna informazione su
-quanto una modalità sia più grande di un'altra. Non ci dice, per
-esempio, se la distanza tra le modalità $a$ e $b$ sia uguale, maggiore o
-minore della distanza tra le modalità $b$ e $c$.
+La scala ordinale conserva la proprietà della scala nominale di classificare ciascuna u.s. all'interno di una e una sola categoria, ma alla relazione di equivalenza tra elementi di una stessa classe aggiunge la relazione di ordinamento tra le classi di equivalenza. Essendo basata su una relazione d'ordine, una scala ordinale descrive soltanto l'ordine di rango tra le modalità, ma non ci dà alcuna informazione su quanto una modalità sia più grande di un'altra. Non ci dice, per esempio, se la distanza tra le modalità $a$ e $b$ sia uguale, maggiore o minore della distanza tra le modalità $b$ e $c$.
 
 #### Esempio {-}
 

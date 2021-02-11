@@ -4,9 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capitolo 12 Probabilità condizionata | Data Science per psicologi</title>
+<title>Capitolo 13 Probabilità condizionata | Data Science per psicologi</title>
 <meta name="author" content="Corrado Caudek">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.6/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
@@ -41,29 +41,30 @@
 <li><a class="" href="chapter-strutture-dati.html"><span class="header-section-number">5</span> Strutture di dati</a></li>
 <li><a class="" href="chapter-strut-contr.html"><span class="header-section-number">6</span> Strutture di controllo</a></li>
 <li><a class="" href="chapter-input-output.html"><span class="header-section-number">7</span> Input/Output</a></li>
+<li><a class="" href="manipolazione-dei-dati.html"><span class="header-section-number">8</span> Manipolazione dei dati</a></li>
 <li class="book-part">Misurazione</li>
-<li><a class="" href="chapter-terminologia.html"><span class="header-section-number">8</span> Terminologia</a></li>
-<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">9</span> La misurazione in psicologia</a></li>
+<li><a class="" href="terminologia.html"><span class="header-section-number">9</span> Terminologia</a></li>
+<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">10</span> La misurazione in psicologia</a></li>
 <li class="book-part">Descrizione</li>
-<li><a class="" href="chapter-descript.html"><span class="header-section-number">10</span> Statistica descrittiva</a></li>
+<li><a class="" href="chapter-descript.html"><span class="header-section-number">11</span> Statistica descrittiva</a></li>
 <li class="book-part">Elementi di teoria della probabilità</li>
-<li><a class="" href="chapter-prob.html"><span class="header-section-number">11</span> Il calcolo delle probabilità</a></li>
-<li><a class="active" href="chapter-prob-cond.html"><span class="header-section-number">12</span> Probabilità condizionata</a></li>
-<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">13</span> Il teorema di Bayes</a></li>
-<li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">14</span> Probabilità congiunta</a></li>
+<li><a class="" href="il-calcolo-delle-probabilit%C3%A0.html"><span class="header-section-number">12</span> Il calcolo delle probabilità</a></li>
+<li><a class="active" href="chapter-prob-cond.html"><span class="header-section-number">13</span> Probabilità condizionata</a></li>
+<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">14</span> Il teorema di Bayes</a></li>
+<li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">15</span> Probabilità congiunta</a></li>
 <li class="book-part">Inferenza frequentista</li>
-<li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">15</span> Distribuzione campionaria della media dei campioni</a></li>
-<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">16</span> Significatività statistica</a></li>
-<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">17</span> Inferenza sulle medie</a></li>
-<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">18</span> Critiche e difese</a></li>
+<li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">16</span> Distribuzione campionaria della media dei campioni</a></li>
+<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">17</span> Significatività statistica</a></li>
+<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">18</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">19</span> Critiche e difese</a></li>
 <li class="book-part">Verosimiglianza</li>
-<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
+<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">20</span> La funzione di verosimiglianza</a></li>
 <li class="book-part">Statistica Bayesiana</li>
-<li><a class="" href="chapter-modellistica-bayesiana.html"><span class="header-section-number">20</span> Modellistica bayesiana</a></li>
-<li><a class="" href="chapter-stima-distr-posteriori.html"><span class="header-section-number">21</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">22</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">23</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">24</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">21</span> Modellistica bayesiana</a></li>
+<li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">22</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">23</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">24</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">25</span> Inferenza Bayesiana</a></li>
 <li><a class="" href="informazioni-generali.html">Informazioni generali</a></li>
 <li><a class="" href="appendici.html">Appendici</a></li>
 <li><a class="" href="bibliografia.html">Bibliografia</a></li>
@@ -74,9 +75,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="chapter-prob-cond" class="section level1" number="12">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="chapter-prob-cond" class="section level1" number="13">
 <h1>
-<span class="header-section-number">Capitolo 12</span> Probabilità condizionata<a class="anchor" aria-label="anchor" href="#chapter-prob-cond"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capitolo 13</span> Probabilità condizionata<a class="anchor" aria-label="anchor" href="#chapter-prob-cond"><i class="fas fa-link"></i></a>
 </h1>
 <p>L’attribuzione di una probabilità ad un evento è sempre condizionata
 dalle conoscenze che abbiamo a disposizione. Per un determinato stato di
@@ -91,9 +92,9 @@ Psicometria nel corrispondente appello dei passati anni accademici. Ma
 se sappiamo che Mario Rossi è particolarmente portato per le materie
 quantitative, ha un’ottima preparazione di base e ha studiato molto,
 allora la probabilità sarà sicuramente più alta.</p>
-<div id="probabilità-condizionata-su-altri-eventi" class="section level2" number="12.1">
+<div id="probabilità-condizionata-su-altri-eventi" class="section level2" number="13.1">
 <h2>
-<span class="header-section-number">12.1</span> Probabilità condizionata su altri eventi<a class="anchor" aria-label="anchor" href="#probabilit%C3%A0-condizionata-su-altri-eventi"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.1</span> Probabilità condizionata su altri eventi<a class="anchor" aria-label="anchor" href="#probabilit%C3%A0-condizionata-su-altri-eventi"><i class="fas fa-link"></i></a>
 </h2>
 <p>La probabilità condizionata è una componente essenziale del ragionamento
 scientifico dato che chiarisce come sia possibile incorporare le
@@ -118,7 +119,7 @@ queste 1000 donne, 10 (ovvero, l’1%) hanno il cancro al seno. Per queste
 dei casi). Per le rimanenti 990 donne che non hanno il cancro al seno,
 il test darà un risultato positivo in 99 casi (se la probabilità di un
 vero positivo è del 90%, la probabilità di un falso positivo è del 10%).
-Questa situazione è rappresentata nella figura <a href="chapter-prob-cond.html#fig:mammografia">12.1</a>.
+Questa situazione è rappresentata nella figura <a href="chapter-prob-cond.html#fig:mammografia">13.1</a>.
 Mettendo insieme questi due risultati, vediamo che il test dà un risultato positivo per 9 donne che hanno effettivamente il cancro al seno e per 99 donne che non ce l’hanno, per un totale di 108 risultati positivi. Dunque, la probabilità di ottenere un risultato positivo al test è <span class="math inline">\(\frac{108}{1000}\)</span> = 11%. Ma delle 108
 donne che hanno ottenuto un risultato positivo al test, solo 9 hanno il
 cancro al seno. Dunque, la probabilità di avere il cancro, dato un
@@ -126,7 +127,7 @@ risultato positivo al test, è pari a <span class="math inline">\(\frac{9}{108}\
 <div class="figure" style="text-align: center">
 <span id="fig:mammografia"></span>
 <img src="images/mammografia.png" alt="Rappresentazione ad albero che riporta le frequenze attese dei risultati di una mammografia in un campione di 1,000 donne" width="90%"><p class="caption">
-Figura 12.1: Rappresentazione ad albero che riporta le frequenze attese dei risultati di una mammografia in un campione di 1,000 donne
+Figura 13.1: Rappresentazione ad albero che riporta le frequenze attese dei risultati di una mammografia in un campione di 1,000 donne
 </p>
 </div>
 <p>Nell’esercizio precedente, la probabilità dell’evento “ottenere un risultato positivo al test” è una probabilità non condizionata, mentre la probabilità dell’evento “avere il cancro al seno, dato che il test ha dato un risultato positivo” è una probabilità condizionata. In termini generali, la probabilità condizionata <span class="math inline">\(P(A \mid B)\)</span> rappresenta la probabilità che si verifichi l’evento <span class="math inline">\(A\)</span> sapendo che si è verificato
@@ -134,23 +135,23 @@ l’evento <span class="math inline">\(B\)</span>; oppure: la probabilità di <s
 si verifica anche <span class="math inline">\(B\)</span>. Ciò ci conduce alla seguente definizione.</p>
 
 <div class="definition">
-<span id="def:prob-cond" class="definition"><strong>Definizione 12.1  </strong></span>Dato un qualsiasi evento <span class="math inline">\(A\)</span>, si chiama <em>probabilità condizionata</em> di
+<span id="def:prob-cond" class="definition"><strong>Definizione 13.1  </strong></span>Dato un qualsiasi evento <span class="math inline">\(A\)</span>, si chiama <em>probabilità condizionata</em> di
 <span class="math inline">\(A\)</span> dato <span class="math inline">\(B\)</span> il numero
 <span class="math display" id="eq:probcond">\[\begin{equation}
 P(A \mid B) = \frac{P(A \cap B)}{P(B)}, \quad \text{con}\, P(B) &gt; 0,
-\tag{12.1}
+\tag{13.1}
 \end{equation}\]</span>
 dove <span class="math inline">\(P(A\cap B)\)</span> è la probabilità congiunta dei
 due eventi, ovvero la probabilità che si verifichino entrambi.
 </div>
 <p>In alcuni casi può essere conveniente leggere al contrario la
-formula <a href="chapter-prob-cond.html#def:prob-cond">12.1</a> e utilizzarla per calcolare la probabilità
+formula <a href="chapter-prob-cond.html#def:prob-cond">13.1</a> e utilizzarla per calcolare la probabilità
 dell’intersezione di due eventi. Per esempio se conosciamo la
 probabilità dell’evento <span class="math inline">\(B\)</span> e la probabilità condizionata di <span class="math inline">\(A\)</span> su <span class="math inline">\(B\)</span>,
 otteniamo
 <span class="math display" id="eq:probcondinv">\[\begin{equation}
 P(A \cap B) = P(B)P(A \mid B),
-\tag{12.2}
+\tag{13.2}
 \end{equation}\]</span>
 mentre se conosciamo la probabilità dell’evento <span class="math inline">\(A\)</span> e la probabilità condizionata di <span class="math inline">\(B\)</span> su <span class="math inline">\(A\)</span>, otteniamo <span class="math inline">\(P(A \cap B) = P(A)P(B \mid A)\)</span>.</p>
 <p><strong>Esercizio.</strong>
@@ -163,9 +164,9 @@ Ci sono 13 carte di cuori, dunque la risposta alla prima domanda è 1/4.
 Per rispondere alla seconda domanda consideriamo solo le 13 carte di
 cuori; la probabilità cercata è dunque 3/13.</p>
 </div>
-<div id="la-fallacia-del-pubblico-ministero" class="section level2" number="12.2">
+<div id="la-fallacia-del-pubblico-ministero" class="section level2" number="13.2">
 <h2>
-<span class="header-section-number">12.2</span> La fallacia del pubblico ministero<a class="anchor" aria-label="anchor" href="#la-fallacia-del-pubblico-ministero"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2</span> La fallacia del pubblico ministero<a class="anchor" aria-label="anchor" href="#la-fallacia-del-pubblico-ministero"><i class="fas fa-link"></i></a>
 </h2>
 <p>Un errore comune che si commette è quello di credere che <span class="math inline">\(P(A \mid B)\)</span>
 sia uguale a <span class="math inline">\(P(B \mid A)\)</span>. Tale fallacia ha particolare risalto in
@@ -186,21 +187,21 @@ positivo al test data la presenza del cancro. Infatti, questa seconda
 probabilità è uguale a 0.90 ed è descritta nel problema come una delle
 caratteristiche del test in questione.</p>
 </div>
-<div id="legge-della-probabilità-composta" class="section level2" number="12.3">
+<div id="legge-della-probabilità-composta" class="section level2" number="13.3">
 <h2>
-<span class="header-section-number">12.3</span> Legge della probabilità composta<a class="anchor" aria-label="anchor" href="#legge-della-probabilit%C3%A0-composta"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3</span> Legge della probabilità composta<a class="anchor" aria-label="anchor" href="#legge-della-probabilit%C3%A0-composta"><i class="fas fa-link"></i></a>
 </h2>
 <p>Il teorema della probabilità composta deriva dal concetto di probabilità
 condizionata per cui la probabilità che si verifichino due eventi <span class="math inline">\(A_i\)</span>
 e <span class="math inline">\(A_j\)</span> è pari alla probabilità di uno dei due eventi moltiplicato con
 la probabilità dell’altro evento condizionato al verificarsi del primo.</p>
-<p>L’equazione <a href="chapter-prob-cond.html#eq:probcondinv">(12.2)</a> si estende al caso di <span class="math inline">\(n\)</span> eventi <span class="math inline">\(A_1, \dots, A_n\)</span> nella forma seguente:
+<p>L’equazione <a href="chapter-prob-cond.html#eq:probcondinv">(13.2)</a> si estende al caso di <span class="math inline">\(n\)</span> eventi <span class="math inline">\(A_1, \dots, A_n\)</span> nella forma seguente:
 <span class="math display" id="eq:probcomposte">\[\begin{equation}
 \begin{split}
 P(A_1 \cap A_2 \cap \dots\cap A_n) = {}&amp; P(A_1)P(A_2 \mid A_1)P(A_3 \mid A_1 \cap A_2) \dots\\
  &amp; P(A_n \mid A_1 \cap A_2 \cap \dots \cap A_{n-1})
 \end{split}
-\tag{11.1}
+\tag{13.3}
 \end{equation}\]</span>
 la quale esprime in forma generale la legge della probabilità composta.</p>
 <p><strong>Esercizio.</strong>
@@ -209,7 +210,7 @@ per volta, senza reintrodurla nell’urna. Indichiamo con <span class="math inli
 “esce una pallina bianca alla <span class="math inline">\(i\)</span>-esima estrazione” e con <span class="math inline">\(N_i\)</span>
 l’estrazione di una pallina nera. L’evento: “escono due palline bianche
 nelle prime due estrazioni” è rappresentato dalla intersezione
-<span class="math inline">\(\{B_1 \cap B_2\}\)</span> e la sua probabilità vale, per la <a href="chapter-prob-cond.html#eq:probcondinv">(12.2)</a>
+<span class="math inline">\(\{B_1 \cap B_2\}\)</span> e la sua probabilità vale, per la <a href="chapter-prob-cond.html#eq:probcondinv">(13.2)</a>
 <span class="math display">\[
 P(B_1 \cap B_2) = P(B_1)P(B_2 \mid B_1).
 \]</span>
@@ -224,7 +225,7 @@ P(N_1 \cap N_2) = P(N_1)P(N_2 \mid N_1) = \frac{4}{10} \cdot \frac{3}{9} = \frac
 \]</span></p>
 <p>Se l’esperimento consiste nell’estrazione successiva di 3 palline, la
 probabilità che queste siano tutte bianche vale, per
-la <a href="chapter-prob.html#eq:probcomposte">(11.1)</a>:
+la <a href="chapter-prob-cond.html#eq:probcomposte">(13.3)</a>:
 <span class="math display">\[
 P(B_1 \cap B_2 \cap B_3)=P(B_1)P(B_2 \mid B_1)P(B_3 \mid B_1 \cap B_2),
 \]</span>
@@ -244,16 +245,16 @@ P(N_1 \cap N_2 \cap N_3) &amp;= P(N_1)P(N_2 \mid N_1)P(N_3 \mid N_1 \cap N_2)\no
 \end{aligned}
 \]</span></p>
 </div>
-<div id="lindipendendenza-stocastica" class="section level2" number="12.4">
+<div id="lindipendendenza-stocastica" class="section level2" number="13.4">
 <h2>
-<span class="header-section-number">12.4</span> L’indipendendenza stocastica<a class="anchor" aria-label="anchor" href="#lindipendendenza-stocastica"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4</span> L’indipendendenza stocastica<a class="anchor" aria-label="anchor" href="#lindipendendenza-stocastica"><i class="fas fa-link"></i></a>
 </h2>
 <p>Un concetto molto importante per le applicazioni statistiche della
 probabilità è quello dell’indipendenza stocastica. La
-definizione <a href="chapter-prob-cond.html#eq:probcond">(12.1)</a> esprime il concetto intuitivo di indipendenza
+definizione <a href="chapter-prob-cond.html#eq:probcond">(13.1)</a> esprime il concetto intuitivo di indipendenza
 di un evento da un altro, nel senso che il verificarsi di <span class="math inline">\(A\)</span> non
 influisce sulla probabilità del verificarsi di <span class="math inline">\(B\)</span>, ovvero non la
-condiziona. Infatti, per la definizione <a href="chapter-prob-cond.html#eq:probcond">(12.1)</a> di probabilità condizionata, si ha che, se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono due eventi indipendenti, risulta:
+condiziona. Infatti, per la definizione <a href="chapter-prob-cond.html#eq:probcond">(13.1)</a> di probabilità condizionata, si ha che, se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono due eventi indipendenti, risulta:
 <span class="math display">\[
 P(A \mid B) = \frac{P(A)P(B)}{P(B)} = P(A).\notag
 \]</span>
@@ -273,7 +274,7 @@ Rappresentiamo qui sotto lo spazio campionario dell’esperimento casuale.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:sampling-space-dice"></span>
 <img src="images/sampling-space-dice.png" alt="Rappresentazione dello spazio campionario dei risultati dell'esperimento casuale corrispondente al lancio di due dadi bilanciati. Sono evidenziati gli eventi elementari che costituiscono l'evento A: esce un 1 o un 2 nel primo lancio." width="50%"><p class="caption">
-Figura 12.2: Rappresentazione dello spazio campionario dei risultati dell’esperimento casuale corrispondente al lancio di due dadi bilanciati. Sono evidenziati gli eventi elementari che costituiscono l’evento A: esce un 1 o un 2 nel primo lancio.
+Figura 13.2: Rappresentazione dello spazio campionario dei risultati dell’esperimento casuale corrispondente al lancio di due dadi bilanciati. Sono evidenziati gli eventi elementari che costituiscono l’evento A: esce un 1 o un 2 nel primo lancio.
 </p>
 </div>
 <p>Gli eventi <em>A</em> e <em>B</em> non sono statisticamente indipendenti. Infatti, le
@@ -289,7 +290,7 @@ ha <span class="math inline">\(A \cap B = \emptyset\)</span>) sono statisticamen
 verificarsi dell’uno esclude il verificarsi dell’altro:
 <span class="math inline">\(P(A \cap B)=0 \neq P(A)P(B)\)</span>.</p>
 <p><br></p>
-<p>Si noti inoltre che, se due eventi con probabilità non nulla sono statisticamente indipendenti, la legge delle probabilità totali espressa dalla <a href="chapter-prob.html#eq:probunione">(11.2)</a> si modifica nella relazione seguente:</p>
+<p>Si noti inoltre che, se due eventi con probabilità non nulla sono statisticamente indipendenti, la legge delle probabilità totali espressa dalla <a href="il-calcolo-delle-probabilit%C3%A0.html#eq:probunione">(12.1)</a> si modifica nella relazione seguente:</p>
 <p><span class="math display">\[\begin{equation}
 P(A \cup B) = P(A) + P(B) - P(A)P(B).
 \end{equation}\]</span></p>
@@ -309,16 +310,16 @@ contesto più ampio, cioè quello della popolazione.</p>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="chapter-prob.html"><span class="header-section-number">11</span> Il calcolo delle probabilità</a></div>
-<div class="next"><a href="chapter-teo-bayes.html"><span class="header-section-number">13</span> Il teorema di Bayes</a></div>
+<div class="prev"><a href="il-calcolo-delle-probabilit%C3%A0.html"><span class="header-section-number">12</span> Il calcolo delle probabilità</a></div>
+<div class="next"><a href="chapter-teo-bayes.html"><span class="header-section-number">14</span> Il teorema di Bayes</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#chapter-prob-cond"><span class="header-section-number">12</span> Probabilità condizionata</a></li>
-<li><a class="nav-link" href="#probabilit%C3%A0-condizionata-su-altri-eventi"><span class="header-section-number">12.1</span> Probabilità condizionata su altri eventi</a></li>
-<li><a class="nav-link" href="#la-fallacia-del-pubblico-ministero"><span class="header-section-number">12.2</span> La fallacia del pubblico ministero</a></li>
-<li><a class="nav-link" href="#legge-della-probabilit%C3%A0-composta"><span class="header-section-number">12.3</span> Legge della probabilità composta</a></li>
-<li><a class="nav-link" href="#lindipendendenza-stocastica"><span class="header-section-number">12.4</span> L’indipendendenza stocastica</a></li>
+<li><a class="nav-link" href="#chapter-prob-cond"><span class="header-section-number">13</span> Probabilità condizionata</a></li>
+<li><a class="nav-link" href="#probabilit%C3%A0-condizionata-su-altri-eventi"><span class="header-section-number">13.1</span> Probabilità condizionata su altri eventi</a></li>
+<li><a class="nav-link" href="#la-fallacia-del-pubblico-ministero"><span class="header-section-number">13.2</span> La fallacia del pubblico ministero</a></li>
+<li><a class="nav-link" href="#legge-della-probabilit%C3%A0-composta"><span class="header-section-number">13.3</span> Legge della probabilità composta</a></li>
+<li><a class="nav-link" href="#lindipendendenza-stocastica"><span class="header-section-number">13.4</span> L’indipendendenza stocastica</a></li>
 <li><a class="nav-link" href="#conclusioni-3">Conclusioni</a></li>
 </ul>
 

@@ -1,24 +1,16 @@
 # Strutture di controllo {#chapter-strut-contr}
 
-In R esistono strutture di controllo specifiche per regolare il flusso
-di esecuzione di un programma. I loop permettono di ripetere
-ciclicamente blocchi di istruzioni per un numero prefissato di volte o
-fino a che una determinata condizione logica viene soddisfatta. Questo
-li rende utili per la programmazione di simulazioni. Ci limitiamo qui ad introdurre il ciclo `for`.
+In R il flusso della computazione segue l'ordine di lettura delle espressioni. I controlli di flusso sono quei costrutti sintattici che possono modificare quest'ordine di computazione. Ad esempio, un ciclo `for` ripete le istruzioni annidate al suo interno per un certo numero di volte, e quindi procede sequenzialmente da lì in avanti, mentre un condizionale `if` valuta una condizione rispetto alla quale il flusso di informazioni si biforca (se è vero / se è falso). Ci limitiamo qui ad introdurre il ciclo `for`.
 
 ## Il ciclo `for`
 
-Il ciclo `for` è una struttura di controllo iterativa che determina
-l'esecuzione di una porzione di programma ripetuta per un certo numero
-noto di volte. Il linguaggio R  usa la seguente sintassi per il ciclo
-`for`:
+Il ciclo `for` è una struttura di controllo iterativa che determina l'esecuzione di una porzione di codice ripetuta per un certo numero noto di volte. Il linguaggio R usa la seguente sintassi per il ciclo `for`:
 
-`for` (`indice` in `valori_indice`) { *operazioni* }
+`for` (`indice` in `valori_indice`) { 
+  *operazioni* 
+}
 
-il che significa "esegui le operazioni *operazioni* per i diversi valori
-di `indice` compresi nel vettore `valori_indice`". Per esempio, il
-seguente ciclo `for` non fa altro che stampare il valore della variabile
-contatore in ciascuna esecuzione del ciclo:
+il che significa "esegui le operazioni *operazioni* per i diversi valori di `indice` compresi nel vettore `valori_indice`". Per esempio, il seguente ciclo `for` non fa altro che stampare il valore della variabile contatore in ciascuna esecuzione del ciclo:
 
 ```{r}
 for (i in 1:3) {

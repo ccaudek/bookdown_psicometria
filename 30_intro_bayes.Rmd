@@ -1,6 +1,6 @@
 # (PART\*) Statistica Bayesiana {.unnumbered}
 
-# Modellistica bayesiana {#chapter-modellistica-bayesiana}
+# Modellistica bayesiana 
 
 La statistica bayesiana è un approccio all'analisi dei dati e alla stima
 dei parametri basato sul teorema di Bayes. Una tipica analisi di dati
@@ -390,3 +390,35 @@ vedremo di seguito. Non discuteremo dunque la possibile soluzione di
 questo problema nel caso presente, in quanto il metodo metodo
 *grid-based* per il calcolo della distribuzione a posteriori è solo un
 esempio didattico.
+
+
+## Conclusioni {-}
+
+Possiamo specificare un modello bayesiano definendo una distribuzione congiunta su variabili osservate, $\mathcal Y$, e un insieme di parametri sconosciuti, $\theta$.
+
+$$ 
+  p(\mathcal Y, \theta) 
+$$
+Questa distribuzione congiunta si decompone convenientemente in due termini,
+
+$$ 
+  p(\mathcal Y, \theta) = p(\theta)  p(\mathcal Y \mid \theta) 
+$$
+Il primo termine, $p(\theta)$, è la densità a priori e codifica l'insieme di valori plausibili dei parametri, con i valori più plausibili aventi una densità maggiore. È chiamato "a priori" perché racchiude la nostra conoscenza - e la sua mancanza - sui parametri da stimare prima di osservare i dati. Il secondo termine, $p(\mathcal Y \mid \theta)$, è la verosimiglianza. Dati i parametri del modello $\theta$, $p(\mathcal Y \mid \theta)$ definisce il processo di generazione per $\mathcal Y$.
+
+L'inferenza esegue il _reverse engineering_ del processo di generazione dei dati e si chiede: 
+
+> dato un modello e un campione di osservazioni, $\mathcal Y$, quali sono i valori più plausibili dei parametri che potrebbero aver generato le osservazioni? 
+
+In un contesto Bayesiano, l'insieme dei valori plausibili dei parametri condizionati ai dati è caratterizzato dalla distribuzione a posteriori, $p(\theta \mid \mathcal Y)$. La regola di Bayes stabilisce che
+
+$$ 
+  p(\theta \mid \mathcal Y) \propto p(\theta)  p(\mathcal Y \mid \theta),
+$$
+dove $\propto$ sta per "proporzionale a" e indica che la distribuzione a posteriori combina le informazioni fornite dai dati e la nostra conoscenza precedente. Un'espressione analitica per $p(\theta \mid \mathcal Y)$ è raramente disponibile e dobbiamo fare affidamento su algoritmi di calcolo numerico per conoscere la distribuzione a posteriori. Una strategia generale che esamineremo in seguito consiste nel prelevare campioni approssimativi dalla distribuzione a posteriori e utilizzarli per costruire stime empiriche della media a posteriori, della varianza, della mediana, dei quantili e di altre quantità di interesse. Qui abbiamo presentato il metodo *grid-based* per il calcolo della distribuzione a posteriori. I metodi basati su griglia funzionano benissimo quando la distribuzione a posteriori dipende da un numero molto piccolo di parametri sconosciuti, ma non possono essere usati nel caso di modelli statistici più complessi che includono un numero più grande di parametri.
+
+
+
+
+
+

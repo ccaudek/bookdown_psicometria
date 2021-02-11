@@ -7,6 +7,11 @@ l'utente nell'apprendimento di questo software statistico. Cercheremo
 qui di fornire alcune indicazioni e una breve descrizione delle risorse
 di base di R.
 
+Aggiungo qui sotto alcune considerazioni che ho preso, pari pari, da un testo che tratta di un altro linguaggio di programmazione, ma che si applicano perfettamente anche al caso nostro. 
+
+> Come in ogni linguaggio, per parlare in R è necessario seguire un insieme di regole. Come in tutti i linguaggi di programmazione, queste regole sono del tutto inflessibili e inderogabili. In R, un enunciato o è sintatticamente corretto o è incomprensibile all'interprete, che lo segnalerà all'utente. Questo aspetto non è esattamente amichevole per chi non è abituato ai linguaggi di programmazione, e si trova così costretto ad una precisione di scrittura decisamente poco "analogica". Tuttavia, ci sono due aspetti positivi nello scrivere codice, interrelati tra loro. Il primo è lo sforzo analitico necessario, che allena ad un'analisi precisa del problema che si vuole risolvere in modo da poterlo formalizzare linguisticamente. Il secondo concerne una forma di autoconsapevolezza specifica: salvo "bachi" nel linguaggio (rarissimi sebbene possibili), il mantra del programmatore è "Se qualcosa non ti funziona, è colpa tua" (testo adattato da Andrea Valle).
+
+
 ## Utilizzare la console R come calcolatrice
 
 La console di RStudio contiene un cursore rappresentato dal simbolo "\>"
@@ -31,42 +36,46 @@ l'input finché il comando non è sintatticamente completo. Ad esempio,
 + 1
 ```
 
-R è un ambiente interattivo, ossia i comandi producono una risposta
-immediata. Se scriviamo `2 + 2` e premiamo il tasto di invio, comparirà
-nella riga successiva il risultato:
+R è un ambiente interattivo, ossia i comandi producono una risposta immediata. Se scriviamo `2 + 2` e premiamo il tasto di invio, comparirà nella riga successiva il risultato:
 
 ```{r}
 2 + 2
 ```
 
-Il risultato è preceduto da `[1]`, il che significa che il risultato
-dell'operazione che abbiamo appena eseguito è il primo valore di questa
-linea. Alcune funzioni ritornano più di un singolo numero e, in quel
-caso, l'informazione fornita da R  è più utile. Per esempio, l'istruzione
-`100:130` ritorna $31$ valori, ovvero i numeri da $100$ a $130$:
+Il risultato è preceduto da `[1]`, il che significa che il risultato dell'operazione che abbiamo appena eseguito è il primo valore di questa linea. Alcune funzioni ritornano più di un singolo numero e, in quel caso, l'informazione fornita da R è più utile. Per esempio, l'istruzione `100:130` ritorna $31$ valori, ovvero i numeri da $100$ a $130$:
 
 ```{r}
 100:130
 ```
 
-In questo caso, `[24]` indica che il valore $123$ è il ventiquattresimo numero
-che è stato stampato sulla console.
+In questo caso, sul mio computer, `[24]` indica che il valore $123$ è il ventiquattresimo numero che è stato stampato sulla console -- su un altro computer le cose possono essere diverse in quanto il risultato, credo, dipende dalla grandezza dello schermo.
 
-R  è un linguaggio di programmazione a oggetti, quindi si basa sulla
-creazione di oggetti e sulla possibilità di salvarli nella memoria del
-programma. Quando creiamo un oggetto gli attribuiamo un nome usando il
-simbolo `<-`. Ad esempio, per creare un oggetto che contiene il
-risultato dell'operazione `2 + 2` procediamo nel modo seguente:
+## Espressioni
+
+Un'espressione in R è un enunciato finito e autonomo del linguaggio: una frase conclusa, si potrebbe dire. Si noti che le espressioni in R non sono delimitate dal `;` come succede in alcuni linguaggi di programmazione. L'ordine delle espressioni è l'ordine di esecuzione delle stesse. 
+
+L'a capo non è  rilevante per R. Questo permette di utilizzare l'a capo per migliorare la leggibilità  del codice.
+
+## Oggetti
+
+R è un linguaggio di programmazione a oggetti, quindi si basa sulla creazione di oggetti e sulla possibilità di salvarli nella memoria del programma. Quando creiamo un oggetto gli attribuiamo un nome usando il simbolo `<-`. Ad esempio, per creare un oggetto che contiene il risultato dell'operazione `2 + 2` procediamo nel modo seguente:
 
 ```{r}
 res_sum <- 2 + 2
 res_sum
 ```
 
-L'operazione di assegnazione (`<-`) copia il contenuto dell'operando
-destro (detto `r-value`) nell'operando sinistro detto (`l-value`). Il
-valore dell'espressione assegnazione è `r-value`. Nell'esempio
-precedente, `res_sum` (`l-value`) assume il valore di $4$.
+L'operazione di assegnazione (`<-`) copia il contenuto dell'operando destro (detto `r-value`) nell'operando sinistro detto (`l-value`). Il valore dell'espressione assegnazione è `r-value`. Nell'esempio precedente, `res_sum` (`l-value`) assume il valore di $4$.
+
+## Variabili
+
+L'oggetto `res_sum` è una _variabile_. Una spiegazione di ciò che questo significa è riportata qui sotto.
+
+> Una variabile è  un segnaposto. Tutte le volte che si memorizza un dato lo si assegna ad una variabile. Infatti, se il dato è  nella memoria, per potervi accedere, è  necessario conoscere il suo indirizzo, la sua “etichetta” (come in un grande magazzino in cui si va a cercare un oggetto in base alla sua collocazione). Se il dato è  memorizzato ma inaccessibile (come nel caso di un oggetto sperso in un magazzino), allora non si può usare ed è  soltanto uno spreco di spazio. La teoria delle variabili è un ambito molto complesso nella scienza della computazione. Ad esempio, una aspetto importante può concernere la tipizzazione delle variabili. Nei linguaggi “tipizzati” (ad esempio C), l’utente dichiara che userà quella etichetta (la variabile) per contenere solo ed esclusivamente un certo tipo di oggetto (ad esempio, un numero intero), e la variabile non potrà essere utilizzata per oggetti diversi (ad esempio, una stringa). In questo caso, prima di usare una variabile se ne dichiara l’esistenza e se ne specifica il tipo. I linguaggi non tipizzati non richiedono all’utente di specificare il tipo, che viene inferito in vario modo (ad esempio, in funzione dell’assegnazione del valore alla variabile). Alcuni linguaggi (ad esempio Python) non richiedono neppure la dichiarazione della variabile, che viene semplicemente usata. È l’interprete che inferisce che quella stringa è una variabile. La tipizzazione impone vincoli d’uso sulle variabili e maggiore scrittura del codice, ma assicura una chiara organizzazione dei dati. In assenza di tipizzazione, si lavora in maniera più rapida e snella, ma potenzialmente si può andare incontro a situazioni complicate, come quando si cambia il tipo di una variabile “in corsa” senza accorgersene (Andrea Valle).
+
+R è un linguaggio non tipicizzato, come Python. In R non è necessario dichiarare le variabili che si intendono utilizzare, né il loro tipo. 
+
+## R console
 
 La console di RStudio fornisce la possibilità di richiamare e rieseguire
 i comandi. I tasti freccia verticale, $\uparrow$ e $\downarrow$, sulla
@@ -83,7 +92,7 @@ visualizzato un messaggio di errore; ad esempio,
 Errore: unexpected input in "3 % 9"
 ```
 
-## Le parentesi
+## Parentesi
 
 Le parentesi in R  (come in generale in ogni linguaggio di programmazione) assegnano un significato diverso alle porzioni di codice che delimitano.
 
@@ -124,13 +133,12 @@ Le due istruzioni precedenti producono risultati diversi perché, se
 ## I nomi degli oggetti
 
 Le entità create e manipolate da R si chiamano 'oggetti'. Tali oggetti
-possono essere variabili, array di numeri, caratteri, stringhe,
-funzioni, o più in generale strutture costruite a partire da tali
-componenti. Durante una sessione di  R gli oggetti sono creati e
+possono essere variabili (come nell'esempio che abbiamo visto sopra), array di numeri, caratteri, stringhe, funzioni, o più in generale strutture costruite a partire da tali
+componenti. Durante una sessione di R gli oggetti sono creati e
 memorizzati attraverso opportuni nomi.
 
 I nomi possono contenere un qualunque carattere alfanumerico e come
-carattere speciale il trattino basso (`_`) o il punto.  R fornisce i
+carattere speciale il trattino basso (`_`) o il punto. R fornisce i
 seguenti vincoli per i nomi degli oggetti: i nomi degli oggetti non
 possono mai iniziare con un carattere numerico e non possono contenere i
 seguenti simboli: `$`, `@`, `!`, `^`, `+`, `-`, `/`, `*`. È buona
@@ -138,7 +146,7 @@ pratica usare nomi come `ratio_of_sums`. È fortemente sconsigliato
 utilizzare nei nomi degli oggetti caratteri accentati o, ancora peggio,
 apostrofi. Per questa ragione è sensato creare i nomi degli oggetti
 utilizzando la lingua inglese. È anche bene che i nomi degli oggetti non
-coincidano con nomi di funzioni. Si noti che R  è *case sensitive*, cioè
+coincidano con nomi di funzioni. Si noti che R è *case sensitive*, cioè
 `A` e `a` sono due simboli diversi e identificano due oggetti
 differenti.
 
@@ -183,14 +191,14 @@ questa domanda.
 
 ## Creare ed eseguire uno script R con un editore 
 
-È molto più facile interagire con   manipolando uno script con un
+È molto più facile interagire con R manipolando uno script con un
 editore piuttosto che inserendo direttamente le istruzioni nella
-console. R  fornisce il Text Editor dove è possibile inserire il codice
+console. R fornisce il Text Editor dove è possibile inserire il codice
 (File $\to$ New Script). Per salvare il file basta utilizzare l'apposito
 menù a tendina (estensione `.R`). Tale file potrà poi essere riaperto ed
 utilizzato in un momento successivo.
 
-L'editore comunica con  R nel modo seguente: dopo avere selezionato la
+L'editore comunica con R nel modo seguente: dopo avere selezionato la
 porzione di codice che si vuole eseguire, si digita un'apposita sequenza
 di tasti (`Command + Enter` su Mac OS X e `ctrl + r` in Windows).
 `ctrl + r` significa premere il tasto `ctrl` e, tenendolo premuto, premere il tasto `r` della tastiera.
@@ -200,8 +208,11 @@ primitivo: è fortemente consigliato utilizzare RStudio.
 
 ### Commentare il codice
 
-I commenti sono parole in linguaggio naturale (nel nostro caso l'italiano), che permettono agli utilizzatori di capire il flusso logico del codice e a chi lo ha scritto di ricordare il perché di determinate istruzioni. In  R, le parole dopo il simbolo `#` sono considerate
-commenti e sono ignorate; ad esempio:
+Un "commento" è una parte di codice che l'interprete non tiene in considerazione. Quando l'interprete arriva ad un segnalatore di commento salta fino al segnalatore di fine commento e di lì riprende il normale processo esecutivo.
+
+I commenti sono parole in linguaggio naturale (nel nostro caso l'italiano), che permettono agli utilizzatori di capire il flusso logico del codice e a chi lo ha scritto di ricordare il perché di determinate istruzioni. 
+
+In R, le parole dopo il simbolo `#` sono considerate commenti e sono ignorate; ad esempio:
 
 ```{r, eval = FALSE}
 # Questo e' un commento
@@ -209,7 +220,7 @@ commenti e sono ignorate; ad esempio:
 
 ## Cambiare la cartella di lavoro 
 
-Quando si inizia una sessione di lavoro,   sceglie una cartella quale
+Quando si inizia una sessione di lavoro, R sceglie una cartella quale
 "working directory". Sarà in tale cartella che andrà a cercare gli
 script definiti dall'utilizzatore e i file dei dati. È possibile
 determinare quale sia la corrente "working directory" digitando sulla
@@ -235,7 +246,7 @@ esempio:
 x <- c(7.0, 10.2, -2.9, 21.4)
 ```
 
-Nell'istruzione precedente, `c()` è una funzione. In   gli argomenti
+Nell'istruzione precedente, `c()` è una funzione. In R gli argomenti
 sono passati alle funzioni inserendoli all'interno delle parentesi
 tonde. Si noti che gli argomenti (in questo caso, i numeri
 $7.0, 10.2, -2.9, 21.4$) sono separati a virgole. La funzione `c()` può
@@ -259,7 +270,7 @@ console, ma il vettore non potrà essere utilizzato in nessun altro modo.
 
 ### Operazioni vettorializzate
 
-Molte operazioni in   sono vettorializzate, il che significa che esse
+Molte operazioni in R sono vettorializzate, il che significa che esse
 sono eseguite in parallelo in determinati oggetti . Ciò consente di
 scrivere codice che sia efficiente, conciso e più facile da leggere
 rispetto al codice che contiene istruzioni non vettorializzate.
@@ -297,7 +308,7 @@ die - 1
 
 sottrarrà un'unità da ciascuno degli elementi del vettore `die`.
 
-Se l'operazione aritmetica coinvolge due o più vettori,   allinea i
+Se l'operazione aritmetica coinvolge due o più vettori, R allinea i
 vettori ed esegue una sequenza di operazioni elemento per elemento. Per
 esempio, l'istruzione
 
@@ -415,7 +426,7 @@ sum(roll == 5)
 
 ### Dati mancanti
 
-Quando si è in presenza di un dato mancante,   assegna il valore
+Quando si è in presenza di un dato mancante, R assegna il valore
 speciale `NA`, che sta per *Not Available*. In generale, un'operazione
 su un `NA` dà come risultato un `NA`. Nell'uso delle funzioni che
 operano sui dati sarà dunque necessario specificare che, qualunque
@@ -454,7 +465,7 @@ permettono di svolgere operazioni complicate, quali ad esempio, il
 campionamento casuale. Esaminiamo ora con più attenzione le proprietà
 delle funzioni di R utilizzando ancora l'esempio del lancio di un dado.
 Abbiamo visto in precedenza come il lancio di un dado possa essere
-simulato da R  con la funzione `sample()`. La funzione `sample()` prende
+simulato da R con la funzione `sample()`. La funzione `sample()` prende
 tre argomenti: il nome di un vettore, un numero chiamato `size` e un
 argomento chiamato `replace`. La funzione `sample()` ritorna un numero
 di elementi del vettore pari a `size`. Ad esempio
@@ -519,7 +530,7 @@ prodotti da dieci lanci di un dado o, in maniera equivalente, dal
 singolo lancio di dieci dadi. Possiamo replicare questo processo
 digitando ripetutamente le stesse istruzioni nella console. Otterremo
 ogni volta risultati diversi perché, ad ogni ripetizione, il generatore
-di numeri pseudo-casuali di   dipende dal valore ottenuto dal clock
+di numeri pseudo-casuali di R dipende dal valore ottenuto dal clock
 interno della macchina. La funzione `set.seed()` ci permette di
 replicare esattamente i risultati della generazione di numeri casuali.
 Per ottenere questo risultato, basta assegnare al seed un numero
@@ -529,9 +540,9 @@ In tal caso è vantaggioso scrivere una funzione contenente il codice che
 specifica il numero di ripetizioni. In questo modo, per trovare il
 risultato cercato basterà chiamare la funzione una sola volta.
 
-Le funzioni di R  sono costituite da tre elementi: il nome, il blocco del
+Le funzioni utilizzate da R sono costituite da tre elementi: il nome, il blocco del
 codice e una serie di argomenti. Per creare una funzione è necessario
-immagazzinare in R  questi tre elementi e `function()` consente di
+immagazzinare in R questi tre elementi e `function()` consente di
 ottenere tale risultato usando la sintassi seguente:
 
 ```{r, eval=FALSE}
@@ -589,7 +600,7 @@ compiere errori.
 
 ## Pacchetti
 
-Le funzioni di  R sono organizzate in pacchetti, i più importanti dei
+Le funzioni di R sono organizzate in pacchetti, i più importanti dei
 quali sono già disponibili quando si accede al programma.
 
 ### Istallazione e upgrade dei pacchetti
@@ -643,7 +654,7 @@ se si vuole caricare il pacchetto `ggplot2`. A questo punto diventa
 possibile usare le funzioni contenute in `ggplot2`. Queste operazioni si
 possono anche eseguire usando dal menu a tendina di RStudio.
 
-Per sapere quali sono i pacchetti già presenti nella release di  R con
+Per sapere quali sono i pacchetti già presenti nella release di R con
 cui si sta lavorando, basta scrivere:
 
 ```{r, eval=FALSE}
