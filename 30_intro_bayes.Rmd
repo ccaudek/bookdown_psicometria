@@ -415,10 +415,6 @@ In un contesto Bayesiano, l'insieme dei valori plausibili dei parametri condizio
 $$ 
   p(\theta \mid \mathcal Y) \propto p(\theta)  p(\mathcal Y \mid \theta),
 $$
-dove $\propto$ sta per "proporzionale a" e indica che la distribuzione a posteriori combina le informazioni fornite dai dati e la nostra conoscenza precedente. Un'espressione analitica per $p(\theta \mid \mathcal Y)$ è raramente disponibile e dobbiamo fare affidamento su algoritmi di calcolo numerico per conoscere la distribuzione a posteriori. Una strategia generale che esamineremo in seguito consiste nel prelevare campioni approssimativi dalla distribuzione a posteriori e utilizzarli per costruire stime empiriche della media a posteriori, della varianza, della mediana, dei quantili e di altre quantità di interesse. Qui abbiamo presentato il metodo *grid-based* per il calcolo della distribuzione a posteriori. I metodi basati su griglia funzionano benissimo quando la distribuzione a posteriori dipende da un numero molto piccolo di parametri sconosciuti, ma non possono essere usati nel caso di modelli statistici più complessi che includono un numero più grande di parametri.
-
-
-
-
+dove $\propto$ sta per "proporzionale a" e indica che la distribuzione a posteriori combina le informazioni fornite dai dati e la nostra conoscenza precedente. Un'espressione analitica per $p(\theta \mid \mathcal Y)$ è raramente disponibile e dobbiamo fare affidamento su algoritmi di calcolo numerico per conoscere la distribuzione a posteriori. Una strategia generale che esamineremo in seguito consiste nel prelevare campioni approssimativi dalla distribuzione a posteriori e utilizzarli per costruire stime empiriche della media a posteriori, della varianza, della mediana, dei quantili e di altre quantità di interesse. Qui abbiamo presentato il metodo *grid-based* per il calcolo della distribuzione a posteriori. I metodi basati su griglia funzionano benissimo quando la distribuzione a posteriori dipende da un numero molto piccolo di parametri sconosciuti, ma non possono essere usati nel caso di modelli statistici più complessi che includono un numero maggiore di parametri.
 
 

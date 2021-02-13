@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capitolo 15 Probabilità congiunta | Data Science per psicologi</title>
+<title>Capitolo 16 Probabilità congiunta | Data Science per psicologi</title>
 <meta name="author" content="Corrado Caudek">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.6/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -42,29 +42,30 @@
 <li><a class="" href="chapter-strut-contr.html"><span class="header-section-number">6</span> Strutture di controllo</a></li>
 <li><a class="" href="chapter-input-output.html"><span class="header-section-number">7</span> Input/Output</a></li>
 <li><a class="" href="manipolazione-dei-dati.html"><span class="header-section-number">8</span> Manipolazione dei dati</a></li>
+<li><a class="" href="flusso-di-lavoro-riproducibile-con-rmarkdown.html"><span class="header-section-number">9</span> Flusso di lavoro riproducibile con RMarkdown</a></li>
 <li class="book-part">Misurazione</li>
-<li><a class="" href="terminologia.html"><span class="header-section-number">9</span> Terminologia</a></li>
-<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">10</span> La misurazione in psicologia</a></li>
+<li><a class="" href="terminologia.html"><span class="header-section-number">10</span> Terminologia</a></li>
+<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">11</span> La misurazione in psicologia</a></li>
 <li class="book-part">Descrizione</li>
-<li><a class="" href="chapter-descript.html"><span class="header-section-number">11</span> Statistica descrittiva</a></li>
+<li><a class="" href="chapter-descript.html"><span class="header-section-number">12</span> Statistica descrittiva</a></li>
 <li class="book-part">Elementi di teoria della probabilità</li>
-<li><a class="" href="il-calcolo-delle-probabilit%C3%A0.html"><span class="header-section-number">12</span> Il calcolo delle probabilità</a></li>
-<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">13</span> Probabilità condizionata</a></li>
-<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">14</span> Il teorema di Bayes</a></li>
-<li><a class="active" href="chapter-prob-congiunta.html"><span class="header-section-number">15</span> Probabilità congiunta</a></li>
+<li><a class="" href="il-calcolo-delle-probabilit%C3%A0.html"><span class="header-section-number">13</span> Il calcolo delle probabilità</a></li>
+<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">14</span> Probabilità condizionata</a></li>
+<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
+<li><a class="active" href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
 <li class="book-part">Inferenza frequentista</li>
-<li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">16</span> Distribuzione campionaria della media dei campioni</a></li>
-<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">17</span> Significatività statistica</a></li>
-<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">18</span> Inferenza sulle medie</a></li>
-<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">19</span> Critiche e difese</a></li>
+<li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">17</span> Distribuzione campionaria della media dei campioni</a></li>
+<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">18</span> Significatività statistica</a></li>
+<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">19</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">20</span> Critiche e difese</a></li>
 <li class="book-part">Verosimiglianza</li>
-<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">20</span> La funzione di verosimiglianza</a></li>
+<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">21</span> La funzione di verosimiglianza</a></li>
 <li class="book-part">Statistica Bayesiana</li>
-<li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">21</span> Modellistica bayesiana</a></li>
-<li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">22</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">23</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">24</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">25</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">22</span> Modellistica bayesiana</a></li>
+<li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">23</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">24</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">25</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">26</span> Inferenza Bayesiana</a></li>
 <li><a class="" href="informazioni-generali.html">Informazioni generali</a></li>
 <li><a class="" href="appendici.html">Appendici</a></li>
 <li><a class="" href="bibliografia.html">Bibliografia</a></li>
@@ -75,9 +76,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="chapter-prob-congiunta" class="section level1" number="15">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="chapter-prob-congiunta" class="section level1" number="16">
 <h1>
-<span class="header-section-number">Capitolo 15</span> Probabilità congiunta<a class="anchor" aria-label="anchor" href="#chapter-prob-congiunta"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capitolo 16</span> Probabilità congiunta<a class="anchor" aria-label="anchor" href="#chapter-prob-congiunta"><i class="fas fa-link"></i></a>
 </h1>
 <p>Finora abbiamo considerato unicamente le leggi di singole variabile
 aleatorie. Tuttavia, in psicologia e nella vita quotidiana, siamo spesso
@@ -94,9 +95,9 @@ fare ciò è necessario utilizzare la funzione di probabilità congiunta.
 L’obiettivo di questo capitolo è quello di chiarire cosa si intende per
 funzione di probabilità congiunta di due variabili casuali <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.
 Esamineremo qui in dettaglio il caso discreto.</p>
-<div id="funzione-di-probabilità-congiunta" class="section level2" number="15.1">
+<div id="funzione-di-probabilità-congiunta" class="section level2" number="16.1">
 <h2>
-<span class="header-section-number">15.1</span> Funzione di probabilità congiunta<a class="anchor" aria-label="anchor" href="#funzione-di-probabilit%C3%A0-congiunta"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.1</span> Funzione di probabilità congiunta<a class="anchor" aria-label="anchor" href="#funzione-di-probabilit%C3%A0-congiunta"><i class="fas fa-link"></i></a>
 </h2>
 <p>Dopo aver trattato delle distribuzioni di probabilità di una variabile
 aleatoria, che associa ad ogni evento elementare dello spazio
@@ -257,9 +258,9 @@ al verificarsi di una coppia di valori, il primo associato alla
 variabile aleatoria <span class="math inline">\(X\)</span> ed il secondo alla variabile aleatoria <span class="math inline">\(Y\)</span>. Nel
 caso di due sole variabili, si parla di distribuzione bivariata, mentre
 nel caso di più variabili si parla di distribuzione multivariata.</p>
-<div id="proprietà" class="section level3" number="15.1.1">
+<div id="proprietà" class="section level3" number="16.1.1">
 <h3>
-<span class="header-section-number">15.1.1</span> Proprietà<a class="anchor" aria-label="anchor" href="#propriet%C3%A0"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.1.1</span> Proprietà<a class="anchor" aria-label="anchor" href="#propriet%C3%A0"><i class="fas fa-link"></i></a>
 </h3>
 <p>Una distribuzione di massa di probabilità congiunta bivariata deve
 soddisfare due proprietà:</p>
@@ -270,9 +271,9 @@ essere espressa nel modo seguente
 <span class="math display">\[\sum_{i} \sum_{j} p(x_i, y_j) = 1.0.\]</span></p></li>
 </ol>
 </div>
-<div id="eventi" class="section level3" number="15.1.2">
+<div id="eventi" class="section level3" number="16.1.2">
 <h3>
-<span class="header-section-number">15.1.2</span> Eventi<a class="anchor" aria-label="anchor" href="#eventi"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.1.2</span> Eventi<a class="anchor" aria-label="anchor" href="#eventi"><i class="fas fa-link"></i></a>
 </h3>
 <p>Si noti che dalla probabilità congiunta possiamo calcolare la
 probabilità di qualsiasi evento definito in base alle variabili
@@ -291,9 +292,9 @@ P_{XY}(X+Y \leq 1) = &amp;P_{XY}(0, 0) + P_{XY}(1, 0)= 3/8.\notag
 \end{aligned}
 \]</span></p>
 </div>
-<div id="funzioni-di-probabilità-marginali" class="section level3" number="15.1.3">
+<div id="funzioni-di-probabilità-marginali" class="section level3" number="16.1.3">
 <h3>
-<span class="header-section-number">15.1.3</span> Funzioni di probabilità marginali<a class="anchor" aria-label="anchor" href="#funzioni-di-probabilit%C3%A0-marginali"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.1.3</span> Funzioni di probabilità marginali<a class="anchor" aria-label="anchor" href="#funzioni-di-probabilit%C3%A0-marginali"><i class="fas fa-link"></i></a>
 </h3>
 <p>Data la funzione di probabilità congiunta <span class="math inline">\(p(x, y)\)</span> è possibile pervenire alla costruzione della funzione di probabilità della singola variabile aleatoria, <span class="math inline">\(X\)</span> o <span class="math inline">\(Y\)</span>:
 <span class="math display">\[
@@ -357,9 +358,9 @@ probabilità marginali <span class="math inline">\(p(x)\)</span> e <span class="
 </table></div>
 </div>
 </div>
-<div id="indipendenza-stocastica" class="section level3" number="15.1.4">
+<div id="indipendenza-stocastica" class="section level3" number="16.1.4">
 <h3>
-<span class="header-section-number">15.1.4</span> Indipendenza stocastica<a class="anchor" aria-label="anchor" href="#indipendenza-stocastica"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.1.4</span> Indipendenza stocastica<a class="anchor" aria-label="anchor" href="#indipendenza-stocastica"><i class="fas fa-link"></i></a>
 </h3>
 <p>Ora abbiamo tutti gli strumenti per potere dare una definizione
 statistica precisa al concetto di indipendenza. La definizione proposta
@@ -401,18 +402,18 @@ come prodotto delle funzioni di probabilità marginali di <span class="math inli
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="chapter-teo-bayes.html"><span class="header-section-number">14</span> Il teorema di Bayes</a></div>
-<div class="next"><a href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">16</span> Distribuzione campionaria della media dei campioni</a></div>
+<div class="prev"><a href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></div>
+<div class="next"><a href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">17</span> Distribuzione campionaria della media dei campioni</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#chapter-prob-congiunta"><span class="header-section-number">15</span> Probabilità congiunta</a></li>
+<li><a class="nav-link" href="#chapter-prob-congiunta"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
 <li>
-<a class="nav-link" href="#funzione-di-probabilit%C3%A0-congiunta"><span class="header-section-number">15.1</span> Funzione di probabilità congiunta</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#propriet%C3%A0"><span class="header-section-number">15.1.1</span> Proprietà</a></li>
-<li><a class="nav-link" href="#eventi"><span class="header-section-number">15.1.2</span> Eventi</a></li>
-<li><a class="nav-link" href="#funzioni-di-probabilit%C3%A0-marginali"><span class="header-section-number">15.1.3</span> Funzioni di probabilità marginali</a></li>
-<li><a class="nav-link" href="#indipendenza-stocastica"><span class="header-section-number">15.1.4</span> Indipendenza stocastica</a></li>
+<a class="nav-link" href="#funzione-di-probabilit%C3%A0-congiunta"><span class="header-section-number">16.1</span> Funzione di probabilità congiunta</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#propriet%C3%A0"><span class="header-section-number">16.1.1</span> Proprietà</a></li>
+<li><a class="nav-link" href="#eventi"><span class="header-section-number">16.1.2</span> Eventi</a></li>
+<li><a class="nav-link" href="#funzioni-di-probabilit%C3%A0-marginali"><span class="header-section-number">16.1.3</span> Funzioni di probabilità marginali</a></li>
+<li><a class="nav-link" href="#indipendenza-stocastica"><span class="header-section-number">16.1.4</span> Indipendenza stocastica</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#conclusioni-5">Conclusioni</a></li>

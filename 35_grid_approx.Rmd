@@ -20,11 +20,10 @@ L'inferenza Bayesiana si sviluppa dunque mediante una stima numerica della funzi
 library("patchwork")
 ```
 
-È possibile stimare l'intera distribuzione a posteriori mediante metodi basati su griglia (*grid-based*), come abbiamo fatto nel capitolo [Modellistica bayesiana](#chapter-modellistica-bayesiana). Questo è l'approccio più semplice. Tuttavia, anche se tali metodi possono fornire risultati accuratissimi, a causa della "maledizione della dimensionalità", tali procedure numeriche sono utilizzabili solo nel caso di modelli statistici semplici, con non più di due parametri. Nella pratica concreta tali metodi vengono sostituiti da altre tecniche più efficienti in quanto, anche in comuni modelli
-utilizzati in psicologia, vengono stimati centinaia se non migliaia di
+È possibile stimare l'intera distribuzione a posteriori mediante metodi basati su griglia (*grid-based*), come abbiamo fatto nel capitolo [Modellistica bayesiana](#chapter-modellistica-bayesiana). Questo è l'approccio più semplice. Tuttavia, anche se tali metodi possono fornire risultati accuratissimi, a causa della "maledizione della dimensionalità" tali procedure numeriche sono utilizzabili solo nel caso di modelli statistici semplici, con non più di due parametri. Nella pratica concreta tali metodi vengono dunque sostituiti da altre tecniche più efficienti in quanto, anche in comuni modelli utilizzati in psicologia, vengono stimati centinaia se non migliaia di
 parametri. 
 
-Vediamo cosa significa la "maledizione della dimensionalità". Supponiamo di utilizzare una griglia di 100 punti equispaziati. Nel caso di un solo parametro, avremo dunque bisogno di calcolare 100 valori. Per due parametri sarà necessario calcolare $100^2$ valori. Ma già per 10 parametri avremo bisogno di $10^{10}$ valori -- è facile capire che una tale quantità di calcoli è troppo grande anche per un computer molto potente. Per modelli che richiedono la stima di un numero non piccolo di parametri è dunque necessario procedere in un altro modo.
+Ma cosa significa la "maledizione della dimensionalità"? È molto facile da capire.  Supponiamo di utilizzare una griglia di 100 punti equispaziati. Nel caso di un solo parametro, è necessario calcolare 100 valori. Per due parametri è necessario calcolare $100^2$ valori. Ma già per 10 parametri avremo bisogno di calcolare $10^{10}$ valori -- è facile capire che una tale quantità di calcoli è troppo grande anche per un computer molto potente. Per modelli che richiedono la stima di un numero non piccolo di parametri è dunque necessario procedere in un altro modo.
 
 
 ## Approssimazione quadratica 
@@ -84,16 +83,13 @@ Quello che è stato detto sopra non è che un modo sofisticato per dire che, se 
 
 ## Metodi MC basati su Catena di Markov 
 
-I metodi Monte Carlo basati su Catena di Markov consentono di costruire sequenze di punti (le "catene") nello spazio dei parametri, la cui densità è proporzionale alla distribuzione di probabilità a posteriori a cui siamo interessati. Questo, evidentemente, è il risultato vorremmo
-ottenere. Ma cosa sono le catene di Markov? In termini formali possiamo dire che una catena di Markov è una sequenza di variabili aleatorie $Y_{1}, Y_{2},\dots, Y_{n}$ tale che la dipendenza della distribuzione di $Y_{i+1}$ dai valori di $Y_{1}, \dots, Y_{i}$ è interamente dovuta al
-valore di $Y_i$, cioè il passaggio ad uno stato del sistema dipende unicamente dallo stato immediatamente precedente e non dal come si è giunti a tale stato (dalla storia). Per questo motivo si dice che un processo markoviano è senza memoria.
+I metodi Monte Carlo basati su Catena di Markov consentono di costruire sequenze di punti (le "catene") nello spazio dei parametri, la cui densità è proporzionale alla distribuzione di probabilità a posteriori a cui siamo interessati. Questo, evidentemente, è il risultato vorremmo ottenere. Ma cosa sono le catene di Markov? In termini formali possiamo dire che una catena di Markov è una sequenza di variabili aleatorie $Y_{1}, Y_{2},\dots, Y_{n}$ tale che la dipendenza della distribuzione di $Y_{i+1}$ dai valori di $Y_{1}, \dots, Y_{i}$ è interamente dovuta al valore di $Y_i$, cioè il passaggio ad uno stato del sistema dipende unicamente dallo stato immediatamente precedente e non dal come si è giunti a tale stato (dalla storia). Per questo motivo si dice che un processo markoviano è senza memoria.
 
 In generale è possibile generare catene di Markov che convergono ad una soluzione unica e stazionaria tale per cui gli elementi della catena sono campioni dalla distribuzione di interesse. Nel caso dell'inferenza Bayesiana la distribuzione di interesse è la distribuzione a posteriori, $p(\theta \mid x)$. Le catene di Markov possono quindi essere utilizzate per stimare i valori di aspettazione di variabili rispetto alla distribuzione a posteriori. In altre parole, possiamo utilizzare le catene di Markov per stimare i valori a posteriori dei parametri sconosciuti di un modello statistico -- un esempio è il parametro $p$ nel problema del mappamondo che abbiamo discusso in precedenza.
 
 La generazioni di elementi di una catena ha una natura probabilistica e esistono diversi algoritmi per costruire catene di Markov. Due aspetti da tenere in considerazione sotto questo punto di vista sono il periodo di *burn-in* e le correlazioni tra punti. Al crescere degli step della catena si ottiene una migliore approssimazione della distribuzione target. All'inizio del campionamento però la distribuzione può essere significativamente lontana dalla distribuzione stazionaria. Ci vuole un certo tempo prima di raggiungere la distribuzione stazionaria di equilibrio e tale periodo è detto di *burn-in*. Perciò i campioni provenienti da tale parte iniziale della catena vanno tipicamente scartati poiché non rappresentano accuratamente la distribuzione desiderata.
 
-Normalmente, un algoritmo MCMC genera catene di Markov di campioni, ognuno dei quali è autocorrelato a quelli generati immediatamente prima e dopo di lui. Conseguentemente campioni successivi non sono indipendenti ma formano una catena di Markov con un certo grado di
-correlazione. Questa correlazione introduce una distorsione nella soluzione che si ottiene con questo metodo. L'arte dei diversi algoritmi MCMC risiede nel rendere il meccanismo efficiente e capace di produrre un risultato non distorto, il che implica la riduzione al minimo del tempo di *burn-in* e della correlazione tra i diversi campioni.
+Normalmente, un algoritmo MCMC genera catene di Markov di campioni, ognuno dei quali è autocorrelato a quelli generati immediatamente prima e dopo di lui. Conseguentemente campioni successivi non sono indipendenti ma formano una catena di Markov con un certo grado di correlazione. Questa correlazione introduce una distorsione nella soluzione che si ottiene con questo metodo. L'arte dei diversi algoritmi MCMC risiede nel rendere il meccanismo efficiente e capace di produrre un risultato non distorto, il che implica la riduzione al minimo del tempo di *burn-in* e della correlazione tra i diversi campioni.
 
 Presentiamo ora, in una forma intuitiva, l'algoritmo di Metropolis, ovvero il primo algoritmo MCMC che è stato proposto. Tale algoritmo è stato sviluppato in seguito per renderlo via via più efficiente. Il nostro obiettivo, però, è solo quello di capire la logica sottostante -- lasciamo che siano gli ingegneri a risolvere il problema di rendere l'algoritmo più efficiente.
 
@@ -195,14 +191,13 @@ L'algoritmo di Metropolis funziona anche se il turista decide di spostarsi dalla
 
 ## L'algoritmo di Metropolis 
 
-L'algoritmo descritto nella sezione [Il problema del turista viaggiatore](#sec:turista_viagg) è un caso speciale dell'algoritmo di Metropolis e l'algoritmo di Metropolis è un caso speciale dei
-metodi MCMC. L'algoritmo di Metropolis, al di là dell'uso che ne fa il fortunato turista dell'esempio discusso in precedenza, viene in realtà impiegato per per ottenere una sequenza di campioni casuali da una distribuzione a posteriori la cui forma è, solitamente, sconosciuta. Fuor di metafora:
+L'algoritmo descritto nella sezione [Il problema del turista viaggiatore](#sec:turista_viagg) è un caso speciale dell'algoritmo di Metropolis e l'algoritmo di Metropolis è un caso speciale dei metodi MCMC. L'algoritmo di Metropolis, al di là dell'uso che ne fa il fortunato turista dell'esempio discusso in precedenza, viene in realtà impiegato per per ottenere una sequenza di campioni casuali da una distribuzione a posteriori la cui forma è, solitamente, sconosciuta. Fuor di metafora:
 
--   i __numeri che identificano ciascuna spiaggia__ corrispondono ai valori del parametro che vogliamo stimare -- non è necessario che il parametro assuma solo valori discreti, può anche assumere un insieme continuo di valori;
+- i __numeri che identificano ciascuna spiaggia__ corrispondono ai valori del parametro che vogliamo stimare -- non è necessario che il parametro assuma solo valori discreti, può anche assumere un insieme continuo di valori;
 
--   la __grandezza della spiaggia__ corrisponde alla densità a posteriori associata a ciascuno dei possibili valori del parametro;
+- la __grandezza della spiaggia__ corrisponde alla densità a posteriori associata a ciascuno dei possibili valori del parametro;
 
--   i __giorni di permanenza su una spiaggia__ corrispondono al numero di campioni estratti dalla distribuzione a posteriori.
+- i __giorni di permanenza su una spiaggia__ corrispondono al numero di campioni estratti dalla distribuzione a posteriori.
 
 L'aspetto cruciale di questa discussione è il fatto che, all'aumentare delle ripetizioni dell'algoritmo di Metropolis, la distribuzione dei valori così ottenuti diventa via via più simile alla distribuzione a posteriori del parametro $\theta$, anche se questa è sconosciuta. Per un grande numero di passi della catena l'approssimazione è sufficiente. Con questo metodo è dunque possibile generare un grande numero di campioni casuali dalla distribuzione a posteriori per poi poterne calcolare misure di sintesi e potere fare inferenza.
 
@@ -384,7 +379,6 @@ A questo punto è molto facile trovare il massimo a posteriori per il parametro 
 ```{r}
 mean(chain[-(1:burnIn)])
 ```
-
 
 
 <!-- Nella funzione precedente, le prime due righe definiscono un vettore, chiamato `chain`, dove vengono salvati i valori del parametro che sono campionati dalla distribuzione a posteriori, e inizializzano tale vettore utilizzando il valore iniziale che verrà prescelto in seguito. Il ciclo `for ()` viene utilizzato per specificare i valori della passeggiata aleatoria (*random walk*) che definisce l'insieme di punti che vengono campionati dalla distribuzione a posteriori. L'algoritmo procede nel modo seguente. -->
