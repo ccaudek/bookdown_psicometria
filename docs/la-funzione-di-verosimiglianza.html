@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capitolo 21 La funzione di verosimiglianza | Data Science per psicologi</title>
+<title>Capitolo 17 La funzione di verosimiglianza | Data Science per psicologi</title>
 <meta name="author" content="Corrado Caudek">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.6/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -32,9 +32,10 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Benvenuti</a></li>
-<li class="book-part">Introduzione</li>
-<li><a class="" href="obiettivi-formativi.html"><span class="header-section-number">1</span> Obiettivi formativi</a></li>
+<li class="book-part">Obiettivi formativi</li>
+<li><a class="" href="conoscenza-dichiarativa-e-imperativa.html"><span class="header-section-number">1</span> Conoscenza dichiarativa e imperativa</a></li>
 <li class="book-part">Introduzione al linguaggio R</li>
+<li><a class="" href="introduzione.html">Introduzione</a></li>
 <li><a class="" href="chapter-pacchetti.html"><span class="header-section-number">2</span> Pacchetti</a></li>
 <li><a class="" href="chapter-install-r.html"><span class="header-section-number">3</span> Per cominciare</a></li>
 <li><a class="" href="chapter-sintassi.html"><span class="header-section-number">4</span> Sintassi di base</a></li>
@@ -42,32 +43,36 @@
 <li><a class="" href="chapter-strut-contr.html"><span class="header-section-number">6</span> Strutture di controllo</a></li>
 <li><a class="" href="chapter-input-output.html"><span class="header-section-number">7</span> Input/Output</a></li>
 <li><a class="" href="manipolazione-dei-dati.html"><span class="header-section-number">8</span> Manipolazione dei dati</a></li>
-<li><a class="" href="flusso-di-lavoro-riproducibile-con-rmarkdown.html"><span class="header-section-number">9</span> Flusso di lavoro riproducibile con RMarkdown</a></li>
-<li class="book-part">Misurazione</li>
+<li><a class="" href="flusso-di-lavoro-riproducibile.html"><span class="header-section-number">9</span> Flusso di lavoro riproducibile</a></li>
+<li class="book-part">Statistica descrittiva ed analisi esplorativa dei dat̀i</li>
+<li><a class="" href="introduzione-1.html">Introduzione</a></li>
 <li><a class="" href="terminologia.html"><span class="header-section-number">10</span> Terminologia</a></li>
 <li><a class="" href="chapter-misurazione.html"><span class="header-section-number">11</span> La misurazione in psicologia</a></li>
-<li class="book-part">Descrizione</li>
 <li><a class="" href="chapter-descript.html"><span class="header-section-number">12</span> Statistica descrittiva</a></li>
-<li class="book-part">Elementi di teoria della probabilità</li>
+<li class="book-part">Nozioni di base</li>
+<li><a class="" href="introduzione-2.html">Introduzione</a></li>
 <li><a class="" href="il-calcolo-delle-probabilit%C3%A0.html"><span class="header-section-number">13</span> Il calcolo delle probabilità</a></li>
 <li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">14</span> Probabilità condizionata</a></li>
 <li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
 <li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
+<li><a class="active" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">17</span> La funzione di verosimiglianza</a></li>
 <li class="book-part">Inferenza frequentista</li>
-<li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">17</span> Distribuzione campionaria della media dei campioni</a></li>
-<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">18</span> Significatività statistica</a></li>
-<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">19</span> Inferenza sulle medie</a></li>
-<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">20</span> Critiche e difese</a></li>
-<li class="book-part">Verosimiglianza</li>
-<li><a class="active" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">21</span> La funzione di verosimiglianza</a></li>
-<li class="book-part">Statistica Bayesiana</li>
+<li><a class="" href="introduzione-3.html">Introduzione</a></li>
+<li><a class="" href="distribuzione-campionaria.html"><span class="header-section-number">18</span> Distribuzione campionaria</a></li>
+<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">19</span> Significatività statistica</a></li>
+<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">20</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">21</span> Critiche e difese</a></li>
+<li class="book-part">Inferenza Bayesiana</li>
+<li><a class="" href="introduzione-4.html">Introduzione</a></li>
 <li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">22</span> Modellistica bayesiana</a></li>
 <li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">23</span> Stima della funzione a posteriori</a></li>
 <li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">24</span> Una breve introduzione al modello di regressione</a></li>
 <li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">25</span> Il modello statistico della regressione lineare</a></li>
 <li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">26</span> Inferenza Bayesiana</a></li>
-<li><a class="" href="informazioni-generali.html">Informazioni generali</a></li>
-<li><a class="" href="appendici.html">Appendici</a></li>
+<li class="book-part">Informazioni generali</li>
+<li><a class="" href="citazione.html">Citazione</a></li>
+<li class="book-part">Appendici</li>
+<li><a class="" href="un-piccolo-ripasso.html">Un piccolo ripasso</a></li>
 <li><a class="" href="bibliografia.html">Bibliografia</a></li>
 </ul>
 
@@ -76,14 +81,14 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="la-funzione-di-verosimiglianza" class="section level1" number="21">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="la-funzione-di-verosimiglianza" class="section level1" number="17">
 <h1>
-<span class="header-section-number">Capitolo 21</span> La funzione di verosimiglianza<a class="anchor" aria-label="anchor" href="#la-funzione-di-verosimiglianza"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capitolo 17</span> La funzione di verosimiglianza<a class="anchor" aria-label="anchor" href="#la-funzione-di-verosimiglianza"><i class="fas fa-link"></i></a>
 </h1>
 <p>Per introdurre la funzione di verosimiglianza utilizzeremo un esempio proposto da <span class="citation"><a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">McElreath</a> (<a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span> – per una trattazione più formale è possibile consultare il tutorial di <span class="citation"><a href="bibliografia.html#ref-etz2018introduction" role="doc-biblioref">Etz</a> (<a href="bibliografia.html#ref-etz2018introduction" role="doc-biblioref">2018</a>)</span>. Supponiamo di tenere in mano un mappamondo gonfiabile e di chiederci: “qual’è la proporzione della superficie terreste ricoperta d’acqua?” Sembra una domanda a cui è difficile rispondere. Ma ci viene in mente questa idea brillante: lanciamo in aria il mappamondo e, quando lo riprendiamo, osserviamo se la superfice del mappamondo sotto il nostro dito indice destro rappresenta acqua o terra. Possiamo ripetere questa procedura più volte, così da ottenere un campione causale di diverse porzioni della superficie dal mappamondo. Eseguiamo il nostro esperimento lanciando in aria il mappamondo nove volte e osserviamo i seguenti risultati: A, T, A, A, A, T, A, T, A, dove “A” indica acqua e “T” indica terra. In questo esempio, <span class="citation"><a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">McElreath</a> (<a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span> illustra come sia possibile analizzare questi dati per stimare la proporzione della superficie del globo terrestre che è ricoperta d’acqua. Mediante questo esempio, <span class="citation"><a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">McElreath</a> (<a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span> introduce inoltre il concetto di verosimiglianza.</p>
-<div id="la-narrazione-dei-dati" class="section level2" number="21.1">
+<div id="la-narrazione-dei-dati" class="section level2" number="17.1">
 <h2>
-<span class="header-section-number">21.1</span> La narrazione dei dati<a class="anchor" aria-label="anchor" href="#la-narrazione-dei-dati"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.1</span> La narrazione dei dati<a class="anchor" aria-label="anchor" href="#la-narrazione-dei-dati"><i class="fas fa-link"></i></a>
 </h2>
 <p>Secondo <span class="citation"><a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">McElreath</a> (<a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span> l’analisi Bayesiana può essere descritta come la produzione di una storia che viene raccontata dai dati. Lo scopo di una tale narrazione è quello di chiarire come i dati sono stati generati. Per potere formulare la narrazione dei dati è necessario descrivere le caratteristiche del mondo che ha generato il fenomeno di interesse e il processo attraverso il quale abbiamo ottenuti i dati. In altri termini, la narrazione dei dati corrisponde alla descrizione del processo di campionamento. Per l’esempio del mappamondo possiamo dire quanto segue:</p>
 <ol style="list-style-type: decimal">
@@ -96,36 +101,36 @@ di un lancio non influenza i risultati degli altri lanci).</li>
 <p>In una tale narrazione dei dati distinguiamo i <em>dati</em> dai <em>parametri</em>. I dati sono le frequenze degli eventi <span class="math inline">\(A\)</span> (“acqua”) e <span class="math inline">\(T\)</span> (“terra”). La somma delle frequenze di <span class="math inline">\(A\)</span> e <span class="math inline">\(T\)</span> è il numero totale dei lanci del mappamondo: <span class="math inline">\(N = A + T\)</span>.</p>
 <p>La narrazione di cui ci occupiamo fa riferimento, oltre ai dati, anche al parametro <span class="math inline">\(p\)</span>, ovvero alla proporzione di acqua sul globo terrestre. La descrizione di tale parametro rappresenta l’obiettivo dell’inferenza.</p>
 <p>Anche se il parametro <span class="math inline">\(p\)</span> non può essere direttamente osservato è possibile inferire il suo valore a partire dai dati. Avendo specificato ciò che abbiamo stato detto sopra, la narrazione dei dati si trasforma in un <em>modello probabilistico</em> – in questo caso, abbiamo una sequenza di prove Bernoulliane indipendenti e, dunque, il modello statistico è quello Binomiale. Un tale modello probabilistico è facile da costruire, e vedremo come si fa. Tuttavia, prima di descrivere questo modello probabilistico in dettaglio, è utile visualizzare il suo comportamento. Dopo aver visto come questo modello apprende dai dati ci porremo il problema di capire come funziona.</p>
-<div id="come-impara-un-modello-statistico" class="section level3" number="21.1.1">
+<div id="come-impara-un-modello-statistico" class="section level3" number="17.1.1">
 <h3>
-<span class="header-section-number">21.1.1</span> Come impara un modello statistico?<a class="anchor" aria-label="anchor" href="#come-impara-un-modello-statistico"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.1.1</span> Come impara un modello statistico?<a class="anchor" aria-label="anchor" href="#come-impara-un-modello-statistico"><i class="fas fa-link"></i></a>
 </h3>
-<p>Prima di lanciare in aria il mappamondo e di ottenere il primo dato, non sappiamo nulla del parametro <span class="math inline">\(p\)</span>. Dato che <span class="math inline">\(p\)</span> è una proporzione, i suoi valori possibili vanno da 0 a 1. Se non possediamo alcuna informazione su <span class="math inline">\(p\)</span>, allora riteniamo che tutti i valori <span class="math inline">\(p\)</span> siano egualmente plausibili. Rappresentiamo dunque la nostra incertezza a proposito del parametro <span class="math inline">\(p\)</span> mediante una distribuzione uniforme su tutti i valori <span class="math inline">\(p\)</span>, come indicato dalla linea tratteggiata nel pannello <span class="math inline">\(n = 1\)</span> della figura <a href="la-funzione-di-verosimiglianza.html#fig:rethinkingmodlearn">21.1</a>.</p>
+<p>Prima di lanciare in aria il mappamondo e di ottenere il primo dato, non sappiamo nulla del parametro <span class="math inline">\(p\)</span>. Dato che <span class="math inline">\(p\)</span> è una proporzione, i suoi valori possibili vanno da 0 a 1. Se non possediamo alcuna informazione su <span class="math inline">\(p\)</span>, allora riteniamo che tutti i valori <span class="math inline">\(p\)</span> siano egualmente plausibili. Rappresentiamo dunque la nostra incertezza a proposito del parametro <span class="math inline">\(p\)</span> mediante una distribuzione uniforme su tutti i valori <span class="math inline">\(p\)</span>, come indicato dalla linea tratteggiata nel pannello <span class="math inline">\(n = 1\)</span> della figura <a href="la-funzione-di-verosimiglianza.html#fig:rethinkingmodlearn">17.1</a>.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:rethinkingmodlearn"></span>
 <img src="images/rethinking_fig_2_5.pdf" alt="Come apprende un modello statistico. Ciascun lancio del mappamondo produce un'osservazione: acqua (A) o terra (T). La stima del modello statistico della proporzione di acqua sulla superficie terreste è espressa nei termini del grado di plausibilità di ciascun possibile valore $p$ (proporzione di acqua). Le linee e le curve in questa figura rappresentano il grado di plausibilità fornito dal modello. In ogni diagramma, le plausibilità calcolate in base alle informazioni precedenti (curva tratteggiata) vengono aggiornate alla luce dell'ultima osservazione che è stata ottenuta per produrre un nuovo insieme di valori di plausibilità (curva solida)." width="100%"><p class="caption">
-Figura 21.1: Come apprende un modello statistico. Ciascun lancio del mappamondo produce un’osservazione: acqua (A) o terra (T). La stima del modello statistico della proporzione di acqua sulla superficie terreste è espressa nei termini del grado di plausibilità di ciascun possibile valore <span class="math inline">\(p\)</span> (proporzione di acqua). Le linee e le curve in questa figura rappresentano il grado di plausibilità fornito dal modello. In ogni diagramma, le plausibilità calcolate in base alle informazioni precedenti (curva tratteggiata) vengono aggiornate alla luce dell’ultima osservazione che è stata ottenuta per produrre un nuovo insieme di valori di plausibilità (curva solida).
+Figura 17.1: Come apprende un modello statistico. Ciascun lancio del mappamondo produce un’osservazione: acqua (A) o terra (T). La stima del modello statistico della proporzione di acqua sulla superficie terreste è espressa nei termini del grado di plausibilità di ciascun possibile valore <span class="math inline">\(p\)</span> (proporzione di acqua). Le linee e le curve in questa figura rappresentano il grado di plausibilità fornito dal modello. In ogni diagramma, le plausibilità calcolate in base alle informazioni precedenti (curva tratteggiata) vengono aggiornate alla luce dell’ultima osservazione che è stata ottenuta per produrre un nuovo insieme di valori di plausibilità (curva solida).
 </p>
 </div>
-<p>Lanciamo in aria il mappamondo una prima volta e, quando lo riprendiamo, notiamo che sotto il nostro indice destro c’è “acqua.” Dopo avere osservato il risultato del primo lancio, ovvero “A,” il modello aggiorna le plausibilità dei valori del parametro <span class="math inline">\(p\)</span> che ora sono rappresentate dalla linea continua nel pannello <span class="math inline">\(n = 1\)</span> della figura <a href="la-funzione-di-verosimiglianza.html#fig:rethinkingmodlearn">21.1</a>. La plausibilità associata all’evento <span class="math inline">\(p = 0\)</span> è scesa esattamente a zero, l’equivalente di “impossibile.” Infatti, avendo osservato almeno un luogo sul mappamondo in cui c’è dell’acqua, possiamo dire che l’evento “non c’è acqua” (ovvero <span class="math inline">\(p = 0\)</span>) è impossibile. Allo stesso modo, la plausibilità di <span class="math inline">\(p &gt; 0.5\)</span> è aumentata.
+<p>Lanciamo in aria il mappamondo una prima volta e, quando lo riprendiamo, notiamo che sotto il nostro indice destro c’è “acqua.” Dopo avere osservato il risultato del primo lancio, ovvero “A,” il modello aggiorna le plausibilità dei valori del parametro <span class="math inline">\(p\)</span> che ora sono rappresentate dalla linea continua nel pannello <span class="math inline">\(n = 1\)</span> della figura <a href="la-funzione-di-verosimiglianza.html#fig:rethinkingmodlearn">17.1</a>. La plausibilità associata all’evento <span class="math inline">\(p = 0\)</span> è scesa esattamente a zero, l’equivalente di “impossibile.” Infatti, avendo osservato almeno un luogo sul mappamondo in cui c’è dell’acqua, possiamo dire che l’evento “non c’è acqua” (ovvero <span class="math inline">\(p = 0\)</span>) è impossibile. Allo stesso modo, la plausibilità di <span class="math inline">\(p &gt; 0.5\)</span> è aumentata.
 Non abbiamo ancora evidenze che ci sia terra sul mappamondo, quindi le plausibilità iniziali sono state modificate per essere coerenti con questa informazione: le plausibilità associate a <span class="math inline">\(p\)</span> aumentano passando dal valore <span class="math inline">\(p = 0\)</span> a valore <span class="math inline">\(p = 1\)</span>, in maniera coerente con i dati che abbiamo. Il punto importante è che le evidenze disponibili fino a questo momento vengono incorporata nelle plausibilità attribuite a ciascun possibile valore <span class="math inline">\(p\)</span>. Il modello implementa questa logica in maniera <strong>automatica</strong>. Non è necessario fornire al modello alcuna istruzione per ottenere questo risultato. La teoria della probabilità svolge tutti i
 calcoli necessari per noi.</p>
-<p>Lanciamo in aria il mappamondo una seconda volta e osserviamo “T.” Consideriamo dunque il pannello <em>n = 2</em> della figura <a href="la-funzione-di-verosimiglianza.html#fig:rethinkingmodlearn">21.1</a>. La linea tratteggiata in questo
+<p>Lanciamo in aria il mappamondo una seconda volta e osserviamo “T.” Consideriamo dunque il pannello <em>n = 2</em> della figura <a href="la-funzione-di-verosimiglianza.html#fig:rethinkingmodlearn">17.1</a>. La linea tratteggiata in questo
 pannello ricopia semplicemente la descrizione del livello di plausibilità di ciascun valore <span class="math inline">\(p\)</span> che era disponibile nel caso di un solo lancio del mappamondo. La linea continua, invece, aggiorna tali valori di plausibilità incorporando l’informazione secondo la quale in
 due lanci abbiamo ottenuto “acqua” una volta e “terra” una volta. Vediamo che ora il valore di plausibilità di <span class="math inline">\(p\)</span> è uguale a zero per l’evento <span class="math inline">\(p = 0\)</span>; infatti, abbiamo osservato “acqua” nel primo lancio. In maniera corrispondente, il valore di plausibilità di <span class="math inline">\(p\)</span> è uguale a zero per l’evento <span class="math inline">\(p = 1\)</span> (c’è solo acqua); infatti, abbiamo osservato
 “terra” nel secondo lancio. Avendo osservato “acqua” nel 50% dei casi, il valore più verosimile per <span class="math inline">\(p\)</span> sarà 0.5, come indicato dalla linea continua in questo pannello.</p>
-<p>Nei pannelli rimanenti della figura <a href="la-funzione-di-verosimiglianza.html#fig:rethinkingmodlearn">21.1</a> i nuovi dati prodotti dai successivi lanci del mappamondo vengono analizzati dal modello, uno alla volta. La curva tratteggiata in ciascun pannello corrisponde alla curva solida del pannello precedente, spostandosi da sinistra a destra e dall’alto verso il basso. Ogni volta che si ottiene un dato <em>A</em> il picco della curva di plausibilità si sposta a destra, verso valori più grandi di <span class="math inline">\(p\)</span>. Ogni volta si ottiene <em>T</em> ci si sposta nella direzione opposta. L’altezza massima della curva aumenta con ogni campione, il che significa che, all’aumentare della quantità di prove, viene associato un livello di plausibilità maggiore ad un minor numero di valori di <span class="math inline">\(p\)</span>. Man mano che viene aggiunta una nuova osservazione, la curva che rappresenta la
+<p>Nei pannelli rimanenti della figura <a href="la-funzione-di-verosimiglianza.html#fig:rethinkingmodlearn">17.1</a> i nuovi dati prodotti dai successivi lanci del mappamondo vengono analizzati dal modello, uno alla volta. La curva tratteggiata in ciascun pannello corrisponde alla curva solida del pannello precedente, spostandosi da sinistra a destra e dall’alto verso il basso. Ogni volta che si ottiene un dato <em>A</em> il picco della curva di plausibilità si sposta a destra, verso valori più grandi di <span class="math inline">\(p\)</span>. Ogni volta si ottiene <em>T</em> ci si sposta nella direzione opposta. L’altezza massima della curva aumenta con ogni campione, il che significa che, all’aumentare della quantità di prove, viene associato un livello di plausibilità maggiore ad un minor numero di valori di <span class="math inline">\(p\)</span>. Man mano che viene aggiunta una nuova osservazione, la curva che rappresenta la
 plausibilità dei valori <span class="math inline">\(p\)</span> viene aggiornata in maniera coerente con tutte le osservazioni precedenti.</p>
 </div>
 </div>
-<div id="la-funzione-di-verosimiglianza-1" class="section level2" number="21.2">
+<div id="la-funzione-di-verosimiglianza-1" class="section level2" number="17.2">
 <h2>
-<span class="header-section-number">21.2</span> La funzione di verosimiglianza<a class="anchor" aria-label="anchor" href="#la-funzione-di-verosimiglianza-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2</span> La funzione di verosimiglianza<a class="anchor" aria-label="anchor" href="#la-funzione-di-verosimiglianza-1"><i class="fas fa-link"></i></a>
 </h2>
-<p>Nel caso dell’esempio della figura <a href="la-funzione-di-verosimiglianza.html#fig:rethinkingmodlearn">21.1</a>, abbiamo visto come il grado di plausibilità che può essere associato a ciascun valore di un parametro (nel caso presente, <span class="math inline">\(p\)</span>, ovvero la proporzione di acqua sulla superficie terreste) può essere descritto mediante una curva. Una curva è il grafico di una funzione matematica. In statistica, tale funzione si chiama <em>verosimiglianza</em>.</p>
-<div id="la-verosimiglianza-del-modello-binomiale" class="section level3" number="21.2.1">
+<p>Nel caso dell’esempio della figura <a href="la-funzione-di-verosimiglianza.html#fig:rethinkingmodlearn">17.1</a>, abbiamo visto come il grado di plausibilità che può essere associato a ciascun valore di un parametro (nel caso presente, <span class="math inline">\(p\)</span>, ovvero la proporzione di acqua sulla superficie terreste) può essere descritto mediante una curva. Una curva è il grafico di una funzione matematica. In statistica, tale funzione si chiama <em>verosimiglianza</em>.</p>
+<div id="la-verosimiglianza-del-modello-binomiale" class="section level3" number="17.2.1">
 <h3>
-<span class="header-section-number">21.2.1</span> La verosimiglianza del modello Binomiale<a class="anchor" aria-label="anchor" href="#la-verosimiglianza-del-modello-binomiale"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2.1</span> La verosimiglianza del modello Binomiale<a class="anchor" aria-label="anchor" href="#la-verosimiglianza-del-modello-binomiale"><i class="fas fa-link"></i></a>
 </h3>
 <p>Nel caso dell’esperimento casuale costituito dal lancio del mappamondo, è possibile individuare la funzione di verosimiglianza utilizzando le informazioni fornite dalla narrazione dei dati. Iniziamo elencando tutti i possibili eventi che possono essere osservati nel nostro esperimento casuale. Ce ne sono due: acqua (<span class="math inline">\(A\)</span>) e terra (<span class="math inline">\(T\)</span>). Non ci sono altri eventi. Il mappamondo non può mai rimanere bloccato sul soffitto, per esempio. Quando osserviamo un campione di eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(T\)</span> di lunghezza <span class="math inline">\(N\)</span> (9 nel campione in esame qui), la domanda che ci poniamo è: quanto è probabile osservare questo preciso campione (6 volte “acqua” in 9 lanci del mappamondo) nell’universo di tutti i possibili campioni costituiti da 9 lanci del mappamondo? Potremmo pensare che questa è una domanda a
 cui è molto difficile rispondere, ma in realtà ciò non è vero. Se
@@ -151,24 +156,24 @@ stato lanciato in aria per <em>N = A + T</em> volte. Tale probabilità è data
 dalla distribuzione binomiale di parametro <span class="math inline">\(p\)</span>:</p>
 <p><span class="math display" id="eq:binomwater">\[\begin{equation}
 P(A, T \mid p) = \frac{(A + T)!}{A!T!} p^A + (1-p)^T.
-\tag{21.1}
+\tag{17.1}
 \end{equation}\]</span></p>
 <p>In altre parole, la frequenza degli eventi “numero di volte in cui abbiamo osservato acqua” e “numero di volte in cui abbiamo osservato terra” segue la distribuzione binomiale nella quale la probabilità di osservare “acqua” in ciascun lancio è uguale a <span class="math inline">\(p\)</span>.</p>
 </div>
-<div id="la-verosimiglianza-vista-da-vicino" class="section level3" number="21.2.2">
+<div id="la-verosimiglianza-vista-da-vicino" class="section level3" number="17.2.2">
 <h3>
-<span class="header-section-number">21.2.2</span> La verosimiglianza vista da vicino<a class="anchor" aria-label="anchor" href="#la-verosimiglianza-vista-da-vicino"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2.2</span> La verosimiglianza vista da vicino<a class="anchor" aria-label="anchor" href="#la-verosimiglianza-vista-da-vicino"><i class="fas fa-link"></i></a>
 </h3>
-<p>Ma cosa dobbiamo fare, in pratica, per generare le funzioni di verosimiglianza che sono rappresentate nei diversi pannelli della figura <a href="la-funzione-di-verosimiglianza.html#fig:rethinkingmodlearn">21.1</a>? Iniziamo con una definizione formale.</p>
+<p>Ma cosa dobbiamo fare, in pratica, per generare le funzioni di verosimiglianza che sono rappresentate nei diversi pannelli della figura <a href="la-funzione-di-verosimiglianza.html#fig:rethinkingmodlearn">17.1</a>? Iniziamo con una definizione formale.</p>
 <p>La <em>funzione di verosimiglianza</em> <span class="math inline">\(\mathcal{L}(\theta \mid x) = f(x \mid \theta), \theta \in \Theta,\)</span> è la funzione di massa o di densità di probabilità dei dati <span class="math inline">\(x\)</span> vista come una funzione del parametro sconosciuto <span class="math inline">\(\theta\)</span>.</p>
 <p>Spesso per indicare la verosimiglianza si scrive <span class="math inline">\(\mathcal{L}(\theta)\)</span> se è chiaro a quali valori <span class="math inline">\(x\)</span> ci si riferisce. La verosimiglianza <span class="math inline">\(\mathcal{L}\)</span> è una curva (in generale, una superficie) nello spazio del parametro <span class="math inline">\(\theta\)</span> (in generale, dei parametri <span class="math inline">\(\boldsymbol\theta\)</span>) che riflette la plausibilità relativa dei valori <span class="math inline">\(\theta\)</span> alla luce dei dati osservati. Notiamo un punto importante. La funzione <span class="math inline">\(\mathcal{L}(\theta \mid x)\)</span> non è una funzione di densità. Infatti, essa non racchiude un’area unitaria.</p>
-<p>Nel caso presente, la funzione di verosimiglianza è descritta dall’eq. <a href="la-funzione-di-verosimiglianza.html#eq:binomwater">(21.1)</a>, ovvero, corrisponde alla funzione binomiale con parametro <span class="math inline">\(p \in (0, 1)\)</span> sconosciuto. Nell’esempio che stiamo discutendo, abbiamo osservato “acqua” sei volte in nove lanci del mappamondo. Dunque, abbiamo <span class="math inline">\(x = 6\)</span> successi in <span class="math inline">\(N = 9\)</span> prove. Per i dati del campione considerato, la funzione di verosimiglianza è</p>
+<p>Nel caso presente, la funzione di verosimiglianza è descritta dall’eq. <a href="la-funzione-di-verosimiglianza.html#eq:binomwater">(17.1)</a>, ovvero, corrisponde alla funzione binomiale con parametro <span class="math inline">\(p \in (0, 1)\)</span> sconosciuto. Nell’esempio che stiamo discutendo, abbiamo osservato “acqua” sei volte in nove lanci del mappamondo. Dunque, abbiamo <span class="math inline">\(x = 6\)</span> successi in <span class="math inline">\(N = 9\)</span> prove. Per i dati del campione considerato, la funzione di verosimiglianza è</p>
 <p><span class="math display" id="eq:likebino69">\[\begin{equation}
 \mathcal{L}(p \mid x) = \frac{(6 + 3)!}{6!3!} p^6 + (1-p)^3.
-\tag{21.2}
+\tag{17.2}
 \end{equation}\]</span></p>
 <p>La definizione precedente ci dice che, <em>tenendo costanti i dati</em>, dobbiamo applicare
-l’eq. <a href="la-funzione-di-verosimiglianza.html#eq:likebino69">(21.2)</a> a tutti i possibili valori <span class="math inline">\(p\)</span>.</p>
+l’eq. <a href="la-funzione-di-verosimiglianza.html#eq:likebino69">(17.2)</a> a tutti i possibili valori <span class="math inline">\(p\)</span>.</p>
 <p>Per esempio, se <span class="math inline">\(p = 0.1\)</span></p>
 <p><span class="math display">\[
 \mathcal{L}(p \mid x) = \frac{(6 + 3)!}{6!3!} 0.1^6 + (1-0.1)^3
@@ -176,7 +181,7 @@ l’eq. <a href="la-funzione-di-verosimiglianza.html#eq:likebino69">(21.2)</a> a
 otteniamo il valore 0.0446. Se <span class="math inline">\(p = 0.2\)</span></p>
 <p><span class="math display" id="eq:like69">\[
 \mathcal{L}(p \mid x) = \frac{(6 + 3)!}{6!3!} 0.2^6 + (1-0.2)^3
-\tag{21.3}
+\tag{17.3}
 \]</span></p>
 <p>otteniamo 0.1762; e così via.</p>
 <p>La tabella seguente riportata alcuni valori rappresentativi della funzione di verosimiglianza definita da 6 successi in 9 prove Bernoulliane.</p>
@@ -236,9 +241,9 @@ otteniamo il valore 0.0446. Se <span class="math inline">\(p = 0.2\)</span></p>
 </tbody>
 </table></div>
 </div>
-<p>La figura <a href="la-funzione-di-verosimiglianza.html#fig:likelihoodwater">21.2</a> ci fornisce una rappresentazione grafica
+<p>La figura <a href="la-funzione-di-verosimiglianza.html#fig:likelihoodwater">17.2</a> ci fornisce una rappresentazione grafica
 della funzione di verosimiglianza.</p>
-<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">9</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">6</span>
 <span class="va">theta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, length.out<span class="op">=</span><span class="fl">100</span><span class="op">)</span>
@@ -255,15 +260,15 @@ della funzione di verosimiglianza.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:likelihoodwater"></span>
 <img src="Data-Science-per-psicologi_files/figure-html/likelihoodwater-1.png" alt="Funzione di verosimiglianza nel caso in cui l'esito acqua sia stato osservato 6 volte in 9 lanci del mappamondo." width="90%"><p class="caption">
-Figura 21.2: Funzione di verosimiglianza nel caso in cui l’esito acqua sia stato osservato 6 volte in 9 lanci del mappamondo.
+Figura 17.2: Funzione di verosimiglianza nel caso in cui l’esito acqua sia stato osservato 6 volte in 9 lanci del mappamondo.
 </p>
 </div>
-<p>Che cosa significano i valori che abbiamo ottenuto? Per alcuni valori <span class="math inline">\(p\)</span> la funzione di verosimiglianza assume valori bassi; per altri valori la funzione assume valori più grandi. Questi ultimi sono dunque i valori di <span class="math inline">\(p\)</span> “più plausibili” e il valore 0.67 è il più plausibile tra tutti. In conclusione, la funzione di verosimiglianza ci dice quanto possiamo ritenere “relativamente plausibili” i diversi valori del parametro <span class="math inline">\(p\)</span> alla luce dei dati osservati. La figura <a href="la-funzione-di-verosimiglianza.html#fig:likelihoodwater">21.2</a>, infatti, mostra come la funzione di verosimiglianza assume una forma diversa in presenza di campioni diversi di dati: le curve nei diversi pannelli della figura <a href="la-funzione-di-verosimiglianza.html#fig:rethinkingmodlearn">21.1</a> sono sempre state ottenute mediante l’eq. <a href="la-funzione-di-verosimiglianza.html#eq:binomwater">(21.1)</a>, ma inserendo nella formula informazioni diverse relativamente ai dati: 1 successo in 1 prova (abbiamo lanciato il mappamondo una volta e abbiamo osservato “acqua”); 1 successo in 2 prove (abbiamo lanciato il mappamondo due volte e abbiamo osservato “acqua” e “terra”); 2 successi in 3 prove (abbiamo lanciato il
+<p>Che cosa significano i valori che abbiamo ottenuto? Per alcuni valori <span class="math inline">\(p\)</span> la funzione di verosimiglianza assume valori bassi; per altri valori la funzione assume valori più grandi. Questi ultimi sono dunque i valori di <span class="math inline">\(p\)</span> “più plausibili” e il valore 0.67 è il più plausibile tra tutti. In conclusione, la funzione di verosimiglianza ci dice quanto possiamo ritenere “relativamente plausibili” i diversi valori del parametro <span class="math inline">\(p\)</span> alla luce dei dati osservati. La figura <a href="la-funzione-di-verosimiglianza.html#fig:likelihoodwater">17.2</a>, infatti, mostra come la funzione di verosimiglianza assume una forma diversa in presenza di campioni diversi di dati: le curve nei diversi pannelli della figura <a href="la-funzione-di-verosimiglianza.html#fig:rethinkingmodlearn">17.1</a> sono sempre state ottenute mediante l’eq. <a href="la-funzione-di-verosimiglianza.html#eq:binomwater">(17.1)</a>, ma inserendo nella formula informazioni diverse relativamente ai dati: 1 successo in 1 prova (abbiamo lanciato il mappamondo una volta e abbiamo osservato “acqua”); 1 successo in 2 prove (abbiamo lanciato il mappamondo due volte e abbiamo osservato “acqua” e “terra”); 2 successi in 3 prove (abbiamo lanciato il
 mappamondo tre volte e abbiamo osservato “acqua,” “terra” e “acqua”); eccetera.</p>
 </div>
-<div id="la-stima-di-massima-verosimiglianza" class="section level3" number="21.2.3">
+<div id="la-stima-di-massima-verosimiglianza" class="section level3" number="17.2.3">
 <h3>
-<span class="header-section-number">21.2.3</span> La stima di massima verosimiglianza<a class="anchor" aria-label="anchor" href="#la-stima-di-massima-verosimiglianza"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2.3</span> La stima di massima verosimiglianza<a class="anchor" aria-label="anchor" href="#la-stima-di-massima-verosimiglianza"><i class="fas fa-link"></i></a>
 </h3>
 <p>La funzione di verosimiglianza rappresenta la “verosimiglianza relativa” dei diversi valori del parametro di interesse. Ma qual è il valore migliore di tutti?</p>
 <p>A questa domanda si può rispondere in due modi diversi.</p>
@@ -274,9 +279,9 @@ mappamondo tre volte e abbiamo osservato “acqua,” “terra” e “acqua”)
 L’approccio frequentista, diversamente da quello Bayesiano, utilizza la funzione di verosimiglianza quale unico strumento per giungere alla stima del valore più plausibile del parametro sconosciuto <span class="math inline">\(p\)</span> nel caso dell’esempio del mappamondo – in generale, possiamo chiamare <span class="math inline">\(\theta\)</span> il parametro sconosciuto. Il metodo della massima verosimiglianza consiste nel trovare il valore <span class="math inline">\(\theta\)</span> che più verosimilmente ha generato i dati. Tale stima corrisponde al punto di massimo della funzione di verosimiglianza. Nell’esempio presente,
 <span class="math inline">\(\hat{p}_{ML} = 0.6667\)</span>. Nell’esempio che abbiamo discusso, il massimo della funzione di verosimiglianza, ovvero la stima di <span class="math inline">\(p\)</span>, si può facilmente ottenere con metodi numerici o grafici.</p>
 </div>
-<div id="la-log-verosimiglianza" class="section level3" number="21.2.4">
+<div id="la-log-verosimiglianza" class="section level3" number="17.2.4">
 <h3>
-<span class="header-section-number">21.2.4</span> La log-verosimiglianza<a class="anchor" aria-label="anchor" href="#la-log-verosimiglianza"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2.4</span> La log-verosimiglianza<a class="anchor" aria-label="anchor" href="#la-log-verosimiglianza"><i class="fas fa-link"></i></a>
 </h3>
 <p>Per motivi algebrici e numerici è conveniente lavorare con il logaritmo della funzione di verosimiglianza, che viene chiamata funzione di <em>log-verosimiglianza</em>,</p>
 <p><span class="math display">\[
@@ -293,9 +298,9 @@ Per le proprietà del logaritmo, si ha</p>
 \]</span></p>
 <p>Si noti che non è necessario lavorare con i logaritmi, anche se è fortemente consigliato, e questo perché i valori della verosimiglianza, in cui si moltiplicano valori di probabilità molto piccoli, possono diventare estremamente piccoli (qualcosa come <span class="math inline">\(10^{-34}\)</span>). In tali circostanze, non è sorprendente che i programmi dei computer mostrino problemi di arrotondamento numerico. Le trasformazioni logaritmiche risolvono questo problema.</p>
 </div>
-<div id="derivazione-della-massima-verosimiglianza" class="section level3" number="21.2.5">
+<div id="derivazione-della-massima-verosimiglianza" class="section level3" number="17.2.5">
 <h3>
-<span class="header-section-number">21.2.5</span> Derivazione della massima verosimiglianza<a class="anchor" aria-label="anchor" href="#derivazione-della-massima-verosimiglianza"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2.5</span> Derivazione della massima verosimiglianza<a class="anchor" aria-label="anchor" href="#derivazione-della-massima-verosimiglianza"><i class="fas fa-link"></i></a>
 </h3>
 <p>Nell’esempio precedente abbiamo trovato che la stima di massima verosimiglianza di <span class="math inline">\(p\)</span> è uguale alla proporzione di successi campionari. Questo risultato può essere dimostrato come segue. Per <span class="math inline">\(N\)</span> prove Bernoulliane indipendenti, le quali producono <span class="math inline">\(x\)</span> successi e (<span class="math inline">\(N-x\)</span>)
 insuccessi, la funzione nucleo (ovvero, la funzione di verosimiglianza da cui sono state escluse tutte le costanti moltiplicative, dato che esse non hanno alcun effetto su <span class="math inline">\(\hat{p}_{ML}\)</span>) è</p>
@@ -317,19 +322,19 @@ insuccessi, la funzione nucleo (ovvero, la funzione di verosimiglianza da cui so
 <p>Ponendo l’equazione uguale a zero e risolvendo otteniamo la stima di massima verosimiglianza:</p>
 <p><span class="math display" id="eq:mlprop">\[\begin{equation}
   \hat{p}_{\text{ML}} = \frac{x}{N},
-  \tag{21.4}
+  \tag{17.4}
 \end{equation}\]</span></p>
 <p>ovvero la frequenza relativa dei successi nel campione.</p>
 </div>
-<div id="calcolo-numerico" class="section level3" number="21.2.6">
+<div id="calcolo-numerico" class="section level3" number="17.2.6">
 <h3>
-<span class="header-section-number">21.2.6</span> Calcolo numerico<a class="anchor" aria-label="anchor" href="#calcolo-numerico"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2.6</span> Calcolo numerico<a class="anchor" aria-label="anchor" href="#calcolo-numerico"><i class="fas fa-link"></i></a>
 </h3>
 <p>La derivazione formale del risultato secondo il quale la stima di massima verosimiglianza corrisponde alla proporzione di successi nel campione è piuttosto complessa. Lo stesso risultato può essere ottenuto in maniera molto più semplice mediante una simulazione svolta in R. A questo fine, iniziamo con il definire una serie di valori possibili per il parametro incognito <span class="math inline">\(p\)</span>:</p>
-<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, length.out<span class="op">=</span><span class="fl">1e3</span><span class="op">)</span></code></pre></div>
 <p>Sappiamo che la funzione di verosimiglianza è la funzione di massa di probabilità espressa in funzione del parametro sconosciuto <span class="math inline">\(p\)</span> e assumendo come noti i dati. Questo si può esprimere in ne modo seguente:</p>
-<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">like</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">9</span>, <span class="va">p</span><span class="op">)</span></code></pre></div>
 <p>Si noti che, nell’istruzione precedente, abbiamo passato alla funzione
 <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code> i dati, ovvero 6 successi in 9 prove. Inoltre, abbiamo
@@ -339,19 +344,19 @@ funzione <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></cod
 di verosimiglianza), tenendo costanti in tutti i casi i valori dei dati
 (ovvero, 6 successi in 9 prove). Un grafico della funzione di
 verosimiglianza è dato da:</p>
-<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">like</span>, type<span class="op">=</span><span class="st">'l'</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-204-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-170-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Nella simulazione, il valore <span class="math inline">\(p\)</span> che massimizza la funzione di verosimiglianza può essere trovato nel modo seguente:</p>
-<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="va">like</span><span class="op">)</span><span class="op">]</span>
 <span class="co">#&gt; [1] 0.6666667</span></code></pre></div>
-<p>Si noti come il valore trovato sia uguale al valore definito dall’eq. <a href="la-funzione-di-verosimiglianza.html#eq:mlprop">(21.4)</a>.</p>
+<p>Si noti come il valore trovato sia uguale al valore definito dall’eq. <a href="la-funzione-di-verosimiglianza.html#eq:mlprop">(17.4)</a>.</p>
 </div>
 </div>
-<div id="la-verosimiglianza-del-modello-normale" class="section level2" number="21.3">
+<div id="la-verosimiglianza-del-modello-normale" class="section level2" number="17.3">
 <h2>
-<span class="header-section-number">21.3</span> La verosimiglianza del modello Normale<a class="anchor" aria-label="anchor" href="#la-verosimiglianza-del-modello-normale"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.3</span> La verosimiglianza del modello Normale<a class="anchor" aria-label="anchor" href="#la-verosimiglianza-del-modello-normale"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ora che abbiamo capito come si definisce la funzione verosimiglianza di
 una Binomiale è relativamente semplice fare un passo ulteriore e
@@ -361,7 +366,7 @@ caso della Normale. La densità di una distribuzione Normale di parametri
 <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span> è</p>
 <p><span class="math display" id="eq:gausslike">\[
 f(x \mid \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left\{-\frac{1}{2\sigma^2}(x-\mu)^2\right\}.
-\tag{21.5}
+\tag{17.5}
 \]</span></p>
 <p>Per un campione i.i.d. <span class="math inline">\(\mathscr{D}_n = x_1, x_2, \dots, x_n\)</span> con
 densità Normale di parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span>, poniamoci il problema di
@@ -377,32 +382,32 @@ f(\mathscr{D}_n \mid \theta) &amp;= f(x_1 \mid \theta) \cdot f(x_2 \mid \theta) 
 &amp;= \prod_{i=1}^n f(x_i \mid \theta),
 \end{aligned}
 \]</span></p>
-<p>laddove la funzione <span class="math inline">\(f(\cdot)\)</span> è data dall’eq. <a href="la-funzione-di-verosimiglianza.html#eq:gausslike">(21.5)</a>. L’associata funzione di verosimiglianza è dunque:</p>
+<p>laddove la funzione <span class="math inline">\(f(\cdot)\)</span> è data dall’eq. <a href="la-funzione-di-verosimiglianza.html#eq:gausslike">(17.5)</a>. L’associata funzione di verosimiglianza è dunque:</p>
 <p><span class="math display" id="eq:gausslike2">\[\begin{equation}
 \mathcal{L}(\theta \mid \mathscr{D}_n) = \prod_{i=1}^n f(x_i \mid \theta).
-\tag{21.6}
+\tag{17.6}
 \end{equation}\]</span></p>
-<p>L’obiettivo è massimizzare la funzione di verosimiglianza per trovare i valori <span class="math inline">\(\theta\)</span> ottimali. Usando la notazione matematica questo si esprime dicendo che cerchiamo l’argmax dell’eq. <a href="la-funzione-di-verosimiglianza.html#eq:gausslike2">(21.6)</a> rispetto a <span class="math inline">\(\theta\)</span>, ovvero</p>
+<p>L’obiettivo è massimizzare la funzione di verosimiglianza per trovare i valori <span class="math inline">\(\theta\)</span> ottimali. Usando la notazione matematica questo si esprime dicendo che cerchiamo l’argmax dell’eq. <a href="la-funzione-di-verosimiglianza.html#eq:gausslike2">(17.6)</a> rispetto a <span class="math inline">\(\theta\)</span>, ovvero</p>
 <p><span class="math display">\[
 \hat{\theta}_{\text{MLE}} = \text{argmax}_{\theta} \prod_{i=1}^n f(x_i \mid \theta).
 \]</span></p>
 <p>In termini formali, questo problema si risolve calcolando le derivate della funzione rispetto a <span class="math inline">\(\theta\)</span>, ponendo le derivate uguali a zero e risolvendo. Saltando tutti i passaggi algebrici di questo procedimento, per <span class="math inline">\(\mu\)</span> troviamo che</p>
 <p><span class="math display" id="eq:maxlikemu">\[\begin{equation}
 \hat{\mu}_{\text{MLE}} = \frac{1}{n} \sum_{i=1}^n x_i
-\tag{21.7}
+\tag{17.7}
 \end{equation}\]</span></p>
 <p>e per <span class="math inline">\(\sigma\)</span> abbiamo</p>
 <p><span class="math display" id="eq:maxlikesigma">\[\begin{equation}
 \hat{\sigma}_{\text{MLE}} = \sqrt{\sum_{i=1}^n\frac{1}{n}(x_i- \mu)^2}.
-\tag{21.8}
+\tag{17.8}
 \end{equation}\]</span></p>
 <p>In altri termini, la stima di massima verosimiglianza per il parametro <span class="math inline">\(\mu\)</span> è la media del campione e la stima di massima verosimiglianza per il parametro <span class="math inline">\(\sigma\)</span> è la deviazione standard del campione.</p>
-<div id="simulazione-2" class="section level3" number="21.3.1">
+<div id="simulazione" class="section level3" number="17.3.1">
 <h3>
-<span class="header-section-number">21.3.1</span> Simulazione<a class="anchor" aria-label="anchor" href="#simulazione-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.3.1</span> Simulazione<a class="anchor" aria-label="anchor" href="#simulazione"><i class="fas fa-link"></i></a>
 </h3>
 <p>Consideriamo ora un esempio relativo al campione di valori BDI-II dei trenta soggetti del campione clinico descritto da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>, ovvero</p>
-<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">26</span>, <span class="fl">35</span>, <span class="fl">30</span>, <span class="fl">25</span>, <span class="fl">44</span>, <span class="fl">30</span>, <span class="fl">33</span>, <span class="fl">43</span>, <span class="fl">22</span>, <span class="fl">43</span>, <span class="fl">24</span>, <span class="fl">19</span>, <span class="fl">39</span>, <span class="fl">31</span>, <span class="fl">25</span>, <span class="fl">28</span>, <span class="fl">35</span>, <span class="fl">30</span>, <span class="fl">26</span>, <span class="fl">31</span>, <span class="fl">41</span>, <span class="fl">36</span>, <span class="fl">26</span>, <span class="fl">35</span>, <span class="fl">33</span>, <span class="fl">28</span>, <span class="fl">27</span>, <span class="fl">34</span>, <span class="fl">27</span>, <span class="fl">22</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Ci poniamo lo scopo di generare la funzione di verosimiglianza per questi dati. Supponiamo che ricerche precedenti ci dicano che il BDI-II si distribuisce secondo una legge Normale.</p>
 <p>Ci concentriamo qui sul parametro <span class="math inline">\(\mu\)</span> della distribuzione Normale. Per semplificare il problema, assumiamo di conoscere <span class="math inline">\(\sigma\)</span> (lo porremo uguale alla deviazione standard del campione), in modo da avere un solo parametro sconosciuto. Il nostro problema è dunque quello di trovare la funzione di verosimiglianza per il parametro <span class="math inline">\(\mu\)</span>, date le 30 osservazioni che abbiamo a disposizione.</p>
@@ -424,22 +429,22 @@ f(\mathscr{D}_n \mid \mu, \sigma) = \, \prod_{i=1}^n f(x_i \mid \mu, \sigma)\not
 &amp; \vdots \notag\\
  &amp; \frac{1}{{\sigma \sqrt {2\pi}}}\exp\left\{{-\frac{(22 - \mu)^2}{2\sigma^2}}\right\}.
 \end{aligned}
-\tag{21.9}
+\tag{17.9}
 \]</span></p>
 <p>Poniamoci il problema di rappresentare graficamente tale funzione di verosimiglianza per il parametro <span class="math inline">\(\mu\)</span>. Per semplicità, supponiamo che <span class="math inline">\(\sigma\)</span> sia noto e uguale alla deviazione standard del campione.</p>
-<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">true_sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">x</span><span class="op">)</span></code></pre></div>
 <p>Avendo un solo parametro sconosciuto da stimare possiamo rappresentare la verosimiglianza con una curva, anziché con una superficie. In R, possiamo definire la funzione di log-verosimiglianza nel modo seguente:</p>
-<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">log_likelihood</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, <span class="va">sigma</span><span class="op">=</span><span class="va">true_sigma</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, <span class="va">sigma</span>, log<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>Si noti che, nella funzione <code>log_likelihood</code>, <code>x</code> è un vettore che, nel caso presente conterrà <span class="math inline">\(n = 30\)</span> valori. Per ciascuno di questi valori, la funzione <code><a href="https://rdrr.io/r/stats/Normal.html">dnorm()</a></code> troverà la densità Normale (l’ordinata della funzione) utilizzando il valore <span class="math inline">\(\mu\)</span> che viene passato a <code>log_likelihood</code> e un valore <span class="math inline">\(\sigma\)</span> sempre uguale, dato che, nell’esempio, questo parametro verrà mantenuto costante. L’argomento <code>log = TRUE</code> specifica che deve essere preso il logaritmo. La funzione <code><a href="https://rdrr.io/r/stats/Normal.html">dnorm()</a></code> è un argomento della funzione <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>. Ciò significa che i 30 valori così trovati, espressi su scala logaritmica, verranno sommati. Sommare logaritmi è equivalente a fare il prodotto dei valori sulla scala originaria.</p>
 <p>Se applichiamo questa funzione ad un solo valore <span class="math inline">\(\mu\)</span> otteniamo un singolo valore della
-funzione di log-verosimiglianza (ovvero, l’ordinata di un singolo punto della funzione rappresentata nella figura <a href="la-funzione-di-verosimiglianza.html#eq:lldepression">(21.9)</a>). Ripeto, tale singolo valore viene trovato utilizzando tutti i 30 dati del campione, il valore <span class="math inline">\(\sigma = s\)</span> che viene tenuto fisso e il singolo valore <span class="math inline">\(\mu\)</span> che abbiamo passato alla funzione
+funzione di log-verosimiglianza (ovvero, l’ordinata di un singolo punto della funzione rappresentata nella figura <a href="la-funzione-di-verosimiglianza.html#eq:lldepression">(17.9)</a>). Ripeto, tale singolo valore viene trovato utilizzando tutti i 30 dati del campione, il valore <span class="math inline">\(\sigma = s\)</span> che viene tenuto fisso e il singolo valore <span class="math inline">\(\mu\)</span> che abbiamo passato alla funzione
 <code>log_likelihood()</code>. Dobbiamo, tuttavia, applicare la funzione a tutti i possibili valori che <span class="math inline">\(\mu\)</span> può assumere. Per cui il procedimento che abbiamo descritto per un singolo valore <span class="math inline">\(\mu\)</span> viene ripetuto tante volte.</p>
 <p>Nel seguente ciclo <code>for()</code> usato nelle istruzioni seguenti viene calcolata la log-verosimiglianza di 100000 possibili valori per il parametro <span class="math inline">\(\mu\)</span>:</p>
-<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">nrep</span> <span class="op">&lt;-</span> <span class="fl">1e5</span>
 <span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>
   <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">x</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">x</span><span class="op">)</span>, 
@@ -454,7 +459,7 @@ funzione di log-verosimiglianza (ovvero, l’ordinata di un singolo punto della 
 <p>Il vettore <code>mu</code> contiene 100000 possibili valori del parametro <span class="math inline">\(\mu\)</span>. Tali valori sono stati scelti in modo tale da essere compresi nell’intervallo <span class="math inline">\(\bar{x} \pm s\)</span>.</p>
 <p>Per ciascuno dei possibili valori del parametro <span class="math inline">\(\mu\)</span> la funzione <code>log_likelihood()</code> calcola la log-verosimiglianza seguendo la procedura descritta sopra. All’interno del ciclo <code>for()</code> i 100000 risultati così ottenuti vengono salvati nel vettore <code>ll</code>.</p>
 <p>Possiamo ora utilizzare i valori contenuti nei vettori <code>mu</code> e <code>ll</code> per disegnare il grafico della funzione di log-verosimiglianza del parametro <span class="math inline">\(\mu\)</span>:</p>
-<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">mu</span>, <span class="va">ll</span><span class="op">)</span> <span class="op">%&gt;%</span> 
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">mu</span>, y<span class="op">=</span><span class="va">ll</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -463,12 +468,12 @@ funzione di log-verosimiglianza (ovvero, l’ordinata di un singolo punto della 
     y<span class="op">=</span><span class="st">"Log-verosimiglianza"</span>,
     x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Parametro \u03BC"</span><span class="op">)</span>
   <span class="op">)</span> </code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-210-1.png" width="90%" style="display: block; margin: auto;"></div>
-<p>Dalla figura notiamo che, per questi dati, il massimo della funzione di log-verosimiglianza calcolata per via numerica è pari a 30.93. Tale valore è identico alla media dei dati campionari e corrisponde al risultato teorico dell’eq. <a href="la-funzione-di-verosimiglianza.html#eq:lldepression">(21.9)</a>.</p>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-176-1.png" width="90%" style="display: block; margin: auto;"></div>
+<p>Dalla figura notiamo che, per questi dati, il massimo della funzione di log-verosimiglianza calcolata per via numerica è pari a 30.93. Tale valore è identico alla media dei dati campionari e corrisponde al risultato teorico dell’eq. <a href="la-funzione-di-verosimiglianza.html#eq:lldepression">(17.9)</a>.</p>
 </div>
 </div>
-<div id="conclusioni-8" class="section level2 unnumbered">
-<h2>Conclusioni<a class="anchor" aria-label="anchor" href="#conclusioni-8"><i class="fas fa-link"></i></a>
+<div id="conclusioni-6" class="section level2 unnumbered">
+<h2>Conclusioni<a class="anchor" aria-label="anchor" href="#conclusioni-6"><i class="fas fa-link"></i></a>
 </h2>
 <p>La verosimiglianza viene utilizzata sia nell’inferenza bayesiana che in quella frequentista. In entrambi i paradigmi di inferenza, il suo ruolo è quantificare la forza con la quale i dati osservati supportano i possibili valori dei parametri sconosciuti.</p>
 <p>Nella funzione di verosimiglianza i dati (osservati) vengono trattati come fissi, mentre i valori del parametro (o dei parametri) <span class="math inline">\(\theta\)</span> vengono variati: la verosimiglianza è una funzione di <span class="math inline">\(\theta\)</span> per il dato fisso <span class="math inline">\(x\)</span>. Pertanto, la funzione di verosimiglianza riassume i seguenti elementi: un modello statistico che genera stocasticamente i dati (in questo capitolo abbiamo esaminato due modelli statistici: quello Binomiale e quello Normale), un intervallo di valori possibili per <span class="math inline">\(\theta\)</span> e i dati osservati <span class="math inline">\(x\)</span>.</p>
@@ -482,29 +487,29 @@ funzione di (log) verosimiglianza, condizionatamente ai valori assunti dalle var
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="critiche-e-difese.html"><span class="header-section-number">20</span> Critiche e difese</a></div>
-<div class="next"><a href="modellistica-bayesiana.html"><span class="header-section-number">22</span> Modellistica bayesiana</a></div>
+<div class="prev"><a href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></div>
+<div class="next"><a href="introduzione-3.html">Introduzione</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#la-funzione-di-verosimiglianza"><span class="header-section-number">21</span> La funzione di verosimiglianza</a></li>
+<li><a class="nav-link" href="#la-funzione-di-verosimiglianza"><span class="header-section-number">17</span> La funzione di verosimiglianza</a></li>
 <li>
-<a class="nav-link" href="#la-narrazione-dei-dati"><span class="header-section-number">21.1</span> La narrazione dei dati</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#come-impara-un-modello-statistico"><span class="header-section-number">21.1.1</span> Come impara un modello statistico?</a></li></ul>
+<a class="nav-link" href="#la-narrazione-dei-dati"><span class="header-section-number">17.1</span> La narrazione dei dati</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#come-impara-un-modello-statistico"><span class="header-section-number">17.1.1</span> Come impara un modello statistico?</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#la-funzione-di-verosimiglianza-1"><span class="header-section-number">21.2</span> La funzione di verosimiglianza</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#la-verosimiglianza-del-modello-binomiale"><span class="header-section-number">21.2.1</span> La verosimiglianza del modello Binomiale</a></li>
-<li><a class="nav-link" href="#la-verosimiglianza-vista-da-vicino"><span class="header-section-number">21.2.2</span> La verosimiglianza vista da vicino</a></li>
-<li><a class="nav-link" href="#la-stima-di-massima-verosimiglianza"><span class="header-section-number">21.2.3</span> La stima di massima verosimiglianza</a></li>
-<li><a class="nav-link" href="#la-log-verosimiglianza"><span class="header-section-number">21.2.4</span> La log-verosimiglianza</a></li>
-<li><a class="nav-link" href="#derivazione-della-massima-verosimiglianza"><span class="header-section-number">21.2.5</span> Derivazione della massima verosimiglianza</a></li>
-<li><a class="nav-link" href="#calcolo-numerico"><span class="header-section-number">21.2.6</span> Calcolo numerico</a></li>
+<a class="nav-link" href="#la-funzione-di-verosimiglianza-1"><span class="header-section-number">17.2</span> La funzione di verosimiglianza</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#la-verosimiglianza-del-modello-binomiale"><span class="header-section-number">17.2.1</span> La verosimiglianza del modello Binomiale</a></li>
+<li><a class="nav-link" href="#la-verosimiglianza-vista-da-vicino"><span class="header-section-number">17.2.2</span> La verosimiglianza vista da vicino</a></li>
+<li><a class="nav-link" href="#la-stima-di-massima-verosimiglianza"><span class="header-section-number">17.2.3</span> La stima di massima verosimiglianza</a></li>
+<li><a class="nav-link" href="#la-log-verosimiglianza"><span class="header-section-number">17.2.4</span> La log-verosimiglianza</a></li>
+<li><a class="nav-link" href="#derivazione-della-massima-verosimiglianza"><span class="header-section-number">17.2.5</span> Derivazione della massima verosimiglianza</a></li>
+<li><a class="nav-link" href="#calcolo-numerico"><span class="header-section-number">17.2.6</span> Calcolo numerico</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#la-verosimiglianza-del-modello-normale"><span class="header-section-number">21.3</span> La verosimiglianza del modello Normale</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#simulazione-2"><span class="header-section-number">21.3.1</span> Simulazione</a></li></ul>
+<a class="nav-link" href="#la-verosimiglianza-del-modello-normale"><span class="header-section-number">17.3</span> La verosimiglianza del modello Normale</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#simulazione"><span class="header-section-number">17.3.1</span> Simulazione</a></li></ul>
 </li>
-<li><a class="nav-link" href="#conclusioni-8">Conclusioni</a></li>
+<li><a class="nav-link" href="#conclusioni-6">Conclusioni</a></li>
 </ul>
 
       <div class="book-extra">

@@ -1,5 +1,3 @@
-# (PART\*) Statistica Bayesiana {.unnumbered}
-
 # Modellistica bayesiana 
 
 La statistica bayesiana è un approccio all'analisi dei dati e alla stima

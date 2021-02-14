@@ -1,0 +1,115 @@
+# (PART\*) Obiettivi formativi {-}
+
+
+
+L'insegnamento di Psicometria si propone di fornire agli studenti un'introduzione all'analisi dei dati in psicologia. Voglio subito chiarire che questo insegnamento non sarà basato sull'abilità di ricordare le cose, ma sul saper risolvere problemi. Per spiegare meglio questo punto, farò qui riferimento alla distinzione, tratta dalla discussione sui linguaggi di programmazione, tra conoscenza dichiarativa e conoscenza imperativa [@guttag2016introduction]. 
+
+# Conoscenza dichiarativa e imperativa
+
+La conoscenza __dichiarativa__ consiste di una semplice enunciazione di fatti: per esempio "$y$ è la radice quadrata di $x$ se e solo se $y \times y = x$." 
+La conoscenza __imperativa__  fornisce invece le istruzioni necessarie per risolvere un problema; è un po' come una ricetta di cucina. 
+L'esempio proposto da @guttag2016introduction è il metodo di Erone di Alessandria per trovare la radice quadrata di un numero:
+
+1. Prova con un numero $g$.
+2. Se $g \times g$ è abbastanza vicino a $x$, allora $g$ è una buona approssimazione della radice quadrata di $x$.
+3. Altrimenti una approssimazione migliore si ottiene come
+$$
+g_{\text{nuovo}} = \frac{g_{\text{vecchio}} + \frac{x}{g_{\text{vecchio}}}}{2}
+$$
+Proviamo. Supponiamo di volere trovare la radice quadrata di $x = 16$. Iniziamo con una proposta piuttosto lontana dalla soluzione corretta, per esempio $y = 3$. Innalzando 3 al quadrato vediamo che siamo piuttosto lontanti dal valore desiderato. Proviamo dunque a usare la procedura di Erone di Alessandria e, partendo da 3 otteniamo il valore di 4.166667. Al quadrato diventa 17.36111. Non va ancora bene ma è meglio di prima.  Applichiamo nuovamente la procedura di Erone di Alessandria e otteniamo 4.003333. Al quadrato diventa 16.02668, non male. Se facciamo ancora un'iterazione otteniamo 4.000001 e potremmo fermarci qui. Quindi, abbiamo applicato la procedura di Erone di Alessandria tre volte e abbiamo ottenuto un'approssimazione della radice quadrata che, per tutti gli scopi pratici, è sufficiente. 
+
+| $y$      | $y^2$    |        
+|:--------:|:--------:|
+| 3        | 9        | 
+| 4.166667 | 17.36111 |
+| 4.003333 | 16.02668 | 
+| 4.000001 | 16.00001 | 
+
+In questo esempio, la conoscenza dichiarativa ci fornisce la definizione di radice quadrata. Questo è quelcosa che dobbiamo sapere, altrimenti non sappiamo neppure di cosa stiamo parlando. Ma tale conoscenza dichiarativa non ci aiuta in nessun modo a trovare la radice quadrata di un numero. Sappiamo che caratteristiche deve avere la soluzione, ma non sappiamo come trovarla. La conoscenza imperativa, invece, ci fornisce un metodo per trovare la soluzione che cerchiamo.
+ 
+Una volta chiarita la distinzione tra conoscenze dichiarative e imperative vi dico che questo insegnamento, oltre a fornire conoscenze dichiarative, si focalizzerà sulle conoscenze imperative necessarie per risolvere alcuni problemi di analisi di dati psicologici. In altre parole, vi mostrerò come alcuni problemi di analisi di dati psicologici possano essere risolti __in pratica__. 
+
+Le conoscenze dichiarative non saranno dunque sufficienti per risolvere i problemi che gli studenti troveranno all'esame (in altre parole, non sarà sufficiente avere imparato a memoria dei concetti). Saranno invece necessarie conoscenze imperative (in altre parole, sarà necessario avere sviluppato la capacità di "sapere fare"). Le conoscenze imperative che verranno sviluppate in questo insegnamento sono quelle della Data science, ovvero si pongono all'intersezione tra statistica (ovvero, richiedono la capacità di comprendere teoremi statistici) e informatica (ovvero, richiedono la capacità di sapere utilizzare un software).
+
+## La psicologia e la Data Science
+
+Sembra sensato spendere due parole su un tema che è importante per gli studenti: quello indicato dal titolo di questa sezione.
+È ovvio che agli studenti di psicologia la statistica non piace.
+Se piacesse, forse studierebbero Data Science e non psicologia; ma non lo fanno.
+Di conseguenza, gli studenti di psicologia si chiedono: ``perché dobbiamo perdere tanto tempo a studiare queste cose quando in realtà quello che ci interessa è tutt'altro?''
+Questa è una bella domanda. 
+Per cercare di rispondere a questa domanda introduco qui un importante concetto statistico, il __paradosso di Simpson__. 
+
+Consideriamo un fenomeno sociale che ha suscitato un enorme interesse in tempi recenti: la brutalità della polizia e le diseguaglianze razziali messe in evidenza dalle uccisioni da parte della polizia statunitense. 
+Per affrontare questo tema, esaminiamo l'analisi statistica descritta in un articolo di @ross2020racial. 
+La logica di tale analisi statistica può essere descritta nel modo seguente.
+Immaginiamo due gruppi di individui: Montechi e Capuleti.
+Il 10% dei Montechi e il 20% dei Capuleti commette crimini violenti (ovvero, sono dei criminali). 
+In un anno, il 14% dei Montechi viene ucciso dalla polizia contro il 26% dei Capuleti. 
+Come si fa a capire se c'è un pregiudizio verso uno dei due gruppi?  
+
+@cesario2019there sostengono che è necessario dividere la frequenza relativa di uccisioni da parte della polizia per la percentuale di criminali in ciascun gruppo. 
+Quindi, secondo questa logica, il tasso di uccisioni da parte della polizia è di 14/10 = 1.4% per i Capuleti e di 26/20 = 1.3% per i Montechi. 
+Questo indica una discriminazione contro i Capuleti e ci fornisce la risposta alla nostra domanda. 
+Ma le cose stanno effettivamente così? 
+
+Forse no.
+Se decomponiamo il numero di uccisioni da parte della polizia in ciascuna delle modalità della variabile __criminalità__ (ovvero, criminali vs. non criminali), scopriamo che, per i Capuleti, i 14 morti possono essere suddivisi in 5 morti di criminali e 9 morti di non criminali. 
+Per Montechi, i 26 morti si suddividono in 10 morti di criminali e 16 morti di non criminali. 
+Quindi, i criminali Capuleti vengono uccisi dalla polizia ad un tasso del 5/10 = 50% e i criminali Montechi vengono uccisi ad un tasso del 10/20 = 50% -- lo stesso tasso nei due gruppi. 
+Ma i non criminali Capuleti vengono uccisi dalla polizia ad un tasso del 9/90 = 10%, mentre i  non criminali Montechi vengono uccisi ad un tasso del 16/80 = 20%. 
+
+Ciò significa che i criminali di entrambi i gruppi hanno la stessa probabilità di essere uccisi dalla polizia, ma i non criminali Montechi hanno due volte la probabilità di essere uccisi dalla polizia dei non criminali Capuleti. 
+Questo indica un'enorme discriminazione contro i Montechi! 
+Eppure, l'analisi precedente aveva prodotto il risultato opposto.
+
+Lasciando perdere Shakespeare, @ross2020racial hanno dimostrato che questo è esattamente ciò che sta succedendo con i dati reali sulle sparatorie della polizia negli Stati Uniti: i neri disarmati negli Stati Uniti vengono uccisi a tassi molto più alti rispetto ai bianchi disarmati, sebbene i tassi siano simili nei due gruppi quando si considerano solo le sparatorie con individui armati; se tuttavia si riassumono i dati considerando solo la frequenza totale dei morti scalata per il tasso di criminalità questo fatto viene oscurato. 
+L'articolo di @ross2020racial ci fa vedere come sia necessario stare molto attenti con l'uso della statistica, specialmente quando gli errori statistici possono avere un impatto enorme sulla percezione pubblica -- e, nella psicologia, sulla pratica dello psicologo. 
+Le analisi statistiche precedenti sono un esempio di ciò che viene chiamato il paradosso di Simpson, ovvero il fatto che, alle volte, quando si riassumono i dati in un modo apparentemente ragionevole, si finisce per giungere ad una conclusione del tutto sbagliata.
+Il paradosso di Simpson illustra il fatto che non è facile neppure affrontare il semplice problema di __riassumere__ i dati, figurarsi poi fare delle inferenze!
+Queste considerazioni ci fanno capire che, senza un certo livello di consapevolezza metodologica, lo psicologo (e non solo), quando ha a che fare con dei dati empirici, si espone al rischio di fare errori gravissimi.
+
+## La descrizione delle differnze individuali
+
+Ma c'è un'altra ragione ancora più semplice che dovrebbe farci capire perché la Data Science è così importante per la psicologia.
+Infatti, a ben pensarci, la psicologia è una disciplina intrinsecamente __statistica__, se per statistica intendiamo quella disciplina che studia la variazione delle caratteristiche degli individui nella popolazione. 
+La psicologia studia __gli individui__ ed è proprio la variabilità  inter- e intra-individuale ciò che vogliamo descrivere e, in certi casi, predire.
+In questo senso, la psicologia è molto diversa dall'ingegneria, per esempio.
+Le proprietà di un determinato ponte, sotto certe condizioni, sono molto simili a quelle di un altro ponte, sotto le medesime condizioni. Quindi, per un ingegnere la statistica è poco importante: le proprietà dei materiali sono unicamente dipendenti dalla loro composizione e restano costanti. Ma lo stesso non si può dire degli individui: ogni individuo è unico e cambia nel tempo. E le variazioni tra gli individui, e di un individuo nel tempo, sono l'oggetto di studio proprio della psicologia: è dunque chiaro che i problemi che la psicologia si pone sono molto diversi da quelli affrontati, per esempio, dagli ingegneri.
+Questa è la ragione per cui abbiamo tanto bisogno della Data Science in psicologia: perché la Data Science ci consente di descrivere la variazione e il cambiamento.
+E queste sono appunto le caratteristiche di base dei fenomeni psicologici.
+
+Sono sicuro che, leggendo queste righe, a molti studenti sarà venuta in mente la seguente domanda: perché non chiediamo a qualche esperto di fare il "lavoro sporco" (ovvero le analisi statistiche) per noi, mentre noi (psicologi) ci occupiamo solo di ciò che ci interessa, ovvero dei problemi psicologici slegati dai dettagli "tecnici" della Data Science?
+La risposta a questa domanda è che non è possibile progettare uno studio psicologico sensato senza avere almeno una comprensione rudimentale della Data Science.
+Non possono ignorare le tematiche della Data Science né i ricercatori in psicologia né coloro che svolgono la professione di psicologo al di fuori dell'Università e dei centri di ricerca.
+Infatti, anche i professionisti a di fuori dall'università non possono fare a meno di leggere la letteratura psicologica più recente: il continuo aggiornamento delle conoscenze è infatti richiesto dalla deontologia della professione. Ma è necessario conoscere un bel po' di Data Science per potere fare questo! Per rendersi conto di quanto ciò sia vero basta aprire a caso una rivista specialistica di psicologia: gli articoli che riportano i risultati delle ricerche psicologiche sono zeppi di analisi statistiche e di modelli formali. 
+E la comprensione della letteratura psicologica è il requisito minimo del bagaglio professionale dello psicologo.
+
+Le considerazioni precedenti cercano di chiarire il seguente punto: la Data Science non è qualcosa da studiare a malincuore, in un singolo insegnamento universitario, per poi poterla tranquillamente dimenticare. Nel bene e nel male, gli psicologi usano strumenti della Data Science in tantissimi ambiti della loro attività professionale: in particolare quando costruiscono, somministrano e interpretano i test psicometrici.
+È dunque chiaro che possedere delle solide basi di Data Science è un tassello imprescindibile del bagaglio professionale dello psicologo.
+
+## Come studiare
+
+Alcuni degli argomenti trattati richiedono delle conoscenze pregresse, soprattutto di tipo matematico. Tali conoscenze sono state aggiunte delle appendici di queste dispense. La lettura di tale materiale è consigliata a tutti, sia a chi sta studiando gli argomenti proposti per la prima volta, sia a chi deve ripassare per colmare eventuali lacune pregresse. 
+
+Il giusto metodo di studio per prepararsi all'esame di Psicometria è quello di seguire attivamente le lezioni, assimilare i concetti via via che essi vengono presentati e verificare in autonomia le procedure presentate a lezione. Incoraggio gli studenti a farmi domande (nelle modalità consentite dalla situazione presente) per chiarire ciò che non è stato capito appieno. Incoraggio inoltre gli studenti a prendere parte alle esercitazioni organizzate dai Peer Tutor, a utilizzare i forum attivi su Moodle e, soprattutto, a svolgere gli esercizi proposti su Moodle. I problemi forniti su Moodle rappresentano il livello di difficoltà richiesto per superare l'esame e consentono allo studente di comprendere se le competenze sviluppate fino a quel punto sono sufficienti rispetto alle richieste dell'esame. 
+
+La prima fase dello studio, che è sicuramente individuale, è quella in cui è necessario acquisire le conoscenze dichiarative relative ai problemi che saranno presentati all'esame. La seconda fase di studio, che può essere facilitata da scambi con altri e da incontri di gruppo, porta ad acquisire conoscenze imperative: è necessario capire come usare un software (R) per applicare i concetti statistici alla specifica situazione del problema che si vuole risolvere. Anche se inizialmente potete pensare il contrario, in questo insegnamento lo sforzo necessario per acquisire le conoscenze dichiarative è spesso molto maggiore di quello richiesto per acquisire le conoscenze imperative. Tuttavia, le due non sono separate: il saper fare molto spesso ci aiuta a capire.
+
+
+## Sviluppare un metodo di studio efficace
+
+Sebbene non si possano riassumere le intuizioni di tutto l'insegnamento di Psicometria in poche parole, è possibile descrivere il tipo di atteggiamento mentale che è utile per affrontare con profitto lo studio dei materiali di questo insegnamento. Avendo insegnato Psicometria molte volte in passato, ho notato nel corso degli anni che gli studenti con l'atteggiamento mentale che descriverò qui sotto generalmente ottengono ottimi risultati. Alcuni studenti sviluppano naturalmente questo approccio allo studio, ma altri hanno bisogno di fare uno sforzo per maturarlo. Fornisco qui sotto una breve descrizione del "metodo di studio" che, nella mia esperienza, si dimostra il più efficace per affrontare le richieste di questo insegnamento.
+
+- È importante dedicare un tempo sufficiente allo studio del materiale di base, anche se questo materiale risulta apparentemente facile. È necessario assicurasi di averlo capirlo veramente. È molto utile individuare le lacune nella propria comprensione del materiale di studio, per poi colmarle. La lettura di presentazioni diverse dello stesso materiale (in libri o articoli diversi) facilita la comprensione.
+- Gli errori che facciamo sono i nostri migliori maestri. Istintivamente cerchiamo di dimenticarci subito dei nostri errori. Ma il miglior modo di imparare è apprendere dagli errori che commettiamo. In questo senso, una soluzione corretta è meno interessante di una non corretta. Quando commettiamo un errore questo ci fornisce un'informazione importante: ci fa capire qual è il materiale di studio sul quale dobbiamo ritornare e che dobbiamo capire meglio.
+- C'è ovviamente un aspetto "psicologico" nello studio. Quando un esercizio o problema ci sembra incomprensibile, forse la cosa migliore da fare è dire: "mi arrendo", "non ho idea di cosa fare". Questo ci rilassa: ci siamo già arresi, quindi non abbiamo nient'altro da perdere, non dobbiamo più preoccuparci. Ma non dobbiamo fermarci qui. Dopo un po', riprendiamo il mano il problema, ma consideriamo una sua versione più semplice. A volte è utile suddividere il problema in parti più piccole, ognuna delle quali può essere più facile da risolvere. Fa una grande differenza affrontare il problema con tranquillità. Alle volte succede che, per trovare la soluzione ad un problema, dobbiamo soltanto "adottare un punto di vista diverso". Ma per fare questo dobbiamo essere rilassati. La pressione che ci poniamo quando diciamo "voglio risolvere questo problema il prima possile" non ci aiuta.  Perché, sotto pressione, possiamo solo agire in maniera automatica, ovvero applicare qualcosa che sappiamo già fare. Ma se dobbiamo scoprire qualcosa di nuovo, la pressione è un impedimento.
+- È utile farsi da soli delle domande sugli argomenti trattati, senza limitarsi a cercare di risolvere gli esercizi che io vi darò. Procedendo in questo modo lo studente può focalizzarsi sugli aspetti che trova meno chiari, ovvero può dedicare più tempo a ciò che richiede più tempo: gli aspetti che __per lui__ sono meno chiari. Questo è qualcosa che nessun altro può fare al posto vostro.
+- Non aspettatevi di capire tutto la prima volta che incontrate un argomento nuovo. È utile farsi una nota mentalmente delle lacune nella vostra comprensione e tornare su di esse per carcare di colmarle. L'atteggiamento naturale, quando non capiamo i dettagli di qualcosa, è quello di pensare: "non importa, ho capito in maniera approssimativa questo punto, non devo preoccuparmi del resto".  Ma in realtà non è vero: se la nostra comprensione è superficiale, quando il problema verrà presentato in una nuova forma, non riusciremo a risolverlo. Per cui i dubbi che ci vengono quando studiamo qualcosa sono il nostro alleato più prezioso: ci dicono esattamente quali sono gli aspetti che dobbiamo approfondire per potere migliorare la nostra preparazione.
+- È utile sviluppare una visione d'insieme degli argomenti trattati, capire l'obiettivo generale che si vuole raggiungere e avere chiaro il contributo che i vari pezzi di informazione forniscono al raggiungimento di tale obiettivo. Questa organizzazione mentale del materiale di studio facilita la comprensione. È estremamente utile creare degli schemi di ciò che si sta studiando. Non aspettate che sia io a fornirvi un riepilogo puntato di ciò che dovete imparare: sviluppate da soli tali schemi e tali riassunti.
+- Tutti noi dobbiamo sviluppare l'arte di trovare le informazioni, non solo nel caso di questo insegnamento. Quando vi trovate di fronte a qualcosa che non capite, o ottenete un  oscuro messaggio di errore, ricordatevi: "Google is your friend".
+
+
+
+
+

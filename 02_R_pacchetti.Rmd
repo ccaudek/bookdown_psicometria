@@ -1,0 +1,29 @@
+# Pacchetti {#chapter-pacchetti}
+
+```{r, include = FALSE}
+source("_common.R")
+knitr::opts_chunk$set(fig.align="center")
+```
+
+Riporto qui tutti i pacchetti che verranno usati in queste dispense.
+
+```{r}
+suppressPackageStartupMessages(library("here"))
+suppressPackageStartupMessages(library("tidyverse"))
+suppressPackageStartupMessages(library("ggpubr"))
+suppressPackageStartupMessages(library("ggExtra"))
+suppressPackageStartupMessages(library("car"))
+suppressPackageStartupMessages(library("cowplot"))
+suppressPackageStartupMessages(library("tidybayes"))
+suppressPackageStartupMessages(library("datasauRus"))
+suppressPackageStartupMessages(library("RColorBrewer"))
+suppressPackageStartupMessages(library("rio"))
+suppressPackageStartupMessages(library("papaja"))
+library("patchwork")
+set.seed(12345)
+```
+
+```{r}
+sessionInfo()
+```
+

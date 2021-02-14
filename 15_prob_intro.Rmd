@@ -1,9 +1,8 @@
-# (PART\*) Elementi di teoria della probabilità {-}
-
 ```{r, include = FALSE}
 source("_common.R")
 knitr::opts_chunk$set(fig.align="center")
 ```
+
 
 # Il calcolo delle probabilità 
 

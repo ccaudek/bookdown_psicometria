@@ -1,0 +1,29 @@
+---
+knit: "bookdown::render_book"
+title: "Data Science per psicologi"
+author: "Corrado Caudek"
+description: "__Data Science per psicologi__ si propone di fornire un'introduzione all'analisi dei dati psicologici agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche presso l'Università degli Studi di Firenze. Particolare attenzione sarà posta ai seguenti aspetti: l'uso del linguaggio R per lo svolgimento delle analisi statistiche, la rappresentazione grafica dei dati e l'inferenza Bayesiana."
+github-repo: ccaudek/bookdown_psicometria
+twitter-handle: ccaudek
+site: bookdown::bookdown_site
+output: 
+  bookdown::gitbook:
+    split_bib: yes
+documentclass: book
+bibliography: psicom.bib
+biblio-style: apalike
+csl: apa7.csl
+link-citations: yes
+---
+
+# Benvenuti {-} 
+
+**Questo libro è stato aggiornato il giorno: 14 Feb 2021**.
+
+\
+
+<center> ![](images/gen_art.png){width=400px height=400px} </center>
+
+\
+
+__Data Science per psicologi__ contiene il materiale delle lezioni dell'insegnamento _Psicometria B000286_ (A.A. 2020/2021) rivolto agli studenti del primo anno del Corso di Laurea in Scienze e Tecniche Psicologiche dell'Università di Firenze. 

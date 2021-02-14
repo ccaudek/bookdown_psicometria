@@ -43,31 +43,6 @@
 <li><a class="" href="chapter-input-output.html"><span class="header-section-number">7</span> Input/Output</a></li>
 <li><a class="" href="manipolazione-dei-dati.html"><span class="header-section-number">8</span> Manipolazione dei dati</a></li>
 <li><a class="active" href="flusso-di-lavoro-riproducibile-con-rmarkdown.html"><span class="header-section-number">9</span> Flusso di lavoro riproducibile con RMarkdown</a></li>
-<li class="book-part">Misurazione</li>
-<li><a class="" href="terminologia.html"><span class="header-section-number">10</span> Terminologia</a></li>
-<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">11</span> La misurazione in psicologia</a></li>
-<li class="book-part">Descrizione</li>
-<li><a class="" href="chapter-descript.html"><span class="header-section-number">12</span> Statistica descrittiva</a></li>
-<li class="book-part">Elementi di teoria della probabilità</li>
-<li><a class="" href="il-calcolo-delle-probabilit%C3%A0.html"><span class="header-section-number">13</span> Il calcolo delle probabilità</a></li>
-<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">14</span> Probabilità condizionata</a></li>
-<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
-<li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
-<li class="book-part">Inferenza frequentista</li>
-<li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">17</span> Distribuzione campionaria della media dei campioni</a></li>
-<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">18</span> Significatività statistica</a></li>
-<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">19</span> Inferenza sulle medie</a></li>
-<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">20</span> Critiche e difese</a></li>
-<li class="book-part">Verosimiglianza</li>
-<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">21</span> La funzione di verosimiglianza</a></li>
-<li class="book-part">Statistica Bayesiana</li>
-<li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">22</span> Modellistica bayesiana</a></li>
-<li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">23</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">24</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">25</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">26</span> Inferenza Bayesiana</a></li>
-<li><a class="" href="informazioni-generali.html">Informazioni generali</a></li>
-<li><a class="" href="appendici.html">Appendici</a></li>
 <li><a class="" href="bibliografia.html">Bibliografia</a></li>
 </ul>
 
@@ -87,28 +62,41 @@
 <blockquote>
 <p>Per il metodo scientifico è essenziale che gli esperimenti siano riproducibili. Vale a dire che una persona diversa dallo sperimentatore originale deve essere in grado di ottenere gli stessi risultati seguendo lo stesso protocollo sperimentale. (Gilbert Chin)</p>
 </blockquote>
-<p>Ma in psicologia (e non solo) la riproducibilità è inferiore a quanto previsto o desiderato. In un famoso studio pubblicato su “Science” un ampio gruppo di ricercatori <span class="citation">(<a href="bibliografia.html#ref-open2015estimating" role="doc-biblioref">Open Science Collaboration and others, 2015</a>)</span> è riuscito a replicare solo il 40 per cento circa dei risultati di 100 studi di psicologia cognitiva e sociale pubblicati in precedenza. Questi risultati, ed molti altri risultati simili pubblicati in seguito, sono stati interpretati in modi diversi. La preoccupazione sulla riproducibilità della ricerca varia dall’affermare secondo la quale “la maggior parte dei risultati della ricerca sono falsi” <span class="citation">(<a href="bibliografia.html#ref-ioannidis2005most" role="doc-biblioref">Ioannidis, 2005</a>)</span> all’affermazione secondo cui “dobbiamo apportare modifiche sostanziali al modo in cui conduciamo la ricerca” <span class="citation">(<a href="bibliografia.html#ref-cumming2014new" role="doc-biblioref">Cumming, 2014</a>)</span>. Alcuni ricercatori sono arrivati a definire la situazione come una “crisi di riproducibilità” <span class="citation">(<a href="bibliografia.html#ref-munafo2017manifesto" role="doc-biblioref">Munafò et al., 2017</a>)</span>.</p>
-<p>Il termine “riproducibilità” (o “replicabilità”) è definito in vari modi. Consideriamo qui la definizione fornita da <span class="citation"><a href="bibliografia.html#ref-goodman2016does" role="doc-biblioref">Goodman et al.</a> (<a href="bibliografia.html#ref-goodman2016does" role="doc-biblioref">2016</a>)</span>.</p>
+<p>Ma in psicologia (e non solo) la riproducibilità è inferiore a quanto previsto o desiderato. In un famoso studio pubblicato su “Science” un ampio gruppo di ricercatori <span class="citation">(<a href="bibliografia.html#ref-open2015estimating" role="doc-biblioref">Open Science Collaboration and others, 2015</a>)</span> è riuscito a replicare solo il 40 per cento circa dei risultati di 100 studi di psicologia cognitiva e sociale pubblicati in precedenza. I risultati di questo studio, e di molti altri pubblicati in seguito, sono stati interpretati in modi diversi. La preoccupazione sulla riproducibilità della ricerca è stata espressa mediante l’affermare secondo la quale “la maggior parte dei risultati della ricerca sono falsi” <span class="citation">(<a href="bibliografia.html#ref-ioannidis2005most" role="doc-biblioref">Ioannidis, 2005</a>)</span> oppure mediante l’affermazione secondo cui “dobbiamo apportare modifiche sostanziali al modo in cui conduciamo la ricerca” <span class="citation">(<a href="bibliografia.html#ref-cumming2014new" role="doc-biblioref">Cumming, 2014</a>)</span>. Alcuni ricercatori sono arrivati a definire la presente situazione come una “crisi della riproducibilità dei risultati della ricerca” <span class="citation">(<a href="bibliografia.html#ref-munafo2017manifesto" role="doc-biblioref">Munafò et al., 2017</a>)</span>.</p>
+<p>Il termine “riproducibilità” (o “replicabilità”) è stato definito in vari modi. Consideriamo la definizione fornita da <span class="citation"><a href="bibliografia.html#ref-goodman2016does" role="doc-biblioref">Goodman et al.</a> (<a href="bibliografia.html#ref-goodman2016does" role="doc-biblioref">2016</a>)</span>:</p>
 <ul>
-<li><p>La riproducibilità dei metodi “si riferisce al fatto che il ricercatore fornisce dettagli sufficienti sulle procedure e sui dati dello studio in modo che le stesse procedure possano … essere replicate esattamente” (pag. 2) con gli stessi dati.</p></li>
-<li><p>La riproducibilità dei risultati “si riferisce all’ottenimento degli stessi risultati dalla conduzione di uno studio indipendente le cui procedure replicano il più esattamente possibile quelle dell’esperimento originale” (pag. 2-3) con dati indipendenti.</p></li>
-<li><p>La riproducibilità inferenziale “si riferisce alla possibilità di trarre conclusioni qualitativamente simili da una replica indipendente di uno studio o da una nuova analisi dello studio originale” (pag. 4).</p></li>
+<li><p>la riproducibilità dei metodi “si riferisce al fatto che il ricercatore fornisce dettagli sufficienti sulle procedure e sui dati dello studio in modo che le stesse procedure possano … essere replicate esattamente” (pag. 2) con gli stessi dati;</p></li>
+<li><p>la riproducibilità dei risultati “si riferisce all’ottenimento degli stessi risultati dalla conduzione di uno studio indipendente le cui procedure replicano il più esattamente possibile quelle dell’esperimento originale” (pag. 2-3) con dati indipendenti;</p></li>
+<li><p>la riproducibilità inferenziale “si riferisce alla possibilità di trarre conclusioni qualitativamente simili da una replica indipendente di uno studio o da una nuova analisi dello studio originale” (pag. 4).</p></li>
 </ul>
-<p>Per gli scopi di questo capitolo, ci focalizziamo qui sulla riproducibilità dei metodi. Cioè, discuteremo di come R può aiutarci a migliorare questo aspetto della riproducibilità. In questo capitolo mostreremo come R possa essere integrato in un flusso di lavoro riproducibile che è in grado di integrare i metodi di analisi dei dati, i dati medesimi e il report che comunica i risultati dello studio. Invece di limitarci a considerare il codice R, mostreremo come possiamo integrare codice, output e testo in un documento riproducibile. A tal fine utilizzeremo due pacchetti R: <code>rmarkdown</code> e <code>knitr</code>. Questi pacchetti ci consentono di unire un linguaggio di markup chiamato Markdown con il codice R.</p>
+<p>Per gli scopi di questo capitolo, ci focalizzeremo qui sulla riproducibilità dei metodi. Cioè, discuteremo di come R può aiutarci a migliorare questo aspetto della riproducibilità. In questo capitolo mostreremo come R possa essere utilizzato all’interno di un flusso di lavoro (<em>workflow</em>) riproducibile che integra (1) il codice di analisi dei dati, (2) i dati medesimi e (3) il testo della relazione che comunica i risultati dello studio. A tal fine utilizzeremo due pacchetti R: <code>rmarkdown</code> e <code>knitr</code>. Questi pacchetti consentono di unire il codice R ad un linguaggio di marcatura (o di markup) chiamato Markdown.</p>
 </div>
 <div id="r-markdown" class="section level2" number="9.2">
 <h2>
-<span class="header-section-number">9.2</span> R Markdown<a class="anchor" aria-label="anchor" href="#r-markdown"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.2</span> R-markdown<a class="anchor" aria-label="anchor" href="#r-markdown"><i class="fas fa-link"></i></a>
 </h2>
-<p>Markdown è un semplice linguaggio di linguaggio di markup in cui, mediante l’uso di alcuni simboli, è possibile cambiano l’aspetto tipografico del testo, ovvero realizzare la formattazione del testo. Un’introduzione a Markdown può essere trovata, per esempio, <a href="https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html">qui</a>. In questo capitolo ci limiteremo a discutere gli aspetti più importanti di R Markdown.</p>
-<p>Per iniziare, consideriamo ciò che viene posto all’inizio di un documento <code>.Rmd</code> (R Markdown). Questa sezione del documento è chiamata YAML (un acronimo che significa Yet Another Markup Language). Lo YAML header controlla le caratteristiche generali del documento, incluso il tipo di documento che viene prodotto (un documento HTML che può essere visualizzato su tutti i principali browser, un documento Microsoft Word o un PDF se abbiamo installato <span class="math inline">\(\LaTeX\)</span> sul nostro computer), la dimensione del carattere, lo stile, il titolo, l’autore, ecc.</p>
+<p>Un linguaggio di markup permette di aggiungere mediante marcatori (tag) informazioni sulla struttura e sulla formattazione da applicare ad un documento. Un’introduzione al linguaggio Markdown può essere trovata, per esempio, <a href="https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html">qui</a>. In questo capitolo ci focalizzeremo però sugli aspetti più importanti di <code>R Markdown</code> che permette di costruire documenti in cui combinare testo formattato (quindi non solo commenti ma anche formule, titoli etc) e istruzioni codice (<code>R</code> e non solo) con i corrispettivi output.</p>
+<p>Un file R-markdown è composto da tre tipi di oggetti:</p>
+<ol style="list-style-type: decimal">
+<li>header in formato <code>YAML</code> delimitato da <code>---</code>,</li>
+<li>testo in formato <code>markdown</code>,</li>
+<li>blocchi (“chunks”) di codice <code>R</code>, delimitati da <code>```</code>.</li>
+</ol>
+<div id="header" class="section level3 unnumbered">
+<h3>Header<a class="anchor" aria-label="anchor" href="#header"><i class="fas fa-link"></i></a>
+</h3>
+<p>L’intestazione di un documento <code>.Rmd</code> (R Markdown) corrisponde al cosiddetto <em>YAML header</em> (un acronimo che significa <em>Yet Another Markup Language</em>). Lo YAML header controlla le caratteristiche generali del documento, incluso il tipo di documento che viene prodotto (un documento HTML che può essere visualizzato su tutti i principali browser, un documento Microsoft Word o un PDF se abbiamo installato <span class="math inline">\(\LaTeX\)</span> sul nostro computer), la dimensione del carattere, lo stile, il titolo, l’autore, ecc.</p>
 <p>Nello YAML header (a differenza del codice R) è necessario rispettare la spaziatura prestabilita delle istruzioni che vengono elencate. Gli elementi principali sono questi:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb110-2"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb110-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Il titolo"</span></span>
-<span id="cb110-3"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb110-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">"Tu, l'autore"</span></span>
-<span id="cb110-4"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb110-4" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
-<span id="cb110-5"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb110-5" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb113-2"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb113-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Il titolo"</span></span>
+<span id="cb113-3"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb113-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">"Tu, l'autore"</span></span>
+<span id="cb113-4"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb113-4" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
+<span id="cb113-5"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb113-5" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <p>L’argomento output è dove diciamo a R Markdown quale tipo di file vogliamo che venga prodotto. Il tipo più flessibile, che non richiede alcuna configurazione, è <code>html_document</code>.</p>
+</div>
+<div id="testo" class="section level3 unnumbered">
+<h3>Testo<a class="anchor" aria-label="anchor" href="#testo"><i class="fas fa-link"></i></a>
+</h3>
 <p>Alla conclusione dello YAML header inizia il documento R Markdown. Da questo punto in poi possiamo utilizzare testo normale, codice R e sintassi Markdown per controllare cosa viene mostrato e come. È possibile contrassegnare intestazioni, grassetto e corsivo come indicato di seguito.</p>
 <pre><code># Intestazione 1
 ## Intestazione 2
@@ -124,7 +112,7 @@ Possiamo scrivere in *corsivo* usando un asterisco.
 &gt;Questa è un’**area rientrata**.
 
 Questa riga invece non è più rientrata.</code></pre>
-<p>Per creare un elenco casuale con markdown si utilizza il segno più, il trattino o l’asterisco. Tutte le tre soluzioni portano allo stesso risultato.</p>
+<p>Per creare un elenco puntato si utilizza il segno più, il trattino o l’asterisco. Tutte le tre soluzioni portano allo stesso risultato.</p>
 <pre><code>- Punto 1 della lista
 - Punto 2 della lista
 - Punto 3 della lista</code></pre>
@@ -134,14 +122,22 @@ Questa riga invece non è più rientrata.</code></pre>
 3. Punto 3 della lista</code></pre>
 <p>Per contrassegnare un’area di testo come codice, markdown utilizza il cosiddetto backtick, noto anche come gravis o accento grave, da non confondere con la virgoletta singola. La marcatura prevede un accento all’inizio e uno alla fine dell’area di testo corrispondente.</p>
 <pre><code>Questo è `code`.</code></pre>
-<p>Oltre a contrassegnare un’area di testo come codice, possiamo anche includere il codice R vero e proprio direttamente nel testo così da valutare il codice all’interno del documento e da produrre un output che verrà stampato nel documento. Ciò significa che possiamo stampare tabelle e figure prodotti direttamente dal codice R. Inoltre, significa che se qualcosa cambia nelle analisi dei dati, le tabelle e le figure si aggiorneranno automaticamente.</p>
-<p>Per includere un “chunk” di codice R, utilizziamo la seguente sintassi:</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb115-1"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb115-2"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="in">## il codice R va qui</span></span>
-<span id="cb115-3"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p>Un chunk R verrà valutato proprio come il normale codice R, quindi si applica tutto ciò che abbiamo imparato nei capitoli precedenti. Se il chunk R produce un output, questo output verrà visualizzato nel documento.</p>
-<p>Ma dove si trova questo magico documento include il testo che abbiamo scritto e l’output dei chunk di R? Ottima domanda. Questo è qualcosa a cui la maggior parte di noi non è abituata. Coloro che hanno utilizzato altri programmi di videoscrittura (come Microsoft Word) sono abitutai al cosiddetto stile “WYSIWYG” (What You See Is What You Get). Cioè, si vede come apparirà il documento stampato mentre lo si digita. Questo può avere alcuni vantaggi ma può anche essere molto limitante.</p>
-<p>R Markdown, d’altra parte, deve essere “compilato” (knit) per produrre il documento formattato. In RStudio, tale operazione è semplice. C’è un pulsante in alto a sinistra nel pannello di scripting di un documento <code>.Rmd</code>. Selezionando questo pulsante, il nostro documento verrà creato.</p>
+</div>
+<div id="codice-r" class="section level3 unnumbered">
+<h3>Codice R<a class="anchor" aria-label="anchor" href="#codice-r"><i class="fas fa-link"></i></a>
+</h3>
+<p>In un documento R-markdown istruzioni di codice vengono inserite in blocchi delimitati da tre apici <code>```</code>. Un generico blocco di codice (“chunk”) ha la seguente forma:</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb118-1"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb118-2"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="in">## il codice R va qui</span></span>
+<span id="cb118-3"><a href="flusso-di-lavoro-riproducibile-con-rmarkdown.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>Ciò consente di valutare il codice all’interno del documento e di produrre un output che verrà stampato nel documento stesso. Possiamo dunque stampare tabelle e figure prodotti direttamente dal codice R. Ciò significa inoltre, che se qualcosa cambia nei dati o nelle analisi dei dati, le tabelle e le figure si aggiorneranno automaticamente.</p>
+<p>Un chunk R viene valutato proprio come il normale codice R, quindi si applica tutto ciò che abbiamo imparato nei capitoli precedenti. Se il chunk R produce un output, questo output verrà visualizzato nel documento.</p>
+</div>
+<div id="compilare-la-presentazione-r-markdown" class="section level3 unnumbered">
+<h3>Compilare la presentazione R-markdown<a class="anchor" aria-label="anchor" href="#compilare-la-presentazione-r-markdown"><i class="fas fa-link"></i></a>
+</h3>
+<p>Ma dove si trova questo magico documento che include il testo e l’output prodotto dal codice R? Ottima domanda. Siamo stati abituati ai programmi di videoscrittura (come Microsoft Word) che si conformano al cosiddetto stile “WYSIWYG” (What You See Is What You Get) – cioè, si vede come apparirà il documento stampato mentre lo si digita. Questo può avere alcuni vantaggi ma può anche essere molto limitante. R-Markdown, d’altra parte, funziona in modo diverso. Ovvero, deve essere “compilato” (knitted) per passare dal file sorgente al documento formattato. In RStudio, tale operazione è semplice: c’è un pulsante in alto a sinistra nel pannello di scripting di un documento <code>.Rmd</code>. È sufficiente selezionare tale pulsante e il nostro documento verrà creato.</p>
+</div>
 </div>
 <div id="importante" class="section level2" number="9.3">
 <h2>
@@ -151,18 +147,22 @@ Questa riga invece non è più rientrata.</code></pre>
 
 </div>
 </div>
-
-
-
-<div class="chapter-nav">
+  <div class="chapter-nav">
 <div class="prev"><a href="manipolazione-dei-dati.html"><span class="header-section-number">8</span> Manipolazione dei dati</a></div>
-<div class="next"><a href="terminologia.html"><span class="header-section-number">10</span> Terminologia</a></div>
+<div class="next"><a href="bibliografia.html">Bibliografia</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#flusso-di-lavoro-riproducibile-con-rmarkdown"><span class="header-section-number">9</span> Flusso di lavoro riproducibile con RMarkdown</a></li>
 <li><a class="nav-link" href="#motivazione-1"><span class="header-section-number">9.1</span> Motivazione</a></li>
-<li><a class="nav-link" href="#r-markdown"><span class="header-section-number">9.2</span> R Markdown</a></li>
+<li>
+<a class="nav-link" href="#r-markdown"><span class="header-section-number">9.2</span> R-markdown</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#header">Header</a></li>
+<li><a class="nav-link" href="#testo">Testo</a></li>
+<li><a class="nav-link" href="#codice-r">Codice R</a></li>
+<li><a class="nav-link" href="#compilare-la-presentazione-r-markdown">Compilare la presentazione R-markdown</a></li>
+</ul>
+</li>
 <li><a class="nav-link" href="#importante"><span class="header-section-number">9.3</span> Importante</a></li>
 </ul>
 
@@ -173,13 +173,9 @@ Questa riga invece non è più rientrata.</code></pre>
 </div>
     </nav>
 </div>
-</div>
-  
-
-  
 
 </div>
- <!-- .container -->
+</div> <!-- .container -->
 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 

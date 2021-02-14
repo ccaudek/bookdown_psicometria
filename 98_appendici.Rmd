@@ -1,6 +1,8 @@
-# Appendici {-}
+# (PART\*) Appendici {-}
 
-## Simbologia di base {#simbologia-di-base .unnumbered}
+# Un piccolo ripasso {-}
+
+## Simbologia di base {-}
 
 Per una scrittura più sintetica possono essere utilizzati alcuni simboli
 matematici.
@@ -53,9 +55,9 @@ matematici.
 -   Il simbolo $\emptyset$ indica l'insieme vuoto o evento impossibile.
 
 
-## Numeri binari, interi, razionali, irrazionali e reali {#numeri-binari-interi-razionali-irrazionali-e-reali .unnumbered}
+## Numeri binari, interi, razionali, irrazionali e reali {-} {#numeri-binari-interi-razionali-irrazionali-e-reali .unnumbered}
 
-### Numeri binari {#numeri-binari .unnumbered}
+### Numeri binari {-}
 
 I più semplici sono i numeri binari, cioè zero o uno. Useremo spesso
 numeri binari per rappresentare se qualcosa è vero o falso, o presente o
@@ -92,7 +94,7 @@ sum(opinion) / length(opinion)
 e concludere che 7 risposte su 10 sono positive.
 
 
-### Numeri interi {#numeri-interi .unnumbered}
+### Numeri interi {-}
 
 Un numero intero è un numero senza decimali. Si dicono __naturali__ i
 numeri che servono a contare, come 1, 2, ... L'insieme dei numeri
@@ -101,7 +103,7 @@ introdurre i numeri con il segno per poter trattare grandezze negative.
 Si ottengono così l'insieme numerico dei numeri interi relativi:
 $\mathbb{Z} = \{0, \pm 1, \pm 2, \dots \}$
 
-### Numeri razionali {#numeri-razionali .unnumbered}
+### Numeri razionali {-}
 
 I numeri razionali sono i numeri frazionari $m/n$, dove $m, n \in N$,
 con $n \neq 0$. Si ottengono così i numeri razionali:
@@ -111,7 +113,7 @@ Anche in questo caso è necessario poter trattare grandezze negative. I
 numeri razionali non negativi sono indicati con
 $\mathbb{Q^+} = \{q \in \mathbb{Q} \,\vert\, q \geq 0\}$.
 
-### Numeri irrazionali {#numeri-irrazionali .unnumbered}
+### Numeri irrazionali {-}
 
 Tuttavia, non tutti i punti di una retta $r$ possono essere
 rappresentati mediante i numeri interi e razionali. È dunque necessario
@@ -123,7 +125,7 @@ possono essere espressi sotto forma di frazione. Per esempio,
 $\sqrt{2}$, $\sqrt{3}$ e ${\displaystyle \pi =3,141592\ldots}$ sono
 numeri irrazionali.
 
-### Numeri reali {#numeri-reali .unnumbered}
+### Numeri reali {-}
 
 I punti della retta $r$ sono quindi "di più" dei numeri razionali. Per
 poter rappresentare tutti i punti della retta abbiamo dunque bisogno dei
@@ -133,7 +135,7 @@ razionali e i numeri irrazionali. Spesso in statisticac il numero dei
 decimali indica il grado di precisione della misurazione.
 
 
-## Intervalli {#intervalli .unnumbered}
+## Intervalli {-}
 
 Un intervallo si dice chiuso se gli estremi sono compresi
 nell'intervallo, aperto se gli estremi non sono compresi. Le
@@ -147,7 +149,7 @@ caratteristiche degli intervalli sono riportate nella tabella seguente.
    aperto a sinistra e chiuso a destra   (a, b\]     $a < x \leq b$
 
 
-## Insiemi {#cap:insiemi .unnumbered}
+## Insiemi {-}
 
 Un insieme (o collezione, classe, gruppo, ...) è un concetto primitivo,
 ovvero è un concetto che già possediamo. Georg Cantor l'ha definito nel
@@ -205,7 +207,7 @@ $$
 \}.
 $$
 
-### Operazioni tra insiemi {#operazioni-tra-insiemi .unnumbered}
+### Operazioni tra insiemi {-}
 
 Si definisce __intersezione__ di $A$ e $B$ l'insieme $A \cap B$ di tutti
 gli elementi $x$ che appartengono ad $A$ e contemporaneamente a $B$:
@@ -234,7 +236,7 @@ La relazione tra unione, intersezione e insieme complementare è data
 dalle leggi di DeMorgan: $$(A \cup B)^c = A^c \cap B^c,$$
 $$(A \cap B)^c = A^c \cup B^c.$$
 
-### Diagrammi di Eulero-Venn {#diagrammi-di-eulero-venn .unnumbered}
+### Diagrammi di Eulero-Venn {-}
 
 In molte situazioni è utile servirsi dei cosiddetti diagrammi di
 Eulero-Venn per rappresentare gli insiemi e verificare le proprietà
@@ -255,7 +257,7 @@ knitr::include_graphics('images/demorgan.pdf')
 ```
 
 
-### Coppie ordinate e prodotto cartesiano {#sec:prod_cartesiano .unnumbered}
+### Coppie ordinate e prodotto cartesiano {-}
 
 Una coppia ordinata $(x,y)$ è l'insieme i cui elementi sono $x \in A$ e
 $y \in B$ e nella quale $x$ è la prima componente (o prima coordinata),
@@ -265,14 +267,14 @@ $$A \times B = \{(x, y) ~\vert~ x \in A \land y \in B\}.$$ Ad esempio,
 sia $A = \{1, 2, 3\}$ e $B = \{a, b\}$. Allora,
 $$\{1, 2\} \times \{a, b, c\} = \{(1, a), (1, b), (1, c), (2, a), (2, b), (2, c)\}.$$
 
-### Cardinalità {#cardinalità .unnumbered}
+### Cardinalità {-}
 
 Si definisce __cardinalità__ (o potenza) di un insieme finito il numero
 degli elementi dell'insieme. Viene indicata con $\vert A\vert, \#(A)$ o
 $\text{c}(A)$.
 
 
-## Proprietà degli stimatori dei minimi quadrati {#propr_coef_min_quad .unnumbered}
+## Proprietà degli stimatori dei minimi quadrati {-}
 
 Il coefficiente dei minimi quadrati $b$ è una combinazione lineare delle
 osservazioni $y_i$. Tale proprietà è importante perché consente di
@@ -309,8 +311,11 @@ $$\var(a)= \frac{\sigma^2_{\varepsilon} \textstyle\sum x_i^2}{n \textstyle\sum (
 Dato che sia $a$ che $b$ sono funzioni lineari di $y_i$, se i valori
 $y_i$ seguono la distribuzione gaussiana, allora anche $a$ e $b$ saranno
 distribuiti secondo una distribuzione normale. In conclusione,
-$$\begin{aligned}
+$$
+\begin{aligned}
 b &\sim \mathcal{N}\bigg(\beta,  \frac{\sigma^2_{\varepsilon}}{\sum(x_i-\bar{x})^2}\bigg),\\
-a &\sim \mathcal{N}\bigg(\alpha, \frac{\sigma^2_{\varepsilon}\textstyle\sum x_i^2}{n \textstyle\sum (x_i-\bar{x})^2} \bigg).\end{aligned}$$
+a &\sim \mathcal{N}\bigg(\alpha, \frac{\sigma^2_{\varepsilon}\textstyle\sum x_i^2}{n \textstyle\sum (x_i-\bar{x})^2} \bigg).
+\end{aligned}
+$$
 
 
