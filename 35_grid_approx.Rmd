@@ -1,31 +1,32 @@
 # Stima della funzione a posteriori 
 
-Quando usiamo il teorema di Bayes per calcolare la distribuzione a posteriori del parametro di un modello statistico, al denominatore troviamo un integrale. Se vogliamo costruire la distribuzione a posteriori con metodi analitici è necessario usare _distribuzioni a priori coniugate per la verosimiglianza_. Due distribuzioni si dicono  _coniugate_ se la distribuzione a posteriori $p(\theta \mid \mathcal{Y})$ è nella stessa famiglia della distribuzione a priori $p(\theta)$. Questo significa che, nel caso di distribuzioni a priori coniugate, è possibile determinare la distribuzione a posteriori per via analitica. Per quanto "semplice" in termini formali, questo approccio, però, limita di molto le possibili scelte del ricercatore. Nel senso che non è sempre sensato dal punto di vista sostantivo utilizzare delle distribuzioni a priori coniugate per la verosimiglianza nel caso dei parametri di interesse. Dunque, se usiamo delle distribuzioni a priori non coniutate per la verosimiglianza ci troviamo in una condizione nella quale, per determinare la distribuzione a posteriori, è necessario calcolare un integrale che, nella maggior parte dei casi, non si può risolvere per via analitica. Detto in altre parole: è possibile ottenere la distribuzione posteriore per via analitica solo per alcune specifiche combinazioni di distribuzioni a priori a verosimiglianza, il che limita considerevolmente la flessibilità della modellazione. 
+Quando usiamo il teorema di Bayes per calcolare la distribuzione a posteriori del parametro di un modello statistico, al denominatore troviamo un integrale. Se vogliamo costruire la distribuzione a posteriori con metodi analitici è necessario usare _distribuzioni a priori coniugate per la verosimiglianza_. Due distribuzioni si dicono  _coniugate_ se la forma funzionale della distribuzione a priori e della distribuzione a posteriori sono uguali. Questo significa che, nel caso di distribuzioni a priori coniugate, è possibile determinare la distribuzione a posteriori per via analitica. Per quanto "semplice" in termini formali, questo approccio, però, limita di molto le possibili scelte del ricercatore. Nel senso che non è sempre sensato, dal punto di vista teorico, utilizzare distribuzioni a priori coniugate per la verosimiglianza per i parametri di interesse. Dunque, se usiamo delle distribuzioni a priori non coniutate per la verosimiglianza, ci troviamo in una condizione nella quale, per determinare la distribuzione a posteriori, è necessario calcolare un integrale che, nella maggior parte dei casi, non si può risolvere per via analitica. Detto in altre parole: è possibile ottenere la distribuzione posteriore per via analitica solo per alcune specifiche combinazioni di distribuzioni a priori e verosimiglianza, il che limita considerevolmente la flessibilità della modellazione. 
 
-Per questa ragione, la strada principale che viene seguita nella modellistica Bayesiana non è quella di determinare la distribuzione a posteriori per via analitica, ma bensì quella della stima della distribuzione a posteriori mediante metodi numerici. La simulazione fornisce dunque la strategia generale del calcolo Bayesiano. 
+Per questa ragione, la strada principale che viene seguita nella modellistica Bayesiana è quella che porta a determinare la distribuzione a posteriori non per via analitica, ma bensì mediante metodi numerici. La simulazione fornisce dunque la strategia generale del calcolo Bayesiano. 
 
-A questo fine vengono usati i metodi detti di campionamento Monte-Carlo Markov-Chain (MCMC). Tali metodi costituiscono una potente e praticabile alternativa per la costruzione della distribuzione a posteriori per modelli complessi e consentono di decidere quali distribuzioni a priori e quali distribuzioni di verosimiglianza usare sulla base di considerazioni teoriche soltanto, senza dovere preoccuparsi dei vincoli dei metodi analitici. 
+A questo fine vengono usati i metodi di campionamento detti Monte-Carlo Markov-Chain (MCMC). Tali metodi costituiscono una potente e praticabile alternativa per la costruzione della distribuzione a posteriori per modelli complessi e consentono di decidere quali distribuzioni a priori e quali distribuzioni di verosimiglianza usare sulla base di considerazioni teoriche soltanto, senza dovere preoccuparsi dei vincoli dei metodi analitici. 
 
-Dato che i metodi di stima numerica della funzione a posteriori sono "computazionalmente intensivi", possono essere svolti soltanto mediante software. In anni recenti i metodi Bayesiani di analisi dei dati sono diventati sempre più popolari proprio perché la potenza di calcolo necessaria per svolgere tali calcoli è ora alla portata di tutti. Questo non era vero solo pochi decenni fa. 
+Dato che è basata su metodi _computazionalmente intensivi_, la stima numerica della funzione a posteriori può essere svolta soltanto mediante software. In anni recenti i metodi Bayesiani di analisi dei dati sono diventati sempre più popolari proprio perché la potenza di calcolo necessaria per svolgere tali calcoli è ora alla portata di tutti. Questo non era vero solo pochi decenni fa. 
 
-In questo capitolo ci porremo l'obiettivo di capire come sia possibile approssimare per via numerica la distribuzione a posteriori. Discuteremo tre diverse tecniche che possono essere utilizzate a questo scopo:
+In questo capitolo vedremo come sia possibile approssimare per via numerica la distribuzione a posteriori. Presenteremo tre diverse tecniche che possono essere utilizzate a questo scopo:
 
-1. i metodi *grid-based* approssimati,
+1. i metodi basati sull'uso di griglie (_grid-based_),
 2. il metodo dell'approssimazione quadratica,
 3. i metodi Monte Carlo basati su Catena di Markov (MCMC).
 
 
-## Metodi basati su griglia 
+## Metodi basati su griglie 
 
 ```{r, echo=FALSE}
 library("patchwork")
 ```
 
-È possibile stimare l'intera distribuzione a posteriori mediante metodi basati su griglia (*grid-based*), come abbiamo fatto nel capitolo [Modellistica bayesiana](#chapter-modellistica-bayesiana). Questo è l'approccio più semplice. Tuttavia, anche se tali metodi possono fornire risultati accuratissimi, a causa della "maledizione della dimensionalità" tali procedure numeriche sono utilizzabili solo nel caso di modelli statistici semplici, con non più di due parametri. Nella pratica concreta tali metodi vengono dunque sostituiti da altre tecniche più efficienti in quanto, anche in comuni modelli utilizzati in psicologia, vengono stimati centinaia se non migliaia di
+È possibile stimare l'intera distribuzione a posteriori mediante metodi basati su griglie (*grid-based*), come abbiamo fatto nel capitolo [Modellistica bayesiana](#chapter-modellistica-bayesiana). Questo è l'approccio più semplice. Tuttavia, anche se tali metodi possono fornire risultati accuratissimi, a causa della "maledizione della dimensionalità" tali procedure numeriche sono utilizzabili solo nel caso di modelli statistici semplici, con non più di due parametri. Nella pratica concreta tali metodi vengono dunque sostituiti da altre tecniche più efficienti in quanto, anche in comuni modelli utilizzati in psicologia, vengono stimati centinaia se non migliaia di
 parametri. 
 
-Ma cosa significa la "maledizione della dimensionalità"? È molto facile da capire.  Supponiamo di utilizzare una griglia di 100 punti equispaziati. Nel caso di un solo parametro, è necessario calcolare 100 valori. Per due parametri è necessario calcolare $100^2$ valori. Ma già per 10 parametri avremo bisogno di calcolare $10^{10}$ valori -- è facile capire che una tale quantità di calcoli è troppo grande anche per un computer molto potente. Per modelli che richiedono la stima di un numero non piccolo di parametri è dunque necessario procedere in un altro modo.
-
+```{block2, type='rmdtip'}
+__Osservazione.__ Che cos'è la "maledizione della dimensionalità"? È molto facile da capire.  Supponiamo di utilizzare una griglia di 100 punti equispaziati. Nel caso di un solo parametro, sarà necessario calcolare 100 valori. Per due parametri devono essere  calcolari $100^2$ valori. Ma già per 10 parametri avremo bisogno di calcolare $10^{10}$ valori -- è facile capire che una tale quantità di calcoli è troppo grande anche per un computer molto potente. Per modelli che richiedono la stima di un numero non piccolo di parametri è dunque necessario procedere in un altro modo.
+```
 
 ## Approssimazione quadratica 
 

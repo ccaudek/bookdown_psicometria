@@ -85,23 +85,26 @@
 <h1>
 <span class="header-section-number">Capitolo 23</span> Stima della funzione a posteriori<a class="anchor" aria-label="anchor" href="#stima-della-funzione-a-posteriori"><i class="fas fa-link"></i></a>
 </h1>
-<p>Quando usiamo il teorema di Bayes per calcolare la distribuzione a posteriori del parametro di un modello statistico, al denominatore troviamo un integrale. Se vogliamo costruire la distribuzione a posteriori con metodi analitici è necessario usare <em>distribuzioni a priori coniugate per la verosimiglianza</em>. Due distribuzioni si dicono <em>coniugate</em> se la distribuzione a posteriori <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span> è nella stessa famiglia della distribuzione a priori <span class="math inline">\(p(\theta)\)</span>. Questo significa che, nel caso di distribuzioni a priori coniugate, è possibile determinare la distribuzione a posteriori per via analitica. Per quanto “semplice” in termini formali, questo approccio, però, limita di molto le possibili scelte del ricercatore. Nel senso che non è sempre sensato dal punto di vista sostantivo utilizzare delle distribuzioni a priori coniugate per la verosimiglianza nel caso dei parametri di interesse. Dunque, se usiamo delle distribuzioni a priori non coniutate per la verosimiglianza ci troviamo in una condizione nella quale, per determinare la distribuzione a posteriori, è necessario calcolare un integrale che, nella maggior parte dei casi, non si può risolvere per via analitica. Detto in altre parole: è possibile ottenere la distribuzione posteriore per via analitica solo per alcune specifiche combinazioni di distribuzioni a priori a verosimiglianza, il che limita considerevolmente la flessibilità della modellazione.</p>
-<p>Per questa ragione, la strada principale che viene seguita nella modellistica Bayesiana non è quella di determinare la distribuzione a posteriori per via analitica, ma bensì quella della stima della distribuzione a posteriori mediante metodi numerici. La simulazione fornisce dunque la strategia generale del calcolo Bayesiano.</p>
-<p>A questo fine vengono usati i metodi detti di campionamento Monte-Carlo Markov-Chain (MCMC). Tali metodi costituiscono una potente e praticabile alternativa per la costruzione della distribuzione a posteriori per modelli complessi e consentono di decidere quali distribuzioni a priori e quali distribuzioni di verosimiglianza usare sulla base di considerazioni teoriche soltanto, senza dovere preoccuparsi dei vincoli dei metodi analitici.</p>
-<p>Dato che i metodi di stima numerica della funzione a posteriori sono “computazionalmente intensivi,” possono essere svolti soltanto mediante software. In anni recenti i metodi Bayesiani di analisi dei dati sono diventati sempre più popolari proprio perché la potenza di calcolo necessaria per svolgere tali calcoli è ora alla portata di tutti. Questo non era vero solo pochi decenni fa.</p>
-<p>In questo capitolo ci porremo l’obiettivo di capire come sia possibile approssimare per via numerica la distribuzione a posteriori. Discuteremo tre diverse tecniche che possono essere utilizzate a questo scopo:</p>
+<p>Quando usiamo il teorema di Bayes per calcolare la distribuzione a posteriori del parametro di un modello statistico, al denominatore troviamo un integrale. Se vogliamo costruire la distribuzione a posteriori con metodi analitici è necessario usare <em>distribuzioni a priori coniugate per la verosimiglianza</em>. Due distribuzioni si dicono <em>coniugate</em> se la forma funzionale della distribuzione a priori e della distribuzione a posteriori sono uguali. Questo significa che, nel caso di distribuzioni a priori coniugate, è possibile determinare la distribuzione a posteriori per via analitica. Per quanto “semplice” in termini formali, questo approccio, però, limita di molto le possibili scelte del ricercatore. Nel senso che non è sempre sensato, dal punto di vista teorico, utilizzare distribuzioni a priori coniugate per la verosimiglianza per i parametri di interesse. Dunque, se usiamo delle distribuzioni a priori non coniutate per la verosimiglianza, ci troviamo in una condizione nella quale, per determinare la distribuzione a posteriori, è necessario calcolare un integrale che, nella maggior parte dei casi, non si può risolvere per via analitica. Detto in altre parole: è possibile ottenere la distribuzione posteriore per via analitica solo per alcune specifiche combinazioni di distribuzioni a priori e verosimiglianza, il che limita considerevolmente la flessibilità della modellazione.</p>
+<p>Per questa ragione, la strada principale che viene seguita nella modellistica Bayesiana è quella che porta a determinare la distribuzione a posteriori non per via analitica, ma bensì mediante metodi numerici. La simulazione fornisce dunque la strategia generale del calcolo Bayesiano.</p>
+<p>A questo fine vengono usati i metodi di campionamento detti Monte-Carlo Markov-Chain (MCMC). Tali metodi costituiscono una potente e praticabile alternativa per la costruzione della distribuzione a posteriori per modelli complessi e consentono di decidere quali distribuzioni a priori e quali distribuzioni di verosimiglianza usare sulla base di considerazioni teoriche soltanto, senza dovere preoccuparsi dei vincoli dei metodi analitici.</p>
+<p>Dato che è basata su metodi <em>computazionalmente intensivi</em>, la stima numerica della funzione a posteriori può essere svolta soltanto mediante software. In anni recenti i metodi Bayesiani di analisi dei dati sono diventati sempre più popolari proprio perché la potenza di calcolo necessaria per svolgere tali calcoli è ora alla portata di tutti. Questo non era vero solo pochi decenni fa.</p>
+<p>In questo capitolo vedremo come sia possibile approssimare per via numerica la distribuzione a posteriori. Presenteremo tre diverse tecniche che possono essere utilizzate a questo scopo:</p>
 <ol style="list-style-type: decimal">
-<li>i metodi <em>grid-based</em> approssimati,</li>
+<li>i metodi basati sull’uso di griglie (<em>grid-based</em>),</li>
 <li>il metodo dell’approssimazione quadratica,</li>
 <li>i metodi Monte Carlo basati su Catena di Markov (MCMC).</li>
 </ol>
-<div id="metodi-basati-su-griglia" class="section level2" number="23.1">
+<div id="metodi-basati-su-griglie" class="section level2" number="23.1">
 <h2>
-<span class="header-section-number">23.1</span> Metodi basati su griglia<a class="anchor" aria-label="anchor" href="#metodi-basati-su-griglia"><i class="fas fa-link"></i></a>
+<span class="header-section-number">23.1</span> Metodi basati su griglie<a class="anchor" aria-label="anchor" href="#metodi-basati-su-griglie"><i class="fas fa-link"></i></a>
 </h2>
-<p>È possibile stimare l’intera distribuzione a posteriori mediante metodi basati su griglia (<em>grid-based</em>), come abbiamo fatto nel capitolo <a href="#chapter-modellistica-bayesiana">Modellistica bayesiana</a>. Questo è l’approccio più semplice. Tuttavia, anche se tali metodi possono fornire risultati accuratissimi, a causa della “maledizione della dimensionalità” tali procedure numeriche sono utilizzabili solo nel caso di modelli statistici semplici, con non più di due parametri. Nella pratica concreta tali metodi vengono dunque sostituiti da altre tecniche più efficienti in quanto, anche in comuni modelli utilizzati in psicologia, vengono stimati centinaia se non migliaia di
+<p>È possibile stimare l’intera distribuzione a posteriori mediante metodi basati su griglie (<em>grid-based</em>), come abbiamo fatto nel capitolo <a href="#chapter-modellistica-bayesiana">Modellistica bayesiana</a>. Questo è l’approccio più semplice. Tuttavia, anche se tali metodi possono fornire risultati accuratissimi, a causa della “maledizione della dimensionalità” tali procedure numeriche sono utilizzabili solo nel caso di modelli statistici semplici, con non più di due parametri. Nella pratica concreta tali metodi vengono dunque sostituiti da altre tecniche più efficienti in quanto, anche in comuni modelli utilizzati in psicologia, vengono stimati centinaia se non migliaia di
 parametri.</p>
-<p>Ma cosa significa la “maledizione della dimensionalità?” È molto facile da capire. Supponiamo di utilizzare una griglia di 100 punti equispaziati. Nel caso di un solo parametro, è necessario calcolare 100 valori. Per due parametri è necessario calcolare <span class="math inline">\(100^2\)</span> valori. Ma già per 10 parametri avremo bisogno di calcolare <span class="math inline">\(10^{10}\)</span> valori – è facile capire che una tale quantità di calcoli è troppo grande anche per un computer molto potente. Per modelli che richiedono la stima di un numero non piccolo di parametri è dunque necessario procedere in un altro modo.</p>
+
+<div class="rmdtip">
+<strong>Osservazione.</strong> Che cos’è la “maledizione della dimensionalità?” È molto facile da capire. Supponiamo di utilizzare una griglia di 100 punti equispaziati. Nel caso di un solo parametro, sarà necessario calcolare 100 valori. Per due parametri devono essere calcolari <span class="math inline">\(100^2\)</span> valori. Ma già per 10 parametri avremo bisogno di calcolare <span class="math inline">\(10^{10}\)</span> valori – è facile capire che una tale quantità di calcoli è troppo grande anche per un computer molto potente. Per modelli che richiedono la stima di un numero non piccolo di parametri è dunque necessario procedere in un altro modo.
+</div>
 </div>
 <div id="approssimazione-quadratica" class="section level2" number="23.2">
 <h2>
@@ -323,7 +326,7 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
     x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,
     y <span class="op">=</span> <span class="st">"Verosimiglianza"</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-240-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-241-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
 <div id="distribuzione-a-priori-1" class="section level3" number="23.8.2">
 <h3>
@@ -343,7 +346,7 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
     x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,
     y <span class="op">=</span> <span class="st">"Densità"</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-241-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-242-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
 <div id="distribuzione-a-posteriori" class="section level3" number="23.8.3">
 <h3>
@@ -362,7 +365,7 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
     x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,
     y <span class="op">=</span> <span class="st">"Densità"</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-242-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-243-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Questo è il risultato che vogliamo ottenere utilizzando l’algoritmo di Metropolis. Dalla figura precedente vediamo che la moda della distribuzione a posteriori è pari a circa 0.6. Questo è il valore più verosimile a posteriori per il parametro <span class="math inline">\(\theta\)</span>.</p>
 </div>
 <div id="algoritmo-di-metropolis" class="section level3" number="23.8.4">
@@ -434,7 +437,7 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
 
 <span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span>
 <span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-247-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-248-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>A questo punto è molto facile trovare il massimo a posteriori per il parametro <span class="math inline">\(\theta\)</span>:</p>
 <div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">chain</span><span class="op">[</span><span class="op">-</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">burnIn</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
@@ -503,7 +506,7 @@ problemi di qualunque grado di complessità.</p>
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#stima-della-funzione-a-posteriori"><span class="header-section-number">23</span> Stima della funzione a posteriori</a></li>
-<li><a class="nav-link" href="#metodi-basati-su-griglia"><span class="header-section-number">23.1</span> Metodi basati su griglia</a></li>
+<li><a class="nav-link" href="#metodi-basati-su-griglie"><span class="header-section-number">23.1</span> Metodi basati su griglie</a></li>
 <li><a class="nav-link" href="#approssimazione-quadratica"><span class="header-section-number">23.2</span> Approssimazione quadratica</a></li>
 <li><a class="nav-link" href="#integrazione-con-metodo-monte-carlo"><span class="header-section-number">23.3</span> Integrazione con metodo Monte Carlo</a></li>
 <li><a class="nav-link" href="#legge-forte-dei-grandi-numeri"><span class="header-section-number">23.4</span> Legge forte dei grandi numeri</a></li>

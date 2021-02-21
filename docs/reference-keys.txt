@@ -366,7 +366,7 @@ la-stima-della-distribuzione-a-posteriori-versione-2
 sommario-della-funzione-a-posteriori
 differenza-tra-intervalli-di-confidenza-e-di-credibilità
 stima-della-funzione-a-posteriori
-metodi-basati-su-griglia
+metodi-basati-su-griglie
 approssimazione-quadratica
 integrazione-con-metodo-monte-carlo
 legge-forte-dei-grandi-numeri
