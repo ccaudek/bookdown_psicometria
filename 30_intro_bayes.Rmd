@@ -1,8 +1,6 @@
 # Modellistica bayesiana 
 
-La statistica bayesiana è un approccio all'analisi dei dati e alla stima
-dei parametri basato sul teorema di Bayes. Una tipica analisi di dati
-Bayesiana consiste di tre fasi principali:
+Una tipica analisi di dati Bayesiana consiste di tre fasi principali:
 
 -   acquisire la conoscenza disponibile su un dato parametro in un
     modello statistico tramite la distribuzione a priori, che è
@@ -120,14 +118,22 @@ positivamente distorte. Nella seguente discussione, chiameremo $\theta$
 la probabilità dell'evento "le aspettative del partecipante sono
 distorte negativamente". Il problema che ci poniamo è quello di ottenere
 la stima a posteriori di $\theta$, avendo osservato 23 "successi" in 30
-prove.
+prove, ovvero $\hat{\theta}$ = 23/30 = 0.77. 
 
-Per stimare la distribuzione a posteriori utilizzeremo un approccio
-chiamato *grid-based*, ovvero utilizzeremo un metodo di approsimazione
-numerica basata su una griglia di punti uniformemente spaziati (si veda
-il capitolo [Stima della funzione a posteriori](#chapter-stima-distr-posteriori)). Anche se la maggior parte dei parametri è continua (ovvero, in linea di principio ciascun parametro può assumere un numero infinito di valori), possiamo ottenere un'eccellente approssimazione della distribuzione a posteriori considerando solo una griglia finita di valori dei parametri. In un tale metodo la densità di probabilità a posteriori può dunque essere approssimata tramite le densità di probabilità cacolate in ciascuna cella della griglia.
+Si noti un punto importante qui: un problema di scrivere semplicemente la stima di  $\theta$ come 0.77 è che tale valore ignora l'incertezza della nostra stima. Infatti, il valore di 0.77 si può ottenere come 23/30, o come 230/300, o 2300/3000, o 23000/30000.  L'incertezza della stima 0.77 è diversa in ciascuno di questi casi e questo è molto importante quando si traggono conclusioni dai dati. 
 
-Per calcolare la probabilità a posteriori in corrispondenza di uno specifico valore $\theta'$ del parametro di interesse (ovvero, di un elemento della griglia) è necessario moltiplicare l'ordinata della probabilità a priori in corrispondenza di $\theta'$ per l'ordinata della funzione di verosimiglianza in corrispondenza di $\theta'$. Tale procedura viene poi ripetuta per ciascun elemento della griglia. C'è ovviamente bisogno di una griglia molto densa per ottenere buone approssimazioni. 
+Nell'approccio frequentista, l'unico strumento che abbiamo per caratterizzare la nostra incertezza relativa alla stima di $\theta$ è la distribuzione campionaria della stima di questo parametro nel caso di un ipotetico campionamento ripetuto; non è invece possibile fare riferimento ad un'incertezza relativa al vero valore del parametro stesso. Per una dimensione campionaria pari a 30, la nostra incertezza deriva dalle caratteristiche della distribuzione campionaria e viene calcolata trovando la varianza campionaria -- ovvero, $n \cdot \hat{\theta} (1 - \hat{\theta}) = 30 \cdot 0.77 (1 - 0.77) =  5.31$ -- e poi l'errore standard, $\sigma / \sqrt{n}$ -- qui 0.42. Per la stessa proporzione di successi pari a 0.77, l'aumento della dimensione del campione rende questo errore standard sempre più piccolo. Questa maggiore precisione corrisponde alle proprietà della distribuzione campionaria di $\hat{\theta}$, ma non quantifica l'incertezza relativa al vero valore di $\theta$. 
+
+L'approccio Bayesiano procede in modo diverso e ci fornisce invece l'opportunità di quantificare direttamente la nostra incertezza relativa al vero valore del parametro $\theta$, alla luce dei dati -- non della distribuzione campionaria di $\hat{\theta}$. Tale quantificazione dell'incertezza si trova costruendo la distribuzione a posteriori di $\theta$ mediante la regola di Bayes, come verrà mostrato di seguito.
+
+Per costruire la distribuzione a posteriori di $\theta$, in questo esempio utilizzeremo l'approccio chiamato *grid-based*. Il metodo basato su griglia è un metodo di approsimazione numerica basato su una griglia di punti uniformemente spaziati (si veda
+il capitolo [Stima della funzione a posteriori](#chapter-stima-distr-posteriori)). Anche se la maggior parte dei parametri è continua (ovvero, in linea di principio ciascun parametro può assumere un numero infinito di valori), possiamo ottenere un'eccellente approssimazione della distribuzione a posteriori considerando solo una griglia finita di valori dei parametri. In un tale metodo, la densità di probabilità a posteriori può dunque essere approssimata tramite le densità di probabilità cacolate in ciascuna cella della griglia.
+
+Per calcolare la probabilità a posteriori si procede come indicato di seguito.
+<span style="background-color: #FFFF00">
+Per ciascuno specifico valore $\theta'$ del parametro di interesse (ovvero, di un elemento della griglia) è necessario moltiplicare l'ordinata della probabilità a priori in corrispondenza di $\theta'$ per l'ordinata della funzione di verosimiglianza in corrispondenza di $\theta'$. Tale procedura va ripetuta per ciascun elemento della griglia. 
+</span> 
+C'è ovviamente bisogno di una griglia molto densa per ottenere buone approssimazioni. 
 
 Il metodo basato su griglia è, in primo luogo, un utile strumento didattico in quanto rende trasparente la logica del processo dell'aggiornamento Bayesiano. Per ragioni che vedremo in seguito, tale metodo non può essere usato per la stima di modelli complessi che includono un grande numero di parametri -- ma non è questo il nostro scopo qui. Ma, al di là di questo limite del metodo basato su griglia, è importante sottolineare che, quale che sia il *metodo* che si usa per stimare la funzione a posteriori, il *significato* della funzione a posteriori non cambia ed è ben illustrato dall'esempio qui discusso.
 
@@ -389,6 +395,19 @@ questo problema nel caso presente, in quanto il metodo metodo
 *grid-based* per il calcolo della distribuzione a posteriori è solo un
 esempio didattico.
 
+
+
+### Differenza tra intervalli di confidenza e di credibilità
+
+L'approccio frequentista generalmente ipotizza che il mondo abbia certe proprietà (ad esempio, un parametro viene assunto che un dato parametro ha un particolare valore vero) e cercano di condurre esperimenti la cui conclusione risultante sarà corretta con almeno un livello minimo di probabilità. Per esprimere l'incertezza della nostra conoscenza dopo un esperimento, l'approccio frequentista utilizza un "intervallo di confidenza" -- ovvero, un intervallo di valori progettato per includere il vero valore del parametro con una probabilità minima, diciamo il 95%. Un frequentista progetterà l'esperimento e la procedura di calcolo dell'intervallo di confidenza al 95% in modo tale che su ogni 100 esperimenti eseguiti si prevede che almeno 95 degli intervalli di confidenza risultanti includano il vero valore del parametro; gli altri 5 potrebbero essere leggermente sbagliati, o potrebbero essere del tutto assurdi. Dal punto di vista dell'approccio frequentista, questo è accettabile, purché 95 inferenze su 100 siano corrette (ma ovviamente noi preferiremmo che i 5 risultati sbagliati fossero leggermente sbagliati, non totalmente assurdi).
+
+L'approccio Bayesiano formula il problema in modo diverso. Invece di dire che il parametro ha un valore vero (ma sconosciuto), il metodo Bayesiano dice che, prima di eseguire l'esperimento, è possibile assegnare una distribuzione di probabilità, che chiamano stato di credenza, a quello che è il vero valore del parametro. Questa distribuzione a priori potrebbe essere nota (per esempio, sappiamo che la distribuzione dei punteggi del QI è normale con media 100 e deviazione standard 15) o potrebbe essere  del tutto arbitraria. L'inferenza Bayesiana è semplice: si raccolgono alcuni dati e si calcola la probabilità di diversi valori del parametro __dati__ i dati. Questa nuova distribuzione di probabilità è chiamata "distribuzione a posteriori". L'approccio Bayesiano riassumere l'incertezza descrivendo un intervallo di valori sulla distribuzione di probabilità a posteriori che include il 95% della probabilità -- questo intervallo è chiamato "intervallo di credibilità del 95%".
+
+Un proponente dell'approccio Bayesiano potrebbe criticare l'intervallo di confidenza frequentista in questo modo: "Perché dovrei dare importanza al fatto che 95 esperimenti su 100 producono un intervallo di confidenza che include il vero valore del parametro sconosciuto? Non mi interessano 95 esperimenti __che non ho eseguito__; mi interessa l'unico esperimento __che ho effettivamente eseguito__. La regola decisionale frequentista consente che 5 risultati su 100 siano completamente privi di senso [es., valori negativi, valori impossibili] purché gli altri 95 siano corretti. Ma questo è inaccettabile."
+
+Un proponente dell'approccio frequentista potrebbe criticare l'intervallo di credibilità Bayesiano in questo modo: "Perché dovrei dare importanza al fatto che il 95% della probabilità a posteriori è incluso in un dato intervallo? La risposta Bayesiana è corretta solo se la distribuzione a priori è corretta. Ma chi mi garantisce che tale distribuzione non sia stata scelta in un modo del tutto inappropriato?"
+
+Vorrei rendere esplicito il fatto che, in questo insegnamento, io mi schiero in maniera chiara a favore dell'approccio Bayesiano.  La critica che i Bayesiani rivolgono all'approccio frequentista mi sembra sensata.  La critica che i frequentisti rivolgono all'approccio Bayesiano mi sembra, invece, debole e poco convincente.  Spero che ciò che verrà detto in seguito chiarirà questo punto.
 
 ## Conclusioni {-}
 

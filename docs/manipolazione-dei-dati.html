@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capitolo 8 Manipolazione dei dati | Data Science per psicologi</title>
 <meta name="author" content="Corrado Caudek">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.6/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
@@ -98,13 +98,13 @@ in maniera tale che abbiano una struttura logica organizzata. La
 struttura che solitamente si utilizza è quella tabellare (matrice dei
 dati), ovvero si dispongono i dati in una tabella nella quale a ciascuna
 riga corrisponde ad un’osservazione e ciascuna colonna corrisponde ad
-una variabile rilevata. In R una tale struttura è chiamata <em>data frame</em>.
+una variabile rilevata. In <code>R</code> una tale struttura è chiamata <em>data frame</em>.
 Il pacchetto <code>dplyr</code>, che è al momento uno dei pacchetti più famosi e
 utilizzati per la gestione dei dati, offre una serie di funzionalità che
 consentono di ottenere il risultato descritto in precedenza e consente
 inoltre di eseguire le operazioni più comuni di manipolazione dei dati
 in maniera più semplice rispetto a quanto succeda quando usiamo le
-funzioni base di .</p>
+funzioni base di <code>R</code>.</p>
 </div>
 <div id="trattamento-dei-dati-con-dplyr" class="section level2" number="8.2">
 <h2>
@@ -127,7 +127,7 @@ considerando una matrice osservazioni per variabili, <code>select()</code> e
 <h3>
 <span class="header-section-number">8.2.1</span> Operatore pipe<a class="anchor" aria-label="anchor" href="#operatore-pipe"><i class="fas fa-link"></i></a>
 </h3>
-<p>Prima di presentare le funzionalità di <code>tidyverse</code>, introduciamo l’operatore pipe <code><a href="https://rpkgs.datanovia.com/ggpubr/reference/pipe.html">%&gt;%</a></code> del pacchetto <code>magrittr</code> – ma ora presente anche in base R nella versione <code>|&gt;</code>. L’operatore pipe, <code><a href="https://rpkgs.datanovia.com/ggpubr/reference/pipe.html">%&gt;%</a></code> o <code>|&gt;</code>, serve a concatenare varie funzioni insieme, in modo da inserire un’operazione dietro l’altra. Una spiegazione intuitiva dell’operatore pipe è stata fornita in un tweet di <code>@andrewheiss</code>. Consideriamo la seguente istruzione in pseudo-codice R:</p>
+<p>Prima di presentare le funzionalità di <code>tidyverse</code>, introduciamo l’operatore pipe <code><a href="https://rpkgs.datanovia.com/ggpubr/reference/pipe.html">%&gt;%</a></code> del pacchetto <code>magrittr</code> – ma ora presente anche in base <code>R</code> nella versione <code>|&gt;</code>. L’operatore pipe, <code><a href="https://rpkgs.datanovia.com/ggpubr/reference/pipe.html">%&gt;%</a></code> o <code>|&gt;</code>, serve a concatenare varie funzioni insieme, in modo da inserire un’operazione dietro l’altra. Una spiegazione intuitiva dell’operatore pipe è stata fornita in un tweet di <code>@andrewheiss</code>. Consideriamo la seguente istruzione in pseudo-codice <code>R</code>:</p>
 <div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">leave_house</span><span class="op">(</span><span class="fu">get_dressed</span><span class="op">(</span><span class="fu">get_out_of_bed</span><span class="op">(</span><span class="fu">wake_up</span><span class="op">(</span><span class="va">me</span>, time <span class="op">=</span> <span class="st">"8:00"</span><span class="op">)</span>, side <span class="op">=</span> <span class="st">"correct"</span><span class="op">)</span>, pants <span class="op">=</span> <span class="cn">TRUE</span>, shirt <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, car <span class="op">=</span> <span class="cn">TRUE</span>, bike <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <p>Il listato precedente descrive una serie di (pseudo) funzioni concatenate, le quali costituiscono gli argomenti di altre funzioni. Scritto così, il codice è molto difficile da capire. Possiamo però ottenere lo stesso risultato utilizzando l’operatore pipe che facilita la leggibilità del codice:</p>
@@ -137,7 +137,7 @@ considerando una matrice osservazioni per variabili, <code>select()</code> e
   <span class="fu">get_out_of_bed</span><span class="op">(</span>side <span class="op">=</span> <span class="st">"correct"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">get_dressed</span><span class="op">(</span>pants <span class="op">=</span> <span class="cn">TRUE</span>, shirt <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">leave_house</span><span class="op">(</span>car <span class="op">=</span> <span class="cn">TRUE</span>, bike <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
-<p>In questa seconda versione del (pseudo) codice R si capisce molto meglio ciò che vogliamo fare. Il data.frame <code>me</code> viene passato alla funzione <code>wake_up()</code>. La funzione <code>wake_up()</code> ha come argomento l’ora del giorno: <code>time = "8:00"</code>. Una volta “svegliati” (wake up) dobbiamo scendere dal letto. Quindi l’output di <code>wake_up()</code> viene passato alla funzione <code>get_out_of_bed()</code> la quale ha come argomento <code>side = "correct"</code> perché vogliamo scendere dal letto dalla parte giusta. E così via.</p>
+<p>In questa seconda versione del (pseudo) codice <code>R</code> si capisce molto meglio ciò che vogliamo fare. Il data.frame <code>me</code> viene passato alla funzione <code>wake_up()</code>. La funzione <code>wake_up()</code> ha come argomento l’ora del giorno: <code>time = "8:00"</code>. Una volta “svegliati” (wake up) dobbiamo scendere dal letto. Quindi l’output di <code>wake_up()</code> viene passato alla funzione <code>get_out_of_bed()</code> la quale ha come argomento <code>side = "correct"</code> perché vogliamo scendere dal letto dalla parte giusta. E così via.</p>
 </div>
 <div id="selezionare-le-colonne-del-data.frame-con-select" class="section level3" number="8.2.2">
 <h3>
@@ -280,9 +280,9 @@ specificato. Per tali osservazioni, dunque, la classe di appartenenza è
 </div>
 <div id="dati-categoriali-in-r" class="section level2" number="8.3">
 <h2>
-<span class="header-section-number">8.3</span> Dati categoriali in R<a class="anchor" aria-label="anchor" href="#dati-categoriali-in-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.3</span> Dati categoriali in <code>R</code><a class="anchor" aria-label="anchor" href="#dati-categoriali-in-r"><i class="fas fa-link"></i></a>
 </h2>
-<p>Consideriamo una variabile che descrive il genere e include le categorie <code>male</code>, <code>female</code> e <code>non-conforming</code>. In R, ci sono due modi per memorizzare queste informazioni. Uno è usare la classe <em>character strings</em> e l’altro è usare la classe <em>factor</em>. Non ci addentrimo qui nelle sottigliezze di questa distinzione, motivata in gran parte per le necessità della programmazione con le funzioni di <code>tidyverse</code>. Per gli scopi di questo insegnamento sarà sufficiente codificare le variabili qualitative usando la classe <em>factor</em>. Una volta codificati i dati qualitativi utilizzando la classe <em>factor</em>, si pongono spesso due problemi:</p>
+<p>Consideriamo una variabile che descrive il genere e include le categorie <code>male</code>, <code>female</code> e <code>non-conforming</code>. In <code>R</code>, ci sono due modi per memorizzare queste informazioni. Uno è usare la classe <em>character strings</em> e l’altro è usare la classe <em>factor</em>. Non ci addentrimo qui nelle sottigliezze di questa distinzione, motivata in gran parte per le necessità della programmazione con le funzioni di <code>tidyverse</code>. Per gli scopi di questo insegnamento sarà sufficiente codificare le variabili qualitative usando la classe <em>factor</em>. Una volta codificati i dati qualitativi utilizzando la classe <em>factor</em>, si pongono spesso due problemi:</p>
 <ol style="list-style-type: decimal">
 <li>modificare le etichette dei livelli (modalità) di un fattore,</li>
 <li>riordinare i livelli di un fattore.</li>
@@ -327,7 +327,7 @@ specificato. Per tali osservazioni, dunque, la classe di appartenenza è
 <h3>
 <span class="header-section-number">8.3.2</span> Riordinare i livelli di un fattore<a class="anchor" aria-label="anchor" href="#riordinare-i-livelli-di-un-fattore"><i class="fas fa-link"></i></a>
 </h3>
-<p>Spesso i livelli dei fattori hanno un ordinamento naturale. Tuttavia, l’impostazione predefinita in base R è ordinare i livelli in ordine alfabetico. Quindi, gli utenti devono avere un modo per imporre l’ordine desiderato sulla codifica delle loro variabili qualitative. Ciò può essere ottenuto nel modo seguente.</p>
+<p>Spesso i livelli dei fattori hanno un ordinamento naturale. Tuttavia, l’impostazione predefinita in base <code>R</code> è ordinare i livelli in ordine alfabetico. Quindi, gli utenti devono avere un modo per imporre l’ordine desiderato sulla codifica delle loro variabili qualitative. Ciò può essere ottenuto nel modo seguente.</p>
 <div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span><span class="op">$</span><span class="va">f_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">f_1</span>,
   levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
@@ -440,9 +440,9 @@ specificato. Per tali osservazioni, dunque, la classe di appartenenza è
 </div>
 <div id="scrivere-il-codice-in-r-con-stile" class="section level3" number="8.4.3">
 <h3>
-<span class="header-section-number">8.4.3</span> Scrivere il codice in R con stile<a class="anchor" aria-label="anchor" href="#scrivere-il-codice-in-r-con-stile"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4.3</span> Scrivere il codice in <code>R</code> con stile<a class="anchor" aria-label="anchor" href="#scrivere-il-codice-in-r-con-stile"><i class="fas fa-link"></i></a>
 </h3>
-<p>Uno stile di programmazione è un insieme di regole per la gestione dell’indentazione dei blocchi di codice, per la creazione dei nomi dei file e delle variabili e per le convenzioni tipografiche che vengono usate. Scrivere il codice in R con stile consente di creare listati più leggibili e semplici da modificare, minimizza la possibilità di errore, e consente correzioni e modifiche più rapide. Vi sono molteplici stili di programmazione che possono essere utilizzati dall’utente, anche se è bene attenersi a quelle che sono le convenzioni maggiormente diffuse, allo scopo di favorire la comunicazione. In ogni caso, l’importante è di essere coerenti, ovvero di adottare le stesse convenzioni in tutte le parti del codice che si scrive. Ad esempio, se si sceglie di usare lo stile <code>snake_case</code> per il nome composto di una variabile (es., <code>personality_trait</code>), non è appropriato usare lo stile <em>lower Camel case</em> per un’altra variabile (es., <code>socialStatus</code>). Dato che questo argomento è stato trattato ampiamente in varie sedi, mi limito qui a rimandare ad uno stile di programmazione molto popolare, quello proposto da Hadley Wickham, il creatore di <code>tidyverse</code>. Potete trovare maggiori informazioni al seguente link: <a href="http://style.tidyverse.org/" class="uri">http://style.tidyverse.org/</a>.</p>
+<p>Uno stile di programmazione è un insieme di regole per la gestione dell’indentazione dei blocchi di codice, per la creazione dei nomi dei file e delle variabili e per le convenzioni tipografiche che vengono usate. Scrivere il codice in <code>R</code> con stile consente di creare listati più leggibili e semplici da modificare, minimizza la possibilità di errore, e consente correzioni e modifiche più rapide. Vi sono molteplici stili di programmazione che possono essere utilizzati dall’utente, anche se è bene attenersi a quelle che sono le convenzioni maggiormente diffuse, allo scopo di favorire la comunicazione. In ogni caso, l’importante è di essere coerenti, ovvero di adottare le stesse convenzioni in tutte le parti del codice che si scrive. Ad esempio, se si sceglie di usare lo stile <code>snake_case</code> per il nome composto di una variabile (es., <code>personality_trait</code>), non è appropriato usare lo stile <em>lower Camel case</em> per un’altra variabile (es., <code>socialStatus</code>). Dato che questo argomento è stato trattato ampiamente in varie sedi, mi limito qui a rimandare ad uno stile di programmazione molto popolare, quello proposto da Hadley Wickham, il creatore di <code>tidyverse</code>. Potete trovare maggiori informazioni al seguente link: <a href="http://style.tidyverse.org/" class="uri">http://style.tidyverse.org/</a>.</p>
 
 </div>
 </div>

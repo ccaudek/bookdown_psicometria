@@ -5,7 +5,7 @@ source("_common.R")
 knitr::opts_chunk$set(fig.align="center")
 ```
 
-Riporto qui tutti i pacchetti che verranno usati in queste dispense.
+Riporto qui tutti i pacchetti `R` che verranno usati in queste dispense.
 
 ```{r}
 suppressPackageStartupMessages(library("here"))
@@ -20,6 +20,7 @@ suppressPackageStartupMessages(library("RColorBrewer"))
 suppressPackageStartupMessages(library("rio"))
 suppressPackageStartupMessages(library("papaja"))
 library("patchwork")
+suppressPackageStartupMessages(library("rethinking"))
 set.seed(12345)
 ```
 

@@ -4,14 +4,14 @@
 source("_common.R")
 ```
 
-Al fine di utilizzare R è necessario eseguire le seguenti tre operazioni
+Al fine di utilizzare `R` è necessario eseguire le seguenti tre operazioni
 nell'ordine dato:
 
-1.  Installare R;
+1.  Installare `R`;
 2.  Installare RStudio;
 3.  Installare R-Packages (se necessario).
 
-Vedremo qui come installare R e RStudio.
+Vedremo qui come installare `R` e RStudio.
 
 ## Installare R e RStudio
 
@@ -26,25 +26,25 @@ tutti i più diffusi sistemi operativi (Windows, Mac OS X e Linux).
 Il R Core Development Team lavora continuamente per migliorare le
 prestazioni di R, per correggere errori e per consentire l'uso di   con
 nuove tecnologie. Di conseguenza, periodicamente vengono rilasciate
-nuove versioni di R. Informazioni a questo proposito sono fornite sulla
+nuove versioni di `R`. Informazioni a questo proposito sono fornite sulla
 pagina web <https://www.r-project.org/>. Per installare una nuova
-versione di R si segue la stessa procedura che è stata seguita per la
+versione di `R` si segue la stessa procedura che è stata seguita per la
 prima installazione. 
 
-Insieme al software si possono scaricare dal sito principale sia manuali d'uso che numerose dispense per approfondire diversi aspetti di R. In particolare, nel sito  <http://cran.r-project.org/other-docs.html> si possono trovare anche  numerose dispense in italiano (sezione "Other languages").
+Insieme al software si possono scaricare dal sito principale sia manuali d'uso che numerose dispense per approfondire diversi aspetti di `R`. In particolare, nel sito  <http://cran.r-project.org/other-docs.html> si possono trovare anche  numerose dispense in italiano (sezione "Other languages").
 
-Dopo avere installato R è opportuno installare anche RStudio. RStudio si
+Dopo avere installato `R` è opportuno installare anche RStudio. RStudio si
 può scaricare da <https://www.rstudio.com/>. Anche RStudio è disponibile
 per tutti i più diffusi sistemi operativi.
 
 ## Utilizzare RStudio per semplificare il lavoro
 
-Possiamo pensare ad R come al motore di un automobile e a RStudio come
-al cruscotto di un automobile. Più precisamente, R è un linguaggio di
+Possiamo pensare ad `R` come al motore di un automobile e a RStudio come
+al cruscotto di un automobile. Più precisamente, `R` è un linguaggio di
 programmazione che esegue calcoli mentre RStudio è un ambiente di
 sviluppo integrato (IDE) che fornisce un'interfaccia grafica aggiungendo
 una serie di strumenti che facilitano la fase di sviluppo e di
-esecuzione del codice. Utilizzeremo dunque R mediante RStudio. In altre
+esecuzione del codice. Utilizzeremo dunque `R` mediante RStudio. In altre
 parole, 
 
 __non aprite__
@@ -65,13 +65,14 @@ comandi) e la finestra dei pacchetti-dei grafici-dell'aiuto in linea.
 
 Mediante il menu a tendina di RStudio, scegliendo il percorso
 
-    File > New File > R Notebook
-
+````
+File > New File > R Notebook
+````
 oppure
-
-    File > New File > R Script
-
-l'utente può aprire nella finestra del codice (in alto a destra) un R Notebook o un R script dove inserire le istruzioni da eseguire.
+````
+File > New File > R Script
+````
+l'utente può aprire nella finestra del codice (in alto a destra) un `R` Notebook o un `R` script dove inserire le istruzioni da eseguire.
 
 In un R script, un blocco di codice viene eseguito selezionando un
 insieme di righe di istruzioni e digitando la sequenza di tasti

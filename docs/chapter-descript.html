@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capitolo 12 Statistica descrittiva | Data Science per psicologi</title>
 <meta name="author" content="Corrado Caudek">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.6/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
@@ -272,13 +272,13 @@ tipici vanno sotto il nome di <strong>mode</strong> della distribuzione.</p>
 </h3>
 <p>Poniamoci ora il problema di costruire la tabella precedente partendo dai dati grezzi messi a disposizione da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.
 Leggiamo i dati assumendo che il file <code>data.mood.csv</code> si trovi nella cartella <code>data</code> contenuta nella <em>working directory</em>.</p>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span>
   <span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"data.mood.csv"</span><span class="op">)</span>, 
   header<span class="op">=</span><span class="cn">TRUE</span>
 <span class="op">)</span> </code></pre></div>
 <p>C’è un solo valore di depressione per ciascun soggetto ma tale valore viene ripetuto tante volte quante volte sono le righe del <code>data.frame</code> associate ad ogni soggetto (ciascuna riga corrispondente ad una prova diversa). È dunque necessario trasformare il <code>data.frame</code> in modo tale da avere un’unica riga per ciascun soggetto, ovvero un unico valore BDI-II per soggetto.</p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bysubj</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">esm_id</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">summarise</span><span class="op">(</span>
@@ -286,14 +286,14 @@ Leggiamo i dati assumendo che il file <code>data.mood.csv</code> si trovi nella 
   <span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Ci sono dunque 66 soggetti i quali hanno ottenuto i valori sulla scala del BDI-II stampati di seguito (li presento ordinati dal più piccolo al più grande).</p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">bysubj</span><span class="op">$</span><span class="va">bdi</span><span class="op">)</span>
 <span class="co">#&gt;  [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  2  2  2  2</span>
 <span class="co">#&gt; [30]  3  3  3  5  7  9 12 19 22 22 24 25 25 26 26 26 27 27 28 28 30 30 30 31 31 33 33 34 35</span>
 <span class="co">#&gt; [59] 35 35 36 39 41 43 43 44</span></code></pre></div>
 <p>Calcolo ora le frequenze assolute per i seguenti intervalli aperti a destra: [0, 13.5), [13.5, 19.5), [19.5, 28.5), [28.5, 63). Esaminando i dati, possiamo notare che 36 soggetti cadono nella prima classe. È però necessario eseguire quest’operazione di conteggio utilizzando R.</p>
 <p>Uno dei modi possibili per calcolare le frequenze assolute è quello di usare la funzione <code><a href="https://rdrr.io/r/base/cut.html">cut()</a></code>. Mediante tal funzione è possibile dividere il <em>campo di variazione</em> (ovvero, la differenza tra il valore massimo di una distribuzione ed il valore minimo) di una variabile continua <code>x</code> in intervalli e codificare ciascun valore <code>x</code> nei termini dell’intervallo a cui appartiene. Tale risultato si ottiene nel modo seguente.</p>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bysubj</span><span class="op">$</span><span class="va">bdi_level</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span>
   <span class="va">bysubj</span><span class="op">$</span><span class="va">bdi</span>,
   breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">13.5</span>, <span class="fl">19.5</span>, <span class="fl">28.5</span>, <span class="fl">63</span><span class="op">)</span>,
@@ -314,13 +314,13 @@ Leggiamo i dati assumendo che il file <code>data.mood.csv</code> si trovi nella 
 <span class="co">#&gt; [64] minimal  minimal  minimal </span>
 <span class="co">#&gt; Levels: minimal mild moderate severe</span></code></pre></div>
 <p>Possiamo ora usare la funzione <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> la quale ritorna un elenco che associa la frequenza assoluta a ciascuna modalità della variabile in input – ovvero, la distribuzione di frequenza assoluta.</p>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">bysubj</span><span class="op">$</span><span class="va">bdi_level</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;  minimal     mild moderate   severe </span>
 <span class="co">#&gt;       36        1       12       17</span></code></pre></div>
 <p>Per ottenere la distribuzione di frequenza relativa è sufficiente dividere ciascuna frequenza assoluta per il numero totale di osservazioni:</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">bysubj</span><span class="op">$</span><span class="va">bdi_level</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">bysubj</span><span class="op">$</span><span class="va">bdi_level</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;    minimal       mild   moderate     severe </span>
@@ -389,7 +389,7 @@ dei singoli rettangoli e quindi vale 1.0.</p>
 Nell’istogramma viene rappresentata la frequenza relativa delle classi: l’area di ogni barra dell’istogramma è proporzionale alla frequenza relativa della classe che la barra rappresenta.
 Come si trova l’altezza delle barre dell’istogramma? Per la classe [0, 13.5), ad esempio, la frequenza relativa è 36/66. Tale valore corrisponde all’<strong>area</strong> del rettangolo. Dato che la base del rettangolo è 13.5, l’altezza sarà 36/66 / 13.5, ovvero 0.0404. E così via per le altre barre dell’istogramma.</p>
 <p>Una rappresentazione grafica dell’istogramma delle frequenze relative si può ottenere con R utilizzando le funzioni di <code>ggplot2</code>. Il pacchetto <code>ggplot2</code> è un potente strumento per rappresentare graficamente i dati. Le iniziali del nome, <code>gg</code>, si riferiscono alla ‘’Grammar of Graphics’’, che è un modo di pensare le figure come una serie di layer stratificati. Originariamente descritta da Leland Wilkinson, la grammatica dei grafici è stata aggiornata e applicata in R da Hadley Wickham, il creatore del pacchetto. Per chiarezza, precisiamo che la funzione <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> utilizza intervalli aperti a destra.</p>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">bysubj</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">bdi</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>
@@ -417,7 +417,7 @@ stesso procedimento si applica per il calcolo dell’altezza degli altri
 rettangoli.</p>
 <p>Anche se nel caso presente è sensato usare ampiezze diverse per gli intervalli delle classi, in generale gli istogrammi si costruiscono utilizzando intervalli riportati sulle ascisse con un’ampiezza uguale.
 Questo è il caso dell’istogramma seguente il quale è stato generato a partire dagli stessi dati.</p>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2</span> <span class="op">&lt;-</span> <span class="va">bysubj</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">bdi</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>
@@ -460,7 +460,7 @@ stessa idea si applica anche quando il campione è più piccolo.</p>
 <span class="header-section-number">12.4.1</span> Esercizio con R<a class="anchor" aria-label="anchor" href="#esercizio-con-r-2"><i class="fas fa-link"></i></a>
 </h3>
 <p>Nel caso dei dati del BDI-II otteniamo la reppresentazione fornita dalla figura seguente.</p>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p3</span> <span class="op">&lt;-</span> <span class="va">bysubj</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">bdi</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>
@@ -574,7 +574,7 @@ Figura 12.5: Box-plot: <span class="math inline">\(M\)</span> è la mediana, <sp
 </div>
 <p>Consideriamo ora un caso concreto nel quale viene utilizzato un box-plot.
 Nel caso dei dati di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> ci chiediamo in che modo si differenziano le distribuzioni del BDI-II tra i due gruppi considerati, ovvero tra il gruppo dei pazienti e il gruppo di controllo.</p>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bysubj</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">esm_id</span>, <span class="va">group</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">summarise</span><span class="op">(</span>
@@ -594,7 +594,7 @@ Nel caso dei dati di <span class="citation"><a href="bibliografia.html#ref-zetsc
   <span class="fu"><a href="https://rdrr.io/pkg/papaja/man/theme_apa.html">theme_apa</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-141-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>La figura <a href="chapter-descript.html#fig:violin-zetsche">12.6</a> fornisce due rappresentazioni grafiche che possono essere utilizzate per rispondere a questa domanda.</p>
-<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://patchwork.data-imaginist.com">"patchwork"</a></span><span class="op">)</span>
 
 <span class="va">bysubj</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span> 
@@ -728,7 +728,7 @@ distribuzione è asimmetrica, o in presenza di valori anomali (<em>outlier</em>)
 <span class="header-section-number">12.7.1.1</span> Esercizio con R<a class="anchor" aria-label="anchor" href="#esercizio-con-r-3"><i class="fas fa-link"></i></a>
 </h4>
 <p>Calcoliamo la media dei valori BDI-II per i due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.</p>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bysubj</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">group</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">summarise</span><span class="op">(</span>
@@ -756,7 +756,7 @@ ordinata. La media spuntata è data dalla media aritmetica dei dati rimanenti.</
 <span class="header-section-number">12.7.2.1</span> Esercizio con R<a class="anchor" aria-label="anchor" href="#esercizio-con-r-4"><i class="fas fa-link"></i></a>
 </h4>
 <p>Calcoliamo la media spuntata dei valori BDI-II per i due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> escludendo il 10% dei valori più estremi in ciascun gruppo.</p>
-<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bysubj</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">group</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">summarise</span><span class="op">(</span>
@@ -784,7 +784,7 @@ perde il suo significato di indice di tendenza centrale) e la <em>mediana</em>
 <span class="header-section-number">12.7.3.1</span> Esercizio con R<a class="anchor" aria-label="anchor" href="#esercizio-con-r-5"><i class="fas fa-link"></i></a>
 </h4>
 <p>Calcoliamo i quantili di ordine 0.25, 0.5 e 0.75 dei valori BDI-II per i due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.</p>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bysubj</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">group</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">summarise</span><span class="op">(</span>
@@ -850,7 +850,7 @@ un’unità di misura che è il quadrato dell’unità di misura dei dati origin
 <span class="header-section-number">12.8.2.1</span> Esercizio con R<a class="anchor" aria-label="anchor" href="#esercizio-con-r-6"><i class="fas fa-link"></i></a>
 </h4>
 <p>Calcoliamo la varianza dei punteggi BDI-II nei due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.</p>
-<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bysubj</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">group</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">summarise</span><span class="op">(</span>
@@ -874,7 +874,7 @@ un’unità di misura che è il quadrato dell’unità di misura dei dati origin
 <span class="header-section-number">12.8.3.1</span> Esercizio con R<a class="anchor" aria-label="anchor" href="#esercizio-con-r-7"><i class="fas fa-link"></i></a>
 </h4>
 <p>Calcoliamo la deviazione standard per il BDI-II dei due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.</p>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bysubj</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">group</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">summarise</span><span class="op">(</span>
@@ -905,11 +905,11 @@ Nel caso di una distribuzione dei dati unimodale simmetrica di forma campanulare
 <span class="header-section-number">12.8.4.1</span> Esercizio con R<a class="anchor" aria-label="anchor" href="#esercizio-con-r-8"><i class="fas fa-link"></i></a>
 </h4>
 <p>Calcoliamo il valore MAD per il BDI-II dei due gruppi di soggetti di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>.</p>
-<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">1.4826</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">bysubj</span><span class="op">$</span><span class="va">bdi</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">bysubj</span><span class="op">$</span><span class="va">bdi</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] 15.5673</span></code></pre></div>
 <p>Oppure, per i due gruppi:</p>
-<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bysubj</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">group</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">summarise</span><span class="op">(</span>
@@ -989,7 +989,7 @@ depressione misurato dalle due scale psicometriche.
 <!-- state aggiunte le funzioni *marginali* (ovvero, che si riferiscono a -->
 <!-- ciascuna variabile considerata singolarmente) di densità empirica che -->
 <!-- abbiamo già incontrato in precedenza. --></p>
-<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bysubj</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">esm_id</span>, <span class="va">group</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">summarise</span><span class="op">(</span>
@@ -999,7 +999,7 @@ depressione misurato dalle due scale psicometriche.
   <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; `summarise()` has grouped output by 'esm_id'. You can override using the `.groups` argument.</span></code></pre></div>
-<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">m_cesd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">bysubj</span><span class="op">$</span><span class="va">cesd</span><span class="op">)</span>
 <span class="va">m_bdi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">bysubj</span><span class="op">$</span><span class="va">bdi</span><span class="op">)</span>
 <span class="va">FONT_SIZE</span> <span class="op">&lt;-</span> <span class="fl">10</span>
@@ -1220,7 +1220,7 @@ dalla correlazione. È importante rendersi conto che una correlazione
 pari a zero non significa che non c’è relazione tra le due variabili, ma
 solo che tra esse non c’è una relazione <em>lineare</em>. Un esempio di questo
 fatto è fornito dalla figura <a href="chapter-descript.html#fig:zerocorr">12.8</a>.</p>
-<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/lockedata/datasauRus">"datasauRus"</a></span><span class="op">)</span>
 <span class="va">slant</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">datasaurus_dozen_wide</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">slant_down_x</span>,y<span class="op">=</span><span class="va">slant_down_y</span><span class="op">)</span>,   colour<span class="op">=</span><span class="va">dataset</span><span class="op">)</span> 
 <span class="co"># loads slant-pattern dataset of datasauRus package into data frame slant</span>

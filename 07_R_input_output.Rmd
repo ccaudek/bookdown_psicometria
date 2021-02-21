@@ -1,18 +1,14 @@
 # Input/Output {#chapter-input-output}
 
 I dati raccolti dallo psicologo sono contenuti in file aventi formati
-diversi: solo testo, CSV, Excel, eccetera. R  prevede diverse funzioni
+diversi: solo testo, CSV, Excel, eccetera. `R` prevede diverse funzioni
 di importazione dei dati. Esamineremo qui la funzione `read.table()` per
 l'importazione di dati in formato solo testo, ma funzioni analoghe
 possono essere usate per molti altri formati possibili.
 
 ## La funzione `read.table()`
 
-Ci sono tanti modi per importare un file dal nostro computer. R 
-permette di utilizzare delle funzioni che sono già nella libreria di
-base, oppure possiamo utilizzare delle funzioni specifiche, a seconda
-del tipo di file da importare, che sono contenute in pacchetti
-aggiuntivi. Per leggere i dati da file in R  è conveniente
+Ci sono tanti modi per importare un file dal nostro computer. `R` permette di utilizzare delle funzioni che sono già nella libreria di base, oppure possiamo utilizzare delle funzioni specifiche, a seconda del tipo di file da importare, che sono contenute in pacchetti aggiuntivi. Per leggere i dati da file in `R` è conveniente
 preliminarmente generare un file di dati in formato ASCII, disponendoli
 come si farebbe in una matrice di dati, e mettere questo file nella
 cartella di lavoro corrente. Fatto questo, si può utilizzare la funzione
@@ -32,7 +28,7 @@ considerati qui, quali Excel, SPSS, ecc.
 
 ## File di dati forniti da R
 
-In R  esistono comunque oltre 50 insiemi di dati contenuti nel package
+In `R` esistono comunque oltre 50 insiemi di dati contenuti nel package
 `base` e altri sono disponibili in altri packages. Per vedere l'elenco
 degli insiemi di dati disponibili nel package `base` basta usare
 l'istruzione `data()`; per caricare un particolare insieme di dati, ad
@@ -49,8 +45,9 @@ si avrebbe un data frame di nome `cars`.
 Per esportare un data.frame in formato `.csv` possiamo scrivere il
 seguente codice
 
-    write.csv(df_esempio, file = "esempio.csv", row.names = FALSE)
-
+````
+write.csv(df_esempio, file = "esempio.csv", row.names = FALSE)
+````
 dove `df_esempio` è il data.frame da salvare e `esempio.csv` è il file
 che verrà salvato all'interno della nostra cartellla di lavoro.
 
@@ -87,7 +84,7 @@ psicometria/
 
 Queste cartelle conterranno i file che ho specificato sopra.  
 
-Chiudiamo RStudio, se è aperto e lo riapriamo di nuovo.  Dal menu selezioniamo File -> New Project... Questo aprirà un altro menu che ci chiederà, tra le altre cose se vogliamo creare un nuovo progetto (`New project`). Selezioniamo quell'opzione e navighiamo fino alla cartella `psicometria` e selezioniamo `open`. Questo creerà un file chiamato `psicometria.Rproj` nella cartella `psicometria`.
+Chiudiamo RStudio, se è aperto e lo riapriamo di nuovo.  Dal menu selezioniamo `File -> New Project...` Questo aprirà un altro menu che ci chiederà, tra le altre cose se vogliamo creare un nuovo progetto (`New project`). Selezioniamo quell'opzione e navighiamo fino alla cartella `psicometria` e selezioniamo `open`. Questo creerà un file chiamato `psicometria.Rproj` nella cartella `psicometria`.
 
 Chiudiamo RStudio.  Se vogliamo accedere al progetto "psicometria" dobbiamo cliccare sul file `psicometria.Rproj`. Questo aprirà RStudio e farà in modo che la _working directory_ coincida con la cartalla `psicometria`. Ogni volta che vogliamo lavorare sui dati del progetto "psicometria" dobbiamo chiudere RStudio (se è già aperto) e riaprirlo cliccando sul file `psicometria.Rproj`.
 

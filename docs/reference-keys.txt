@@ -364,6 +364,7 @@ funzione-di-verosimiglianza
 la-stima-della-distribuzione-a-posteriori
 la-stima-della-distribuzione-a-posteriori-versione-2
 sommario-della-funzione-a-posteriori
+differenza-tra-intervalli-di-confidenza-e-di-credibilità
 stima-della-funzione-a-posteriori
 metodi-basati-su-griglia
 approssimazione-quadratica

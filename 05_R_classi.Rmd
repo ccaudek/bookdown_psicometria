@@ -1,20 +1,20 @@
 # Strutture di dati {#chapter-strutture-dati}
 
 Solitamente gli psicologi raccolgono grandi quantità di dati. Tali dati
-vengono codificati in R  all'interno di oggetti aventi proprietà
-diverse. Intuitivamente, in R un oggetto è qualsiasi cosa a cui è
+vengono codificati in `R` all'interno di oggetti aventi proprietà
+diverse. Intuitivamente, in `R` un oggetto è qualsiasi cosa a cui è
 possibile assegnare un valore. I dati possono essere di tipo numerico o
-alfanumerico. Di conseguenza, R  distingue tra oggetti aventi _modi_
+alfanumerico. Di conseguenza, `R`distingue tra oggetti aventi _modi_
 diversi. Inoltre, i dati possono essere organizzati in righe e colonne
-in base a diversi tipi di strutture che R  chiama _classi_.
+in base a diversi tipi di strutture che `R` chiama _classi_.
 
 ## Classi e modi degli oggetti
 
-Gli oggetti R si distinguono a seconda della loro classe (*class*) e
-del loro modo (*mode*). La classe definisce il tipo di oggetto. In R,
+Gli oggetti `R` si distinguono a seconda della loro classe (*class*) e
+del loro modo (*mode*). La classe definisce il tipo di oggetto. In `R`,
 vengono utilizzate cinque strutture di dati che corrispondono a cinque
 classi differenti: `vector`, `matrix`, `array`, `list` e `data.frame`.
-Un'altra classe di oggetti R  è `function` (ad essa appartengono le
+Un'altra classe di oggetti `R` è `function` (ad essa appartengono le
 funzioni).
 
 La classe di appartenenza di un oggetto si stabilisce usando le funzioni
@@ -22,7 +22,7 @@ La classe di appartenenza di un oggetto si stabilisce usando le funzioni
 via. Queste funzioni restituisco `TRUE` e `FALSE` in base
 all'appartenenza o meno dell'argomento a quella determinata classe.
 
-Gli oggetti R possono anche essere classificati in base al loro 'modo'.
+Gli oggetti `R` possono anche essere classificati in base al loro 'modo'.
 I modi 'atomici' degli oggetti sono: `numeric`, `complex`, `character` e
 `logical`. Per esempio,
 
@@ -34,11 +34,11 @@ mode(cards)
 ```
 
 Nel seguito verranno esaminate le cinque strutture di dati utilizzate da
-R.
+`R`.
 
 ## Vettori 
 
-I vettori sono la classe di oggetto più importante in R. Un vettore può
+I vettori sono la classe di oggetto più importante in `R`. Un vettore può
 essere creato usando la funzione `c()`:
 
 ```{r}
@@ -46,8 +46,7 @@ y <- c(2, 1, 6, -3, 9)
 y
 ```
 
-Le dimensioni di un vettore presente nella memoria di lavoro possono
-essere trovare con la funzione `length()`; ad esempio,
+Le dimensioni di un vettore presente nella memoria di lavoro possono essere trovare con la funzione `length()`; ad esempio,
 
 ```{r}
 length(y)
@@ -63,7 +62,7 @@ min(y)
 max(y)
 ```
 
-Mentre ci sono sei 'tipi' di vettori 'atomici' in R, noi ci
+Mentre ci sono sei 'tipi' di vettori 'atomici' in `R`, noi ci
 focalizzeremo sui tipi seguenti: 'numeric' ('integer': *e.g.*, 5;
 'double': *e.g.*, 5.5), 'character' (*e.g.*, 'pippo') e 'logical'
 (*e.g.*, `TRUE`, `FALSE`). Usiamo la funzione `typeof()` per determinare
@@ -83,11 +82,11 @@ X
 
 Il primo argomento è il vettore i cui elementi andranno a disporsi
 all'interno della matrice. È poi necessario specificare le dimensioni
-della matrice e il modo in cui R dovrà riempire la matrice. Date le
+della matrice e il modo in cui `R` dovrà riempire la matrice. Date le
 dimensioni del vettore, la specificazione del numero di righe (secondo
 argomento) è sufficiente per determinare le dimensioni della matrice.
-L'argomento `byrow = FALSE` è il default. In tal caso, R riempie la
-matrice per colonne. Se vogliamo che R riempia la matrice per righe,
+L'argomento `byrow = FALSE` è il default. In tal caso, `R` riempie la
+matrice per colonne. Se vogliamo che `R` riempia la matrice per righe,
 usiamo `byrow = TRUE`:
 
 ```{r}
@@ -194,7 +193,7 @@ Le stesse considerazioni si estendono al caso degli array.
 
 Le liste assomigliano ai vettori perché raggruppano i dati in un insieme
 unidimensionale. Tuttavia, le liste non raggruppano elementi individuali
-ma bensì oggetti di R, quali vettori e altre liste. Per esempio,
+ma bensì oggetti di `R`, quali vettori e altre liste. Per esempio,
 
 ```{r}
 list1 <- list("R", list(TRUE, FALSE), 20:24)
@@ -283,7 +282,7 @@ le contiene:
 deck
 ```
 
-Si noti che, a schermo, R stampa un numero progressivo che corrisponde
+Si noti che, a schermo, `R` stampa un numero progressivo che corrisponde
 al numero della riga.
 
 ## Selezione di elementi
@@ -300,10 +299,10 @@ head(deck)
 
 Poniamoci ora il problema di mescolare il mazzo di carte e di estrarre
 alcune carte dal mazzo. Queste operazioni possono essere eseguite usando
-il sistema notazionale di R.
+il sistema notazionale di `R`.
 
-Il sistema di notazione di R consente di estrarre singoli elementi
-dagli oggetti definiti da R. Per estrarre un valore da un data.frame,
+Il sistema di notazione di `R` consente di estrarre singoli elementi
+dagli oggetti definiti da `R`. Per estrarre un valore da un data.frame,
 per esempio, dobbiamo scrivere il nome del data.frame seguito da una
 coppia di parentesi quadre:
 
@@ -312,7 +311,7 @@ deck[, ]
 ```
 
 All'interno delle parentesi quadre ci sono due indici separati da una
-virgola. R usa il primo indice per selezionare un sottoinsieme di righe
+virgola. `R` usa il primo indice per selezionare un sottoinsieme di righe
 del data.frame e il secondo indice per selezionare un sottoinsieme di
 colonne. L'indice è il numero d’ordine che etichetta progressivamente ognuno dei valori del vettore. Per esempio,
 
@@ -323,7 +322,7 @@ deck[9, 2]
 restituisce l'elemento che si trova nella nella nona riga della seconda
 colonna di `deck`.
 
-In R ci sono sei modi diversi per specificare gli indici di un oggetto:
+In `R` ci sono sei modi diversi per specificare gli indici di un oggetto:
 interi positivi, interi negativi, zero, spazi vuoti, valori logici e
 nomi. Esaminiamoli qui di seguito.
 
@@ -346,10 +345,10 @@ deck[1, c(1:3)]
 ```
 
 Tale sistema notazionale non si applica solo ai data.frame ma può essere
-usato anche per gli altri oggetti di R.
+usato anche per gli altri oggetti di `R`.
 
-L'indice usato da R inizia da 1. In altri linguaggi di programmazione,
-per esempio C, inizia da 0.
+L'indice usato da `R` inizia da 1. In altri linguaggi di programmazione,
+per esempio `C`, inizia da 0.
 
 #### Interi negativi
 
@@ -366,7 +365,7 @@ ovvero, escludendo tutte le righe seguenti.
 
 ### Zero
 
-Quando lo zero viene usato come indice, R non ritorna nulla dalla
+Quando lo zero viene usato come indice, `R` non ritorna nulla dalla
 dimensione a cui lo zero si riferisce. L'istruzione
 
 ```{r}
@@ -377,7 +376,7 @@ ritorna un data.frame vuoto. Non molto utile.
 
 ### Spazio `’ ’`
 
-Uno spazio viene usato quale indice per comunicare a R di estrarre
+Uno spazio viene usato quale indice per comunicare a `R` di estrarre
 tutti i valori in quella dimensione. Questo è utile per estrarre intere
 colonne o intere righe da un data.frame. Per esempio, l'istruzione
 
@@ -389,7 +388,7 @@ ritorna la terza riga del data.frame `deck`.
 
 ### Valori booleani
 
-Se viene fornito un vettore di stringhe `TRUE`, `FALSE`, R selezionerà
+Se viene fornito un vettore di stringhe `TRUE`, `FALSE`, `R` selezionerà
 gli elementi riga o colonna corrispondenti ai valori booleani `TRUE`
 usati quali indici. Per esempio, l'istruzione
 
@@ -412,7 +411,7 @@ deck[, "value"]
 
 ## Giochi di carte 
 
-Avendo presentato le nozioni base del sistema di notazione di R,
+Avendo presentato le nozioni base del sistema di notazione di `R`,
 utilizziamo tali conoscenze per manipolare il data.frame. L'istruzione
 
 ```{r eval=FALSE}

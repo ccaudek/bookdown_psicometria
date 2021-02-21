@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capitolo 23 Stima della funzione a posteriori | Data Science per psicologi</title>
 <meta name="author" content="Corrado Caudek">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.6/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
@@ -85,14 +85,15 @@
 <h1>
 <span class="header-section-number">Capitolo 23</span> Stima della funzione a posteriori<a class="anchor" aria-label="anchor" href="#stima-della-funzione-a-posteriori"><i class="fas fa-link"></i></a>
 </h1>
-<p>Quando usiamo il teorema di Bayes per calcolare la distribuzione a posteriori del parametro di un modello statistico, al denominatore troviamo un integrale. Tale integrale, nella maggior parte dei casi, non si può risolvere per via analitica.</p>
-<p>In altri termini, è possibile ottenere la distribuzione posteriore per via analitica solo per alcune specifiche combinazioni di distribuzioni a priori a verosimiglianza, il che sembra limitare considerevolmente la flessibilità della modellazione.
-Tuttavia, con la maggiore potenza dei computer odierni, una stima della distribuzione a posteriori può essere ottenuta con metodi numerici, i metodi di campionamento Monte-Carlo Markov-Chain (MCMC). Tali metodi quali costituiscono una potente e praticabile alternativa per la costruzione della distribuzione a posteriori per modelli complessi e ci consentono di decidere quali distribuzione a priori e quali distribuzioni di verosimiglianza usare sulla base di considerazioni teoriche, senza preoccuparti dei limiti dei metodi analitici attualmente disponibili.</p>
-<p>L’inferenza Bayesiana si sviluppa dunque mediante una stima numerica della funzione a posteriori. Dato che questi metodi sono “computazionalmente intensivi,” possono solo essere svolti mediante software. In anni recenti i metodi Bayesiani di analisi dei dati sono diventati sempre più popolari proprio perché la potenza di calcolo necessaria per svolgere tali calcoli è ora alla portata di tutti. Questo non era vero solo pochi decenni fa. Per capire come la distribuzione a posteriori possa essere approssimata per via numerica esamineremo qui tre diverse tecniche che possono essere utilizzate a questo scopo:</p>
+<p>Quando usiamo il teorema di Bayes per calcolare la distribuzione a posteriori del parametro di un modello statistico, al denominatore troviamo un integrale. Tale integrale, nella maggior parte dei casi, non si può risolvere per via analitica.
+In altri termini, è possibile ottenere la distribuzione posteriore per via analitica solo per alcune specifiche combinazioni di distribuzioni a priori a verosimiglianza, il che limita considerevolmente la flessibilità della modellazione.</p>
+<p>Se la distribuzione a posteriori viene costruita con metodi analitici è necessario usare <em>distribuzioni a priori coniugate per la verosimiglianza</em>. Due distribuzioni si dicono <em>coniugate</em> se la distribuzione a posteriori <span class="math inline">\(p(\theta \mid x)\)</span> è nella stessa famiglia della distribuzione a priori <span class="math inline">\(p(\theta)\)</span>. Questo approccio, però, limita di molto le possibili scelte del ricercatore.</p>
+<p>Con la potenza dei computer odierni, però, una stima della distribuzione a posteriori può essere ottenuta senza ricorrere a metodi analitici, ma usando metodi numerici. I metodi di campionamento Monte-Carlo Markov-Chain (MCMC) costituiscono una potente e praticabile alternativa per la costruzione della distribuzione a posteriori per modelli complessi e consentono di decidere quali distribuzioni a priori e quali distribuzioni di verosimiglianza usare sulla base di considerazioni teoriche soltanto, senza che il ricercatore debba preoccuparsi dei vincoli dei metodi analitici.</p>
+<p>L’inferenza Bayesiana si sviluppa dunque mediante una stima numerica della funzione a posteriori. Dato che questi metodi sono “computazionalmente intensivi,” possono essere svolti soltanto mediante software. In anni recenti i metodi Bayesiani di analisi dei dati sono diventati sempre più popolari proprio perché la potenza di calcolo necessaria per svolgere tali calcoli è ora alla portata di tutti. Questo non era vero solo pochi decenni fa. Per capire come la distribuzione a posteriori possa essere approssimata per via numerica esamineremo qui tre diverse tecniche che possono essere utilizzate a questo scopo:</p>
 <ol style="list-style-type: decimal">
-<li><p>i metodi <em>grid-based</em> approssimati,</p></li>
-<li><p>il metodo dell’approssimazione quadratica,</p></li>
-<li><p>i metodi Monte Carlo basati su Catena di Markov (MCMC).</p></li>
+<li>i metodi <em>grid-based</em> approssimati,</li>
+<li>il metodo dell’approssimazione quadratica,</li>
+<li>i metodi Monte Carlo basati su Catena di Markov (MCMC).</li>
 </ol>
 <div id="metodi-basati-su-griglia" class="section level2" number="23.1">
 <h2>
@@ -119,7 +120,7 @@ casi, questi calcoli possono essere fatti seguendo una procedura
 analitica, ma solitamente vengono usate delle tecniche numeriche.</p></li>
 </ol>
 <p>Una descrizione della distribuzione a posteriori ottenuta mediante l’approssimazione quadratica si ottiene mediante la funzione <code><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap()</a></code> contenuta nel pacchetto <code>rethinking</code>. Tale pacchetto, creato da Richard McElreath per accompagnare il suo testo <em>Statistical Rethinking</em><span class="math inline">\(^2\)</span>, può essere scaricato utilizzando le istruzioni seguenti:</p>
-<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"coda"</span>, <span class="st">"mvtnorm"</span>, <span class="st">"devtools"</span>, <span class="st">"loo"</span>, <span class="st">"dagitty"</span><span class="op">)</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://devtools.r-lib.org/">"devtools"</a></span><span class="op">)</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"rmcelreath/rethinking"</span><span class="op">)</span></code></pre></div>
@@ -132,33 +133,47 @@ analitica, ma solitamente vengono usate delle tecniche numeriche.</p></li>
 <h2>
 <span class="header-section-number">23.3</span> Integrazione con metodo Monte Carlo<a class="anchor" aria-label="anchor" href="#integrazione-con-metodo-monte-carlo"><i class="fas fa-link"></i></a>
 </h2>
-<p>Prima di introdurre i metodi MCMC per la stima della funzione a posteriori, spendiamo due parole sul metodo Monte Carlo quale tecnica che consente il calcolo degli integrali mediante simulazione numerica. Il termine Monte-Carlo si riferisce al fatto che per la computazione si ricorre ad un ripetuto campionamento casuale attraverso la generazioni di sequenze di numeri casuali.</p>
+<p>Questi algoritmi estraggono campioni da una distribuzione target mediante la seguente procedura (1) facendo una proposta per un nuovo valore casuale del parametro sconosciuto (o dei parametri sconosciuti) e poi (2) accettando o rifiutando tala proposta. Se entrambi questi passaggi vengono eseguiti correttamente, i valori accettati dei parametri costituiranno dei campioni casuali della distribuzione target.</p>
+<p>L’idea è semplice: per calcolare le statistiche che ci interessano – solitamente, una qualche misura di tendenza centrale e un qualche intervallo che contiene una data proporzione della massa della distribuzione – non abbiamo bisogno di conoscere l’esatta funzione di densità della distribuzione a posteriori <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span>. È sufficiente, per la ragione spiegata nella sezione successiva, riuscire a ottenere un grande numero di campioni <strong>casuali</strong> della distribuzione a posteriori. Se tali campioni che estraiamo dalla distribuzione a posteriori sono veramente casuali, allora le statistiche che ci interessano, ovvero una qualche misura di tendenza centrale e un qualche intervallo che contiene una data proporzione della massa della distribuzione, saranno stimati con esattezza. E come facciamo a sapere che un insieme di campioni della distribuzione a posteriori è veramente estratto in maniera casuale da <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span> – e quindi la distribuzione di tali campioni segue la funzione di densità di <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span>? Basta che, seguendo il secondo passo descritto sopra, decidiamo se accettare o rifiutare il valore proposto del parametro in base ad una regola che dipende dal valore della densità di <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span> in corrispondenza della proposta. E una regola che è <strong>proporzionale</strong> a tale densità è facile da ottenere: non è altro infatti che il prodotto della funzione a priori e della verosimiglianza in corrispondenza del valore della proposta.
+Prima di introdurre i metodi MCMC per la stima della funzione a posteriori, spendiamo qualche parola sul metodo Monte Carlo.</p>
 </div>
 <div id="legge-forte-dei-grandi-numeri" class="section level2" number="23.4">
 <h2>
 <span class="header-section-number">23.4</span> Legge forte dei grandi numeri<a class="anchor" aria-label="anchor" href="#legge-forte-dei-grandi-numeri"><i class="fas fa-link"></i></a>
 </h2>
-<p>L’integrazione con metodo Monte Carlo trova la sua giustificazione nella <em>Legge forte dei grandi numeri</em> la quale può essere espressa nei termini seguenti. Data una successione di variabili casuali <span class="math inline">\(Y_{1}, Y_{2},\dots, Y_{n},\dots\)</span> indipendenti e identicamente distribuite con media <span class="math inline">\(\mu\)</span>, ne segue che
+<p>Il termine Monte-Carlo si riferisce al fatto che per la computazione si ricorre ad un ripetuto campionamento casuale attraverso la generazioni di sequenze di numeri casuali.
+Una delle sue applicazioni più potenti è il calcolo degli integrali mediante simulazione numerica.</p>
+<p>Consideriamo la formula del valore atteso di una variabile aleatoria continua:
+<span class="math display">\[
+\mathbb{E}(X) = \int_{-\infty}^{+\infty} x f(x) dx
+\]</span>
+Il calcolo del valore atteso, in questo caso, richiede che si facciano le somme dei prodotti <span class="math inline">\(x f(x)\)</span> per tutti gli infinitesimi “incrementi” <span class="math inline">\(dx\)</span> per tutti i possibili valori <span class="math inline">\(X\)</span>.
+Vediamo ora come si possa risolvere un problema di questo tipo in maniera semplice, senza dovere calcolare l’integrale esatto per via analitica.</p>
+<p>In generale, diciamo che l’integrazione con metodo Monte Carlo trova la sua giustificazione nella <em>Legge forte dei grandi numeri</em> la quale, in termini formali, può essere espressa nel modo seguente. Data una successione di variabili casuali <span class="math inline">\(Y_{1}, Y_{2},\dots, Y_{n},\dots\)</span> indipendenti e identicamente distribuite con media <span class="math inline">\(\mu\)</span>, ne segue che
 <span class="math display">\[
 P\left( \lim_{n \rightarrow \infty} \frac{1}{n} \sum_{i=1}^n Y_i = \mu \right) = 1.
 \]</span>
 Ciò significa che, al crescere di <span class="math inline">\(n\)</span>, la media delle realizzazioni di <span class="math inline">\(Y_{1}, Y_{2},\dots, Y_{n},\dots\)</span> converge con probabilità 1 al vero valore <span class="math inline">\(\mu\)</span>.</p>
-<p>Un esempio della legge forte dei grandi numeri riguarda una serie di lanci di una moneta dove <span class="math inline">\(Y=1\)</span> significa “testa” e <span class="math inline">\(Y=0\)</span> significa “croce.” Per la legge forte dei grandi numeri, nel caso di una moneta equilibrata la proporzione di eventi “testa” converge alla vera probabilità dell’evento “testa”
+<p>Possiamo fornire un esempio intuitivo della legge forte dei grandi numeri facendo riferimento ad una serie di lanci di una moneta dove <span class="math inline">\(Y=1\)</span> significa “testa” e <span class="math inline">\(Y=0\)</span> significa “croce.” Per la legge forte dei grandi numeri, nel caso di una moneta equilibrata la proporzione di eventi “testa” converge alla vera probabilità dell’evento “testa”
 <span class="math display">\[
 \frac{1}{n} \sum_{i=1}^n Y_i \rightarrow \frac{1}{2}
 \]</span>
 con probabilità di uno.</p>
-<p>Quello che è stato detto sopra non è che un modo sofisticato per dire che, se vogliamo calcolare un’approssimazione del valore atteso di una variabile aleatoria, non dobbiamo fare altro che la media aritmetica di un grande numero di realizzazione di tale variabile aleatoria. Come è facile intuire, l’approssimazione migliora al crescere del numero di dati che abbiamo a disposizione.</p>
+<p>Quello che è stato detto sopra non è che un modo sofisticato per dire che, se vogliamo calcolare un’approssimazione del valore atteso di una variabile aleatoria, non dobbiamo fare altro che la media aritmetica di un grande numero di realizzazioni della variabile aleatoria. Come è facile intuire, l’approssimazione migliora al crescere del numero di dati che abbiamo a disposizione. Questa è la giustificazione dell’affermazione precedente secondo la quale una stima del valore atteso di <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span> può essere ottenuta mediante un grande numero di campioni casuali della distribuzionea a posteriori.</p>
 </div>
 <div id="metodi-mc-basati-su-catena-di-markov" class="section level2" number="23.5">
 <h2>
 <span class="header-section-number">23.5</span> Metodi MC basati su Catena di Markov<a class="anchor" aria-label="anchor" href="#metodi-mc-basati-su-catena-di-markov"><i class="fas fa-link"></i></a>
 </h2>
-<p>I metodi Monte Carlo basati su Catena di Markov consentono di costruire sequenze di punti (le “catene”) nello spazio dei parametri, la cui densità è proporzionale alla distribuzione di probabilità a posteriori a cui siamo interessati. Questo, evidentemente, è il risultato vorremmo ottenere. Ma cosa sono le catene di Markov? In termini formali possiamo dire che una catena di Markov è una sequenza di variabili aleatorie <span class="math inline">\(Y_{1}, Y_{2},\dots, Y_{n}\)</span> tale che la dipendenza della distribuzione di <span class="math inline">\(Y_{i+1}\)</span> dai valori di <span class="math inline">\(Y_{1}, \dots, Y_{i}\)</span> è interamente dovuta al valore di <span class="math inline">\(Y_i\)</span>, cioè il passaggio ad uno stato del sistema dipende unicamente dallo stato immediatamente precedente e non dal come si è giunti a tale stato (dalla storia). Per questo motivo si dice che un processo markoviano è senza memoria.</p>
-<p>In generale è possibile generare catene di Markov che convergono ad una soluzione unica e stazionaria tale per cui gli elementi della catena sono campioni dalla distribuzione di interesse. Nel caso dell’inferenza Bayesiana la distribuzione di interesse è la distribuzione a posteriori, <span class="math inline">\(p(\theta \mid x)\)</span>. Le catene di Markov possono quindi essere utilizzate per stimare i valori di aspettazione di variabili rispetto alla distribuzione a posteriori. In altre parole, possiamo utilizzare le catene di Markov per stimare i valori a posteriori dei parametri sconosciuti di un modello statistico – un esempio è il parametro <span class="math inline">\(p\)</span> nel problema del mappamondo che abbiamo discusso in precedenza.</p>
+<p>Abbiamo chiarito il problema che vogliamo risolvere all’interno dell’analisi Bayesiana, ovvero costruire la distribuzione a posteriori del parametro di interesse avendo osservato i dati. La costruzione della distribuzione a posteriori, in generale, richiede il calcolo di un integrale “intrattabile” per via analitica. Quindi affrontiamo il problema in un altro modo, ovvero facciamo una simulazione numerica che produce un risultato approssimato (ma sufficientemente preciso per tutti gli scopi pratici). A tale scopo usiamo i cosiddetti <em>metodi Monte Carlo basati su Catena di Markov</em> i quali consentono di costruire sequenze di punti (le “catene”) nello spazio dei parametri, la cui densità è proporzionale alla distribuzione a posteriori – in altre parole, consentono di ottenere un grande numero di campioni casuali dalla distribuzione a posteriori.</p>
+
+<div class="rmdtip">
+<strong>Osservazione.</strong> Ma cosa sono esattamente le catene di Markov? In termini formali possiamo dire che una catena di Markov è una sequenza di variabili aleatorie <span class="math inline">\(Y_{1}, Y_{2},\dots, Y_{n}\)</span> tale che la dipendenza della distribuzione di <span class="math inline">\(Y_{i+1}\)</span> dai valori di <span class="math inline">\(Y_{1}, \dots, Y_{i}\)</span> è interamente dovuta al valore di <span class="math inline">\(Y_i\)</span>, cioè il passaggio ad uno stato del sistema dipende unicamente dallo stato immediatamente precedente e non dal come si è giunti a tale stato (dalla storia). Per questo motivo si dice che un processo markoviano è senza memoria. In altre parole, tale “assenza di memoria” può essere interpretata come lo strumento mediante il quale è possibile ottenere un insieme di campioni casuali della distribuzione di interesse.
+Nel caso dell’inferenza Bayesiana la distribuzione di interesse è la distribuzione a posteriori, <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span>. Le catene di Markov possono quindi essere utilizzate per stimare i valori di aspettazione di variabili rispetto alla distribuzione a posteriori. In altre parole, possiamo utilizzare le catene di Markov per stimare i valori a posteriori dei parametri sconosciuti di un modello statistico – un esempio è fornito dal parametro <span class="math inline">\(p\)</span> del problema del mappamondo che abbiamo discusso in precedenza.
+</div>
 <p>La generazioni di elementi di una catena ha una natura probabilistica e esistono diversi algoritmi per costruire catene di Markov. Due aspetti da tenere in considerazione sotto questo punto di vista sono il periodo di <em>burn-in</em> e le correlazioni tra punti. Al crescere degli step della catena si ottiene una migliore approssimazione della distribuzione target. All’inizio del campionamento però la distribuzione può essere significativamente lontana dalla distribuzione stazionaria. Ci vuole un certo tempo prima di raggiungere la distribuzione stazionaria di equilibrio e tale periodo è detto di <em>burn-in</em>. Perciò i campioni provenienti da tale parte iniziale della catena vanno tipicamente scartati poiché non rappresentano accuratamente la distribuzione desiderata.</p>
 <p>Normalmente, un algoritmo MCMC genera catene di Markov di campioni, ognuno dei quali è autocorrelato a quelli generati immediatamente prima e dopo di lui. Conseguentemente campioni successivi non sono indipendenti ma formano una catena di Markov con un certo grado di correlazione. Questa correlazione introduce una distorsione nella soluzione che si ottiene con questo metodo. L’arte dei diversi algoritmi MCMC risiede nel rendere il meccanismo efficiente e capace di produrre un risultato non distorto, il che implica la riduzione al minimo del tempo di <em>burn-in</em> e della correlazione tra i diversi campioni.</p>
-<p>Presentiamo ora, in una forma intuitiva, l’algoritmo di Metropolis, ovvero il primo algoritmo MCMC che è stato proposto. Tale algoritmo è stato sviluppato in seguito per renderlo via via più efficiente. Il nostro obiettivo, però, è solo quello di capire la logica sottostante – lasciamo che siano gli ingegneri a risolvere il problema di rendere l’algoritmo più efficiente.</p>
+<p>Presentiamo ora, in una forma intuitiva, l’algoritmo di Metropolis, ovvero il primo algoritmo MCMC che è stato proposto. Tale algoritmo è stato sviluppato in seguito per renderlo via via più efficiente. Il nostro obiettivo, però, è solo quello di illustrare la logica sottostante – lasciamo che siano gli ingegneri a risolvere il problema di rendere l’algoritmo più efficiente.</p>
 </div>
 <div id="il-problema-del-turista-viaggiatore" class="section level2" number="23.6">
 <h2>
@@ -197,10 +212,9 @@ resta nella spiaggia corrente. Di conseguenza, la probabilità che il
 turista cambi spiaggia (ovvero <span class="math inline">\(\frac{5}{6}\)</span>) è uguale al numero di
 conchiglie diviso per il numero originale di sassolini.</p></li>
 </ol>
-<p>Decidere di procedere in questo modo potrebbe sembrare un modo per rovinarsi le vacanze. Invece, questo algoritmo funziona! Seguendo la proposta di Metropolis, il turista passerà su ciascuna
-spiaggia un numero di giorni proporzionale alla grandezza della spiaggia.</p>
+<p>Decidere di procedere in questo modo potrebbe sembrare un modo per rovinarsi le vacanze. Invece, questo algoritmo funziona! Seguendo la proposta di Metropolis, il turista passerà su ciascuna spiaggia un numero di giorni proporzionale alla grandezza della spiaggia.</p>
 <p><span class="citation"><a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">McElreath</a> (<a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span> ha implementato in R l’algoritmo di Metropolis che abbiamo descritto sopra nel modo seguente:</p>
-<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">num_weeks</span> <span class="op">&lt;-</span> <span class="fl">1e5</span>
 <span class="va">positions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">num_weeks</span><span class="op">)</span>
 <span class="va">current</span> <span class="op">&lt;-</span> <span class="fl">10</span>
@@ -217,7 +231,7 @@ spiaggia un numero di giorni proporzionale alla grandezza della spiaggia.</p>
   <span class="va">current</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">&lt;</span> <span class="va">prob_move</span>, <span class="va">proposal</span>, <span class="va">current</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>Le istruzioni seguenti sono state usate per generare la figura <a href="stima-della-funzione-a-posteriori.html#fig:turista1">23.1</a>. Se guardiamo la figura e consideriamo un giorno qualsiasi è difficile capire qual è la spiaggia scelta dal turista.</p>
-<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, y <span class="op">=</span> <span class="va">positions</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">]</span><span class="op">)</span>,
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
@@ -235,7 +249,7 @@ Figura 23.1: Risultati dell’algoritmo di Metropolis utilizzato dal turista via
 </p>
 </div>
 <p>Tuttavia, se esaminiamo la figura <a href="stima-della-funzione-a-posteriori.html#fig:turista2">23.2</a> che descrive il comportamento a lungo termine dell’algoritmo, ci rendiamo conto che l’algoritmo ha prodotto il risultato che si voleva ottenere: il tempo trascorso dal turista su ciascuna spiaggia è proporzionale alla grandezza della spiaggia.</p>
-<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>
   <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">positions</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, xend <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="va">y</span><span class="op">)</span>
@@ -265,6 +279,7 @@ Figura 23.2: Risultati dell’algoritmo di Metropolis utilizzato dal turista via
 <li><p>i <strong>giorni di permanenza su una spiaggia</strong> corrispondono al numero di campioni estratti dalla distribuzione a posteriori.</p></li>
 </ul>
 <p>L’aspetto cruciale di questa discussione è il fatto che, all’aumentare delle ripetizioni dell’algoritmo di Metropolis, la distribuzione dei valori così ottenuti diventa via via più simile alla distribuzione a posteriori del parametro <span class="math inline">\(\theta\)</span>, anche se questa è sconosciuta. Per un grande numero di passi della catena l’approssimazione è sufficiente. Con questo metodo è dunque possibile generare un grande numero di campioni casuali dalla distribuzione a posteriori per poi poterne calcolare misure di sintesi e potere fare inferenza.</p>
+<p>L’esempio precedente ci presenta, in maniera intuitiva, è la logica dell’algoritmo di Metropolis. Una illustrazione visiva di come si svolge questo processo di “esplorazione” di <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span> è fornita in questo <a href="https://elevanth.org/blog/2017/11/28/build-a-better-markov-chain/">post</a>.</p>
 </div>
 <div id="una-applicazione-concreta" class="section level2" number="23.8">
 <h2>
@@ -279,21 +294,20 @@ ovvero</p>
 <p><span class="math display">\[
 P(\theta \mid x) \propto P(x \mid \theta)P(\theta)
 \]</span>
-L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli algoritmi MCMC. Vediamo come funziona.</p>
+L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli algoritmi MCMC. Guardiamolo ora più da vicino cercando, di nuovo, di sviluppare un intuizione della logica che sta alla base di esso. Abbiamo detto in precedenza che, fondamentalmente, l’algoritmo di Metropolis fa due cose: (1) genera una proposta per un nuovo valore casuale del parametro sconosciuto e (2) accetta o rifiuta tala proposta. Vediamo in concreto come questo viene fatto.</p>
 <ul>
-<li><p>Per prima cosa troviamo un valore casuale del parametro estraendolo da una distribuzione “proposta”: <span class="math inline">\(\theta_0 \sim \Pi(\theta)\)</span>. La distribuzione proposta può essere qualunque distribuzione, anche se, idealmente, è meglio che sia simile alla distribuzione a posteriori. Ma in pratica la distribuzione a posteriori è sconosciuta e quindi utilizziamo un qualche metodo arbitrario di iniziare la catena di Markov (ovvero utilizziamo un valore iniziale arbitrario).</p></li>
+<li><p>Per prima cosa troviamo un valore casuale del parametro estraendolo da una distribuzione “proposta”: <span class="math inline">\(\theta_0 \sim \Pi(\theta)\)</span>. La distribuzione proposta può essere <em>qualunque</em> distribuzione, anche se, idealmente, è meglio che sia simile alla distribuzione a posteriori. Ma in pratica la distribuzione a posteriori è sconosciuta e quindi utilizziamo un qualche metodo arbitrario di iniziare la catena di Markov (ovvero utilizziamo un valore iniziale arbitrario).</p></li>
 <li><p>In ciascuna iterazione <span class="math inline">\(t\)</span> viene proposto un nuovo valore del parametro, <span class="math inline">\(\theta'_t\)</span>. Il valore <span class="math inline">\(\theta'_t\)</span> viene estratto in maniera casuale da una qualsiasi distribuzione simmetrica centrata sul valore del parametro dell’interazione precedente, <span class="math inline">\(t-1\)</span>. Ad esempio, possiamo usare la distribuzione Normale con una appropriata deviazione standard: <span class="math inline">\(\theta_t \sim \mathcal{N}(\theta_{t-1}, \sigma)\)</span>. In pratica, questo significa che il valore proposto del parametro sarà un valore nella prossimità di quello attualmente considerato.</p></li>
 <li><p>Calcoliamo poi il rapporto <span class="math inline">\(r\)</span> tra la distribuzione a posteriori non normalizzata determinata dal valore proposto <span class="math inline">\(\theta'_t\)</span> e la distribuzione a posteriori non normalizzata determinata dal valore del parametro <span class="math inline">\(\theta'_{t-1}\)</span> dell’iterazione precedente della catena: <span class="math inline">\(r = \frac{P(x \mid \theta'_t) P(\theta'_t)}{P(x \mid \theta'_{t-1}) P(\theta'_{t-1})}\)</span>. Soffermiamoci su tale formula per capire bene cosa significa. La distribuzione a posteriori non normalizzata corrisponde al numeratore del teorema di Bayes, ovvero <span class="math inline">\(P(x \mid \theta) P(\theta)\)</span>, laddove <span class="math inline">\(P(x \mid \theta)\)</span> è la verosimiglianza di <span class="math inline">\(x\)</span> dato <span class="math inline">\(\theta\)</span> e <span class="math inline">\(P(\theta)\)</span> è la distribuzione a priori di <span class="math inline">\(\theta\)</span>. Abbiamo visto nella sezione <a href="#sec:aspett_future_beta2_10">Un esempio pratico (versione 2)</a> che ciascuna di tali densità può essere rappresentata mediante una curva e che il prodotto di due densità si ottiene facendo il prodotto dei valori delle ordinate corrispondenti di discuna delle due curve. Il numeratore del teorema di Bayes ci fornisce la distribuzione a posteriori non normalizzata in quanto l’area sottesa alla curva così ottenuta non è unitaria (quindi tale curva non rappresenta una funzione di densità). Dato che qui facciamo un rapporto, però, questo è irrilevante. Al numeratore del rapporto <span class="math inline">\(r\)</span> dobbiamo fare il prodotto tra due scalari: la densità (l’ordinata) della funzione di verosimiglianza in corrispondenza del valore proposto <span class="math inline">\(x = \theta'_t\)</span> e la densità della distribuzione a priori in corrispondenza del valore proposto <span class="math inline">\(x = \theta'_t\)</span>. In maniera corrispondente, al denominatore del rapporto <span class="math inline">\(r\)</span> dobbiamo fare il prodotto tra due scalari: la densità (l’ordinata) della funzione di verosimiglianza in corrispondenza del valore <span class="math inline">\(\theta_{t-1}\)</span> e la densità della distribuzione a priori in corrispondenza del valore <span class="math inline">\(\theta_{t-1}\)</span>.</p></li>
 <li><p>Utilizziamo poi il valore del rapporto <span class="math inline">\(r\)</span> per decidere se dobbiamo effettivamente muoverci nella nuova posizione <span class="math inline">\(\theta'_t\)</span>, oppure se dobbiamo campionare un diverso valore <span class="math inline">\(\theta'_t\)</span>. Per decidere, confrontiamo il valore <span class="math inline">\(r\)</span> con un valore casuale estratto da una distribuzione uniforme che assume valori tra zero e uno: <span class="math inline">\(U(0, 1)\)</span>. Se <span class="math inline">\(r &gt; u \sim U(0, 1)\)</span> allora accettiamo <span class="math inline">\(\theta'_t\)</span> e la catena si muove in quella nuova posizione, ovvero <span class="math inline">\(\theta_t = \theta'_t\)</span>. Altrimenti <span class="math inline">\(\theta_t = \theta_{t-1}\)</span> e ripetiamo la procedura descritta sopra campionando un nuovo valore <span class="math inline">\(\theta'_t\)</span>.</p></li>
 </ul>
 <p>Per fare un esempio concreto, consideriamo nuovamente i 30 pazienti esaminati da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> e discussi nella sezione <a href="#sec:es_pratico_zetsche">Un esempio pratico</a>. Di essi, 23 hanno manifestato delle aspettative distorte negativamente sul loro stato d’animo futuro. Utilizzando l’algoritmo di Metropolis, ci poniamo il problema di ottenere la stima a posteriori di <span class="math inline">\(\theta\)</span> (probabilità di manifestare un’aspettativa distorta negativamente) dati i 23 “successi” in 30 prove e usando la stessa distribuzione a priori per <span class="math inline">\(\theta\)</span> che è stata usata nella sezione <a href="#sec:aspett_future_beta2_10">Un esempio pratico (versione 2)</a>.</p>
-</div>
-<div id="verosimiglianza" class="section level2" number="23.9">
-<h2>
-<span class="header-section-number">23.9</span> Verosimiglianza<a class="anchor" aria-label="anchor" href="#verosimiglianza"><i class="fas fa-link"></i></a>
-</h2>
+<div id="verosimiglianza" class="section level3" number="23.8.1">
+<h3>
+<span class="header-section-number">23.8.1</span> Verosimiglianza<a class="anchor" aria-label="anchor" href="#verosimiglianza"><i class="fas fa-link"></i></a>
+</h3>
 <p>Per trovare la funzione di verosimiglianza usando i 30 valori di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> definisco la funzione <code>likelihood()</code> come indicato sotto. Tale funzione ritorna l’ordinata della funzione di verosimiglianza binomiale per ciascun valore del vettore <code>param</code> che viene dato in input alla funzione.</p>
-<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">23</span>
 <span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">30</span>
 <span class="va">param</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, length.out <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
@@ -309,14 +323,14 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
     x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,
     y <span class="op">=</span> <span class="st">"Verosimiglianza"</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-239-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-240-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
-<div id="distribuzione-a-priori-1" class="section level2" number="23.10">
-<h2>
-<span class="header-section-number">23.10</span> Distribuzione a priori<a class="anchor" aria-label="anchor" href="#distribuzione-a-priori-1"><i class="fas fa-link"></i></a>
-</h2>
+<div id="distribuzione-a-priori-1" class="section level3" number="23.8.2">
+<h3>
+<span class="header-section-number">23.8.2</span> Distribuzione a priori<a class="anchor" aria-label="anchor" href="#distribuzione-a-priori-1"><i class="fas fa-link"></i></a>
+</h3>
 <p>Se abbiamo ragioni forti per avere delle aspettative rispetto al valore possibile della nostra stima, una distribuzione a priori <em>informativa</em> verrà combinata con le informazioni fornite dal campione per produrre una stima ``razionale’’ a posteriori. Nel caso presente utilizziamo la distribuzione informativa presentata nella sezione <a href="#sec:aspett_future_beta2_10">Un esempio pratico (versione 2)</a> unicamente a scopo esemplicativo, ovvero per fare in modo da “allontanare” la distribuzione a posteriori dalla distribuzione di verosimiglianza.</p>
-<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">prior</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">param</span>, <span class="va">alpha</span> <span class="op">=</span> <span class="fl">2</span>, <span class="va">beta</span> <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">param_vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, length.out <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="va">param</span>, <span class="va">alpha</span>, <span class="va">beta</span><span class="op">)</span> <span class="co"># / sum(dbeta(param_vals, alpha, beta))</span>
@@ -329,14 +343,14 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
     x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,
     y <span class="op">=</span> <span class="st">"Densità"</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-240-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-241-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
-<div id="distribuzione-a-posteriori" class="section level2" number="23.11">
-<h2>
-<span class="header-section-number">23.11</span> Distribuzione a posteriori<a class="anchor" aria-label="anchor" href="#distribuzione-a-posteriori"><i class="fas fa-link"></i></a>
-</h2>
+<div id="distribuzione-a-posteriori" class="section level3" number="23.8.3">
+<h3>
+<span class="header-section-number">23.8.3</span> Distribuzione a posteriori<a class="anchor" aria-label="anchor" href="#distribuzione-a-posteriori"><i class="fas fa-link"></i></a>
+</h3>
 <p>Abbiamo visto in precedenza come la funzione a posteriori è data dal prodotto della densità a priori e della verosimiglianza.</p>
-<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">posterior</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">param</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu">likelihood</span><span class="op">(</span><span class="va">param</span><span class="op">)</span> <span class="op">*</span> <span class="fu">prior</span><span class="op">(</span><span class="va">param</span><span class="op">)</span>
 <span class="op">}</span>
@@ -348,15 +362,15 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
     x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,
     y <span class="op">=</span> <span class="st">"Densità"</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-241-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-242-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Questo è il risultato che vogliamo ottenere utilizzando l’algoritmo di Metropolis. Dalla figura precedente vediamo che la moda della distribuzione a posteriori è pari a circa 0.6. Questo è il valore più verosimile a posteriori per il parametro <span class="math inline">\(\theta\)</span>.</p>
 </div>
-<div id="algoritmo-di-metropolis" class="section level2" number="23.12">
-<h2>
-<span class="header-section-number">23.12</span> Algoritmo di Metropolis<a class="anchor" aria-label="anchor" href="#algoritmo-di-metropolis"><i class="fas fa-link"></i></a>
-</h2>
+<div id="algoritmo-di-metropolis" class="section level3" number="23.8.4">
+<h3>
+<span class="header-section-number">23.8.4</span> Algoritmo di Metropolis<a class="anchor" aria-label="anchor" href="#algoritmo-di-metropolis"><i class="fas fa-link"></i></a>
+</h3>
 <p>Implementiamo ora l’algoritmo di Metropolis. Utilizziamo una distribuzione proposta gaussiana. Il valore proposto da tale distribuzione ausiliaria corrisponde ad un valore selezionato a caso da una distribuzione gaussiana con media uguale al valore del parametro attualmente considerato nella catena e con una deviazione standard ``adeguata’’. In questo esempio, la deviazione standard è stata scelta empiricamente in modo tale da ottenere un tasso di accettazione sensato. È stato mostrato che un tasso di accettazione ottimale dovrebbe essere tra il 20% e il 30%. Se il tasso di accettazione è troppo grande, infatti, l’algoritmo esplora uno spazio troppo ristretto della distribuzione a posteriori. Il tasso di accettazione è influenzato dalla distribuzione proposta: in generale, tanto più la distribuzione proposta è simile alla distribuzione target, tanto più alto diventa il tasso di accettazione.</p>
-<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">proposal_distribution</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">param</span><span class="op">)</span> <span class="op">{</span>
   <span class="kw">while</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">{</span>
     <span class="va">res</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">1</span>, mean <span class="op">=</span> <span class="va">param</span>, sd <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span>
@@ -367,7 +381,7 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
 <span class="op">}</span></code></pre></div>
 <p>In questa implementazione molto semplice della distribuzione proposta ho inserito dei controlli che fanno in modo che il valore proposto da tale distribuzione ausiliaria sia incluso nell’intervallo [0, 1]. Si possono trovare implementazioni migliori di questa idea di quella fornita qui. Ma lo scopo è solo quello di spiegare la struttura logica dell’algoritmo di Metropolis, non quella di proporre un’implementazione efficente dell’algoritmo. Per i nostri scopi, tale implementazione “ingenua” funziona, e tanto basta.</p>
 <p>L’algoritmo di Metropolis è implementato nella funzione seguente:</p>
-<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">run_metropolis_MCMC</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">startvalue</span>, <span class="va">iterations</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">chain</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">vector</a></span><span class="op">(</span>length <span class="op">=</span> <span class="va">iterations</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span>
   <span class="va">chain</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">startvalue</span>
@@ -383,21 +397,21 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
   <span class="va">chain</span>
 <span class="op">}</span></code></pre></div>
 <p>Generiamo dunqe una catena di valori <span class="math inline">\(\theta\)</span> con le seguenti istruzioni:</p>
-<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="va">startvalue</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>
 <span class="va">niter</span> <span class="op">&lt;-</span> <span class="fl">1e4</span>
 <span class="va">chain</span> <span class="op">&lt;-</span> <span class="fu">run_metropolis_MCMC</span><span class="op">(</span><span class="va">startvalue</span>, <span class="va">niter</span><span class="op">)</span></code></pre></div>
 <p>Otteniamo così 4,000 valori della distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span>. Di questi valori, 2,000 vengono considerati burn-in e vengono esclusi. Ci restano dunque con 2,000 stime a posteriori di <span class="math inline">\(\theta\)</span>.</p>
 <p>Il tasso di accettazione è pari a</p>
-<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">burnIn</span> <span class="op">&lt;-</span> <span class="va">niter</span> <span class="op">/</span> <span class="fl">2</span>
 <span class="va">acceptance</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/duplicated.html">duplicated</a></span><span class="op">(</span><span class="va">chain</span><span class="op">[</span><span class="op">-</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">burnIn</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
 <span class="va">acceptance</span>
 <span class="co">#&gt; [1] 0.2511498</span></code></pre></div>
 <p>il che conferma che la deviazione standard che abbiamo scelto per la distribuzione proposta (<span class="math inline">\(\sigma\)</span> = 0.9) è adeguata.</p>
 <p>Una figura che rappresenta la distribuzione a posteriori per <span class="math inline">\(\theta\)</span>, insieme alla rappresentazione dei valori della catena di Markov realizzata dall’algoritmo di Metropolis, può essere prodotta mediante le seguenti istruzioni:</p>
-<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">chain</span><span class="op">[</span><span class="op">-</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">burnIn</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -420,9 +434,9 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
 
 <span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span>
 <span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-246-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-247-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>A questo punto è molto facile trovare il massimo a posteriori per il parametro <span class="math inline">\(\theta\)</span>:</p>
-<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">chain</span><span class="op">[</span><span class="op">-</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">burnIn</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0.5921799</span></code></pre></div>
 <!-- Nella funzione precedente, le prime due righe definiscono un vettore, chiamato `chain`, dove vengono salvati i valori del parametro che sono campionati dalla distribuzione a posteriori, e inizializzano tale vettore utilizzando il valore iniziale che verrà prescelto in seguito. Il ciclo `for ()` viene utilizzato per specificare i valori della passeggiata aleatoria (*random walk*) che definisce l'insieme di punti che vengono campionati dalla distribuzione a posteriori. L'algoritmo procede nel modo seguente. -->
@@ -469,6 +483,7 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
 <!-- ``` -->
 <!-- Ma l'algoritmo funziona abbastanza bene anche se la distribuzione proposta è molto diversa dalla distribuzione target. -->
 </div>
+</div>
 <div id="conclusioni-10" class="section level2 unnumbered">
 <h2>Conclusioni<a class="anchor" aria-label="anchor" href="#conclusioni-10"><i class="fas fa-link"></i></a>
 </h2>
@@ -493,11 +508,14 @@ problemi di qualunque grado di complessità.</p>
 <li><a class="nav-link" href="#metodi-mc-basati-su-catena-di-markov"><span class="header-section-number">23.5</span> Metodi MC basati su Catena di Markov</a></li>
 <li><a class="nav-link" href="#il-problema-del-turista-viaggiatore"><span class="header-section-number">23.6</span> Il problema del turista viaggiatore</a></li>
 <li><a class="nav-link" href="#lalgoritmo-di-metropolis"><span class="header-section-number">23.7</span> L’algoritmo di Metropolis</a></li>
-<li><a class="nav-link" href="#una-applicazione-concreta"><span class="header-section-number">23.8</span> Una applicazione concreta</a></li>
-<li><a class="nav-link" href="#verosimiglianza"><span class="header-section-number">23.9</span> Verosimiglianza</a></li>
-<li><a class="nav-link" href="#distribuzione-a-priori-1"><span class="header-section-number">23.10</span> Distribuzione a priori</a></li>
-<li><a class="nav-link" href="#distribuzione-a-posteriori"><span class="header-section-number">23.11</span> Distribuzione a posteriori</a></li>
-<li><a class="nav-link" href="#algoritmo-di-metropolis"><span class="header-section-number">23.12</span> Algoritmo di Metropolis</a></li>
+<li>
+<a class="nav-link" href="#una-applicazione-concreta"><span class="header-section-number">23.8</span> Una applicazione concreta</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#verosimiglianza"><span class="header-section-number">23.8.1</span> Verosimiglianza</a></li>
+<li><a class="nav-link" href="#distribuzione-a-priori-1"><span class="header-section-number">23.8.2</span> Distribuzione a priori</a></li>
+<li><a class="nav-link" href="#distribuzione-a-posteriori"><span class="header-section-number">23.8.3</span> Distribuzione a posteriori</a></li>
+<li><a class="nav-link" href="#algoritmo-di-metropolis"><span class="header-section-number">23.8.4</span> Algoritmo di Metropolis</a></li>
+</ul>
+</li>
 <li><a class="nav-link" href="#conclusioni-10">Conclusioni</a></li>
 </ul>
 

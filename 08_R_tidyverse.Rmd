@@ -11,13 +11,13 @@ in maniera tale che abbiano una struttura logica organizzata. La
 struttura che solitamente si utilizza è quella tabellare (matrice dei
 dati), ovvero si dispongono i dati in una tabella nella quale a ciascuna
 riga corrisponde ad un'osservazione e ciascuna colonna corrisponde ad
-una variabile rilevata. In R una tale struttura è chiamata *data frame*.
+una variabile rilevata. In `R` una tale struttura è chiamata *data frame*.
 Il pacchetto `dplyr`, che è al momento uno dei pacchetti più famosi e
 utilizzati per la gestione dei dati, offre una serie di funzionalità che
 consentono di ottenere il risultato descritto in precedenza e consente
 inoltre di eseguire le operazioni più comuni di manipolazione dei dati
 in maniera più semplice rispetto a quanto succeda quando usiamo le
-funzioni base di .
+funzioni base di `R`.
 
 ## Trattamento dei dati con `dplyr`
 
@@ -39,7 +39,7 @@ dim(msleep)
 
 ### Operatore pipe
 
-Prima di presentare le funzionalità di `tidyverse`, introduciamo l'operatore pipe `%>%`  del pacchetto `magrittr` -- ma ora presente anche in base R nella versione `|>`. L'operatore pipe, `%>%` o `|>`, serve a concatenare varie funzioni insieme, in modo da inserire un'operazione dietro l'altra. Una spiegazione intuitiva dell'operatore pipe è stata fornita in un tweet di `@andrewheiss`. Consideriamo la seguente istruzione in pseudo-codice R:
+Prima di presentare le funzionalità di `tidyverse`, introduciamo l'operatore pipe `%>%`  del pacchetto `magrittr` -- ma ora presente anche in base `R` nella versione `|>`. L'operatore pipe, `%>%` o `|>`, serve a concatenare varie funzioni insieme, in modo da inserire un'operazione dietro l'altra. Una spiegazione intuitiva dell'operatore pipe è stata fornita in un tweet di `@andrewheiss`. Consideriamo la seguente istruzione in pseudo-codice `R`:
 
 ```{r, eval=FALSE}
 leave_house(get_dressed(get_out_of_bed(wake_up(me, time = "8:00"), side = "correct"), pants = TRUE, shirt = TRUE), car = TRUE, bike = FALSE)
@@ -55,7 +55,7 @@ me %>%
   leave_house(car = TRUE, bike = FALSE)
 ```
 
-In questa seconda versione del (pseudo) codice R si capisce molto meglio ciò che vogliamo fare. Il data.frame `me` viene passato alla funzione `wake_up()`. La funzione `wake_up()` ha come argomento l'ora del giorno: `time = "8:00"`. Una volta "svegliati" (wake up) dobbiamo scendere dal letto. Quindi l'output di `wake_up()` viene passato alla funzione `get_out_of_bed()` la quale ha come argomento `side = "correct"` perché vogliamo scendere dal letto dalla parte giusta. E così via.
+In questa seconda versione del (pseudo) codice `R` si capisce molto meglio ciò che vogliamo fare. Il data.frame `me` viene passato alla funzione `wake_up()`. La funzione `wake_up()` ha come argomento l'ora del giorno: `time = "8:00"`. Una volta "svegliati" (wake up) dobbiamo scendere dal letto. Quindi l'output di `wake_up()` viene passato alla funzione `get_out_of_bed()` la quale ha come argomento `side = "correct"` perché vogliamo scendere dal letto dalla parte giusta. E così via.
 
 
 ### Selezionare le colonne del data.frame con `select()`
@@ -152,9 +152,9 @@ specificato. Per tali osservazioni, dunque, la classe di appartenenza è
 `NA`.
 
 
-## Dati categoriali in R
+## Dati categoriali in `R`
 
-Consideriamo una variabile che descrive il genere e include le categorie `male`,  `female` e `non-conforming`. In R, ci sono due modi per memorizzare queste informazioni. Uno è usare la classe _character strings_ e l'altro è usare la classe _factor_. Non ci addentrimo qui nelle sottigliezze di questa distinzione, motivata in gran parte per le necessità della programmazione con le funzioni di `tidyverse`. Per gli scopi di questo insegnamento sarà sufficiente codificare le variabili qualitative usando la classe _factor_. Una volta codificati i dati qualitativi utilizzando la classe _factor_, si pongono spesso due problemi:
+Consideriamo una variabile che descrive il genere e include le categorie `male`,  `female` e `non-conforming`. In `R`, ci sono due modi per memorizzare queste informazioni. Uno è usare la classe _character strings_ e l'altro è usare la classe _factor_. Non ci addentrimo qui nelle sottigliezze di questa distinzione, motivata in gran parte per le necessità della programmazione con le funzioni di `tidyverse`. Per gli scopi di questo insegnamento sarà sufficiente codificare le variabili qualitative usando la classe _factor_. Una volta codificati i dati qualitativi utilizzando la classe _factor_, si pongono spesso due problemi:
 
 1. modificare le etichette dei livelli (modalità) di un fattore,
 2. riordinare i livelli di un fattore.
@@ -190,7 +190,7 @@ df
 
 ### Riordinare i livelli di un fattore
 
-Spesso i livelli dei fattori hanno un ordinamento naturale. Tuttavia, l'impostazione predefinita in base R è ordinare i livelli in ordine alfabetico. Quindi, gli utenti devono avere un modo per imporre l'ordine desiderato sulla codifica delle loro variabili qualitative. Ciò può essere ottenuto nel modo seguente.
+Spesso i livelli dei fattori hanno un ordinamento naturale. Tuttavia, l'impostazione predefinita in base `R` è ordinare i livelli in ordine alfabetico. Quindi, gli utenti devono avere un modo per imporre l'ordine desiderato sulla codifica delle loro variabili qualitative. Ciò può essere ottenuto nel modo seguente.
 
 ```{r}
 df$f_1 <- factor(df$f_1,
@@ -323,6 +323,6 @@ msleep %>%
 
 L'argomento `aes(y=..density..)` in `geom_histogram()` produce le frequenze relative. L'opzione di default (senza questo argomento) porta `ggplot()` a rappresentare le frequenze assolute.
 
-### Scrivere il codice in R con stile 
+### Scrivere il codice in `R` con stile 
 
-Uno stile di programmazione è un insieme di regole per la gestione dell'indentazione dei blocchi di codice, per la creazione dei nomi dei file e delle variabili e per le convenzioni tipografiche che vengono usate. Scrivere il codice in R con stile consente di creare listati più leggibili e semplici da modificare, minimizza la possibilità di errore, e consente correzioni e modifiche più rapide. Vi sono molteplici stili di programmazione che possono essere utilizzati dall'utente, anche se è bene attenersi a quelle che sono le convenzioni maggiormente diffuse, allo scopo di favorire la comunicazione. In ogni caso, l'importante è di essere coerenti, ovvero di adottare le stesse convenzioni in tutte le parti del codice che si scrive. Ad esempio, se si sceglie di usare lo stile `snake_case` per il nome composto di una variabile (es., `personality_trait`), non è appropriato usare lo stile *lower Camel case* per un'altra variabile (es., `socialStatus`). Dato che questo argomento è stato trattato ampiamente in varie sedi, mi limito qui a rimandare ad uno stile di programmazione molto popolare, quello proposto da Hadley Wickham, il creatore di `tidyverse`. Potete trovare maggiori informazioni al seguente link: <http://style.tidyverse.org/>.
+Uno stile di programmazione è un insieme di regole per la gestione dell'indentazione dei blocchi di codice, per la creazione dei nomi dei file e delle variabili e per le convenzioni tipografiche che vengono usate. Scrivere il codice in `R` con stile consente di creare listati più leggibili e semplici da modificare, minimizza la possibilità di errore, e consente correzioni e modifiche più rapide. Vi sono molteplici stili di programmazione che possono essere utilizzati dall'utente, anche se è bene attenersi a quelle che sono le convenzioni maggiormente diffuse, allo scopo di favorire la comunicazione. In ogni caso, l'importante è di essere coerenti, ovvero di adottare le stesse convenzioni in tutte le parti del codice che si scrive. Ad esempio, se si sceglie di usare lo stile `snake_case` per il nome composto di una variabile (es., `personality_trait`), non è appropriato usare lo stile *lower Camel case* per un'altra variabile (es., `socialStatus`). Dato che questo argomento è stato trattato ampiamente in varie sedi, mi limito qui a rimandare ad uno stile di programmazione molto popolare, quello proposto da Hadley Wickham, il creatore di `tidyverse`. Potete trovare maggiori informazioni al seguente link: <http://style.tidyverse.org/>.

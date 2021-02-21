@@ -14,11 +14,13 @@ Il termine "riproducibilità" (o "replicabilità") è stato definito in vari mod
 
 - la riproducibilità inferenziale "si riferisce alla possibilità di trarre conclusioni qualitativamente simili da una replica indipendente di uno studio o da una nuova analisi dello studio originale" (pag. 4).
 
-Per gli scopi di questo capitolo, ci focalizzeremo qui sulla riproducibilità dei metodi. Cioè, discuteremo di come R può aiutarci a migliorare questo aspetto della riproducibilità. In questo capitolo mostreremo come R possa essere utilizzato all'interno di un flusso di lavoro (_workflow_) riproducibile che integra (1) il codice di analisi dei dati, (2) i dati medesimi e (3) il testo della relazione che comunica i risultati dello studio. A tal fine utilizzeremo due pacchetti R: `rmarkdown` e `knitr`. Questi pacchetti  consentono di unire il codice R ad un linguaggio di marcatura (o di markup) chiamato Markdown. 
+Per gli scopi presenti, ci focalizzeremo qui sulla riproducibilità dei metodi. Cioè, discuteremo di come `R` può aiutarci a migliorare questo aspetto della riproducibilità. In questo capitolo mostreremo come R possa essere utilizzato all'interno di un flusso di lavoro (_workflow_) riproducibile che integra (1) il codice di analisi dei dati, (2) i dati medesimi e (3) il testo della relazione che comunica i risultati dello studio. A tal fine utilizzeremo due pacchetti R: `rmarkdown` e `knitr`. Questi pacchetti consentono di unire il codice R ad un linguaggio di marcatura (o di markup) chiamato Markdown. Il linguaggio di markup Markdown sta diventando sempre più popolare e viene usato, oltre che per creare [reports](https://avehtari.github.io/ROS-Examples/Simplest/simplest.html) di analisi di dati, anche per creare [siti web](https://alison.rbind.io), [blog](https://djnavarro.net), [libri](https://r4ds.had.co.nz), [articoli accademici](https://osf.io/9te8p/), [curriculum vitae](https://github.com/mitchelloharawild/vitae), [slide](https://rmarkdown.rstudio.com/lesson-11.html), [tesi di laurea](https://github.com/ismayc/thesisdown). Per esempio, il presente sito web è stato scritto usando R-markdown.
 
 ## R-markdown
 
-Un linguaggio di markup permette di aggiungere mediante marcatori (tag) informazioni sulla struttura e sulla formattazione da applicare ad un documento. Un'introduzione al linguaggio Markdown può essere trovata, per esempio, [qui](https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html). In questo capitolo  ci focalizzeremo però sugli aspetti più importanti di `R Markdown` che permette di costruire documenti in cui combinare testo formattato (quindi non solo commenti ma anche formule, titoli etc) e istruzioni codice (`R` e non solo) con i corrispettivi output. 
+Un linguaggio di markup permette di aggiungere mediante marcatori (tag) informazioni sulla struttura e sulla formattazione da applicare ad un documento. Un'introduzione al linguaggio Markdown può essere trovata, per esempio, [qui](https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html) oppure [qui](https://experienceleague.adobe.com/docs/contributor/contributor-guide/writing-essentials/markdown.html?lang=it#estensioni-personalizzate-markdown). 
+
+In questo capitolo  ci focalizzeremo però sugli aspetti più importanti di R-markdown che permette di costruire documenti in cui combinare testo formattato (quindi non solo commenti ma anche formule, titoli etc) e istruzioni codice (`R` e non solo) con i corrispettivi output. Informazioni dettagliate su R-markdown sono disponibili  [qui](https://bookdown.org/yihui/rmarkdown/) e [qui](https://bookdown.org/yihui/rmarkdown-cookbook/).
 
 Un file R-markdown è composto da tre tipi di oggetti: 
 
@@ -28,9 +30,9 @@ Un file R-markdown è composto da tre tipi di oggetti:
 
 ### Header
 
-L'intestazione di un documento `.Rmd` (R Markdown) corrisponde al cosiddetto _YAML header_ (un acronimo che significa _Yet Another Markup Language_). Lo YAML header controlla le caratteristiche generali del documento, incluso il tipo di documento che viene prodotto (un documento HTML che può essere visualizzato su tutti i principali browser, un documento Microsoft Word o un PDF se abbiamo installato $\LaTeX$ sul nostro computer), la dimensione del carattere, lo stile, il titolo, l'autore, ecc.
+L'intestazione di un documento `.Rmd` (R-markdown) corrisponde al cosiddetto _YAML header_ (un acronimo che significa _Yet Another Markup Language_). Lo YAML header controlla le caratteristiche generali del documento, incluso il tipo di documento che viene prodotto (un documento HTML che può essere visualizzato su tutti i principali browser, un documento Microsoft Word o un PDF se abbiamo installato $\LaTeX$ sul nostro computer), la dimensione del carattere, lo stile, il titolo, l'autore, ecc.
 
-Nello YAML header (a differenza del codice R) è necessario rispettare la spaziatura prestabilita delle istruzioni che vengono elencate. Gli elementi principali sono questi:
+Nello YAML header (a differenza del codice `R`) è necessario rispettare la spaziatura prestabilita delle istruzioni che vengono elencate. Gli elementi principali sono questi:
 
 ```{r, eval=FALSE}
 ---
@@ -40,11 +42,15 @@ output: html_document
 ---
 ```
 
-L'argomento output è dove diciamo a R Markdown quale tipo di file vogliamo che venga prodotto. Il tipo più flessibile, che non richiede alcuna configurazione, è `html_document`.
+L'argomento output è dove diciamo a R-markdown quale tipo di file vogliamo che venga prodotto. Il tipo più flessibile, che non richiede alcuna configurazione, è `html_document`.
 
 ### Testo 
 
-Alla conclusione dello YAML header inizia il documento R Markdown. Da questo punto in poi possiamo utilizzare testo normale, codice R e sintassi Markdown per controllare cosa viene mostrato e come. È possibile contrassegnare intestazioni, grassetto e corsivo come indicato di seguito.
+Alla conclusione dello YAML header inizia il documento R-markdown. Da questo punto in poi possiamo utilizzare testo normale, codice `R` e sintassi Markdown per controllare cosa viene mostrato e come. 
+
+#### Formattazione {-}
+
+È possibile contrassegnare intestazioni, grassetto e corsivo come indicato di seguito.
 
 ```
 # Intestazione 1
@@ -63,6 +69,8 @@ Possiamo scrivere in *corsivo* usando un asterisco.
 Questa riga invece non è più rientrata.
 ```
 
+#### Elenchi {-}
+
 Per creare un elenco puntato si utilizza il segno più, il trattino o l’asterisco. Tutte le tre soluzioni portano allo stesso risultato.
 
 ```
@@ -79,18 +87,44 @@ Un elenco numerato, invece, si crea con un numero seguito da un punto.
 3. Punto 3 della lista
 ```
 
-Per inserire un link ci sono due metodi: \
+#### Hyperlink {-}
+
+Per inserire un hyperlink ci sono due metodi: \
 
 - specificare solo il percorso `<http://rmarkdown.rstudio.com>`, <http://rmarkdown.rstudio.com>\
 - creare un [link](http://rmarkdown.rstudio.com) con `[link](http://rmarkdown.rstudio.com)`\
 
-Per inserire un'immagine la sintassi è molto simile: `![image](correlation.png)`. 
+#### Immagini {-}
+
+Per inserire un'immagine la sintassi è molto simile: `![Esempio di immagine inserita in un documento R-markdown.](images/hex-rmarkdown.png){width=20%}`: 
+
+![Esempio di immagine inserita in un documento R-markdown.](images/hex-rmarkdown.png){width=20%}
+
+#### Codice inline {-}
 
 Per contrassegnare un'area di testo come codice, markdown utilizza il cosiddetto backtick, noto anche come gravis o accento grave, da non confondere con la virgoletta singola. La marcatura prevede un accento all'inizio e uno alla fine dell'area di testo corrispondente.
 
 ```
 Questo è `codice`.
 ```
+
+#### Equazioni {-}
+
+Equazioni possono essere inserite in un documento R-markdown usando la sintassi $\LaTeX$. Qualsiasi cosa all'interno del segno di dollaro \$ viene trattata come un'equazione "inline". Qualunque cosa all'interno di due segni di dollaro \$$ viene trattata come  un'equazione a sé stante.
+
+Per esempio, questa è la formula della distribuzione Normale espressa in notazione $\LaTeX$ e riprodotta all'interno di un documento R-markdown:
+
+````
+$$
+f(x) = \frac{1}{\sigma\sqrt{2\pi}} 
+  \exp\left( -\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{\!2}\,\right)
+$$
+````
+
+$$
+f(x) = \frac{1}{\sigma\sqrt{2\pi}} 
+  \exp\left( -\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{\!2}\,\right)
+$$
 
 ### Codice R 
 
@@ -102,16 +136,16 @@ In un documento R-markdown istruzioni di codice vengono inserite in blocchi deli
 ```
 ````
 
-Ciò consente di valutare il codice all'interno del documento e di produrre un output che verrà stampato nel documento stesso. Possiamo dunque stampare tabelle e figure prodotti direttamente dal codice R. Ciò significa inoltre, che se qualcosa cambia nei dati o nelle analisi dei dati, le tabelle e le figure si aggiorneranno automaticamente.
+Ciò consente di valutare il codice all'interno del documento e di produrre un output che verrà stampato nel documento stesso. Possiamo dunque stampare tabelle e figure prodotti direttamente dal codice `R`. Ciò significa inoltre, che se qualcosa cambia nei dati o nelle analisi dei dati, le tabelle e le figure si aggiorneranno automaticamente.
 
-Un chunk R viene valutato proprio come il normale codice R, quindi si applica tutto ciò che abbiamo imparato nei capitoli precedenti. Se il chunk R produce un output, questo output verrà visualizzato nel documento.
+Un chunk `R` viene valutato proprio come il normale codice `R`, quindi si applica tutto ciò che abbiamo imparato nei capitoli precedenti. Se il chunk `R` produce un output, questo output verrà visualizzato nel documento.
 
 ## Compilare la presentazione R-markdown 
 
-Ma dove si trova questo magico documento che include il testo e l'output prodotto dal codice R? Ottima domanda. Siamo stati abituati ai programmi di videoscrittura (come Microsoft Word) che si conformano al cosiddetto stile "WYSIWYG" (What You See Is What You Get) -- cioè, si vede come apparirà il documento stampato mentre lo si digita. Questo può avere alcuni vantaggi ma può anche essere molto limitante. R-Markdown, d'altra parte, funziona in modo diverso. Ovvero, deve essere "compilato" (knitted) per passare dal file sorgente al documento formattato. In RStudio, tale operazione è semplice: c'è un pulsante in alto a sinistra nel pannello di scripting di un documento `.Rmd`. È sufficiente selezionare tale pulsante e il nostro documento verrà creato.
+Ma dove si trova questo magico documento che include il testo e l'output prodotto dal codice `R`? Ottima domanda. Siamo stati abituati ai programmi di videoscrittura (come Microsoft Word) che si conformano al cosiddetto stile "WYSIWYG" (What You See Is What You Get) -- cioè, si vede come apparirà il documento stampato mentre lo si digita. Questo può avere alcuni vantaggi ma può anche essere molto limitante. R-Markdown, d'altra parte, funziona in modo diverso. Ovvero, deve essere "compilato" (knitted) per passare dal file sorgente al documento formattato. In RStudio, tale operazione è semplice: c'è un pulsante in alto a sinistra nel pannello di scripting di un documento `.Rmd`. È sufficiente selezionare tale pulsante e il nostro documento verrà creato.
 
 ## Importante {-}
 
-Il codice del documento deve essere completamente autonomo. Ciò significa che tutto ciò che volete che venga eseguito deve essere nel documento, indipendentemente da ciò che è stato già eseguito al di fuori di esso. Ad esempio, è perfettamente legittimo (e anche molto utile) testare il codice R al di fuori del documento `Rmd`. Tuttavia, quando compiliamo il documento `Rmd`, tutto ciò che è stato fatto al di fuori del documento `Rmd` viene dimenticato. Ciò consente di creare un documento autosufficiente che favorisce la riproducibilità dei metodi di analisi dei dati: utilizzando uno specifico documento `Rmd` con un campione di dati si giunge sempre allo stesso risultato e alla stessa interpretazione. Ciò non è invece vero se si utilizza un software con un interfaccia point-and-click.
+Il codice del documento deve essere completamente autonomo. Ciò significa che tutto ciò che volete che venga eseguito deve essere nel documento, indipendentemente da ciò che è stato già eseguito al di fuori di esso. Ad esempio, è perfettamente legittimo (e anche molto utile) testare il codice `R` al di fuori del documento `Rmd`. Tuttavia, quando compiliamo il documento `Rmd`, tutto ciò che è stato fatto al di fuori del documento `Rmd` viene dimenticato. Ciò consente di creare un documento autosufficiente che favorisce la riproducibilità dei metodi di analisi dei dati: utilizzando uno specifico documento `Rmd` con un campione di dati si giunge sempre allo stesso risultato e alla stessa interpretazione. Ciò non è invece vero se si utilizza un software con un interfaccia point-and-click.
 
 

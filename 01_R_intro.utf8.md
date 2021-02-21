@@ -1,7 +1,0 @@
-# (PART\*) Introduzione al linguaggio R {-}
-
-# Introduzione {-}
-
-In questa sezione del libro saranno presentate le caratteristiche di base e la filosofia dell'ambiente R, passando poi a illustrare le strutture dati e le principali strutture di controllo. Verranno introdotte alcune funzioni utili per la gestione dei dati e verranno forniti i rudimenti per realizzare semplici funzioni. Verranno introdotti i tipi di file editabili in RStudio (script, markdown, ...). Nello specifico, dopo aver accennato alcune caratteristiche del sistema `tidyverse`, verranno illustrate le principali funzionalità dell'IDE RStudio e dei pacchetti `dplyr` e `ggplot2`.
-
-
