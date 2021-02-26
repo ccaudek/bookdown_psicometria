@@ -52,13 +52,23 @@ In questo caso, sul mio computer, `[24]` indica che il valore $123$ è il ventiq
 
 ## Espressioni
 
+In questo corso, cercheremo di evitare i numeri nei nomi R, così come le lettere maiuscole e .. Useremo quindi nomi come: my_data, anova_results, square_root, ecc.
+
 Un'espressione in `R` è un enunciato finito e autonomo del linguaggio: una frase conclusa, si potrebbe dire. Si noti che le espressioni in `R` non sono delimitate dal `;` come succede in alcuni linguaggi di programmazione. L'ordine delle espressioni è l'ordine di esecuzione delle stesse. 
 
 L'a capo non è  rilevante per `R`. Questo permette di utilizzare l'a capo per migliorare la leggibilità  del codice.
 
 ## Oggetti
 
-`R` è un linguaggio di programmazione a oggetti, quindi si basa sulla creazione di oggetti e sulla possibilità di salvarli nella memoria del programma. Quando creiamo un oggetto gli attribuiamo un nome usando il simbolo `<-`. Ad esempio, per creare un oggetto che contiene il risultato dell'operazione `2 + 2` procediamo nel modo seguente:
+
+
+`R` è un linguaggio di programmazione a oggetti, quindi si basa sulla creazione di oggetti e sulla possibilità di salvarli nella memoria del programma. `R` distingue tra maiuscole e minuscole come la maggior parte dei linguaggi basati su UNIX, quindi `A` e `a` sono nomi diversi e fanno riferimento a oggetti diversi.
+
+I comandi elementari di `R` consistono in espressioni o assegnazioni.
+
+Se un'espressione viene fornita come comando, viene valutata, stampata sullo schermo e il valore viene perso, come succedeva alle operazioni aritmetiche che abbiamo presentato sopra discutendo l'uso della console `R` come calcolatrice.
+
+Un'assegnazione crea un oggetto oppure valuta un'espressione e passa il valore a un oggetto, ma il risultato non viene stampato automaticamente sullo schermo. Per l'operazione di assegnazione si usa il simbolo `<-`. Ad esempio, per creare un oggetto che contiene il risultato dell'operazione `2 + 2` procediamo nel modo seguente:
 
 ```{r}
 res_sum <- 2 + 2
@@ -145,9 +155,11 @@ pratica usare nomi come `ratio_of_sums`. È fortemente sconsigliato
 utilizzare nei nomi degli oggetti caratteri accentati o, ancora peggio,
 apostrofi. Per questa ragione è sensato creare i nomi degli oggetti
 utilizzando la lingua inglese. È anche bene che i nomi degli oggetti non
-coincidano con nomi di funzioni. Si noti che `R` è *case sensitive*, cioè
+coincidano con nomi di funzioni. Ricordo nuovamente che `R` è *case sensitive*, cioè
 `A` e `a` sono due simboli diversi e identificano due oggetti
 differenti.
+
+In questo corso cercheremo di evitare i numeri nei nomi degli oggetti `R`, così come le lettere maiuscole e il punto. Useremo quindi nomi come: `my_data`, `regression_results`, `square_root`, ecc.
 
 ### Permanenza dei dati e rimozione di oggetti
 

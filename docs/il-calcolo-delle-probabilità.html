@@ -210,7 +210,7 @@ diverso ogni volta che si ripete una certa operazione, in modo tale da
 rappresentare il grado di casualità che si osserva quando si lancia di
 un dado. Per ora ci limitiamo ad esaminare i risultati che vengono
 prodotti in questo modo e che sono illustrati nella
-figura <a href="il-calcolo-delle-probabilit%C3%A0.html#fig:demere">13.1</a>.</p>
+figura <a href="il-calcolo-delle-probabilit%C3%A0.html#fig:demere">13.1</a>.</p>
 <div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Game A: Throw a fair die at most four times, and win if you get a six.</span>
 <span class="va">experiment_a</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span><span class="op">{</span>
@@ -331,13 +331,15 @@ evento può manifestarsi e di dividere tale numero per il numero totale
 di eventi dello spazio campionario <span class="math inline">\(\Omega\)</span>.</p>
 
 <div class="definition">
-<span id="def:def-ing-prob" class="definition"><strong>Definizione 13.1  </strong></span>Dato uno spazio campionario finito, la definizione ingenua della probabilità dell’evento <span class="math inline">\(A\)</span> è <span class="math display">\[
+<span id="def:def-ing-prob" class="definition"><strong>Definizione 13.1  </strong></span>Dato uno spazio campionario finito, la definizione ingenua della probabilità dell’evento <span class="math inline">\(A\)</span> è
+<span class="math display">\[
 \begin{aligned}
 P_{\text{ing}} = \frac{|A|}{|\Omega|}
-= \frac{\text{numero eventi elementari favorevoli all'evento }A}{\text{numero totale  eventi elementari dello spazio campionario }\Omega}.\notag\end{aligned}
+= \frac{\text{numero eventi elementari favorevoli all'evento }A}{\text{numero totale  eventi elementari dello spazio campionario }\Omega}.\notag
+\end{aligned}
 \]</span>
 </div>
-<p>La definizione <a href="il-calcolo-delle-probabilit%C3%A0.html#def:def-ing-prob">13.1</a> rende chiaro che il calcolo delle probabilità richiede di contare il numero di modi in cui un evento può realizzarsi.
+<p>La definizione <a href="il-calcolo-delle-probabilit%C3%A0.html#def:def-ing-prob">13.1</a> rende chiaro che il calcolo delle probabilità richiede di contare il numero di modi in cui un evento può realizzarsi.
 Per esempio, nell’esperimento casuale corrispondente al lancio di due dadi equilibrati, l’evento <span class="math inline">\(A\)</span> = “la somma dei due dati è 5” si può realizzare in 4 modi diversi: <span class="math inline">\(A = \{ (1, 4), (2, 3), (3, 2), (4, 1) \}\)</span>.
 Contare il numero di modi in cui un evento può realizzarsi può essere semplice, nel caso di alcuni eventi (come il presente), oppure estremamente complesso, nel caso di altri eventi. In questo secondo caso, per contare il numero di modi in cui un evento può realizzarsi, al fine di calcolare la probabilità definita come indicato sopra, è necessario fare uso del calcolo combinatorio. In queste dispense ci accontenteremo di presentare alcune nozioni di base del calcolo combinatorio, ma non entreremo nei dettagli di questo argomento.</p>
 </div>
@@ -346,23 +348,37 @@ Contare il numero di modi in cui un evento può realizzarsi può essere semplice
 <span class="header-section-number">13.4.2</span> Una definizione non ingenua della probabilità<a class="anchor" aria-label="anchor" href="#una-definizione-non-ingenua-della-probabilit%C3%A0"><i class="fas fa-link"></i></a>
 </h3>
 <p>Il calcolo combinatorio ci consente di contare il numero di casi nello spazio campionario e di applicare la definizione “ingenua” di probabilità descritta nella
-definizione <a href="il-calcolo-delle-probabilit%C3%A0.html#def:def-ing-prob">13.1</a>. È però facile rendersi conto che tale definizione di probabilità ha un grosso problema: non può essere applicata al caso di uno spazio campionario infinito. Dobbiamo dunque trovare una definizione che risolva un tale problema. Per fare ciò vengono specificate alcune proprietà che vorremmo potere attribuire alla probabilità – in matematica, tali proprietà sono dette <em>assiomi</em> – per poi definire una funzione di probabilità che soddisfi tali proprietà. Arriviamo in questo modo alla seguente definizione non ingenua della probabilità.</p>
-<ul>
-<li><p>La probabilità di un evento deve essere compresa tra 0 e 1, dove 0 significa che l’evento è impossibile e non può accadere, e 1 significa che l’evento è certo che accadrà.</p></li>
-<li><p>Per due eventi che si escludono a vicenda, la probabilità che si verifichi l’uno o l’altro è la somma delle loro separate probabilità.</p></li>
-<li><p>Due eventi sono indipendenti se e solo se la probabilità del verificarsi di entrambi gli eventi è uguale al prodotto delle probabilità del verificarsi di ciascun evento.</p></li>
-<li><p>La somma delle probabilità di tutti i possibili eventi nell’intero spazio campionario deve essere uguale a 1.</p></li>
-</ul>
-<p>Le definizione precedenti corrispondono al cosiddetto <em>approccio assiomatico</em> messo a punto da Kolmogorov intorno al 1930, il quale è alla base della moderna teoria della probabilità. Gli assiomi di Kolmogorov sono necessari per evitare i paradossi che si possono creare quando si manipolano gli insiemi – ad esempio, l’utilizzo dell’“l’insieme di tutti gli insiemi” tipicamente conduce ad un paradosso.</p>
+definizione <a href="il-calcolo-delle-probabilit%C3%A0.html#def:def-ing-prob">13.1</a>. È però facile rendersi conto che tale definizione di probabilità ha un grosso problema: non può essere applicata al caso di uno spazio campionario infinito. Dobbiamo dunque trovare una definizione che risolva un tale problema.</p>
+<p>L’attuale nozione matematica di probabilità ha impiegato diverse centinaia di anni per cristallizzarsi. Non cerca di rispondere a difficili domande filosofiche come “Che cos’è la casualità?” “Da dove viene?” “Qual è il significato della probabilità nel mondo reale?” ecc., ma ci offre un modello matematico che si rivela estremamente efficace nella modellazione dei fenomeni del mondo reale.</p>
+<p>Nella maggior parte dei trattamenti matematici contemporanei della probabilità, la nozione di base è quella uno <em>spazio di probabilità</em>, che è un modello matematico di un esperimento casuale. Esempi di un esperimento casuale sono tre lanci successivi di una moneta equilibrata o la scelta di un punto casuale in un quadrato di area unitaria.</p>
+<p>Uno spazio di probabilità è una tripla (<span class="math inline">\(\Omega\)</span>, <span class="math inline">\(\mathcal{F}\)</span>, <span class="math inline">\(P\)</span>). La prima componente viene chiamata <em>spazio campionario</em> ed è un insieme costituito da tutti i possibili risultati dell’esperimento casuale. Ogni elemento <span class="math inline">\(\omega \in \Omega\)</span> è chiamato <em>evento elementare</em>. Per l’esempio dei tre lanci di una moneta, lo spazio campionario consiste di tutte le possibili sequenze di tre lettere costituite da H (testa) e T (croce): <span class="math inline">\(\Omega\)</span> = {HHH, HHT, …, TTT}. Per l’esempio della scelta di un punto casuale in un quadrato, lo spazio campionario è costituito da tutti i punti contenuti nell’area del quadrato.</p>
+<p>La seconda componente <span class="math inline">\(\mathcal{F}\)</span> di uno spazio di probabilità è un insieme di sottoinsiemi di <span class="math inline">\(\Omega\)</span>. Ogni insieme <span class="math inline">\(E \in \mathcal{F}\)</span> è chiamata evento. Un esempio concreto di evento nell’esperimento dei tre lanci di una moneta è “numero dispari di risultati croce,” ovvero <span class="math inline">\(E = {HHT, HTH, THH, TTT}\)</span>. Nell’esempio della scelta di un punto casuale in un quadrato, tutte le figure geometriche all’interno del quadrato sono degli eventi.</p>
+<p>L’ultimo componente <span class="math inline">\(P\)</span> di uno spazio di probabilità è una funzione che
+assegna un numero reale <span class="math inline">\(P(E)\)</span>, chiamato probabilità di <span class="math inline">\(E\)</span>, a ogni
+evento <span class="math inline">\(E \in \mathcal{F}\)</span>. Nell’esempio dei tre lanci di una moneta, consideriamo tutti gli eventi elementari egualmente probabili, e la probabilità di un evento <span class="math inline">\(E\)</span> è definita come il rapporto tra il numero degli eventi elementari in <span class="math inline">\(E\)</span> e il numero degli eventi elementari nello spazio campionario. Nell’esempio della scelta di un punto casuale in un quadrato, la probabilità dell’evento <span class="math inline">\(E\)</span> che corrisponde ad una qualche figura geometrica inscritta nel quadrato è data dal rapporto tra l’area di tale figura geometrica e l’area totale del quadrato.</p>
+<p>La tripla (<span class="math inline">\(\Omega\)</span>, <span class="math inline">\(\mathcal{F}\)</span>, <span class="math inline">\(P\)</span>) deve soddisfare i seguenti assiomi, che
+furono presentati per la prima volta in questa forma da Kolmogorov negli anni ’30:</p>
+<ol style="list-style-type: decimal">
+<li>
+<span class="math inline">\(P(E) ≥ 0\)</span> per ciascun <span class="math inline">\(E \in \mathcal{F}\)</span>.</li>
+<li>
+<span class="math inline">\(P(\Omega) = 1\)</span> (l’esperimento produce sempre qualche risultato).</li>
+<li>
+<span class="math inline">\(P\)</span> se <span class="math inline">\(E_1, E_2, \dots\)</span> è una sequenza di eventi mutuamente disgiunti, ne segue che
+<span class="math display">\[
+P\left(\bigcup\limits_{i=1}^{\infty} E_i \right) = \sum_{i=1}^\infty P(E_i)
+\]</span>
+</li>
+</ol>
+<p>Gli assiomi (1) e (2) sono molto intuitivi, così come l’additività nel caso di un numero finito di eventi. L’additività numerabile non può essere supportata dall’intuizione, ma è uno strumento fondamentale nella teoria della probabilità e della statistica.</p>
+<p>La precedente definizione di uno spazio di probabilità corrisponde al cosiddetto <em>approccio assiomatico</em> messo a punto da Kolmogorov intorno al 1930, il quale è alla base della moderna teoria della probabilità. Gli assiomi di Kolmogorov sono necessari per evitare i paradossi che si possono creare quando si manipolano gli insiemi – ad esempio, l’utilizzo dell’“l’insieme di tutti gli insiemi” tipicamente conduce ad un paradosso.</p>
 </div>
 </div>
 <div id="assegnare-le-probabilità-agli-eventi" class="section level2" number="13.5">
 <h2>
 <span class="header-section-number">13.5</span> Assegnare le probabilità agli eventi<a class="anchor" aria-label="anchor" href="#assegnare-le-probabilit%C3%A0-agli-eventi"><i class="fas fa-link"></i></a>
 </h2>
-<p>È importante capire che l’approccio assiomatico non ci dice come sia
-possibile assegnare un valore di probabilità a un evento definito in
-<span class="math inline">\(\Omega\)</span>. A questo proposito esistono due diverse scuole di pensiero.</p>
+<p>È importante capire che l’approccio assiomatico non ci dice però come sia possibile assegnare un valore di probabilità a un evento <span class="math inline">\(E \in \Omega\)</span>. A questo proposito esistono due diverse scuole di pensiero.</p>
 <div id="approccio-frequentista" class="section level3" number="13.5.1">
 <h3>
 <span class="header-section-number">13.5.1</span> Approccio frequentista<a class="anchor" aria-label="anchor" href="#approccio-frequentista"><i class="fas fa-link"></i></a>
@@ -388,10 +404,11 @@ usando la nostra conoscenza della situazione. Tale approccio è seguito
 dalla definizione <em>classica</em> di probabilità in base alla quale la
 probabilità di un evento è il rapporto tra il numero di casi favorevoli
 e quelli possibili, supposto che tutti gli eventi siano equiprobabili,
-ossia <span class="math display">\[P_A = \frac{n_A}{n},\]</span> dove <span class="math inline">\(n\)</span> è il numero di casi possibili e
-<span class="math inline">\(n_A\)</span> è il numero di casi favorevoli per l’evento <span class="math inline">\(A\)</span>. L’assunzione di
-equiprobabilità degli eventi elementari ha senso soprattutto nel caso
-dei giochi d’azzardo.</p>
+ossia
+<span class="math display">\[
+P_A = \frac{n_A}{n},
+\]</span>
+dove <span class="math inline">\(n\)</span> è il numero di casi possibili e <span class="math inline">\(n_A\)</span> è il numero di casi favorevoli per l’evento <span class="math inline">\(A\)</span>. L’assunzione di equiprobabilità degli eventi elementari ha senso soprattutto nel caso dei giochi d’azzardo.</p>
 <p>In base all’approccio frequentista, la probabilità è il limite a cui
 tende una frequenza relativa empirica al crescere del numero di
 ripetizioni dell’esperimento casuale. È molto facile utilizzare   per

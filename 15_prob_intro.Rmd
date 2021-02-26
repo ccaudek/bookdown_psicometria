@@ -133,7 +133,7 @@ diverso ogni volta che si ripete una certa operazione, in modo tale da
 rappresentare il grado di casualità che si osserva quando si lancia di
 un dado. Per ora ci limitiamo ad esaminare i risultati che vengono
 prodotti in questo modo e che sono illustrati nella
-figura \@ref(fig:demere).
+figura \@ref(fig:demere).
 
 
 ```{r demere, out.width="80%", fig.cap="Risultati ottenuti da 10000 ripetizioni delle due scommesse di De Méré."}
@@ -246,40 +246,55 @@ evento può manifestarsi e di dividere tale numero per il numero totale
 di eventi dello spazio campionario $\Omega$.
 
 ```{definition, def-ing-prob}
-Dato uno spazio campionario finito, la definizione ingenua della probabilità dell'evento $A$ è $$
+Dato uno spazio campionario finito, la definizione ingenua della probabilità dell'evento $A$ è 
+$$
 \begin{aligned}
 P_{\text{ing}} = \frac{|A|}{|\Omega|}
-= \frac{\text{numero eventi elementari favorevoli all'evento }A}{\text{numero totale  eventi elementari dello spazio campionario }\Omega}.\notag\end{aligned}
+= \frac{\text{numero eventi elementari favorevoli all'evento }A}{\text{numero totale  eventi elementari dello spazio campionario }\Omega}.\notag
+\end{aligned}
 $$
 ```
 
-La definizione \@ref(def:def-ing-prob) rende chiaro che il calcolo delle probabilità richiede di contare il numero di modi in cui un evento può realizzarsi.
+La definizione \@ref(def:def-ing-prob) rende chiaro che il calcolo delle probabilità richiede di contare il numero di modi in cui un evento può realizzarsi.
 Per esempio, nell'esperimento casuale corrispondente al lancio di due dadi equilibrati, l'evento $A$ = "la somma dei due dati è 5" si può realizzare in 4 modi diversi: $A = \{
-(1, 4), (2, 3), (3, 2), (4, 1)
-\}$. 
+(1, 4), (2, 3), (3, 2), (4, 1) \}$. 
 Contare il numero di modi in cui un evento può realizzarsi può essere semplice, nel caso di alcuni eventi (come il presente), oppure estremamente complesso, nel caso di altri eventi. In questo secondo caso, per contare il numero di modi in cui un evento può realizzarsi, al fine di calcolare la probabilità definita come indicato sopra, è necessario fare uso del calcolo combinatorio. In queste dispense ci accontenteremo di presentare alcune nozioni di base del calcolo combinatorio, ma non entreremo nei dettagli di questo argomento.
 
 ### Una definizione non ingenua della probabilità
 
 Il calcolo combinatorio ci consente di contare il numero di casi nello spazio campionario e di applicare la definizione "ingenua" di probabilità descritta nella
-definizione \@ref(def:def-ing-prob). È però facile rendersi conto che tale definizione di probabilità ha un grosso problema: non può essere applicata al caso di uno spazio campionario infinito. Dobbiamo dunque trovare una definizione che risolva un tale problema. Per fare ciò vengono specificate alcune proprietà che vorremmo potere attribuire alla probabilità -- in matematica, tali proprietà sono dette *assiomi* -- per poi definire una funzione di probabilità che soddisfi tali proprietà. Arriviamo in questo modo alla seguente definizione non ingenua della probabilità.
+definizione \@ref(def:def-ing-prob). È però facile rendersi conto che tale definizione di probabilità ha un grosso problema: non può essere applicata al caso di uno spazio campionario infinito. Dobbiamo dunque trovare una definizione che risolva un tale problema. 
 
-- La probabilità di un evento deve essere compresa tra 0 e 1, dove 0 significa che l'evento è impossibile e non può accadere, e 1 significa che l'evento è certo che accadrà.
+L'attuale nozione matematica di probabilità ha impiegato diverse centinaia di anni per cristallizzarsi. Non cerca di rispondere a difficili domande filosofiche come "Che cos'è la casualità?", "Da dove viene?", "Qual è il significato della probabilità nel mondo reale?", ecc., ma ci offre un modello matematico che si rivela estremamente efficace nella modellazione dei fenomeni del mondo reale.
 
-- Per due eventi che si escludono a vicenda, la probabilità che si verifichi l'uno o l'altro è la somma delle loro separate probabilità.
+Nella maggior parte dei trattamenti matematici contemporanei della probabilità, la nozione di base è quella uno _spazio di probabilità_, che è un modello matematico di un esperimento casuale. Esempi di un esperimento casuale sono tre lanci successivi di una moneta equilibrata o la scelta di un punto casuale in un quadrato di area unitaria.
 
-- Due eventi sono indipendenti se e solo se la probabilità del verificarsi di entrambi gli eventi è uguale al prodotto delle probabilità del verificarsi di ciascun evento.
+Uno spazio di probabilità è una tripla ($\Omega$, $\mathcal{F}$, $P$). La prima componente viene chiamata _spazio campionario_ ed è un insieme costituito da tutti i possibili risultati dell'esperimento casuale. Ogni elemento $\omega \in \Omega$ è chiamato _evento elementare_. Per l'esempio dei tre lanci di una moneta, lo spazio campionario consiste di tutte le possibili sequenze di tre lettere costituite da H (testa) e T (croce): $\Omega$ = {HHH, HHT, ..., TTT}. Per l'esempio della scelta di un punto casuale in un quadrato, lo spazio campionario è costituito da tutti i punti contenuti nell'area del quadrato.
 
-- La somma delle probabilità di tutti i possibili eventi nell'intero spazio campionario deve essere uguale a 1. 
+La seconda componente $\mathcal{F}$ di uno spazio di probabilità è un insieme di sottoinsiemi di $\Omega$. Ogni insieme $E \in \mathcal{F}$ è chiamata evento. Un esempio concreto di evento nell'esperimento dei tre lanci di una moneta è "numero dispari di risultati croce", ovvero $E = {HHT, HTH, THH, TTT}$. Nell'esempio della scelta di un punto casuale in un quadrato, tutte le figure geometriche all'interno del quadrato sono degli eventi.
 
-Le definizione precedenti corrispondono al cosiddetto _approccio assiomatico_ messo a punto da Kolmogorov intorno al 1930, il quale è alla base della moderna teoria della probabilità. Gli assiomi di Kolmogorov sono necessari per evitare i paradossi che si possono creare quando si manipolano gli insiemi -- ad esempio, l'utilizzo dell'"l'insieme di tutti gli insiemi" tipicamente conduce ad un paradosso. 
+L'ultimo componente $P$ di uno spazio di probabilità è una funzione che
+assegna un numero reale $P(E)$, chiamato probabilità di $E$, a ogni
+evento $E \in \mathcal{F}$. Nell'esempio dei tre lanci di una moneta, consideriamo tutti gli eventi elementari egualmente probabili, e la probabilità di un evento $E$ è definita come il rapporto tra il numero degli eventi elementari in $E$ e il numero degli eventi elementari nello spazio campionario. Nell'esempio della scelta di un punto casuale in un quadrato, la probabilità dell'evento $E$ che corrisponde ad una qualche figura geometrica inscritta nel quadrato è data dal rapporto tra l'area di tale figura geometrica e l'area totale del quadrato. 
+
+La tripla ($\Omega$, $\mathcal{F}$, $P$) deve soddisfare i seguenti assiomi, che
+furono presentati per la prima volta in questa forma da Kolmogorov negli anni '30:
+
+1. $P(E) ≥ 0$ per ciascun $E \in \mathcal{F}$.
+2. $P(\Omega) = 1$ (l'esperimento produce sempre qualche risultato).
+3. $P$ se $E_1, E_2, \dots$ è una sequenza di eventi mutuamente disgiunti, ne segue che
+$$
+P\left(\bigcup\limits_{i=1}^{\infty} E_i \right) = \sum_{i=1}^\infty P(E_i)
+$$
+
+Gli assiomi (1) e (2) sono molto intuitivi, così come l'additività nel caso di un numero finito di eventi. L'additività numerabile non può essere supportata dall'intuizione, ma è uno strumento fondamentale nella teoria della probabilità e della statistica.
+
+La precedente definizione di uno spazio di probabilità corrisponde al cosiddetto _approccio assiomatico_ messo a punto da Kolmogorov intorno al 1930, il quale è alla base della moderna teoria della probabilità. Gli assiomi di Kolmogorov sono necessari per evitare i paradossi che si possono creare quando si manipolano gli insiemi -- ad esempio, l'utilizzo dell'"l'insieme di tutti gli insiemi" tipicamente conduce ad un paradosso. 
 
 
 ## Assegnare le probabilità agli eventi
 
-È importante capire che l'approccio assiomatico non ci dice come sia
-possibile assegnare un valore di probabilità a un evento definito in
-$\Omega$. A questo proposito esistono due diverse scuole di pensiero.
+È importante capire che l'approccio assiomatico non ci dice però come sia possibile assegnare un valore di probabilità a un evento $E \in \Omega$. A questo proposito esistono due diverse scuole di pensiero.
 
 ### Approccio frequentista
 
@@ -306,10 +321,11 @@ usando la nostra conoscenza della situazione. Tale approccio è seguito
 dalla definizione *classica* di probabilità in base alla quale la
 probabilità di un evento è il rapporto tra il numero di casi favorevoli
 e quelli possibili, supposto che tutti gli eventi siano equiprobabili,
-ossia $$P_A = \frac{n_A}{n},$$ dove $n$ è il numero di casi possibili e
-$n_A$ è il numero di casi favorevoli per l'evento $A$. L'assunzione di
-equiprobabilità degli eventi elementari ha senso soprattutto nel caso
-dei giochi d'azzardo.
+ossia 
+$$
+P_A = \frac{n_A}{n},
+$$ 
+dove $n$ è il numero di casi possibili e $n_A$ è il numero di casi favorevoli per l'evento $A$. L'assunzione di equiprobabilità degli eventi elementari ha senso soprattutto nel caso dei giochi d'azzardo.
 
 In base all'approccio frequentista, la probabilità è il limite a cui
 tende una frequenza relativa empirica al crescere del numero di
