@@ -276,6 +276,17 @@ proprietà
 eventi
 funzioni-di-probabilità-marginali
 indipendenza-stocastica
+la-distribuzione-binomiale
+una-prova-bernoulliana
+una-sequenza-di-prove-bernoulliane
+media-e-deviazione-standard-della-distribuzione-binomiale
+densità-per-variabili-aleatorie-continue
+distribuzione-normale
+concentrazione-della-distribuzione-normale
+funzione-di-ripartizione-della-distribuzione-normale
+distribuzione-chi-quadrato
+cap:tstudent
+distribuzione-beta
 la-funzione-di-verosimiglianza
 la-narrazione-dei-dati
 come-impara-un-modello-statistico

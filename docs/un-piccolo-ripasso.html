@@ -55,20 +55,22 @@
 <li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">14</span> Probabilità condizionata</a></li>
 <li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
 <li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
-<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">17</span> La funzione di verosimiglianza</a></li>
+<li><a class="" href="la-distribuzione-binomiale.html"><span class="header-section-number">17</span> La distribuzione binomiale</a></li>
+<li><a class="" href="densit%C3%A0-per-variabili-aleatorie-continue.html"><span class="header-section-number">18</span> Densità per variabili aleatorie continue</a></li>
+<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
 <li class="book-part">Inferenza frequentista</li>
 <li><a class="" href="introduzione-3.html">Introduzione</a></li>
-<li><a class="" href="distribuzione-campionaria.html"><span class="header-section-number">18</span> Distribuzione campionaria</a></li>
-<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">19</span> Significatività statistica</a></li>
-<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">20</span> Inferenza sulle medie</a></li>
-<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">21</span> Critiche e difese</a></li>
+<li><a class="" href="distribuzione-campionaria.html"><span class="header-section-number">20</span> Distribuzione campionaria</a></li>
+<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">21</span> Significatività statistica</a></li>
+<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">22</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">23</span> Critiche e difese</a></li>
 <li class="book-part">Inferenza Bayesiana</li>
 <li><a class="" href="introduzione-4.html">Introduzione</a></li>
-<li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">22</span> Modellistica bayesiana</a></li>
-<li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">23</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">24</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">25</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">26</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">24</span> Modellistica bayesiana</a></li>
+<li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">25</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">26</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">27</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">28</span> Inferenza Bayesiana</a></li>
 <li class="book-part">Informazioni generali</li>
 <li><a class="" href="citazione.html">Citazione</a></li>
 <li class="book-part">Appendici</li>
@@ -135,7 +137,7 @@ numeri binari per rappresentare se qualcosa è vero o falso, o presente o
 assente.</p>
 <p>Supponiamo di chiedere a 10 studenti “Ti piacciono i mirtilli?” Poniamo
 che le risposte siano le seguenti:</p>
-<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">opinion</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Yes'</span>,<span class="st">'No'</span>,<span class="st">'Yes'</span>,<span class="st">'No'</span>,<span class="st">'Yes'</span>,<span class="st">'No'</span>,<span class="st">'Yes'</span>,<span class="st">'Yes'</span>,<span class="st">'Yes'</span>,<span class="st">'Yes'</span><span class="op">)</span>
 <span class="va">opinion</span>
 <span class="co">#&gt;  [1] "Yes" "No"  "Yes" "No"  "Yes" "No"  "Yes" "Yes" "Yes" "Yes"</span></code></pre></div>
@@ -144,7 +146,7 @@ verità, ovvero, vero e falso, generalmente denotati rispettivamente come
 1 e 0. In tale ricodifica può essere effettuata mediante l’operatore
 <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code> che è un test per l’uguaglianza e restituisce il valore logico VERO
 se le due cose sono uguali e FALSO se non lo sono:</p>
-<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">opinion</span> <span class="op">&lt;-</span> <span class="va">opinion</span> <span class="op">==</span> <span class="st">"Yes"</span>
 <span class="va">opinion</span>
 <span class="co">#&gt;  [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE</span></code></pre></div>
@@ -152,7 +154,7 @@ se le due cose sono uguali e FALSO se non lo sono:</p>
 TRUE uguale a 1 e FALSE uguale a zero. Di conseguenza, possiamo
 effettuare operazioni algebriche sui valori logici VERO e FALSO.
 Nell’esempio, possiamo sommare i valori di verità, dividere per 10</p>
-<div class="sourceCode" id="cb320"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">opinion</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">opinion</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0.7</span></code></pre></div>
 <p>e concludere che 7 risposte su 10 sono positive.</p>
@@ -324,22 +326,22 @@ dalle leggi di DeMorgan: <span class="math display">\[(A \cup B)^c = A^c \cap B^
 </h3>
 <p>In molte situazioni è utile servirsi dei cosiddetti diagrammi di
 Eulero-Venn per rappresentare gli insiemi e verificare le proprietà
-delle operazioni tra insiemi (si veda la figura <a href="un-piccolo-ripasso.html#fig:sets-venn-diagrams">26.5</a>.
+delle operazioni tra insiemi (si veda la figura <a href="un-piccolo-ripasso.html#fig:sets-venn-diagrams">28.5</a>.
 I diagrammi di Venn sono così nominati in onore del matematico inglese del diciannovesimo secolo John Venn anche se Leibnitz e Eulero avevano già in precedenza utilizzato rappresentazioni simili.
 In tale rappresentazione, gli insiemi sono individuati da regioni del piano delimitate da una curva chiusa. Nel caso di insiemi finiti, è possibile evidenziare esplicitamente alcuni elementi di un insieme mediante punti, quando si
 possono anche evidenziare tutti gli elementi degli insiemi considerati.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:sets-venn-diagrams"></span>
 <img src="images/sets-venn-diagrams.pdf" alt="In tutte le figure $S$ è la regione delimitata dal rettangolo, $L$ è la regione all'interno del cerchio di sinistra e $R$ è la regione all'interno del cerchio di destra. La regione evidenziata mostra l'insieme indicato sotto ciascuna figura." width="100%"><p class="caption">
-Figura 26.5: In tutte le figure <span class="math inline">\(S\)</span> è la regione delimitata dal rettangolo, <span class="math inline">\(L\)</span> è la regione all’interno del cerchio di sinistra e <span class="math inline">\(R\)</span> è la regione all’interno del cerchio di destra. La regione evidenziata mostra l’insieme indicato sotto ciascuna figura.
+Figura 28.5: In tutte le figure <span class="math inline">\(S\)</span> è la regione delimitata dal rettangolo, <span class="math inline">\(L\)</span> è la regione all’interno del cerchio di sinistra e <span class="math inline">\(R\)</span> è la regione all’interno del cerchio di destra. La regione evidenziata mostra l’insieme indicato sotto ciascuna figura.
 </p>
 </div>
 <p>I diagrammi di Eulero-Venn che forniscono una dimostrazione delle leggi
-di DeMorgan sono forniti nella figura <a href="un-piccolo-ripasso.html#fig:demorgan">26.6</a>.</p>
+di DeMorgan sono forniti nella figura <a href="un-piccolo-ripasso.html#fig:demorgan">28.6</a>.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:demorgan"></span>
 <img src="images/demorgan.pdf" alt="Dimostrazione delle leggi di DeMorgan." width="100%"><p class="caption">
-Figura 26.6: Dimostrazione delle leggi di DeMorgan.
+Figura 28.6: Dimostrazione delle leggi di DeMorgan.
 </p>
 </div>
 </div>

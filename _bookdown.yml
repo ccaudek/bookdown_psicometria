@@ -46,7 +46,9 @@ rmd_files: [
   "16_prob_condiz.Rmd",
   "17_theo_bayes.Rmd",
   "18_prob_congiunta.Rmd",
-  "19_likelihood.Rmd",
+  "19_binom_distr.Rmd",
+  "20_density_distr.Rmd",
+  "21_likelihood.Rmd",
   # ------------------------- approccio frequentista
   "24_intro_frequentist.Rmd",
   "25_distr_camp_mean.Rmd",
