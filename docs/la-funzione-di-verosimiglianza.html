@@ -56,7 +56,7 @@
 <li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
 <li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
 <li><a class="" href="la-distribuzione-binomiale.html"><span class="header-section-number">17</span> La distribuzione binomiale</a></li>
-<li><a class="" href="densit%C3%A0-per-variabili-aleatorie-continue.html"><span class="header-section-number">18</span> Densità per variabili aleatorie continue</a></li>
+<li><a class="" href="funzioni-di-densit%C3%A0-di-probabilit%C3%A0.html"><span class="header-section-number">18</span> Funzioni di densità di probabilità</a></li>
 <li><a class="active" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
 <li class="book-part">Inferenza frequentista</li>
 <li><a class="" href="introduzione-3.html">Introduzione</a></li>
@@ -68,9 +68,10 @@
 <li><a class="" href="introduzione-4.html">Introduzione</a></li>
 <li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">24</span> Modellistica bayesiana</a></li>
 <li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">25</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">26</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">27</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">28</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="sintesi-a-posteriori.html"><span class="header-section-number">26</span> Sintesi a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">27</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">28</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">29</span> Inferenza Bayesiana</a></li>
 <li class="book-part">Informazioni generali</li>
 <li><a class="" href="citazione.html">Citazione</a></li>
 <li class="book-part">Appendici</li>
@@ -245,7 +246,7 @@ otteniamo il valore 0.0446. Se <span class="math inline">\(p = 0.2\)</span></p>
 </div>
 <p>La figura <a href="la-funzione-di-verosimiglianza.html#fig:likelihoodwater">19.2</a> ci fornisce una rappresentazione grafica
 della funzione di verosimiglianza.</p>
-<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">9</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">6</span>
 <span class="va">theta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, length.out<span class="op">=</span><span class="fl">100</span><span class="op">)</span>
@@ -333,10 +334,10 @@ insuccessi, la funzione nucleo (ovvero, la funzione di verosimiglianza da cui so
 <span class="header-section-number">19.2.6</span> Calcolo numerico<a class="anchor" aria-label="anchor" href="#calcolo-numerico"><i class="fas fa-link"></i></a>
 </h3>
 <p>La derivazione formale del risultato secondo il quale la stima di massima verosimiglianza corrisponde alla proporzione di successi nel campione è piuttosto complessa. Lo stesso risultato può essere ottenuto in maniera molto più semplice mediante una simulazione svolta in R. A questo fine, iniziamo con il definire una serie di valori possibili per il parametro incognito <span class="math inline">\(p\)</span>:</p>
-<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, length.out<span class="op">=</span><span class="fl">1e3</span><span class="op">)</span></code></pre></div>
 <p>Sappiamo che la funzione di verosimiglianza è la funzione di massa di probabilità espressa in funzione del parametro sconosciuto <span class="math inline">\(p\)</span> e assumendo come noti i dati. Questo si può esprimere in ne modo seguente:</p>
-<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">like</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">9</span>, <span class="va">p</span><span class="op">)</span></code></pre></div>
 <p>Si noti che, nell’istruzione precedente, abbiamo passato alla funzione
 <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code> i dati, ovvero 6 successi in 9 prove. Inoltre, abbiamo
@@ -346,11 +347,11 @@ funzione <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></cod
 di verosimiglianza), tenendo costanti in tutti i casi i valori dei dati
 (ovvero, 6 successi in 9 prove). Un grafico della funzione di
 verosimiglianza è dato da:</p>
-<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">like</span>, type<span class="op">=</span><span class="st">'l'</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-177-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-184-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Nella simulazione, il valore <span class="math inline">\(p\)</span> che massimizza la funzione di verosimiglianza può essere trovato nel modo seguente:</p>
-<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="va">like</span><span class="op">)</span><span class="op">]</span>
 <span class="co">#&gt; [1] 0.6666667</span></code></pre></div>
 <p>Si noti come il valore trovato sia uguale al valore definito dall’eq. <a href="la-funzione-di-verosimiglianza.html#eq:mlprop">(19.4)</a>.</p>
@@ -409,7 +410,7 @@ f(\mathscr{D}_n \mid \theta) &amp;= f(x_1 \mid \theta) \cdot f(x_2 \mid \theta) 
 <span class="header-section-number">19.3.1</span> Simulazione<a class="anchor" aria-label="anchor" href="#simulazione"><i class="fas fa-link"></i></a>
 </h3>
 <p>Consideriamo ora un esempio relativo al campione di valori BDI-II dei trenta soggetti del campione clinico descritto da <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>, ovvero</p>
-<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">26</span>, <span class="fl">35</span>, <span class="fl">30</span>, <span class="fl">25</span>, <span class="fl">44</span>, <span class="fl">30</span>, <span class="fl">33</span>, <span class="fl">43</span>, <span class="fl">22</span>, <span class="fl">43</span>, <span class="fl">24</span>, <span class="fl">19</span>, <span class="fl">39</span>, <span class="fl">31</span>, <span class="fl">25</span>, <span class="fl">28</span>, <span class="fl">35</span>, <span class="fl">30</span>, <span class="fl">26</span>, <span class="fl">31</span>, <span class="fl">41</span>, <span class="fl">36</span>, <span class="fl">26</span>, <span class="fl">35</span>, <span class="fl">33</span>, <span class="fl">28</span>, <span class="fl">27</span>, <span class="fl">34</span>, <span class="fl">27</span>, <span class="fl">22</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Ci poniamo lo scopo di generare la funzione di verosimiglianza per questi dati. Supponiamo che ricerche precedenti ci dicano che il BDI-II si distribuisce secondo una legge Normale.</p>
 <p>Ci concentriamo qui sul parametro <span class="math inline">\(\mu\)</span> della distribuzione Normale. Per semplificare il problema, assumiamo di conoscere <span class="math inline">\(\sigma\)</span> (lo porremo uguale alla deviazione standard del campione), in modo da avere un solo parametro sconosciuto. Il nostro problema è dunque quello di trovare la funzione di verosimiglianza per il parametro <span class="math inline">\(\mu\)</span>, date le 30 osservazioni che abbiamo a disposizione.</p>
@@ -434,10 +435,10 @@ f(\mathscr{D}_n \mid \mu, \sigma) = \, \prod_{i=1}^n f(x_i \mid \mu, \sigma)\not
 \tag{19.9}
 \]</span></p>
 <p>Poniamoci il problema di rappresentare graficamente tale funzione di verosimiglianza per il parametro <span class="math inline">\(\mu\)</span>. Per semplicità, supponiamo che <span class="math inline">\(\sigma\)</span> sia noto e uguale alla deviazione standard del campione.</p>
-<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">true_sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">x</span><span class="op">)</span></code></pre></div>
 <p>Avendo un solo parametro sconosciuto da stimare possiamo rappresentare la verosimiglianza con una curva, anziché con una superficie. In R, possiamo definire la funzione di log-verosimiglianza nel modo seguente:</p>
-<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">log_likelihood</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, <span class="va">sigma</span><span class="op">=</span><span class="va">true_sigma</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, <span class="va">sigma</span>, log<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
@@ -446,7 +447,7 @@ f(\mathscr{D}_n \mid \mu, \sigma) = \, \prod_{i=1}^n f(x_i \mid \mu, \sigma)\not
 funzione di log-verosimiglianza (ovvero, l’ordinata di un singolo punto della funzione rappresentata nella figura <a href="la-funzione-di-verosimiglianza.html#eq:lldepression">(19.9)</a>). Ripeto, tale singolo valore viene trovato utilizzando tutti i 30 dati del campione, il valore <span class="math inline">\(\sigma = s\)</span> che viene tenuto fisso e il singolo valore <span class="math inline">\(\mu\)</span> che abbiamo passato alla funzione
 <code>log_likelihood()</code>. Dobbiamo, tuttavia, applicare la funzione a tutti i possibili valori che <span class="math inline">\(\mu\)</span> può assumere. Per cui il procedimento che abbiamo descritto per un singolo valore <span class="math inline">\(\mu\)</span> viene ripetuto tante volte.</p>
 <p>Nel seguente ciclo <code>for()</code> usato nelle istruzioni seguenti viene calcolata la log-verosimiglianza di 100000 possibili valori per il parametro <span class="math inline">\(\mu\)</span>:</p>
-<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">nrep</span> <span class="op">&lt;-</span> <span class="fl">1e5</span>
 <span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>
   <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">x</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">x</span><span class="op">)</span>, 
@@ -461,7 +462,7 @@ funzione di log-verosimiglianza (ovvero, l’ordinata di un singolo punto della 
 <p>Il vettore <code>mu</code> contiene 100000 possibili valori del parametro <span class="math inline">\(\mu\)</span>. Tali valori sono stati scelti in modo tale da essere compresi nell’intervallo <span class="math inline">\(\bar{x} \pm s\)</span>.</p>
 <p>Per ciascuno dei possibili valori del parametro <span class="math inline">\(\mu\)</span> la funzione <code>log_likelihood()</code> calcola la log-verosimiglianza seguendo la procedura descritta sopra. All’interno del ciclo <code>for()</code> i 100000 risultati così ottenuti vengono salvati nel vettore <code>ll</code>.</p>
 <p>Possiamo ora utilizzare i valori contenuti nei vettori <code>mu</code> e <code>ll</code> per disegnare il grafico della funzione di log-verosimiglianza del parametro <span class="math inline">\(\mu\)</span>:</p>
-<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">mu</span>, <span class="va">ll</span><span class="op">)</span> <span class="op">%&gt;%</span> 
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">mu</span>, y<span class="op">=</span><span class="va">ll</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -470,7 +471,7 @@ funzione di log-verosimiglianza (ovvero, l’ordinata di un singolo punto della 
     y<span class="op">=</span><span class="st">"Log-verosimiglianza"</span>,
     x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Parametro \u03BC"</span><span class="op">)</span>
   <span class="op">)</span> </code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-183-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-190-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Dalla figura notiamo che, per questi dati, il massimo della funzione di log-verosimiglianza calcolata per via numerica è pari a 30.93. Tale valore è identico alla media dei dati campionari e corrisponde al risultato teorico dell’eq. <a href="la-funzione-di-verosimiglianza.html#eq:lldepression">(19.9)</a>.</p>
 </div>
 </div>
@@ -489,7 +490,7 @@ funzione di (log) verosimiglianza, condizionatamente ai valori assunti dalle var
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="densit%C3%A0-per-variabili-aleatorie-continue.html"><span class="header-section-number">18</span> Densità per variabili aleatorie continue</a></div>
+<div class="prev"><a href="funzioni-di-densit%C3%A0-di-probabilit%C3%A0.html"><span class="header-section-number">18</span> Funzioni di densità di probabilità</a></div>
 <div class="next"><a href="introduzione-3.html">Introduzione</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>

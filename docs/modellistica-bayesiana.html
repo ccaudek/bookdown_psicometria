@@ -56,7 +56,7 @@
 <li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
 <li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
 <li><a class="" href="la-distribuzione-binomiale.html"><span class="header-section-number">17</span> La distribuzione binomiale</a></li>
-<li><a class="" href="densit%C3%A0-per-variabili-aleatorie-continue.html"><span class="header-section-number">18</span> Densità per variabili aleatorie continue</a></li>
+<li><a class="" href="funzioni-di-densit%C3%A0-di-probabilit%C3%A0.html"><span class="header-section-number">18</span> Funzioni di densità di probabilità</a></li>
 <li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
 <li class="book-part">Inferenza frequentista</li>
 <li><a class="" href="introduzione-3.html">Introduzione</a></li>
@@ -68,9 +68,10 @@
 <li><a class="" href="introduzione-4.html">Introduzione</a></li>
 <li><a class="active" href="modellistica-bayesiana.html"><span class="header-section-number">24</span> Modellistica bayesiana</a></li>
 <li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">25</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">26</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">27</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">28</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="sintesi-a-posteriori.html"><span class="header-section-number">26</span> Sintesi a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">27</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">28</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">29</span> Inferenza Bayesiana</a></li>
 <li class="book-part">Informazioni generali</li>
 <li><a class="" href="citazione.html">Citazione</a></li>
 <li class="book-part">Appendici</li>
@@ -217,7 +218,7 @@ Per ciascuno specifico valore <span class="math inline">\(\theta'\)</span> del p
 C’è ovviamente bisogno di una griglia molto densa per ottenere buone approssimazioni.</p>
 <p>Il metodo basato su griglia è, in primo luogo, un utile strumento didattico in quanto rende trasparente la logica del processo dell’aggiornamento Bayesiano. Per ragioni che vedremo in seguito, tale metodo non può essere usato per la stima di modelli complessi che includono un grande numero di parametri – ma non è questo il nostro scopo qui. Ma, al di là di questo limite del metodo basato su griglia, è importante sottolineare che, quale che sia il <em>metodo</em> che si usa per stimare la funzione a posteriori, il <em>significato</em> della funzione a posteriori non cambia ed è ben illustrato dall’esempio qui discusso.</p>
 <p>Iniziamo a costruire la griglia di valori del parametro <span class="math inline">\(\theta\)</span>. In questo esempio considereremo 50 valori egualmente spaziati nell’intervallo [0, 1]: 0.000, 0.0204, …, 0.978, 1.000. Per ottenere i valori griglia procediamo nel modo seguente:</p>
-<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n_points</span> <span class="op">&lt;-</span> <span class="fl">50</span>
 <span class="va">p_grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span>, length.out <span class="op">=</span> <span class="va">n_points</span><span class="op">)</span>
 <span class="va">p_grid</span>
@@ -235,18 +236,18 @@ C’è ovviamente bisogno di una griglia molto densa per ottenere buone approssi
 <span class="header-section-number">24.3</span> Distribuzione a priori<a class="anchor" aria-label="anchor" href="#distribuzione-a-priori"><i class="fas fa-link"></i></a>
 </h2>
 <p>Supponiamo che le nostre credenze a priori sulla tendenza di un individuo clinicamente depresso a manifestare delle aspettative distorte negativamente circa il suo umore futuro siano molto scarse. Assumiamo quindi per <span class="math inline">\(\theta\)</span> una distribuzione a priori non informativa – ovvero, ipotizziamo che la distribuzione a priori sia una distribuzione uniforme nell’intervallo [0, 1]. Dato che consideriamo soltanto <span class="math inline">\(n = 50\)</span> valori possibili per il parametro <span class="math inline">\(\theta\)</span>, creiamo un vettore di 50 elementi che conterrà i valori della distribuzione a priori scalando ciascun valore del vettore per <span class="math inline">\(n\)</span> in modo tale che la somma di tutti i valori sia uguale a 1.0 (in questo modo viene definita una funzione di massa di probabilità):</p>
-<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">prior1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="va">p_grid</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="va">p_grid</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
 <span class="va">prior1</span>
 <span class="co">#&gt;  [1] 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02</span>
 <span class="co">#&gt; [18] 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02</span>
 <span class="co">#&gt; [35] 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02 0.02</span></code></pre></div>
 <p>Verifichiamo:</p>
-<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">prior1</span><span class="op">)</span>
 <span class="co">#&gt; [1] 1</span></code></pre></div>
 <p>La distribuzione a priori così costruita è rappresentata nella figura <a href="modellistica-bayesiana.html#fig:gridappr1">24.1</a>.</p>
-<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">p_grid</span>, <span class="va">prior1</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">p_grid</span>, xend<span class="op">=</span><span class="va">p_grid</span>, y<span class="op">=</span><span class="fl">0</span>, yend<span class="op">=</span><span class="va">prior1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
@@ -283,7 +284,7 @@ Figura 24.1: Rappresentazione grafica della distribuzione a priori per il parame
 \end{aligned}
 \]</span>
 Dobbiamo svolgere questo calcolo per tutti gli elementi della griglia. Usando R il risultato cercato si trova nel modo seguente:</p>
-<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">likelihood</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">23</span>, size <span class="op">=</span> <span class="fl">30</span>, prob <span class="op">=</span> <span class="va">p_grid</span><span class="op">)</span>
 <span class="va">likelihood</span>
 <span class="co">#&gt;  [1] 0.000000e+00 2.352564e-33 1.703051e-26 1.644169e-22 1.053708e-19 1.525217e-17</span>
@@ -296,7 +297,7 @@ Dobbiamo svolgere questo calcolo per tutti gli elementi della griglia. Usando R 
 <span class="co">#&gt; [43] 7.133007e-02 4.165680e-02 1.972669e-02 6.936821e-03 1.535082e-03 1.473375e-04</span>
 <span class="co">#&gt; [49] 1.868105e-06 0.000000e+00</span></code></pre></div>
 <p>Il vettore <code>likelihood</code> è stato ottenuto passando alla funzione <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code> un vettore di valori, ovvero gli elementi della griglia <code>p_grid</code>. La funzione <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom(x, size, prob)</a></code> richiede che vengano specificati tre parametri: il numero di “successi,” il numero di prove e la probabilità di successo. Dato che <code>x</code> (numero di successi) e <code>size</code> (numero di prove bernoulliane) sono degli scalari e <code>prob</code> è un vettore, questo significa che la formula della probabilità binomiale verrà applicata a ciascun elemento di <code>p_grid</code> tenendo costanti i valori di <code>x</code> e <code>size</code>, ovvero i dati. In questo modo otteniamo in output un vettore i cui valori corrispondono all’ordinata della funzione di verosimiglianza per il corrispondente valore griglia di <span class="math inline">\(\theta\)</span>. La funzione di verosimiglianza così ottenuta è riportata nella figura <a href="modellistica-bayesiana.html#fig:gridappr2">24.2</a>.</p>
-<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">p_grid</span>, <span class="va">likelihood</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">p_grid</span>, xend<span class="op">=</span><span class="va">p_grid</span>, y<span class="op">=</span><span class="fl">0</span>, yend<span class="op">=</span><span class="va">likelihood</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#8184FC"</span><span class="op">)</span> <span class="op">+</span>
@@ -329,7 +330,7 @@ Figura 24.2: Rappresentazione della funzione di verosimiglianza per il parametro
 \]</span></p>
 <p>e così via.</p>
 <p>Usando R, possiamo svolgere tutti i calcoli necessari nel modo seguente:</p>
-<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">unstd_posterior</span> <span class="op">&lt;-</span> <span class="va">likelihood</span> <span class="op">*</span> <span class="va">prior1</span>
 <span class="va">unstd_posterior</span>
 <span class="co">#&gt;  [1] 0.000000e+00 4.705127e-35 3.406102e-28 3.288337e-24 2.107415e-21 3.050433e-19</span>
@@ -344,13 +345,13 @@ Figura 24.2: Rappresentazione della funzione di verosimiglianza per il parametro
 <p>Ricordiamo il principio dell’aritmetica vettorializzata: il vettore <code>likelihood</code> è costituito da 50 elementi e il vettore <code>prior1</code> è anch’esso costituito da 50 elementi. Se facciamo il prodotto tra i due vettori otteniamo un vettore di 50 elementi ciascuno dei quali uguale al prodotto dei corrispondenti elementi di <code>likelihood</code> e <code>prior1</code>.</p>
 <p>Avendo calcolato i valori della funzione a posteriori non standardizzata è poi necessario dividere per una costante di normalizzazione. Nel caso discreto, trovare il denominatore del teorema di Bayes è molto facile: esso è dato semplicemente dalla somma di tutti i valori della distribuzione a posteriori non normalizzata. Per i dati presenti, tale costante di
 normalizzazione è uguale a 0.032:</p>
-<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">unstd_posterior</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0.0316129</span></code></pre></div>
 <p>Per fare un esempio, standardizziamo i due valori che abbiamo discusso negli esempi precedenti: <span class="math inline">\(0.135 \cdot 0.02 / 0.032\)</span> e <span class="math inline">\(0.104 \cdot 0.02 / 0.032\)</span>.
 Così facendo, otteniamo il risultato per cui la somma di tutti e 50 i valori della distribuzione a posteriori normalizzata diventa uguale a 1.0.</p>
 <p>Svolgiamo tutti i calcoli in R:</p>
-<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">posterior</span> <span class="op">&lt;-</span> <span class="va">unstd_posterior</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">unstd_posterior</span><span class="op">)</span>
 <span class="va">posterior</span>
 <span class="co">#&gt;  [1] 0.000000e+00 1.488357e-33 1.077440e-26 1.040188e-22 6.666313e-20 9.649330e-18</span>
@@ -363,7 +364,7 @@ Così facendo, otteniamo il risultato per cui la somma di tutti e 50 i valori de
 <span class="co">#&gt; [43] 4.512719e-02 2.635430e-02 1.248015e-02 4.388601e-03 9.711744e-04 9.321354e-05</span>
 <span class="co">#&gt; [49] 1.181862e-06 0.000000e+00</span></code></pre></div>
 <p>Verifichiamo:</p>
-<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">posterior</span><span class="op">)</span>
 <span class="co">#&gt; [1] 1</span></code></pre></div>
 <p>In questo particolare esempio, la distribuzione a posteriori trovata
@@ -372,7 +373,7 @@ funzione di verosimiglianza: questo avviene perché la distribuzione a
 priori uniforme non ha aggiunto altre informazioni oltre a quelle che
 erano già fornite dalla funzione di verosimiglianza.</p>
 <p>La funzione a posteriori che abbiamo calcolato con il metodo <em>grid-based</em> è riportata nella figura <a href="modellistica-bayesiana.html#fig:gridappr3">24.3</a>.</p>
-<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">p_grid</span>, <span class="va">posterior</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">p_grid</span>, xend<span class="op">=</span><span class="va">p_grid</span>, y<span class="op">=</span><span class="fl">0</span>, yend<span class="op">=</span><span class="va">posterior</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#8184FC"</span><span class="op">)</span> <span class="op">+</span>
@@ -399,11 +400,11 @@ Un ricercatore può utilizzare una distribuzione a priori informativa per introd
 <p>Nel caso presente, supponiamo che la letteratura psicologica fornisca delle informazioni a proposito del valore di <span class="math inline">\(\theta\)</span>, ovvero ci fornisca delle informazioni sul valore della probabilità che le aspettative future di un individuo clinicamente depresso siano distorte negativamente – in altri termini, sono già state svolte ricerche precedenti su questo aspetto e risultati empirici sono già stati raccolti: in una serie di ricerche precedenti è stato trovato che <span class="math inline">\(\theta\)</span> assumeva valori compresi in una certa gamma. In tali circostanze, anziché utilizzare una distribuzione a priori non informativa per <span class="math inline">\(p(\theta)\)</span>, il ricercatore può decidere di utilizzare una distribuzione a priori informativa che riflette le conoscenze che sono state acquisite in precedenza sul possibile valore del parametro. Nel caso presente, supponiamo (irrealisticamente) che tali conoscenze pregresse si possano esprimere nei termini di una distribuzione che ha la forma di una Beta di parametri <span class="math inline">\(\alpha = 2\)</span> e <span class="math inline">\(\beta = 10\)</span>. Tali ipotetiche conoscenze pregresse (ripeto, del tutto irrealistiche) le quali si riflettono in una Beta(2, 10) ritengono molto plausibili valori bassi di <span class="math inline">\(\theta\)</span> e considerano come impossibili i valori <span class="math inline">\(\theta\)</span> superiori a 0.5. Questo è equivalente a dire che ci aspettiamo che le aspettative relative all’umore futuro siano distorte negativamente solo per pochissimi individui clinicamente depressi – in altre parole, ci aspettiamo che la maggioranza degli individui clinicamente depressi sia inguaribilmente ottimista. Questa è, ovviamente, una credenza a priori del tutto irrealistica. La esamino qui, non perché abbia alcun senso nel contesto dei dati di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>, ma soltanto per fare un esempio che illustra come la distribuzione a posteriori fornisca una sorta di “compromesso” tra la distribuzione a priori e la verosimiglianza, ovvero per chiarire l’impatto che la distribuzione a priori ha sulla distribuzione a posteriori.</p>
 <p>Con calcoli del tutto simili a quelli descritti sopra si giunge alla distribuzione a posteriori rappresentata nella figura <a href="modellistica-bayesiana.html#fig:gridappr4">24.4</a>. Iniziamo a definire una griglia
 unidimensionale equispaziata di possibili valori del parametro <span class="math inline">\(\theta\)</span>. Anche in questo caso usiamo 50 valori possibili del parametro <span class="math inline">\(\theta\)</span>:</p>
-<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n_points</span> <span class="op">&lt;-</span> <span class="fl">50</span>
 <span class="va">p_grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span>, length.out <span class="op">=</span> <span class="va">n_points</span><span class="op">)</span></code></pre></div>
 <p>Per la distribuzione a priori scelgo una Beta(2, 10).</p>
-<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">2</span>
 <span class="va">beta</span> <span class="op">&lt;-</span> <span class="fl">10</span>
 <span class="va">prior2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="va">p_grid</span>, <span class="va">alpha</span>, <span class="va">beta</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="va">p_grid</span>, <span class="va">alpha</span>, <span class="va">beta</span><span class="op">)</span><span class="op">)</span>
@@ -411,7 +412,7 @@ unidimensionale equispaziata di possibili valori del parametro <span class="math
 <span class="co">#&gt; [1] 1</span></code></pre></div>
 <p>Tale distribuzione a priori è rappresentata nella figura
 <a href="modellistica-bayesiana.html#fig:gridappr4">24.4</a>.</p>
-<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">plot_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">p_grid</span>, <span class="va">prior2</span><span class="op">)</span> 
 <span class="va">p4</span> <span class="op">&lt;-</span> <span class="va">plot_df</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">p_grid</span>, xend<span class="op">=</span><span class="va">p_grid</span>, y<span class="op">=</span><span class="fl">0</span>, yend<span class="op">=</span><span class="va">prior2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -432,21 +433,21 @@ Figura 24.4: Rappresentazione di una funzione a priori informativa per il parame
 <p>Calcoliamo il valore della funzione di verosimiglianza in corrispondenza
 di ciascun punto della griglia. La funzione di verosimiglianza è
 identica a quella considerata nell’esempio precedente.</p>
-<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">likelihood</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">23</span>, size <span class="op">=</span> <span class="fl">30</span>, prob <span class="op">=</span> <span class="va">p_grid</span><span class="op">)</span></code></pre></div>
 <p>Calcolo il prodotto tra la verosimiglianza e la distribuzione a priori,
 per ciascun punto della griglia:</p>
-<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">unstd_posterior2</span> <span class="op">&lt;-</span> <span class="va">likelihood</span> <span class="op">*</span> <span class="va">prior2</span></code></pre></div>
 <p>Normalizzo la distribuzione a posteriori in modo tale che la somma sia
 1.</p>
-<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">posterior2</span> <span class="op">&lt;-</span> <span class="va">unstd_posterior2</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">unstd_posterior2</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">posterior2</span><span class="op">)</span>
 <span class="co">#&gt; [1] 1</span></code></pre></div>
 <p>La nuova funzione a posteriori è rappresentata nella figura
 <a href="modellistica-bayesiana.html#fig:gridappr5">24.5</a>.</p>
-<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">plot_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">p_grid</span>, <span class="va">posterior2</span><span class="op">)</span>
 <span class="va">p5</span> <span class="op">&lt;-</span> <span class="va">plot_df</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">p_grid</span>, xend <span class="op">=</span> <span class="va">p_grid</span>, y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="va">posterior2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>

@@ -59,6 +59,7 @@ rmd_files: [
   "29_intro_inf_bayes.Rmd",
   "30_intro_bayes.Rmd",
   "35_grid_approx.Rmd",
+  "36_summarize_posterior.Rmd",
   "39_intro_reglin.Rmd",
   "40_reglin.Rmd",
   "41_reglin_bayes.Rmd",

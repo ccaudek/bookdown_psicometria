@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capitolo 26 Sintesi a posteriori | Data Science per psicologi</title>
+<meta name="author" content="Corrado Caudek">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Data Science per psicologi</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Benvenuti</a></li>
+<li class="book-part">Obiettivi formativi</li>
+<li><a class="" href="conoscenza-dichiarativa-e-imperativa.html"><span class="header-section-number">1</span> Conoscenza dichiarativa e imperativa</a></li>
+<li class="book-part">Introduzione al linguaggio R</li>
+<li><a class="" href="introduzione.html">Introduzione</a></li>
+<li><a class="" href="chapter-pacchetti.html"><span class="header-section-number">2</span> Pacchetti</a></li>
+<li><a class="" href="chapter-install-r.html"><span class="header-section-number">3</span> Per cominciare</a></li>
+<li><a class="" href="chapter-sintassi.html"><span class="header-section-number">4</span> Sintassi di base</a></li>
+<li><a class="" href="chapter-strutture-dati.html"><span class="header-section-number">5</span> Strutture di dati</a></li>
+<li><a class="" href="chapter-strut-contr.html"><span class="header-section-number">6</span> Strutture di controllo</a></li>
+<li><a class="" href="chapter-input-output.html"><span class="header-section-number">7</span> Input/Output</a></li>
+<li><a class="" href="manipolazione-dei-dati.html"><span class="header-section-number">8</span> Manipolazione dei dati</a></li>
+<li><a class="" href="flusso-di-lavoro-riproducibile.html"><span class="header-section-number">9</span> Flusso di lavoro riproducibile</a></li>
+<li class="book-part">Statistica descrittiva ed analisi esplorativa dei dat̀i</li>
+<li><a class="" href="introduzione-1.html">Introduzione</a></li>
+<li><a class="" href="terminologia.html"><span class="header-section-number">10</span> Terminologia</a></li>
+<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">11</span> La misurazione in psicologia</a></li>
+<li><a class="" href="chapter-descript.html"><span class="header-section-number">12</span> Statistica descrittiva</a></li>
+<li class="book-part">Nozioni di base</li>
+<li><a class="" href="introduzione-2.html">Introduzione</a></li>
+<li><a class="" href="il-calcolo-delle-probabilit%C3%A0.html"><span class="header-section-number">13</span> Il calcolo delle probabilità</a></li>
+<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">14</span> Probabilità condizionata</a></li>
+<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
+<li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
+<li><a class="" href="la-distribuzione-binomiale.html"><span class="header-section-number">17</span> La distribuzione binomiale</a></li>
+<li><a class="" href="funzioni-di-densit%C3%A0-di-probabilit%C3%A0.html"><span class="header-section-number">18</span> Funzioni di densità di probabilità</a></li>
+<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
+<li class="book-part">Inferenza frequentista</li>
+<li><a class="" href="introduzione-3.html">Introduzione</a></li>
+<li><a class="" href="distribuzione-campionaria.html"><span class="header-section-number">20</span> Distribuzione campionaria</a></li>
+<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">21</span> Significatività statistica</a></li>
+<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">22</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">23</span> Critiche e difese</a></li>
+<li class="book-part">Inferenza Bayesiana</li>
+<li><a class="" href="introduzione-4.html">Introduzione</a></li>
+<li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">24</span> Modellistica bayesiana</a></li>
+<li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">25</span> Stima della funzione a posteriori</a></li>
+<li><a class="active" href="sintesi-a-posteriori.html"><span class="header-section-number">26</span> Sintesi a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">27</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">28</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">29</span> Inferenza Bayesiana</a></li>
+<li class="book-part">Informazioni generali</li>
+<li><a class="" href="citazione.html">Citazione</a></li>
+<li class="book-part">Appendici</li>
+<li><a class="" href="un-piccolo-ripasso.html">Un piccolo ripasso</a></li>
+<li><a class="" href="bibliografia.html">Bibliografia</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="sintesi-a-posteriori" class="section level1" number="26">
+<h1>
+<span class="header-section-number">Capitolo 26</span> Sintesi a posteriori<a class="anchor" aria-label="anchor" href="#sintesi-a-posteriori"><i class="fas fa-link"></i></a>
+</h1>
+<p>La distribuzione a posteriori è un modo per descrivere il nostro grado
+di incertezza rispetto al parametro incognito (o rispetto ai parametri
+incogniti) oggetto dell’inferenza. La distribuzione a posteriori
+contiene tutte le informazioni disponibili sui possibili valori del
+parametro. Se il parametro esaminato è monodimensionale (o
+bidimensionale) è possibile fornire un grafico di tutta la distribuzione
+a posteriori <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span>. Tuttavia, spesso vogliamo anche
+giungere ad una sintesi numerica della distribuzione a posteriori,
+soprattutto se il vettore dei parametri ha più di due dimensioni. A a
+questo proposito è possibile utilizzare le consuete statistiche
+descrittive, come media, mediana, moda, varianza, deviazione standard e
+diversi quantili. In alcuni casi, queste statistiche descrittive sono
+più facili da presentare e interpretare rispetto alla rappresentazione
+grafica completa della distribuzione a posteriori.</p>
+<div id="stima-puntuale" class="section level2" number="26.1">
+<h2>
+<span class="header-section-number">26.1</span> Stima puntuale<a class="anchor" aria-label="anchor" href="#stima-puntuale"><i class="fas fa-link"></i></a>
+</h2>
+<p>Per sintetizzare la distribuzione a posteriori in modo da giungere ad
+una stima puntuale di <span class="math inline">\(\theta\)</span> si è soliti scegliere tra moda, mediana o
+media a seconda del tipo di distribuzione con cui si ha a che fare e
+della sua forma. Ogni stima puntuale ha una sua interpretazione. La
+media è il valore atteso a posteriori del parametro. La moda può essere
+interpretata come il singolo valore più credibile (“più probabile”) del
+parametro, dati i dati, ovvero il valore per il parametro <span class="math inline">\(\theta\)</span> che
+massimizza la distribuzione a posteriori. Per questa ragione la moda
+viene detta <em>massimo a posteriori</em>, MAP. Il limite della moda quale
+statistica riassuntiva della distribuzione a posteriori è che, talvolta,
+tale distribuzione è multimodale e il MAP non è necessariamente il
+valore “più credibile.” Infine, la mediana è il valore del parametro
+tale per cui, su entrambi i lati di essa, giace il 50% della massa di
+probabilità a posteriori.</p>
+<p>La misura di variabilità per il parametro è la <em>varianza a posteriori</em>
+la quale, nel caso di una distribuzione a posteriori ottenuta per via
+numerica, si calcola con la formula della varianza che conosciamo
+rispetto alla tendenza centrale data dalla media a posteriori. La radice
+quadrata della varianza a posteriori è la <em>deviazione standard a
+posteriori</em> che fornisce l’incertezza a posteriori circa il parametro di
+interesse il quale, in un’ottica bayesiana, è una variabile aleatoria.</p>
+<p>Tutte le procedure bayesiane si basano su sull’uso di metodi MCMC per
+ottenere le stime a posteriori. Usando un numero finito di campioni, le
+simulazioni introducono un ulteriore livello di incertezza
+sull’accuratezza della stima. L’<em>errore standard della stima</em> (in
+inglese <em>Monte Carlo standard error</em>, MCSE) misura l’accuratezza della
+simulazione. La deviazione standard a posteriori e l’errore standard
+della stima sono due concetti molto diversi. La deviazione standard a
+posteriori descrive l’incertezza circa il parametro ed è una funzione
+della dimensione del campione; il MCSE descrive invece l’incertezza
+nella stima del parametro come risultato della simulazione MCMC ed è una
+funzione del numero di iterazioni nella simulazione.</p>
+</div>
+<div id="intervallo-di-credibilità" class="section level2" number="26.2">
+<h2>
+<span class="header-section-number">26.2</span> Intervallo di credibilità<a class="anchor" aria-label="anchor" href="#intervallo-di-credibilit%C3%A0"><i class="fas fa-link"></i></a>
+</h2>
+<p>Molto spesso la stima puntuale è accompagnata da una stima intervallare.
+Nella statistica bayesiana, se il parametro <span class="math inline">\(\theta \in \Theta\)</span> è
+monodimensionale, si dice “intervallo di credibilità” (o intervallo di
+confidenza bayesiano) un intervallo di valori <span class="math inline">\(I_{\alpha}\)</span> che contiene
+la proporzione <span class="math inline">\(1 - \alpha\)</span> della massa di probabilità della funzione a
+posteriori:
+<span class="math display" id="eq:credibint">\[\begin{equation}
+p(\Theta \in I_{\alpha} \mid \mathcal{Y}) = 1 - \alpha.
+\tag{26.1}
+\end{equation}\]</span>
+L’intervallo di credibilità ha lo scopo di
+esprimere il nostro grado di incertezza riguardo la stima del parametro.
+Se il parametro <span class="math inline">\(\theta\)</span> è multidimensionale, si parla invece di
+“regione di credibilità.”</p>
+<p>La condizione <a href="sintesi-a-posteriori.html#eq:credibint">(26.1)</a> non determina un unico intervallo di
+credibilità al <span class="math inline">\((1 - \alpha) \cdot 100\%\)</span>. In realtà esiste un numero
+infinito di tali intervalli. Ciò significa che dobbiamo definire alcune
+condizioni aggiuntive per la scelta dell’intervallo di credibilità.
+Esaminiamo due delle condizioni aggiuntive più comuni.</p>
+<div id="intervallo-di-credibilità-a-code-uguali" class="section level3" number="26.2.1">
+<h3>
+<span class="header-section-number">26.2.1</span> Intervallo di credibilità a code uguali<a class="anchor" aria-label="anchor" href="#intervallo-di-credibilit%C3%A0-a-code-uguali"><i class="fas fa-link"></i></a>
+</h3>
+<p>Un intervallo di credibilità <em>a code uguali</em> a livello <span class="math inline">\(\alpha\)</span> è un
+intervallo <span class="math display">\[I_{\alpha} = [q_{\alpha/2}, 1 - q_{\alpha/2}],\]</span> dove <span class="math inline">\(q_z\)</span>
+è un quantile <span class="math inline">\(z\)</span> della distribuzione a posteriori. Per esempio,
+l’intervallo di credibilità a code uguali al 95% è un intervallo
+<span class="math display">\[I_{0.05} = [q_{0.025}, q_{0.975}]\]</span> che lascia il 2.5% della massa di
+densità a posteriori in ciascuna coda. Un esempio è fornito nella
+figura successiva che fornisce una generica rappresentazione di una distribuzione a priori e di una distribuzione a posteriori; l’area evidenziata in grigio rappresenta l’intervallo di credibilità a code uguali al 95%.</p>
+<div class="inline-figure"><img src="images/intcredeq.png" width="80%" style="display: block; margin: auto;"></div>
+</div>
+<div id="intervallo-di-credibilità-a-densità-a-posteriori-più-alta" class="section level3" number="26.2.2">
+<h3>
+<span class="header-section-number">26.2.2</span> Intervallo di credibilità a densità a posteriori più alta<a class="anchor" aria-label="anchor" href="#intervallo-di-credibilit%C3%A0-a-densit%C3%A0-a-posteriori-pi%C3%B9-alta"><i class="fas fa-link"></i></a>
+</h3>
+<p>Nell’intervallo di credibilità a code uguali alcuni valori del parametro
+che sono inclusi nell’intervallo possono avere una più bassa probabilità
+a posteriori rispetto a quelli fuori dell’intervallo. L’intrevallo di
+credibilità <em>a densità a posteriori più alta</em> (in inglese <em>High
+Posterior Density Interval</em>, HPD) è invece costruito in modo tale da
+assicurare di avere all’interno dell’intervallo tutti i valori di
+<span class="math inline">\(\theta\)</span> che sono a posteriori più plausibili. Graficamente questo
+intervallo può essere ricavato tracciando una linea orizzontale sulla
+rappresentazione della distribuzione a posteriori e regolando l’altezza
+della linea in modo tale che l’area sotto la curva sia pari a
+<span class="math inline">\(1 - \alpha\)</span>. Questo tipo di intervallo è il meno ampio che si possa
+determinare e inoltre se la distribuzione a posteriori è simmetrica
+unimodale l’intervallo di credibilità a densità a posteriori più alta
+corrisponde all’intervallo di credibilità a code uguali.</p>
+</div>
+</div>
+<div id="interpretazione" class="section level2" number="26.3">
+<h2>
+<span class="header-section-number">26.3</span> Interpretazione<a class="anchor" aria-label="anchor" href="#interpretazione"><i class="fas fa-link"></i></a>
+</h2>
+<p>L’interpretazione dell’intervallo di credibilità è molto intuitiva:
+l’intervallo di credibilità è un intervallo di valori all’interno del
+quale cade il valore del parametro incognito con un particolare livello
+di probabilità soggettiva. Possiamo dire che, dopo aver visto i dati
+crediamo, con un determinato livello di probabilità soggettiva, che il
+valore del parametro (ad esempio, la dimensione dell’effetto di un
+trattamento) abbia un valore compreso all’interno dell’intervallo che è
+stato calcolato, laddove per probabilità soggettiva intendiamo “il grado
+di fiducia che lo sperimentatore ripone nel verificarsi di un evento.”
+Solitamente gli intervalli di credibilità si calcolano con un software.</p>
+</div>
+<div id="un-esempio-concreto" class="section level2" number="26.4">
+<h2>
+<span class="header-section-number">26.4</span> Un esempio concreto<a class="anchor" aria-label="anchor" href="#un-esempio-concreto"><i class="fas fa-link"></i></a>
+</h2>
+<p>Consideriamo nuovamente l’esempio del mappamondo, ovvero il problema di
+trovare la distribuzione a posteriori della probabilità di “acqua.”
+Ricordiamo che abbiamo osservato “acqua” 6 volte in 9 lanci. Abbiamo
+visto come sia possibile, mediante il metodo dell’approssimazione
+numerica, trovare la distribuzione a posteriori di <span class="math inline">\(p\)</span> (probabilità di
+osservare “acqua”) assumendo, ad esempio, una distribuzione uniforme per
+il parametro di interesse. Le istruzioni R per ottenere tale risultato
+sono riportate qui sotto.</p>
+<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Grid</span>
+<span class="va">n_points</span> <span class="op">&lt;-</span> <span class="fl">1e4</span>
+<span class="va">p_grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span>, length.out <span class="op">=</span> <span class="va">n_points</span><span class="op">)</span>
+<span class="co"># Prior</span>
+<span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="va">beta</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="va">prior</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="va">p_grid</span>, <span class="va">alpha</span>, <span class="va">beta</span><span class="op">)</span> <span class="op">/</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="va">p_grid</span>, <span class="va">alpha</span>, <span class="va">beta</span><span class="op">)</span><span class="op">)</span>
+<span class="co"># Likelihood</span>
+<span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">6</span>
+<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">9</span>
+<span class="va">likelihood</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">k</span>, size <span class="op">=</span> <span class="va">n</span>, prob <span class="op">=</span> <span class="va">p_grid</span><span class="op">)</span>
+<span class="co"># Unstandardized posterior</span>
+<span class="va">unstd_posterior</span> <span class="op">&lt;-</span> <span class="va">likelihood</span> <span class="op">*</span> <span class="va">prior</span>
+<span class="co"># Posterior distribution</span>
+<span class="va">posterior</span> <span class="op">&lt;-</span> <span class="va">unstd_posterior</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">unstd_posterior</span><span class="op">)</span></code></pre></div>
+<p>Consideriamo ora la possibilità di estrarre 10000 valori del parametro
+<span class="math inline">\(p\)</span> casuali dalla distribuzione a posteriori. Immaginiamo che la
+distribuzione a posteriori sia un’urna che contiene i valori del
+parametro <span class="math inline">\(p\)</span> (ovvero, numeri come 0.107, 0.793, 0.534, 0.908, ecc.).
+All’interno dell’urna, ciascun valore esiste in proporzione alla sua
+densità a posteriori: i valori nell’intorno della moda della
+distribuzione a posteriori sono molto più comuni di quelli che si
+trovano nelle code. Estrarremo ora 10000 valori da quest’urna. Se i
+valori nell’urna sono ben mescolati, il campione che verrà estratto avrà
+le stesse proporzioni della densità a posteriori. Pertanto, il nostro
+campione conterrà valori di <span class="math inline">\(p\)</span> che si addenseranno sulla linea dei
+numeri reali in maniera proporzionale alla densità della distribuzione a
+posteriori. Questo risultato può essere ottenuto in   con una riga di
+codice:</p>
+<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>
+  <span class="va">p_grid</span>, prob <span class="op">=</span> <span class="va">posterior</span>, size <span class="op">=</span> <span class="fl">1e4</span>, replace <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span></code></pre></div>
+<p>La funzione <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> estrae a caso (con rimessa) 10000 valori dal
+vettore <code>p_grid</code>, associando a ciascun valore <code>p_grid</code> una probabilità
+di essere estratto proporzionale alla densità della distribuzione a
+posteriori, così come specificato dall’argomento <code>prob = posterior</code>. Il
+campione dei 10000 valori a posteriori del parametro è rappresentato
+nella figura seguente che riporta la densità della distribuzione a posteriori del parametro <span class="math inline">\(p\)</span> = probabilità di osservare “acqua” nell’esperimento casuale del mappamondo.</p>
+<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/dens.html">dens</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span> </code></pre></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-267-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div id="indici-di-sintesi-della-distribuzione-a-posteriori" class="section level3" number="26.4.1">
+<h3>
+<span class="header-section-number">26.4.1</span> Indici di sintesi della distribuzione a posteriori<a class="anchor" aria-label="anchor" href="#indici-di-sintesi-della-distribuzione-a-posteriori"><i class="fas fa-link"></i></a>
+</h3>
+<p>Una volta trovata la distribuzione a posteriori prodotta
+dall’aggiornamento Bayesiano, il lavoro del modello statistico è
+terminato. Ma il lavoro del ricercatore è appena iniziato. È infatti
+necessario sintetizzare e interpretare la distribuzione a posteriori.
+Esattamente quali indici di sintesi usare dipende dallo scopo della
+ricerca. Ma le domande più comuni includono:</p>
+<ul>
+<li><p>Qual è la probabilità a posteriori che può essere associata a valori
+del parametro minori di un certo valore?</p></li>
+<li><p>Qual è la probabilità a posteriori che può essere associata ad un
+intervallo di valori del parametro?</p></li>
+<li><p>Quale valore del parametro corrisponde al 5% inferiore della
+distribuzione a posteriori?</p></li>
+<li><p>Quale intervallo di valori del parametro contiene il 90% della
+distribuzione a posteriori?</p></li>
+<li><p>A quale valore del parametro è associata la densità a posteriori
+maggiore?</p></li>
+</ul>
+</div>
+<div id="probabilità-della-distribuzione-a-posteriori" class="section level3" number="26.4.2">
+<h3>
+<span class="header-section-number">26.4.2</span> Probabilità della distribuzione a posteriori<a class="anchor" aria-label="anchor" href="#probabilit%C3%A0-della-distribuzione-a-posteriori"><i class="fas fa-link"></i></a>
+</h3>
+<p>Supponiamo che si voglia conoscere la probabilità a posteriori che la
+proporzione di acqua sia inferiore a 0.5. Supponiamo inoltre di volere
+rispondere a questa domanda avendo a disposizione i dati forniti dal
+metodo dell’approssimazione numerica. Ricordiamo che, mediante il metodo
+dell’approssimazione numerica, la distribuzione a posteriori è una
+distribuzione di massa di probabilità. Dunque, usando il metodo
+dell’approssimazione numerica, è possibile trovare la risposta alla
+domanda che ci siamo posti semplicemente sommando tutte le probabilità
+per le quali il valore del parametro è inferiore a 0.5:</p>
+<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">samples</span> <span class="op">&lt;</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">/</span> <span class="va">n_points</span>
+<span class="co">#&gt; [1] 0.1696</span></code></pre></div>
+<p>ovvero 0.17. Questo significa che l’area sottesa alla distribuzione a
+posteriori del parametro <span class="math inline">\(p\)</span> nell’intervallo <span class="math inline">\([-\infty, 0.5]\)</span> è circa
+uguale al 17%.</p>
+<p>Usando lo stesso approccio è possibile trovare l’area sottesa alla
+distribuzione a posteriori nell’intervallo compreso tra 0.5 e 0.75:</p>
+<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">samples</span> <span class="op">&gt;</span> <span class="fl">0.5</span> <span class="op">&amp;</span> <span class="va">samples</span> <span class="op">&lt;</span> <span class="fl">0.75</span><span class="op">)</span> <span class="op">/</span> <span class="va">n_points</span>
+<span class="co">#&gt; [1] 0.6</span></code></pre></div>
+<p>ovvero 0.6. Quindi, l’area sottesa alla funzione di densità a
+posteriori nell’intervallo compreso tra 0.5 e 0.75 è pari a circa il
+61%.</p>
+<p>Negli esempi discussi sopra, il codice <code>R</code> utilizza la funzione <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>
+per contare quanti elementi del vettore <code>samples</code> soddisfano un criterio
+logico. Perché è possibile fare questo? Questo è possibile perché <code>R</code>
+converte internamente un’espressione logica, come <code>samples &lt; 0.5</code> in un
+vettore di risultati <code>TRUE</code> e <code>FALSE</code>, uno per ciascun elemento del
+vettore <code>samples</code>, indicando se ciascun elemento di <code>samples</code> soddisfa o
+meno il criterio logico. Quando questo vettore di <code>TRUE</code> e <code>FALSE</code> viene
+sommato, <code>R</code> valuta ogni <code>TRUE</code> come 1 e ogni <code>FALSE</code> come 0. Quindi
+finisce per contare quanti valori <code>TRUE</code> sono presenti nel vettore, il
+che è la stessa cosa che contare il numero di elementi in <code>samples</code> che
+soddisfano il criterio logico.</p>
+</div>
+<div id="quantili-della-distribuzione-a-posteriori" class="section level3" number="26.4.3">
+<h3>
+<span class="header-section-number">26.4.3</span> Quantili della distribuzione a posteriori<a class="anchor" aria-label="anchor" href="#quantili-della-distribuzione-a-posteriori"><i class="fas fa-link"></i></a>
+</h3>
+<p>È più comune sintetizzare la distribuzione a posteriori mediante un
+intervallo di valori, detto “intervallo di credibilità.” Supponiamo di
+volere trovare il quantile di ordine 0.8 per la distribuzione a
+posteriori. Questo risultato, utilizzando il metodo dell’approssimazione
+numerica, può essere trovato nel modo seguente.</p>
+<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">samples</span>, <span class="fl">0.8</span><span class="op">)</span>
+<span class="co">#&gt;       80% </span>
+<span class="co">#&gt; 0.7627763</span></code></pre></div>
+<p>ovvero, 0.76. In maniera simile, l’intervallo che lascia il 2.5%
+dell’area della distribuzione a posteriori in ciascuna coda è</p>
+<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">samples</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0.975</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt;      2.5%     97.5% </span>
+<span class="co">#&gt; 0.3554230 0.8824907</span></code></pre></div>
+<p>La funzione <code><a href="https://rdrr.io/pkg/rethinking/man/HPDI.html">PI()</a></code> (<em>percentile intervals</em>) del pacchetto <code>rethinking</code>
+restituisce lo stesso risultato:</p>
+<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/HPDI.html">PI</a></span><span class="op">(</span><span class="va">samples</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
+<span class="co">#&gt;        3%       98% </span>
+<span class="co">#&gt; 0.3554230 0.8824907</span></code></pre></div>
+<p>Se la distribuzione a posteriori è asimmetrica, non è sempre una buona
+idea utilizzare l’approccio descritto sopra per calcolare gli intervalli
+di credibilità. Un approccio alternativo è quello di calcolare
+l’intervallo minore che contiene la massa di probabilità specificata –
+questo non corrisponde necessariamente con l’intervallo che lascia la
+stessa massa di probabilità in ciascuna coda. Tale intervallo può essere
+trovato con la funzione <code><a href="https://rdrr.io/pkg/rethinking/man/HPDI.html">HPDI()</a></code> di <code>rethinking</code>:</p>
+<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/HPDI.html">HPDI</a></span><span class="op">(</span><span class="va">samples</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
+<span class="co">#&gt;     |0.95     0.95| </span>
+<span class="co">#&gt; 0.3610361 0.8860886</span></code></pre></div>
+<p>Nel caso presente, il risultato di <code><a href="https://rdrr.io/pkg/rethinking/man/HPDI.html">HPDI()</a></code> è molto simile a quello trovato in precedenza. Ma questo non è sempre vero.</p>
+</div>
+<div id="stime-puntuali-della-distribuzione-a-posteriori" class="section level3" number="26.4.4">
+<h3>
+<span class="header-section-number">26.4.4</span> Stime puntuali della distribuzione a posteriori<a class="anchor" aria-label="anchor" href="#stime-puntuali-della-distribuzione-a-posteriori"><i class="fas fa-link"></i></a>
+</h3>
+<p>Una volta trovata l’intera distribuzione a posteriori, quale valore di
+sintesi è necessario riportare? Questa sembra una domanda innocente, ma
+in realtà è una domanda a cui è difficile rispondere. La stima Bayesiana
+dei parametri è fornita dall’intera distribuzione a posteriori, che non
+è un singolo numero, ma una funzione che mappa ciascun valore di
+parametro ad un valore di plausibilità. Quindi la cosa più importante da
+capire è che non è necessario scegliere una stima puntuale. In linea di
+principio, ciò non è quasi mai necessario ed è spesso dannoso in quanto
+comporta una perdita di informazioni.</p>
+<p>Tuttavia ci sono dei casi nei quali tale scelta è necessaria. Diverse
+risposte sono possibili. Una stima del massimo della probabilità a
+posteriori, o brevemente massimo a posteriori, MAP (da <em>maximum a
+posteriori probability</em>), è una moda della distribuzione a posteriori.
+Nel caso del metodo dell’approssimazione numerica, una stima del MAP può
+essere ottenuta nel modo seguente:</p>
+<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p_grid</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="va">posterior</span><span class="op">)</span><span class="op">]</span>
+<span class="co">#&gt; [1] 0.6666667</span></code></pre></div>
+<p>e, nel caso presente, corrisponde a 0.67. Lo stesso risultato si
+ottiene utilizzando i campioni della distribuzione a posteriori:</p>
+<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/chainmode.html">chainmode</a></span><span class="op">(</span><span class="va">samples</span>, adj <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.6966315</span></code></pre></div>
+<p>In alternativa, si possono calcolare la media o la mediana</p>
+<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.6381123</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.6453645</span></code></pre></div>
+<p>le quali, nel caso presente, sono entrambe uguali a 0.64.</p>
+</div>
+</div>
+<div id="conclusioni-12" class="section level2 unnumbered">
+<h2>Conclusioni<a class="anchor" aria-label="anchor" href="#conclusioni-12"><i class="fas fa-link"></i></a>
+</h2>
+<p>Questo capitolo ha introdotto le procedure di base per la manipolazione
+della distribuzione a posteriori. Lo strumento fondamentale che è stato
+utilizzato è quello fornito dai campioni di valori dei parametri tratti
+dalla distribuzione a posteriori. Lavorare con campioni di parametri
+tratti dalla distribuzione a posteriori trasforma un problema di calcolo
+integrale in un problema di riepilogo dei dati. Abbiamo visto quali sono
+le procedure che, mediante <code>R</code>, consentono di utilizzare i campioni a
+posteriori per produrre gli indici di sintesi della distribuzione a
+posteriori più usati: gli intervalli di credibilità e le stime puntuali.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">25</span> Stima della funzione a posteriori</a></div>
+<div class="next"><a href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">27</span> Una breve introduzione al modello di regressione</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#sintesi-a-posteriori"><span class="header-section-number">26</span> Sintesi a posteriori</a></li>
+<li><a class="nav-link" href="#stima-puntuale"><span class="header-section-number">26.1</span> Stima puntuale</a></li>
+<li>
+<a class="nav-link" href="#intervallo-di-credibilit%C3%A0"><span class="header-section-number">26.2</span> Intervallo di credibilità</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#intervallo-di-credibilit%C3%A0-a-code-uguali"><span class="header-section-number">26.2.1</span> Intervallo di credibilità a code uguali</a></li>
+<li><a class="nav-link" href="#intervallo-di-credibilit%C3%A0-a-densit%C3%A0-a-posteriori-pi%C3%B9-alta"><span class="header-section-number">26.2.2</span> Intervallo di credibilità a densità a posteriori più alta</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#interpretazione"><span class="header-section-number">26.3</span> Interpretazione</a></li>
+<li>
+<a class="nav-link" href="#un-esempio-concreto"><span class="header-section-number">26.4</span> Un esempio concreto</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#indici-di-sintesi-della-distribuzione-a-posteriori"><span class="header-section-number">26.4.1</span> Indici di sintesi della distribuzione a posteriori</a></li>
+<li><a class="nav-link" href="#probabilit%C3%A0-della-distribuzione-a-posteriori"><span class="header-section-number">26.4.2</span> Probabilità della distribuzione a posteriori</a></li>
+<li><a class="nav-link" href="#quantili-della-distribuzione-a-posteriori"><span class="header-section-number">26.4.3</span> Quantili della distribuzione a posteriori</a></li>
+<li><a class="nav-link" href="#stime-puntuali-della-distribuzione-a-posteriori"><span class="header-section-number">26.4.4</span> Stime puntuali della distribuzione a posteriori</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#conclusioni-12">Conclusioni</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>

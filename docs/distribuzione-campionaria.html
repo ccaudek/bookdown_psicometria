@@ -56,7 +56,7 @@
 <li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
 <li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
 <li><a class="" href="la-distribuzione-binomiale.html"><span class="header-section-number">17</span> La distribuzione binomiale</a></li>
-<li><a class="" href="densit%C3%A0-per-variabili-aleatorie-continue.html"><span class="header-section-number">18</span> Densità per variabili aleatorie continue</a></li>
+<li><a class="" href="funzioni-di-densit%C3%A0-di-probabilit%C3%A0.html"><span class="header-section-number">18</span> Funzioni di densità di probabilità</a></li>
 <li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
 <li class="book-part">Inferenza frequentista</li>
 <li><a class="" href="introduzione-3.html">Introduzione</a></li>
@@ -68,9 +68,10 @@
 <li><a class="" href="introduzione-4.html">Introduzione</a></li>
 <li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">24</span> Modellistica bayesiana</a></li>
 <li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">25</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">26</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">27</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">28</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="sintesi-a-posteriori.html"><span class="header-section-number">26</span> Sintesi a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">27</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">28</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">29</span> Inferenza Bayesiana</a></li>
 <li class="book-part">Informazioni generali</li>
 <li><a class="" href="citazione.html">Citazione</a></li>
 <li class="book-part">Appendici</li>
@@ -139,14 +140,14 @@ quella in cui gli psicologi si trovano ad operare. Consideriamo, quale
 esempio, un’ampiezza campionaria di <span class="math inline">\(n = 5\)</span>. Come in precedenza,
 possiamo simulare questo esperimento casuale in R, usando la funzione
 <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>:</p>
-<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">iq3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span>
 <span class="va">iq3</span>
 <span class="co">#&gt; [1]  79 104  63 100 109</span></code></pre></div>
 <p>Il QI medio in questo campione risulta pari a 91. Non sorprende che
 questo risultato sia molto meno accurato rispetto all’esperimento casuale precedente.</p>
 <p>Immaginiamo ora di replicare l’esperimento; immaginiamo cioè di ripetere nuovamente la procedura descritta sopra: estraiamo un nuovo campione casuale e misuriamo il QI di 5 persone. Ancora una volta utilizziamo R per effettuare la simulazione:</p>
-<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">iq4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span>
 <span class="va">iq4</span>
 <span class="co">#&gt; [1] 117  73  96  96  96</span>
@@ -155,7 +156,7 @@ questo risultato sia molto meno accurato rispetto all’esperimento casuale prec
 <p>In quest altro campione casuale il QI medio è 95.6. Procediamo in
 questo modo e simuliamo l’esperimento casuale dieci volte in maniera tale da ottenere i risultati seguenti.</p>
 <p>Iniziamo creando una lista di 10 campioni di ampiezza <span class="math inline">\(n = 5\)</span>.</p>
-<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="va">sample_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>
 <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">{</span>
@@ -166,7 +167,7 @@ questo modo e simuliamo l’esperimento casuale dieci volte in maniera tale da o
 <span class="va">sample_list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>
 <span class="co">#&gt; [1] 126 107  81  90  93</span></code></pre></div>
 <p>Trasformiamo la lista in un data.frame.</p>
-<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">sample_list</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">sample_list</span><span class="op">)</span>, byrow<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 <span class="va">df</span>
 <span class="co">#&gt;     X1  X2  X3  X4  X5</span>
@@ -181,11 +182,11 @@ questo modo e simuliamo l’esperimento casuale dieci volte in maniera tale da o
 <span class="co">#&gt; 9   90  97  81 133 118</span>
 <span class="co">#&gt; 10  83  94  93 112  99</span></code></pre></div>
 <p>Le medie di ciascuno dei 10 campioni di ampiezza <span class="math inline">\(n = 5\)</span> sono:</p>
-<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
 <span class="co">#&gt;  [1] 103.0  99.4 104.6 101.8  89.2  98.4 108.0 101.2 103.8  96.2</span></code></pre></div>
 <p>Poniamoci ora il problema di replicare tante volte la procedura che ci porta a calcolare la media dei valori del QI di cinque persone prese a caso. Per ciascuna replica dell’esperimento casuale salviamo il valore della media campionaria. Così facendo, generiamo tanti valori, ciascuno dei quali corrisponde alla media di un campione casuale di 5 osservazioni. Usando i poteri magici di R, possiamo eseguire una tale simulazione mediante le seguenti istruzioni:</p>
-<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n_samples</span> <span class="op">&lt;-</span> <span class="fl">10000</span>
 <span class="va">sample_size</span> <span class="op">&lt;-</span> <span class="fl">5</span>
 <span class="va">sample_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="va">n_samples</span><span class="op">)</span>
@@ -201,7 +202,7 @@ simulazione è quello che ci fa capire che, se ripetiamo l’esperimento
 casuale più e più volte, otteniamo una distribuzione di medie
 campionarie. Un tale distribuzione ha un nome speciale in statistica: si
 chiama <em>distribuzione campionaria della media</em>.</p>
-<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">sample_means</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">sample_means</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">..density..</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -318,7 +319,7 @@ utilizzata quale stima della deviazione standard della popolazione.</p>
 <span class="header-section-number">20.2.4</span> Distribuzioni delle statistiche campionarie<a class="anchor" aria-label="anchor" href="#distribuzioni-delle-statistiche-campionarie"><i class="fas fa-link"></i></a>
 </h3>
 <p>Qualunque statistica campionaria ha una sua distribuzione teorica. Consideriamo, ad esempio, il massimo del campione quale statistica campionaria di interesse. Ripetiamo la simulazione che abbiamo descritto sopra calcolando, questa volta, il valore massimo del campione.</p>
-<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="va">n_samples</span> <span class="op">&lt;-</span> <span class="fl">10000</span>
 <span class="va">sample_size</span> <span class="op">&lt;-</span> <span class="fl">5</span>
@@ -329,7 +330,7 @@ utilizzata quale stima della deviazione standard della popolazione.</p>
     <span class="va">sample_max</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>I risultati di questa simulazione sono riportati nella figura <a href="distribuzione-campionaria.html#fig:histmaxiq">20.2</a>.</p>
-<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">sample_max</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">sample_max</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">..density..</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -352,7 +353,7 @@ Figura 20.2: Istogramma della distribuzione del QI massimo osservato in ciascun 
 <span class="header-section-number">20.3</span> Teorema del limite centrale<a class="anchor" aria-label="anchor" href="#sec:tlc"><i class="fas fa-link"></i></a>
 </h2>
 <p>Chiediamoci ora quale sia la relazione che intercorre tra la distribuzione campionaria della media e l’ampiezza <span class="math inline">\(n\)</span> dei campioni. In ciascun pannello della figura <a href="distribuzione-campionaria.html#fig:tlcnavarro">20.3</a> sono riportati i risultati di una simulazione nella quale sono stati generati 10000 campioni di ampiezza <span class="math inline">\(n\)</span> per poi calcolare il QI medio in ciascun campione.</p>
-<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">mu</span> <span class="op">&lt;-</span> <span class="fl">100</span>
@@ -459,7 +460,7 @@ campionaria <span class="math inline">\(n\)</span>, la distribuzione di frequenz
 si approssima sempre più alla tipica forma a campana di una
 distribuzione normale.</p>
 <p>Per farci un’idea di quello che succede, eseguiamo alcune simulazioni usando R.</p>
-<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># needed for printing</span>
 <span class="va">width</span> <span class="op">&lt;-</span> <span class="fl">6</span>
 <span class="va">height</span> <span class="op">&lt;-</span> <span class="fl">6</span>
@@ -499,7 +500,7 @@ distribuzione normale.</p>
   <span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>Consideriamo la distribuzione della popolazione rappresentata dall’istogramma riportato nella figura <a href="distribuzione-campionaria.html#fig:tlctriangle1">20.4</a>. Confrontando l’istogramma triangolare con la curva a campana tracciata dalla linea nera risulta chiaro che la distribuzione della popolazione non assomiglia affatto a una distribuzione normale.</p>
-<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">plot_one</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:tlctriangle1"></span>
@@ -508,7 +509,7 @@ Figura 20.4: Dimostrazione del Teorema del limite centrale. Consideriamo una pop
 </p>
 </div>
 <p>In una prima simulazione, ho estratto 50000 campioni di ampiezza <span class="math inline">\(n=2\)</span> da questa distribuzione e, per ciascuno di essi ho calcolato la media campionaria. Come si può vedere nella figura <a href="distribuzione-campionaria.html#fig:tlctriangle2">20.5</a>, la distribuzione campionaria non è triangolare. Certamente non è Normale, ma assomiglia di più ad una distribuzione campanulare di quanto assomigli alla distribuzione della popolazione raffigurata nella figura <a href="distribuzione-campionaria.html#fig:tlctriangle1">20.4</a>.</p>
-<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">plot_one</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:tlctriangle2"></span>
@@ -517,7 +518,7 @@ Figura 20.5: Distribuzione campionaria di <span class="math inline">\(ar{X}\)</s
 </p>
 </div>
 <p>Quando aumento la numerosità del campione a <span class="math inline">\(n=4\)</span> la distribuzione campionaria della media si approssima abbastanza bene alla normale, figura <a href="distribuzione-campionaria.html#fig:tlctriangle4">20.6</a>.</p>
-<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">plot_one</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:tlctriangle4"></span>
@@ -526,7 +527,7 @@ Figura 20.6: Distribuzione campionaria di <span class="math inline">\(ar{X}\)</s
 </p>
 </div>
 <p>Già con <span class="math inline">\(n=8\)</span> l’approssimazione diventa molto buona, come indicato nella figura <a href="distribuzione-campionaria.html#fig:tlctriangle8">20.7</a>.</p>
-<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">plot_one</span><span class="op">(</span><span class="fl">8</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:tlctriangle8"></span>
@@ -570,7 +571,7 @@ P(-1 \leq X - w \leq 1)  &amp;= P\bigg(-\frac{1}{2} \leq \frac{X - w}{\sigma} \l
 \end{aligned}
 \]</span>
 ovvero</p>
-<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.5</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0.3829249</span></code></pre></div>
 <p>Considerando l’evento complementare, possiamo dunque dire che c’è una probabilità maggiore di <span class="math inline">\(0.6\)</span> che la bilancia produca un valore che differisce di almeno un grammo dal peso vero.</p>
@@ -583,7 +584,7 @@ P\left(-1 \leq \frac{S_{10}}{10} - w \leq 1\right)
 \end{aligned}
 \]</span>
 ovvero</p>
-<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0.8861537</span></code></pre></div>
 <p>Considerando l’evento complementare, possiamo concludere che c’è una probabilità pari a solo 0.114 che la media di 10 misurazioni assuma un valore che differisce di più di un grammo dal peso vero. È dunque ovvio che le medie di misurazioni ripetute sono migliori delle singole misure.</p>

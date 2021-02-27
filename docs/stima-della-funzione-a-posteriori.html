@@ -56,7 +56,7 @@
 <li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
 <li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
 <li><a class="" href="la-distribuzione-binomiale.html"><span class="header-section-number">17</span> La distribuzione binomiale</a></li>
-<li><a class="" href="densit%C3%A0-per-variabili-aleatorie-continue.html"><span class="header-section-number">18</span> Densità per variabili aleatorie continue</a></li>
+<li><a class="" href="funzioni-di-densit%C3%A0-di-probabilit%C3%A0.html"><span class="header-section-number">18</span> Funzioni di densità di probabilità</a></li>
 <li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
 <li class="book-part">Inferenza frequentista</li>
 <li><a class="" href="introduzione-3.html">Introduzione</a></li>
@@ -68,9 +68,10 @@
 <li><a class="" href="introduzione-4.html">Introduzione</a></li>
 <li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">24</span> Modellistica bayesiana</a></li>
 <li><a class="active" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">25</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">26</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">27</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">28</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="sintesi-a-posteriori.html"><span class="header-section-number">26</span> Sintesi a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">27</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">28</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">29</span> Inferenza Bayesiana</a></li>
 <li class="book-part">Informazioni generali</li>
 <li><a class="" href="citazione.html">Citazione</a></li>
 <li class="book-part">Appendici</li>
@@ -125,7 +126,7 @@ casi, questi calcoli possono essere fatti seguendo una procedura
 analitica, ma solitamente vengono usate delle tecniche numeriche.</p></li>
 </ol>
 <p>Una descrizione della distribuzione a posteriori ottenuta mediante l’approssimazione quadratica si ottiene mediante la funzione <code><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap()</a></code> contenuta nel pacchetto <code>rethinking</code>. Tale pacchetto, creato da Richard McElreath per accompagnare il suo testo <em>Statistical Rethinking</em><span class="math inline">\(^2\)</span>, può essere scaricato utilizzando le istruzioni seguenti:</p>
-<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"coda"</span>, <span class="st">"mvtnorm"</span>, <span class="st">"devtools"</span>, <span class="st">"loo"</span>, <span class="st">"dagitty"</span><span class="op">)</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://devtools.r-lib.org/">"devtools"</a></span><span class="op">)</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"rmcelreath/rethinking"</span><span class="op">)</span></code></pre></div>
@@ -219,7 +220,7 @@ conchiglie diviso per il numero originale di sassolini.</p></li>
 </ol>
 <p>Decidere di procedere in questo modo potrebbe sembrare un modo per rovinarsi le vacanze. Invece, questo algoritmo funziona! Seguendo la proposta di Metropolis, il turista passerà su ciascuna spiaggia un numero di giorni proporzionale alla grandezza della spiaggia.</p>
 <p><span class="citation"><a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">McElreath</a> (<a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span> ha implementato in R l’algoritmo di Metropolis che abbiamo descritto sopra nel modo seguente:</p>
-<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">num_weeks</span> <span class="op">&lt;-</span> <span class="fl">1e5</span>
 <span class="va">positions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">num_weeks</span><span class="op">)</span>
 <span class="va">current</span> <span class="op">&lt;-</span> <span class="fl">10</span>
@@ -236,7 +237,7 @@ conchiglie diviso per il numero originale di sassolini.</p></li>
   <span class="va">current</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">&lt;</span> <span class="va">prob_move</span>, <span class="va">proposal</span>, <span class="va">current</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>Le istruzioni seguenti sono state usate per generare la figura <a href="stima-della-funzione-a-posteriori.html#fig:turista1">25.1</a>. Se guardiamo la figura e consideriamo un giorno qualsiasi è difficile capire qual è la spiaggia scelta dal turista.</p>
-<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, y <span class="op">=</span> <span class="va">positions</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">]</span><span class="op">)</span>,
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
@@ -254,7 +255,7 @@ Figura 25.1: Risultati dell’algoritmo di Metropolis utilizzato dal turista via
 </p>
 </div>
 <p>Tuttavia, se esaminiamo la figura <a href="stima-della-funzione-a-posteriori.html#fig:turista2">25.2</a> che descrive il comportamento a lungo termine dell’algoritmo, ci rendiamo conto che l’algoritmo ha prodotto il risultato che si voleva ottenere: il tempo trascorso dal turista su ciascuna spiaggia è proporzionale alla grandezza della spiaggia.</p>
-<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>
   <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">positions</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, xend <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="va">y</span><span class="op">)</span>
@@ -312,7 +313,7 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
 <span class="header-section-number">25.8.1</span> Verosimiglianza<a class="anchor" aria-label="anchor" href="#verosimiglianza"><i class="fas fa-link"></i></a>
 </h3>
 <p>Per trovare la funzione di verosimiglianza usando i 30 valori di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span> definisco la funzione <code>likelihood()</code> come indicato sotto. Tale funzione ritorna l’ordinata della funzione di verosimiglianza binomiale per ciascun valore del vettore <code>param</code> che viene dato in input alla funzione.</p>
-<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">23</span>
 <span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">30</span>
 <span class="va">param</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, length.out <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
@@ -328,14 +329,14 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
     x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,
     y <span class="op">=</span> <span class="st">"Verosimiglianza"</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-248-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-255-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
 <div id="distribuzione-a-priori-1" class="section level3" number="25.8.2">
 <h3>
 <span class="header-section-number">25.8.2</span> Distribuzione a priori<a class="anchor" aria-label="anchor" href="#distribuzione-a-priori-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Se abbiamo ragioni forti per avere delle aspettative rispetto al valore possibile della nostra stima, una distribuzione a priori <em>informativa</em> verrà combinata con le informazioni fornite dal campione per produrre una stima ``razionale’’ a posteriori. Nel caso presente utilizziamo la distribuzione informativa presentata nella sezione <a href="#sec:aspett_future_beta2_10">Un esempio pratico (versione 2)</a> unicamente a scopo esemplicativo, ovvero per fare in modo da “allontanare” la distribuzione a posteriori dalla distribuzione di verosimiglianza.</p>
-<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">prior</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">param</span>, <span class="va">alpha</span> <span class="op">=</span> <span class="fl">2</span>, <span class="va">beta</span> <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">param_vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, length.out <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="va">param</span>, <span class="va">alpha</span>, <span class="va">beta</span><span class="op">)</span> <span class="co"># / sum(dbeta(param_vals, alpha, beta))</span>
@@ -348,14 +349,14 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
     x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,
     y <span class="op">=</span> <span class="st">"Densità"</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-249-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-256-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
 <div id="distribuzione-a-posteriori" class="section level3" number="25.8.3">
 <h3>
 <span class="header-section-number">25.8.3</span> Distribuzione a posteriori<a class="anchor" aria-label="anchor" href="#distribuzione-a-posteriori"><i class="fas fa-link"></i></a>
 </h3>
 <p>Abbiamo visto in precedenza come la funzione a posteriori è data dal prodotto della densità a priori e della verosimiglianza.</p>
-<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">posterior</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">param</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu">likelihood</span><span class="op">(</span><span class="va">param</span><span class="op">)</span> <span class="op">*</span> <span class="fu">prior</span><span class="op">(</span><span class="va">param</span><span class="op">)</span>
 <span class="op">}</span>
@@ -367,7 +368,7 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
     x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,
     y <span class="op">=</span> <span class="st">"Densità"</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-250-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-257-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Questo è il risultato che vogliamo ottenere utilizzando l’algoritmo di Metropolis. Dalla figura precedente vediamo che la moda della distribuzione a posteriori è pari a circa 0.6. Questo è il valore più verosimile a posteriori per il parametro <span class="math inline">\(\theta\)</span>.</p>
 </div>
 <div id="algoritmo-di-metropolis" class="section level3" number="25.8.4">
@@ -375,7 +376,7 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
 <span class="header-section-number">25.8.4</span> Algoritmo di Metropolis<a class="anchor" aria-label="anchor" href="#algoritmo-di-metropolis"><i class="fas fa-link"></i></a>
 </h3>
 <p>Implementiamo ora l’algoritmo di Metropolis. Utilizziamo una distribuzione proposta gaussiana. Il valore proposto da tale distribuzione ausiliaria corrisponde ad un valore selezionato a caso da una distribuzione gaussiana con media uguale al valore del parametro attualmente considerato nella catena e con una deviazione standard ``adeguata’’. In questo esempio, la deviazione standard è stata scelta empiricamente in modo tale da ottenere un tasso di accettazione sensato. È stato mostrato che un tasso di accettazione ottimale dovrebbe essere tra il 20% e il 30%. Se il tasso di accettazione è troppo grande, infatti, l’algoritmo esplora uno spazio troppo ristretto della distribuzione a posteriori. Il tasso di accettazione è influenzato dalla distribuzione proposta: in generale, tanto più la distribuzione proposta è simile alla distribuzione target, tanto più alto diventa il tasso di accettazione.</p>
-<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">proposal_distribution</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">param</span><span class="op">)</span> <span class="op">{</span>
   <span class="kw">while</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">{</span>
     <span class="va">res</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">1</span>, mean <span class="op">=</span> <span class="va">param</span>, sd <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span>
@@ -386,7 +387,7 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
 <span class="op">}</span></code></pre></div>
 <p>In questa implementazione molto semplice della distribuzione proposta ho inserito dei controlli che fanno in modo che il valore proposto da tale distribuzione ausiliaria sia incluso nell’intervallo [0, 1]. Si possono trovare implementazioni migliori di questa idea di quella fornita qui. Ma lo scopo è solo quello di spiegare la struttura logica dell’algoritmo di Metropolis, non quella di proporre un’implementazione efficente dell’algoritmo. Per i nostri scopi, tale implementazione “ingenua” funziona, e tanto basta.</p>
 <p>L’algoritmo di Metropolis è implementato nella funzione seguente:</p>
-<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">run_metropolis_MCMC</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">startvalue</span>, <span class="va">iterations</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">chain</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">vector</a></span><span class="op">(</span>length <span class="op">=</span> <span class="va">iterations</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span>
   <span class="va">chain</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">startvalue</span>
@@ -402,21 +403,21 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
   <span class="va">chain</span>
 <span class="op">}</span></code></pre></div>
 <p>Generiamo dunqe una catena di valori <span class="math inline">\(\theta\)</span> con le seguenti istruzioni:</p>
-<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="va">startvalue</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>
 <span class="va">niter</span> <span class="op">&lt;-</span> <span class="fl">1e4</span>
 <span class="va">chain</span> <span class="op">&lt;-</span> <span class="fu">run_metropolis_MCMC</span><span class="op">(</span><span class="va">startvalue</span>, <span class="va">niter</span><span class="op">)</span></code></pre></div>
 <p>Otteniamo così 4,000 valori della distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span>. Di questi valori, 2,000 vengono considerati burn-in e vengono esclusi. Ci restano dunque con 2,000 stime a posteriori di <span class="math inline">\(\theta\)</span>.</p>
 <p>Il tasso di accettazione è pari a</p>
-<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">burnIn</span> <span class="op">&lt;-</span> <span class="va">niter</span> <span class="op">/</span> <span class="fl">2</span>
 <span class="va">acceptance</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/duplicated.html">duplicated</a></span><span class="op">(</span><span class="va">chain</span><span class="op">[</span><span class="op">-</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">burnIn</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
 <span class="va">acceptance</span>
 <span class="co">#&gt; [1] 0.2511498</span></code></pre></div>
 <p>il che conferma che la deviazione standard che abbiamo scelto per la distribuzione proposta (<span class="math inline">\(\sigma\)</span> = 0.9) è adeguata.</p>
 <p>Una figura che rappresenta la distribuzione a posteriori per <span class="math inline">\(\theta\)</span>, insieme alla rappresentazione dei valori della catena di Markov realizzata dall’algoritmo di Metropolis, può essere prodotta mediante le seguenti istruzioni:</p>
-<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">chain</span><span class="op">[</span><span class="op">-</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">burnIn</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -439,9 +440,9 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
 
 <span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span>
 <span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-255-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-262-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>A questo punto è molto facile trovare il massimo a posteriori per il parametro <span class="math inline">\(\theta\)</span>:</p>
-<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">chain</span><span class="op">[</span><span class="op">-</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">burnIn</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0.5921799</span></code></pre></div>
 <!-- Nella funzione precedente, le prime due righe definiscono un vettore, chiamato `chain`, dove vengono salvati i valori del parametro che sono campionati dalla distribuzione a posteriori, e inizializzano tale vettore utilizzando il valore iniziale che verrà prescelto in seguito. Il ciclo `for ()` viene utilizzato per specificare i valori della passeggiata aleatoria (*random walk*) che definisce l'insieme di punti che vengono campionati dalla distribuzione a posteriori. L'algoritmo procede nel modo seguente. -->
@@ -503,7 +504,7 @@ problemi di qualunque grado di complessità.</p>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="modellistica-bayesiana.html"><span class="header-section-number">24</span> Modellistica bayesiana</a></div>
-<div class="next"><a href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">26</span> Una breve introduzione al modello di regressione</a></div>
+<div class="next"><a href="sintesi-a-posteriori.html"><span class="header-section-number">26</span> Sintesi a posteriori</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">

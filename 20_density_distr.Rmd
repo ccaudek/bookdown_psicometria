@@ -1,4 +1,4 @@
-# Densità per variabili aleatorie continue 
+# Funzioni di densità di probabilità 
 
 In precedenza abbiamo esaminato la distribuzione di massa di probabilità
 di una variabile aleatoria discreta, ovvero la distribuzione Binomiale.
@@ -60,7 +60,10 @@ ggplot(data = pos,
   geom_line(aes(color = person < 2, alpha  = person < 2)) +
   scale_color_manual(values = c("skyblue4", "black")) +
   scale_alpha_manual(values = c(1/5, 1)) +
-  scale_x_continuous("step number", breaks = c(0, 4, 8, 12, 16)) +
+  scale_x_continuous("Numero di passi", breaks = c(0, 4, 8, 12, 16)) +
+  labs(
+    y = "Posizione"
+  )
   theme(legend.position = "none")
 ```
 
@@ -100,7 +103,7 @@ p3 <-
   labs(title = "16 steps",
        y = "density")
 
-library(patchwork)
+library("patchwork")
 
 # combine the ggplots
 (p1 | p2 | p3) & coord_cartesian(xlim = c(-6, 6))
@@ -160,28 +163,53 @@ distribuzioni Normali si ottengono dalla Normale standard mediante una
 trasformazione lineare: se $X \sim \mathcal{N}(\mu_X, \sigma_X)$ allora
 $Y = a + b X \sim \mathcal{N}(\mu_Y = a+b \mu_X, \sigma_Y = \left|b\right|\sigma_X)$.
 
+
 ### Funzione di ripartizione della distribuzione Normale
 
 Il valore della funzione di ripartizione di $X$ nel punto $x$ è l'area
 sottesa alla curva di densità $f(x)$ nella semiretta $(-\infty, x]$. Non esiste alcuna funzione elementare per la funzione di ripartizione
+
 $$
 F(x) = \int_{-\infty}^x {1 \over {\sigma\sqrt{2\pi} }} \exp \left\{-\frac{(x- \mu)^2}{2\sigma^2} \right\} dx, \notag
 $$
 pertanto le probabilità $P(X < x)$ vengono calcolate mediante
 integrazione numerica approssimata. I valori della funzione di
 ripartizione di una variabile aleatoria Normale sono dunque forniti da
-un software o dalle tavole riportate sui testi di statistica. Per potere
-utilizzare i valori tabulati si ricorre al procedimento di
-*standardizzazione* che riconduce una variabile aleatoria distribuita
-secondo una media $\mu$ e varianza $\sigma^2$, ad una variabile
+un software (in passato venivano forniti dalle tavole riportate sui testi di statistica).
+
+__Esercizio.__ Possiamo usare `R` per calcolare la funzione di ripartizione della Normale e per replicare i risultati che abbiamo presentato sopra.
+La funzione `pnorm(q, mean, sd)` restituisce la funzione di ripartizione della Normale con media `mean` e deviazione standard `sd`, ovvero l'area sottesa alla funzione di densità di una Normale con media `mean` e deviazione standard `sd` nell'intervallo $[-\infty, q]$.
+
+Per esempio, in precedenza abbiamo detto che il 68% circa dell'area sottesa ad una Normale è compresa nell'intervallo $\mu \pm \sigma$. Verifichiamo per la distribuzione del QI:
+
+```{r}
+pnorm(100+15, 100, 15) - pnorm(100-15, 100, 15)
+```
+
+Il 95% dell'area è compresa nell'intervallo $\mu \pm 1.96 \cdot\sigma$:
+
+```{r}
+pnorm(100+1.96*15, 100, 15) - pnorm(100-1.96*15, 100, 15)
+```
+
+Quasi tutta la distribuzione è compresa nell'intervallo $\mu \pm 3 \cdot\sigma$:
+
+```{r}
+pnorm(100+3*15, 100, 15) - pnorm(100-3*15, 100, 15)
+```
+
+
+### Standardizzazione
+
+Per potere utilizzare i valori tabulati (ma soprattutto per altri scopi più utili) si ricorre al procedimento di *standardizzazione* che riconduce una variabile aleatoria distribuita secondo una media $\mu$ e varianza $\sigma^2$, ad una variabile
 aleatoria con distribuzione "standard", ovvero di media zero e varianza
 pari a $1$:
+
 $$
 Z = \frac{X - \mu}{\sigma}.
 $$
-L'area sottesa alla curva di
-densità di $X$ nella semiretta $(-\infty, x]$ è uguale all'area sottesa
-alla densità Normale standard nella semiretta $(-\infty, z]$, in cui
+
+L'area sottesa alla curva di densità di $X$ nella semiretta $(-\infty, x]$ è uguale all'area sottesa alla densità Normale standard nella semiretta $(-\infty, z]$, in cui
 $z = (x -\mu_X )/\sigma_X$ è il punteggio standard di $x$. Per la
 simmetria della distribuzione, l'area sottesa nella semiretta
 $[1, \infty)$ è uguale all'area sottesa nella semiretta $(-\infty, 1]$ e
@@ -197,15 +225,27 @@ $z$ cercato è detto *quantile* di ordine $p$ della Normale standard ed è
 tabulato nelle tavole statistiche o può essere trovato mediante un
 software.
 
-__Esempio.__ Supponiamo che l'altezza degli
-individui adulti segua la distribuzione Normale di media $\mu = 1.7$ m e
-deviazione standard $\sigma = 0.1$ m. Vogliamo sapere la proporzione di
-individui adulti con un'altezza compresa tra $1.7$ e $1.8$ m.
+__Esempio.__ Supponiamo che l'altezza degli individui adulti segua la distribuzione Normale di media $\mu = 1.7$ m e deviazione standard $\sigma = 0.1$ m. Vogliamo sapere la proporzione di individui adulti con un'altezza compresa tra $1.7$ e $1.8$ m.
 
-Il problema ci chiede di trovare l'area sottesa alla
-distribuzione $\mathcal{N}(\mu = 1.7, \sigma^2 = 0.1^2)$ nell'intervallo
-$[1.7, 1.8]$. La risposta si trova utilizzando la funzione di
-ripartizione $F(X)$ della legge $\mathcal{N}(1.7, 0.1^2)$ in
+Il problema ci chiede di trovare l'area sottesa alla distribuzione $\mathcal{N}(\mu = 1.7, \sigma = 0.1)$ nell'intervallo $[1.7, 1.8]$:
+
+```{r}
+library("gghighlight")
+
+df <- data.frame(x = seq(1.4, 2.0, length.out = 100)) %>% 
+  mutate(y = dnorm(x, mean=1.7, sd=0.1))
+
+ggplot(df, aes(x, y)) + 
+  geom_area(fill = "sky blue") + 
+  gghighlight(x < 1.8 & x > 1.7) +
+  labs(
+    x = "Altezza",
+    y = "Densità"
+  )
+```
+
+La risposta si trova utilizzando la funzione di
+ripartizione $F(X)$ della legge $\mathcal{N}(1.7, 0.1)$ in
 corrispondenza dei due valori forniti dal problema:
 $F(X = 1.8) - F(X = 1.7)$. Utilizzando la seguente istruzione
 
@@ -219,6 +259,7 @@ In maniera equivalente, possiamo standardizzare i valori che delimitano
 l'intervallo considerato e utilizzare la funzione di ripartizione della
 normale standardizzata. I limiti inferiore e superiore dell'intervallo
 sono
+
 $$
 z_{\text{inf}} = \frac{1.7 - 1.7}{0.1} = 0, \quad z_{\text{sup}} = \frac{1.8 - 1.7}{0.1} = 1.0,
 $$
@@ -249,31 +290,44 @@ di libertà. La densità di probabilità di $\chi^2_{~\nu}$ è
 $$
 f(x) = C_{\nu} x^{\nu/2-1} \exp (-x/2), \qquad \text{se } x > 0,
 $$
-dove $C_{\nu}$ è una costante positiva. La distribuzione di densità
-$\chi^2_{~\nu}$ è asimmetrica. Il valore atteso di una variabile
-$\chi^2_{~\nu}$ è uguale a $\nu$. La varianza di una variabile
-$\chi^2_{~\nu}$ è uguale a $2\nu$. Per $k \rightarrow \infty$, la
-$\chi^2_{~\nu} \rightarrow \mathcal{N}$.
+dove $C_{\nu}$ è una costante positiva. 
 
-Se $X$ e $Y$ sono due variabili aleatorie chi-quadrato indipendenti con
-$\nu_1$ e $\nu_2$ gradi di libertà, ne segue che $X + Y \sim \chi^2_m$,
-con $m = \nu_1 + \nu_2$. Tale principio si estende a qualunque numero
-finito di variabili aleatorie chi-quadrato indipendenti.
+- La distribuzione di densità $\chi^2_{~\nu}$ è asimmetrica. 
+- Il valore atteso di una variabile $\chi^2_{~\nu}$ è uguale a $\nu$. 
+- La varianza di una variabile $\chi^2_{~\nu}$ è uguale a $2\nu$. 
+- Per $k \rightarrow \infty$, la $\chi^2_{~\nu} \rightarrow \mathcal{N}$.
 
-__Teorema.__ Nel caso di un campione di ampiezza
-$n$ estratto da una popolazione normale di media $\mu$ e varianza
-$\sigma^2$ abbiamo che la stima campionaria della varianza, moltiplicata
-per i suoi gradi di libertà e divisa per la varianza della popolazione,
-si distribuisce come chi-quadrato con $n-1$ gradi di libertà:
-$$
-\frac{(n - 1)s_n^2}{\sigma^2} \sim \chi^2_{~n - 1},
-$$
-dove
-$$
-s_n^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2.
-$$
+Una caratteristica importante della distribuzione chi-quadrato è la seguente: se $X$ e $Y$ sono due variabili aleatorie chi-quadrato indipendenti con $\nu_1$ e $\nu_2$ gradi di libertà, ne segue che $X + Y \sim \chi^2_m$, con $m = \nu_1 + \nu_2$. Tale principio si estende a qualunque numero finito di variabili aleatorie chi-quadrato indipendenti.
 
-## Distribuzione $t$ di Student {#cap:tstudent}
+__Esempio.__ Usiamo `R` per disegnare la densità chi-quadrato con 3 gradi di libertà. Usiamo due colori per l'area sottesa alla densità così da suddividenderla in due parti uguali.
+
+```{r}
+df <- data.frame(x = seq(0, 15.0, length.out = 100)) %>% 
+  mutate(y = dchisq(x, 3))
+
+ggplot(df, aes(x, y)) + 
+  geom_area(fill = "sky blue") + 
+  gghighlight(x < 3) +
+  labs(
+    x = "V.a. chi-quadrato con 3 gradi di libertà",
+    y = "Densità"
+  )
+```
+
+<!-- __Teorema.__ Nel caso di un campione di ampiezza -->
+<!-- $n$ estratto da una popolazione normale di media $\mu$ e varianza -->
+<!-- $\sigma^2$ abbiamo che la stima campionaria della varianza, moltiplicata -->
+<!-- per i suoi gradi di libertà e divisa per la varianza della popolazione, -->
+<!-- si distribuisce come chi-quadrato con $n-1$ gradi di libertà: -->
+<!-- $$ -->
+<!-- \frac{(n - 1)s_n^2}{\sigma^2} \sim \chi^2_{~n - 1}, -->
+<!-- $$ -->
+<!-- dove -->
+<!-- $$ -->
+<!-- s_n^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2. -->
+<!-- $$ -->
+
+## Distribuzione $t$ di Student 
 
 Se $Z \sim \mathcal{N}$ e $W \sim \chi^2_{~\nu}$ sono due variabili aleatorie indipendenti, allora
 il rapporto
@@ -299,6 +353,18 @@ La variabile $t$ di Student soddisfa le seguenti proprietà:
 3.  Per $\nu > 2$, la varianza della $t_{\nu}$ vale $\nu/(\nu - 2)$;
     pertanto è sempre maggiore di 1 e tende a 1 per
     $\nu \rightarrow \infty$.
+    
+__Esempio.__ Una rappresentazione di alcune distribuzioni $t$ di Student è fornita nella figura seguente.
+
+```{r}
+p = seq(-3, 3, length=100)
+plot(p, dnorm(p, 0, 1), ylab="density", type ="l", col=4)
+lines(p, dt(p, 2), type ="l", col=3)
+lines(p, dt(p, 5), type ="l", col=2)
+lines(p, dt(p, 30), col=1) 
+legend(1.5, .4, c("N(0,1)", "t(2)","t(5)","t(30)"), lty=c(1,1,1,1),col=c(4,3,2,1))
+```  
+
 
 ## Distribuzione Beta
 
@@ -317,4 +383,17 @@ laddove $B(a, b)$ è conosciuta come la "funzione beta" e corrisponde ad
 una costante (in quanto non dipende da $x$), il cui scopo è che la
 densità si integri a 1, come deve essere per tutte le funzioni di
 densità.
+
+__Esempio.__ Una rappresentazione di alcune distribuzioni Beta è fornita nella figura seguente.
+
+```{r}
+p = seq(0,1, length=100)
+plot(p, dbeta(p, 9, 1), ylab="density", type ="l", col=5)
+lines(p, dbeta(p, 1, 9), type ="l", col=4)
+lines(p, dbeta(p, 1, 1), col=3) 
+lines(p, dbeta(p, 3, 7), col=2) 
+lines(p, dbeta(p, 5, 5), col=1) 
+legend(0.4,9, c("Be(9,1)","Be(1,9)","Be(1,1)", "Be(3,7)", "Be(5,5)"),lty=c(1,1,1,1,1),col=c(5,4,3,2,1))
+```
+
 
