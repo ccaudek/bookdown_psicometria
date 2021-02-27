@@ -359,7 +359,7 @@ In generale, la forma di una distribuzione descrive come i dati si
 distribuiscono intorno ai valori centrali. Distinguiamo tra
 distribuzioni simmetriche e asimmetriche, e tra distribuzioni unimodali
 o multimodali. Un'illustrazione grafica è fornita nella
-figura seguente.
+figura seguente.
 
 ```{tikz, echo=FALSE, fig.cap = "1: Asimmetria negativa. 2: Asimmetria positiva. 3: Distribuzione unimodale. 4: Distribuzione bimodale.", fig.ext = 'png', cache=TRUE}
 \usetikzlibrary{
@@ -391,6 +391,9 @@ Se consideriamo nuovamente la figura \@ref(fig:zetschehist3) possiamo dire che l
 
 
 ## Indici di posizione
+
+Nuovamente, se preferite un'introduzione veramente "soft" alla nozione di "tendenza  centrale" di una distribuzione statistica, vi rimando nuovamentew al [link](https://tinystats.github.io/teacups-giraffes-and-statistics/03_mean.html) che ho già suggerito in precedenza.
+
 
 ### Quantili
 
@@ -540,7 +543,7 @@ p2 <- bysubj %>%
 p1 + p2
 ```
 
-Nella figura \@ref(fig:violin-zetsche) sinistra sono rappresentati i dati grezzi: questa è la pratica migliore quando il numero di osservazioni è piccolo. La linea curva che circonda (simmetricamente) le osservazioni è l'__istogramma lisciato__ che abbiamo descritto in precedenza. Nella figura \@ref(fig:violin-zetsche) destra sono rappresentanti gli stessi dati: la funzione di densità empirica è la stessa di prima, ma al suo interno viene collocato un box-plot. Questa seconda rappresentazione è da preferirsi quando ci sono molte osservazioni e non è utile rappresentare singolarmente ciascun dato. Entrambe le rappresentazioni suggeriscono che la distribuzione dei dati è all'incirca simmetrica nel gruppo clinico (codificato come `mdd`). Il gruppo di controllo (`ctl`) mostra invece un'asimmetria positiva, con tre osservazioni evidenziate nel boxplot come dei "valori anomali", dato che si discostano dalla mediana di una quantità maggiore di 1.5 IQR.
+Nella figura \@ref(fig:violin-zetsche) sinistra sono rappresentati i dati grezzi: questa è la pratica migliore quando il numero di osservazioni è piccolo. La linea curva che circonda (simmetricamente) le osservazioni è l'__istogramma lisciato__ che abbiamo descritto in precedenza. Nella figura \@ref(fig:violin-zetsche) destra sono rappresentanti gli stessi dati: la funzione di densità empirica è la stessa di prima, ma al suo interno viene collocato un box-plot. Questa seconda rappresentazione è da preferirsi quando ci sono molte osservazioni e non è utile rappresentare singolarmente ciascun dato. Entrambe le rappresentazioni suggeriscono che la distribuzione dei dati è all'incirca simmetrica nel gruppo clinico (codificato come `mdd`). Il gruppo di controllo (`ctl`) mostra invece un'asimmetria positiva, con tre osservazioni evidenziate nel boxplot come dei "valori anomali", dato che si discostano dalla mediana di una quantità maggiore di 1.5 IQR.
 
 
 ### L'eccellenza grafica
@@ -703,6 +706,8 @@ valori numerici della variabile statistica. È dunque necessario
 sintetizzare la distribuzione di una variabile statistica oltre che con
 le misure di posizione anche tramite l'utilizzo di indicatori che
 valutino la dispersione delle unità statistice.
+
+Anche in questo caso, un'introduzione "soft" è fornita nel  [link](https://tinystats.github.io/teacups-giraffes-and-statistics/04_variance.html).
 
 ### Indici basati sull'ordinamento dei dati
 

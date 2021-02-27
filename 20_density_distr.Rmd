@@ -18,10 +18,10 @@ anormali."
 
 ## Distribuzione Normale
 
-Per introdurre le distribuzioni normali, consideriamo ora un esempio
-proposto da [@McElreath_rethinking]. Supponiamo che vi siano mille
-persone tutte allineate su una linea di partenza. Quando viene dato un
-segnale, ciascuna persona lancia una moneta e fa un passo in una
+Chi preferisce un approccio grafico, può consultare il  [link](https://tinystats.github.io/teacups-giraffes-and-statistics/02_bellCurve.html). Dopo le vignette, per introdurre le distribuzioni normali, considereremo un esempio
+proposto da [@McElreath_rethinking]. 
+
+Supponiamo che vi siano mille persone tutte allineate su una linea di partenza. Quando viene dato un segnale, ciascuna persona lancia una moneta e fa un passo in una
 direzione oppure nella direzione opposta a seconda che sia uscita testa
 o croce. Supponiamo che la lunghezza di ciascun passo vari da 0 a 1
 metro. Ciascuna persona lancia la moneta 16 volte e dunque fa 16
