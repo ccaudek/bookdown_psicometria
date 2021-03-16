@@ -291,9 +291,9 @@ Leggiamo i dati assumendo che il file <code>data.mood.csv</code> si trovi nella 
 <p>Ci sono dunque 66 soggetti i quali hanno ottenuto i valori sulla scala del BDI-II stampati di seguito (li presento ordinati dal più piccolo al più grande).</p>
 <div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">bysubj</span><span class="op">$</span><span class="va">bdi</span><span class="op">)</span>
-<span class="co">#&gt;  [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  2  2  2  2</span>
-<span class="co">#&gt; [30]  3  3  3  5  7  9 12 19 22 22 24 25 25 26 26 26 27 27 28 28 30 30 30 31 31 33 33 34 35</span>
-<span class="co">#&gt; [59] 35 35 36 39 41 43 43 44</span></code></pre></div>
+<span class="co">#&gt;  [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  2  2</span>
+<span class="co">#&gt; [28]  2  2  3  3  3  5  7  9 12 19 22 22 24 25 25 26 26 26 27 27 28 28 30 30 30 31 31</span>
+<span class="co">#&gt; [55] 33 33 34 35 35 35 36 39 41 43 43 44</span></code></pre></div>
 <p>Calcolo ora le frequenze assolute per i seguenti intervalli aperti a destra: [0, 13.5), [13.5, 19.5), [19.5, 28.5), [28.5, 63). Esaminando i dati, possiamo notare che 36 soggetti cadono nella prima classe. È però necessario eseguire quest’operazione di conteggio utilizzando R.</p>
 <p>Uno dei modi possibili per calcolare le frequenze assolute è quello di usare la funzione <code><a href="https://rdrr.io/r/base/cut.html">cut()</a></code>. Mediante tal funzione è possibile dividere il <em>campo di variazione</em> (ovvero, la differenza tra il valore massimo di una distribuzione ed il valore minimo) di una variabile continua <code>x</code> in intervalli e codificare ciascun valore <code>x</code> nei termini dell’intervallo a cui appartiene. Tale risultato si ottiene nel modo seguente.</p>
 <div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
@@ -740,7 +740,7 @@ distribuzione è asimmetrica, o in presenza di valori anomali (<em>outlier</em>)
   <span class="op">)</span> 
 <span class="co">#&gt; # A tibble: 2 x 2</span>
 <span class="co">#&gt;   group avg_bdi</span>
-<span class="co">#&gt; * &lt;fct&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt;   &lt;fct&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 ctl      1.69</span>
 <span class="co">#&gt; 2 mdd     30.9</span></code></pre></div>
 </div>
@@ -768,7 +768,7 @@ ordinata. La media spuntata è data dalla media aritmetica dei dati rimanenti.</
   <span class="op">)</span> 
 <span class="co">#&gt; # A tibble: 2 x 2</span>
 <span class="co">#&gt;   group avg_trim_bdi</span>
-<span class="co">#&gt; * &lt;fct&gt;        &lt;dbl&gt;</span>
+<span class="co">#&gt;   &lt;fct&gt;        &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 ctl            1  </span>
 <span class="co">#&gt; 2 mdd           30.6</span></code></pre></div>
 </div>
@@ -798,7 +798,7 @@ perde il suo significato di indice di tendenza centrale) e la <em>mediana</em>
   <span class="op">)</span> 
 <span class="co">#&gt; # A tibble: 2 x 4</span>
 <span class="co">#&gt;   group   q25   q50   q75</span>
-<span class="co">#&gt; * &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;   &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 ctl       0     1     2</span>
 <span class="co">#&gt; 2 mdd      26    30    35</span></code></pre></div>
 
@@ -863,7 +863,7 @@ un’unità di misura che è il quadrato dell’unità di misura dei dati origin
   <span class="op">)</span> 
 <span class="co">#&gt; # A tibble: 2 x 2</span>
 <span class="co">#&gt;   group variance</span>
-<span class="co">#&gt; * &lt;fct&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;   &lt;fct&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 ctl       8.03</span>
 <span class="co">#&gt; 2 mdd      43.7</span></code></pre></div>
 </div>
@@ -887,7 +887,7 @@ un’unità di misura che è il quadrato dell’unità di misura dei dati origin
   <span class="op">)</span> 
 <span class="co">#&gt; # A tibble: 2 x 2</span>
 <span class="co">#&gt;   group stdev</span>
-<span class="co">#&gt; * &lt;fct&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;   &lt;fct&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 ctl    2.83</span>
 <span class="co">#&gt; 2 mdd    6.61</span></code></pre></div>
 </div>
@@ -922,7 +922,7 @@ Nel caso di una distribuzione dei dati unimodale simmetrica di forma campanulare
   <span class="op">)</span> 
 <span class="co">#&gt; # A tibble: 2 x 2</span>
 <span class="co">#&gt;   group   MAD</span>
-<span class="co">#&gt; * &lt;fct&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;   &lt;fct&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 ctl    1.48</span>
 <span class="co">#&gt; 2 mdd    6.67</span></code></pre></div>
 </div>

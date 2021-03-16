@@ -243,8 +243,8 @@ che, quando una moneta viene lanciata, la probabilità di osservare
 l’esito “testa” è 0.6. Per semplicità, sia <span class="math inline">\(\theta\)</span> la probabilità di
 osservare l’esito “testa.” Per una moneta del primo tipo, dunque,
 <span class="math inline">\(\theta = 0.6\)</span>. Per una moneta del secondo tipo, invece, la probabilità
-di produrre l’esito “testa” è 0.4. Ovvero, <span class="math inline">\(\theta = 0.4\)</span>. Noi
-possediamo una moneta, ma non sappiamo se è del primo tipo o del secondo
+di produrre l’esito “testa” è 0.4. Ovvero, <span class="math inline">\(\theta = 0.4\)</span>.</p>
+<p>Noi possediamo una moneta, ma non sappiamo se è del primo tipo o del secondo
 tipo. Sappiamo solo che il 75% delle monete sono del primo tipo e il 25%
 sono del secondo tipo. Sulla base di questa conoscenza <em>a priori</em> –
 ovvero sulla base di una conoscenza ottenuta senza avere eseguito
@@ -261,69 +261,84 @@ ipotesi? In altre parole, ci chiediamo qual è la probabilità di ciascuna
 ipotesi alla luce dei dati che sono stati osservati: <span class="math inline">\(P(H \mid x)\)</span>,
 laddove <span class="math inline">\(x\)</span> sono i dati osservati. Tale probabilità si chiama
 probabilità a posteriori. Inoltre, se confrontiamo le due ipotesi, ci
-chiediamo quale valore assuma il rapporto
-<span class="math inline">\(\frac{P(H_1 \mid x)}{P(H_2 \mid x)}\)</span>. Tale rapporto ci dice quanto è
-più probabile <span class="math inline">\(H_1\)</span> rispetto ad <span class="math inline">\(H_2\)</span>, alla luce dei dati osservati.
-Infine, ci chiediamo come cambia il rapporto definito sopra, quando
-osserviamo via via nuovi risultati prodotti dal lancio della moneta.</p>
-<p>Definiamo il problema in maniera più chiara. Conosciamo le probabilità a
-priori, ovvero <span class="math inline">\(P(H_1) = 0.75\)</span> e <span class="math inline">\(P(H_1) = 0.25\)</span>. Quello che vogliamo
-conoscere sono le probabilità a posteriori <span class="math inline">\(P(H_1 \mid x)\)</span> e
-<span class="math inline">\(P(H_2 \mid x)\)</span>. Per trovare le probabilità a posteriori applichiamo il
-teorema di Bayes: <span class="math display">\[P(H_1 \mid x) = \frac{P(x \mid H_1) P(H_1)}{P(x)} = 
-\frac{P(x \mid H_1) P(H_1)}{P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2)},\]</span>
-laddove lo sviluppo del denominatore deriva da un’applicazione del
-teorema della probabilità totale. Inoltre, <span class="math display">\[P(H_2 \mid x) = 
-\frac{P(x \mid H_2) P(H_2)}{P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2)}.\]</span></p>
-<p>La probabilità <span class="math inline">\(P(x \mid H_1)\)</span> si chiama <em>verosimiglianza</em> e descrive la
-plausibilità dei dati osservati in base all’ipotesi considerata. Se
-consideriamo l’ipotesi <span class="math inline">\(H_1\)</span> = “la probabilità di testa è 0.6,” allora
-la verosimiglianza dei dati <span class="math inline">\(\{T, C\}\)</span> è <span class="math inline">\(0.6 \times 0.4 = 0.24.\)</span>
-Dunque, <span class="math inline">\(P(x \mid H_1) = 0.24\)</span>. Se invece consideriamo l’ipotesi <span class="math inline">\(H_2\)</span> =
-“la probabilità di testa è 0.4,” allora la verosimiglianza dei dati
-<span class="math inline">\(\{T, C\}\)</span> è <span class="math inline">\(0.4 \times 0.6 = 0.24\)</span>, ovvero, <span class="math inline">\(P(x \mid H_2) = 0.24\)</span>. In
-base alle due ipotesi <span class="math inline">\(H_1\)</span> e <span class="math inline">\(H_2\)</span>, dunque, i dati osservati hanno la
-medesima plausibilità. Per semplicità, calcoliamo anche
-<span class="math display">\[\begin{aligned}
-P(x) &amp;= P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2) = 0.24 \cdot 0.75 + 0.24 \cdot 0.25 = 0.24.\notag\end{aligned}\]</span></p>
-<p>Le probabilità a posteriori diventano: <span class="math display">\[\begin{aligned}
-P(H_1 \mid x) &amp;= \frac{P(x \mid H_1) P(H_1)}{P(x)} = \frac{0.24 \cdot 0.75}{0.24} = 0.75,\notag\end{aligned}\]</span>
-<span class="math display">\[\begin{aligned}
-P(H_2 \mid x) &amp;= \frac{P(x \mid H_2) P(H_2)}{P(x)} = \frac{0.24 \cdot 0.25}{0.24} = 0.25.\notag\end{aligned}\]</span>
-Possiamo dunque concludere dicendo che, sulla base dei dati osservati,
-l’ipotesi <span class="math inline">\(H_1\)</span> ha una probabilità 3 volte maggiore di essere vera
-dell’ipotesi <span class="math inline">\(H_2\)</span>.</p>
-<p>È tuttavia possibile raccogliere più evidenze e, sulla base di esse, le
-probabilità a posteriori cambieranno. Supponiamo di lanciare la moneta
-una terza volta e di osservare croce. I nostri dati saranno dunque
-<span class="math inline">\(\{T, C, C\}\)</span>. Di conseguenza,
-<span class="math inline">\(P(x \mid H_1) = 0.6 \cdot 0.4 \cdot 0.4 = 0.096\)</span> e
-<span class="math inline">\(P(x \mid H_2) = 0.4 \cdot 0.6 \cdot 0.6 = 0.144\)</span>. Ne segue che le
-probabilità a posteriori diventano: <span class="math display">\[\begin{aligned}
-P(H_1 \mid x) &amp;= \frac{P(x \mid H_1) P(H_1)}{P(x)} = \frac{0.096 \cdot 0.75}{0.096 \cdot 0.75 + 0.144 \cdot 0.25} = 0.667,\notag\end{aligned}\]</span>
+chiediamo quale valore assuma il rapporto <span class="math inline">\(\frac{P(H_1 \mid x)}{P(H_2 \mid x)}\)</span>.
+Tale rapporto ci dice quanto è più probabile <span class="math inline">\(H_1\)</span> rispetto ad <span class="math inline">\(H_2\)</span>, alla luce dei dati osservati.
+Infine, ci chiediamo come cambia il rapporto definito sopra, quando osserviamo via via nuovi risultati prodotti dal lancio della moneta.</p>
+<p>Definiamo il problema in maniera più chiara.
+Conosciamo le probabilità a priori, ovvero <span class="math inline">\(P(H_1) = 0.75\)</span> e <span class="math inline">\(P(H_1) = 0.25\)</span>.
+Quello che vogliamo conoscere sono le probabilità a posteriori <span class="math inline">\(P(H_1 \mid x)\)</span> e
+<span class="math inline">\(P(H_2 \mid x)\)</span>.</p>
+<p>Per trovare le probabilità a posteriori applichiamo il teorema di Bayes:
+<span class="math display">\[
+P(H_1 \mid x) = \frac{P(x \mid H_1) P(H_1)}{P(x)} = 
+\frac{P(x \mid H_1) P(H_1)}{P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2)}
+\]</span>
+laddove lo sviluppo del denominatore deriva da un’applicazione del teorema della probabilità totale.
+Inoltre,
+<span class="math display">\[
+P(H_2 \mid x) = 
+\frac{P(x \mid H_2) P(H_2)}{P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2)}.
+\]</span>
+Se consideriamo l’ipotesi <span class="math inline">\(H_1\)</span> = “la probabilità di testa è 0.6,” allora
+la verosimiglianza dei dati <span class="math inline">\(\{T, C\}\)</span>, ovvero la probabilità di osservare questa specifica sequenza di T e C, è uguale a <span class="math inline">\(0.6 \times 0.4 = 0.24.\)</span>
+Dunque, <span class="math inline">\(P(x \mid H_1) = 0.24\)</span>.</p>
+<p>Se invece consideriamo l’ipotesi <span class="math inline">\(H_2\)</span> = “la probabilità di testa è 0.4,” allora la verosimiglianza dei dati <span class="math inline">\(\{T, C\}\)</span> è <span class="math inline">\(0.4 \times 0.6 = 0.24\)</span>, ovvero, <span class="math inline">\(P(x \mid H_2) = 0.24\)</span>.
+In base alle due ipotesi <span class="math inline">\(H_1\)</span> e <span class="math inline">\(H_2\)</span>, dunque, i dati osservati hanno la
+medesima plausibilità di essere osservati.
+Per semplicità, calcoliamo anche
+<span class="math display">\[
+\begin{aligned}
+P(x) &amp;= P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2) = 0.24 \cdot 0.75 + 0.24 \cdot 0.25 = 0.24.\notag
+\end{aligned}
+\]</span></p>
+<p>Le probabilità a posteriori diventano:
+<span class="math display">\[
+\begin{aligned}
+P(H_1 \mid x) &amp;= \frac{P(x \mid H_1) P(H_1)}{P(x)} = \frac{0.24 \cdot 0.75}{0.24} = 0.75,\notag
+\end{aligned}
+\]</span>
+<span class="math display">\[
+\begin{aligned}
+P(H_2 \mid x) &amp;= \frac{P(x \mid H_2) P(H_2)}{P(x)} = \frac{0.24 \cdot 0.25}{0.24} = 0.25.\notag
+\end{aligned}
+\]</span>
+Possiamo dunque concludere dicendo che, sulla base dei dati osservati, l’ipotesi <span class="math inline">\(H_1\)</span> ha una probabilità 3 volte maggiore di essere vera dell’ipotesi <span class="math inline">\(H_2\)</span>.</p>
+<p>È tuttavia possibile raccogliere più evidenze e, sulla base di esse, le probabilità a posteriori cambieranno.
+Supponiamo di lanciare la moneta una terza volta e di osservare croce.
+I nostri dati dunque sono <span class="math inline">\(\{T, C, C\}\)</span>.</p>
+<p>Di conseguenza, <span class="math inline">\(P(x \mid H_1) = 0.6 \cdot 0.4 \cdot 0.4 = 0.096\)</span> e <span class="math inline">\(P(x \mid H_2) = 0.4 \cdot 0.6 \cdot 0.6 = 0.144\)</span>.
+Ne segue che le probabilità a posteriori diventano:
+<span class="math display">\[
+\begin{aligned}
+P(H_1 \mid x) &amp;= \frac{P(x \mid H_1) P(H_1)}{P(x)} = \frac{0.096 \cdot 0.75}{0.096 \cdot 0.75 + 0.144 \cdot 0.25} = 0.667,\notag
+\end{aligned}
+\]</span>
 <span class="math display">\[\begin{aligned}
 P(H_2 \mid x) &amp;= \frac{P(x \mid H_2) P(H_2)}{P(x)} = \frac{0.144 \cdot 0.25}{0.096 \cdot 0.75 + 0.144 \cdot 0.25} = 0.333.\notag\end{aligned}\]</span>
 In queste circostanze, le evidenze che favoriscono <span class="math inline">\(H_1\)</span> nei confronti
-di <span class="math inline">\(H_2\)</span> sono pari solo ad un fattore di 2.</p>
+di <span class="math inline">\(H_2\)</span> sono solo pari ad un fattore di 2.</p>
 <p>Se otteniamo ancora croce in un quarto lancio della moneta, i nostri
-dati saranno: <span class="math inline">\(\{T, C, C, C\}\)</span>. Ripetendo il ragionamento fatto sopra,
+dati diventano: <span class="math inline">\(\{T, C, C, C\}\)</span>.
+Ripetendo il ragionamento fatto sopra,
 <span class="math inline">\(P(x \mid H_1) = 0.6 \cdot 0.4 \cdot 0.4 \cdot 0.4 = 0.0384\)</span> e
-<span class="math inline">\(P(x \mid H_2) = 0.4 \cdot 0.6 \cdot 0.6 \cdot 0.6 = 0.0864\)</span>. Dunque
-<span class="math display">\[\begin{aligned}
-P(H_1 \mid x) &amp;= \frac{0.0384 \cdot 0.75}{0.0384 \cdot 0.75 + 0.0864 \cdot 0.25} = 0.571,\notag\end{aligned}\]</span>
-<span class="math display">\[\begin{aligned}
-P(H_2 \mid x) &amp;= \frac{0.0864 \cdot 0.25}{0.0384 \cdot 0.75 + 0.0864 \cdot 0.25} = 0.429.\notag\end{aligned}\]</span>
+<span class="math inline">\(P(x \mid H_2) = 0.4 \cdot 0.6 \cdot 0.6 \cdot 0.6 = 0.0864\)</span>.</p>
+<p>Dunque
+<span class="math display">\[
+\begin{aligned}
+P(H_1 \mid x) &amp;= \frac{0.0384 \cdot 0.75}{0.0384 \cdot 0.75 + 0.0864 \cdot 0.25} = 0.571,\notag
+\end{aligned}
+\]</span>
+<span class="math display">\[
+\begin{aligned}
+P(H_2 \mid x) &amp;= \frac{0.0864 \cdot 0.25}{0.0384 \cdot 0.75 + 0.0864 \cdot 0.25} = 0.429.\notag
+\end{aligned}
+\]</span>
 e le evidenze a favore di <span class="math inline">\(H_1\)</span> si riducono a 1.33. Se si ottenesse un
 altro esito croce in un sesto lancio della moneta, l’ipotesi <span class="math inline">\(H2\)</span>
 diventerebbe più probabile dell’ipotesi <span class="math inline">\(H_1\)</span>.</p>
-<p>In conclusione, questo esercizio ci fa capire come sia possibile, sulla
-base delle evidenze disponibili, passare da credenze a priori a credenze
-a posteriori. Se prima di lanciare la moneta ritenevamo che l’ipotesi
-<span class="math inline">\(H_1\)</span> fosse tre volte più plausibile dell’ipotesi <span class="math inline">\(H_2\)</span>, dopo avere
-osservato uno specifico campione di dati siamo giunti alla conclusione
-opposta. Il processo di aggiornamento Bayesiano ci fornisce dunque un
-metodo per modificare il livello di fiducia in una data ipotesi, alla
-luce di nuova informazione.</p>
+<p>In conclusione, questo esercizio ci fa capire come sia possibile aggiornare le nostre credenze sulla base delle evidenze disponibili, ovvero come sia possibile passare da un grado di conoscenza del mondo a priori a una conoscenza a posteriori.
+Se prima di lanciare la moneta ritenevamo che l’ipotesi <span class="math inline">\(H_1\)</span> fosse tre volte più plausibile dell’ipotesi <span class="math inline">\(H_2\)</span>, dopo avere osservato uno specifico campione di dati siamo giunti alla conclusione opposta.
+Il processo di aggiornamento Bayesiano, dunque, ci fornisce un metodo per modificare il livello di fiducia in una data ipotesi, alla luce di nuove informazioni.</p>
 </div>
 </div>
 <div id="conclusioni-4" class="section level2 unnumbered">

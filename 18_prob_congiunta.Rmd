@@ -140,7 +140,7 @@ tabella precedente si trovi la probabilità dell'evento $X+Y \leq 1$.
 _Soluzione._
 Per trovare la probabilità richiesta dobbiamo semplicemente sommare le
 probabilità associate a tutte le coppie $(x,y)$ che soddisfano la
-conzione $X+Y \leq 1$. Ovvero, 
+condizione $X+Y \leq 1$, ovvero
 $$
 \begin{aligned}
 P_{XY}(X+Y \leq 1) = &P_{XY}(0, 0) + P_{XY}(1, 0)= 3/8.\notag
@@ -184,10 +184,10 @@ $$
 :::
 
 
-### Indipendenza stocastica
+## Indipendenza stocastica
 
-Ora abbiamo tutti gli strumenti per potere dare una definizione
-statistica precisa al concetto di indipendenza. La definizione proposta
+Ora abbiamo tutti gli strumenti per dare una precisa definizione
+statistica al concetto di indipendenza. La definizione proposta
 sarà necessariamente coerente con la definizione di indipendenza che
 abbiamo usato fino ad ora. Ma, espressa in questi nuovi termini, potrà
 essere utilizzata in indagini probabilistiche e statistiche più
@@ -197,9 +197,10 @@ indipendenti se qualsiasi evento definito da $X$ è indipendente da
 qualsiasi evento definito da $Y$. La definizione formale che garantisce
 che ciò accada è la seguente.
 
-Le variabili aleatorie distribuite congiuntamente $X$ e $Y$ sono
-indipendenti se la loro distribuzione congiunta è il prodotto delle
-distribuzioni marginali: $$P(X, Y)\, = P_X(x)P_Y(y).$$
+Le variabili aleatorie $X$ e $Y$ sono indipendenti se la loro distribuzione congiunta è il prodotto delle rispettive distribuzioni marginali: 
+$$
+P(X, Y)\, = P_X(x)P_Y(y).
+$$
 
 Nel caso discreto, dunque, l'indipendenza implica che la probabilità
 riportata in ciascuna cella della tabella di probabilità congiunta deve
@@ -210,7 +211,7 @@ __Esercizio.__
 Per la situazione rappresentata nella tabella qui sopra le variabili aleatorie $X$ e $Y$ sono indipendenti?
 
 _Soluzione._
-Nella tabellale variabili aleatorie $X$ e $Y$ non sono indipendenti: le probabilità congiunte non sono ricavabili dal prodotto delle marginali. Per esempio, nessuna delle probabilità marginali è uguale a $0$ per cui nessuno dei valori dentro la tabella (probabilità congiunte) che risulta essere uguale a $0$ può essere il prodotto delle probabilità marginali.
+Nella tabella le variabili aleatorie $X$ e $Y$ non sono indipendenti: le probabilità congiunte non sono ricavabili dal prodotto delle marginali. Per esempio, nessuna delle probabilità marginali è uguale a $0$ per cui nessuno dei valori dentro la tabella (probabilità congiunte) che risulta essere uguale a $0$ può essere il prodotto delle probabilità marginali.
 
 
 ## Conclusioni {-}
