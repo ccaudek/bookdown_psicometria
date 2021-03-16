@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capitolo 1 Densità per variabili aleatorie continue | Data Science per psicologi</title>
+<meta name="author" content="Corrado Caudek">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Data Science per psicologi</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Benvenuti</a></li>
+<li><a class="active" href="densit%C3%A0-per-variabili-aleatorie-continue.html"><span class="header-section-number">1</span> Densità per variabili aleatorie continue</a></li>
+<li><a class="" href="bibliografia.html">Bibliografia</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="densità-per-variabili-aleatorie-continue" class="section level1" number="1">
+<h1>
+<span class="header-section-number">Capitolo 1</span> Densità per variabili aleatorie continue<a class="anchor" aria-label="anchor" href="#densit%C3%A0-per-variabili-aleatorie-continue"><i class="fas fa-link"></i></a>
+</h1>
+<p>In precedenza abbiamo esaminato la distribuzione di massa di probabilità
+di una variabile aleatoria discreta, ovvero la distribuzione Binomiale.
+Prenderemo ora in esame le densità di probabilità di alcune variabili
+aleatorie continue. La più importante di esse è la distribuzione
+Normale. In realtà vedremo che non c’è solo una distribuzione Normale,
+ma ce ne sono molte. Tali distribuzioni sono anche dette <em>Gaussiane</em> in
+onore di Carl Friedrich Gauss (uno dei più grandi matematici della
+storia il quale, tra le altre cose, scoprì l’utilità di tale funzione di
+densità per descrivere gli errori delle osservazioni astronomiche).
+Adolphe Quetelet, il padre delle scienze sociali quantitative, fu il
+primo ad applicare tale densità alle misurazioni dell’uomo. Karl Pearson
+usò per primo il termine “distribuzione Normale” anche se ammise che
+questa espressione “ha lo svantaggio di indurre le persone a credere che
+tutte le altre distribuzioni di frequenza siano in un senso o nell’altro
+anormali.”</p>
+<div id="distribuzione-normale" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Distribuzione Normale<a class="anchor" aria-label="anchor" href="#distribuzione-normale"><i class="fas fa-link"></i></a>
+</h2>
+<p>Per introdurre le distribuzioni normali, consideriamo ora un esempio
+proposto da <span class="citation">(<a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">McElreath, 2020</a>)</span>. Supponiamo che vi siano mille
+persone tutte allineate su una linea di partenza. Quando viene dato un
+segnale, ciascuna persona lancia una moneta e fa un passo in una
+direzione oppure nella direzione opposta a seconda che sia uscita testa
+o croce. Supponiamo che la lunghezza di ciascun passo vari da 0 a 1
+metro. Ciascuna persona lancia la moneta 16 volte e dunque fa 16
+passi.</p>
+<p>Alla conclusione di queste passeggiate aleatorie (<em>random walk</em>), non
+possiamo sapere dove si troverà ciascuna delle persone considerate, ma
+possiamo conoscere con certezza le caratteristiche della distribuzione
+delle mille distanze dall’origine. Per esempio, possiamo predire la
+proporzione di persone che si saranno spostate avanti oppure indietro.
+Oppure, possiamo predire la proporzione di persone che si troveranno ad
+una certa distanza dalla linea di partenza (es., 1.5 m).</p>
+<p>Queste predizioni sono possibili perché le distanze create in questo
+modo si distribuiscono secondo la legge Normale. È facile simulare
+questo processo usando R. I risultati della simulazione sono riportati qui di seguito.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span>
+<span class="va">pos</span> <span class="op">&lt;-</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">16</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>        <span class="co"># here's the simulation</span>
+  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>                             <span class="co"># for data manipulation, we'll make this a tibble</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">.</span><span class="op">)</span> <span class="op">%&gt;%</span>                             <span class="co"># here we add a row of zeros above the simulation results</span>
+  <span class="fu">mutate</span><span class="op">(</span>step <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span> <span class="op">%&gt;%</span>                     <span class="co"># this adds a step index</span>
+  <span class="fu">gather</span><span class="op">(</span><span class="va">key</span>, <span class="va">value</span>, <span class="op">-</span><span class="va">step</span><span class="op">)</span> <span class="op">%&gt;%</span>               <span class="co"># here we convert the data to the long format</span>
+  <span class="fu">mutate</span><span class="op">(</span>person <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, each <span class="op">=</span> <span class="fl">17</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>  <span class="co"># this adds a person id index</span>
+  <span class="co"># the next two lines allow us to make cumulative sums within each person</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">person</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span>  <span class="co"># ungrouping allows for further data manipulation</span>
+<span class="co">#&gt; Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if `.name_repair` is omitted as of tibble 2.0.0.</span>
+<span class="co">#&gt; Using compatibility `.name_repair`.</span>
+
+<span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">pos</span>, 
+       <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">step</span>, y <span class="op">=</span> <span class="va">position</span>, group <span class="op">=</span> <span class="va">person</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">8</span>, <span class="fl">16</span><span class="op">)</span>, linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">person</span> <span class="op">&lt;</span> <span class="fl">2</span>, alpha  <span class="op">=</span> <span class="va">person</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_color_manual</span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"skyblue4"</span>, <span class="st">"black"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_alpha_manual</span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_continuous</span><span class="op">(</span><span class="st">"step number"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">8</span>, <span class="fl">12</span>, <span class="fl">16</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-3-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Figure 4.2.a.</span>
+<span class="va">p1</span> <span class="op">&lt;-</span>
+  <span class="va">pos</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">step</span> <span class="op">==</span> <span class="fl">4</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">position</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_line</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"density"</span>, color <span class="op">=</span> <span class="st">"dodgerblue1"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"4 steps"</span><span class="op">)</span>
+
+<span class="co"># Figure 4.2.b.</span>
+<span class="va">p2</span> <span class="op">&lt;-</span>
+  <span class="va">pos</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">step</span> <span class="op">==</span> <span class="fl">8</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">position</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_density</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"dodgerblue2"</span>, outline.type <span class="op">=</span> <span class="st">"full"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"8 steps"</span><span class="op">)</span>
+
+<span class="co"># this is an intermediary step to get an SD value</span>
+<span class="va">sd</span> <span class="op">&lt;-</span>
+  <span class="va">pos</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">step</span> <span class="op">==</span> <span class="fl">16</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarise</span><span class="op">(</span>sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">position</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pull</span><span class="op">(</span><span class="va">sd</span><span class="op">)</span>
+
+<span class="co"># Figure 4.2.c.</span>
+<span class="va">p3</span> <span class="op">&lt;-</span>
+  <span class="va">pos</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">step</span> <span class="op">==</span> <span class="fl">16</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">position</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">stat_function</span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dnorm</span>, 
+                args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="va">sd</span><span class="op">)</span>,
+                linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_density</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"transparent"</span>, fill <span class="op">=</span> <span class="st">"dodgerblue3"</span>, alpha <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"16 steps"</span>,
+       y <span class="op">=</span> <span class="st">"density"</span><span class="op">)</span>
+
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span>
+
+<span class="co"># combine the ggplots</span>
+<span class="op">(</span><span class="va">p1</span> <span class="op">|</span> <span class="va">p2</span> <span class="op">|</span> <span class="va">p3</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu">coord_cartesian</span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">6</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-4-1.png" width="90%" style="display: block; margin: auto;"></div>
+<p>Questa simulazione mostra che qualunque processo nel quale viene sommato
+un certo numero di valori casuali, tutti provenienti dalla medesima
+distribuzione, converge ad una distribuzione Normale. Non importa quale
+sia la forma della distribuzione soggiacente. Può essere uniforme, come
+nell’esempio presente, o qualunque altra cosa. La forma della
+distribuzione soggiacente determina la velocità con cui si realizza la
+convergenza alla Normale. In alcuni casi la convergenza è lenta; in
+altri casi, come nell’esempio presente, la convergenza è molto rapida.</p>
+<p>La distribuzione Normale è importante, in primo luogo, perché molti
+fenomeni naturali hanno approssimativamente le caratteristiche descritte
+dall’esempio precedente. In secondo luogo, è importante perché molti
+modelli statistici assumono che il fenomeno aleatorio di interesse abbia
+una distribuzione Normale. Da un punto di vista formale, una variabile
+aleatoria continua <span class="math inline">\(X\)</span> si dice Normale se la sua funzione di densità è
+<span class="math display">\[
+f(x; \mu, \sigma) = {1 \over {\sigma\sqrt{2\pi} }} \exp \left\{-\frac{(x- \mu)^2}{2 \sigma^2} \right\},
+\]</span>
+dove <span class="math inline">\(\mu \in \Real\)</span> e <span class="math inline">\(\sigma &gt; 0\)</span> sono due
+parametri. La curva di Gauss è unimodale e simmetrica con una
+caratteristica forma a campana e con il punto di massima densità in
+corrispondenza di <span class="math inline">\(\mu\)</span>. Il significato dei parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span>
+che appaiono nella distribuzione Normale viene chiarito dalla
+dimostrazione che
+<span class="math display">\[
+\mathbb{E}(X) = \mu, \qquad var(X) = \sigma^2.
+\]</span></p>
+<div id="concentrazione-della-distribuzione-normale" class="section level3" number="1.1.1">
+<h3>
+<span class="header-section-number">1.1.1</span> Concentrazione della distribuzione Normale<a class="anchor" aria-label="anchor" href="#concentrazione-della-distribuzione-normale"><i class="fas fa-link"></i></a>
+</h3>
+<p>È istruttivo osservare il grado di concentrazione della distribuzione
+Normale attorno alla media:
+<span class="math display">\[
+\begin{aligned}
+P(\mu - \sigma &lt; X &lt; \mu + \sigma) &amp;= P (-1 &lt; Z &lt; 1) \simeq 0.683, \notag\\
+P(\mu - 2\sigma &lt; X &lt; \mu + 2\sigma) &amp;= P (-2 &lt; Z &lt; 2) \simeq 0.956, \notag\\
+P(\mu - 3\sigma &lt; X &lt; \mu + 3\sigma) &amp;= P (-3 &lt; Z &lt; 3) \simeq 0.997. \notag
+\end{aligned}
+\]</span>
+Si noti come un dato la cui distanza dalla media è superiore a 3 volte
+la deviazione standard presenti un carattere di eccezionalità perché
+meno del 0.3% dei dati della distribuzione Normale presentano questa
+caratteristica.</p>
+<p>Per indicare la distribuzione Normale si usa la notazione
+<span class="math inline">\(\mathcal{N}(\mu, \sigma)\)</span>. La distribuzione Normale di parametri
+<span class="math inline">\(\mu = 0\)</span> e <span class="math inline">\(\sigma = 1\)</span> viene detta <em>distribuzione Normale standard</em>.
+La famiglia Normale è l’insieme avente come elementi tutte le
+distribuzioni Normali con parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span> diversi. Tutte le
+distribuzioni Normali si ottengono dalla Normale standard mediante una
+trasformazione lineare: se <span class="math inline">\(X \sim \mathcal{N}(\mu_X, \sigma_X)\)</span> allora
+<span class="math inline">\(Y = a + b X \sim \mathcal{N}(\mu_Y = a+b \mu_X, \sigma_Y = \left|b\right|\sigma_X)\)</span>.</p>
+</div>
+<div id="funzione-di-ripartizione-della-distribuzione-normale" class="section level3" number="1.1.2">
+<h3>
+<span class="header-section-number">1.1.2</span> Funzione di ripartizione della distribuzione Normale<a class="anchor" aria-label="anchor" href="#funzione-di-ripartizione-della-distribuzione-normale"><i class="fas fa-link"></i></a>
+</h3>
+<p>Il valore della funzione di ripartizione di <span class="math inline">\(X\)</span> nel punto <span class="math inline">\(x\)</span> è l’area
+sottesa alla curva di densità <span class="math inline">\(f(x)\)</span> nella semiretta <span class="math inline">\((-\infty, x]\)</span>. Non esiste alcuna funzione elementare per la funzione di ripartizione
+<span class="math display">\[
+F(x) = \int_{-\infty}^x {1 \over {\sigma\sqrt{2\pi} }} \exp \left\{-\frac{(x- \mu)^2}{2\sigma^2} \right\} dx, \notag
+\]</span>
+pertanto le probabilità <span class="math inline">\(P(X &lt; x)\)</span> vengono calcolate mediante
+integrazione numerica approssimata. I valori della funzione di
+ripartizione di una variabile aleatoria Normale sono dunque forniti da
+un software o dalle tavole riportate sui testi di statistica. Per potere
+utilizzare i valori tabulati si ricorre al procedimento di
+<em>standardizzazione</em> che riconduce una variabile aleatoria distribuita
+secondo una media <span class="math inline">\(\mu\)</span> e varianza <span class="math inline">\(\sigma^2\)</span>, ad una variabile
+aleatoria con distribuzione “standard,” ovvero di media zero e varianza
+pari a <span class="math inline">\(1\)</span>:
+<span class="math display">\[
+Z = \frac{X - \mu}{\sigma}.
+\]</span>
+L’area sottesa alla curva di
+densità di <span class="math inline">\(X\)</span> nella semiretta <span class="math inline">\((-\infty, x]\)</span> è uguale all’area sottesa
+alla densità Normale standard nella semiretta <span class="math inline">\((-\infty, z]\)</span>, in cui
+<span class="math inline">\(z = (x -\mu_X )/\sigma_X\)</span> è il punteggio standard di <span class="math inline">\(x\)</span>. Per la
+simmetria della distribuzione, l’area sottesa nella semiretta
+<span class="math inline">\([1, \infty)\)</span> è uguale all’area sottesa nella semiretta <span class="math inline">\((-\infty, 1]\)</span> e
+quest’ultima coincide con <span class="math inline">\(F(-1)\)</span>. Analogamente, l’area sottesa
+nell’intervallo <span class="math inline">\([x_a, x_b]\)</span>, con <span class="math inline">\(x_a &lt; x_b\)</span>, è pari a
+<span class="math inline">\(F(z_b) - F(z_a)\)</span>, dove <span class="math inline">\(z_a\)</span> e <span class="math inline">\(z_b\)</span> sono i punteggi standard di <span class="math inline">\(x_a\)</span>
+e <span class="math inline">\(x_b\)</span>.</p>
+<p>Si ha anche il problema inverso rispetto a quello del calcolo delle
+aree: dato un numero <span class="math inline">\(0 \leq p \leq 1\)</span>, il problema è quello di
+determinare un numero <span class="math inline">\(z \in \Real\)</span> tale che <span class="math inline">\(P(Z &lt; z) = p\)</span>. Il valore
+<span class="math inline">\(z\)</span> cercato è detto <em>quantile</em> di ordine <span class="math inline">\(p\)</span> della Normale standard ed è
+tabulato nelle tavole statistiche o può essere trovato mediante un
+software.</p>
+<p><strong>Esempio.</strong> Supponiamo che l’altezza degli
+individui adulti segua la distribuzione Normale di media <span class="math inline">\(\mu = 1.7\)</span> m e
+deviazione standard <span class="math inline">\(\sigma = 0.1\)</span> m. Vogliamo sapere la proporzione di
+individui adulti con un’altezza compresa tra <span class="math inline">\(1.7\)</span> e <span class="math inline">\(1.8\)</span> m.</p>
+<p>Il problema ci chiede di trovare l’area sottesa alla
+distribuzione <span class="math inline">\(\mathcal{N}(\mu = 1.7, \sigma^2 = 0.1^2)\)</span> nell’intervallo
+<span class="math inline">\([1.7, 1.8]\)</span>. La risposta si trova utilizzando la funzione di
+ripartizione <span class="math inline">\(F(X)\)</span> della legge <span class="math inline">\(\mathcal{N}(1.7, 0.1^2)\)</span> in
+corrispondenza dei due valori forniti dal problema:
+<span class="math inline">\(F(X = 1.8) - F(X = 1.7)\)</span>. Utilizzando la seguente istruzione</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">1.8</span>, <span class="fl">1.7</span>, <span class="fl">0.1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">1.7</span>, <span class="fl">1.7</span>, <span class="fl">0.1</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.3413447</span></code></pre></div>
+<p>otteniamo il <span class="math inline">\(31.43\%\)</span>.</p>
+<p>In maniera equivalente, possiamo standardizzare i valori che delimitano
+l’intervallo considerato e utilizzare la funzione di ripartizione della
+normale standardizzata. I limiti inferiore e superiore dell’intervallo
+sono
+<span class="math display">\[
+z_{\text{inf}} = \frac{1.7 - 1.7}{0.1} = 0, \quad z_{\text{sup}} = \frac{1.8 - 1.7}{0.1} = 1.0,
+\]</span>
+quindi otteniamo</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">1.0</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.3413447</span></code></pre></div>
+<p>Il modo più semplice per risolvere questo problema resta comunque quello
+di rendersi conto che la probabilità richiesta non è altro che la metà
+dell’area sottesa dalle distribuzioni Normali nell’intervallo
+<span class="math inline">\([\mu - \sigma, \mu + \sigma]\)</span>, ovvero <span class="math inline">\(0.683/2\)</span>.</p>
+</div>
+</div>
+<div id="distribuzione-chi-quadrato" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Distribuzione Chi-quadrato<a class="anchor" aria-label="anchor" href="#distribuzione-chi-quadrato"><i class="fas fa-link"></i></a>
+</h2>
+<p>La distribuzione con <span class="math inline">\(\chi^2_{~\nu}\)</span> descrive la variabile aleatoria
+<span class="math display">\[
+Z_1^2 + Z_2^2 + \dots + Z_k^2,
+\]</span>
+dove <span class="math inline">\(Z_1, Z_2, \dots, Z_k\)</span> sono
+variabili aleatorie i.i.d. con distribuzione Normale standard
+<span class="math inline">\(\mathcal{N}(0, 1)\)</span>. La variabile aleatoria chi-quadrato dipende dal
+parametro intero positivo <span class="math inline">\(\nu = k\)</span> che ne identifica il numero di gradi
+di libertà. La densità di probabilità di <span class="math inline">\(\chi^2_{~\nu}\)</span> è
+<span class="math display">\[
+f(x) = C_{\nu} x^{\nu/2-1} \exp (-x/2), \qquad \text{se } x &gt; 0,
+\]</span>
+dove <span class="math inline">\(C_{\nu}\)</span> è una costante positiva. La distribuzione di densità
+<span class="math inline">\(\chi^2_{~\nu}\)</span> è asimmetrica. Il valore atteso di una variabile
+<span class="math inline">\(\chi^2_{~\nu}\)</span> è uguale a <span class="math inline">\(\nu\)</span>. La varianza di una variabile
+<span class="math inline">\(\chi^2_{~\nu}\)</span> è uguale a <span class="math inline">\(2\nu\)</span>. Per <span class="math inline">\(k \rightarrow \infty\)</span>, la
+<span class="math inline">\(\chi^2_{~\nu} \rightarrow \mathcal{N}\)</span>.</p>
+<p>Se <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono due variabili aleatorie chi-quadrato indipendenti con
+<span class="math inline">\(\nu_1\)</span> e <span class="math inline">\(\nu_2\)</span> gradi di libertà, ne segue che <span class="math inline">\(X + Y \sim \chi^2_m\)</span>,
+con <span class="math inline">\(m = \nu_1 + \nu_2\)</span>. Tale principio si estende a qualunque numero
+finito di variabili aleatorie chi-quadrato indipendenti.</p>
+<p><strong>Teorema.</strong> Nel caso di un campione di ampiezza
+<span class="math inline">\(n\)</span> estratto da una popolazione normale di media <span class="math inline">\(\mu\)</span> e varianza
+<span class="math inline">\(\sigma^2\)</span> abbiamo che la stima campionaria della varianza, moltiplicata
+per i suoi gradi di libertà e divisa per la varianza della popolazione,
+si distribuisce come chi-quadrato con <span class="math inline">\(n-1\)</span> gradi di libertà:
+<span class="math display">\[
+\frac{(n - 1)s_n^2}{\sigma^2} \sim \chi^2_{~n - 1},
+\]</span>
+dove
+<span class="math display">\[
+s_n^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2.
+\]</span></p>
+</div>
+<div id="cap:tstudent" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Distribuzione <span class="math inline">\(t\)</span> di Student<a class="anchor" aria-label="anchor" href="#cap:tstudent"><i class="fas fa-link"></i></a>
+</h2>
+<p>Se <span class="math inline">\(Z \sim \mathcal{N}\)</span> e <span class="math inline">\(W \sim \chi^2_{~\nu}\)</span> sono due variabili aleatorie indipendenti, allora
+il rapporto
+<span class="math display">\[
+T = \frac{Z}{\Big( \frac{W}{\nu}\Big)^{\frac{1}{2}}}
+\]</span>
+definisce la distribuzione <span class="math inline">\(t\)</span> di Student con
+<span class="math inline">\(\nu\)</span> gradi di libertà.</p>
+<p>Si usa scrivere <span class="math inline">\(T \sim t_{\nu}\)</span>. L’andamento della distribuzione <span class="math inline">\(t\)</span> di
+Student è simile a quello della distribuzione Normale, ma ha una
+maggiore dispersione (ha le code più pesanti di una Normale, ovvero ha
+una varianza maggiore di 1).</p>
+<p>La variabile <span class="math inline">\(t\)</span> di Student soddisfa le seguenti proprietà:</p>
+<ol style="list-style-type: decimal">
+<li><p>Per <span class="math inline">\(\nu \rightarrow \infty\)</span>, <span class="math inline">\(t_{\nu}\)</span> tende alla normale standard
+<span class="math inline">\(\mathcal{N}(0, 1)\)</span>.</p></li>
+<li><p>La densità della <span class="math inline">\(t_{\nu}\)</span> è una funzione simmetrica con valore
+atteso nullo.</p></li>
+<li><p>Per <span class="math inline">\(\nu &gt; 2\)</span>, la varianza della <span class="math inline">\(t_{\nu}\)</span> vale <span class="math inline">\(\nu/(\nu - 2)\)</span>;
+pertanto è sempre maggiore di 1 e tende a 1 per
+<span class="math inline">\(\nu \rightarrow \infty\)</span>.</p></li>
+</ol>
+</div>
+<div id="distribuzione-beta" class="section level2" number="1.4">
+<h2>
+<span class="header-section-number">1.4</span> Distribuzione Beta<a class="anchor" aria-label="anchor" href="#distribuzione-beta"><i class="fas fa-link"></i></a>
+</h2>
+<p>La distribuzione Beta è una distribuzione definita nell’intervallo <span class="math display">\[0, 1\]</span>. La distribuzione Beta ha due parametri, che chiameremo <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>.
+Questi due parametri determinano la forma delle distribuzioni Beta
+(proprio come la media e la varianza determinano la forma della
+distribuzione normale). Seguendo la consueta convenzione, si scrive
+<span class="math inline">\(X \sim Beta(a, b)\)</span> come abbreviazione di “<span class="math inline">\(X\)</span> ha una distribuzione Beta
+di parametri <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>.”</p>
+<p>Se <span class="math inline">\(X \sim Beta(a, b)\)</span>, allora la densità di <span class="math inline">\(X\)</span> è
+<span class="math display">\[
+f_X(x) = \frac{1}{B(a, b)} x^{a-1} (1-x)^{b-1} \qquad x \in [0, 1].
+\]</span>
+laddove <span class="math inline">\(B(a, b)\)</span> è conosciuta come la “funzione beta” e corrisponde ad
+una costante (in quanto non dipende da <span class="math inline">\(x\)</span>), il cui scopo è che la
+densità si integri a 1, come deve essere per tutte le funzioni di
+densità.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html">Benvenuti</a></div>
+<div class="next"><a href="bibliografia.html">Bibliografia</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#densit%C3%A0-per-variabili-aleatorie-continue"><span class="header-section-number">1</span> Densità per variabili aleatorie continue</a></li>
+<li>
+<a class="nav-link" href="#distribuzione-normale"><span class="header-section-number">1.1</span> Distribuzione Normale</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#concentrazione-della-distribuzione-normale"><span class="header-section-number">1.1.1</span> Concentrazione della distribuzione Normale</a></li>
+<li><a class="nav-link" href="#funzione-di-ripartizione-della-distribuzione-normale"><span class="header-section-number">1.1.2</span> Funzione di ripartizione della distribuzione Normale</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#distribuzione-chi-quadrato"><span class="header-section-number">1.2</span> Distribuzione Chi-quadrato</a></li>
+<li><a class="nav-link" href="#cap:tstudent"><span class="header-section-number">1.3</span> Distribuzione \(t\) di Student</a></li>
+<li><a class="nav-link" href="#distribuzione-beta"><span class="header-section-number">1.4</span> Distribuzione Beta</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>

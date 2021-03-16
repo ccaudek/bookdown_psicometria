@@ -1,12 +1,8 @@
-# Informazioni generali {-}
-
-
-## Feedback {-}
+# (PART\*) Informazioni generali {-}
 
 Poiché questo testo è ancora in fase di revisione, e poiché il campo della Data Science è in continua evoluzione, è probabile che la versione corrente di _Data Science per psicologi_ contenga alcuni refusi ed errori, e comunque verrà cambiata in futuro. Vi sarei grato se poteste inviarmi un'e-mail (corrado.caudek [at] unifi.it) per segnalare eventuali errori, possibili miglioramenti, o qualsiasi altro feedback o osservazione che vogliate condividere.
 
-
-## Citazione {-}
+# Citazione {-}
 
 Sentitevi liberi di utilizzare _Data Science per psicologi_ per i vostri scopi, ma vi chiedo di riconoscerne la paternità. 
 

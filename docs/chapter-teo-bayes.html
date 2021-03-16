@@ -4,9 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capitolo 13 Il teorema di Bayes | Data Science per psicologi</title>
+<title>Capitolo 15 Il teorema di Bayes | Data Science per psicologi</title>
 <meta name="author" content="Corrado Caudek">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
@@ -32,40 +32,50 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Benvenuti</a></li>
-<li class="book-part">Introduzione</li>
-<li><a class="" href="obiettivi-formativi.html"><span class="header-section-number">1</span> Obiettivi formativi</a></li>
+<li class="book-part">Obiettivi formativi</li>
+<li><a class="" href="conoscenza-dichiarativa-e-imperativa.html"><span class="header-section-number">1</span> Conoscenza dichiarativa e imperativa</a></li>
 <li class="book-part">Introduzione al linguaggio R</li>
+<li><a class="" href="introduzione.html">Introduzione</a></li>
 <li><a class="" href="chapter-pacchetti.html"><span class="header-section-number">2</span> Pacchetti</a></li>
 <li><a class="" href="chapter-install-r.html"><span class="header-section-number">3</span> Per cominciare</a></li>
 <li><a class="" href="chapter-sintassi.html"><span class="header-section-number">4</span> Sintassi di base</a></li>
 <li><a class="" href="chapter-strutture-dati.html"><span class="header-section-number">5</span> Strutture di dati</a></li>
 <li><a class="" href="chapter-strut-contr.html"><span class="header-section-number">6</span> Strutture di controllo</a></li>
 <li><a class="" href="chapter-input-output.html"><span class="header-section-number">7</span> Input/Output</a></li>
-<li class="book-part">Misurazione</li>
-<li><a class="" href="chapter-terminologia.html"><span class="header-section-number">8</span> Terminologia</a></li>
-<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">9</span> La misurazione in psicologia</a></li>
-<li class="book-part">Descrizione</li>
-<li><a class="" href="chapter-descript.html"><span class="header-section-number">10</span> Statistica descrittiva</a></li>
-<li class="book-part">Elementi di teoria della probabilità</li>
-<li><a class="" href="chapter-prob.html"><span class="header-section-number">11</span> Il calcolo delle probabilità</a></li>
-<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">12</span> Probabilità condizionata</a></li>
-<li><a class="active" href="chapter-teo-bayes.html"><span class="header-section-number">13</span> Il teorema di Bayes</a></li>
-<li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">14</span> Probabilità congiunta</a></li>
-<li class="book-part">Inferenza frequentista</li>
-<li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">15</span> Distribuzione campionaria della media dei campioni</a></li>
-<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">16</span> Significatività statistica</a></li>
-<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">17</span> Inferenza sulle medie</a></li>
-<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">18</span> Critiche e difese</a></li>
-<li class="book-part">Verosimiglianza</li>
+<li><a class="" href="manipolazione-dei-dati.html"><span class="header-section-number">8</span> Manipolazione dei dati</a></li>
+<li><a class="" href="flusso-di-lavoro-riproducibile.html"><span class="header-section-number">9</span> Flusso di lavoro riproducibile</a></li>
+<li class="book-part">Statistica descrittiva ed analisi esplorativa dei dat̀i</li>
+<li><a class="" href="introduzione-1.html">Introduzione</a></li>
+<li><a class="" href="terminologia.html"><span class="header-section-number">10</span> Terminologia</a></li>
+<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">11</span> La misurazione in psicologia</a></li>
+<li><a class="" href="chapter-descript.html"><span class="header-section-number">12</span> Statistica descrittiva</a></li>
+<li class="book-part">Nozioni di base</li>
+<li><a class="" href="introduzione-2.html">Introduzione</a></li>
+<li><a class="" href="il-calcolo-delle-probabilit%C3%A0.html"><span class="header-section-number">13</span> Il calcolo delle probabilità</a></li>
+<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">14</span> Probabilità condizionata</a></li>
+<li><a class="active" href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
+<li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
+<li><a class="" href="la-distribuzione-binomiale.html"><span class="header-section-number">17</span> La distribuzione binomiale</a></li>
+<li><a class="" href="funzioni-di-densit%C3%A0-di-probabilit%C3%A0.html"><span class="header-section-number">18</span> Funzioni di densità di probabilità</a></li>
 <li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
-<li class="book-part">Statistica Bayesiana</li>
-<li><a class="" href="chapter-modellistica-bayesiana.html"><span class="header-section-number">20</span> Modellistica bayesiana</a></li>
-<li><a class="" href="chapter-stima-distr-posteriori.html"><span class="header-section-number">21</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">22</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">23</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">24</span> Inferenza Bayesiana</a></li>
-<li><a class="" href="informazioni-generali.html">Informazioni generali</a></li>
-<li><a class="" href="appendici.html">Appendici</a></li>
+<li class="book-part">Inferenza frequentista</li>
+<li><a class="" href="introduzione-3.html">Introduzione</a></li>
+<li><a class="" href="distribuzione-campionaria.html"><span class="header-section-number">20</span> Distribuzione campionaria</a></li>
+<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">21</span> Significatività statistica</a></li>
+<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">22</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">23</span> Critiche e difese</a></li>
+<li class="book-part">Inferenza Bayesiana</li>
+<li><a class="" href="introduzione-4.html">Introduzione</a></li>
+<li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">24</span> Modellistica bayesiana</a></li>
+<li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">25</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="sintesi-a-posteriori.html"><span class="header-section-number">26</span> Sintesi a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">27</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">28</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">29</span> Inferenza Bayesiana</a></li>
+<li class="book-part">Informazioni generali</li>
+<li><a class="" href="citazione.html">Citazione</a></li>
+<li class="book-part">Appendici</li>
+<li><a class="" href="un-piccolo-ripasso.html">Un piccolo ripasso</a></li>
 <li><a class="" href="bibliografia.html">Bibliografia</a></li>
 </ul>
 
@@ -74,20 +84,20 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="chapter-teo-bayes" class="section level1" number="13">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="chapter-teo-bayes" class="section level1" number="15">
 <h1>
-<span class="header-section-number">Capitolo 13</span> Il teorema di Bayes<a class="anchor" aria-label="anchor" href="#chapter-teo-bayes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capitolo 15</span> Il teorema di Bayes<a class="anchor" aria-label="anchor" href="#chapter-teo-bayes"><i class="fas fa-link"></i></a>
 </h1>
 <p>Il teorema di Bayes ha un ruolo centrale nella statistica Bayesiana,
 anche se viene utilizzato anche dall’approccio frequentista. Prima di
 esaminare il teorema di Bayes introdurremo una sua componente, ovvero il
 teorema della probabilità totale.</p>
-<div id="il-teorema-della-probabilità-totale" class="section level2" number="13.1">
+<div id="il-teorema-della-probabilità-totale" class="section level2" number="15.1">
 <h2>
-<span class="header-section-number">13.1</span> Il teorema della probabilità totale<a class="anchor" aria-label="anchor" href="#il-teorema-della-probabilit%C3%A0-totale"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.1</span> Il teorema della probabilità totale<a class="anchor" aria-label="anchor" href="#il-teorema-della-probabilit%C3%A0-totale"><i class="fas fa-link"></i></a>
 </h2>
 <p>Il teorema della probabilità totale fa uso della legge della probabilità
-composta <a href="chapter-prob.html#eq:probcomposte">(11.1)</a> per calcolare le probabilità di casi più
+composta <a href="chapter-prob-cond.html#eq:probcomposte">(14.3)</a> per calcolare le probabilità di casi più
 complessi di quelli considerati fino ad ora. La notazione sembra
 complessa, ma l’idea sottostante è semplice. Discutiamo qui il teorema
 della probabilità totale considerando il caso di una partizione dello
@@ -96,16 +106,16 @@ situazione al caso di una partizione in un qualunque numero di
 sottoinsiemi.</p>
 
 <div class="theorem">
-<span id="thm:theo-prob-tot" class="theorem"><strong>Teorema 13.1  </strong></span>Sia <span class="math inline">\(\{A_1, A_2, A_3\}\)</span> una partizione dello spazio campionario
+<span id="thm:theo-prob-tot" class="theorem"><strong>Teorema 15.1  </strong></span>Sia <span class="math inline">\(\{A_1, A_2, A_3\}\)</span> una partizione dello spazio campionario
 <span class="math inline">\(\Omega\)</span>. Se <span class="math inline">\(E\)</span> è un qualunque altro evento, allora:
 <span class="math display" id="eq:prob-total-1a">\[\begin{equation}
 P(E) = P(E \cap A_1) + P(E \cap A_2) + P(E \cap A_3) \notag
-\tag{13.1}
+\tag{15.1}
 \end{equation}\]</span>
 ovvero
 <span class="math display" id="eq:prob-total-1b">\[\begin{equation}
 P(E) = P(E \mid A_1) P(A_1) + P (E \mid A_2) P(A_2) + P(E \mid A_3) P(A_3).
-\tag{13.2}
+\tag{15.2}
 \end{equation}\]</span>
 </div>
 <p>Il teorema della probabilità totale afferma che, se l’evento <span class="math inline">\(E\)</span> è
@@ -150,7 +160,7 @@ pallina estratta è verde,” <span class="math inline">\(R_2\)</span> l’event
 rossa” e <span class="math inline">\(V_2\)</span> l’evento “la seconda pallina estratta è verde.” Dobbiamo
 trovare <span class="math inline">\(P(R_2)\)</span> e possiamo risolvere il problema usando il teorema
 della probabilità
-totale <a href="chapter-teo-bayes.html#eq:prob-total-1b">(13.2)</a>:</p>
+totale <a href="chapter-teo-bayes.html#eq:prob-total-1b">(15.2)</a>:</p>
 <p><span class="math display">\[\begin{equation}
 \begin{aligned}
 P(R_2) &amp;= P(R_2 \mid R_1) P(R_1) + P(R_2 \mid V_1)P(V_1)\notag\\
@@ -166,9 +176,9 @@ pallina verde, dunque, la probabilità che la seconda estrazione produca
 una pallina rossa è uguale a 5/6. La probabilità di una pallina verde
 nella prima estrazione è 2/7.</p>
 </div>
-<div id="il-teorema-della-probabilità-delle-cause" class="section level2" number="13.2">
+<div id="il-teorema-della-probabilità-delle-cause" class="section level2" number="15.2">
 <h2>
-<span class="header-section-number">13.2</span> Il teorema della probabilità delle cause<a class="anchor" aria-label="anchor" href="#il-teorema-della-probabilit%C3%A0-delle-cause"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.2</span> Il teorema della probabilità delle cause<a class="anchor" aria-label="anchor" href="#il-teorema-della-probabilit%C3%A0-delle-cause"><i class="fas fa-link"></i></a>
 </h2>
 <p>Il teorema di Bayes rappresenta uno dei fondamenti della teoria della
 probabilità e della statistica. Lo presentiamo qui considerando prima un
@@ -181,7 +191,7 @@ ipotesi fatte che se si verifica <span class="math inline">\(E\)</span> deve anc
 almeno uno degli eventi <span class="math inline">\(A_1\)</span> e <span class="math inline">\(A_2\)</span>. Supponendo che si sia verificato
 l’evento <span class="math inline">\(E\)</span>, ci chiediamo: qual è la probabilità che si sia verificato
 <span class="math inline">\(A_1\)</span> piuttosto che <span class="math inline">\(A_2\)</span>?</p>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-137-1.png" width="45%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-163-1.png" width="45%" style="display: block; margin: auto;"></div>
 <p>Per rispondere alla domanda precedente scriviamo:
 <span class="math display">\[\begin{equation}
 \begin{aligned}
@@ -200,25 +210,25 @@ P(E) &amp;= P(E \cap A_1) + P(E \cap A_2)\notag\\
 Sostituendo il risultato precedente nella formula della probabilità condizionata <span class="math inline">\(P(A_1 \mid E)\)</span> otteniamo:
 <span class="math display" id="eq:bayes1">\[\begin{equation}
 P(A_1 \mid E) = \frac{P(E \mid A_1)P(A_1)}{P(E \mid A_1)P(A_1) + P(E \mid A_2)P(A_2)}.
-\tag{13.3}
+\tag{15.3}
 \end{equation}\]</span>
-La <a href="chapter-teo-bayes.html#eq:bayes1">(13.3)</a> si generalizza facilmente al caso di più di due eventi disgiunti, come indicato di seguito.</p>
+La <a href="chapter-teo-bayes.html#eq:bayes1">(15.3)</a> si generalizza facilmente al caso di più di due eventi disgiunti, come indicato di seguito.</p>
 
 <div class="theorem">
-<span id="thm:theo-bayes" class="theorem"><strong>Teorema 13.2  (Teorema di Bayes)  </strong></span>Siano <span class="math inline">\(A_1\)</span>, <span class="math inline">\(A_2,\)</span> …, <span class="math inline">\(A_n\)</span> <span class="math inline">\(n\)</span> eventi disgiunti con <span class="math inline">\(P(A_i) &gt; 0\)</span> e
+<span id="thm:theo-bayes" class="theorem"><strong>Teorema 15.2  (Teorema di Bayes)  </strong></span>Siano <span class="math inline">\(A_1\)</span>, <span class="math inline">\(A_2,\)</span> …, <span class="math inline">\(A_n\)</span> <span class="math inline">\(n\)</span> eventi disgiunti con <span class="math inline">\(P(A_i) &gt; 0\)</span> e
 tali che <span class="math inline">\(\bigcup_{i=1}^{n} A_i = \Omega\)</span>. Per l’evento
 <span class="math inline">\(E \subset \Omega\)</span> con <span class="math inline">\(P(E) &gt; 0\)</span>, abbiamo
 <span class="math display" id="eq:bayes2">\[\begin{equation}
 P(A_j \mid E) = \frac{P(E \mid A_j)P(A_j)}{\sum_{i=1}^{n}P(E \mid A_i)P(A_i)}.
-\tag{13.4}
+\tag{15.4}
 \end{equation}\]</span>
 </div>
-<p>La formula <a href="chapter-teo-bayes.html#eq:bayes2">(13.4)</a> prende il nome di <em>Teorema di Bayes</em> e mostra che
+<p>La formula <a href="chapter-teo-bayes.html#eq:bayes2">(15.4)</a> prende il nome di <em>Teorema di Bayes</em> e mostra che
 la conoscenza del verificarsi dell’evento <span class="math inline">\(E\)</span> modifica la probabilità
 che abbiamo attribuito all’evento <span class="math inline">\(A_j\)</span>.</p>
-<div id="aggiornamento-bayesiano" class="section level3" number="13.2.1">
+<div id="aggiornamento-bayesiano" class="section level3" number="15.2.1">
 <h3>
-<span class="header-section-number">13.2.1</span> Aggiornamento Bayesiano<a class="anchor" aria-label="anchor" href="#aggiornamento-bayesiano"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.2.1</span> Aggiornamento Bayesiano<a class="anchor" aria-label="anchor" href="#aggiornamento-bayesiano"><i class="fas fa-link"></i></a>
 </h3>
 <p>Consideriamo ora un’altra applicazione del teorema di Bayes che ci fa
 capire come l’applicazione di questo teorema ci consente di modificare
@@ -233,8 +243,8 @@ che, quando una moneta viene lanciata, la probabilità di osservare
 l’esito “testa” è 0.6. Per semplicità, sia <span class="math inline">\(\theta\)</span> la probabilità di
 osservare l’esito “testa.” Per una moneta del primo tipo, dunque,
 <span class="math inline">\(\theta = 0.6\)</span>. Per una moneta del secondo tipo, invece, la probabilità
-di produrre l’esito “testa” è 0.4. Ovvero, <span class="math inline">\(\theta = 0.4\)</span>. Noi
-possediamo una moneta, ma non sappiamo se è del primo tipo o del secondo
+di produrre l’esito “testa” è 0.4. Ovvero, <span class="math inline">\(\theta = 0.4\)</span>.</p>
+<p>Noi possediamo una moneta, ma non sappiamo se è del primo tipo o del secondo
 tipo. Sappiamo solo che il 75% delle monete sono del primo tipo e il 25%
 sono del secondo tipo. Sulla base di questa conoscenza <em>a priori</em> –
 ovvero sulla base di una conoscenza ottenuta senza avere eseguito
@@ -251,69 +261,84 @@ ipotesi? In altre parole, ci chiediamo qual è la probabilità di ciascuna
 ipotesi alla luce dei dati che sono stati osservati: <span class="math inline">\(P(H \mid x)\)</span>,
 laddove <span class="math inline">\(x\)</span> sono i dati osservati. Tale probabilità si chiama
 probabilità a posteriori. Inoltre, se confrontiamo le due ipotesi, ci
-chiediamo quale valore assuma il rapporto
-<span class="math inline">\(\frac{P(H_1 \mid x)}{P(H_2 \mid x)}\)</span>. Tale rapporto ci dice quanto è
-più probabile <span class="math inline">\(H_1\)</span> rispetto ad <span class="math inline">\(H_2\)</span>, alla luce dei dati osservati.
-Infine, ci chiediamo come cambia il rapporto definito sopra, quando
-osserviamo via via nuovi risultati prodotti dal lancio della moneta.</p>
-<p>Definiamo il problema in maniera più chiara. Conosciamo le probabilità a
-priori, ovvero <span class="math inline">\(P(H_1) = 0.75\)</span> e <span class="math inline">\(P(H_1) = 0.25\)</span>. Quello che vogliamo
-conoscere sono le probabilità a posteriori <span class="math inline">\(P(H_1 \mid x)\)</span> e
-<span class="math inline">\(P(H_2 \mid x)\)</span>. Per trovare le probabilità a posteriori applichiamo il
-teorema di Bayes: <span class="math display">\[P(H_1 \mid x) = \frac{P(x \mid H_1) P(H_1)}{P(x)} = 
-\frac{P(x \mid H_1) P(H_1)}{P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2)},\]</span>
-laddove lo sviluppo del denominatore deriva da un’applicazione del
-teorema della probabilità totale. Inoltre, <span class="math display">\[P(H_2 \mid x) = 
-\frac{P(x \mid H_2) P(H_2)}{P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2)}.\]</span></p>
-<p>La probabilità <span class="math inline">\(P(x \mid H_1)\)</span> si chiama <em>verosimiglianza</em> e descrive la
-plausibilità dei dati osservati in base all’ipotesi considerata. Se
-consideriamo l’ipotesi <span class="math inline">\(H_1\)</span> = “la probabilità di testa è 0.6,” allora
-la verosimiglianza dei dati <span class="math inline">\(\{T, C\}\)</span> è <span class="math inline">\(0.6 \times 0.4 = 0.24.\)</span>
-Dunque, <span class="math inline">\(P(x \mid H_1) = 0.24\)</span>. Se invece consideriamo l’ipotesi <span class="math inline">\(H_2\)</span> =
-“la probabilità di testa è 0.4,” allora la verosimiglianza dei dati
-<span class="math inline">\(\{T, C\}\)</span> è <span class="math inline">\(0.4 \times 0.6 = 0.24\)</span>, ovvero, <span class="math inline">\(P(x \mid H_2) = 0.24\)</span>. In
-base alle due ipotesi <span class="math inline">\(H_1\)</span> e <span class="math inline">\(H_2\)</span>, dunque, i dati osservati hanno la
-medesima plausibilità. Per semplicità, calcoliamo anche
-<span class="math display">\[\begin{aligned}
-P(x) &amp;= P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2) = 0.24 \cdot 0.75 + 0.24 \cdot 0.25 = 0.24.\notag\end{aligned}\]</span></p>
-<p>Le probabilità a posteriori diventano: <span class="math display">\[\begin{aligned}
-P(H_1 \mid x) &amp;= \frac{P(x \mid H_1) P(H_1)}{P(x)} = \frac{0.24 \cdot 0.75}{0.24} = 0.75,\notag\end{aligned}\]</span>
-<span class="math display">\[\begin{aligned}
-P(H_2 \mid x) &amp;= \frac{P(x \mid H_2) P(H_2)}{P(x)} = \frac{0.24 \cdot 0.25}{0.24} = 0.25.\notag\end{aligned}\]</span>
-Possiamo dunque concludere dicendo che, sulla base dei dati osservati,
-l’ipotesi <span class="math inline">\(H_1\)</span> ha una probabilità 3 volte maggiore di essere vera
-dell’ipotesi <span class="math inline">\(H_2\)</span>.</p>
-<p>È tuttavia possibile raccogliere più evidenze e, sulla base di esse, le
-probabilità a posteriori cambieranno. Supponiamo di lanciare la moneta
-una terza volta e di osservare croce. I nostri dati saranno dunque
-<span class="math inline">\(\{T, C, C\}\)</span>. Di conseguenza,
-<span class="math inline">\(P(x \mid H_1) = 0.6 \cdot 0.4 \cdot 0.4 = 0.096\)</span> e
-<span class="math inline">\(P(x \mid H_2) = 0.4 \cdot 0.6 \cdot 0.6 = 0.144\)</span>. Ne segue che le
-probabilità a posteriori diventano: <span class="math display">\[\begin{aligned}
-P(H_1 \mid x) &amp;= \frac{P(x \mid H_1) P(H_1)}{P(x)} = \frac{0.096 \cdot 0.75}{0.096 \cdot 0.75 + 0.144 \cdot 0.25} = 0.667,\notag\end{aligned}\]</span>
+chiediamo quale valore assuma il rapporto <span class="math inline">\(\frac{P(H_1 \mid x)}{P(H_2 \mid x)}\)</span>.
+Tale rapporto ci dice quanto è più probabile <span class="math inline">\(H_1\)</span> rispetto ad <span class="math inline">\(H_2\)</span>, alla luce dei dati osservati.
+Infine, ci chiediamo come cambia il rapporto definito sopra, quando osserviamo via via nuovi risultati prodotti dal lancio della moneta.</p>
+<p>Definiamo il problema in maniera più chiara.
+Conosciamo le probabilità a priori, ovvero <span class="math inline">\(P(H_1) = 0.75\)</span> e <span class="math inline">\(P(H_1) = 0.25\)</span>.
+Quello che vogliamo conoscere sono le probabilità a posteriori <span class="math inline">\(P(H_1 \mid x)\)</span> e
+<span class="math inline">\(P(H_2 \mid x)\)</span>.</p>
+<p>Per trovare le probabilità a posteriori applichiamo il teorema di Bayes:
+<span class="math display">\[
+P(H_1 \mid x) = \frac{P(x \mid H_1) P(H_1)}{P(x)} = 
+\frac{P(x \mid H_1) P(H_1)}{P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2)}
+\]</span>
+laddove lo sviluppo del denominatore deriva da un’applicazione del teorema della probabilità totale.
+Inoltre,
+<span class="math display">\[
+P(H_2 \mid x) = 
+\frac{P(x \mid H_2) P(H_2)}{P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2)}.
+\]</span>
+Se consideriamo l’ipotesi <span class="math inline">\(H_1\)</span> = “la probabilità di testa è 0.6,” allora
+la verosimiglianza dei dati <span class="math inline">\(\{T, C\}\)</span>, ovvero la probabilità di osservare questa specifica sequenza di T e C, è uguale a <span class="math inline">\(0.6 \times 0.4 = 0.24.\)</span>
+Dunque, <span class="math inline">\(P(x \mid H_1) = 0.24\)</span>.</p>
+<p>Se invece consideriamo l’ipotesi <span class="math inline">\(H_2\)</span> = “la probabilità di testa è 0.4,” allora la verosimiglianza dei dati <span class="math inline">\(\{T, C\}\)</span> è <span class="math inline">\(0.4 \times 0.6 = 0.24\)</span>, ovvero, <span class="math inline">\(P(x \mid H_2) = 0.24\)</span>.
+In base alle due ipotesi <span class="math inline">\(H_1\)</span> e <span class="math inline">\(H_2\)</span>, dunque, i dati osservati hanno la
+medesima plausibilità di essere osservati.
+Per semplicità, calcoliamo anche
+<span class="math display">\[
+\begin{aligned}
+P(x) &amp;= P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2) = 0.24 \cdot 0.75 + 0.24 \cdot 0.25 = 0.24.\notag
+\end{aligned}
+\]</span></p>
+<p>Le probabilità a posteriori diventano:
+<span class="math display">\[
+\begin{aligned}
+P(H_1 \mid x) &amp;= \frac{P(x \mid H_1) P(H_1)}{P(x)} = \frac{0.24 \cdot 0.75}{0.24} = 0.75,\notag
+\end{aligned}
+\]</span>
+<span class="math display">\[
+\begin{aligned}
+P(H_2 \mid x) &amp;= \frac{P(x \mid H_2) P(H_2)}{P(x)} = \frac{0.24 \cdot 0.25}{0.24} = 0.25.\notag
+\end{aligned}
+\]</span>
+Possiamo dunque concludere dicendo che, sulla base dei dati osservati, l’ipotesi <span class="math inline">\(H_1\)</span> ha una probabilità 3 volte maggiore di essere vera dell’ipotesi <span class="math inline">\(H_2\)</span>.</p>
+<p>È tuttavia possibile raccogliere più evidenze e, sulla base di esse, le probabilità a posteriori cambieranno.
+Supponiamo di lanciare la moneta una terza volta e di osservare croce.
+I nostri dati dunque sono <span class="math inline">\(\{T, C, C\}\)</span>.</p>
+<p>Di conseguenza, <span class="math inline">\(P(x \mid H_1) = 0.6 \cdot 0.4 \cdot 0.4 = 0.096\)</span> e <span class="math inline">\(P(x \mid H_2) = 0.4 \cdot 0.6 \cdot 0.6 = 0.144\)</span>.
+Ne segue che le probabilità a posteriori diventano:
+<span class="math display">\[
+\begin{aligned}
+P(H_1 \mid x) &amp;= \frac{P(x \mid H_1) P(H_1)}{P(x)} = \frac{0.096 \cdot 0.75}{0.096 \cdot 0.75 + 0.144 \cdot 0.25} = 0.667,\notag
+\end{aligned}
+\]</span>
 <span class="math display">\[\begin{aligned}
 P(H_2 \mid x) &amp;= \frac{P(x \mid H_2) P(H_2)}{P(x)} = \frac{0.144 \cdot 0.25}{0.096 \cdot 0.75 + 0.144 \cdot 0.25} = 0.333.\notag\end{aligned}\]</span>
 In queste circostanze, le evidenze che favoriscono <span class="math inline">\(H_1\)</span> nei confronti
-di <span class="math inline">\(H_2\)</span> sono pari solo ad un fattore di 2.</p>
+di <span class="math inline">\(H_2\)</span> sono solo pari ad un fattore di 2.</p>
 <p>Se otteniamo ancora croce in un quarto lancio della moneta, i nostri
-dati saranno: <span class="math inline">\(\{T, C, C, C\}\)</span>. Ripetendo il ragionamento fatto sopra,
+dati diventano: <span class="math inline">\(\{T, C, C, C\}\)</span>.
+Ripetendo il ragionamento fatto sopra,
 <span class="math inline">\(P(x \mid H_1) = 0.6 \cdot 0.4 \cdot 0.4 \cdot 0.4 = 0.0384\)</span> e
-<span class="math inline">\(P(x \mid H_2) = 0.4 \cdot 0.6 \cdot 0.6 \cdot 0.6 = 0.0864\)</span>. Dunque
-<span class="math display">\[\begin{aligned}
-P(H_1 \mid x) &amp;= \frac{0.0384 \cdot 0.75}{0.0384 \cdot 0.75 + 0.0864 \cdot 0.25} = 0.571,\notag\end{aligned}\]</span>
-<span class="math display">\[\begin{aligned}
-P(H_2 \mid x) &amp;= \frac{0.0864 \cdot 0.25}{0.0384 \cdot 0.75 + 0.0864 \cdot 0.25} = 0.429.\notag\end{aligned}\]</span>
+<span class="math inline">\(P(x \mid H_2) = 0.4 \cdot 0.6 \cdot 0.6 \cdot 0.6 = 0.0864\)</span>.</p>
+<p>Dunque
+<span class="math display">\[
+\begin{aligned}
+P(H_1 \mid x) &amp;= \frac{0.0384 \cdot 0.75}{0.0384 \cdot 0.75 + 0.0864 \cdot 0.25} = 0.571,\notag
+\end{aligned}
+\]</span>
+<span class="math display">\[
+\begin{aligned}
+P(H_2 \mid x) &amp;= \frac{0.0864 \cdot 0.25}{0.0384 \cdot 0.75 + 0.0864 \cdot 0.25} = 0.429.\notag
+\end{aligned}
+\]</span>
 e le evidenze a favore di <span class="math inline">\(H_1\)</span> si riducono a 1.33. Se si ottenesse un
 altro esito croce in un sesto lancio della moneta, l’ipotesi <span class="math inline">\(H2\)</span>
 diventerebbe più probabile dell’ipotesi <span class="math inline">\(H_1\)</span>.</p>
-<p>In conclusione, questo esercizio ci fa capire come sia possibile, sulla
-base delle evidenze disponibili, passare da credenze a priori a credenze
-a posteriori. Se prima di lanciare la moneta ritenevamo che l’ipotesi
-<span class="math inline">\(H_1\)</span> fosse tre volte più plausibile dell’ipotesi <span class="math inline">\(H_2\)</span>, dopo avere
-osservato uno specifico campione di dati siamo giunti alla conclusione
-opposta. Il processo di aggiornamento Bayesiano ci fornisce dunque un
-metodo per modificare il livello di fiducia in una data ipotesi, alla
-luce di nuova informazione.</p>
+<p>In conclusione, questo esercizio ci fa capire come sia possibile aggiornare le nostre credenze sulla base delle evidenze disponibili, ovvero come sia possibile passare da un grado di conoscenza del mondo a priori a una conoscenza a posteriori.
+Se prima di lanciare la moneta ritenevamo che l’ipotesi <span class="math inline">\(H_1\)</span> fosse tre volte più plausibile dell’ipotesi <span class="math inline">\(H_2\)</span>, dopo avere osservato uno specifico campione di dati siamo giunti alla conclusione opposta.
+Il processo di aggiornamento Bayesiano, dunque, ci fornisce un metodo per modificare il livello di fiducia in una data ipotesi, alla luce di nuove informazioni.</p>
 </div>
 </div>
 <div id="conclusioni-4" class="section level2 unnumbered">
@@ -340,15 +365,15 @@ parte di queste dispense.</p>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="chapter-prob-cond.html"><span class="header-section-number">12</span> Probabilità condizionata</a></div>
-<div class="next"><a href="chapter-prob-congiunta.html"><span class="header-section-number">14</span> Probabilità congiunta</a></div>
+<div class="prev"><a href="chapter-prob-cond.html"><span class="header-section-number">14</span> Probabilità condizionata</a></div>
+<div class="next"><a href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#chapter-teo-bayes"><span class="header-section-number">13</span> Il teorema di Bayes</a></li>
-<li><a class="nav-link" href="#il-teorema-della-probabilit%C3%A0-totale"><span class="header-section-number">13.1</span> Il teorema della probabilità totale</a></li>
+<li><a class="nav-link" href="#chapter-teo-bayes"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
+<li><a class="nav-link" href="#il-teorema-della-probabilit%C3%A0-totale"><span class="header-section-number">15.1</span> Il teorema della probabilità totale</a></li>
 <li>
-<a class="nav-link" href="#il-teorema-della-probabilit%C3%A0-delle-cause"><span class="header-section-number">13.2</span> Il teorema della probabilità delle cause</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#aggiornamento-bayesiano"><span class="header-section-number">13.2.1</span> Aggiornamento Bayesiano</a></li></ul>
+<a class="nav-link" href="#il-teorema-della-probabilit%C3%A0-delle-cause"><span class="header-section-number">15.2</span> Il teorema della probabilità delle cause</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#aggiornamento-bayesiano"><span class="header-section-number">15.2.1</span> Aggiornamento Bayesiano</a></li></ul>
 </li>
 <li><a class="nav-link" href="#conclusioni-4">Conclusioni</a></li>
 </ul>

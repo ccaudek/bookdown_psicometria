@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capitolo 6 Strutture di controllo | Data Science per psicologi</title>
 <meta name="author" content="Corrado Caudek">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
@@ -32,40 +32,50 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Benvenuti</a></li>
-<li class="book-part">Introduzione</li>
-<li><a class="" href="obiettivi-formativi.html"><span class="header-section-number">1</span> Obiettivi formativi</a></li>
+<li class="book-part">Obiettivi formativi</li>
+<li><a class="" href="conoscenza-dichiarativa-e-imperativa.html"><span class="header-section-number">1</span> Conoscenza dichiarativa e imperativa</a></li>
 <li class="book-part">Introduzione al linguaggio R</li>
+<li><a class="" href="introduzione.html">Introduzione</a></li>
 <li><a class="" href="chapter-pacchetti.html"><span class="header-section-number">2</span> Pacchetti</a></li>
 <li><a class="" href="chapter-install-r.html"><span class="header-section-number">3</span> Per cominciare</a></li>
 <li><a class="" href="chapter-sintassi.html"><span class="header-section-number">4</span> Sintassi di base</a></li>
 <li><a class="" href="chapter-strutture-dati.html"><span class="header-section-number">5</span> Strutture di dati</a></li>
 <li><a class="active" href="chapter-strut-contr.html"><span class="header-section-number">6</span> Strutture di controllo</a></li>
 <li><a class="" href="chapter-input-output.html"><span class="header-section-number">7</span> Input/Output</a></li>
-<li class="book-part">Misurazione</li>
-<li><a class="" href="chapter-terminologia.html"><span class="header-section-number">8</span> Terminologia</a></li>
-<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">9</span> La misurazione in psicologia</a></li>
-<li class="book-part">Descrizione</li>
-<li><a class="" href="chapter-descript.html"><span class="header-section-number">10</span> Statistica descrittiva</a></li>
-<li class="book-part">Elementi di teoria della probabilità</li>
-<li><a class="" href="chapter-prob.html"><span class="header-section-number">11</span> Il calcolo delle probabilità</a></li>
-<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">12</span> Probabilità condizionata</a></li>
-<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">13</span> Il teorema di Bayes</a></li>
-<li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">14</span> Probabilità congiunta</a></li>
-<li class="book-part">Inferenza frequentista</li>
-<li><a class="" href="distribuzione-campionaria-della-media-dei-campioni.html"><span class="header-section-number">15</span> Distribuzione campionaria della media dei campioni</a></li>
-<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">16</span> Significatività statistica</a></li>
-<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">17</span> Inferenza sulle medie</a></li>
-<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">18</span> Critiche e difese</a></li>
-<li class="book-part">Verosimiglianza</li>
+<li><a class="" href="manipolazione-dei-dati.html"><span class="header-section-number">8</span> Manipolazione dei dati</a></li>
+<li><a class="" href="flusso-di-lavoro-riproducibile.html"><span class="header-section-number">9</span> Flusso di lavoro riproducibile</a></li>
+<li class="book-part">Statistica descrittiva ed analisi esplorativa dei dat̀i</li>
+<li><a class="" href="introduzione-1.html">Introduzione</a></li>
+<li><a class="" href="terminologia.html"><span class="header-section-number">10</span> Terminologia</a></li>
+<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">11</span> La misurazione in psicologia</a></li>
+<li><a class="" href="chapter-descript.html"><span class="header-section-number">12</span> Statistica descrittiva</a></li>
+<li class="book-part">Nozioni di base</li>
+<li><a class="" href="introduzione-2.html">Introduzione</a></li>
+<li><a class="" href="il-calcolo-delle-probabilit%C3%A0.html"><span class="header-section-number">13</span> Il calcolo delle probabilità</a></li>
+<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">14</span> Probabilità condizionata</a></li>
+<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
+<li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
+<li><a class="" href="la-distribuzione-binomiale.html"><span class="header-section-number">17</span> La distribuzione binomiale</a></li>
+<li><a class="" href="funzioni-di-densit%C3%A0-di-probabilit%C3%A0.html"><span class="header-section-number">18</span> Funzioni di densità di probabilità</a></li>
 <li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
-<li class="book-part">Statistica Bayesiana</li>
-<li><a class="" href="chapter-modellistica-bayesiana.html"><span class="header-section-number">20</span> Modellistica bayesiana</a></li>
-<li><a class="" href="chapter-stima-distr-posteriori.html"><span class="header-section-number">21</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">22</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">23</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">24</span> Inferenza Bayesiana</a></li>
-<li><a class="" href="informazioni-generali.html">Informazioni generali</a></li>
-<li><a class="" href="appendici.html">Appendici</a></li>
+<li class="book-part">Inferenza frequentista</li>
+<li><a class="" href="introduzione-3.html">Introduzione</a></li>
+<li><a class="" href="distribuzione-campionaria.html"><span class="header-section-number">20</span> Distribuzione campionaria</a></li>
+<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">21</span> Significatività statistica</a></li>
+<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">22</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">23</span> Critiche e difese</a></li>
+<li class="book-part">Inferenza Bayesiana</li>
+<li><a class="" href="introduzione-4.html">Introduzione</a></li>
+<li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">24</span> Modellistica bayesiana</a></li>
+<li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">25</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="sintesi-a-posteriori.html"><span class="header-section-number">26</span> Sintesi a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">27</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">28</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">29</span> Inferenza Bayesiana</a></li>
+<li class="book-part">Informazioni generali</li>
+<li><a class="" href="citazione.html">Citazione</a></li>
+<li class="book-part">Appendici</li>
+<li><a class="" href="un-piccolo-ripasso.html">Un piccolo ripasso</a></li>
 <li><a class="" href="bibliografia.html">Bibliografia</a></li>
 </ul>
 
@@ -78,24 +88,16 @@
 <h1>
 <span class="header-section-number">Capitolo 6</span> Strutture di controllo<a class="anchor" aria-label="anchor" href="#chapter-strut-contr"><i class="fas fa-link"></i></a>
 </h1>
-<p>In R esistono strutture di controllo specifiche per regolare il flusso
-di esecuzione di un programma. I loop permettono di ripetere
-ciclicamente blocchi di istruzioni per un numero prefissato di volte o
-fino a che una determinata condizione logica viene soddisfatta. Questo
-li rende utili per la programmazione di simulazioni. Ci limitiamo qui ad introdurre il ciclo <code>for</code>.</p>
+<p>In <code>R</code> il flusso della computazione segue l’ordine di lettura delle espressioni. I controlli di flusso sono quei costrutti sintattici che possono modificare quest’ordine di computazione. Ad esempio, un ciclo <code>for</code> ripete le istruzioni annidate al suo interno per un certo numero di volte, e quindi procede sequenzialmente da lì in avanti, mentre un condizionale <code>if</code> valuta una condizione rispetto alla quale il flusso di informazioni si biforca (se è vero / se è falso). Ci limitiamo qui ad introdurre il ciclo <code>for</code>.</p>
 <div id="il-ciclo-for" class="section level2" number="6.1">
 <h2>
 <span class="header-section-number">6.1</span> Il ciclo <code>for</code><a class="anchor" aria-label="anchor" href="#il-ciclo-for"><i class="fas fa-link"></i></a>
 </h2>
-<p>Il ciclo <code>for</code> è una struttura di controllo iterativa che determina
-l’esecuzione di una porzione di programma ripetuta per un certo numero
-noto di volte. Il linguaggio R  usa la seguente sintassi per il ciclo
-<code>for</code>:</p>
-<p><code>for</code> (<code>indice</code> in <code>valori_indice</code>) { <em>operazioni</em> }</p>
-<p>il che significa “esegui le operazioni <em>operazioni</em> per i diversi valori
-di <code>indice</code> compresi nel vettore <code>valori_indice</code>.” Per esempio, il
-seguente ciclo <code>for</code> non fa altro che stampare il valore della variabile
-contatore in ciascuna esecuzione del ciclo:</p>
+<p>Il ciclo <code>for</code> è una struttura di controllo iterativa che determina l’esecuzione di una porzione di codice ripetuta per un certo numero noto di volte. Il linguaggio <code>R</code> usa la seguente sintassi per il ciclo <code>for</code>:</p>
+<p><code>for</code> (<code>indice</code> in <code>valori_indice</code>) {
+<em>operazioni</em>
+}</p>
+<p>il che significa “esegui le operazioni <em>operazioni</em> per i diversi valori di <code>indice</code> compresi nel vettore <code>valori_indice</code>.” Per esempio, il seguente ciclo <code>for</code> non fa altro che stampare il valore della variabile contatore in ciascuna esecuzione del ciclo:</p>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span>

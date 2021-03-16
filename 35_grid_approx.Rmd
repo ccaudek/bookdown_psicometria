@@ -1,26 +1,32 @@
-# Stima della funzione a posteriori {#chapter-stima-distr-posteriori}
+# Stima della funzione a posteriori 
 
-Quando usiamo il teorema di Bayes per calcolare la distribuzione a posteriori del parametro di un modello statistico, al denominatore troviamo un integrale. Tale integrale, nella maggior parte dei casi, non si può risolvere per via analitica. L'inferenza bayesiana si sviluppa dunque mediante una stima numerica della funzione a posteriori. Dato che questi metodi sono "computazionalmente intensivi", possono solo essere svolti mediante software. In anni recenti i metodi Bayesiani di analisi dei dati sono diventati sempre più popolari proprio perché la potenza di calcolo necessaria per svolgere tali calcoli è ora alla portata di tutti. Questo non era vero solo pochi decenni fa. Per capire come la distribuzione a posteriori possa essere approssimata per via numerica esamineremo qui tre diverse tecniche che possono essere utilizzate a questo scopo:
+Quando usiamo il teorema di Bayes per calcolare la distribuzione a posteriori del parametro di un modello statistico, al denominatore troviamo un integrale. Se vogliamo costruire la distribuzione a posteriori con metodi analitici è necessario usare _distribuzioni a priori coniugate per la verosimiglianza_. Due distribuzioni si dicono  _coniugate_ se la forma funzionale della distribuzione a priori e della distribuzione a posteriori sono uguali. Questo significa che, nel caso di distribuzioni a priori coniugate, è possibile determinare la distribuzione a posteriori per via analitica. Per quanto "semplice" in termini formali, questo approccio, però, limita di molto le possibili scelte del ricercatore. Nel senso che non è sempre sensato, dal punto di vista teorico, utilizzare distribuzioni a priori coniugate per la verosimiglianza per i parametri di interesse. Dunque, se usiamo delle distribuzioni a priori non coniutate per la verosimiglianza, ci troviamo in una condizione nella quale, per determinare la distribuzione a posteriori, è necessario calcolare un integrale che, nella maggior parte dei casi, non si può risolvere per via analitica. Detto in altre parole: è possibile ottenere la distribuzione posteriore per via analitica solo per alcune specifiche combinazioni di distribuzioni a priori e verosimiglianza, il che limita considerevolmente la flessibilità della modellazione. 
 
-1.  i metodi *grid-based* approssimati,
+Per questa ragione, la strada principale che viene seguita nella modellistica Bayesiana è quella che porta a determinare la distribuzione a posteriori non per via analitica, ma bensì mediante metodi numerici. La simulazione fornisce dunque la strategia generale del calcolo Bayesiano. 
 
-2.  il metodo dell'approssimazione quadratica,
+A questo fine vengono usati i metodi di campionamento detti Monte-Carlo Markov-Chain (MCMC). Tali metodi costituiscono una potente e praticabile alternativa per la costruzione della distribuzione a posteriori per modelli complessi e consentono di decidere quali distribuzioni a priori e quali distribuzioni di verosimiglianza usare sulla base di considerazioni teoriche soltanto, senza dovere preoccuparsi dei vincoli dei metodi analitici. 
 
-3.  i metodi Monte Carlo basati su Catena di Markov (MCMC).
+Dato che è basata su metodi _computazionalmente intensivi_, la stima numerica della funzione a posteriori può essere svolta soltanto mediante software. In anni recenti i metodi Bayesiani di analisi dei dati sono diventati sempre più popolari proprio perché la potenza di calcolo necessaria per svolgere tali calcoli è ora alla portata di tutti. Questo non era vero solo pochi decenni fa. 
+
+In questo capitolo vedremo come sia possibile approssimare per via numerica la distribuzione a posteriori. Presenteremo tre diverse tecniche che possono essere utilizzate a questo scopo:
+
+1. i metodi basati sull'uso di griglie (_grid-based_),
+2. il metodo dell'approssimazione quadratica,
+3. i metodi Monte Carlo basati su Catena di Markov (MCMC).
 
 
-## Metodi basati su griglia 
+## Metodi basati su griglie 
 
 ```{r, echo=FALSE}
 library("patchwork")
 ```
 
-È possibile stimare l'intera distribuzione a posteriori mediante metodi basati su griglia (*grid-based*), come abbiamo fatto nel capitolo [Modellistica bayesiana](#chapter-modellistica-bayesiana). Questo è l'approccio più semplice. Tuttavia, anche se tali metodi possono fornire risultati accuratissimi, a causa della "maledizione della dimensionalità", tali procedure numeriche sono utilizzabili solo nel caso di modelli statistici semplici, con non più di due parametri. Nella pratica concreta tali metodi vengono sostituiti da altre tecniche più efficienti in quanto, anche in comuni modelli
-utilizzati in psicologia, vengono stimati centinaia se non migliaia di
+È possibile stimare l'intera distribuzione a posteriori mediante metodi basati su griglie (*grid-based*), come abbiamo fatto nel capitolo [Modellistica bayesiana](#chapter-modellistica-bayesiana). Questo è l'approccio più semplice. Tuttavia, anche se tali metodi possono fornire risultati accuratissimi, a causa della "maledizione della dimensionalità" tali procedure numeriche sono utilizzabili solo nel caso di modelli statistici semplici, con non più di due parametri. Nella pratica concreta tali metodi vengono dunque sostituiti da altre tecniche più efficienti in quanto, anche in comuni modelli utilizzati in psicologia, vengono stimati centinaia se non migliaia di
 parametri. 
 
-Vediamo cosa significa la "maledizione della dimensionalità". Supponiamo di utilizzare una griglia di 100 punti equispaziati. Nel caso di un solo parametro, avremo dunque bisogno di calcolare 100 valori. Per due parametri sarà necessario calcolare $100^2$ valori. Ma già per 10 parametri avremo bisogno di $10^{10}$ valori -- è facile capire che una tale quantità di calcoli è troppo grande anche per un computer molto potente. Per modelli che richiedono la stima di un numero non piccolo di parametri è dunque necessario procedere in un altro modo.
-
+```{block2, type='rmdtip'}
+__Osservazione.__ Che cos'è la "maledizione della dimensionalità"? È molto facile da capire.  Supponiamo di utilizzare una griglia di 100 punti equispaziati. Nel caso di un solo parametro, sarà necessario calcolare 100 valori. Per due parametri devono essere  calcolari $100^2$ valori. Ma già per 10 parametri avremo bisogno di calcolare $10^{10}$ valori -- è facile capire che una tale quantità di calcoli è troppo grande anche per un computer molto potente. Per modelli che richiedono la stima di un numero non piccolo di parametri è dunque necessario procedere in un altro modo.
+```
 
 ## Approssimazione quadratica 
 
@@ -57,40 +63,53 @@ In realtà, l'approssimazione quadratica è poco usata in pratica, perché per p
 
 ## Integrazione con metodo Monte Carlo 
 
-Prima di introdurre i metodi MCMC per la stima della funzione a posteriori, spendiamo due parole sul metodo Monte Carlo quale tecnica che consente il calcolo degli integrali mediante simulazione numerica. Il termine Monte-Carlo si riferisce al fatto che per la computazione si ricorre ad un ripetuto campionamento casuale attraverso la generazioni di sequenze di numeri casuali.
+Questi algoritmi estraggono campioni da una distribuzione target mediante la seguente procedura (1) facendo una proposta per un nuovo valore casuale del parametro sconosciuto (o dei parametri sconosciuti) e poi (2) accettando o rifiutando tala proposta. Se entrambi questi passaggi vengono eseguiti correttamente, i valori accettati dei parametri costituiranno dei campioni casuali della distribuzione target.
+
+L'idea è semplice: per calcolare le statistiche che ci interessano -- solitamente, una qualche misura di tendenza centrale e un qualche intervallo che contiene una data proporzione della massa della distribuzione -- non abbiamo bisogno di conoscere l'esatta funzione di densità della distribuzione a posteriori $p(\theta \mid \mathcal{Y})$. È sufficiente, per la ragione spiegata nella sezione successiva, riuscire a ottenere un grande numero di campioni __casuali__ della distribuzione a posteriori.  Se tali campioni che estraiamo dalla distribuzione a posteriori sono veramente casuali, allora le statistiche che ci interessano, ovvero una qualche misura di tendenza centrale e un qualche intervallo che contiene una data proporzione della massa della distribuzione, saranno stimati con esattezza. E come facciamo a sapere che un insieme di campioni della distribuzione a posteriori è veramente estratto in maniera casuale da $p(\theta \mid \mathcal{Y})$? Basta che, seguendo il secondo passo descritto sopra, decidiamo se accettare o rifiutare il valore proposto del parametro in base ad una regola che dipende dal valore della densità di $p(\theta \mid \mathcal{Y})$ in corrispondenza della proposta. E un valore che sia __proporzionale__ a tale densità è facile da ottenere: infatti non è altro che il prodotto della funzione a priori e della verosimiglianza in corrispondenza del valore della proposta. Questo è in essenza l'algoritmo di Metropolis. 
+Prima di introdurre i metodi MCMC per la stima della funzione a posteriori, spendiamo però qualche parola sul metodo Monte Carlo. 
 
 
 ## Legge forte dei grandi numeri 
 
-L'integrazione con metodo Monte Carlo trova la sua giustificazione nella *Legge forte dei grandi numeri* la quale può essere espressa nei termini seguenti. Data una successione di variabili casuali $Y_{1}, Y_{2},\dots, Y_{n},\dots$ indipendenti e identicamente distribuite con media $\mu$, ne segue che
+Il termine Monte-Carlo si riferisce al fatto che per la computazione si ricorre ad un ripetuto campionamento casuale attraverso la generazioni di sequenze di numeri casuali.
+Una delle sue applicazioni più potenti è il calcolo degli integrali mediante simulazione numerica. 
+
+Consideriamo la formula del valore atteso di una variabile aleatoria continua:
+$$
+\mathbb{E}(X) = \int_{-\infty}^{+\infty} x f(x) dx
+$$
+Il calcolo del valore atteso, in questo caso, richiede che si facciano le somme dei prodotti $x f(x)$ per tutti gli infinitesimi "incrementi" $dx$ per tutti i possibili valori $X$.
+Vediamo ora come si possa risolvere un problema di questo tipo in maniera semplice, senza dovere calcolare l'integrale esatto per via analitica.
+
+In generale, diciamo che l'integrazione con metodo Monte Carlo trova la sua giustificazione nella *Legge forte dei grandi numeri* la quale, in termini formali, può essere espressa nel modo seguente. Data una successione di variabili casuali $Y_{1}, Y_{2},\dots, Y_{n},\dots$ indipendenti e identicamente distribuite con media $\mu$, ne segue che
 $$
 P\left( \lim_{n \rightarrow \infty} \frac{1}{n} \sum_{i=1}^n Y_i = \mu \right) = 1.
 $$
 Ciò significa che, al crescere di $n$, la media delle realizzazioni di $Y_{1}, Y_{2},\dots, Y_{n},\dots$ converge con probabilità 1 al vero valore $\mu$.
 
-Un esempio della legge forte dei grandi numeri riguarda una serie di lanci di una moneta dove $Y=1$ significa "testa" e $Y=0$ significa "croce". Per la legge forte dei grandi numeri, nel caso di una moneta equilibrata la proporzione di eventi "testa" converge alla vera probabilità dell'evento "testa" 
+Possiamo fornire un esempio intuitivo della legge forte dei grandi numeri facendo riferimento ad una serie di lanci di una moneta dove $Y=1$ significa "testa" e $Y=0$ significa "croce". Per la legge forte dei grandi numeri, nel caso di una moneta equilibrata la proporzione di eventi "testa" converge alla vera probabilità dell'evento "testa" 
 $$
 \frac{1}{n} \sum_{i=1}^n Y_i \rightarrow \frac{1}{2}
 $$ 
 con probabilità di uno.
 
-Quello che è stato detto sopra non è che un modo sofisticato per dire che, se vogliamo calcolare un'approssimazione del valore atteso di una variabile aleatoria, non dobbiamo fare altro che la media aritmetica di un grande numero di realizzazione di tale variabile aleatoria. Come è facile intuire, l'approssimazione migliora al crescere del numero di dati che abbiamo a disposizione.
+Quello che è stato detto sopra non è che un modo sofisticato per dire che, se vogliamo calcolare un'approssimazione del valore atteso di una variabile aleatoria, non dobbiamo fare altro che la media aritmetica di un grande numero di realizzazioni della variabile aleatoria. Come è facile intuire, l'approssimazione migliora al crescere del numero di dati che abbiamo a disposizione. Questa è la giustificazione dell'affermazione precedente secondo la quale una stima del valore atteso di $p(\theta \mid \mathcal{Y})$ può essere ottenuta mediante un grande numero di campioni casuali della distribuzionea a posteriori.
 
 
 ## Metodi MC basati su Catena di Markov 
 
-I metodi Monte Carlo basati su Catena di Markov consentono di costruire sequenze di punti (le "catene") nello spazio dei parametri, la cui densità è proporzionale alla distribuzione di probabilità a posteriori a cui siamo interessati. Questo, evidentemente, è il risultato vorremmo
-ottenere. Ma cosa sono le catene di Markov? In termini formali possiamo dire che una catena di Markov è una sequenza di variabili aleatorie $Y_{1}, Y_{2},\dots, Y_{n}$ tale che la dipendenza della distribuzione di $Y_{i+1}$ dai valori di $Y_{1}, \dots, Y_{i}$ è interamente dovuta al
-valore di $Y_i$, cioè il passaggio ad uno stato del sistema dipende unicamente dallo stato immediatamente precedente e non dal come si è giunti a tale stato (dalla storia). Per questo motivo si dice che un processo markoviano è senza memoria.
+Abbiamo chiarito il problema che vogliamo risolvere all'interno dell'analisi Bayesiana, ovvero costruire la distribuzione a posteriori del parametro di interesse avendo osservato i dati. La costruzione della distribuzione a posteriori, in generale, richiede il calcolo di un integrale "intrattabile" per via analitica. Quindi affrontiamo il problema in un altro modo, ovvero facciamo una simulazione numerica che produce un risultato approssimato (ma sufficientemente preciso per tutti gli scopi pratici). A tale scopo usiamo i cosiddetti _metodi Monte Carlo basati su Catena di Markov_ i quali consentono di costruire sequenze di punti (le "catene") nello spazio dei parametri, la cui densità è proporzionale alla distribuzione a posteriori -- in altre parole, consentono di ottenere un grande numero di campioni casuali dalla distribuzione a posteriori.
 
-In generale è possibile generare catene di Markov che convergono ad una soluzione unica e stazionaria tale per cui gli elementi della catena sono campioni dalla distribuzione di interesse. Nel caso dell'inferenza Bayesiana la distribuzione di interesse è la distribuzione a posteriori, $p(\theta \mid x)$. Le catene di Markov possono quindi essere utilizzate per stimare i valori di aspettazione di variabili rispetto alla distribuzione a posteriori. In altre parole, possiamo utilizzare le catene di Markov per stimare i valori a posteriori dei parametri sconosciuti di un modello statistico -- un esempio è il parametro $p$ nel problema del mappamondo che abbiamo discusso in precedenza.
+```{block2, type='rmdtip'}
+__Osservazione.__ Ma cosa sono esattamente le catene di Markov? In termini formali possiamo dire che una catena di Markov è una sequenza di variabili aleatorie $Y_{1}, Y_{2},\dots, Y_{n}$ tale che la dipendenza della distribuzione di $Y_{i+1}$ dai valori di $Y_{1}, \dots, Y_{i}$ è interamente dovuta al valore di $Y_i$, cioè il passaggio ad uno stato del sistema dipende unicamente dallo stato immediatamente precedente e non dal come si è giunti a tale stato (dalla storia). Per questo motivo si dice che un processo markoviano è senza memoria. In altre parole, tale "assenza di memoria" può essere interpretata come lo strumento mediante il quale è possibile ottenere un insieme di campioni casuali della distribuzione di interesse. 
+Nel caso dell'inferenza Bayesiana la distribuzione di interesse è la distribuzione a posteriori, $p(\theta \mid \mathcal{Y})$. Le catene di Markov possono quindi essere utilizzate per stimare i valori di aspettazione di variabili rispetto alla distribuzione a posteriori. In altre parole, possiamo utilizzare le catene di Markov per stimare i valori a posteriori dei parametri sconosciuti di un modello statistico -- un esempio è fornito dal parametro $p$ del problema del mappamondo che abbiamo discusso in precedenza.
+```
 
 La generazioni di elementi di una catena ha una natura probabilistica e esistono diversi algoritmi per costruire catene di Markov. Due aspetti da tenere in considerazione sotto questo punto di vista sono il periodo di *burn-in* e le correlazioni tra punti. Al crescere degli step della catena si ottiene una migliore approssimazione della distribuzione target. All'inizio del campionamento però la distribuzione può essere significativamente lontana dalla distribuzione stazionaria. Ci vuole un certo tempo prima di raggiungere la distribuzione stazionaria di equilibrio e tale periodo è detto di *burn-in*. Perciò i campioni provenienti da tale parte iniziale della catena vanno tipicamente scartati poiché non rappresentano accuratamente la distribuzione desiderata.
 
-Normalmente, un algoritmo MCMC genera catene di Markov di campioni, ognuno dei quali è autocorrelato a quelli generati immediatamente prima e dopo di lui. Conseguentemente campioni successivi non sono indipendenti ma formano una catena di Markov con un certo grado di
-correlazione. Questa correlazione introduce una distorsione nella soluzione che si ottiene con questo metodo. L'arte dei diversi algoritmi MCMC risiede nel rendere il meccanismo efficiente e capace di produrre un risultato non distorto, il che implica la riduzione al minimo del tempo di *burn-in* e della correlazione tra i diversi campioni.
+Normalmente, un algoritmo MCMC genera catene di Markov di campioni, ognuno dei quali è autocorrelato a quelli generati immediatamente prima e dopo di lui. Conseguentemente campioni successivi non sono indipendenti ma formano una catena di Markov con un certo grado di correlazione. Questa correlazione introduce una distorsione nella soluzione che si ottiene con questo metodo. L'arte dei diversi algoritmi MCMC risiede nel rendere il meccanismo efficiente e capace di produrre un risultato non distorto, il che implica la riduzione al minimo del tempo di *burn-in* e della correlazione tra i diversi campioni.
 
-Presentiamo ora, in una forma intuitiva, l'algoritmo di Metropolis, ovvero il primo algoritmo MCMC che è stato proposto. Tale algoritmo è stato sviluppato in seguito per renderlo via via più efficiente. Il nostro obiettivo, però, è solo quello di capire la logica sottostante -- lasciamo che siano gli ingegneri a risolvere il problema di rendere l'algoritmo più efficiente.
+Presentiamo ora, in una forma intuitiva, l'algoritmo di Metropolis, ovvero il primo algoritmo MCMC che è stato proposto. Tale algoritmo è stato sviluppato in seguito per renderlo via via più efficiente. Il nostro obiettivo, però, è solo quello di illustrare la logica sottostante -- lasciamo che siano gli ingegneri a risolvere il problema di rendere l'algoritmo più efficiente.
 
 ## Il problema del turista viaggiatore 
 
@@ -132,8 +151,7 @@ Essendo in vacanza, il turista non vuole preparare un calendario che stabilisca 
     turista cambi spiaggia (ovvero $\frac{5}{6}$) è uguale al numero di
     conchiglie diviso per il numero originale di sassolini.
 
-Decidere di procedere in questo modo potrebbe sembrare un modo per rovinarsi le vacanze. Invece, questo algoritmo funziona! Seguendo la proposta di Metropolis, il turista passerà su ciascuna
-spiaggia un numero di giorni proporzionale alla grandezza della spiaggia.
+Decidere di procedere in questo modo potrebbe sembrare un modo per rovinarsi le vacanze. Invece, questo algoritmo funziona! Seguendo la proposta di Metropolis, il turista passerà su ciascuna spiaggia un numero di giorni proporzionale alla grandezza della spiaggia.
 
 @McElreath_rethinking ha implementato in R l'algoritmo di Metropolis che abbiamo descritto sopra nel modo seguente:
 
@@ -190,16 +208,18 @@ L'algoritmo di Metropolis funziona anche se il turista decide di spostarsi dalla
 
 ## L'algoritmo di Metropolis 
 
-L'algoritmo descritto nella sezione [Il problema del turista viaggiatore](#sec:turista_viagg) è un caso speciale dell'algoritmo di Metropolis e l'algoritmo di Metropolis è un caso speciale dei
-metodi MCMC. L'algoritmo di Metropolis, al di là dell'uso che ne fa il fortunato turista dell'esempio discusso in precedenza, viene in realtà impiegato per per ottenere una sequenza di campioni casuali da una distribuzione a posteriori la cui forma è, solitamente, sconosciuta. Fuor di metafora:
+L'algoritmo descritto nella sezione [Il problema del turista viaggiatore](#sec:turista_viagg) è un caso speciale dell'algoritmo di Metropolis e l'algoritmo di Metropolis è un caso speciale dei metodi MCMC. L'algoritmo di Metropolis, al di là dell'uso che ne fa il fortunato turista dell'esempio discusso in precedenza, viene in realtà impiegato per per ottenere una sequenza di campioni casuali da una distribuzione a posteriori la cui forma è, solitamente, sconosciuta. Fuor di metafora:
 
--   i __numeri che identificano ciascuna spiaggia__ corrispondono ai valori del parametro che vogliamo stimare -- non è necessario che il parametro assuma solo valori discreti, può anche assumere un insieme continuo di valori;
+- i __numeri che identificano ciascuna spiaggia__ corrispondono ai valori del parametro che vogliamo stimare -- non è necessario che il parametro assuma solo valori discreti, può anche assumere un insieme continuo di valori;
 
--   la __grandezza della spiaggia__ corrisponde alla densità a posteriori associata a ciascuno dei possibili valori del parametro;
+- la __grandezza della spiaggia__ corrisponde alla densità a posteriori associata a ciascuno dei possibili valori del parametro;
 
--   i __giorni di permanenza su una spiaggia__ corrispondono al numero di campioni estratti dalla distribuzione a posteriori.
+- i __giorni di permanenza su una spiaggia__ corrispondono al numero di campioni estratti dalla distribuzione a posteriori.
 
 L'aspetto cruciale di questa discussione è il fatto che, all'aumentare delle ripetizioni dell'algoritmo di Metropolis, la distribuzione dei valori così ottenuti diventa via via più simile alla distribuzione a posteriori del parametro $\theta$, anche se questa è sconosciuta. Per un grande numero di passi della catena l'approssimazione è sufficiente. Con questo metodo è dunque possibile generare un grande numero di campioni casuali dalla distribuzione a posteriori per poi poterne calcolare misure di sintesi e potere fare inferenza.
+
+L'esempio precedente ci presenta, in maniera intuitiva, è la logica dell'algoritmo di Metropolis. Una illustrazione visiva di come si svolge questo processo di "esplorazione" di $p(\theta \mid \mathcal{Y})$ è fornita in questo [post](https://elevanth.org/blog/2017/11/28/build-a-better-markov-chain/). 
+
 
 ## Una applicazione concreta 
 
@@ -215,9 +235,9 @@ ovvero
 $$
 P(\theta \mid x) \propto P(x \mid \theta)P(\theta)
 $$
-L'algoritmo di Metropolis è la versione più semplice e più conosciuta degli algoritmi MCMC. Vediamo come funziona.
+L'algoritmo di Metropolis è la versione più semplice e più conosciuta degli algoritmi MCMC. Guardiamolo ora più da vicino cercando, di nuovo, di sviluppare un intuizione della logica che sta alla base di esso. Abbiamo detto in precedenza che, fondamentalmente, l'algoritmo di Metropolis fa due cose: (1) genera una proposta per un nuovo valore casuale del parametro sconosciuto e (2) accetta o rifiuta tala proposta. Vediamo in concreto come questo viene fatto.
 
-- Per prima cosa troviamo un valore casuale del parametro estraendolo da una distribuzione "proposta": $\theta_0 \sim \Pi(\theta)$. La distribuzione proposta può essere qualunque distribuzione, anche se, idealmente, è meglio che sia simile alla distribuzione a posteriori. Ma in pratica la distribuzione a posteriori è sconosciuta e quindi utilizziamo un qualche metodo arbitrario di iniziare la catena di Markov (ovvero utilizziamo un valore iniziale arbitrario).
+- Per prima cosa troviamo un valore casuale del parametro estraendolo da una distribuzione "proposta": $\theta_0 \sim \Pi(\theta)$. La distribuzione proposta può essere _qualunque_ distribuzione, anche se, idealmente, è meglio che sia simile alla distribuzione a posteriori. Ma in pratica la distribuzione a posteriori è sconosciuta e quindi utilizziamo un qualche metodo arbitrario di iniziare la catena di Markov (ovvero utilizziamo un valore iniziale arbitrario).
 
 - In ciascuna iterazione $t$ viene proposto un nuovo valore del parametro, $\theta'_t$. Il valore $\theta'_t$ viene estratto in maniera casuale da una qualsiasi distribuzione simmetrica centrata sul valore del parametro dell'interazione precedente, $t-1$. Ad esempio, possiamo usare la distribuzione Normale con una appropriata deviazione standard: $\theta_t \sim \mathcal{N}(\theta_{t-1}, \sigma)$. In pratica, questo significa che il valore proposto del parametro sarà un valore nella prossimità di quello attualmente considerato.
 
@@ -228,7 +248,7 @@ L'algoritmo di Metropolis è la versione più semplice e più conosciuta degli a
 Per fare un esempio concreto, consideriamo nuovamente i 30 pazienti esaminati da @zetsche_future_2019 e discussi nella sezione [Un esempio pratico](#sec:es_pratico_zetsche). Di essi, 23 hanno manifestato delle aspettative distorte negativamente sul loro stato d'animo futuro. Utilizzando l'algoritmo di Metropolis, ci poniamo il problema di ottenere la stima a posteriori di $\theta$ (probabilità di manifestare un'aspettativa distorta negativamente) dati i 23 "successi" in 30 prove e usando la stessa distribuzione a priori per $\theta$ che è stata usata nella sezione [Un esempio pratico (versione 2)](#sec:aspett_future_beta2_10). 
 
 
-## Verosimiglianza 
+### Verosimiglianza 
 
 Per trovare la funzione di verosimiglianza usando i 30 valori di @zetsche_future_2019 definisco la funzione  `likelihood()` come indicato sotto. Tale funzione ritorna l'ordinata della funzione di verosimiglianza binomiale per ciascun valore del vettore `param` che viene dato in input alla funzione.
 
@@ -251,7 +271,7 @@ data.frame(x=param, y=likelihood(param)) %>%
 ```
 
 
-## Distribuzione a priori 
+### Distribuzione a priori 
 
 Se abbiamo ragioni forti per avere delle aspettative rispetto al valore possibile della nostra stima, una distribuzione a priori *informativa* verrà combinata con le informazioni fornite dal campione per produrre una stima ``razionale'' a posteriori. Nel caso presente utilizziamo la distribuzione informativa presentata nella sezione [Un esempio pratico (versione 2)](#sec:aspett_future_beta2_10) unicamente a scopo esemplicativo, ovvero per fare in modo da "allontanare" la distribuzione a posteriori dalla distribuzione di verosimiglianza. 
 
@@ -270,7 +290,7 @@ data.frame(x=param, y=prior(param)) %>%
   )
 ```
 
-## Distribuzione a posteriori 
+### Distribuzione a posteriori 
 
 Abbiamo visto in precedenza come la funzione a posteriori è data dal prodotto della densità a priori e della verosimiglianza. 
 
@@ -291,7 +311,7 @@ data.frame(x=param, y=posterior(param)) %>%
 Questo è il risultato che vogliamo ottenere utilizzando l'algoritmo di Metropolis.  Dalla figura precedente vediamo che la moda della distribuzione a posteriori è pari a circa 0.6. Questo è il valore più verosimile a posteriori per il parametro $\theta$.
 
 
-## Algoritmo di Metropolis 
+### Algoritmo di Metropolis 
 
 Implementiamo ora l'algoritmo di Metropolis. Utilizziamo una distribuzione proposta gaussiana. Il valore proposto da tale distribuzione ausiliaria corrisponde ad un valore selezionato a caso da una distribuzione gaussiana con media uguale al valore del parametro attualmente considerato nella catena e con una deviazione standard ``adeguata''. In questo esempio, la deviazione standard è stata scelta empiricamente in modo tale da ottenere un tasso di accettazione sensato. È stato mostrato che un tasso di accettazione ottimale dovrebbe essere tra il 20% e il 30%. Se il tasso di accettazione è troppo grande, infatti, l'algoritmo esplora uno spazio troppo ristretto della distribuzione a posteriori. Il tasso di accettazione è influenzato dalla distribuzione proposta: in generale, tanto più la distribuzione proposta è simile alla distribuzione target, tanto più alto diventa il tasso di accettazione.
 
@@ -381,7 +401,6 @@ mean(chain[-(1:burnIn)])
 ```
 
 
-
 <!-- Nella funzione precedente, le prime due righe definiscono un vettore, chiamato `chain`, dove vengono salvati i valori del parametro che sono campionati dalla distribuzione a posteriori, e inizializzano tale vettore utilizzando il valore iniziale che verrà prescelto in seguito. Il ciclo `for ()` viene utilizzato per specificare i valori della passeggiata aleatoria (*random walk*) che definisce l'insieme di punti che vengono campionati dalla distribuzione a posteriori. L'algoritmo procede nel modo seguente. -->
 
 <!-- - Si inizia scegliendo un valore a caso del parametro. -->
@@ -450,4 +469,8 @@ La determinazione della distribuzione a posteriori richiede il calcolo della fun
 
 Invece di approcci matematici analitici, un'altra classe di metodi fa ricorso all'approssimazione numerica dell'integrale. Tale approssimazione numerica dipende dall'uso di metodi MCMC, ovvero dipende dall'uso di una classe di algoritmi per il campionamento da distribuzioni di probabilità che sono estremamente onerosi dal punto di vista computazionale e che possono essere utilizzati nelle applicazioni pratiche solo grazie alla grande potenza di calcolo dei moderni computer. Lo sviluppo di software che rendono sempre più semplice l'uso dei metodi MCMC, insieme all'incremento della potenza di calcolo dei computer, ha contribuito a rendere sempre più popolare il metodo dell'inferenza Bayesiana che, in questo modo, può essere estesa a
 problemi di qualunque grado di complessità.
+
+Come ci ricorda Richard McElreath, nel 1989 erano popolari i Depeche Mode, fu rilasciata la prima versione di Microsoft Office, grandi dimostrazioni popolari contribuirono ad abbattere il muro di Berlino e un gruppo di statistici nel Regno Unito si posero il problema di come potere simulare le catene di Markov su un personal computer. Nel 1997 ci riuscirono, con il primo rilascio pubblico di un'implementazione Windows dell'inferenza bayesiana basata su Gibbs sampling, detta BUGS. Quello che discutiamo in questo insegnamento sono gli sviluppi contemporanei del percorso che 
+
+è iniziato in questo modo.
 

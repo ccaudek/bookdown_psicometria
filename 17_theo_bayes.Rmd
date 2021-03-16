@@ -252,8 +252,9 @@ che, quando una moneta viene lanciata, la probabilità di osservare
 l'esito "testa" è 0.6. Per semplicità, sia $\theta$ la probabilità di
 osservare l'esito "testa". Per una moneta del primo tipo, dunque,
 $\theta = 0.6$. Per una moneta del secondo tipo, invece, la probabilità
-di produrre l'esito "testa" è 0.4. Ovvero, $\theta = 0.4$. Noi
-possediamo una moneta, ma non sappiamo se è del primo tipo o del secondo
+di produrre l'esito "testa" è 0.4. Ovvero, $\theta = 0.4$. 
+
+Noi possediamo una moneta, ma non sappiamo se è del primo tipo o del secondo
 tipo. Sappiamo solo che il 75% delle monete sono del primo tipo e il 25%
 sono del secondo tipo. Sulla base di questa conoscenza *a priori* --
 ovvero sulla base di una conoscenza ottenuta senza avere eseguito
@@ -271,75 +272,93 @@ ipotesi? In altre parole, ci chiediamo qual è la probabilità di ciascuna
 ipotesi alla luce dei dati che sono stati osservati: $P(H \mid x)$,
 laddove $x$ sono i dati osservati. Tale probabilità si chiama
 probabilità a posteriori. Inoltre, se confrontiamo le due ipotesi, ci
-chiediamo quale valore assuma il rapporto
-$\frac{P(H_1 \mid x)}{P(H_2 \mid x)}$. Tale rapporto ci dice quanto è
-più probabile $H_1$ rispetto ad $H_2$, alla luce dei dati osservati.
-Infine, ci chiediamo come cambia il rapporto definito sopra, quando
-osserviamo via via nuovi risultati prodotti dal lancio della moneta.
+chiediamo quale valore assuma il rapporto $\frac{P(H_1 \mid x)}{P(H_2 \mid x)}$. 
+Tale rapporto ci dice quanto è più probabile $H_1$ rispetto ad $H_2$, alla luce dei dati osservati.
+Infine, ci chiediamo come cambia il rapporto definito sopra, quando osserviamo via via nuovi risultati prodotti dal lancio della moneta.
 
-Definiamo il problema in maniera più chiara. Conosciamo le probabilità a
-priori, ovvero $P(H_1) = 0.75$ e $P(H_1) = 0.25$. Quello che vogliamo
-conoscere sono le probabilità a posteriori $P(H_1 \mid x)$ e
-$P(H_2 \mid x)$. Per trovare le probabilità a posteriori applichiamo il
-teorema di Bayes: $$P(H_1 \mid x) = \frac{P(x \mid H_1) P(H_1)}{P(x)} = 
-\frac{P(x \mid H_1) P(H_1)}{P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2)},$$
-laddove lo sviluppo del denominatore deriva da un'applicazione del
-teorema della probabilità totale. Inoltre, $$P(H_2 \mid x) = 
-\frac{P(x \mid H_2) P(H_2)}{P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2)}.$$
+Definiamo il problema in maniera più chiara. 
+Conosciamo le probabilità a priori, ovvero $P(H_1) = 0.75$ e $P(H_1) = 0.25$. 
+Quello che vogliamo conoscere sono le probabilità a posteriori $P(H_1 \mid x)$ e
+$P(H_2 \mid x)$. 
 
-La probabilità $P(x \mid H_1)$ si chiama *verosimiglianza* e descrive la
-plausibilità dei dati osservati in base all'ipotesi considerata. Se
-consideriamo l'ipotesi $H_1$ = "la probabilità di testa è 0.6", allora
-la verosimiglianza dei dati $\{T, C\}$ è $0.6 \times 0.4 = 0.24.$
-Dunque, $P(x \mid H_1) = 0.24$. Se invece consideriamo l'ipotesi $H_2$ =
-"la probabilità di testa è 0.4", allora la verosimiglianza dei dati
-$\{T, C\}$ è $0.4 \times 0.6 = 0.24$, ovvero, $P(x \mid H_2) = 0.24$. In
-base alle due ipotesi $H_1$ e $H_2$, dunque, i dati osservati hanno la
-medesima plausibilità. Per semplicità, calcoliamo anche
-$$\begin{aligned}
-P(x) &= P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2) = 0.24 \cdot 0.75 + 0.24 \cdot 0.25 = 0.24.\notag\end{aligned}$$
+Per trovare le probabilità a posteriori applichiamo il teorema di Bayes: 
+$$
+P(H_1 \mid x) = \frac{P(x \mid H_1) P(H_1)}{P(x)} = 
+\frac{P(x \mid H_1) P(H_1)}{P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2)}
+$$
+laddove lo sviluppo del denominatore deriva da un'applicazione del teorema della probabilità totale. 
+Inoltre, 
+$$
+P(H_2 \mid x) = 
+\frac{P(x \mid H_2) P(H_2)}{P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2)}.
+$$
+Se consideriamo l'ipotesi $H_1$ = "la probabilità di testa è 0.6", allora
+la verosimiglianza dei dati $\{T, C\}$, ovvero la probabilità di osservare questa specifica sequenza di T e C, è uguale a $0.6 \times 0.4 = 0.24.$
+Dunque, $P(x \mid H_1) = 0.24$. 
 
-Le probabilità a posteriori diventano: $$\begin{aligned}
-P(H_1 \mid x) &= \frac{P(x \mid H_1) P(H_1)}{P(x)} = \frac{0.24 \cdot 0.75}{0.24} = 0.75,\notag\end{aligned}$$
-$$\begin{aligned}
-P(H_2 \mid x) &= \frac{P(x \mid H_2) P(H_2)}{P(x)} = \frac{0.24 \cdot 0.25}{0.24} = 0.25.\notag\end{aligned}$$
-Possiamo dunque concludere dicendo che, sulla base dei dati osservati,
-l'ipotesi $H_1$ ha una probabilità 3 volte maggiore di essere vera
-dell'ipotesi $H_2$.
+Se invece consideriamo l'ipotesi $H_2$ = "la probabilità di testa è 0.4", allora la verosimiglianza dei dati $\{T, C\}$ è $0.4 \times 0.6 = 0.24$, ovvero, $P(x \mid H_2) = 0.24$. 
+In base alle due ipotesi $H_1$ e $H_2$, dunque, i dati osservati hanno la
+medesima plausibilità di essere osservati. 
+Per semplicità, calcoliamo anche
+$$
+\begin{aligned}
+P(x) &= P(x \mid H_1) P(H_1) + P(x \mid H_2) P(H_2) = 0.24 \cdot 0.75 + 0.24 \cdot 0.25 = 0.24.\notag
+\end{aligned}
+$$
 
-È tuttavia possibile raccogliere più evidenze e, sulla base di esse, le
-probabilità a posteriori cambieranno. Supponiamo di lanciare la moneta
-una terza volta e di osservare croce. I nostri dati saranno dunque
-$\{T, C, C\}$. Di conseguenza,
-$P(x \mid H_1) = 0.6 \cdot 0.4 \cdot 0.4 = 0.096$ e
-$P(x \mid H_2) = 0.4 \cdot 0.6 \cdot 0.6 = 0.144$. Ne segue che le
-probabilità a posteriori diventano: $$\begin{aligned}
-P(H_1 \mid x) &= \frac{P(x \mid H_1) P(H_1)}{P(x)} = \frac{0.096 \cdot 0.75}{0.096 \cdot 0.75 + 0.144 \cdot 0.25} = 0.667,\notag\end{aligned}$$
+Le probabilità a posteriori diventano: 
+$$
+\begin{aligned}
+P(H_1 \mid x) &= \frac{P(x \mid H_1) P(H_1)}{P(x)} = \frac{0.24 \cdot 0.75}{0.24} = 0.75,\notag
+\end{aligned}
+$$
+$$
+\begin{aligned}
+P(H_2 \mid x) &= \frac{P(x \mid H_2) P(H_2)}{P(x)} = \frac{0.24 \cdot 0.25}{0.24} = 0.25.\notag
+\end{aligned}
+$$
+Possiamo dunque concludere dicendo che, sulla base dei dati osservati, l'ipotesi $H_1$ ha una probabilità 3 volte maggiore di essere vera dell'ipotesi $H_2$.
+
+È tuttavia possibile raccogliere più evidenze e, sulla base di esse, le probabilità a posteriori cambieranno. 
+Supponiamo di lanciare la moneta una terza volta e di osservare croce. 
+I nostri dati dunque sono $\{T, C, C\}$. 
+
+Di conseguenza, $P(x \mid H_1) = 0.6 \cdot 0.4 \cdot 0.4 = 0.096$ e $P(x \mid H_2) = 0.4 \cdot 0.6 \cdot 0.6 = 0.144$. 
+Ne segue che le probabilità a posteriori diventano: 
+$$
+\begin{aligned}
+P(H_1 \mid x) &= \frac{P(x \mid H_1) P(H_1)}{P(x)} = \frac{0.096 \cdot 0.75}{0.096 \cdot 0.75 + 0.144 \cdot 0.25} = 0.667,\notag
+\end{aligned}
+$$
 $$\begin{aligned}
 P(H_2 \mid x) &= \frac{P(x \mid H_2) P(H_2)}{P(x)} = \frac{0.144 \cdot 0.25}{0.096 \cdot 0.75 + 0.144 \cdot 0.25} = 0.333.\notag\end{aligned}$$
 In queste circostanze, le evidenze che favoriscono $H_1$ nei confronti
-di $H_2$ sono pari solo ad un fattore di 2.
+di $H_2$ sono solo pari ad un fattore di 2.
 
 Se otteniamo ancora croce in un quarto lancio della moneta, i nostri
-dati saranno: $\{T, C, C, C\}$. Ripetendo il ragionamento fatto sopra,
+dati diventano: $\{T, C, C, C\}$. 
+Ripetendo il ragionamento fatto sopra,
 $P(x \mid H_1) = 0.6 \cdot 0.4 \cdot 0.4 \cdot 0.4 = 0.0384$ e
-$P(x \mid H_2) = 0.4 \cdot 0.6 \cdot 0.6 \cdot 0.6 = 0.0864$. Dunque
-$$\begin{aligned}
-P(H_1 \mid x) &= \frac{0.0384 \cdot 0.75}{0.0384 \cdot 0.75 + 0.0864 \cdot 0.25} = 0.571,\notag\end{aligned}$$
-$$\begin{aligned}
-P(H_2 \mid x) &= \frac{0.0864 \cdot 0.25}{0.0384 \cdot 0.75 + 0.0864 \cdot 0.25} = 0.429.\notag\end{aligned}$$
+$P(x \mid H_2) = 0.4 \cdot 0.6 \cdot 0.6 \cdot 0.6 = 0.0864$. 
+
+Dunque
+$$
+\begin{aligned}
+P(H_1 \mid x) &= \frac{0.0384 \cdot 0.75}{0.0384 \cdot 0.75 + 0.0864 \cdot 0.25} = 0.571,\notag
+\end{aligned}
+$$
+$$
+\begin{aligned}
+P(H_2 \mid x) &= \frac{0.0864 \cdot 0.25}{0.0384 \cdot 0.75 + 0.0864 \cdot 0.25} = 0.429.\notag
+\end{aligned}
+$$
 e le evidenze a favore di $H_1$ si riducono a 1.33. Se si ottenesse un
 altro esito croce in un sesto lancio della moneta, l'ipotesi $H2$
 diventerebbe più probabile dell'ipotesi $H_1$.
 
-In conclusione, questo esercizio ci fa capire come sia possibile, sulla
-base delle evidenze disponibili, passare da credenze a priori a credenze
-a posteriori. Se prima di lanciare la moneta ritenevamo che l'ipotesi
-$H_1$ fosse tre volte più plausibile dell'ipotesi $H_2$, dopo avere
-osservato uno specifico campione di dati siamo giunti alla conclusione
-opposta. Il processo di aggiornamento Bayesiano ci fornisce dunque un
-metodo per modificare il livello di fiducia in una data ipotesi, alla
-luce di nuova informazione.
+In conclusione, questo esercizio ci fa capire come sia possibile aggiornare le nostre credenze sulla base delle evidenze disponibili, ovvero come sia possibile passare da un grado di conoscenza del mondo a priori a una conoscenza a posteriori. 
+Se prima di lanciare la moneta ritenevamo che l'ipotesi $H_1$ fosse tre volte più plausibile dell'ipotesi $H_2$, dopo avere osservato uno specifico campione di dati siamo giunti alla conclusione opposta. 
+Il processo di aggiornamento Bayesiano, dunque, ci fornisce un metodo per modificare il livello di fiducia in una data ipotesi, alla luce di nuove informazioni.
 
 ## Conclusioni {-}
 

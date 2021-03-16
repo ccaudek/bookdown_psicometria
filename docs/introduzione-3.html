@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Introduzione | Data Science per psicologi</title>
+<meta name="author" content="Corrado Caudek">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Data Science per psicologi</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Benvenuti</a></li>
+<li class="book-part">Obiettivi formativi</li>
+<li><a class="" href="conoscenza-dichiarativa-e-imperativa.html"><span class="header-section-number">1</span> Conoscenza dichiarativa e imperativa</a></li>
+<li class="book-part">Introduzione al linguaggio R</li>
+<li><a class="" href="introduzione.html">Introduzione</a></li>
+<li><a class="" href="chapter-pacchetti.html"><span class="header-section-number">2</span> Pacchetti</a></li>
+<li><a class="" href="chapter-install-r.html"><span class="header-section-number">3</span> Per cominciare</a></li>
+<li><a class="" href="chapter-sintassi.html"><span class="header-section-number">4</span> Sintassi di base</a></li>
+<li><a class="" href="chapter-strutture-dati.html"><span class="header-section-number">5</span> Strutture di dati</a></li>
+<li><a class="" href="chapter-strut-contr.html"><span class="header-section-number">6</span> Strutture di controllo</a></li>
+<li><a class="" href="chapter-input-output.html"><span class="header-section-number">7</span> Input/Output</a></li>
+<li><a class="" href="manipolazione-dei-dati.html"><span class="header-section-number">8</span> Manipolazione dei dati</a></li>
+<li><a class="" href="flusso-di-lavoro-riproducibile.html"><span class="header-section-number">9</span> Flusso di lavoro riproducibile</a></li>
+<li class="book-part">Statistica descrittiva ed analisi esplorativa dei dat̀i</li>
+<li><a class="" href="introduzione-1.html">Introduzione</a></li>
+<li><a class="" href="terminologia.html"><span class="header-section-number">10</span> Terminologia</a></li>
+<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">11</span> La misurazione in psicologia</a></li>
+<li><a class="" href="chapter-descript.html"><span class="header-section-number">12</span> Statistica descrittiva</a></li>
+<li class="book-part">Nozioni di base</li>
+<li><a class="" href="introduzione-2.html">Introduzione</a></li>
+<li><a class="" href="il-calcolo-delle-probabilit%C3%A0.html"><span class="header-section-number">13</span> Il calcolo delle probabilità</a></li>
+<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">14</span> Probabilità condizionata</a></li>
+<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
+<li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
+<li><a class="" href="la-distribuzione-binomiale.html"><span class="header-section-number">17</span> La distribuzione binomiale</a></li>
+<li><a class="" href="funzioni-di-densit%C3%A0-di-probabilit%C3%A0.html"><span class="header-section-number">18</span> Funzioni di densità di probabilità</a></li>
+<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
+<li class="book-part">Inferenza frequentista</li>
+<li><a class="active" href="introduzione-3.html">Introduzione</a></li>
+<li><a class="" href="distribuzione-campionaria.html"><span class="header-section-number">20</span> Distribuzione campionaria</a></li>
+<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">21</span> Significatività statistica</a></li>
+<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">22</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">23</span> Critiche e difese</a></li>
+<li class="book-part">Inferenza Bayesiana</li>
+<li><a class="" href="introduzione-4.html">Introduzione</a></li>
+<li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">24</span> Modellistica bayesiana</a></li>
+<li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">25</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="sintesi-a-posteriori.html"><span class="header-section-number">26</span> Sintesi a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">27</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">28</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">29</span> Inferenza Bayesiana</a></li>
+<li class="book-part">Informazioni generali</li>
+<li><a class="" href="citazione.html">Citazione</a></li>
+<li class="book-part">Appendici</li>
+<li><a class="" href="un-piccolo-ripasso.html">Un piccolo ripasso</a></li>
+<li><a class="" href="bibliografia.html">Bibliografia</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introduzione-3" class="section level1 unnumbered">
+<h1>Introduzione<a class="anchor" aria-label="anchor" href="#introduzione-3"><i class="fas fa-link"></i></a>
+</h1>
+<p>La statistica inferenziale è un insieme di tecniche che ci consentono di fare inferenze da un campione ad una specifica popolazione.<br>
+In altri termini, l’inferenza statistica può essere descritta come un insieme di operazioni sui dati che producono delle stime e delle affermazioni sul grado di incertezza che il ricercatore attribuisce alle sue previsioni e ai parametri di processi e/o popolazioni.
+Inizieremo la nostra discussione definendo alcuni concetti di base.</p>
+<div id="parametri-e-statistiche" class="section level2" number="19.4">
+<h2>
+<span class="header-section-number">19.4</span> Parametri e statistiche<a class="anchor" aria-label="anchor" href="#parametri-e-statistiche"><i class="fas fa-link"></i></a>
+</h2>
+<p>In statistica, per <em>popolazione</em> si intende un insieme di elementi che
+presenta caratteristiche aleatorie, mentre per <em>campione</em> si intende un
+sottoinsieme della popolazione. Ma a cosa corrisponde in pratica la
+popolazione? Per uno psicologo la popolazione è un gruppo di individui.
+Per un biologo marino la popolazione è un gruppo di delfini, ad esempio.
+Nella maggior parte dei casi, le popolazioni oggetto di interesse per i
+ricercatori sono insiemi di entità concrete che esistono nel mondo
+reale. Dal punto di vista della statistica, invece, le popolazioni sono
+delle entità astratte. Infatti, gli statistici operazionalizzano il
+concetto di “popolazione” nei termini di un oggetto matematico che
+consente di essere manipolato con facilità. In precedenza noi abbiamo
+già incontrato questi oggetti matematici: sono le distribuzioni di
+probabilità.</p>
+<p>L’idea è semplice. Supponiamo di occuparci del quoziente di
+intelligenza, QI. Abbiamo detto che, per uno psicologo, la popolazione
+di interesse solitamente è un gruppo di individui, ciascuno dei quali è
+dotato di uno specifico punteggio del QI. Uno statistico “semplifica”
+tale situazione definendo in maniera operativa la popolazione come la
+distribuzione di densità rappresentata nella
+figura <a href="introduzione-3.html#fig:qidensity">19.3</a>. In precedenza abbiamo visto infatti
+come una distribuzione di densità non sia altro che la descrizione
+matematica della “forma” di un istogramma che rappresenta un numero
+molto alto di osservazioni.</p>
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/sinhrks/ggfortify">"ggfortify"</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/ggfortify/man/ggdistribution.html">ggdistribution</a></span><span class="op">(</span><span class="va">dnorm</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">60</span>, <span class="fl">140</span>, <span class="fl">0.1</span><span class="op">)</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    x <span class="op">=</span> <span class="st">"Quoziente d'intelligenza"</span>,
+    y <span class="op">=</span> <span class="st">"Densità di probabilità"</span>
+  <span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span id="fig:qidensity"></span>
+<img src="Data-Science-per-psicologi_files/figure-html/qidensity-1.png" alt="Grafico della distribuzione dei punteggi del QI nella popolazione." width="90%"><p class="caption">
+Figura 19.3: Grafico della distribuzione dei punteggi del QI nella popolazione.
+</p>
+</div>
+<p>I test di intelligenza sono progettati in modo che il QI medio sia pari
+a 100, la deviazione standard dei punteggi QI sia uguale a 15 e la
+distribuzione dei punteggi del QI sia normale. I valori riportati sopra
+sono detti <em>parametri</em> in quanto descrivono le proprietà dell’intera
+popolazione. Cioè, diciamo che la media della popolazione è <span class="math inline">\(\mu = 100\)</span>
+e la deviazione standard della popolazione è <span class="math inline">\(\sigma = 15\)</span>. Dal punto di
+vista statistico, dunque, possiamo rappresentare questa ipotetica
+popolazione di valori del QI mediante l’oggetto matematico che
+corrisponde a una particolare distribuzione Normale:</p>
+<p><span class="math display">\[
+QI \sim \mathcal{N}(\mu = 100, \sigma = 15).
+\]</span>
+Supponiamo ora di eseguire un esperimento nel quale il test di
+intelligenza viene somministrato a 100 persone selezionate a caso. Tale
+campione casuale semplice consiste nel seguente insieme di 100 numeri:</p>
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="va">iq1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">15</span><span class="op">)</span>
+<span class="co"># i valori QI sono numeri interi!</span>
+<span class="va">iq1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">iq1</span><span class="op">)</span> 
+<span class="va">iq1</span>
+<span class="co">#&gt;   [1]  92  97 123 101 102 126 107  81  90  93 118 105 106 102  92 127 107  71 111  93</span>
+<span class="co">#&gt;  [21]  84  97  85  89  91  75 113 102  83 119 106  96 113 113 112 110 108  99  95  94</span>
+<span class="co">#&gt;  [41]  90  97  81 133 118  83  94  93 112  99 104 100  99 121  97 123  77 109 102 103</span>
+<span class="co">#&gt;  [61] 106  92  95  85  84 105 107 101 114 131  93  65 115  89  90 115  96  82 103  98</span>
+<span class="co">#&gt;  [81] 100 106  94 110  97 105 116 107  95 117 115 108 104  91 120  91 133 123  96  85</span></code></pre></div>
+<p>Tali valori sono stati trovati utilizzando la funzione <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> che genera numeri casuali estratti da una distribuzione normale. Nello specifico, abbiamo estratto 100 valori casuali dalla distribuzione normale con media 100 e deviazione standard 15. Se costruiamo un istogramma con i dati di un tale campione otteniamo il grafico mostrato nella figura <a href="introduzione-3.html#fig:histogramqi">19.4</a>.</p>
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">iq1</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iq1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">..density..</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    x <span class="op">=</span> <span class="st">"Quoziente d'intelligenza"</span>,
+    y <span class="op">=</span> <span class="st">"Densità"</span>
+  <span class="op">)</span>
+<span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span id="fig:histogramqi"></span>
+<img src="Data-Science-per-psicologi_files/figure-html/histogramqi-1.png" alt="Istogramma della distribuzione dei punteggi del QI in un campione di 100 osservazioni." width="90%"><p class="caption">
+Figura 19.4: Istogramma della distribuzione dei punteggi del QI in un campione di 100 osservazioni.
+</p>
+</div>
+<p>Come possiamo vedere, l’istogramma ha approssimativamente la forma corretta, ma è un’approssimazione molto cruda della distribuzione della popolazione mostrata nella figura <a href="introduzione-3.html#fig:qidensity">19.3</a>. Se calcoliamo la media del campione, otteniamo un numero abbastanza vicino alla media della popolazione di 100, ma non identico: nel campione considerato la media e la deviazione standard sono uguali a:</p>
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">iq1</span><span class="op">)</span>
+<span class="co">#&gt; [1] 101.42</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">iq1</span><span class="op">)</span>
+<span class="co">#&gt; [1] 13.66643</span></code></pre></div>
+<p>Queste <em>statistiche campionarie</em> descrivono le proprietà di uno specifico campione che è stato osservato e, sebbene siano abbastanza simili ai parametri della popolazione, non
+sono uguali ad essi. In generale, le statistiche campionarie sono ciò
+che è possibile calcolare a partire dai dati osservati sul campione
+mentre i parametri della popolazione sono ciò che vorremmo conoscere.</p>
+</div>
+<div id="la-legge-dei-grandi-numeri" class="section level2" number="19.5">
+<h2>
+<span class="header-section-number">19.5</span> La legge dei grandi numeri<a class="anchor" aria-label="anchor" href="#la-legge-dei-grandi-numeri"><i class="fas fa-link"></i></a>
+</h2>
+<p>Nella sezione <a href="#sec:pars_and_sample_stats">Parametri e statistiche</a> abbiamo considerato i risultati di un esperimento casuale nel quale sono stati osservati i valori
+fittizi del QI di un campione di ampiezza <span class="math inline">\(n = 100\)</span>. I risultati sono
+incoraggianti: la media campionaria di 101.42 ci fornisce
+un’approssimazione ragionevole della media della popolazione
+<span class="math inline">\(\mu = 100\)</span>. In molti studi un tale livello di precisione è accettabile,
+ma in altre situazioni è necessario essere più precisi.</p>
+<p>Cosa dobbiamo fare se vogliamo che le statistiche campionarie siano più
+vicine ai parametri della popolazione? La risposta è ovvia: dobbiamo
+raccogliere più dati. Supponiamo dunque di condurre un nuovo esperimento
+nel quale misuriamo il QI di 10000 persone. Possiamo simulare i
+risultati di questo esperimento usando R:</p>
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
+<span class="va">iq2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10000</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> 
+<span class="va">iq2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">iq2</span><span class="op">)</span> 
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iq2</span><span class="op">)</span>
+<span class="co">#&gt; [1]  92  97 123 101 102 126</span></code></pre></div>
+<p>Nella figura <a href="introduzione-3.html#fig:histogramqi2">19.5</a> è riportato l’istogramma dei valori del QI di
+questo campione più numeroso. È chiaro che, in questo secondo caso,
+otteniamo un’approssimazione migliore rispetto al precedente campione
+più piccolo. Ciò si riflette anche nelle statistiche del campione:</p>
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">iq2</span><span class="op">)</span>
+<span class="co">#&gt; [1] 99.9671</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">iq2</span><span class="op">)</span>
+<span class="co">#&gt; [1] 14.9855</span></code></pre></div>
+<p>Questi valori sono molto vicini ai parametri della popolazione.</p>
+<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">iq2</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iq2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">..density..</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    x <span class="op">=</span> <span class="st">"Quoziente d'intelligenza"</span>,
+    y <span class="op">=</span> <span class="st">"Densità"</span>
+  <span class="op">)</span>
+<span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span id="fig:histogramqi2"></span>
+<img src="Data-Science-per-psicologi_files/figure-html/histogramqi2-1.png" alt="Istogramma della distribuzione dei punteggi del QI in un campione di 10000 osservazioni." width="90%"><p class="caption">
+Figura 19.5: Istogramma della distribuzione dei punteggi del QI in un campione di 10000 osservazioni.
+</p>
+</div>
+<p>Il messaggio, un po’ banale, che ricaviamo a questa simulazione è che,
+generalmente, i campioni di dimensioni maggiori forniscono informazioni
+migliori. Ho chiamato “banali” i risultati di questa simulazione perché
+dovrebbe essere evidente a tutti che le cose stanno così. Infatti,
+questo punto è talmente ovvio che, quando Jacob Bernoulli – uno dei
+fondatori della teoria della probabilità – formalizzò questa idea nel
+1713, commentò il risultato nel modo seguente:</p>
+<blockquote>
+<p>Perché anche il più stupido degli uomini, basandosi soltanto sul suo istinto, da solo e senza alcuna istruzione (il che è notevole), è convinto che maggiore è il numero di osservazioni, minore è il pericolo di sbagliare.</p>
+</blockquote>
+<p>In statistica questa intuizione va sotto il nome di <em>Legge dei grandi
+numeri</em>. La Legge dei grandi numeri ci dice che la media aritmetica di
+un campione di <span class="math inline">\(n\)</span> osservazioni (in termini tecnici: di <span class="math inline">\(n\)</span> variabili
+aleatorie <span class="math inline">\(X_i\)</span> indipendenti e identicamente distribuite), ovvero
+<span class="math inline">\(\frac{1}{n}\sum_{i=1}^nX_i\)</span>, per <span class="math inline">\(n\)</span> crescente tende o converge al
+valore atteso teorico <span class="math inline">\(\mu\)</span>. La Legge dei grandi numeri è uno degli
+strumenti più importanti della statistica.</p>
+
+<div class="rmdnote">
+Si noti che la Legge dei grandi numeri non può dirci se lo strumento o l’esperimento considerati stiano producendo dei dati utili o dei dati che è sensato riassumere tramite la media. Ad esempio, se il dispositivo di misurazione è difettoso, la media di molte misurazioni sarà una stima molto accurata della cosa sbagliata! Questo è un esempio di errore sistematico, o errore di campionamento, che sono qualcosa di molto diverso dal fenomeno di fluttuazione casuale che viene descritto dalla Legge dei grandi numeri.
+</div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></div>
+<div class="next"><a href="distribuzione-campionaria.html"><span class="header-section-number">20</span> Distribuzione campionaria</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#introduzione-3">Introduzione</a></li>
+<li><a class="nav-link" href="#parametri-e-statistiche"><span class="header-section-number">19.4</span> Parametri e statistiche</a></li>
+<li><a class="nav-link" href="#la-legge-dei-grandi-numeri"><span class="header-section-number">19.5</span> La legge dei grandi numeri</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>
