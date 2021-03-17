@@ -33,6 +33,14 @@ eq:prob-total-1b
 eq:bayes1
 thm:theo-bayes
 eq:bayes2
+def:unnamed-chunk-167
+exr:unnamed-chunk-169
+exr:unnamed-chunk-171
+def:unnamed-chunk-173
+exr:unnamed-chunk-174
+def:unnamed-chunk-175
+def:unnamed-chunk-176
+exr:unnamed-chunk-177
 fig:rethinkingmodlearn
 eq:binomwater
 eq:likebino69
@@ -277,6 +285,14 @@ proprietà
 eventi
 funzioni-di-probabilità-marginali
 indipendenza-stocastica
+valore-atteso-e-varianza-di-variabili-aleatorie-discrete
+valore-atteso
+interpretazione
+varianza-di-una-v.a.-discreta
+formula-alternativa-per-la-varianza
+deviazione-standard-1
+standardizzazione
+funzione-di-ripartizione
 la-distribuzione-binomiale
 una-prova-bernoulliana
 una-sequenza-di-prove-bernoulliane
@@ -285,7 +301,7 @@ funzioni-di-densità-di-probabilità
 distribuzione-normale
 concentrazione-della-distribuzione-normale
 funzione-di-ripartizione-della-distribuzione-normale
-standardizzazione
+standardizzazione-1
 distribuzione-chi-quadrato
 distribuzione-t-di-student
 distribuzione-beta
@@ -396,7 +412,7 @@ stima-puntuale
 intervallo-di-credibilità
 intervallo-di-credibilità-a-code-uguali
 intervallo-di-credibilità-a-densità-a-posteriori-più-alta
-interpretazione
+interpretazione-1
 un-esempio-concreto
 indici-di-sintesi-della-distribuzione-a-posteriori
 probabilità-della-distribuzione-a-posteriori

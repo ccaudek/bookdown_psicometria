@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capitolo 17 Valore atteso e varianza di variabili aleatorie discrete | Data Science per psicologi</title>
+<meta name="author" content="Corrado Caudek">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Data Science per psicologi</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Benvenuti</a></li>
+<li class="book-part">Obiettivi formativi</li>
+<li><a class="" href="conoscenza-dichiarativa-e-imperativa.html"><span class="header-section-number">1</span> Conoscenza dichiarativa e imperativa</a></li>
+<li class="book-part">Introduzione al linguaggio R</li>
+<li><a class="" href="introduzione.html">Introduzione</a></li>
+<li><a class="" href="chapter-pacchetti.html"><span class="header-section-number">2</span> Pacchetti</a></li>
+<li><a class="" href="chapter-install-r.html"><span class="header-section-number">3</span> Per cominciare</a></li>
+<li><a class="" href="chapter-sintassi.html"><span class="header-section-number">4</span> Sintassi di base</a></li>
+<li><a class="" href="chapter-strutture-dati.html"><span class="header-section-number">5</span> Strutture di dati</a></li>
+<li><a class="" href="chapter-strut-contr.html"><span class="header-section-number">6</span> Strutture di controllo</a></li>
+<li><a class="" href="chapter-input-output.html"><span class="header-section-number">7</span> Input/Output</a></li>
+<li><a class="" href="manipolazione-dei-dati.html"><span class="header-section-number">8</span> Manipolazione dei dati</a></li>
+<li><a class="" href="flusso-di-lavoro-riproducibile.html"><span class="header-section-number">9</span> Flusso di lavoro riproducibile</a></li>
+<li class="book-part">Statistica descrittiva ed analisi esplorativa dei dat̀i</li>
+<li><a class="" href="introduzione-1.html">Introduzione</a></li>
+<li><a class="" href="terminologia.html"><span class="header-section-number">10</span> Terminologia</a></li>
+<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">11</span> La misurazione in psicologia</a></li>
+<li><a class="" href="chapter-descript.html"><span class="header-section-number">12</span> Statistica descrittiva</a></li>
+<li class="book-part">Nozioni di base</li>
+<li><a class="" href="introduzione-2.html">Introduzione</a></li>
+<li><a class="" href="il-calcolo-delle-probabilit%C3%A0.html"><span class="header-section-number">13</span> Il calcolo delle probabilità</a></li>
+<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">14</span> Probabilità condizionata</a></li>
+<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
+<li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
+<li><a class="active" href="valore-atteso-e-varianza-di-variabili-aleatorie-discrete.html"><span class="header-section-number">17</span> Valore atteso e varianza di variabili aleatorie discrete</a></li>
+<li><a class="" href="la-distribuzione-binomiale.html"><span class="header-section-number">18</span> La distribuzione binomiale</a></li>
+<li><a class="" href="funzioni-di-densit%C3%A0-di-probabilit%C3%A0.html"><span class="header-section-number">19</span> Funzioni di densità di probabilità</a></li>
+<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">20</span> La funzione di verosimiglianza</a></li>
+<li class="book-part">Inferenza frequentista</li>
+<li><a class="" href="introduzione-3.html">Introduzione</a></li>
+<li><a class="" href="distribuzione-campionaria.html"><span class="header-section-number">21</span> Distribuzione campionaria</a></li>
+<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">22</span> Significatività statistica</a></li>
+<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">23</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">24</span> Critiche e difese</a></li>
+<li class="book-part">Inferenza Bayesiana</li>
+<li><a class="" href="introduzione-4.html">Introduzione</a></li>
+<li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">25</span> Modellistica bayesiana</a></li>
+<li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">26</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="sintesi-a-posteriori.html"><span class="header-section-number">27</span> Sintesi a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">28</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">29</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">30</span> Inferenza Bayesiana</a></li>
+<li class="book-part">Informazioni generali</li>
+<li><a class="" href="citazione.html">Citazione</a></li>
+<li class="book-part">Appendici</li>
+<li><a class="" href="un-piccolo-ripasso.html">Un piccolo ripasso</a></li>
+<li><a class="" href="bibliografia.html">Bibliografia</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="valore-atteso-e-varianza-di-variabili-aleatorie-discrete" class="section level1" number="17">
+<h1>
+<span class="header-section-number">Capitolo 17</span> Valore atteso e varianza di variabili aleatorie discrete<a class="anchor" aria-label="anchor" href="#valore-atteso-e-varianza-di-variabili-aleatorie-discrete"><i class="fas fa-link"></i></a>
+</h1>
+<p>Spesso risulta utile fornire una rappresentazione sintetica della
+distribuzione di una variabile aleatoria attraverso degli indicatori
+caratteristici piuttosto che dare una sua rappresentazione completa
+mediante la funzione di ripartizione o la funzione di massa di
+probabilità. Una descrizione più sintetica di una variabile aleatoria,
+tramite pochi valori, ci consente di cogliere le caratteristiche
+essenziali della distribuzione, quali: la posizione, cioè il baricentro
+della distribuzione di probabilità; la variabilità, cioè la dispersione
+della distribuzione di probabilità attorno ad un centro; la forma della
+distribuzione di probabilità, considerando la simmetria e la curtosi
+(pesantezza delle code). In questo capitolo introdurremo quegli indici
+sintetici che descrivono il centro di una distribuzione di probabilità e
+la sua variabilità.</p>
+<div id="valore-atteso" class="section level2" number="17.1">
+<h2>
+<span class="header-section-number">17.1</span> Valore atteso<a class="anchor" aria-label="anchor" href="#valore-atteso"><i class="fas fa-link"></i></a>
+</h2>
+<p>Quando vogliamo conoscere il comportamento tipico di una variabile
+aleatoria spesso vogliamo sapere qual è il suo “valore tipico.” La
+nozione di “valore tipico,” tuttavia, è ambigua. Infatti, ad essa
+possiamo attribuire almeno tre definizioni diverse:</p>
+<ul>
+<li><p>la <em>media</em> (somma dei valori divisa per il numero dei valori),</p></li>
+<li><p>la <em>mediana</em> (il valore centrale della distribuzione, quando la
+variabile è ordinata in senso crescente o decrescente),</p></li>
+<li><p>la <em>moda</em> (il valore che ricorre più spesso).</p></li>
+</ul>
+<p>Per esempio, la media di <span class="math inline">\(\{3, 1, 4, 1, 5\}\)</span> è
+<span class="math inline">\(\frac{3+1+4+1+5}{5} = 2.8\)</span>, la mediana è <span class="math inline">\(3\)</span> e la moda è <span class="math inline">\(1\)</span>. Tuttavia,
+la teoria delle probabilità si occupa di variabili aleatorie piuttosto
+che di sequenze di numeri. Diventa dunque necessario precisare che cosa
+intendiamo per “valore tipico” quando facciamo riferimento alle
+variabili aleatorie.</p>
+<p>Supponiamo di ripetere un esperimento casuale molte volte in modo tale
+che ciascun valore <span class="math inline">\(X\)</span> si presenti con una frequenza approssimativamente
+uguale alla sua probabilità. Per esempio, possiamo lanciare una coppia
+di dadi e osservare i valori di <span class="math inline">\(S\)</span> = “somma dei punti” e di <span class="math inline">\(P\)</span> =
+“prodotto dei punti.” Il problema che ci poniamo è quello di definire il
+“valore tipico” di una variabile aleatoria in modo tale che tale che
+esso corrisponda al valore medio dei valori della variabile aleatoria,
+se l’esperimento casuale venisse ripetuto tante volte. Giungiamo così
+alla seguente definizione.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-167" class="definition"><strong>Definizione 17.1  </strong></span>Il valore atteso di una variabile aleatoria discreta <span class="math inline">\(X\)</span> definita su uno
+spazio campionario <span class="math inline">\(\Omega\)</span> è
+<span class="math display">\[
+\mathbb{E}(X) = \sum_{x \in X(\Omega)} x \cdot P(X = x).
+\]</span>
+</div>
+<p>Nell’espressione precedente, <span class="math inline">\(X(\Omega)\)</span> si riferisce all’insieme di
+tutti i valori che la variabile aleatoria <span class="math inline">\(X\)</span> può assumere. A parole: se
+la variabile aleatoria discreta <span class="math inline">\(X\)</span> assume i valori <span class="math inline">\(x_1, \dots, x_k\)</span>
+con probabilità <span class="math inline">\(P(X = x_1), \dots, P(X = x_k)\)</span>, allora il valore atteso
+di <span class="math inline">\(X\)</span> è dato dalla somma di ciascun valore che <span class="math inline">\(X\)</span> può assumere,
+ciascuno moltiplicato per la probabilità di verificarsi. Si scrive
+<span class="math display">\[
+\mathbb{E}(X) = \sum_{\omega \in \Omega} X(\omega) P(\omega).
+\]</span></p>
+<p>Consideriamo nuovamente l’esercizio sulla variabile aleaoria che corrisponde alla somma dei punti prodotti dal lancio di due dati e calcoliamo il valore atteso
+della variabile aleatoria <span class="math inline">\(S\)</span>. Riproduco nuovamente la distribuzione di massa di probabilità di <span class="math inline">\(S\)</span> nella tabella seguente:</p>
+<div id="tab:massa_prob_due_dadi_on_tr">
+<div class="inline-table"><table class="table table-sm">
+<caption>Distribuzione di massa di probabilità per la somma dei punti
+prodotti dal lancio di due dadi bilanciati (<span class="math inline">\(P_0\)</span>) e di due dadi
+truccati (<span class="math inline">\(P_1\)</span>).</caption>
+<thead><tr class="header">
+<th align="center">s</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+<th align="center">9</th>
+<th align="center">10</th>
+<th align="center">11</th>
+<th align="center">12</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(P_0(S = s)\)</span></td>
+<td align="center"><span class="math inline">\(\frac{1}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{2}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{3}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{4}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{5}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{6}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{5}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{4}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{3}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{2}{36}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{1}{36}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(P_1(S = s)\)</span></td>
+<td align="center"><span class="math inline">\(\frac{4}{64}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{4}{64}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{5}{64}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{6}{64}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{7}{64}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{12}{64}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{7}{64}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{6}{64}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{5}{64}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{4}{64}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{4}{64}\)</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Il valore atteso di <span class="math inline">\(S\)</span> è
+<span class="math display">\[
+\mathbb{E}(S_0) = \sum_{i=1}^{11} X_i \cdot P(X_i) = 2 \cdot \frac{1}{36} + 3 \cdot \frac{2}{36} + \dots + 12 \cdot \frac{1}{36} = 7
+\]</span>
+se facciamo riferimento alla distribuzione <span class="math inline">\(P_{0}\)</span> (dadi equilibrati), ed è uguale a <span class="math inline">\(7\)</span>
+<span class="math display">\[
+\mathbb{E}(S_1) = \sum_{i=1}^{11} X_i \cdot P(X_i) = 2 \cdot \frac{4}{64} + 3 \cdot \frac{4}{64} + \dots + 12 \cdot \frac{4}{64} = 7
+\]</span>
+se facciamo riferimento alla distribuzione <span class="math inline">\(P_1\)</span> (dadi truccati).</p>
+<div id="interpretazione" class="section level3" number="17.1.1">
+<h3>
+<span class="header-section-number">17.1.1</span> Interpretazione<a class="anchor" aria-label="anchor" href="#interpretazione"><i class="fas fa-link"></i></a>
+</h3>
+<p>Che interpretazione può essere assegnata alla nozione di valore atteso?
+Il valore atteso di una variabile aleatoria non è altro che una media.
+Possiamo pensare al valore atteso della variabile aleatoria <span class="math inline">\(X\)</span>come alla
+media di un enorme numero di realizzazioni di <span class="math inline">\(X\)</span>. Se potessimo
+esaminare un numero infinito di realizzazioni di <span class="math inline">\(X\)</span>, allora la media di
+tali infiniti valori sarebbe esattamente uguale al valore atteso di <span class="math inline">\(X\)</span>.
+Da un certo punto di vista, dunque, il concetto di valore atteso di una
+variabile aleatoria è molto semplice: è solo la media della popolazione
+della variabile aleatoria. Allora perché abbiamo bisogno di introdurre
+un concetto diverso da quello di ‘media?’ La risposta è che la media
+aritmetica è una somma divisa per <span class="math inline">\(n\)</span>:
+<span class="math display">\[
+\bar{X} = \frac{\sum_{i=1}^n x_i}{n}
+\]</span>
+Tuttavia, le variabili aleatorie generano un numero infinito di valori. Dividere per infinito
+non è possibile. È necessario dunque procedere in un altro modo.</p>
+<p>Possiamo dire che il valore atteso di una variabile aleatoria è una
+<em>media ponderata</em>. Una media di cosa? Di tutti gli eventi elementari
+dello spazio campionario. E in che modo ponderiamo gli eventi elementari
+dello spazio campionario? Moltiplicando ciascun evento elementare per la
+sua probabilità di verificarsi, come nell’esempio precedente, o per la sua densità di
+probabilità nel caso di variabili aleatorie continue (che vedremo in
+seguito).</p>
+<p>Il termine valore atteso è però un po’ fuorviante. Infatti, esso
+potrebbe non corrispondere a nessuno dei valori che possono essere
+generati dalla variabile aleatoria. Quindi il valore atteso non è
+‘atteso’ nel senso che ci aspettiamo di vederlo comparire spesso. Ci
+aspettiamo invece che sia simile alla media di qualsiasi campione
+sufficientemente grande di realizzazioni della variabile aleatoria:
+<span class="math display">\[
+\mathbb{E}(X) = \lim_{n \rightarrow \infty} \frac{1}{n} \sum_{i = 1}^n x_i.
+\]</span>
+Infatti, se una variabile aleatoria discreta <span class="math inline">\(X\)</span> ha una distribuzione di massa di probabilità <span class="math inline">\(f_X(x)\)</span>, allora il suo valore atteso sarà
+<span class="math display">\[
+\mathbb{E}(X) = \sum_{-\infty}^{\infty} x_i f_X(x_i).
+\]</span></p>
+</div>
+</div>
+<div id="varianza-di-una-v.a.-discreta" class="section level2" number="17.2">
+<h2>
+<span class="header-section-number">17.2</span> Varianza di una v.a. discreta<a class="anchor" aria-label="anchor" href="#varianza-di-una-v.a.-discreta"><i class="fas fa-link"></i></a>
+</h2>
+<p>La seconda più importante proprietà di una variabile aleatoria, dopo che conosciamo il suo valore atteso, è la <em>varianza</em>.</p>
+<p>La varianza della variabile aleatoria <span class="math inline">\(X\)</span> è definita come il valore atteso del quadrato delle distanze dei valori <span class="math inline">\(x\)</span> dal loro valore atteso:
+<span class="math display">\[
+var(X) = \mathbb{E} \Big[\big(X - \mathbb{E}(X)\big)^2\Big].
+\]</span></p>
+<p>Se denotiamo <span class="math inline">\(\mathbb{E}(X)\)</span> con <span class="math inline">\(\mu\)</span>, la varianza <span class="math inline">\(var(X)\)</span> diventa il valore atteso di <span class="math inline">\((X - \mu)^2\)</span>. Questo indica quanto sono “dispersi” i valori della variabile aleatoria relativamente al suo valore medio.</p>
+
+<div class="remark">
+ <span class="remark"><em>Osservazione. </em></span> Data una variabile aleatoria <span class="math inline">\(X\)</span> con valore atteso <span class="math inline">\(\mathbb{E}(X)\)</span>, le
+“distanze” tra i valori di <span class="math inline">\(X\)</span> e il valore atteso <span class="math inline">\(\mathbb{E}(X)\)</span>
+definiscono la variabile aleatoria <span class="math inline">\(X - \mathbb{E}(X)\)</span> chiamata <em>scarto</em>,
+oppure <em>deviazione</em> oppure <em>variabile aleatoria centrata</em>. La
+variabile <span class="math inline">\(X - \mathbb{E}(X)\)</span> equivale ad una traslazione di sistema di
+riferimento che porta il valore atteso nell’origine degli assi. Si
+può dimostrare facilmente che il valore atteso della variabile
+scarto <span class="math inline">\(X - \mathbb{E}(X)\)</span> vale zero, dunque la media di tale variabile non
+può essere usata per quantificare la “dispersione” dei valori di <span class="math inline">\(X\)</span>
+relativamente al suo valore medio. Occorre rendere sempre positivi i
+valori di <span class="math inline">\(X - \mathbb{E}(X)\)</span> e tale risultato viene ottenuto considerando
+la variabile aleatoria <span class="math inline">\(\left(X - \mathbb{E}(X)\right)^2\)</span>.
+</div>
+<p><br></p>
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-169" class="exercise"><strong>Esercizio 17.1  </strong></span>In un esercizio precedente abbiamo calcolato il valore atteso della variabile aleatoria <span class="math inline">\(S\)</span> che corrisponde alla somma dei punti ottenuti nel lancio di due dadi equilibrati, oppure nel caso di due dadi truccati aventi la distribuzione di massa di probabilità indicata sopra.
+Abbiamo trovato che entrambe le distribuzioni di massa di probabilità conducono al medesimo valore per la variabile aletoria <span class="math inline">\(S\)</span>. Ma cosa succede alla varianza di <span class="math inline">\(S\)</span> nei due casi?
+</div>
+
+<div class="solution">
+ <span class="solution"><em>Soluzione. </em></span> Nel caso dei dadi onesti, la variabile aleatoria
+<span class="math display">\[
+S = \{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}
+\]</span>
+ha la distribuzione di probabilità
+<span class="math display">\[
+\begin{split}
+P_0(S) = \{0.0278, 0.0556, 0.0833, 0.1111,  0.1389, 0.1667,\\ 0.1389, 0.1111, 0.0833, 0.0556, 0.0278\}.
+\end{split}
+\]</span>
+Dunque la varianza di <span class="math inline">\(S\)</span> diventa
+<span class="math display">\[
+\begin{aligned}
+var(S) &amp;= \sum \left(S- \mathbb{E}(S)\right)^2 \cdot P_0(S) \notag\\
+&amp;= (2 - 7)^2 \cdot 0.0278 + (3-7)^2 \cdot 0.0556 + \dots + (12 - 7)^2 \cdot 0.0278 \notag\\
+&amp;= 5.8333.\notag
+\end{aligned}
+\]</span>
+Nel caso dei dadi truccati, la distribuzione di probabilità di <span class="math inline">\(S\)</span> è
+<span class="math display">\[
+\begin{split}
+P_1(S) = \{0.0625, 0.0625, 0.0781, 0.0937, 0.1093, 0.1875,\\ 0.1093, 0.0937, 0.0781, 0.0625, 0.0625\}.
+\end{split}
+\]</span>
+Dunque la varianza di <span class="math inline">\(S\)</span> diventa
+<span class="math display">\[
+\begin{aligned}
+var(S) &amp;= \sum \left(S- \mathbb{E}(S)\right)^2 \cdot P_1(S) \notag\\
+&amp;= (2 - 7)^2 \cdot 0.0625 + (3-7)^2 \cdot 0.0625 + \dots + (12 - 7)^2 \cdot 0.0625\notag\\
+ &amp;= 7.5.\notag
+ \end{aligned}
+ \]</span>
+In conclusione, la variabile <span class="math inline">\(S\)</span> ha lo stesso valore atteso nel caso dei dadi onesti e nel caso dei dadi truccati. Tuttavia la varianza di <span class="math inline">\(S\)</span> è diversa nei due casi: la varianza di <span class="math inline">\(S\)</span> è più grande nel caso dei dadi truccati.
+</div>
+<div id="formula-alternativa-per-la-varianza" class="section level3" number="17.2.1">
+<h3>
+<span class="header-section-number">17.2.1</span> Formula alternativa per la varianza<a class="anchor" aria-label="anchor" href="#formula-alternativa-per-la-varianza"><i class="fas fa-link"></i></a>
+</h3>
+<p>C’è un modo più semplice per calcolare la varianza di una variabile aleatoria:
+<span class="math display">\[
+\begin{aligned}
+\mathbb{E}\Big[\big(X - \mathbb{E}(X)\big)^2\Big] &amp;= \mathbb{E}\big(X^2 - 2X\mathbb{E}(X) + \mathbb{E}(X)^2\big)\notag\\
+&amp;= \mathbb{E}(X^2) - 2\mathbb{E}(X)\mathbb{E}(X) + \mathbb{E}(X)^2,\notag
+\end{aligned}
+\]</span>
+dato che <span class="math inline">\(\mathbb{E}(X)\)</span> è una costante; pertanto
+<span class="math display">\[
+var(X) = \mathbb{E}(X^2) - \big(\mathbb{E}(X) \big)^2.
+\]</span>
+A parole: la varianza è la media dei quadrati meno il quadrato della media.</p>
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-171" class="exercise"><strong>Esercizio 17.2  </strong></span>Consideriamo la variabile aleatoria <span class="math inline">\(X\)</span> che corrisponde al numero di
+teste che si osservano nel lancio di una moneta truccata con probabilità
+di testa uguale a 0.8. Si calcoli la varianza di <span class="math inline">\(X\)</span> utilizzando la formula riportata sopra.
+</div>
+
+<div class="solution">
+ <span class="solution"><em>Soluzione. </em></span> Il valore atteso di <span class="math inline">\(X\)</span> è
+<span class="math display">\[
+\mathbb{E}(X) = 0 \cdot 0.2 + 1 \cdot 0.8 = 0.8.
+\]</span>
+Usando la formula tradizionale della varianza otteniamo:
+<span class="math display">\[
+var(X) = (0 - 0.8)^2 \cdot 0.2 + (1 - 0.8)^2 \cdot 0.8 = 0.16.
+\]</span> Lo
+stesso risultato si trova con la formula alternativa della varianza.
+Iniziamo a calcolare il valore atteso di <span class="math inline">\(X^2\)</span>:
+<span class="math display">\[\mathbb{E}(X^2) = 0^2 \cdot 0.2 + 1^2 * 0.8 = 0.8.\]</span>
+Troviamo ora la varianza:
+<span class="math display">\[
+var(X) = \mathbb{E}(X^2) - \big(\mathbb{E}(X) \big)^2 = 0.8 - 0.8^2 = 0.16.
+\]</span>
+</div>
+</div>
+<div id="deviazione-standard-1" class="section level3" number="17.2.2">
+<h3>
+<span class="header-section-number">17.2.2</span> Deviazione standard<a class="anchor" aria-label="anchor" href="#deviazione-standard-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Quando lavoriamo con le varianze, i termini sono innalzati al quadrato e
+quindi i numeri diventano molto grandi. Per trasformare nuovamente i
+valori nell’unità di misura della scala originaria si prende la radice
+quadrata. Il valore risultante viene chiamato <em>deviazione standard</em> e
+solitamente è denotato dalla lettera greca <span class="math inline">\(\sigma\)</span>.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-173" class="definition"><strong>Definizione 17.2  </strong></span>Si definisce scarto quadratico medio (o deviazione standard o scarto
+tipo) la radice quadrata della varianza:
+<span class="math display">\[
+    \sigma = \sqrt{var(X)}.
+\]</span>
+</div>
+<p>Interpretiamo la deviazione standard di una variabile aleatoria come
+nella statistica descrittiva: rappresenta la variazione <em>media</em> attesa
+nella distribuzione della variabile aleatoria.</p>
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-174" class="exercise"><strong>Esercizio 17.3  </strong></span>Per i dadi equilibrati e truccati dell’esercizio precedente, le deviazioni standard della
+variabile aleatoria <span class="math inline">\(S\)</span>, nel caso delle due diverse distribuzioni di massa di probabilità, sono pari rispettivamente a
+<span class="math inline">\(\sqrt{5.833} = 2.415\)</span> e <span class="math inline">\(\sqrt{7.5} = 2.739\)</span>.
+</div>
+</div>
+<div id="standardizzazione" class="section level3" number="17.2.3">
+<h3>
+<span class="header-section-number">17.2.3</span> Standardizzazione<a class="anchor" aria-label="anchor" href="#standardizzazione"><i class="fas fa-link"></i></a>
+</h3>
+
+<div class="definition">
+<span id="def:unnamed-chunk-175" class="definition"><strong>Definizione 17.3  </strong></span>Data una variabile aleatoria <span class="math inline">\(X\)</span>, si dice variabile standardizzata di
+<span class="math inline">\(X\)</span> l’espressione
+<span class="math display">\[
+\frac{X - \mathbb{E}(X)}{\sigma_X}.
+\]</span>
+</div>
+<p>Solitamente, una variabile standardizzata viene denotata con la lettera
+<span class="math inline">\(Z\)</span>.</p>
+</div>
+</div>
+<div id="funzione-di-ripartizione" class="section level2" number="17.3">
+<h2>
+<span class="header-section-number">17.3</span> Funzione di ripartizione<a class="anchor" aria-label="anchor" href="#funzione-di-ripartizione"><i class="fas fa-link"></i></a>
+</h2>
+<p>Il concetto di funzione di ripartizione è molto importante nella teoria
+della probabilità, sia nel caso discreto, che stiamo trattando ora, sia
+nel caso continuo, che affronteremo dopo. L’insieme
+<span class="math inline">\(\{\omega: X \leq x\}\)</span> è un evento in <span class="math inline">\(\Omega\)</span> e si può scrivere
+<span class="math inline">\((X \leq x)\)</span>. A tale evento è possibile assegnare una probabilità
+<span class="math inline">\(P(X \leq x)\)</span> che, al variare di <span class="math inline">\(x \in \mathbb{R}\)</span>, definisce la funzione di
+ripartizione della variabile aleatoria <span class="math inline">\(X\)</span>.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-176" class="definition"><strong>Definizione 17.4  </strong></span>Si chiama funzione di ripartizione o funzione di distribuzione della
+variabile aleatoria <span class="math inline">\(X\)</span> la funzione <span class="math inline">\(F(x)\)</span> definita da
+<span class="math display">\[
+F(x) \triangleq P(X \le x), \qquad x \in \mathbb{R}.
+\]</span>
+</div>
+<p>Detto in modo più semplice: la funzione di distribuzione cumulata, o funzione di
+ripartizione di <span class="math inline">\(X\)</span>, misura la probabilità che <span class="math inline">\(X\)</span> assuma valori minori
+o uguali a <span class="math inline">\(x\)</span>.</p>
+<p>La funzione di ripartizione è sempre non negativa, monotona non
+decrescente tra <span class="math inline">\(0\)</span> e <span class="math inline">\(1\)</span>, tale che:
+<span class="math display">\[
+\lim_{x \to -\infty} F_X(x) = F_X(-\infty) = 0, \quad \lim_{x \to +\infty} F_X(x) = F_X(+\infty) = 1.
+\]</span></p>
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-177" class="exercise"><strong>Esercizio 17.4  </strong></span>Consideriamo l’esperimento casuale corrispondente al lancio di due
+monete. Sia <span class="math inline">\(X\)</span> il numero di volte in cui esce testa. La distribuzione
+di probabilità di <span class="math inline">\(X\)</span> è:
+<span class="math display">\[
+P(x) = 
+\begin{cases}
+    0, &amp; 0.25,\\
+    1, &amp; 0.50,\\
+    2, &amp; 0.25.
+\end{cases}
+\]</span>
+La funzione di ripartizione di <span class="math inline">\(X\)</span> è:
+<span class="math display">\[
+F(x) = 
+\begin{cases}
+    0,   &amp; \text{se~} x &lt; 0,\\
+    1/4, &amp; \text{se~} 0 \leq x &lt; 1,\\
+    3/4, &amp; \text{se~} 1 \leq x &lt; 2,\\
+     1,  &amp; \text{se~} 2 \leq x.
+\end{cases}
+\]</span>
+Ad esempio, il valore della funzione di ripartizione in
+corrispondenza di <span class="math inline">\(x = 1.5\)</span> è:
+<span class="math display">\[
+F(1.5) = P(X \leq 1.5) = P(X=0) + P(X=1) = \frac{1}{4} + \frac{2}{4} = \frac{3}{4}.
+\]</span>
+</div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></div>
+<div class="next"><a href="la-distribuzione-binomiale.html"><span class="header-section-number">18</span> La distribuzione binomiale</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#valore-atteso-e-varianza-di-variabili-aleatorie-discrete"><span class="header-section-number">17</span> Valore atteso e varianza di variabili aleatorie discrete</a></li>
+<li>
+<a class="nav-link" href="#valore-atteso"><span class="header-section-number">17.1</span> Valore atteso</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#interpretazione"><span class="header-section-number">17.1.1</span> Interpretazione</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#varianza-di-una-v.a.-discreta"><span class="header-section-number">17.2</span> Varianza di una v.a. discreta</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#formula-alternativa-per-la-varianza"><span class="header-section-number">17.2.1</span> Formula alternativa per la varianza</a></li>
+<li><a class="nav-link" href="#deviazione-standard-1"><span class="header-section-number">17.2.2</span> Deviazione standard</a></li>
+<li><a class="nav-link" href="#standardizzazione"><span class="header-section-number">17.2.3</span> Standardizzazione</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#funzione-di-ripartizione"><span class="header-section-number">17.3</span> Funzione di ripartizione</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>

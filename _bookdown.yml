@@ -15,11 +15,13 @@ language:
     prp: 'Proposizione '
     cnj: 'Congettura '
     def: 'Definizione '
-    exm: 'Esempio '
-    exr: 'Exercizio '
+    example: 'Esempio. '
+    exercise: 'Esercizio '
     proof: 'Dimostrazione. '
     remark: 'Osservazione. '
     solution: 'Soluzione. '
+    exm: 'Esempio '
+    exr: 'Esercizio '
   ui:
     chapter_name: 'Capitolo '
 
@@ -46,6 +48,7 @@ rmd_files: [
   "16_prob_condiz.Rmd",
   "17_theo_bayes.Rmd",
   "18_prob_congiunta.Rmd",
+  "18a_exp_val_variance.Rmd",
   "19_binom_distr.Rmd",
   "20_density_distr.Rmd",
   "21_likelihood.Rmd",
