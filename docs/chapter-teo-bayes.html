@@ -106,22 +106,22 @@ situazione al caso di una partizione in un qualunque numero di
 sottoinsiemi.</p>
 
 <div class="theorem">
-<span id="thm:theo-prob-tot" class="theorem"><strong>Teorema 15.1  </strong></span>Sia <span class="math inline">\(\{A_1, A_2, A_3\}\)</span> una partizione dello spazio campionario
+<span id="thm:theo-prob-tot" class="theorem"><strong>Teorema 15.1  </strong></span>Sia <span class="math inline">\(\{H_1, H_2, H_3\}\)</span> una partizione dello spazio campionario
 <span class="math inline">\(\Omega\)</span>. Se <span class="math inline">\(E\)</span> è un qualunque altro evento, allora:
 <span class="math display" id="eq:prob-total-1a">\[\begin{equation}
-P(E) = P(E \cap A_1) + P(E \cap A_2) + P(E \cap A_3) \notag
+P(E) = P(E \cap H_1) + P(E \cap H_2) + P(E \cap H_3) \notag
 \tag{15.1}
 \end{equation}\]</span>
 ovvero
 <span class="math display" id="eq:prob-total-1b">\[\begin{equation}
-P(E) = P(E \mid A_1) P(A_1) + P (E \mid A_2) P(A_2) + P(E \mid A_3) P(A_3).
+P(E) = P(E \mid H_1) P(H_1) + P (E \mid H_2) P(H_2) + P(E \mid H_3) P(H_3).
 \tag{15.2}
 \end{equation}\]</span>
 </div>
 <p>Il teorema della probabilità totale afferma che, se l’evento <span class="math inline">\(E\)</span> è
-costituito da tutti gli eventi elementari in <span class="math inline">\(E \cap A_1\)</span>, <span class="math inline">\(E \cap A_2\)</span>
-e <span class="math inline">\(E \cap A_3\)</span>, allora la probabilità <span class="math inline">\(P(E)\)</span> è data dalla somma delle
-probabilità di queti tre eventi. Ciò è illustrato nella figura seguente.</p>
+costituito da tutti gli eventi elementari in <span class="math inline">\(E \cap H_1\)</span>, <span class="math inline">\(E \cap H_2\)</span>
+e <span class="math inline">\(E \cap H_3\)</span>, allora la probabilità <span class="math inline">\(P(E)\)</span> è data dalla somma delle
+probabilità di questi tre eventi. Ciò è illustrato nella figura seguente.</p>
 <div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/tikz-prob-tot-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p><strong>Esercizio.</strong></p>
 <p>Si considerino tre urne, ciascuna delle quali contiene 100 palline:</p>
@@ -183,49 +183,57 @@ nella prima estrazione è 2/7.</p>
 <p>Il teorema di Bayes rappresenta uno dei fondamenti della teoria della
 probabilità e della statistica. Lo presentiamo qui considerando prima un
 caso specifico per poi descriverlo nella sua forma più generale.</p>
-<p>Sia <span class="math inline">\(\{A_1, A_2\}\)</span> una partizione dello spazio campionario <span class="math inline">\(\Omega\)</span>.
+<p>Sia <span class="math inline">\(\{H_1, H_2\}\)</span> una partizione dello spazio campionario <span class="math inline">\(\Omega\)</span>.
 Consideriamo un terzo evento <span class="math inline">\(E \subset \Omega\)</span> con probabilità non
-nulla di cui si conoscono le probabilità condizionate rispetto ad <span class="math inline">\(A_1\)</span>
-e a <span class="math inline">\(A_2\)</span>, ovvero <span class="math inline">\(P(E \mid A_1)\)</span> e <span class="math inline">\(P(E \mid A_2)\)</span>. È chiaro per le
+nulla di cui si conoscono le probabilità condizionate rispetto ad <span class="math inline">\(H_1\)</span>
+e a <span class="math inline">\(H_2\)</span>, ovvero <span class="math inline">\(P(E \mid H_1)\)</span> e <span class="math inline">\(P(E \mid H_2)\)</span>. È chiaro per le
 ipotesi fatte che se si verifica <span class="math inline">\(E\)</span> deve anche essersi verificato
-almeno uno degli eventi <span class="math inline">\(A_1\)</span> e <span class="math inline">\(A_2\)</span>. Supponendo che si sia verificato
+almeno uno degli eventi <span class="math inline">\(H_1\)</span> e <span class="math inline">\(H_2\)</span>. Supponendo che si sia verificato
 l’evento <span class="math inline">\(E\)</span>, ci chiediamo: qual è la probabilità che si sia verificato
-<span class="math inline">\(A_1\)</span> piuttosto che <span class="math inline">\(A_2\)</span>?</p>
+<span class="math inline">\(H_1\)</span> piuttosto che <span class="math inline">\(H_2\)</span>?</p>
 <div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-163-1.png" width="45%" style="display: block; margin: auto;"></div>
 <p>Per rispondere alla domanda precedente scriviamo:
 <span class="math display">\[\begin{equation}
-\begin{aligned}
-P(A_1 \mid E) &amp;= \frac{P(E \cap A_1)}{P(E)}\notag\\ 
-&amp;= \frac{P(E \mid A_1)P(A_1)}{P(E)}\notag.\end{aligned}
+P(H_1 \mid E) = \frac{P(E \cap H_1)}{P(E)}.\notag
 \end{equation}\]</span>
-Sapendo che <span class="math inline">\(E = (E \cap A_1) \cup (E \cap A_2)\)</span> e che <span class="math inline">\(A_1\)</span> e <span class="math inline">\(A_2\)</span> sono eventi
-disgiunti, ovvero <span class="math inline">\(A_1 \cap A_2 = \emptyset\)</span>, ne segue che possiamo
-calcolare <span class="math inline">\(P(E)\)</span> utilizzando il teorema della probabilità totale:
+Notiamo che la probabilità riportata al numeratore, ovvero <span class="math inline">\(P(E \cap H_1)\)</span>, può essere ricavata dalla formula seguente:
+<span class="math display">\[\begin{equation}
+P(E \mid H_1) = \frac{P(E \cap H_1)}{P(H_1)},\notag
+\end{equation}\]</span>
+ovvero,
+<span class="math display">\[\begin{equation}
+P(E \cap H_1) = P(E \mid H_1) P(H_1).\notag
+\end{equation}\]</span>
+Sostituendo, otteniamo
+<span class="math display">\[\begin{equation}
+P(H_1 \mid E) = \frac{P(E \mid H_1)P(H_1)}{P(E)}.\notag
+\end{equation}\]</span>
+Inoltre, sapendo che <span class="math inline">\(E = (E \cap H_1) \cup (E \cap H_2)\)</span> e che <span class="math inline">\(H_1\)</span> e <span class="math inline">\(H_2\)</span> sono eventi
+disgiunti, ovvero <span class="math inline">\(H_1 \cap H_2 = \emptyset\)</span>, ne segue che possiamo calcolare <span class="math inline">\(P(E)\)</span> utilizzando il teorema della probabilità totale:
 <span class="math display">\[\begin{equation}
 \begin{aligned}
-P(E) &amp;= P(E \cap A_1) + P(E \cap A_2)\notag\\ 
-     &amp;= P(E \mid A_1)P(A_1) + P(E \mid A_2)P(A_2).\notag
+P(E) &amp;= P(E \cap H_1) + P(E \cap H_2)\notag\\ 
+     &amp;= P(E \mid H_1)P(H_1) + P(E \mid H_2)P(H_2).\notag
 \end{aligned}
 \end{equation}\]</span>
-Sostituendo il risultato precedente nella formula della probabilità condizionata <span class="math inline">\(P(A_1 \mid E)\)</span> otteniamo:
+Sostituendo il risultato precedente nella formula della probabilità condizionata <span class="math inline">\(P(H_1 \mid E)\)</span> otteniamo:
 <span class="math display" id="eq:bayes1">\[\begin{equation}
-P(A_1 \mid E) = \frac{P(E \mid A_1)P(A_1)}{P(E \mid A_1)P(A_1) + P(E \mid A_2)P(A_2)}.
+P(H_1 \mid E) = \frac{P(E \mid H_1)P(H_1)}{P(E \mid H_1)P(H_1) + P(E \mid H_2)P(H_2)}.
 \tag{15.3}
 \end{equation}\]</span>
 La <a href="chapter-teo-bayes.html#eq:bayes1">(15.3)</a> si generalizza facilmente al caso di più di due eventi disgiunti, come indicato di seguito.</p>
 
 <div class="theorem">
-<span id="thm:theo-bayes" class="theorem"><strong>Teorema 15.2  (Teorema di Bayes)  </strong></span>Siano <span class="math inline">\(A_1\)</span>, <span class="math inline">\(A_2,\)</span> …, <span class="math inline">\(A_n\)</span> <span class="math inline">\(n\)</span> eventi disgiunti con <span class="math inline">\(P(A_i) &gt; 0\)</span> e
-tali che <span class="math inline">\(\bigcup_{i=1}^{n} A_i = \Omega\)</span>. Per l’evento
-<span class="math inline">\(E \subset \Omega\)</span> con <span class="math inline">\(P(E) &gt; 0\)</span>, abbiamo
+<span id="thm:theo-bayes" class="theorem"><strong>Teorema 15.2  (Teorema di Bayes)  </strong></span>Siano <span class="math inline">\(H_1\)</span>, <span class="math inline">\(H_2,\)</span> …, <span class="math inline">\(H_n\)</span> <span class="math inline">\(n\)</span> eventi disgiunti con <span class="math inline">\(P(H_i) &gt; 0\)</span> e
+tali che <span class="math inline">\(\bigcup_{i=1}^{n} H_i = \Omega\)</span>. Per l’evento <span class="math inline">\(E \subset \Omega\)</span> con <span class="math inline">\(P(E) &gt; 0\)</span>, abbiamo
 <span class="math display" id="eq:bayes2">\[\begin{equation}
-P(A_j \mid E) = \frac{P(E \mid A_j)P(A_j)}{\sum_{i=1}^{n}P(E \mid A_i)P(A_i)}.
+P(H_j \mid E) = \frac{P(E \mid H_j)P(H_j)}{\sum_{i=1}^{n}P(E \mid H_i)P(H_i)}.
 \tag{15.4}
 \end{equation}\]</span>
 </div>
 <p>La formula <a href="chapter-teo-bayes.html#eq:bayes2">(15.4)</a> prende il nome di <em>Teorema di Bayes</em> e mostra che
 la conoscenza del verificarsi dell’evento <span class="math inline">\(E\)</span> modifica la probabilità
-che abbiamo attribuito all’evento <span class="math inline">\(A_j\)</span>.</p>
+che abbiamo attribuito all’evento <span class="math inline">\(H_j\)</span>.</p>
 <div id="aggiornamento-bayesiano" class="section level3" number="15.2.1">
 <h3>
 <span class="header-section-number">15.2.1</span> Aggiornamento Bayesiano<a class="anchor" aria-label="anchor" href="#aggiornamento-bayesiano"><i class="fas fa-link"></i></a>
