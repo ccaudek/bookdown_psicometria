@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capitolo 28 Una breve introduzione al modello di regressione | Data Science per psicologi</title>
+<title>Capitolo 29 Una breve introduzione al modello di regressione | Data Science per psicologi</title>
 <meta name="author" content="Corrado Caudek">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -56,23 +56,24 @@
 <li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
 <li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
 <li><a class="" href="valore-atteso-e-varianza-di-variabili-aleatorie-discrete.html"><span class="header-section-number">17</span> Valore atteso e varianza di variabili aleatorie discrete</a></li>
-<li><a class="" href="la-distribuzione-binomiale.html"><span class="header-section-number">18</span> La distribuzione binomiale</a></li>
-<li><a class="" href="funzioni-di-densit%C3%A0-di-probabilit%C3%A0.html"><span class="header-section-number">19</span> Funzioni di densità di probabilità</a></li>
-<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">20</span> La funzione di verosimiglianza</a></li>
+<li><a class="" href="covarianza-e-correlazione-di-variabili-aleatorie.html"><span class="header-section-number">18</span> Covarianza e correlazione di variabili aleatorie</a></li>
+<li><a class="" href="la-distribuzione-binomiale.html"><span class="header-section-number">19</span> La distribuzione binomiale</a></li>
+<li><a class="" href="funzioni-di-densit%C3%A0-di-probabilit%C3%A0.html"><span class="header-section-number">20</span> Funzioni di densità di probabilità</a></li>
+<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">21</span> La funzione di verosimiglianza</a></li>
 <li class="book-part">Inferenza frequentista</li>
 <li><a class="" href="introduzione-3.html">Introduzione</a></li>
-<li><a class="" href="distribuzione-campionaria.html"><span class="header-section-number">21</span> Distribuzione campionaria</a></li>
-<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">22</span> Significatività statistica</a></li>
-<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">23</span> Inferenza sulle medie</a></li>
-<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">24</span> Critiche e difese</a></li>
+<li><a class="" href="distribuzione-campionaria.html"><span class="header-section-number">22</span> Distribuzione campionaria</a></li>
+<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">23</span> Significatività statistica</a></li>
+<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">24</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">25</span> Critiche e difese</a></li>
 <li class="book-part">Inferenza Bayesiana</li>
 <li><a class="" href="introduzione-4.html">Introduzione</a></li>
-<li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">25</span> Modellistica bayesiana</a></li>
-<li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">26</span> Stima della funzione a posteriori</a></li>
-<li><a class="" href="sintesi-a-posteriori.html"><span class="header-section-number">27</span> Sintesi a posteriori</a></li>
-<li><a class="active" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">28</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">29</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">30</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">26</span> Modellistica bayesiana</a></li>
+<li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">27</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="sintesi-a-posteriori.html"><span class="header-section-number">28</span> Sintesi a posteriori</a></li>
+<li><a class="active" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">29</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">30</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">31</span> Inferenza Bayesiana</a></li>
 <li class="book-part">Informazioni generali</li>
 <li><a class="" href="citazione.html">Citazione</a></li>
 <li class="book-part">Appendici</li>
@@ -85,22 +86,22 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="una-breve-introduzione-al-modello-di-regressione" class="section level1" number="28">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="una-breve-introduzione-al-modello-di-regressione" class="section level1" number="29">
 <h1>
-<span class="header-section-number">Capitolo 28</span> Una breve introduzione al modello di regressione<a class="anchor" aria-label="anchor" href="#una-breve-introduzione-al-modello-di-regressione"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capitolo 29</span> Una breve introduzione al modello di regressione<a class="anchor" aria-label="anchor" href="#una-breve-introduzione-al-modello-di-regressione"><i class="fas fa-link"></i></a>
 </h1>
 <p>In questo capitolo verrà presentata un’introduzione “pratica” all’analisi della regressione. Qui ci preoccuperemo solo di capire a cosa serve l’analisi di regressione e come si interpretano i risultati prodotti da tale metodo di analisi statistica. Nel capitolo successivo, gli stessi argomenti verranno trattati in un modo più “formale” e con maggiori approfondimenti teorici. Questo capitolo contiene <em>tutto quello che c’è da sapere</em> e <em>non si può non sapere</em> su questo argomento.
 L’ho pensato per i miei laureandi, ovvero per degli studenti che devono usare queste procedure statistiche per risolvere un problema pratico (quello di concludere la tesi). L’altro capitolo è più convenzionalmente “didattico” ed è stato pensato in primo luogo per chi deve superare l’esame di Psicometria. Questo primo capitolo su questo tema può essere dunque pensato come un’introduzione “gentile” a ciò che verrà discusso nel prossimo capitolo.</p>
-<div id="regressione-bivariata" class="section level2" number="28.1">
+<div id="regressione-bivariata" class="section level2" number="29.1">
 <h2>
-<span class="header-section-number">28.1</span> Regressione bivariata<a class="anchor" aria-label="anchor" href="#regressione-bivariata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">29.1</span> Regressione bivariata<a class="anchor" aria-label="anchor" href="#regressione-bivariata"><i class="fas fa-link"></i></a>
 </h2>
 <p>La regressione è una classe di tecniche statistiche che si pongono il problema di comprendere la relazione che intercorre tra una variabile di esito (chiamata anche criterio / risposta / variabile dipendente) e una o più predittori (chiamate anche variabili esplicative / indipendenti). Considereremo inizialmente il caso di una sola variabile esplicativa.</p>
 <p>In maniera più specifica, possiamo dire che la regressione bivariata si pone il problema di descrivere la relazione statistica <em>lineare</em> che intercorre tra due variabili, <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>. Per relazione “statistica” intendo dire che, in un campione di dati <span class="math inline">\(\{x, y\}\)</span>, non c’è mai una “perfetta” relazione lineare. Consideriamo le le coppie <span class="math inline">\(\{x_i, y_i\}\)</span>, con <em>i</em> = 1, …, <em>N</em>, dove <em>N</em> è l’ampiezza campionaria. Se rappresentiamo queste coppie di numeri un un diagramma cartesiano, otteniamo quello che si chiama un diagramma a dispersione. Nel caso di dati reali, i punti del diagramma a dispersione di <span class="math inline">\(\{x, y\}\)</span> non si situeranno mai tutti su una retta ma, in alcuni casi, formeranno una nube di punti che può essere <em>approssimata</em> da una retta che passa attraverso la nube di punti. In una tale situazione, è ragionevole descrivere la relazione tra le variabili <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> mediante la retta che <strong>approssima</strong> al meglio la nube di punti nel diagramma a dispersione.</p>
 <p>L’analisi di regressione si pone tre problemi. Il primo è quello di stabilire qual è l’inclinazione della retta che passa il più vicino possibile ai punti del diagramma a dispersione. Il secondo è quello di quantificare “la distanza media” tra i punti del diagramma a dispersione e la retta di regressione. Il terzo è quello di fare inferenza, ovvero di capire cosa ci dice la retta di regressione che abbiamo osservato nel campione a proposito della possibile relazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> nella popolazione da cui il campione è stato tratto.</p>
-<div id="scioglimento-del-ghiaccio-marino" class="section level3" number="28.1.1">
+<div id="scioglimento-del-ghiaccio-marino" class="section level3" number="29.1.1">
 <h3>
-<span class="header-section-number">28.1.1</span> Scioglimento del ghiaccio marino<a class="anchor" aria-label="anchor" href="#scioglimento-del-ghiaccio-marino"><i class="fas fa-link"></i></a>
+<span class="header-section-number">29.1.1</span> Scioglimento del ghiaccio marino<a class="anchor" aria-label="anchor" href="#scioglimento-del-ghiaccio-marino"><i class="fas fa-link"></i></a>
 </h3>
 <p>Iniziamo con un esempio. Uno degli impatti più importanti dei cambiamenti climatici che stanno investendo il nostro Pianeta è la riduzione dell’estensione della calotta di ghiaccio marino artico. Poniamoci il problema di usare il modello di regressione per esplorare come l’estensione del ghiaccio marino artico sta cambiando nel tempo. I dati sono forniti da <a href="https://nsidc.org">The National Snow and Ice Data Center</a> e sono espressi in milioni di chilometri quadrati.</p>
 <p>I dati sono i seguenti:</p>
@@ -154,7 +155,7 @@ L’ho pensato per i miei laureandi, ovvero per degli studenti che devono usare 
 <code class="sourceCode R"><span class="va">seaice</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">extent_north</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-293-1.png" width="90%" style="display: block; margin: auto;">
+<p><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-297-1.png" width="90%" style="display: block; margin: auto;">
 Guardando la figura vediamo che è ragionevole descrivere mediante una retta la relazione tra l’estensione del ghiaccio marino artico (chiamiamola <code>y</code>) e il tempo (chiamiamolo <code>x</code>). Aggiungiamo al diagramma di dispersione una retta, scegliendola in modo tale che si avvicini il più possibile alla nube di punti rappresentata nel grafico. Ovviamente, è possibile scegliere tra infinite rette diverse. La retta che è rappresentata qui è stata scelta in base ad un criterio particolare, detto “dei minimi quadrati.” Vedremo meglio in seguito cosa questo significa. Per ora ci accontentiamo di riconoscere che la nostra è una buona scelta, per gli scopi presenti.</p>
 <div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">seaice</span> <span class="op">%&gt;%</span> 
@@ -162,12 +163,12 @@ Guardando la figura vediamo che è ragionevole descrivere mediante una retta la 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
 <span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-294-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-298-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
 </div>
-<div id="interpretazione-dei-coefficienti-a-e-b" class="section level2" number="28.2">
+<div id="interpretazione-dei-coefficienti-a-e-b" class="section level2" number="29.2">
 <h2>
-<span class="header-section-number">28.2</span> Interpretazione dei coefficienti <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span><a class="anchor" aria-label="anchor" href="#interpretazione-dei-coefficienti-a-e-b"><i class="fas fa-link"></i></a>
+<span class="header-section-number">29.2</span> Interpretazione dei coefficienti <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span><a class="anchor" aria-label="anchor" href="#interpretazione-dei-coefficienti-a-e-b"><i class="fas fa-link"></i></a>
 </h2>
 <p>La retta che abbiamo disegnato nella figura precedente rappresenta la risposta alla nostra domanda di ricerca: l’estensione del ghiaccio marino artico sta diminuendo nel tempo.</p>
 <p>Anziché considerare questa risposta unicamente dal punto di vista grafico, proviamo a descrivere la retta disegnata nella figura in maniera quantitativa, con dei numeri. Per fare questo, dobbiamo innanzitutto ricordare qual è l’equazione di una retta:</p>
@@ -197,7 +198,7 @@ y = a + b \times x
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
 <span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-296-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-300-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Per trovare i coefficienti <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> della retta di regressione possiamo usare, ad esempio, la funzione <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>:</p>
 <div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, data <span class="op">=</span> <span class="va">seaice</span><span class="op">)</span>
@@ -232,11 +233,11 @@ y = a + b \times x
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="fl">24.0</span>, y <span class="op">=</span> <span class="fl">11.75</span>, label <span class="op">=</span> <span class="st">"10 b = -0.55"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="fl">15</span>, y <span class="op">=</span> <span class="fl">12.15</span>, label <span class="op">=</span> <span class="st">"delta x = 10.0"</span><span class="op">)</span>
 <span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-298-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-302-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
-<div id="scomposizione-della-y" class="section level2" number="28.3">
+<div id="scomposizione-della-y" class="section level2" number="29.3">
 <h2>
-<span class="header-section-number">28.3</span> Scomposizione della <span class="math inline">\(y\)</span><a class="anchor" aria-label="anchor" href="#scomposizione-della-y"><i class="fas fa-link"></i></a>
+<span class="header-section-number">29.3</span> Scomposizione della <span class="math inline">\(y\)</span><a class="anchor" aria-label="anchor" href="#scomposizione-della-y"><i class="fas fa-link"></i></a>
 </h2>
 <p>Uno degli aspetti importanti della regressione lineare è che, in pratica, la retta di regressione scompone ciascun punteggio <span class="math inline">\(y\)</span> in due componenti:</p>
 <p><span class="math display">\[\begin{equation}
@@ -299,16 +300,16 @@ e = y - (a + b \times x) = y - \hat{y}
 <span class="co">#&gt; 4 4 12.332 12.28302  0.04898144 12.332</span>
 <span class="co">#&gt; 5 7 12.203 12.11930  0.08370310 12.203</span></code></pre></div>
 <p>In altre parole, il modello di regressone scompone la <span class="math inline">\(y\)</span> in due componenti: la porzione della <span class="math inline">\(y\)</span> che possiamo prevedere conoscendo <span class="math inline">\(x\)</span> (ovvero, <span class="math inline">\(\hat{y} = a + b \times x\)</span>) e la porzione della <span class="math inline">\(y\)</span> che <em>non</em> possiamo prevedere sulla base di <span class="math inline">\(x\)</span>.</p>
-<div id="metodo-di-stima-dei-coefficienti-del-modello-di-regressione" class="section level3" number="28.3.1">
+<div id="metodo-di-stima-dei-coefficienti-del-modello-di-regressione" class="section level3" number="29.3.1">
 <h3>
-<span class="header-section-number">28.3.1</span> Metodo di stima dei coefficienti del modello di regressione<a class="anchor" aria-label="anchor" href="#metodo-di-stima-dei-coefficienti-del-modello-di-regressione"><i class="fas fa-link"></i></a>
+<span class="header-section-number">29.3.1</span> Metodo di stima dei coefficienti del modello di regressione<a class="anchor" aria-label="anchor" href="#metodo-di-stima-dei-coefficienti-del-modello-di-regressione"><i class="fas fa-link"></i></a>
 </h3>
 <p>Come abbiamo fatto a calcolare i coefficienti dei minimi quadrati <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>? Ci sono tanti metodi; il più comune si chiama “metodo dei minimi quadrati.” Lo esamineremo in seguito. Per i nostri scopi, è poco importante: per ora ci accontentiamo di chiedere ad R di fare i calcoli per noi.</p>
 </div>
 </div>
-<div id="inferenza-sul-modello-di-regressione" class="section level2" number="28.4">
+<div id="inferenza-sul-modello-di-regressione" class="section level2" number="29.4">
 <h2>
-<span class="header-section-number">28.4</span> Inferenza sul modello di regressione<a class="anchor" aria-label="anchor" href="#inferenza-sul-modello-di-regressione"><i class="fas fa-link"></i></a>
+<span class="header-section-number">29.4</span> Inferenza sul modello di regressione<a class="anchor" aria-label="anchor" href="#inferenza-sul-modello-di-regressione"><i class="fas fa-link"></i></a>
 </h2>
 <p>Finora siamo riusciti a descrivere la relazione <em>statistica</em> tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> in un campione di osservazioni. Siamo ben consapevoli che, in un altro campione di osservazioni, la relazione <em>statistica</em> tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> non sarà identica a quella osservata nel caso del primo campione – dato che i dati saranno diversi. La domanda cruciale dunque diventa la seguente: quanto sono simili i coefficienti dei minimi quadrati calcolati sui dati campionari ai coefficienti di un’ipotetica retta di regressione che, sempre mediante il metodo dei minimi quadrati, descriverebbe la relazione tra tutte le osservazioni <span class="math inline">\(\{x, y\}\)</span> nella popolazione? Ciò che vogliamo è dunque una quantificazione della nostra <em>incertezza</em>: vogliamo sapere quanto dobbiamo fidarci delle stime campionarie come descrizioni dei valori (sconosciuti) della popolazione. Ci sono due possibilità.</p>
 <ul>
@@ -362,23 +363,23 @@ e = y - (a + b \times x) = y - \hat{y}
 <p>Quindi, i dati del nostro campione non catturano perfettamente ciò che vogliamo sapere. Siamo infatti consapevoli del fatto che, se ripetessimo le nostre misurazioni, otterremmo valori diversi. Il problema che abbiamo è dunque il seguente: come facciamo a rispondere alla domanda della ricerca avendo osservato solo uno degli infiniti campioni diversi di osservazioni che descrivono l’aspetto che ci interessa? Per quantificare la nostra incertezza associamo alla stima della quantità di interesse (in questo caso, la variazione dell’estensione del ghiaccio marino artico nell’unità di tempo) un intervallo di credibilità calcolato utilizzando un determinato livello di certezza.</p>
 <p>Queste affermazioni sono certamente vere nel caso del ghiaccio marino dell’Artico. Ma un lettore attento si sarà anche reso conto del fatto che tale problema (l’errore di misurazione e la variabilità campionaria) è certamente presente anche quando di occupiamo della misurazione dei costrutti psicologici. Questa è la ragione per la quale, come psicologi, dobbiamo essere in grado di quantificare la nostra incertezza quando stimiamo le caratteristiche generali di ciò che ci interessa, ovvero quando vogliamo descrivere ciò che ci interessa al di là degli aspetti idiosincratici del campione di dati che abbiamo osservato.</p>
 </div>
-<div id="errore-standard-della-stima" class="section level3" number="28.4.1">
+<div id="errore-standard-della-stima" class="section level3" number="29.4.1">
 <h3>
-<span class="header-section-number">28.4.1</span> Errore standard della stima<a class="anchor" aria-label="anchor" href="#errore-standard-della-stima"><i class="fas fa-link"></i></a>
+<span class="header-section-number">29.4.1</span> Errore standard della stima<a class="anchor" aria-label="anchor" href="#errore-standard-della-stima"><i class="fas fa-link"></i></a>
 </h3>
 <p>Il parametto <code>sigma</code> nell’output di <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis()</a></code> ci fornisce un altro utile pezzo di informazione: esso stima infatti quanto sono distanti, in media, le osservazioni dalla retta di regressione <em>nella popolazione</em>. Il valore <code>sigma</code>, chiamato <em>errore standard della stima</em>, ci dice che il modello di regressione, stimando la relazione tra <span class="math inline">\(y\)</span> e <span class="math inline">\(x\)</span>, compie un errore medio di 0.215 milioni di chilometri quadrati – laddove 0.215 è la stima della distanza media (in milioni di chilometri quadrati) tra ciascuno dei punti del diagramma a dispersione e la retta di regressione <em>nella popolazione</em>.</p>
 </div>
-<div id="errori-standard-delle-stime-a-e-b" class="section level3" number="28.4.2">
+<div id="errori-standard-delle-stime-a-e-b" class="section level3" number="29.4.2">
 <h3>
-<span class="header-section-number">28.4.2</span> Errori standard delle stime <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span><a class="anchor" aria-label="anchor" href="#errori-standard-delle-stime-a-e-b"><i class="fas fa-link"></i></a>
+<span class="header-section-number">29.4.2</span> Errori standard delle stime <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span><a class="anchor" aria-label="anchor" href="#errori-standard-delle-stime-a-e-b"><i class="fas fa-link"></i></a>
 </h3>
 <p>Il valore <code>sd</code> associato a <span class="math inline">\(b\)</span> nell’output di <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis()</a></code> ci dice invece invece di quanto dobbiamo aspettarci che vari la stima di <span class="math inline">\(b\)</span> da campione a campione. In altri termini, a causa della variabilità campionaria, la stima di <span class="math inline">\(b\)</span> assume un valore diverso in ciascuno degli infinti campioni di <span class="math inline">\(n\)</span> osservazioni che descrivono la relazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>, nel periodo temporale considerato. Il valore <code>sd</code> uguale a 0.003 ci dice che, in media, la stima della pendenza della retta di regressione differirà dal vero valore di questo parametro di una quantità pari a 0.003 milioni di chilometri quadrati.
 Una affermazione simile può essere fatta a proposito del valore <code>sd</code> associato ad <span class="math inline">\(a\)</span> nell’output di <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis()</a></code>.</p>
 </div>
 </div>
-<div id="una-variabile-indipendente-qualitativa" class="section level2" number="28.5">
+<div id="una-variabile-indipendente-qualitativa" class="section level2" number="29.5">
 <h2>
-<span class="header-section-number">28.5</span> Una variabile indipendente qualitativa<a class="anchor" aria-label="anchor" href="#una-variabile-indipendente-qualitativa"><i class="fas fa-link"></i></a>
+<span class="header-section-number">29.5</span> Una variabile indipendente qualitativa<a class="anchor" aria-label="anchor" href="#una-variabile-indipendente-qualitativa"><i class="fas fa-link"></i></a>
 </h2>
 <p>Il modello statistico della regressione bivariato che abbiamo descritto sopra è molto limitato: può solo descrivere la relazione lineare tra due variabili continue. Estendiamolo ora al caso in cui, oltre ad includere un predittore continuo <span class="math inline">\(x\)</span>, il modello di regressione comprende anche una variabile che consente di suddividere le osservazioni del campione in due gruppi.</p>
 <p>Per semplicità, simuliamo un insieme di dati che utilizzeremo nella seguente discussione.</p>
@@ -416,7 +417,7 @@ Una affermazione simile può essere fatta a proposito del valore <code>sd</code>
 <code class="sourceCode R"><span class="va">d</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">group</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-306-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-310-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>È ovvio, che nel caso presente, non è sufficiente un modello di regressione che ignora il fatto che i dati appartengono a due gruppi diversi. Infatti, se adattiamo ai dati un’unica retta di regressione, è facile rendersi conto che tale retta si situerà in una posizione molto distante dai dati.</p>
 <div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span> <span class="op">%&gt;%</span>
@@ -424,7 +425,7 @@ Una affermazione simile può essere fatta a proposito del valore <code>sd</code>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
 <span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-307-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-311-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Per questi dati è ovviamente più sensato adattare una diversa retta di regressione a ciascun gruppo di osservazioni:</p>
 <div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span> <span class="op">%&gt;%</span>
@@ -432,7 +433,7 @@ Una affermazione simile può essere fatta a proposito del valore <code>sd</code>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-308-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-312-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Come possiamo modificare il modello di regressione che abbiamo esaminato in precedenza in modo tale da essere in grado di stimare i coefficienti di regressione delle due rette rappresentate nella figura precedente? Questo problema si risolve nel modo seguente. Crediamo una variabile, chiamata <em>dummy</em>, che ha valore 0 per un gruppo, diciamo <code>gr1</code>, e valore 1 per l’altro gruppo:</p>
 <div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span><span class="op">$</span><span class="va">gr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">group</span> <span class="op">==</span> <span class="st">"gr1"</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span> 
@@ -477,9 +478,9 @@ y &amp;= \alpha + \beta x + \gamma D + \varepsilon,\notag\\
 <li>
 <span class="math inline">\(\gamma\)</span> = differenza tra l’intercetta della retta di regressione per il gruppo codificato con <em>D</em> = 1 e l’intercetta della retta di regressione per il gruppo codificato con <em>D</em> = 0.</li>
 </ul>
-<div id="interazione" class="section level3" number="28.5.1">
+<div id="interazione" class="section level3" number="29.5.1">
 <h3>
-<span class="header-section-number">28.5.1</span> Interazione<a class="anchor" aria-label="anchor" href="#interazione"><i class="fas fa-link"></i></a>
+<span class="header-section-number">29.5.1</span> Interazione<a class="anchor" aria-label="anchor" href="#interazione"><i class="fas fa-link"></i></a>
 </h3>
 <p>In generale, però, le due rette di regressione non sono parallele. Per potere rappresentare una tale possibilità, introduciamo nel data.frame <code>d</code> una seconda variabile e la chiamiamo <code>DX</code>. Creaimo <code>DX</code> facendo il prodotto delle variabili <code>D</code> e <code>x</code>:</p>
 <div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
@@ -553,13 +554,13 @@ y &amp;= \alpha + \beta x + \gamma D + \zeta DX + \varepsilon,\notag\\
 <p>In un tale modello, la prima domanda che dobbiamo porci è se i dati giustificano la conclusione secondo la quale, <em>nella popolazione</em>, le due rette hanno una pendenza diversa. Per rispondere a tale domanda esaminiamo l’intervallo di credibilità del coefficiente associato al termine d’interazione, ovvero del coefficiente <span class="math inline">\(\zeta\)</span>. R ci dice che l’intervallo di credibilità all’89% per il coefficiente <span class="math inline">\(\zeta\)</span> è pari a [-3.36, -2.41]. Dato che tale intervallo non include lo zero, con un livello di certezza dell’89% concludiamo che la retta di regressione del gruppo codificato con <em>D = 1</em> (ovvero <code>gr2</code>) ha una pendenza minore della retta di regressione per il gruppo codificato con <em>D = 0</em> (ovvero <code>gr1</code>).</p>
 </div>
 </div>
-<div id="regressione-multipla" class="section level2" number="28.6">
+<div id="regressione-multipla" class="section level2" number="29.6">
 <h2>
-<span class="header-section-number">28.6</span> Regressione multipla<a class="anchor" aria-label="anchor" href="#regressione-multipla"><i class="fas fa-link"></i></a>
+<span class="header-section-number">29.6</span> Regressione multipla<a class="anchor" aria-label="anchor" href="#regressione-multipla"><i class="fas fa-link"></i></a>
 </h2>
-<div id="assenza-di-interazione" class="section level3" number="28.6.1">
+<div id="assenza-di-interazione" class="section level3" number="29.6.1">
 <h3>
-<span class="header-section-number">28.6.1</span> Assenza di interazione<a class="anchor" aria-label="anchor" href="#assenza-di-interazione"><i class="fas fa-link"></i></a>
+<span class="header-section-number">29.6.1</span> Assenza di interazione<a class="anchor" aria-label="anchor" href="#assenza-di-interazione"><i class="fas fa-link"></i></a>
 </h3>
 <p>Esaminiamo ora i dati <code>epi.bfi</code> contenuti nel pacchetto <code>psychTools</code> che contengono 231 osservazioni relative a 5 scale dall’Eysenck Personality Inventory, 5 scale del Big 5, i valori del Beck Depression Inventory e misure di ansia di stato e ansia di tratto.</p>
 <div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
@@ -589,9 +590,9 @@ y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \varepsilon.
 \end{equation}\]</span></p>
 <p>Abbiamo visto in precedenza come si interpretano i coefficienti di regressione nel caso della regressione bivariata. I coefficienti di regressione, detti <em>parziali</em>, che fanno parte del modello di regressione multipla hanno però un significato diverso da quello descritto in precedenza. Poniamoci dunque il problema di capire qual è la differenza tra un coefficiente di regressione (nel modello bivariato) e un coefficiente <em>parziale</em> di regressione (nel modello di regressione multipla).</p>
 <p>In precedenza abbiamo visto che il coefficiente di regressione <span class="math inline">\(\beta\)</span> ha il seguente significato: indica la variazione del valore atteso della <span class="math inline">\(y\)</span> in base al modello lineare nel caso di un cambiamento unitario della <span class="math inline">\(x\)</span>. Ma adesso questa spiegazione non basta, in quanto nel modello di regressione multipla non c’è una sola variabile indipendente: nel caso considerato qui ce ne sono due. Dunque, qual è il significato di <span class="math inline">\(\beta_1\)</span> e di <span class="math inline">\(\beta_2\)</span>?</p>
-<div id="significato-dei-coefficienti-parziali-di-regressione" class="section level4" number="28.6.1.1">
+<div id="significato-dei-coefficienti-parziali-di-regressione" class="section level4" number="29.6.1.1">
 <h4>
-<span class="header-section-number">28.6.1.1</span> Significato dei coefficienti parziali di regressione<a class="anchor" aria-label="anchor" href="#significato-dei-coefficienti-parziali-di-regressione"><i class="fas fa-link"></i></a>
+<span class="header-section-number">29.6.1.1</span> Significato dei coefficienti parziali di regressione<a class="anchor" aria-label="anchor" href="#significato-dei-coefficienti-parziali-di-regressione"><i class="fas fa-link"></i></a>
 </h4>
 <p>La risposta è che un generico <span class="math inline">\(\beta_j\)</span> nel modello di regressione multipla rappresenta la variazione del valore atteso della <span class="math inline">\(y\)</span> in base al modello lineare nel caso di un cambiamento unitario di <span class="math inline">\(x_j\)</span> <strong>al netto dell’effetto (lineare) di tutte le altre variabili <span class="math inline">\(x\)</span> incluse nel modello</strong>.</p>
 <p>La seconda parte dell’affermazione precedente (“al netto di…”) è ciò che dobbiamo capire.</p>
@@ -646,9 +647,9 @@ y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \varepsilon.
 <p>Ciò chiarisce il significato di “controllo statistico” e fa capire qual è la differenza tra il coefficiente di regressione del modello bivariato e il coefficiente parziale di regressione nel modello di regressione multipla.</p>
 </div>
 </div>
-<div id="interazione-tra-i-regressone" class="section level3" number="28.6.2">
+<div id="interazione-tra-i-regressone" class="section level3" number="29.6.2">
 <h3>
-<span class="header-section-number">28.6.2</span> Interazione tra i regressone<a class="anchor" aria-label="anchor" href="#interazione-tra-i-regressone"><i class="fas fa-link"></i></a>
+<span class="header-section-number">29.6.2</span> Interazione tra i regressone<a class="anchor" aria-label="anchor" href="#interazione-tra-i-regressone"><i class="fas fa-link"></i></a>
 </h3>
 <p>Esaminiamo ora l’ultima possibilità, ovvero quella di un modello di regressione multipla che contiene due variabili indipendenti che “interagiscono” tra loro.
 Cosa significa il concetto di “interazione” tra due variabili indipendenti?</p>
@@ -660,7 +661,7 @@ y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \varepsilon.
 <p>non possiamo procedere come abbiamo fatto in precedenza, quando avevamo due gruppi di osservazioni, ovvero, non possiamo disegnare una diversa retta di regressione per ciascun gruppo (non essendoci dei gruppi separati). Possiamo invece usare una funzione R come <code><a href="https://strengejacke.github.io/sjPlot/reference/plot_model.html">plot_model()</a></code> che calcola la retta di regressione di <code>bfneur</code> su <code>bdi</code> selezionando alcuni valori “fissi” della variabile <code>stateanx</code> – nello specifico, la media di <code>stateanx</code>, la media meno una deviazione standard, e la media più una deviazione standard. Si produce così la rappresentazione di tre rette di regressione.</p>
 <div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://strengejacke.github.io/sjPlot/reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">m</span>, type <span class="op">=</span> <span class="st">"pred"</span>, terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bfneur"</span>, <span class="st">"stateanx"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-321-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-325-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Quello che notiamo dalla figura precedente è che le tre rette sono parallele. Un modello di regressione multipla che non include alcun termine di interazione è infatti un modello <em>additivo</em>: per quale che sia il livello della variabile <code>stateanx</code>, l’effetto di <code>bfneur</code> (ovvero, la pendenza della retta di regressione) non cambia. Quindi, l’effetto di <code>stateanx</code> semplicemente <em>si somma</em> all’effetto di <code>bfneur</code>.</p>
 <p>Una situazione ben diversa si ottiene nel caso di un modello con interazione, come il seguente:</p>
 <p><span class="math display">\[\begin{equation}
@@ -695,7 +696,7 @@ y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 \cdot x_2 + \varepsilon.
 <p>Se rappresentiamo graficamente le predizioni del modello</p>
 <div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://strengejacke.github.io/sjPlot/reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">m4</span>, type <span class="op">=</span> <span class="st">"pred"</span>, terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bfneur"</span>, <span class="st">"stateanx"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-324-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-328-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>vediamo che, ora, le rette di regressione di <code>bfneur</code> su <code>bdi</code> in corrispondenza dei tre valori prescelti di <code>stateanx</code> non sono più parallele. Questo significa che l’effetto di <code>bfneur</code> su <code>bdi</code> (la pendenza della retta di regressione) <strong>dipende</strong> dal valore di <code>stateanx</code>. Questo è il significato di “interazione”: <code>bfneur</code> ha un effetto diverso su <code>bdi</code> a seconda del livello di <code>stateanx</code>.</p>
 <p>Nel caso presente, vediamo dalla figura che il Neuroticismo ha un effetto più grande sul livello di depressione quando consideriamo coloro che hanno livelli di ansia di stato elevati.</p>
 <p>I coefficienti si interpretano come in precedenza. L’intercetta corrisponde al valore atteso di <code>bdi</code> quando <code>bfneur</code> e <code>stateanx</code> hanno il valore di zero. Questo è di poco interesse. Per cui trasformiamo i dati in modo da utilizzare variabili indipendenti “centrate,” ovvero variabili da cui abbiamo sottratto la media.</p>
@@ -732,33 +733,33 @@ y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 \cdot x_2 + \varepsilon.
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="sintesi-a-posteriori.html"><span class="header-section-number">27</span> Sintesi a posteriori</a></div>
-<div class="next"><a href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">29</span> Il modello statistico della regressione lineare</a></div>
+<div class="prev"><a href="sintesi-a-posteriori.html"><span class="header-section-number">28</span> Sintesi a posteriori</a></div>
+<div class="next"><a href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">30</span> Il modello statistico della regressione lineare</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#una-breve-introduzione-al-modello-di-regressione"><span class="header-section-number">28</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="nav-link" href="#una-breve-introduzione-al-modello-di-regressione"><span class="header-section-number">29</span> Una breve introduzione al modello di regressione</a></li>
 <li>
-<a class="nav-link" href="#regressione-bivariata"><span class="header-section-number">28.1</span> Regressione bivariata</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#scioglimento-del-ghiaccio-marino"><span class="header-section-number">28.1.1</span> Scioglimento del ghiaccio marino</a></li></ul>
+<a class="nav-link" href="#regressione-bivariata"><span class="header-section-number">29.1</span> Regressione bivariata</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#scioglimento-del-ghiaccio-marino"><span class="header-section-number">29.1.1</span> Scioglimento del ghiaccio marino</a></li></ul>
 </li>
-<li><a class="nav-link" href="#interpretazione-dei-coefficienti-a-e-b"><span class="header-section-number">28.2</span> Interpretazione dei coefficienti \(a\) e \(b\)</a></li>
+<li><a class="nav-link" href="#interpretazione-dei-coefficienti-a-e-b"><span class="header-section-number">29.2</span> Interpretazione dei coefficienti \(a\) e \(b\)</a></li>
 <li>
-<a class="nav-link" href="#scomposizione-della-y"><span class="header-section-number">28.3</span> Scomposizione della \(y\)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#metodo-di-stima-dei-coefficienti-del-modello-di-regressione"><span class="header-section-number">28.3.1</span> Metodo di stima dei coefficienti del modello di regressione</a></li></ul>
+<a class="nav-link" href="#scomposizione-della-y"><span class="header-section-number">29.3</span> Scomposizione della \(y\)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#metodo-di-stima-dei-coefficienti-del-modello-di-regressione"><span class="header-section-number">29.3.1</span> Metodo di stima dei coefficienti del modello di regressione</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#inferenza-sul-modello-di-regressione"><span class="header-section-number">28.4</span> Inferenza sul modello di regressione</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#inferenza-sul-modello-di-regressione"><span class="header-section-number">29.4</span> Inferenza sul modello di regressione</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#osservazione-1">Osservazione</a></li>
-<li><a class="nav-link" href="#errore-standard-della-stima"><span class="header-section-number">28.4.1</span> Errore standard della stima</a></li>
-<li><a class="nav-link" href="#errori-standard-delle-stime-a-e-b"><span class="header-section-number">28.4.2</span> Errori standard delle stime \(a\) e \(b\)</a></li>
+<li><a class="nav-link" href="#errore-standard-della-stima"><span class="header-section-number">29.4.1</span> Errore standard della stima</a></li>
+<li><a class="nav-link" href="#errori-standard-delle-stime-a-e-b"><span class="header-section-number">29.4.2</span> Errori standard delle stime \(a\) e \(b\)</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#una-variabile-indipendente-qualitativa"><span class="header-section-number">28.5</span> Una variabile indipendente qualitativa</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#interazione"><span class="header-section-number">28.5.1</span> Interazione</a></li></ul>
+<a class="nav-link" href="#una-variabile-indipendente-qualitativa"><span class="header-section-number">29.5</span> Una variabile indipendente qualitativa</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#interazione"><span class="header-section-number">29.5.1</span> Interazione</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#regressione-multipla"><span class="header-section-number">28.6</span> Regressione multipla</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#assenza-di-interazione"><span class="header-section-number">28.6.1</span> Assenza di interazione</a></li>
-<li><a class="nav-link" href="#interazione-tra-i-regressone"><span class="header-section-number">28.6.2</span> Interazione tra i regressone</a></li>
+<a class="nav-link" href="#regressione-multipla"><span class="header-section-number">29.6</span> Regressione multipla</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#assenza-di-interazione"><span class="header-section-number">29.6.1</span> Assenza di interazione</a></li>
+<li><a class="nav-link" href="#interazione-tra-i-regressone"><span class="header-section-number">29.6.2</span> Interazione tra i regressone</a></li>
 </ul>
 </li>
 </ul>

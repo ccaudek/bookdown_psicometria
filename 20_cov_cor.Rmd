@@ -1,0 +1,328 @@
+# Covarianza e correlazione di variabili aleatorie
+
+Le domande più interessanti dell'analisi dei dati riguardano non tanto
+la descrizione del comportamento di una variabile considerata
+indipendentemente dalle altre, quanto bensì l'associazione tra due (o
+più) variabili. Vedremo in seguito come, per descrivere l'associazione
+tra più variabili, è necessario fare uso di un *modello statistico*. Nel
+caso più semplice, però, possiamo considerare l'associazione lineare tra
+due sole variabili. La teoria della probabilità ci mette a disposizione
+due strumenti per affrontare il problema di descrivere l'associazione
+lineare tra due variabili: il concetto di covarianza e il concetto di
+correlazione. Abbiamo già incontrato questi concetti quando abbiamo
+descritto le proprietà di un campione. Ora li consideriamo nuovamente
+nel contesto della discussione delle variabili aleatorie.
+
+## Covarianza 
+
+La covarianza quantifica la tendenza delle variabili aleatorie $X$ e $Y$
+a "variare assieme". Per esempio, l'altezza e il peso delle giraffe
+producono una covarianza positiva perché all'aumentare di una di queste
+due quantità tende ad aumentare anche l'altra. La covarianza misura la
+forza e la direzione del legame lineare tra due variabili aleatorie $X$
+ed $Y$. Si utilizza la notazione $Cov(X,Y)=\sigma_{xy}$.
+
+
+```{definition, defcovariane}
+Date due variabili aleatorie $X$, $Y$, chiamiamo covarianza tra $X$ ed
+$Y$ il numero
+\begin{equation}
+Cov(X,Y) = \mathbb{E}\Bigl(\bigl(X - \mathbb{E}(X)\bigr) \bigl(Y - \mathbb{E}(Y)\bigr)\Bigr),
+(\#eq:covariancedef)
+\end{equation}
+dove $\mathbb{E}(X)$ e $\mathbb{E}(Y)$ sono i valori attesi di $X$ ed $Y$.
+```
+
+\
+
+Scritta in forma esplicita, l'eq. \@ref(eq:covariancedef) diventa
+$$
+Cov(X,Y) = \sum_{(x,y) \in \Omega} (x - \mu_X) (y - \mu_Y) f(x, y).
+$$ 
+La definizione è analoga, algebricamente, a quella di varianza e risulta infatti 
+$$
+Var(x) = Cov(X, X)
+$$ 
+e
+\begin{equation}
+Cov(X,Y) = \mathbb{E}(XY) - \mathbb{E}(Y)\mathbb{E}(X).
+(\#eq:covariancealt)
+\end{equation}
+
+```{proof}
+La precedente proprietà si dimostra nel modo seguente:
+$$
+\begin{aligned}
+Cov(X,Y) &= \mathbb{E}\Bigl(\bigl(X-\mathbb{E}(X)\bigr) \bigl(Y-\mathbb{E}(Y)\bigr)\Bigr)\notag\\
+          %&= \mathbb{E}(XY) - \mathbb{E}(Y)X -\mathbb{E}(X)Y + \mathbb{E}(X)\mathbb{E}(Y) )\notag\\
+          &= \mathbb{E}(XY) - \mathbb{E}(Y)\mathbb{E}(X) - \mathbb{E}(X)\mathbb{E}(Y) + \mathbb{E}(X)\mathbb{E}(Y)\notag\\
+          &= \mathbb{E}(XY) - \mathbb{E}(Y)\mathbb{E}(X)\notag.
+\end{aligned}
+$$ 
+```
+
+Consideriamo il seguente esempio. 
+Supponiamo che $X$ e $Y$ abbiano la funzione di massa di probabilità
+congiunta riportata nella tabella che ripetiamo qui sotto e si riferisce all'esercizio  sul lancio di tre monete che abbiamo discusso in precedenza. Si
+calcoli la covarianza di $X$ e $Y$.
+
+      x /\ y              0     1     p(x)
+  --------------        ----- ----- --------
+       0                 1/8    0     1/8
+       1                 2/8   1/8    3/8
+       2                 1/8   2/8    3/8
+       3                  0    1/8    1/8
+   **p(y)**               4/8   4/8    1.0
+
+Applichiamo l'eq. \@ref(eq:covariancedef). Abbiamo che $\mu_X = 1.5$ e $\mu_Y = 0.5$. Ne
+segue che la covarianza di $X$ e $Y$ è: 
+
+\begin{equation}
+\begin{aligned}
+Cov(X,Y) &= \sum_{(x,y) \in\ \Omega} (x - \mu_X) (y - \mu_Y) f(x, y)\\
+         &= (0-1.5)(0-0.5)\cdot \frac{1}{8} + (0-1.5)(1-0.5) \cdot 0 \\
+         & \quad + (1-1.5)(0-0.5)\cdot \frac{2}{8} + (1-1.5)(1-0.5) \cdot \frac{1}{8} \\
+         & \quad + (2-1.5)(0-0.5) \cdot \frac{1}{8} + (2-1.5)(1-0.5) \cdot \frac{2}{8} \\
+         & \quad + (3-1.5)(0-0.5) \cdot 0 +  (3-1.5)(1-0.5)\cdot\frac{1}{8} \\
+         &= \frac{1}{4}. \notag
+ \end{aligned}
+\end{equation}
+
+Lo stesso risultato può essere trovato utilizzando l'equazione \@ref(eq:covariancealt). Iniziamo a calcolare il valore atteso del prodotto $XY$:
+
+$$
+\mathbb{E}(XY) = 0 \cdot\frac{4}{8} + 1 \cdot\frac{1}{8} + 2 \cdot\frac{2}{8} + 3 \cdot\frac{1}{8} = 1.0.
+$$
+
+Pertanto la covarianza tra $X$ e $Y$ diventa 
+$$
+\begin{aligned}
+ Cov(X,Y) &= \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y)\notag\\ 
+ &= 1 -  1.5\cdot 0.5 \notag\\ 
+ &= 0.25.\notag
+\end{aligned}
+$$
+
+
+### Interpretazione della covarianza
+
+Per fornire un'interpretazione geometrica al concetto di covarianza, iniziamo con il rappresentare mediante un diagramma a dispersione le otto coppie $X$, $Y$ della tabella che rappresenta la distribuzione della probabilità congiunta nell'esperimento del lancio di tre monete ponendo $X$ sull'asse delle ascisse e $Y$ sull'asse delle ordinate.
+
+```{r figurecovariancedef, echo=FALSE, fig.height=3, fig.width=6, fig.cap="Diagramma a dispersione per le variabili $X$ e $Y$ di cui abbiamo riportato sopra la distribuzione di probabilità congiunta. I cerchi con diametro maggiore indicano la presenza di due osservazioni sovrapposte.", fig.align="center"}
+knitr::include_graphics("images/covariance_def.png", dpi = 20)
+```
+
+Riportando nel medesimo grafico anche le rette individuate dai due
+valori attesi, rispettivamente, di $X$ e di $Y$, si ottiene che la
+nuvola di punti viene suddivisa in 4 quadrati, numerati in senso
+antiorario e partendo da quello in alto a destra. Per i punti che si
+trovano nel I quadrante vale che:
+
+$$
+x > \mathbb{E}(X) \quad \text{e} \quad y > \mathbb{E}(Y) \quad \rightarrow \quad
+\big(x - \mathbb{E}(X)\big)\left(y - \mathbb{E}(Y)\right) > 0.
+$$ 
+Per i punti che si trovano nel II quadrante vale che:
+$$
+x < \mathbb{E}(X) \quad \text{e} \quad y > \mathbb{E}(Y) \quad \rightarrow \quad
+\big(x - \mathbb{E}(X)\big)\left(y - \mathbb{E}(Y)\right) < 0.
+$$ 
+Per i punti che si trovano nel III quadrante vale che:
+$$
+x < \mathbb{E}(X) \quad \text{e} \quad y < \mathbb{E}(Y) \quad \rightarrow \quad
+\big(x - \mathbb{E}(X)\big)\left(y - \mathbb{E}(Y)\right) > 0.
+$$ 
+Per i punti che si trovano nel IV quadrante vale che:
+$$
+x > \mathbb{E}(X) \quad \text{e} \quad y < \mathbb{E}(Y) \quad \rightarrow \quad
+\big(x - \mathbb{E}(X)\big)\left(y - \mathbb{E}(Y)\right) < 0.
+$$ 
+Il valore atteso dei prodotti degli scarti non è altro che la covarianza:
+$$
+Cov(X,Y) = \sum_x \sum_y\big(x - \mathbb{E}(X)\big)\big(y - \mathbb{E}(Y)\big)p(x,y).
+$$
+Se prevalgono punti nel I e III quadrante la nuvola di punti avrà un
+andamento crescente (per cui a valori bassi di $X$ tendono ad associarsi
+valori bassi di $Y$ e a valori elevati di $X$ tendono ad associarsi
+valori elevati di $Y$) e la covarianza segno positivo; mentre se
+prevalgono punti nel II e IV quadrante la nuvola di punti avrà un
+andamento decrescente (per cui a valori bassi di $X$ tendono ad
+associarsi valori elevati di $Y$ e a valori elevati di $X$ tendono ad
+associarsi valori bassi di $Y$) e la covarianza segno negativo.
+
+Per la figura\ \@ref(fig:figurecovariancedef) ci sono 3 osservazioni in
+ciascuno dei quadranti I e III, e un'osservazione ciascuno nei quadranti
+II e IV. Pertanto la covarianza ha valore positivo: infatti
+$Cov(x,y) = +0.25$. Il segmento blu nel grafico rappresenta la retta
+che meglio approssima i punti del diagramma a dispersione. Per questi
+dati, tale retta ha una pendenza positiva (all'aumentare di $X$ aumenta
+$Y$), il che è coerente con il segno della covarianza.
+
+## Correlazione
+
+La covarianza dipende dall'unità di misura delle due variabili e quindi
+non consente di stabilire l'intensità della relazione. Una misura
+standardizzata della relazione che intercorre fra due variabili è invece
+rappresentata dalla correlazione. La correlazione si ottiene dividendo
+la covarianza per le deviazioni standard delle due variabili aleatorie.
+
+Il coefficiente di correlazione tra $X$ ed $Y$ è il numero definito da
+
+\begin{equation}
+\rho(X,Y) =\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}}.
+(\#eq:rho)
+\end{equation}
+
+Si può anche scrivere $\rho_{X,Y}$ al posto di $\rho(X,Y)$.
+
+Il coefficiente di correlazione $\rho_{xy}$ è un numero puro, cioè non
+dipende dall'unità di misura delle variabili, e assume valori compresi
+tra -1 e +1. Ad esso possiamo assegnare la seguente interpretazione:
+
+1.  $\rho_{X,Y} = -1$ $\rightarrow$ perfetta relazione negativa: tutti i
+    punti si trovano esattamente su una retta con pendenza negativa (dal
+    quadrante in alto a sinistra al quadrante in basso a destra);
+
+2.  $\rho_{X,Y} = +1$ $\rightarrow$ perfetta relazione positiva: tutti i
+    punti si trovano esattamente su una retta con pendenza positiva (dal
+    quadrante in basso a sinistra al quadrante in alto a destra);
+
+3.  $-1 < \rho_{X,Y} < +1$ $\rightarrow$ presenza di una relazione
+    lineare di intensità diversa;
+
+4.  $\rho_{X,Y} = 0$ $\rightarrow$ assenza di relazione lineare tra $X$
+    e $Y$.
+
+## Proprietà 
+
+1.  La covarianza tra una variabile aleatoria $X$ e una costante $c$ è
+    nulla: 
+    $$
+    Cov(c,X) = 0,
+    $$
+
+2.  la covarianza è simmetrica: $$Cov(X,Y) = Cov(Y,X),$$
+
+3.  vale $$-1 \leq \rho(X,Y) \leq 1,$$
+
+4.  la correlazione non dipende dall'unità di misura:
+    $$\rho(aX, bY) = \rho(X,Y), \qquad \forall a, b > 0,$$
+
+5.  se $Y = a + bX$ è una funzione lineare di $X$ con costanti $a$ e
+    $b$, allora $\rho(X,Y) = \pm 1$, a seconda del segno di $b$,
+
+6.  la covarianza tra $X$ e $Y$, ciascuna moltiplicata per una costante,
+    è uguale al prodotto delle costanti per la covarianza tra $X$ e $Y$:
+    $$Cov(aX,bY) = ab \;Cov(X,Y), \qquad \forall a,b \in \mathbb{R},$$
+
+7.  $$Var(X \pm Y) = Var(X) + Var(Y) \pm 2 \cdot Cov(X,Y),$$
+
+8.  $$Cov(X + Y, Z) = Cov(X,Z) + Cov(Y,Z),$$
+
+9.  per una sequenza di variabili aleatorie $X_1, \dots, X_n$, si ha
+    $$
+    Var\left( \sum_{i=1}^n X_i\right) = \sum_{i=1}^n
+     Var(X_i) + 2\sum_{i,j: i<j}Cov(X_i, X_j),
+     $$
+
+10. $$
+Cov\left(\sum_{i=1}^n a_i X_i, \sum_{j=1}^m b_jY_j\right) = \sum_{i=1}^n \sum_{j=1}^m a_j b_jCov(X_j, Y_j),
+$$
+
+11. se $X_1, X_2, \dots, X_n$ sono indipendenti, allora
+    $$
+    Cov\left(\sum_{i=1}^n a_i X_i, \sum_{j=1}^n b_jX_j\right) = \sum_{i=1}^n a_i b_i Var(X_i).
+    $$
+
+## Incorrelazione
+
+Si dice che $X$ ed $Y$ sono incorrelate, o linermente indipendenti, se la loro covarianza è nulla,
+$$
+\sigma_{XY} = \mathbb{E} \big[(X - \mu_X) (y-\mu_u) \big] = 0,
+$$ 
+
+che si può anche scrivere come 
+
+$$
+\rho_{XY} = 0, \quad \mathbb{E}(XY) = \mathbb{E}(X) \mathbb{E}(Y).
+$$ 
+
+Si introduce così un secondo tipo di indipendenza, più debole, dopo quello di indipendenza stocastica. Viceversa, però, se $Cov (X, Y) = 0$, non è detto che $X$ ed $Y$ siano indipendenti.
+
+In conclusione, anche se la condizione di indipendenza implica una covarianza nulla, questo esempio mostra come l'inverso non sia necessariamente vero. La covarianza può essere zero anche quando le due variabili aleatorie non sono indipendenti.
+
+
+```{exercise}
+Siano $X$ e $Y$ due variabili aleatorie discrete avente una
+distribuzione di massa di probabilità congiunta pari a
+$$f_{XY}(x,y) = \frac{1}{4} \quad (x,y) \in \{(0,0), (1,1), (1, -1), (2,0) \}$$
+e zero altrimenti. Si calcoli la covarianza $\rho_{XY}$. Le due
+variabili aleatorie $X$ e $Y$ sono mutuamente indipendenti?
+```
+
+```{solution}
+La distribuzione marginale della $X$ è $$\begin{cases} 
+X = 0, \quad  P_X = 1/4, \\
+X = 1, \quad P_X = 2/4, \\
+X = 2, \quad P_X = 1/4. 
+\end{cases}$$
+$$\mathbb{E}(X) = 0 \frac{1}{4} + 1 \frac{2}{4} + 2 \frac{1}{4} = 1.$$
+$$\mathbb{E}(X^2) = 0^2 \frac{1}{4} + 1^2 \frac{2}{4} + 2^2 \frac{1}{4} = \frac{3}{2}.$$
+$$
+  Var(X) = \frac{3}{2} - 1^2 = \frac{1}{2}.
+$$ 
+La distribuzione marginale della $Y$ è 
+$$
+\begin{cases} 
+Y = -1, \quad  P_Y = 1/4, \\
+Y = 0, \quad P_Y = 2/4, \\
+Y = 1, \quad P_Y = 1/4. 
+\end{cases}
+$$
+$$
+  \mathbb{E}(Y) = 0 \frac{2}{4} + 1 \frac{1}{4} + (-1) \frac{1}{4} = 0.
+$$
+$$
+  \mathbb{E}(Y^2) = 0^2 \frac{2}{4} + 1^2 \frac{1}{4} + (-1)^2 \frac{1}{4} = \frac{1}{2}.
+$$
+$$
+  Var(Y) = \frac{1}{2} - 0^2 = \frac{1}{2}.
+$$ 
+  Calcoliamo ora la covarianza tra $X$ e $Y$: 
+$$
+  \mathbb{E}(XY) = \sum_x\sum_y xy f_{XY} (x,y) = 
+(0\cdot 0)\frac{1}{4} + 
+(1\cdot 1)\frac{1}{4} +
+(1\cdot -1)\frac{1}{4} +
+(2\cdot 0)\frac{1}{4} = 0.
+$$
+$$
+Cov(X,Y) = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y) = 0 - 1\cdot0 = 0.
+$$ 
+
+Quindi le due variabili aleatorie hanno covarianza pari a zero. Tuttavia, esse non
+sono indipendenti, in quanto non è vero che 
+
+$$
+  f_{XY} (x,y) = f_X(x) f_Y(y), \quad \forall x,y.
+$$
+
+```
+
+
+## Conclusioni {-}
+
+La densità di probabilità congiunta tiene simultaneamente conto del comportamento
+di due variabili aleatorie $X$ e $Y$ e di come esse si influenzino.
+Se $X$ e $Y$ sono legati linearmente, allora il coefficiente di
+correlazione 
+$$
+\rho = \frac{\sigma_{XY}}{\sigma_X \sigma_Y}
+$$
+fornisce l'indice maggiormente utilizzato per descrivere l'intensità e
+il segno dell'associazione lineare. Nel caso di un'associazione lineare
+perfetta, $Y = a + bX$, avremmo $\rho = 1$ con $b$ positivo ed
+$\rho = -1$ con $b$ negativo. Se il coefficiente di correlazione è pari
+a 0 le variabili si dicono scorrelate. Condizione sufficiente (ma non
+necessaria) perché tale coefficiente sia nullo è che le due variabili
+siano tra loro indipendenti.

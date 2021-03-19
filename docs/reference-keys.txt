@@ -41,6 +41,12 @@ exr:unnamed-chunk-174
 def:unnamed-chunk-175
 def:unnamed-chunk-176
 exr:unnamed-chunk-177
+def:defcovariane
+eq:covariancedef
+eq:covariancealt
+fig:figurecovariancedef
+eq:rho
+exr:unnamed-chunk-180
 fig:rethinkingmodlearn
 eq:binomwater
 eq:likebino69
@@ -293,6 +299,12 @@ formula-alternativa-per-la-varianza
 deviazione-standard-1
 standardizzazione
 funzione-di-ripartizione
+covarianza-e-correlazione-di-variabili-aleatorie
+covarianza-1
+interpretazione-della-covarianza
+correlazione-1
+proprietà-1
+incorrelazione
 la-distribuzione-binomiale
 una-prova-bernoulliana
 una-sequenza-di-prove-bernoulliane
