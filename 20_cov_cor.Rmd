@@ -44,6 +44,7 @@ $$
 Var(x) = Cov(X, X)
 $$ 
 e
+
 \begin{equation}
 Cov(X,Y) = \mathbb{E}(XY) - \mathbb{E}(Y)\mathbb{E}(X).
 (\#eq:covariancealt)
@@ -88,21 +89,31 @@ Cov(X,Y) &= \sum_{(x,y) \in\ \Omega} (x - \mu_X) (y - \mu_Y) f(x, y)\\
  \end{aligned}
 \end{equation}
 
-Lo stesso risultato può essere trovato utilizzando l'equazione \@ref(eq:covariancealt). Iniziamo a calcolare il valore atteso del prodotto $XY$:
+Possiamo trovare lo stesso risultato utilizzando l'equazione \@ref(eq:covariancealt). 
+Iniziamo a calcolare il valore atteso del prodotto $XY$:
 
-$$
-\mathbb{E}(XY) = 0 \cdot\frac{4}{8} + 1 \cdot\frac{1}{8} + 2 \cdot\frac{2}{8} + 3 \cdot\frac{1}{8} = 1.0.
-$$
+\begin{equation}
+\begin{aligned}
+\mathbb{E}(XY) &= 0\cdot 0 \cdot \frac{1}{8} + 0 \cdot 1 \cdot 0 \\
+               & \quad + 1 \cdot 0 \cdot \frac{2}{8} + 1 \cdot 1 \cdot \frac{1}{8} \\
+               & \quad + 2 \cdot 0 \cdot \frac{1}{8} + 2 \cdot 1 \cdot \frac{2}{8} \\
+               & \quad + 3 \cdot 0 \cdot 0 + 3 \cdot 1 \cdot \frac{1}{8} \\
+               &= 1.0. \notag
+\end{aligned}
+\end{equation}
+
+<!-- $$ -->
+<!-- \mathbb{E}(XY) = 0 \cdot\frac{4}{8} + 1 \cdot\frac{1}{8} + 2 \cdot\frac{2}{8} + 3 \cdot\frac{1}{8} = 1.0. -->
+<!-- $$ -->
 
 Pertanto la covarianza tra $X$ e $Y$ diventa 
 $$
 \begin{aligned}
  Cov(X,Y) &= \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y)\notag\\ 
- &= 1 -  1.5\cdot 0.5 \notag\\ 
+ &= 1.0 -  1.5\cdot 0.5 \notag\\ 
  &= 0.25.\notag
 \end{aligned}
 $$
-
 
 ### Interpretazione della covarianza
 

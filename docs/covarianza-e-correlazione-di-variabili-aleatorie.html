@@ -131,8 +131,8 @@ La definizione è analoga, algebricamente, a quella di varianza e risulta infatt
 <span class="math display">\[
 Var(x) = Cov(X, X)
 \]</span>
-e
-<span class="math display" id="eq:covariancealt">\[\begin{equation}
+e</p>
+<p><span class="math display" id="eq:covariancealt">\[\begin{equation}
 Cov(X,Y) = \mathbb{E}(XY) - \mathbb{E}(Y)\mathbb{E}(X).
 \tag{18.2}
 \end{equation}\]</span></p>
@@ -204,15 +204,25 @@ Cov(X,Y) &amp;= \sum_{(x,y) \in\ \Omega} (x - \mu_X) (y - \mu_Y) f(x, y)\\
          &amp;= \frac{1}{4}. \notag
  \end{aligned}
 \end{equation}\]</span></p>
-<p>Lo stesso risultato può essere trovato utilizzando l’equazione <a href="covarianza-e-correlazione-di-variabili-aleatorie.html#eq:covariancealt">(18.2)</a>. Iniziamo a calcolare il valore atteso del prodotto <span class="math inline">\(XY\)</span>:</p>
-<p><span class="math display">\[
-\mathbb{E}(XY) = 0 \cdot\frac{4}{8} + 1 \cdot\frac{1}{8} + 2 \cdot\frac{2}{8} + 3 \cdot\frac{1}{8} = 1.0.
-\]</span></p>
+<p>Possiamo trovare lo stesso risultato utilizzando l’equazione <a href="covarianza-e-correlazione-di-variabili-aleatorie.html#eq:covariancealt">(18.2)</a>.
+Iniziamo a calcolare il valore atteso del prodotto <span class="math inline">\(XY\)</span>:</p>
+<p><span class="math display">\[\begin{equation}
+\begin{aligned}
+\mathbb{E}(XY) &amp;= 0\cdot 0 \cdot \frac{1}{8} + 0 \cdot 1 \cdot 0 \\
+               &amp; \quad + 1 \cdot 0 \cdot \frac{2}{8} + 1 \cdot 1 \cdot \frac{1}{8} \\
+               &amp; \quad + 2 \cdot 0 \cdot \frac{1}{8} + 2 \cdot 1 \cdot \frac{2}{8} \\
+               &amp; \quad + 3 \cdot 0 \cdot 0 + 3 \cdot 1 \cdot \frac{1}{8} \\
+               &amp;= 1.0. \notag
+\end{aligned}
+\end{equation}\]</span></p>
+<!-- $$ -->
+<!-- \mathbb{E}(XY) = 0 \cdot\frac{4}{8} + 1 \cdot\frac{1}{8} + 2 \cdot\frac{2}{8} + 3 \cdot\frac{1}{8} = 1.0. -->
+<!-- $$ -->
 <p>Pertanto la covarianza tra <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> diventa
 <span class="math display">\[
 \begin{aligned}
  Cov(X,Y) &amp;= \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y)\notag\\ 
- &amp;= 1 -  1.5\cdot 0.5 \notag\\ 
+ &amp;= 1.0 -  1.5\cdot 0.5 \notag\\ 
  &amp;= 0.25.\notag
 \end{aligned}
 \]</span></p>
