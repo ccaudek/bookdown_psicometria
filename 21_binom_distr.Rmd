@@ -144,6 +144,8 @@ Lo stesso risultato si ottiene utilizzando
 dbinom(0:4, 4, 0.2)
 ```
 
+Si noti che nei dati reali con misurazioni multiple (ad esempio, una serie di lanci nella pallacanestro) la probabilità $p$ di successo può variare da prova a prova e i risultati possono essere correlati. Tuttavia, il modello binomiale è un utile punto di partenza per modellare  dati di questo tipo. E in molte situazioni -- in particolare, quelle con un campionamento indipendente di risposte binarie -- il modello binomiale generalmente è appropriato, o fornisce un'approssimazione sufficiente.
+
 __Esempio.__ Lanciando $5$ volte una moneta onesta, qual è la probabilità che esca
 testa almeno tre volte?
 

@@ -323,6 +323,7 @@ Ripetendo i calcoli per i valori <span class="math inline">\(k = 0, \dots, 4\)</
 <div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">0.2</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0.4096 0.4096 0.1536 0.0256 0.0016</span></code></pre></div>
+<p>Si noti che nei dati reali con misurazioni multiple (ad esempio, una serie di lanci nella pallacanestro) la probabilità <span class="math inline">\(p\)</span> di successo può variare da prova a prova e i risultati possono essere correlati. Tuttavia, il modello binomiale è un utile punto di partenza per modellare dati di questo tipo. E in molte situazioni – in particolare, quelle con un campionamento indipendente di risposte binarie – il modello binomiale generalmente è appropriato, o fornisce un’approssimazione sufficiente.</p>
 <p><strong>Esempio.</strong> Lanciando <span class="math inline">\(5\)</span> volte una moneta onesta, qual è la probabilità che esca
 testa almeno tre volte?</p>
 <p>Usando <code>dbinom(3, 5, 0.5) + dbinom(4, 5, 0.5) + dbinom(5, 5, 0.5)</code>
