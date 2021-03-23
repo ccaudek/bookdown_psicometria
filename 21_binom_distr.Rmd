@@ -169,8 +169,8 @@ $$
 $X_i$, è facile vedere che 
 $$
 \begin{aligned}
-\mathbb{E}(X) &= \Ev \left( \sum_{i=1}^n X_i \right) = \sum_{i=1}^n \Ev(X_i) = np, \\
-var(X) &= \var \left( \sum_{i=1}^n X_i \right) = \sum_{i=1}^n \var(X_i) = n p (1-p).
+\mathbb{E}(X) &= \mathbb{E} \left( \sum_{i=1}^n X_i \right) = \sum_{i=1}^n \mathbb{E}(X_i) = np, \\
+var(X) &= var \left( \sum_{i=1}^n X_i \right) = \sum_{i=1}^n var(X_i) = n p (1-p).
 \end{aligned}
 $$
 :::
