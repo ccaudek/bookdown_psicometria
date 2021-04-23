@@ -10,14 +10,48 @@ Una tipica analisi di dati Bayesiana consiste di tre fasi principali:
 -   combinare la distribuzione a priori e la funzione di verosimiglianza
     utilizzando il teorema di Bayes in modo da produrre la distribuzione
     a posteriori.
-
+    
 La distribuzione a posteriori costituisce dunque un compromesso tra la
 conoscenza precedente del ricercatore (rappresentata dalla distribuzione
 a priori) e i dati osservati (rappresentati dalla verosimiglianza),
 ovvero riflette le conoscenze aggiornate del ricercatore alla luce delle
 nuove evidenze, e viene utilizzata per condurre inferenze.
 
-## Le distribuzioni a priori
+
+## Procedura Bayesiana di stima dei parametri
+
+Sulla base di un modello $M$ di parametri $\theta$, la procedura _Bayesiana_ di stima dei parametri si pone il problema di trovare i valori più plausibili di $\theta$, alla luce dei dati disponibili $D$. 
+Dato un modello Bayesiano $M$, è possibile usare il teorema di Bayes per aggiornare le nostre credenze a priori su $\theta$ in modo da produrre nuove _credenze a posteriori_ $P_M(\theta \mid D)$ ottenute combinando i dati osservati $D$ e le credenze precedenti sulla base delle assunzioni esplicitate dal modello $M$.
+Ci sono due diversi metodi per calcolare le distribuzioni a posteriori 
+$P_M(\theta \mid D)$: 
+
+- una precisa derivazione matematica formulata nei termini della distribuzione a priori coniugata alla distribuzione a posteriori, la quale però ha un'applicabilità molto limitata, 
+- un metodo più efficiente ma approssimato basato sui metodi Monte Carlo basati su Catena di Markov (MCMC). 
+
+In questo capitolo introdurremo la terminologia e le idee di base. In seguito ci porremo il problema di sviluppare un'intuizione dei metodi MCMC.
+
+
+## Definizioni e terminologia
+
+Consideriamo un modello Bayesiano $M$ avente una verosimiglianza $P(D \mid \theta)$ sui dati osservati $D$ e una distribuzione a priori $P(\theta)$ sui parametri. Usiamo il teorema di Bayes per aggiornare le nostre credenze a priori sui parametri $P(\theta)$ in modo tale da ottenere le nuove credenze a posteriori:
+
+$$P(\theta \mid D) = \frac{P(D \mid \theta) \ P(\theta)}{P(D)}.$$
+
+L'equazione precedente è costituita dalle seguenti componenti:
+
+- la **distribuzione a posteriori** $P(\theta \mid D)$  - la nostra nuova credenza a posteriori relativamente alla plausibilità di ciascun valore $\theta$ alla luce di $D$;
+- la **funzione di verosimiglianza** $P(D \mid \theta)$  - quanto sono verosimili i dati $D$ per ciascun valore fisso $\theta$;
+- la **distribuzione a priori** $P(\theta)$  - la nostra credenza iniziale riguardo alla plausibilità di ciascun valore $\theta$;
+- la **verosimiglianza marginale** $P(D) = \int P(D \mid \theta) \ P(\theta) \ \text{d}\theta$ -  quanto sono verosimili i dati $D$ alla luce della nostra credenza a priori relativamente a $\theta$.
+
+La probabilità a posteriori è solitamente scritta nel modo seguente:
+
+$$\underbrace{P(\theta \, | \, D)}_{posterior} \propto \underbrace{P(\theta)}_{prior} \ \underbrace{P(D \, | \, \theta)}_{likelihood},$$
+
+dove il segno di proporzionalità indica che le probabilità a sinistra del simbolo $\propto$ sono definite dai termini a destra di  $\propto$ a meno di una costante di normalizzazione. Se $F \colon X \rightarrow \mathbb{R}^+$ è una funzione positiva non normalizzata di probabilità, $P(x) \propto F(x)$ è equivalente a $P(x) = \frac{F(x)}{\sum_{x' \in X} F(x')}$.
+
+
+## La distribuzione a priori
 
 La selezione delle distribuzioni a priori è spesso vista come una delle
 scelte più importanti che un ricercatore fa quando implementa un modello
@@ -40,7 +74,7 @@ Una classificazione di questo tipo dipende dal giudizio personale del
 ricercatore. Ad esempio, una distribuzione normale è caratterizzata da
 una media e una varianza, e la varianza (o ampiezza) della distribuzione
 definisce al livello di informatività della distribuzione. Una varianza
-di 1.000 può essere considerata "non informativa" in un dato contesto di
+pari a 1000 può essere considerata "non informativa" in un dato contesto di
 ricerca e "informativa" in un altro, a seconda della funzione di
 verosimiglianza e dell'unità di misura del parametro.
 

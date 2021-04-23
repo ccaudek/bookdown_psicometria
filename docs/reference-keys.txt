@@ -370,7 +370,9 @@ critiche-e-difese
 limiti-dellinferenza-frequentista
 attenti-al-valore-p
 modellistica-bayesiana
-le-distribuzioni-a-priori
+procedura-bayesiana-di-stima-dei-parametri
+definizioni-e-terminologia
+la-distribuzione-a-priori
 le-aspettative-dei-pazienti-con-disturbo-depressivo-maggiore
 distribuzione-a-priori
 funzione-di-verosimiglianza
