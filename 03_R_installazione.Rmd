@@ -16,7 +16,7 @@ Vedremo qui come installare `R` e RStudio.
 ## Installare R e RStudio
 
 R è disponibile gratuitamente ed è scaricabile dal sito
-<http://www.r-project.org/>. Dalla pagina principale del sito
+<http://www.rproject.org/>. Dalla pagina principale del sito
 `r-project.org` andiamo sulla sezione `Download` e scegliamo un server a
 piacimento per scaricare il software d'installazione. Una volta
 scaricato l'installer, lo installiamo come un qualsiasi software,

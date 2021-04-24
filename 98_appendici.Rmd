@@ -143,10 +143,10 @@ caratteristiche degli intervalli sono riportate nella tabella seguente.
 
                Intervallo                          
   ------------------------------------- ---------- -------------------
-                 chiuso                  [a, b]     $a \leq x \leq b$
-                 aperto                  (a, b)     $a < x < b$
-   chiuso a sinistra e aperto a destra   [a, b)     $a \leq x < b$
-   aperto a sinistra e chiuso a destra   (a, b]     $a < x \leq b$
+                 chiuso                  \[a, b\]   $a \leq x \leq b$
+                 aperto                   (a, b)       $a < x < b$
+   chiuso a sinistra e aperto a destra   \[a, b)     $a \leq x < b$
+   aperto a sinistra e chiuso a destra   (a, b\]     $a < x \leq b$
 
 
 ## Insiemi {-}

@@ -3,7 +3,4 @@
 # Introduzione {-}
 
 L'inferenza Bayesiana è un approccio all'inferenza statistica in cui le probabilità non sono interpretate come frequenze, proporzioni o concetti analoghi, ma piuttosto come livelli di fiducia nel verificarsi di un dato evento. Come suggerito dal nome stesso, la statistica bayesiana è un approccio all'analisi dei dati e alla stima dei parametri basato sul teorema di Bayes. 
-<<<<<<< HEAD
 
-=======
->>>>>>> e415d868dca882176aeed1dfdb870336d1b10e3f

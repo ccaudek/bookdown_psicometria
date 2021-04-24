@@ -18,7 +18,7 @@ link-citations: yes
 
 # Benvenuti {-} 
 
-**Questo libro è stato aggiornato il giorno: `r format (Sys.Date(), '%d %b %Y')`**.
+**Questo WORK-IN-PROGRESS è stato aggiornato il giorno: `r format (Sys.Date(), '%d %b %Y')`**.
 
 \
 

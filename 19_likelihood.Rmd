@@ -1,3 +1,5 @@
+# (PART\*) Verosimiglianza {-}
+
 # La funzione di verosimiglianza 
 
 ```{r, echo = FALSE}

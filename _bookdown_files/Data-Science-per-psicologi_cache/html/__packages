@@ -1,4 +1,5 @@
 base
+goodshirt
 here
 tidyverse
 ggplot2
@@ -21,13 +22,3 @@ datasauRus
 RColorBrewer
 rio
 patchwork
-StanHeaders
-rstan
-dagitty
-rethinking
-gghighlight
-ggfortify
-sjPlot
-sjmisc
-psychTools
-foreign
