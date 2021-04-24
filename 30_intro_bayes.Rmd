@@ -1,4 +1,4 @@
-# Modellistica bayesiana
+# Modellistica Bayesiana
 
 ## Modelli statistici
 
@@ -16,18 +16,16 @@ Lo scopo più comune di un modello statistico è quello di imparare qualcosa sul
 
 Un modello statistico _M_ è un modello di un processo aleatorio _R_ che potrebbe aver generato i dati che abbiamo osservato. Il modello _M_ descrive quindi in un modo formale le nostre ipotesi sul processo aleatorio _R_. 
 
-Spesso vogliamo spiegare una parte dei nostri dati, le variabili dipendenti $D_{DV}$ 
-nei termini di altre osservazioni, le variabili indipendenti $D_{IV}$.  Ma è anche possibile che non ci siano variabili indipendenti in termini di cui vorremmo modellare la variabile dipendente $D_{DV}$.
+Spesso vogliamo spiegare una parte dei nostri dati, ovvero le variabili dipendenti $D_{DV}$,  nei termini di altre osservazioni, ovvero le variabili indipendenti $D_{IV}$.  Ma è anche possibile trovarsi nella condizione nella quale non ci sono variabili indipendenti ma solo una o più variabili dipendenti $D_{DV}$.
 
-Un modello _M_ per i dati _D_ stabilisce una _fuzione di verosimiglianza_ per $D_{DV}$. 
+Un modello _M_ per i dati _D_ necessariamente include una _fuzione di verosimiglianza_ per $D_{DV}$. La funzione di verosimiglianza descrive la plausibilità delle osservazioni $D_{DV}$ alla luce delle corrispondenti osservazioni $D_{IV}$. Molto spesso, la funzione di verosimiglianza ha anche dei parametri liberi, rappresentati da un vettore $\theta$. 
 
-La funzione di verosimiglianza determina la plausibilità di qualsiasi potenziale osservazione
-$D_{DV}$ alla luce delle corrispondenti osservazioni $D_{IV}$. Molto spesso, la funzione di verosimiglianza ha anche dei parametri liberi, rappresentati da un vettore $\theta$. La  funzione di verosimiglianza del modello _M_ per i dati _D_ con parametri $\theta$ si può dunque scrivere come:
+La  funzione di verosimiglianza del modello _M_ per i dati _D_ con parametri $\theta$ si può scrivere come:
 
 $$
 P_M(D_{DV} \mid D_{IV}, \theta).
 $$
-I modelli bayesiani hanno una componente aggiuntiva, vale a dire una distribuzione a priori sui valori dei parametri, comunemente scritta come:
+I modelli Bayesiani includono una componente aggiuntiva, vale a dire una distribuzione a priori sui valori dei parametri, comunemente scritta come:
 
 $$
 P_M(\theta).
@@ -685,4 +683,7 @@ $$
 $$
 
 dove $\propto$ sta per "proporzionale a" e indica che la distribuzione a posteriori combina le informazioni fornite dai dati e la nostra conoscenza precedente. Un'espressione analitica per $p(\theta \mid \mathcal Y)$ è raramente disponibile e dobbiamo fare affidamento su algoritmi di calcolo numerico per conoscere la distribuzione a posteriori. Una strategia generale che esamineremo in seguito consiste nel prelevare campioni approssimativi dalla distribuzione a posteriori e utilizzarli per costruire stime empiriche della media a posteriori, della varianza, della mediana, dei quantili e di altre quantità di interesse. Qui abbiamo presentato il metodo *grid-based* per il calcolo della distribuzione a posteriori. I metodi basati su griglia funzionano benissimo quando la distribuzione a posteriori dipende da un numero molto piccolo di parametri sconosciuti, ma non possono essere usati nel caso di modelli statistici più complessi che includono un numero maggiore di parametri.
+
+
+
 

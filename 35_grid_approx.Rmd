@@ -471,3 +471,10 @@ Invece di approcci matematici analitici, un'altra classe di metodi fa ricorso al
 
 Come ci ricorda Richard McElreath, nel 1989 erano popolari i Depeche Mode, fu rilasciata la prima versione di Microsoft Office, grandi dimostrazioni popolari contribuirono ad abbattere il muro di Berlino e un gruppo di statistici nel Regno Unito si posero il problema di come potere simulare le catene di Markov su un personal computer. Nel 1997 ci riuscirono, con il primo rilascio pubblico di un'implementazione Windows dell'inferenza bayesiana basata su Gibbs sampling, detta BUGS. Quello che discutiamo in questo insegnamento sono gli sviluppi contemporanei del percorso che è iniziato in questo modo.
 
+
+
+
+
+
+
+
