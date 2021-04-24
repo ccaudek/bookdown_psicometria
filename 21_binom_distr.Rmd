@@ -1,0 +1,204 @@
+# La distribuzione binomiale 
+
+Un esperimento casuale che può dare luogo a solo due possibili esiti
+(successo, insuccesso) è modellabile con una variabile aleatoria di
+Bernoulli. Una sequenza di prove di Bernoulli costituisce un processo
+Bernoulliano. Il numero di successi dopo $N$ prove di Bernoulli è dato
+da una variabile aleatoria che segue la legge Binomiale. La
+distribuzione Binomiale è una delle più importanti distribuzioni di
+probabilità discrete.
+
+## Una prova Bernoulliana
+
+Se un esperimento casuale ha solo due esiti possibili, allora le
+repliche indipendenti di questo esperimento sono chiamate "prove
+Bernoulliane" (il lancio di una moneta è il tipico esempio). Viene detta
+variabile di Bernoulli una variabile aleatoria discreta $X = \{0, 1\}$
+con la seguente distribuzione di probabilità: $$f(X; p) =
+  \begin{cases}
+    p     & \text{se $X = 1$}, \\
+    1 - p & \text{se $X = 0$},
+  \end{cases}$$ con $0 \leq p \leq 1$. Convenzionalmente l'evento
+$\{X = 1\}$ con probabilità $p$ viene chiamato "successo" mentre
+l'evento $\{X = 0\}$ con probabilità $1-p$ viene chiamato "fallimento".
+Applicando l'operatore di valore atteso e di varianza, otteniamo
+$$
+\begin{aligned}
+\mathbb{E}(X) &= 0 \cdot P(X=0) + 1 \cdot P(X=1) = p,\\
+var(X) &= (0 - p)^2 \cdot P(X=0) + (1 - p)^2 \cdot P(X=1) = p(1-p).
+\end{aligned}
+$$
+Scriviamo $X \sim \text{Bern}(p)$ per indicare che la variabile
+aleatoria $X$ ha una distribuzione Bernoulliana di parametro $p$.
+
+Nel caso del lancio di una moneta onesta, i valori della variabile
+aleatoria Bernoulliana sono $0$ e $1$. La distribuzione di massa di
+probabilità è pari a $\frac{1}{2}$ in corrispondenza di entrambi i
+valori. La funzione di distribuzione vale $\frac{1}{2}$ per $X = 0$ e
+$1$ per $X = 1$.
+
+## Una sequenza di prove Bernoulliane
+
+La distribuzione Binomiale è rappresentata dall'elenco di tutti i
+possibili numeri di successi $X = \{0, 1, 2, \dots n\}$ che possono
+essere osservati in $n$ prove Bernoulliane indipendenti di probabilità
+$p$, a ciascuno dei quali è associata la relativa probabilità. Esempi di
+una distribuzione Binomiale sono i risultati di una serie di lanci di
+una stessa moneta o di una serie di estrazioni da un'urna (con
+reintroduzione). La distribuzione Binomiale di parametri $n$ e $p$ è in
+realtà una famiglia di distribuzioni: al variare dei parametri $p$ e $n$
+variano le probabilità.
+
+La probabilità di ottenere $k$ successi e $n-k$ fallimenti in $n$ prove
+Bernoulliane è data dalla formula di Bernoulli: 
+$$
+\begin{aligned}
+P(X=k) &= \binom{n}{k}  p^{k} (1-p)^{n-k} \notag \\
+&= \frac{n!}{k!(n-k)!} p^{k} (1-p)^{n-k}, 
+\label{eq:binomial_distribution}
+\end{aligned}
+$$ dove $n$ = numero di
+prove Bernoulliane, $p$ = probabilità di successo in ciascuna prova e
+$k$ = numero di successi.
+
+::: {.proof}
+*Proof.* Indichiamo con $S$ il successo e con $F$ il fallimento di
+ciascuna prova. Una sequenza di $n$ prove Bernoulliane darà come esito
+una sequenza di $n$ fra $S$ e $F$. Ad esempio, una sequenza che contiene
+$k$ successi è la seguente:
+$$\overbrace{SS\dots S}^\text{$k$ volte} \overbrace{FF\dots F}^\text{$n-k$ volte}$$
+Essendo $p$ la probabilità di $S$ e $q = 1-p$ la probabilità di $F$, la
+probabilità di ottenere la specifica sequenza riportata sopra è
+$$\overbrace{pp\dots p}^\text{$k$ volte} \overbrace{qq\dots q}^\text{$n-k$ volte} = p^k \cdot q^{n-k}.$$
+È immediato notare che una qualsiasi altra sequenza contenente
+esattamente $k$ successi avrà sempre come probabilità
+$p^k \cdot q^{n-k}$: il prodotto infatti resta costante anche se cambia
+l'ordine dei fattori.
+
+Dobbiamo ora chiederci come si possa determinare il numero di sequenze
+che contengono esattamente $k$ successi in $n$ prove. La risposta a tale
+domanda ci viene fornita dal coefficiente Binomiale
+$$\binom{n}{k} = \frac{n!}{k!(n-k)!}.$$
+
+Perché il coefficiente Binomiale è la risposta alla domanda che ci siamo
+posti? Per capire perché, facciamo riferimento al triangolo di Tartaglia
+(1499-1557), detto anche triangolo di Pascal. Il triangolo di Tartaglia
+è una tabella a forma di triangolo composta da numeri naturali. Le prime
+cinque righe del triangolo di Tartaglia sono riportate qui sotto:
+
+  ------- -- -- --- --- --- --- --- --- --- --- --- -- --
+  $n=0$                          1                     
+  $n=1$                      1       1                 
+  $n=2$                  1       2       1             
+  $n=3$              1       3       3       1         
+  $n=4$          1       4       6       4       1     
+  ------- -- -- --- --- --- --- --- --- --- --- --- -- --
+
+Vediamo come si costruisce il triangolo di Tartaglia. Consideriamo una
+sequenza di quattro lanci di una moneta. Il primo lancio può produrre
+zero successi (esito "croce", 0) o un successo (esito "testa", 1), come
+indicato qui sotto nella riga indicizzata con $n = 1$.
+
+Come indicato nella riga $n = 2$, in due lanci possiamo ottenere 0
+(ovvero, croce nel primo lancio e croce nel secondo lancio, $\{00\}$), 1
+(ovvero, croce nel primo lancio e testa nel secondo lancio, oppure testa
+nel primo lancio e croce nel secondo lancio $\{01, 10\}$ -- si noti che
+un successo in due lanci si può ottenere in due modi diversi) -- oppure
+2 successi (ovvero, testa nel primo lancio e testa nel secondo lancio,
+$\{11\}$). La riga $n = 3$ riporta il numero di sequenze che producono
+0, 1, 2 e 3 successi in tre lanci; e così via. Ciò che è importante
+notare è che ogni numero del triangolo di Tartaglia è un particolare
+coefficiente binomiale.
+
+Possiamo dunque concludere che il coefficiente binomiale fornisce la
+risposta alla domanda: "in quanti modi diversi si possono ottenere $k$
+successi in una sequenza di $n$ prove Bernoulliane?" Se ora combiniamo i
+due risultati che abbiamo descritto sopra (ovvero, "come si calcola la
+probabilità di una specifica sequenza di teste e croci?" e "in quanti
+modi diversi si possono ottenere $k$ successi in $n$ prove?"), giungiamo
+alla formula della distributione binomiale.
+:::
+
+__Esempio.__ Utilizzando l'equazione della distributione binomiale., troviamo la probabilità di $k=2$
+successi in $n=4$ prove con $p=0.2$: 
+$$
+\begin{aligned}
+P(X=2) &= \frac{4!}{2!(4-2)!} 0.2^{2} (1-0.2)^{4-2} \notag  \\
+ &= \frac{4 \cdot 3 \cdot 2 \cdot 1}{(2 \cdot 1)(2 \cdot 1)}
+0.2^{2} 0.8^{2} = 0.1536. \notag
+\end{aligned}
+$$ 
+Ripetendo i calcoli per i valori $k = 0, \dots, 4$ otteniamo:
+
+|k | P(X=k)|
+|--|-------|
+|0 | 0.4096|
+|1 | 0.4096|
+|2 | 0.1536|
+|3 | 0.0256|
+|4 | 0.0016|
+|sum | 1.0|
+
+Lo stesso risultato si ottiene utilizzando  
+```{r}
+dbinom(0:4, 4, 0.2)
+```
+
+Si noti che nei dati reali con misurazioni multiple (ad esempio, una serie di lanci nella pallacanestro) la probabilità $p$ di successo può variare da prova a prova e i risultati possono essere correlati. Tuttavia, il modello binomiale è un utile punto di partenza per modellare  dati di questo tipo. E in molte situazioni -- in particolare, quelle con un campionamento indipendente di risposte binarie -- il modello binomiale generalmente è appropriato, o fornisce un'approssimazione sufficiente.
+
+__Esempio.__ Lanciando $5$ volte una moneta onesta, qual è la probabilità che esca
+testa almeno tre volte?
+
+Usando `dbinom(3, 5, 0.5) + dbinom(4, 5, 0.5) + dbinom(5, 5, 0.5)`
+otteniamo `0.5`. Alternativamente, possiamo trovare la probabilità
+dell'evento complementare a quello definito dalla funzione di
+ripartizione calcolata mediante `pbinom()`, ovvero
+`1 - pbinom(2, 5, 0.5) = 0.5`.
+
+## Media e deviazione standard della distribuzione Binomiale
+
+La media (numero atteso di successi in $n$ prove) e la deviazione
+standard di una distribuzione Binomiale sono molto semplici:
+$$
+\begin{aligned}
+\mu &= np,  \notag \\
+ \sigma &= \sqrt{np(1-p)}.\notag
+ \end{aligned}
+ $$
+
+::: {.proof}
+*Proof.* Essendo $X$ la somma di $n$ prove Bernoulliane indipendenti
+$X_i$, è facile vedere che 
+$$
+\begin{aligned}
+\mathbb{E}(X) &= \mathbb{E} \left( \sum_{i=1}^n X_i \right) = \sum_{i=1}^n \mathbb{E}(X_i) = np, \\
+var(X) &= var \left( \sum_{i=1}^n X_i \right) = \sum_{i=1}^n var(X_i) = n p (1-p).
+\end{aligned}
+$$
+:::
+
+__Esempio.__ Si trovi il valore atteso e la varianza del lancio di quattro monete con
+probabilità di successo pari a $p=0.2$.
+
+Il valore atteso è $\mu = np = 4 \cdot 0.2 = 0.8.$ Ciò significa che, se
+l'esperimento aleatorio venisse ripetuto infinite volte allora l'esito
+testa verrebbe osservato un numero medio di volte pari a $0.8$. La
+varianza è $n p (1-p) = 4 \cdot(1 - 0.2) = 0.8$. L'eguaglianza di $\mu$
+e $\sigma$ è solo una peculiarità di questo esempio.
+
+## Conclusioni {-}
+
+Una variabile aleatoria bernoulliana è la più semplice delle variabili aleatorie. Di 
+conseguenza, la distribuzione binomiale è la più
+semplice delle distribuzioni di massa di probabilità. Per questa ragione la distribuzione binomiale viene  discussa prima di presentare casi più complessi, perché ci
+fornisce un esempio paradigmatico del tipo di problemi che richiedono,
+per essere risolti, procedure matematicamente più complesse in
+situazioni diverse. L'aspetto matematico, tuttavia, è secondario per i
+nostri scopi. In tutti i casi, è più semplice usare un software per
+svolgere i calcoli, piuttosto che fare una lunga serie di somme
+utilizzando le Tavole delle funzioni di ripartizione di varie
+distribuzioni di probabilità. Ciò che è cruciale è capire il significato
+dei concetti e come si può utilizzare un software per eseguire i
+calcoli. Nel caso presente, i calcoli sono molto semplici e si possono
+anche eseguire a mano. In seguito vedremo che l'uso di un software sarà
+sempre richiesto.

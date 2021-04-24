@@ -116,9 +116,6 @@ tibble(
   )
 ```
 
-
-
-
 ### Distribuzione a priori sui parametri 
 
 La distribuzione a priori sui valori dei parametri $P_M (\theta)$ è parte integrante di un modello quando adottiamo un approccio Bayesiano all'analisi dei dati. Ciò implica che due modelli (bayesiani) possono condividere la stessa funzione di verosimiglianza, e tuttavia devono essere considerati come modelli diversi, se specificano diverse distribuzioni a priori. Ciò significa che, quando diciamo "Modello binomiale", intendiamo in realtà un'intera classe di modelli, ovvero tutti i modelli con la stessa verosimiglianza ma diverse distribuzioni a priori su $\theta$.
@@ -141,7 +138,6 @@ La figura seguente mostra esempi di distribuzioni a priori non informative, debo
 - *debolmente informativa* : $\theta_c \sim \text{Beta}(5,2)$;
 - *fortemente informativa* : $\theta_c \sim \text{Beta}(50,20)$;
 - *valore puntuale* : $\theta_c \sim \text{Beta}(\alpha, \beta)$ con $\alpha, \beta \rightarrow \infty$ e $\frac{\alpha}{\beta} = \frac{5}{2}$.
-
 
 ```{r ch-03-02-models-types-of-priors, echo = F, fig.cap = "Examples of different kinds of Bayesian priors for coin bias $\\theta_c$ in the Binomial Model."}
 tibble(
@@ -183,7 +179,6 @@ indebita di osservazioni estreme, e quello del miglioramento dell'efficienza
 della stima, ovvero, la facilitazione dei processi di calcolo numerico
 di stima della distribuzione a posteriori.
 
-
 ## Procedura Bayesiana di stima dei parametri
 
 ### Finalità
@@ -201,12 +196,13 @@ $P_M(\theta \mid D)$:
 
 In questo capitolo introdurremo la terminologia e le idee di base che stanno alla base della stima delle funzione a posteriori. In seguito ci porremo il problema di sviluppare un'intuizione dei metodi MCMC.
 
-
 ### Terminologia
 
 Consideriamo un modello Bayesiano $M$ avente una verosimiglianza $P(D \mid \theta)$ sui dati osservati $D$ e una distribuzione a priori $P(\theta)$ sui parametri. Applichiamo il teorema di Bayes per produrre la distribuzione a posteriori:
 
-$$P(\theta \mid D) = \frac{P(D \mid \theta) \ P(\theta)}{P(D)}.$$
+$$
+P(\theta \mid D) = \frac{P(D \mid \theta) \ P(\theta)}{P(D)}.
+$$
 
 L'equazione precedente è costituita dalle seguenti componenti:
 
@@ -223,7 +219,6 @@ $$
 
 dove il segno di proporzionalità indica che le probabilità a sinistra del simbolo $\propto$ sono definite dai termini a destra di  $\propto$ a meno di una costante di normalizzazione. Se $F \colon X \rightarrow \mathbb{R}^+$ è una funzione positiva non normalizzata di probabilità, $P(x) \propto F(x)$ è equivalente a $P(x) = \frac{F(x)}{\sum_{x' \in X} F(x')}$.
 
-
 ## Le aspettative dei pazienti con disturbo depressivo maggiore
 
 Discuteremo ora un esempio che ha lo scopo di chiarite le relazioni
@@ -231,8 +226,7 @@ che legano tra loro le tre distribuzioni che abbiamo introdotto sopra:
 la distribuzione a priori, la verosimiglianza e la distribuzioni a
 posteriori. Nell'esempio faremo riferimento alla ricerca di @zetsche_future_2019. 
 
-@zetsche_future_2019 si sono chiesti se gli individui depressi manifestino delle aspettative accurate circa il loro umore
-futuro, oppure se tali aspettative siano distorte negativamente.
+@zetsche_future_2019 si sono chiesti se gli individui depressi manifestino delle aspettative accurate circa il loro umore futuro, oppure se tali aspettative siano distorte negativamente.
 Esamineremo qui i 30 partecipanti dello studio di @zetsche_future_2019
 che hanno riportato la presenza di un episodio di depressione maggiore
 in atto. All'inizio della settimana di test, a questi pazienti è stato
@@ -264,7 +258,7 @@ distorte negativamente". Il problema che ci poniamo è quello di ottenere
 la stima a posteriori di $\theta$, avendo osservato 23 "successi" in 30
 prove, ovvero $\hat{\theta}$ = 23/30 = 0.77.
 
-Si noti un punto importante qui: un problema di scrivere semplicemente la stima di  $\theta$ come 0.77 è che tale valore ignora l'incertezza della nostra stima. Infatti, il valore di 0.77 si può ottenere come 23/30, o come 230/300, o 2300/3000, o 23000/30000.  L'incertezza della stima 0.77 è diversa in ciascuno di questi casi e questo è molto importante quando si traggono conclusioni dai dati.
+Si noti un punto importante qui: un problema di scrivere semplicemente la stima di $\theta$ come 0.77 è che tale valore ignora l'incertezza della nostra stima. Infatti, il valore di 0.77 si può ottenere come 23/30, o come 230/300, o 2300/3000, o 23000/30000. L'incertezza della stima 0.77 è diversa in ciascuno di questi casi e questo è molto importante quando si traggono conclusioni dai dati.
 
 Nell'approccio frequentista, l'unico strumento che abbiamo per caratterizzare la nostra incertezza relativa alla stima di $\theta$ è la distribuzione campionaria della stima di questo parametro nel caso di un ipotetico campionamento ripetuto; non è invece possibile fare riferimento ad un'incertezza relativa al vero valore del parametro stesso. Per una dimensione campionaria pari a 30, la nostra incertezza deriva dalle caratteristiche della distribuzione campionaria e viene calcolata trovando la varianza campionaria -- ovvero, $n \cdot \hat{\theta} (1 - \hat{\theta}) = 30 \cdot 0.77 (1 - 0.77) =  5.31$ -- e poi l'errore standard, $\sigma / \sqrt{n}$ -- qui 0.42. Per la stessa proporzione di successi pari a 0.77, l'aumento della dimensione del campione rende questo errore standard sempre più piccolo. Questa maggiore precisione corrisponde alle proprietà della distribuzione campionaria di $\hat{\theta}$, ma non quantifica l'incertezza relativa al vero valore di $\theta$.
 
@@ -339,6 +333,7 @@ $$
 \binom{30}{23}& \cdot 0.837^{23} \cdot (1 - 0.837)^{7} = 0.104.\notag
 \end{aligned}
 $$
+
 Dobbiamo svolgere questo calcolo per tutti gli elementi della griglia. Usando R il risultato cercato si trova nel modo seguente:
 
 ```{r}
@@ -539,8 +534,6 @@ questo problema nel caso presente, in quanto il metodo metodo
 *grid-based* per il calcolo della distribuzione a posteriori è solo un
 esempio didattico.
 
-
-
 ## Differenza tra intervalli di confidenza e di credibilità
 
 L'approccio frequentista generalmente ipotizza che il mondo abbia certe proprietà (ad esempio, un parametro viene assunto che un dato parametro ha un particolare valore vero) e cercano di condurre esperimenti la cui conclusione risultante sarà corretta con almeno un livello minimo di probabilità. Per esprimere l'incertezza della nostra conoscenza dopo un esperimento, l'approccio frequentista utilizza un "intervallo di confidenza" -- ovvero, un intervallo di valori progettato per includere il vero valore del parametro con una probabilità minima, diciamo il 95%. Un frequentista progetterà l'esperimento e la procedura di calcolo dell'intervallo di confidenza al 95% in modo tale che su ogni 100 esperimenti eseguiti si prevede che almeno 95 degli intervalli di confidenza risultanti includano il vero valore del parametro; gli altri 5 potrebbero essere leggermente sbagliati, o potrebbero essere del tutto assurdi. Dal punto di vista dell'approccio frequentista, questo è accettabile, purché 95 inferenze su 100 siano corrette (ma ovviamente noi preferiremmo che i 5 risultati sbagliati fossero leggermente sbagliati, non totalmente assurdi).
@@ -555,16 +548,17 @@ Vorrei rendere esplicito il fatto che, in questo insegnamento, io mi schiero in 
 
 ## Conclusioni {-}
 
-Possiamo specificare un modello bayesiano definendo una distribuzione congiunta su variabili osservate, $\mathcal Y$, e un insieme di parametri sconosciuti, $\theta$.
+Possiamo specificare un modello Bayesiano definendo una distribuzione congiunta su variabili osservate, $\mathcal Y$, e un insieme di parametri sconosciuti, $\theta$.
 
 $$
-  p(\mathcal Y, \theta)
+p(\mathcal Y, \theta).
 $$
 Questa distribuzione congiunta si decompone convenientemente in due termini,
 
 $$
-  p(\mathcal Y, \theta) = p(\theta)  p(\mathcal Y \mid \theta)
+  p(\mathcal Y, \theta) = p(\theta)  p(\mathcal Y \mid \theta).
 $$
+
 Il primo termine, $p(\theta)$, è la densità a priori e codifica l'insieme di valori plausibili dei parametri, con i valori più plausibili aventi una densità maggiore. È chiamato "a priori" perché racchiude la nostra conoscenza - e la sua mancanza - sui parametri da stimare prima di osservare i dati. Il secondo termine, $p(\mathcal Y \mid \theta)$, è la verosimiglianza. Dati i parametri del modello $\theta$, $p(\mathcal Y \mid \theta)$ definisce il processo di generazione per $\mathcal Y$.
 
 L'inferenza esegue il _reverse engineering_ del processo di generazione dei dati e si chiede:
@@ -576,4 +570,6 @@ In un contesto Bayesiano, l'insieme dei valori plausibili dei parametri condizio
 $$
   p(\theta \mid \mathcal Y) \propto p(\theta)  p(\mathcal Y \mid \theta),
 $$
+
 dove $\propto$ sta per "proporzionale a" e indica che la distribuzione a posteriori combina le informazioni fornite dai dati e la nostra conoscenza precedente. Un'espressione analitica per $p(\theta \mid \mathcal Y)$ è raramente disponibile e dobbiamo fare affidamento su algoritmi di calcolo numerico per conoscere la distribuzione a posteriori. Una strategia generale che esamineremo in seguito consiste nel prelevare campioni approssimativi dalla distribuzione a posteriori e utilizzarli per costruire stime empiriche della media a posteriori, della varianza, della mediana, dei quantili e di altre quantità di interesse. Qui abbiamo presentato il metodo *grid-based* per il calcolo della distribuzione a posteriori. I metodi basati su griglia funzionano benissimo quando la distribuzione a posteriori dipende da un numero molto piccolo di parametri sconosciuti, ma non possono essere usati nel caso di modelli statistici più complessi che includono un numero maggiore di parametri.
+

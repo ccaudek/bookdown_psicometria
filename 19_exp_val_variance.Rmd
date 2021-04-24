@@ -1,0 +1,335 @@
+# Valore atteso e varianza di variabili aleatorie discrete 
+
+Spesso risulta utile fornire una rappresentazione sintetica della
+distribuzione di una variabile aleatoria attraverso degli indicatori
+caratteristici piuttosto che dare una sua rappresentazione completa
+mediante la funzione di ripartizione o la funzione di massa di
+probabilità. Una descrizione più sintetica di una variabile aleatoria,
+tramite pochi valori, ci consente di cogliere le caratteristiche
+essenziali della distribuzione, quali: la posizione, cioè il baricentro
+della distribuzione di probabilità; la variabilità, cioè la dispersione
+della distribuzione di probabilità attorno ad un centro; la forma della
+distribuzione di probabilità, considerando la simmetria e la curtosi
+(pesantezza delle code). In questo capitolo introdurremo quegli indici
+sintetici che descrivono il centro di una distribuzione di probabilità e
+la sua variabilità.
+
+## Valore atteso
+
+Quando vogliamo conoscere il comportamento tipico di una variabile
+aleatoria spesso vogliamo sapere qual è il suo "valore tipico". La
+nozione di "valore tipico", tuttavia, è ambigua. Infatti, ad essa
+possiamo attribuire almeno tre definizioni diverse:
+
+-   la *media* (somma dei valori divisa per il numero dei valori),
+
+-   la *mediana* (il valore centrale della distribuzione, quando la
+    variabile è ordinata in senso crescente o decrescente),
+
+-   la *moda* (il valore che ricorre più spesso).
+
+Per esempio, la media di $\{3, 1, 4, 1, 5\}$ è
+$\frac{3+1+4+1+5}{5} = 2.8$, la mediana è $3$ e la moda è $1$. Tuttavia,
+la teoria delle probabilità si occupa di variabili aleatorie piuttosto
+che di sequenze di numeri. Diventa dunque necessario precisare che cosa
+intendiamo per "valore tipico" quando facciamo riferimento alle
+variabili aleatorie.
+
+Supponiamo di ripetere un esperimento casuale molte volte in modo tale
+che ciascun valore $X$ si presenti con una frequenza approssimativamente
+uguale alla sua probabilità. Per esempio, possiamo lanciare una coppia
+di dadi e osservare i valori di $S$ = "somma dei punti" e di $P$ =
+"prodotto dei punti". Il problema che ci poniamo è quello di definire il
+"valore tipico" di una variabile aleatoria in modo tale che tale che
+esso corrisponda al valore medio dei valori della variabile aleatoria,
+se l'esperimento casuale venisse ripetuto tante volte. Giungiamo così
+alla seguente definizione.
+
+```{definition}
+Il valore atteso di una variabile aleatoria discreta $X$ definita su uno
+spazio campionario $\Omega$ è
+$$
+\mathbb{E}(X) = \sum_{x \in X(\Omega)} x \cdot P(X = x).
+$$
+```
+
+Nell'espressione precedente, $X(\Omega)$ si riferisce all'insieme di
+tutti i valori che la variabile aleatoria $X$ può assumere. A parole: se
+la variabile aleatoria discreta $X$ assume i valori $x_1, \dots, x_k$
+con probabilità $P(X = x_1), \dots, P(X = x_k)$, allora il valore atteso
+di $X$ è dato dalla somma di ciascun valore che $X$ può assumere,
+ciascuno moltiplicato per la probabilità di verificarsi. Si scrive
+$$
+\mathbb{E}(X) = \sum_{\omega \in \Omega} X(\omega) P(\omega).
+$$
+
+Consideriamo nuovamente l'esercizio sulla variabile aleaoria che corrisponde alla somma dei punti prodotti dal lancio di due dati e calcoliamo il valore atteso
+della variabile aleatoria $S$. Riproduco nuovamente la distribuzione di massa di probabilità di $S$ nella tabella seguente:
+
+::: {#tab:massa_prob_due_dadi_on_tr}
+        s               2                3                4                5                6                 7                8                9                10               11               12
+  -------------- ---------------- ---------------- ---------------- ---------------- ---------------- ----------------- ---------------- ---------------- ---------------- ---------------- ----------------
+   $P_0(S = s)$   $\frac{1}{36}$   $\frac{2}{36}$   $\frac{3}{36}$   $\frac{4}{36}$   $\frac{5}{36}$   $\frac{6}{36}$    $\frac{5}{36}$   $\frac{4}{36}$   $\frac{3}{36}$   $\frac{2}{36}$   $\frac{1}{36}$
+   $P_1(S = s)$   $\frac{4}{64}$   $\frac{4}{64}$   $\frac{5}{64}$   $\frac{6}{64}$   $\frac{7}{64}$   $\frac{12}{64}$   $\frac{7}{64}$   $\frac{6}{64}$   $\frac{5}{64}$   $\frac{4}{64}$   $\frac{4}{64}$
+
+  : Distribuzione di massa di probabilità per la somma dei punti
+  prodotti dal lancio di due dadi bilanciati ($P_0$) e di due dadi
+  truccati ($P_1$).
+:::
+
+Il valore atteso di $S$ è
+$$
+\mathbb{E}(S_0) = \sum_{i=1}^{11} X_i \cdot P(X_i) = 2 \cdot \frac{1}{36} + 3 \cdot \frac{2}{36} + \dots + 12 \cdot \frac{1}{36} = 7
+$$
+se facciamo riferimento alla distribuzione $P_{0}$ (dadi equilibrati), ed è uguale a $7$
+$$
+\mathbb{E}(S_1) = \sum_{i=1}^{11} X_i \cdot P(X_i) = 2 \cdot \frac{4}{64} + 3 \cdot \frac{4}{64} + \dots + 12 \cdot \frac{4}{64} = 7
+$$
+se facciamo riferimento alla distribuzione $P_1$ (dadi truccati).
+
+### Interpretazione
+
+Che interpretazione può essere assegnata alla nozione di valore atteso?
+Il valore atteso di una variabile aleatoria non è altro che una media.
+Possiamo pensare al valore atteso della variabile aleatoria $X$come alla
+media di un enorme numero di realizzazioni di $X$. Se potessimo
+esaminare un numero infinito di realizzazioni di $X$, allora la media di
+tali infiniti valori sarebbe esattamente uguale al valore atteso di $X$.
+Da un certo punto di vista, dunque, il concetto di valore atteso di una
+variabile aleatoria è molto semplice: è solo la media della popolazione
+della variabile aleatoria. Allora perché abbiamo bisogno di introdurre
+un concetto diverso da quello di 'media'? La risposta è che la media
+aritmetica è una somma divisa per $n$:
+$$
+\bar{X} = \frac{\sum_{i=1}^n x_i}{n}
+$$ 
+Tuttavia, le variabili aleatorie generano un numero infinito di valori. Dividere per infinito
+non è possibile. È necessario dunque procedere in un altro modo.
+
+Possiamo dire che il valore atteso di una variabile aleatoria è una
+*media ponderata*. Una media di cosa? Di tutti gli eventi elementari
+dello spazio campionario. E in che modo ponderiamo gli eventi elementari
+dello spazio campionario? Moltiplicando ciascun evento elementare per la
+sua probabilità di verificarsi, come nell'esempio precedente, o per la sua densità di
+probabilità nel caso di variabili aleatorie continue (che vedremo in
+seguito).
+
+Il termine valore atteso è però un po' fuorviante. Infatti, esso
+potrebbe non corrispondere a nessuno dei valori che possono essere
+generati dalla variabile aleatoria. Quindi il valore atteso non è
+'atteso' nel senso che ci aspettiamo di vederlo comparire spesso. Ci
+aspettiamo invece che sia simile alla media di qualsiasi campione
+sufficientemente grande di realizzazioni della variabile aleatoria:
+$$
+\mathbb{E}(X) = \lim_{n \rightarrow \infty} \frac{1}{n} \sum_{i = 1}^n x_i.
+$$
+Infatti, se una variabile aleatoria discreta $X$ ha una distribuzione di massa di probabilità $f_X(x)$, allora il suo valore atteso sarà
+$$
+\mathbb{E}(X) = \sum_{-\infty}^{\infty} x_i f_X(x_i).
+$$
+
+## Varianza di una v.a. discreta
+
+La seconda più importante proprietà di una variabile aleatoria, dopo che conosciamo il suo valore atteso, è la *varianza*.
+
+La varianza della variabile aleatoria $X$ è definita come il valore atteso del quadrato delle distanze dei valori $x$ dal loro valore atteso:
+$$
+var(X) = \mathbb{E} \Big[\big(X - \mathbb{E}(X)\big)^2\Big].
+$$
+
+Se denotiamo $\mathbb{E}(X)$ con $\mu$, la varianza $var(X)$ diventa il valore atteso di $(X - \mu)^2$. Questo indica quanto sono "dispersi" i valori della variabile aleatoria relativamente al suo valore medio.
+
+```{remark}
+Data una variabile aleatoria $X$ con valore atteso $\mathbb{E}(X)$, le
+    "distanze" tra i valori di $X$ e il valore atteso $\mathbb{E}(X)$
+    definiscono la variabile aleatoria $X - \mathbb{E}(X)$ chiamata *scarto*,
+    oppure *deviazione* oppure *variabile aleatoria centrata*. La
+    variabile $X - \mathbb{E}(X)$ equivale ad una traslazione di sistema di
+    riferimento che porta il valore atteso nell'origine degli assi. Si
+    può dimostrare facilmente che il valore atteso della variabile
+    scarto $X - \mathbb{E}(X)$ vale zero, dunque la media di tale variabile non
+    può essere usata per quantificare la "dispersione" dei valori di $X$
+    relativamente al suo valore medio. Occorre rendere sempre positivi i
+    valori di $X - \mathbb{E}(X)$ e tale risultato viene ottenuto considerando
+    la variabile aleatoria $\left(X - \mathbb{E}(X)\right)^2$.
+```  
+
+\
+
+```{exercise}
+In un esercizio precedente abbiamo calcolato il valore atteso della variabile aleatoria $S$ che corrisponde alla somma dei punti ottenuti nel lancio di due dadi equilibrati, oppure nel caso di due dadi truccati aventi la distribuzione di massa di probabilità indicata sopra.
+Abbiamo trovato che entrambe le distribuzioni di massa di probabilità conducono al medesimo  valore per la variabile aletoria $S$. Ma cosa succede alla varianza di $S$ nei due casi?
+```
+
+```{solution}
+Nel caso dei dadi onesti, la variabile aleatoria
+$$
+S = \{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}
+$$ 
+ha la distribuzione di probabilità 
+$$
+\begin{split}
+P_0(S) = \{0.0278, 0.0556, 0.0833, 0.1111,  0.1389, 0.1667,\\ 0.1389, 0.1111, 0.0833, 0.0556, 0.0278\}.
+\end{split}
+$$ 
+Dunque la varianza di $S$ diventa 
+$$
+\begin{aligned}
+var(S) &= \sum \left(S- \mathbb{E}(S)\right)^2 \cdot P_0(S) \notag\\
+&= (2 - 7)^2 \cdot 0.0278 + (3-7)^2 \cdot 0.0556 + \dots + (12 - 7)^2 \cdot 0.0278 \notag\\
+&= 5.8333.\notag
+\end{aligned}
+$$ 
+Nel caso dei dadi truccati, la distribuzione di probabilità di $S$ è 
+$$
+\begin{split}
+P_1(S) = \{0.0625, 0.0625, 0.0781, 0.0937, 0.1093, 0.1875,\\ 0.1093, 0.0937, 0.0781, 0.0625, 0.0625\}.
+\end{split}
+$$ 
+Dunque la varianza di $S$ diventa 
+$$
+\begin{aligned}
+var(S) &= \sum \left(S- \mathbb{E}(S)\right)^2 \cdot P_1(S) \notag\\
+&= (2 - 7)^2 \cdot 0.0625 + (3-7)^2 \cdot 0.0625 + \dots + (12 - 7)^2 \cdot 0.0625\notag\\
+ &= 7.5.\notag
+ \end{aligned}
+ $$ 
+In conclusione, la variabile $S$ ha lo stesso valore atteso nel caso dei dadi onesti e nel caso dei dadi truccati. Tuttavia la varianza di $S$ è diversa nei due casi: la varianza di $S$ è più grande nel caso dei dadi truccati.
+```
+
+
+### Formula alternativa per la varianza
+
+C'è un modo più semplice per calcolare la varianza di una variabile aleatoria: 
+$$
+\begin{aligned}
+\mathbb{E}\Big[\big(X - \mathbb{E}(X)\big)^2\Big] &= \mathbb{E}\big(X^2 - 2X\mathbb{E}(X) + \mathbb{E}(X)^2\big)\notag\\
+&= \mathbb{E}(X^2) - 2\mathbb{E}(X)\mathbb{E}(X) + \mathbb{E}(X)^2,\notag
+\end{aligned}
+$$ 
+dato che $\mathbb{E}(X)$ è una costante; pertanto 
+$$
+var(X) = \mathbb{E}(X^2) - \big(\mathbb{E}(X) \big)^2.
+$$ 
+A parole: la varianza è la media dei quadrati meno il quadrato della media.
+
+```{exercise}
+Consideriamo la variabile aleatoria $X$ che corrisponde al numero di
+teste che si osservano nel lancio di una moneta truccata con probabilità
+di testa uguale a 0.8. Si calcoli la varianza di $X$ utilizzando la formula riportata sopra.
+```
+
+```{solution}
+Il valore atteso di $X$ è
+$$
+\mathbb{E}(X) = 0 \cdot 0.2 + 1 \cdot 0.8 = 0.8.
+$$ 
+Usando la formula tradizionale della varianza otteniamo:
+$$
+var(X) = (0 - 0.8)^2 \cdot 0.2 + (1 - 0.8)^2 \cdot 0.8 = 0.16.
+$$ Lo
+stesso risultato si trova con la formula alternativa della varianza.
+Iniziamo a calcolare il valore atteso di $X^2$:
+$$\mathbb{E}(X^2) = 0^2 \cdot 0.2 + 1^2 * 0.8 = 0.8.$$ 
+Troviamo ora la varianza:
+$$
+var(X) = \mathbb{E}(X^2) - \big(\mathbb{E}(X) \big)^2 = 0.8 - 0.8^2 = 0.16.
+$$
+```
+
+### Deviazione standard
+
+Quando lavoriamo con le varianze, i termini sono innalzati al quadrato e
+quindi i numeri diventano molto grandi. Per trasformare nuovamente i
+valori nell'unità di misura della scala originaria si prende la radice
+quadrata. Il valore risultante viene chiamato *deviazione standard* e
+solitamente è denotato dalla lettera greca $\sigma$.
+
+```{definition}
+Si definisce scarto quadratico medio (o deviazione standard o scarto
+tipo) la radice quadrata della varianza: 
+$$
+    \sigma = \sqrt{var(X)}.
+$$
+```
+
+Interpretiamo la deviazione standard di una variabile aleatoria come
+nella statistica descrittiva: rappresenta la variazione *media* attesa
+nella distribuzione della variabile aleatoria.
+
+```{exercise}
+Per i dadi equilibrati e truccati dell'esercizio precedente, le deviazioni standard della
+variabile aleatoria $S$, nel caso delle due diverse distribuzioni di massa di probabilità, sono pari rispettivamente a
+$\sqrt{5.833} =  2.415$ e $\sqrt{7.5} = 2.739$.
+```
+
+### Standardizzazione
+
+```{definition}
+Data una variabile aleatoria $X$, si dice variabile standardizzata di
+$X$ l'espressione 
+$$
+\frac{X - \mathbb{E}(X)}{\sigma_X}.
+$$
+```
+
+Solitamente, una variabile standardizzata viene denotata con la lettera
+$Z$.
+
+## Funzione di ripartizione
+
+Il concetto di funzione di ripartizione è molto importante nella teoria
+della probabilità, sia nel caso discreto, che stiamo trattando ora, sia
+nel caso continuo, che affronteremo dopo. L'insieme
+$\{\omega: X \leq x\}$ è un evento in $\Omega$ e si può scrivere
+$(X \leq x)$. A tale evento è possibile assegnare una probabilità
+$P(X \leq x)$ che, al variare di $x \in \mathbb{R}$, definisce la funzione di
+ripartizione della variabile aleatoria $X$.
+
+```{definition}
+Si chiama funzione di ripartizione o funzione di distribuzione della
+variabile aleatoria $X$ la funzione $F(x)$ definita da
+$$
+F(x) \triangleq P(X \le x), \qquad x \in \mathbb{R}.
+$$
+```
+
+Detto in modo più semplice: la funzione di distribuzione cumulata, o funzione di
+ripartizione di $X$, misura la probabilità che $X$ assuma valori minori
+o uguali a $x$.
+
+La funzione di ripartizione è sempre non negativa, monotona non
+decrescente tra $0$ e $1$, tale che:
+$$
+\lim_{x \to -\infty} F_X(x) = F_X(-\infty) = 0, \quad \lim_{x \to +\infty} F_X(x) = F_X(+\infty) = 1.
+$$
+
+```{exercise}
+Consideriamo l'esperimento casuale corrispondente al lancio di due
+monete. Sia $X$ il numero di volte in cui esce testa. La distribuzione
+di probabilità di $X$ è: 
+$$
+P(x) = 
+\begin{cases}
+    0, & 0.25,\\
+    1, & 0.50,\\
+    2, & 0.25.
+\end{cases}
+$$ 
+La funzione di ripartizione di $X$ è: 
+$$
+F(x) = 
+\begin{cases}
+    0,   & \text{se~} x < 0,\\
+    1/4, & \text{se~} 0 \leq x < 1,\\
+    3/4, & \text{se~} 1 \leq x < 2,\\
+     1,  & \text{se~} 2 \leq x.
+\end{cases}
+$$ 
+Ad esempio, il valore della funzione di ripartizione in
+corrispondenza di $x = 1.5$ è:
+$$
+F(1.5) = P(X \leq 1.5) = P(X=0) + P(X=1) = \frac{1}{4} + \frac{2}{4} = \frac{3}{4}.
+$$
+```
+

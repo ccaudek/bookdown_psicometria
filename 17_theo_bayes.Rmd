@@ -22,23 +22,23 @@ situazione al caso di una partizione in un qualunque numero di
 sottoinsiemi.
 
 ```{theorem, theo-prob-tot}
-Sia $\{A_1, A_2, A_3\}$ una partizione dello spazio campionario
+Sia $\{H_1, H_2, H_3\}$ una partizione dello spazio campionario
 $\Omega$. Se $E$ è un qualunque altro evento, allora:
 \begin{equation}
-P(E) = P(E \cap A_1) + P(E \cap A_2) + P(E \cap A_3) \notag
+P(E) = P(E \cap H_1) + P(E \cap H_2) + P(E \cap H_3) \notag
 (\#eq:prob-total-1a)
 \end{equation}
 ovvero
 \begin{equation}
-P(E) = P(E \mid A_1) P(A_1) + P (E \mid A_2) P(A_2) + P(E \mid A_3) P(A_3).
+P(E) = P(E \mid H_1) P(H_1) + P (E \mid H_2) P(H_2) + P(E \mid H_3) P(H_3).
 (\#eq:prob-total-1b)
 \end{equation}
 ```
 
 Il teorema della probabilità totale afferma che, se l'evento $E$ è
-costituito da tutti gli eventi elementari in $E \cap A_1$, $E \cap A_2$
-e $E \cap A_3$, allora la probabilità $P(E)$ è data dalla somma delle
-probabilità di queti tre eventi. Ciò è illustrato nella figura seguente.
+costituito da tutti gli eventi elementari in $E \cap H_1$, $E \cap H_2$
+e $E \cap H_3$, allora la probabilità $P(E)$ è data dalla somma delle
+probabilità di questi tre eventi. Ciò è illustrato nella figura seguente.
 
 ```{tikz, echo=FALSE, tikz-prob-tot, fig.cap = "", fig.ext = 'png', cache=TRUE}
 \usetikzlibrary{
@@ -53,7 +53,7 @@ probabilità di queti tre eventi. Ciò è illustrato nella figura seguente.
         minimum width=4cm,
         minimum height=2cm,
     },
-    A/.style={
+    H/.style={
         draw=gray,
     },
     E/.style={
@@ -69,23 +69,23 @@ probabilità di queti tre eventi. Ciò è illustrato nella figura seguente.
     \node[myrectangle] (bottom) [below=of tmp] {};
 
     % "contents" of left node
-    \path (left.west) -- node[pos=.25] {$A_1$} (left.east);
-    \path (left.west) -- node[pos=.5] {$A_2$} (left.east);
-    \path (left.west) -- node[pos=.75] {$A_3$} (left.east);
+    \path (left.west) -- node[pos=.25] {$H_1$} (left.east);
+    \path (left.west) -- node[pos=.5] {$H_2$} (left.east);
+    \path (left.west) -- node[pos=.75] {$H_3$} (left.east);
 
-    \draw[A] ($(left.north west) ! .4 ! (left.north east)$) -- ($(left.south west) ! .35 ! (left.south east)$);
-    \draw[A] ($(left.north west) ! .6 ! (left.north east)$) -- ($(left.south west) ! .66 ! (left.south east)$);
+    \draw[H] ($(left.north west) ! .4 ! (left.north east)$) -- ($(left.south west) ! .35 ! (left.south east)$);
+    \draw[H] ($(left.north west) ! .6 ! (left.north east)$) -- ($(left.south west) ! .66 ! (left.south east)$);
 
     % "contents" of right node
     \draw[E] (right.center) ellipse [x radius=1.5cm, y radius=0.75cm] node {$E$};
 
     % "contents" of bottom node
-    \path (bottom.west) -- node[pos=.25] {\scriptsize $E\cap A_1$} (bottom.east);
-    \path (bottom.west) -- node[pos=.5] {\scriptsize $E \cap A_2$} (bottom.east);
-    \path (bottom.west) -- node[pos=.75] {\scriptsize $E \cap A_3$} (bottom.east);
+    \path (bottom.west) -- node[pos=.25] {\scriptsize $E\cap H_1$} (bottom.east);
+    \path (bottom.west) -- node[pos=.5] {\scriptsize $E \cap H_2$} (bottom.east);
+    \path (bottom.west) -- node[pos=.75] {\scriptsize $E \cap H_3$} (bottom.east);
 
-    \draw[A] ($(bottom.north west) ! .4 ! (bottom.north east)$) -- ($(bottom.south west) ! .35 ! (bottom.south east)$);
-    \draw[A] ($(bottom.north west) ! .6 ! (bottom.north east)$) -- ($(bottom.south west) ! .66 ! (bottom.south east)$);
+    \draw[H] ($(bottom.north west) ! .4 ! (bottom.north east)$) -- ($(bottom.south west) ! .35 ! (bottom.south east)$);
+    \draw[H] ($(bottom.north west) ! .6 ! (bottom.north east)$) -- ($(bottom.south west) ! .66 ! (bottom.south east)$);
 
     \draw[E] (bottom.center) ellipse [x radius=1.5cm, y radius=0.75cm];
 
@@ -172,14 +172,14 @@ Il teorema di Bayes rappresenta uno dei fondamenti della teoria della
 probabilità e della statistica. Lo presentiamo qui considerando prima un
 caso specifico per poi descriverlo nella sua forma più generale.
 
-Sia $\{A_1, A_2\}$ una partizione dello spazio campionario $\Omega$.
+Sia $\{H_1, H_2\}$ una partizione dello spazio campionario $\Omega$.
 Consideriamo un terzo evento $E \subset \Omega$ con probabilità non
-nulla di cui si conoscono le probabilità condizionate rispetto ad $A_1$
-e a $A_2$, ovvero $P(E \mid A_1)$ e $P(E \mid A_2)$. È chiaro per le
+nulla di cui si conoscono le probabilità condizionate rispetto ad $H_1$
+e a $H_2$, ovvero $P(E \mid H_1)$ e $P(E \mid H_2)$. È chiaro per le
 ipotesi fatte che se si verifica $E$ deve anche essersi verificato
-almeno uno degli eventi $A_1$ e $A_2$. Supponendo che si sia verificato
+almeno uno degli eventi $H_1$ e $H_2$. Supponendo che si sia verificato
 l'evento $E$, ci chiediamo: qual è la probabilità che si sia verificato
-$A_1$ piuttosto che $A_2$?
+$H_1$ piuttosto che $H_2$?
 
 ```{tikz echo=FALSE, fig.cap="", fig.ext='png', fig.width = 2, cache=TRUE, out.width="45%"}
 \usetikzlibrary{
@@ -193,48 +193,56 @@ $A_1$ piuttosto che $A_2$?
   \draw[thick, color=gray!15, fill] (4,2.5) ellipse (2.7cm and 1.7cm);
   \draw[thick] (3,0) .. controls (6,2) and (2,4) .. (4,5);
   \node (n1) at (6,4) {\textcolor{gray}{$E$}};
-  \node (n2) at (0.7,2) {$A_1$};
-  \node (n2) at (3,2.5) {$E\cap A_1$};
-  \node (n2) at (5,2.5) {$E\cap A_2$};
-  \node (n3) at (7.5,2) {$A_2$};
+  \node (n2) at (0.7,2) {$H_1$};
+  \node (n2) at (3,2.5) {$E\cap H_1$};
+  \node (n2) at (5,2.5) {$E\cap H_2$};
+  \node (n3) at (7.5,2) {$H_2$};
 \end{tikzpicture}
 ```
 
 Per rispondere alla domanda precedente scriviamo: 
 \begin{equation}
-\begin{aligned}
-P(A_1 \mid E) &= \frac{P(E \cap A_1)}{P(E)}\notag\\ 
-&= \frac{P(E \mid A_1)P(A_1)}{P(E)}\notag.\end{aligned}
+P(H_1 \mid E) = \frac{P(E \cap H_1)}{P(E)}.\notag
 \end{equation}
-Sapendo che $E = (E \cap A_1) \cup (E \cap A_2)$ e che $A_1$ e $A_2$ sono eventi
-disgiunti, ovvero $A_1 \cap A_2 = \emptyset$, ne segue che possiamo
-calcolare $P(E)$ utilizzando il teorema della probabilità totale:
+Notiamo che la probabilità riportata al numeratore, ovvero $P(E \cap H_1)$, può essere ricavata dalla formula seguente:
+\begin{equation}
+P(E \mid H_1) = \frac{P(E \cap H_1)}{P(H_1)},\notag
+\end{equation}
+ovvero,
+\begin{equation}
+P(E \cap H_1) = P(E \mid H_1) P(H_1).\notag
+\end{equation}
+Sostituendo, otteniamo
+\begin{equation}
+P(H_1 \mid E) = \frac{P(E \mid H_1)P(H_1)}{P(E)}.\notag
+\end{equation}
+Inoltre, sapendo che $E = (E \cap H_1) \cup (E \cap H_2)$ e che $H_1$ e $H_2$ sono eventi
+disgiunti, ovvero $H_1 \cap H_2 = \emptyset$, ne segue che possiamo calcolare $P(E)$ utilizzando il teorema della probabilità totale:
 \begin{equation}
 \begin{aligned}
-P(E) &= P(E \cap A_1) + P(E \cap A_2)\notag\\ 
-     &= P(E \mid A_1)P(A_1) + P(E \mid A_2)P(A_2).\notag
+P(E) &= P(E \cap H_1) + P(E \cap H_2)\notag\\ 
+     &= P(E \mid H_1)P(H_1) + P(E \mid H_2)P(H_2).\notag
 \end{aligned}
 \end{equation}
-Sostituendo il risultato precedente nella formula della probabilità condizionata $P(A_1 \mid E)$ otteniamo:
+Sostituendo il risultato precedente nella formula della probabilità condizionata $P(H_1 \mid E)$ otteniamo:
 \begin{equation}
-P(A_1 \mid E) = \frac{P(E \mid A_1)P(A_1)}{P(E \mid A_1)P(A_1) + P(E \mid A_2)P(A_2)}.
+P(H_1 \mid E) = \frac{P(E \mid H_1)P(H_1)}{P(E \mid H_1)P(H_1) + P(E \mid H_2)P(H_2)}.
 (\#eq:bayes1)
 \end{equation}
 La \@ref(eq:bayes1) si generalizza facilmente al caso di più di due eventi disgiunti, come indicato di seguito.
 
 ```{theorem, theo-bayes, name="Teorema di Bayes"}
-Siano $A_1$, $A_2,$ ..., $A_n$ $n$ eventi disgiunti con $P(A_i) > 0$ e
-tali che $\bigcup_{i=1}^{n} A_i = \Omega$. Per l'evento
-$E \subset \Omega$ con $P(E) > 0$, abbiamo
+Siano $H_1$, $H_2,$ ..., $H_n$ $n$ eventi disgiunti con $P(H_i) > 0$ e
+tali che $\bigcup_{i=1}^{n} H_i = \Omega$. Per l'evento $E \subset \Omega$ con $P(E) > 0$, abbiamo
 \begin{equation}
-P(A_j \mid E) = \frac{P(E \mid A_j)P(A_j)}{\sum_{i=1}^{n}P(E \mid A_i)P(A_i)}.
+P(H_j \mid E) = \frac{P(E \mid H_j)P(H_j)}{\sum_{i=1}^{n}P(E \mid H_i)P(H_i)}.
 (\#eq:bayes2)
 \end{equation}
 ```
 
 La formula \@ref(eq:bayes2) prende il nome di *Teorema di Bayes* e mostra che
 la conoscenza del verificarsi dell'evento $E$ modifica la probabilità
-che abbiamo attribuito all'evento $A_j$.
+che abbiamo attribuito all'evento $H_j$.
 
 ### Aggiornamento Bayesiano
 

@@ -33,6 +33,23 @@ eq:prob-total-1b
 eq:bayes1
 thm:theo-bayes
 eq:bayes2
+<<<<<<< HEAD
+=======
+def:unnamed-chunk-167
+exr:unnamed-chunk-169
+exr:unnamed-chunk-171
+def:unnamed-chunk-173
+exr:unnamed-chunk-174
+def:unnamed-chunk-175
+def:unnamed-chunk-176
+exr:unnamed-chunk-177
+def:defcovariane
+eq:covariancedef
+eq:covariancealt
+fig:figurecovariancedef
+eq:rho
+exr:unnamed-chunk-180
+>>>>>>> e415d868dca882176aeed1dfdb870336d1b10e3f
 fig:rethinkingmodlearn
 eq:binomwater
 eq:likebino69
@@ -72,10 +89,13 @@ eq:testz
 fig:regrifiutoaltezzabil2
 fig:regrifiutoaltezzabil3
 eq:twelch
+<<<<<<< HEAD
 def:unnamed-chunk-236
 exm:unnamed-chunk-237
 fig:ch-03-02-LH-Binomial-Model
 fig:ch-03-02-models-types-of-priors
+=======
+>>>>>>> e415d868dca882176aeed1dfdb870336d1b10e3f
 fig:gridappr1
 fig:gridappr2
 fig:gridappr3
@@ -281,6 +301,23 @@ proprietà
 eventi
 funzioni-di-probabilità-marginali
 indipendenza-stocastica
+<<<<<<< HEAD
+=======
+valore-atteso-e-varianza-di-variabili-aleatorie-discrete
+valore-atteso
+interpretazione
+varianza-di-una-v.a.-discreta
+formula-alternativa-per-la-varianza
+deviazione-standard-1
+standardizzazione
+funzione-di-ripartizione
+covarianza-e-correlazione-di-variabili-aleatorie
+covarianza-1
+interpretazione-della-covarianza
+correlazione-1
+proprietà-1
+incorrelazione
+>>>>>>> e415d868dca882176aeed1dfdb870336d1b10e3f
 la-distribuzione-binomiale
 una-prova-bernoulliana
 una-sequenza-di-prove-bernoulliane
@@ -289,7 +326,11 @@ funzioni-di-densità-di-probabilità
 distribuzione-normale
 concentrazione-della-distribuzione-normale
 funzione-di-ripartizione-della-distribuzione-normale
+<<<<<<< HEAD
 standardizzazione
+=======
+standardizzazione-1
+>>>>>>> e415d868dca882176aeed1dfdb870336d1b10e3f
 distribuzione-chi-quadrato
 distribuzione-t-di-student
 distribuzione-beta
@@ -374,6 +415,7 @@ critiche-e-difese
 limiti-dellinferenza-frequentista
 attenti-al-valore-p
 modellistica-bayesiana
+<<<<<<< HEAD
 modelli-statistici
 notazine
 parametri-e-distribuzioni-a-priori
@@ -383,6 +425,9 @@ procedura-bayesiana-di-stima-dei-parametri
 finalità
 metodi
 terminologia-2
+=======
+le-distribuzioni-a-priori
+>>>>>>> e415d868dca882176aeed1dfdb870336d1b10e3f
 le-aspettative-dei-pazienti-con-disturbo-depressivo-maggiore
 distribuzione-a-priori
 funzione-di-verosimiglianza
@@ -408,7 +453,11 @@ stima-puntuale
 intervallo-di-credibilità
 intervallo-di-credibilità-a-code-uguali
 intervallo-di-credibilità-a-densità-a-posteriori-più-alta
+<<<<<<< HEAD
 interpretazione
+=======
+interpretazione-1
+>>>>>>> e415d868dca882176aeed1dfdb870336d1b10e3f
 un-esempio-concreto
 indici-di-sintesi-della-distribuzione-a-posteriori
 probabilità-della-distribuzione-a-posteriori
