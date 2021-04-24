@@ -76,6 +76,9 @@ def:unnamed-chunk-236
 exm:unnamed-chunk-237
 fig:ch-03-02-LH-Binomial-Model
 fig:ch-03-02-models-types-of-priors
+fig:unnamed-chunk-238
+fig:unnamed-chunk-239
+fig:unnamed-chunk-240
 fig:gridappr1
 fig:gridappr2
 fig:gridappr3
@@ -383,6 +386,7 @@ procedura-bayesiana-di-stima-dei-parametri
 finalità
 metodi
 terminologia-2
+leffetto-della-distribuzione-a-priori-sulla-distribuzione-a-posteriori
 le-aspettative-dei-pazienti-con-disturbo-depressivo-maggiore
 distribuzione-a-priori
 funzione-di-verosimiglianza

@@ -139,7 +139,7 @@ La figura seguente mostra esempi di distribuzioni a priori non informative, debo
 - *fortemente informativa* : $\theta_c \sim \text{Beta}(50,20)$;
 - *valore puntuale* : $\theta_c \sim \text{Beta}(\alpha, \beta)$ con $\alpha, \beta \rightarrow \infty$ e $\frac{\alpha}{\beta} = \frac{5}{2}$.
 
-```{r ch-03-02-models-types-of-priors, echo = F, fig.cap = "Examples of different kinds of Bayesian priors for coin bias $\\theta_c$ in the Binomial Model."}
+```{r ch-03-02-models-types-of-priors, echo = F, fig.cap = "Esempi di distribuzioni a priori per il parametro $\\theta_c$ nel Modello Binomiale."}
 tibble(
   theta = seq(0, 1, length.out = 401),
   `non informativa` = dbeta(theta, 1, 1),
@@ -218,6 +218,119 @@ $$
 $$
 
 dove il segno di proporzionalità indica che le probabilità a sinistra del simbolo $\propto$ sono definite dai termini a destra di  $\propto$ a meno di una costante di normalizzazione. Se $F \colon X \rightarrow \mathbb{R}^+$ è una funzione positiva non normalizzata di probabilità, $P(x) \propto F(x)$ è equivalente a $P(x) = \frac{F(x)}{\sum_{x' \in X} F(x')}$.
+
+## L'effetto della distribuzione a priori sulla distribuzione a posteriori
+
+La notazione $P(\theta \mid D) \propto P(\theta) \ P(D \mid \theta)$ rende particolarmente chiaro che la distribuzione a posteriori è un "miscuglio" della distribuzione a priori e della verosimiglianza. Prima di preoccuparci di come calcolare concretamente la distribuzione a posteriori, cerchiamo di capire cosa significa "mescolare" la distribuzione a priori e la verosimiglianza.
+
+Consideriamo una serie di lanci di una moneta con probabilità di successo (testa) sconosciuta $\theta$. Supponiamo di osservare $k$ successi in $N$ prove. Per descrivere questo _esperimento casuale_ usiamo il **modello Binomiale**, utilizzando una distribuzione a priori espressa mediante la distribuzione Beta. Ciò produce il seguente modello statistico:
+
+$$ 
+\begin{aligned}
+k & \sim \text{Binomial}(N, \theta) \\ 
+\theta & \sim \text{Beta}(a, b)
+\end{aligned}
+$$
+
+Per studiare l'impatto della funzione di verosimiglianza, confronteremo due campioni di dati. Nel primo campione, $N = 24$ e $k = 7$; nel secondo campione, $k = 109$ e $N = 311$. 
+Per entrambi i campioni, la funzione di verosimiglianza dei dati è fornita dalla figura seguente.
+
+```{r, echo = F, fig.cap = "Verosimiglianza per due campioni di dati binomiali. Per il primo campione abbiamo $k = 7$ e $N = 24$; per il secondo campione $k = 109$ e $N = 311$."}
+lh_tibble <- 
+  tibble(
+  theta = seq(0,1, length.out = 401),
+  `24/7` = dbinom(7, 24, theta),
+  `109/311` = dbinom(109, 311, theta)
+) 
+lh_tibble %>% 
+  pivot_longer(
+    cols = -1,
+    names_to = "example",
+    values_to = "likelihood"
+  ) %>% 
+  ggplot(aes(x = theta, y = likelihood, color = example)) +
+  geom_line(size = 3) +
+  facet_wrap(.~example, nrow = 2, scales = "free") +
+  guides(color = F) +
+    labs(
+    x = latex2exp::TeX("Probabilità di successo $\\theta$"),
+    y = latex2exp::TeX("Verosimiglianza $P(D | \\theta)$"),
+    title = latex2exp::TeX("Verosimiglianza Binomiale per due campioni di dati.")
+  )
+```
+
+La cosa più importante da notare è che, maggiore è la quantità di dati ($k = 109$ e $N = 311$), più piccolo diventa l'intervallo di valori dei parametri che rendono plausibili i dati osservati.
+Intuitivamente, questo significa che più dati abbiamo, più piccolo sarà l'intervallo a posteriori dei valori plausibili dei parametri, a parità di tutto il resto.
+
+Consideriamo le quattro distribuzioni a priori che abbiamo descrito in precedenza:
+
+```{r, echo = F, fig.cap = "Esempi di distribuzioni a priori per il parametro $\\theta_c$ nel Modello Binomiale."}
+prior_tibble <- tibble(
+  theta = seq(0, 1, length.out = 401),
+  `non inf.` = dbeta(theta, 1, 1),
+  `debolm. inf.` = dbeta(theta, 5, 2),
+  `fortem. inf.` = dbeta(theta, 50, 20),
+  `puntuale` = dbeta(theta, 50000, 20000)
+)
+prior_tibble %>% 
+  pivot_longer(
+    cols = -1,
+    names_to = "prior_type",
+    values_to = "prior"
+  ) %>%
+  mutate(
+    prior_type = factor(prior_type, levels = c('non inf.', 'debolm. inf.', 'fortem. inf.', 'puntuale'))
+  ) %>% 
+  ggplot(aes(x = theta, y = prior)) +
+  geom_line(size = 2) +
+  facet_wrap(~ prior_type, ncol = 2, scales = "free") +
+  labs(
+    x = latex2exp::TeX("Probabilità di successo $\\theta$"),
+    y = latex2exp::TeX("Probabilità a priori $P(\\theta)$"),
+    title = latex2exp::TeX("Diverse funzioni a priori per $\\theta$"),
+    subtitle = latex2exp::TeX("Modello Binomiale")
+  ) 
+```
+
+Combiniamo ora le quattro distribuzioni a priori con i due campioni di dati. Così facendo notiamo che la distribuzione a posteriori è effettivamente un "miscuglio" della distribuzione a priori e della verosimiglianza.
+
+```{r, echo = F, fig.cap = "Distribuzioni a posteriori per il parametro $\\theta$ calcolate mediante diverse distribuzioni a priori per due campioni di dati."}
+full_join(lh_tibble, prior_tibble, by = 'theta') %>% 
+    pivot_longer(
+    cols = 2:3,
+    names_to = "example",
+    values_to = "likelihood"
+  ) %>% 
+  pivot_longer(
+    cols = 2:5,
+    names_to = "prior_type",
+    values_to = "prior"
+  ) %>% 
+  mutate(
+    posterior = likelihood * prior
+  ) %>%  
+  filter( posterior != Inf) %>% 
+  group_by( example, prior_type) %>% 
+  mutate(
+    posterior = posterior/sum(posterior)
+  ) %>%
+  mutate(
+    prior_type = factor(prior_type, levels = c('non inf.', 'debolm. inf.', 'fortem. inf.', 'puntuale'))
+  ) %>%
+  ggplot(aes(x = theta, y = posterior, color = example)) +
+  geom_line(size = 2) +
+  guides(color = F) +
+  facet_grid(prior_type ~ example, scales = "free") +
+  theme(strip.text.y = element_text(size = 9, face = 'plain'))+
+  labs(
+    x = latex2exp::TeX(" Parametro $\\theta$"),
+    y = latex2exp::TeX("Probabilità a posteriori $P(\\theta \\, | \\, D)$"),
+    title = latex2exp::TeX("Distribuzioni a posteriori per $\\theta$.")
+  ) 
+```
+
+Ciò che è importante notare è che, se il campione è grande, una distribuzioni a priori debolmente informativa ha uno scarso effetto sulla distribuzione a posteriori. Invece, se il campione è piccolo, anche una distribuzioni a priori debolmente informativa ha un grande effetto sulla distribuzione a posteriori, in confronto ad una distribuzione a priori non informativa.
+
 
 ## Le aspettative dei pazienti con disturbo depressivo maggiore
 
