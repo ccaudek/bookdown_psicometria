@@ -153,7 +153,7 @@ L’ho pensato per i miei laureandi, ovvero per degli studenti che devono usare 
 <code class="sourceCode R"><span class="va">seaice</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">extent_north</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-281-1.png" width="90%" style="display: block; margin: auto;">
+<p><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-283-1.png" width="90%" style="display: block; margin: auto;">
 Guardando la figura vediamo che è ragionevole descrivere mediante una retta la relazione tra l’estensione del ghiaccio marino artico (chiamiamola <code>y</code>) e il tempo (chiamiamolo <code>x</code>). Aggiungiamo al diagramma di dispersione una retta, scegliendola in modo tale che si avvicini il più possibile alla nube di punti rappresentata nel grafico. Ovviamente, è possibile scegliere tra infinite rette diverse. La retta che è rappresentata qui è stata scelta in base ad un criterio particolare, detto “dei minimi quadrati.” Vedremo meglio in seguito cosa questo significa. Per ora ci accontentiamo di riconoscere che la nostra è una buona scelta, per gli scopi presenti.</p>
 <div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">seaice</span> <span class="op">%&gt;%</span> 
@@ -161,7 +161,7 @@ Guardando la figura vediamo che è ragionevole descrivere mediante una retta la 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
 <span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-282-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-284-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
 </div>
 <div id="interpretazione-dei-coefficienti-a-e-b" class="section level2" number="27.2">
@@ -185,10 +185,10 @@ y = a + b \times x
 <span class="fu">glimpse</span><span class="op">(</span><span class="va">seaice</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 39</span>
 <span class="co">#&gt; Columns: 4</span>
-<span class="co">#&gt; $ year         &lt;int&gt; 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 19…</span>
-<span class="co">#&gt; $ y            &lt;dbl&gt; 12.328, 12.337, 12.127, 12.447, 12.332, 11.910, 11.995, 12.203…</span>
-<span class="co">#&gt; $ extent_south &lt;dbl&gt; 11.700, 11.230, 11.435, 11.640, 11.389, 11.454, 11.618, 11.088…</span>
-<span class="co">#&gt; $ x            &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, …</span></code></pre></div>
+<span class="co">#&gt; $ year         &lt;int&gt; 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, …</span>
+<span class="co">#&gt; $ y            &lt;dbl&gt; 12.328, 12.337, 12.127, 12.447, 12.332, 11.910, 11.995, 12.203, 12.135, …</span>
+<span class="co">#&gt; $ extent_south &lt;dbl&gt; 11.700, 11.230, 11.435, 11.640, 11.389, 11.454, 11.618, 11.088, 11.554, …</span>
+<span class="co">#&gt; $ x            &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20…</span></code></pre></div>
 <p>Il diagramma a dispersione avrà ora la forma seguente:</p>
 <div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">seaice</span> <span class="op">%&gt;%</span> 
@@ -196,7 +196,7 @@ y = a + b \times x
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
 <span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-284-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-286-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Per trovare i coefficienti <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> della retta di regressione possiamo usare, ad esempio, la funzione <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>:</p>
 <div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, data <span class="op">=</span> <span class="va">seaice</span><span class="op">)</span>
@@ -231,7 +231,7 @@ y = a + b \times x
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="fl">24.0</span>, y <span class="op">=</span> <span class="fl">11.75</span>, label <span class="op">=</span> <span class="st">"10 b = -0.55"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="fl">15</span>, y <span class="op">=</span> <span class="fl">12.15</span>, label <span class="op">=</span> <span class="st">"delta x = 10.0"</span><span class="op">)</span>
 <span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-286-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-288-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
 <div id="scomposizione-della-y" class="section level2" number="27.3">
 <h2>
@@ -415,7 +415,7 @@ Una affermazione simile può essere fatta a proposito del valore <code>sd</code>
 <code class="sourceCode R"><span class="va">d</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">group</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-294-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-296-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>È ovvio, che nel caso presente, non è sufficiente un modello di regressione che ignora il fatto che i dati appartengono a due gruppi diversi. Infatti, se adattiamo ai dati un’unica retta di regressione, è facile rendersi conto che tale retta si situerà in una posizione molto distante dai dati.</p>
 <div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span> <span class="op">%&gt;%</span>
@@ -423,7 +423,7 @@ Una affermazione simile può essere fatta a proposito del valore <code>sd</code>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
 <span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-295-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-297-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Per questi dati è ovviamente più sensato adattare una diversa retta di regressione a ciascun gruppo di osservazioni:</p>
 <div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span> <span class="op">%&gt;%</span>
@@ -431,7 +431,7 @@ Una affermazione simile può essere fatta a proposito del valore <code>sd</code>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-296-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-298-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Come possiamo modificare il modello di regressione che abbiamo esaminato in precedenza in modo tale da essere in grado di stimare i coefficienti di regressione delle due rette rappresentate nella figura precedente? Questo problema si risolve nel modo seguente. Crediamo una variabile, chiamata <em>dummy</em>, che ha valore 0 per un gruppo, diciamo <code>gr1</code>, e valore 1 per l’altro gruppo:</p>
 <div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span><span class="op">$</span><span class="va">gr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">group</span> <span class="op">==</span> <span class="st">"gr1"</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span> 
@@ -569,19 +569,19 @@ y &amp;= \alpha + \beta x + \gamma D + \zeta DX + \varepsilon,\notag\\
 <span class="fu">glimpse</span><span class="op">(</span><span class="va">epi.bfi</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 231</span>
 <span class="co">#&gt; Columns: 13</span>
-<span class="co">#&gt; $ epiE     &lt;int&gt; 18, 16, 6, 12, 14, 6, 15, 18, 15, 8, 13, 14, 15, 19, 15, 11, 16, 1…</span>
-<span class="co">#&gt; $ epiS     &lt;int&gt; 10, 8, 1, 6, 6, 4, 9, 9, 11, 5, 9, 12, 10, 11, 10, 5, 10, 11, 4, 8…</span>
-<span class="co">#&gt; $ epiImp   &lt;int&gt; 7, 5, 3, 4, 5, 2, 4, 7, 3, 2, 3, 3, 4, 7, 4, 6, 5, 6, 2, 4, 5, 3, …</span>
-<span class="co">#&gt; $ epilie   &lt;int&gt; 3, 1, 2, 3, 3, 5, 3, 2, 3, 2, 3, 6, 5, 0, 2, 7, 0, 4, 1, 4, 3, 1, …</span>
-<span class="co">#&gt; $ epiNeur  &lt;int&gt; 9, 12, 5, 15, 2, 15, 12, 10, 1, 10, 9, 1, 2, 3, 7, 13, 18, 11, 10,…</span>
-<span class="co">#&gt; $ bfagree  &lt;int&gt; 138, 101, 143, 104, 115, 110, 109, 92, 127, 74, 124, 131, 133, 117…</span>
-<span class="co">#&gt; $ bfcon    &lt;int&gt; 96, 99, 118, 106, 102, 113, 58, 57, 108, 100, 114, 107, 114, 126, …</span>
-<span class="co">#&gt; $ bfext    &lt;int&gt; 141, 107, 38, 64, 103, 61, 99, 94, 108, 61, 100, 99, 114, 139, 124…</span>
-<span class="co">#&gt; $ bfneur   &lt;int&gt; 51, 116, 68, 114, 86, 54, 55, 72, 35, 87, 110, 92, 56, 47, 62, 83,…</span>
-<span class="co">#&gt; $ bfopen   &lt;int&gt; 138, 132, 90, 101, 118, 149, 110, 114, 86, 89, 129, 121, 131, 128,…</span>
-<span class="co">#&gt; $ bdi      &lt;int&gt; 1, 7, 4, 8, 8, 5, 7, 0, 0, 7, 8, 3, 0, 0, 1, 4, 14, 7, 9, 4, 1, 11…</span>
-<span class="co">#&gt; $ traitanx &lt;int&gt; 24, 41, 37, 54, 39, 51, 40, 32, 22, 35, 43, 33, 23, 23, 27, 45, 58…</span>
-<span class="co">#&gt; $ stateanx &lt;int&gt; 22, 40, 44, 40, 67, 38, 32, 41, 26, 31, 39, 25, 32, 23, 28, 28, 56…</span></code></pre></div>
+<span class="co">#&gt; $ epiE     &lt;int&gt; 18, 16, 6, 12, 14, 6, 15, 18, 15, 8, 13, 14, 15, 19, 15, 11, 16, 17, 7, 13, …</span>
+<span class="co">#&gt; $ epiS     &lt;int&gt; 10, 8, 1, 6, 6, 4, 9, 9, 11, 5, 9, 12, 10, 11, 10, 5, 10, 11, 4, 8, 7, 7, 10…</span>
+<span class="co">#&gt; $ epiImp   &lt;int&gt; 7, 5, 3, 4, 5, 2, 4, 7, 3, 2, 3, 3, 4, 7, 4, 6, 5, 6, 2, 4, 5, 3, 7, 1, 4, 3…</span>
+<span class="co">#&gt; $ epilie   &lt;int&gt; 3, 1, 2, 3, 3, 5, 3, 2, 3, 2, 3, 6, 5, 0, 2, 7, 0, 4, 1, 4, 3, 1, 2, 2, 1, 1…</span>
+<span class="co">#&gt; $ epiNeur  &lt;int&gt; 9, 12, 5, 15, 2, 15, 12, 10, 1, 10, 9, 1, 2, 3, 7, 13, 18, 11, 10, 12, 3, 10…</span>
+<span class="co">#&gt; $ bfagree  &lt;int&gt; 138, 101, 143, 104, 115, 110, 109, 92, 127, 74, 124, 131, 133, 117, 99, 126,…</span>
+<span class="co">#&gt; $ bfcon    &lt;int&gt; 96, 99, 118, 106, 102, 113, 58, 57, 108, 100, 114, 107, 114, 126, 107, 78, 9…</span>
+<span class="co">#&gt; $ bfext    &lt;int&gt; 141, 107, 38, 64, 103, 61, 99, 94, 108, 61, 100, 99, 114, 139, 124, 112, 102…</span>
+<span class="co">#&gt; $ bfneur   &lt;int&gt; 51, 116, 68, 114, 86, 54, 55, 72, 35, 87, 110, 92, 56, 47, 62, 83, 106, 72, …</span>
+<span class="co">#&gt; $ bfopen   &lt;int&gt; 138, 132, 90, 101, 118, 149, 110, 114, 86, 89, 129, 121, 131, 128, 139, 132,…</span>
+<span class="co">#&gt; $ bdi      &lt;int&gt; 1, 7, 4, 8, 8, 5, 7, 0, 0, 7, 8, 3, 0, 0, 1, 4, 14, 7, 9, 4, 1, 11, 1, 9, 6,…</span>
+<span class="co">#&gt; $ traitanx &lt;int&gt; 24, 41, 37, 54, 39, 51, 40, 32, 22, 35, 43, 33, 23, 23, 27, 45, 58, 39, 43, …</span>
+<span class="co">#&gt; $ stateanx &lt;int&gt; 22, 40, 44, 40, 67, 38, 32, 41, 26, 31, 39, 25, 32, 23, 28, 28, 56, 44, 56, …</span></code></pre></div>
 <p>Supponiamo di chiederi se c’è una relazione tra la depressione (<code>bdi</code>), considerata quale variabile dipendente, e Neuroticismo e ansia di stato. Considereremo in seguito il problema della possibile interazione tra Neuroticismo e ansia di stato. Per ora, scriviamo il modello di regressione nel modo seguente:</p>
 <p><span class="math display">\[\begin{equation}
 y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \varepsilon.
@@ -659,7 +659,7 @@ y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \varepsilon.
 <p>non possiamo procedere come abbiamo fatto in precedenza, quando avevamo due gruppi di osservazioni, ovvero, non possiamo disegnare una diversa retta di regressione per ciascun gruppo (non essendoci dei gruppi separati). Possiamo invece usare una funzione R come <code><a href="https://strengejacke.github.io/sjPlot/reference/plot_model.html">plot_model()</a></code> che calcola la retta di regressione di <code>bfneur</code> su <code>bdi</code> selezionando alcuni valori “fissi” della variabile <code>stateanx</code> – nello specifico, la media di <code>stateanx</code>, la media meno una deviazione standard, e la media più una deviazione standard. Si produce così la rappresentazione di tre rette di regressione.</p>
 <div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://strengejacke.github.io/sjPlot/reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">m</span>, type <span class="op">=</span> <span class="st">"pred"</span>, terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bfneur"</span>, <span class="st">"stateanx"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-309-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-311-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Quello che notiamo dalla figura precedente è che le tre rette sono parallele. Un modello di regressione multipla che non include alcun termine di interazione è infatti un modello <em>additivo</em>: per quale che sia il livello della variabile <code>stateanx</code>, l’effetto di <code>bfneur</code> (ovvero, la pendenza della retta di regressione) non cambia. Quindi, l’effetto di <code>stateanx</code> semplicemente <em>si somma</em> all’effetto di <code>bfneur</code>.</p>
 <p>Una situazione ben diversa si ottiene nel caso di un modello con interazione, come il seguente:</p>
 <p><span class="math display">\[\begin{equation}
@@ -694,7 +694,7 @@ y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 \cdot x_2 + \varepsilon.
 <p>Se rappresentiamo graficamente le predizioni del modello</p>
 <div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://strengejacke.github.io/sjPlot/reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">m4</span>, type <span class="op">=</span> <span class="st">"pred"</span>, terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bfneur"</span>, <span class="st">"stateanx"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-312-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-314-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>vediamo che, ora, le rette di regressione di <code>bfneur</code> su <code>bdi</code> in corrispondenza dei tre valori prescelti di <code>stateanx</code> non sono più parallele. Questo significa che l’effetto di <code>bfneur</code> su <code>bdi</code> (la pendenza della retta di regressione) <strong>dipende</strong> dal valore di <code>stateanx</code>. Questo è il significato di “interazione”: <code>bfneur</code> ha un effetto diverso su <code>bdi</code> a seconda del livello di <code>stateanx</code>.</p>
 <p>Nel caso presente, vediamo dalla figura che il Neuroticismo ha un effetto più grande sul livello di depressione quando consideriamo coloro che hanno livelli di ansia di stato elevati.</p>
 <p>I coefficienti si interpretano come in precedenza. L’intercetta corrisponde al valore atteso di <code>bdi</code> quando <code>bfneur</code> e <code>stateanx</code> hanno il valore di zero. Questo è di poco interesse. Per cui trasformiamo i dati in modo da utilizzare variabili indipendenti “centrate,” ovvero variabili da cui abbiamo sottratto la media.</p>

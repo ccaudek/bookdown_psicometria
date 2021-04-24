@@ -1,127 +1,237 @@
-# Modellistica bayesiana 
+# Modellistica bayesiana
 
-Una tipica analisi di dati Bayesiana consiste di tre fasi principali:
+## Modelli statistici
 
--   acquisire la conoscenza disponibile su un dato parametro in un
-    modello statistico tramite la distribuzione a priori, che è
-    tipicamente determinata prima della raccolta dei dati;
--   determinare la funzione di verosimiglianza mediante i dati
-    osservati;
--   combinare la distribuzione a priori e la funzione di verosimiglianza
-    utilizzando il teorema di Bayes in modo da produrre la distribuzione
-    a posteriori.
-    
-La distribuzione a posteriori costituisce dunque un compromesso tra la
-conoscenza precedente del ricercatore (rappresentata dalla distribuzione
-a priori) e i dati osservati (rappresentati dalla verosimiglianza),
-ovvero riflette le conoscenze aggiornate del ricercatore alla luce delle
-nuove evidenze, e viene utilizzata per condurre inferenze.
+I dati non interpretati non sono informativi. Non possiamo generalizzare, trarre inferenze o tentare di fare previsioni a meno di non fare ipotesi (per quanto minime) sui dati a disposizione: cosa rappresenta, come sono stati generati, quali aspetti dei dati sono associati a quali altri aspetti, ecc. I modelli statistici rappresentano un modo per rendere esplicite le nostre assunzioni sui dati.
+
+```{definition}
+Un modello statistico è una rappresentazione formale delle ipotesi relative ai dati e al processo che li ha generati.
+```
+
+<br>
+
+Nel suo senso naturale più comune, un "modello" è un modello di qualcosa. Intende rappresentare qualcos'altro in una forma semplificata, astratta e più maneggevole; ovviamente, le caratteristiche di un modello dipendono dallo scopo per il quale il modello verrà usato. In generale, un buon modello è in grado di riprodurre alcuni aspetti della realtà, mentre nel contempo ignora tutte quelle caratteristiche irrilevanti che potrebbero altrimenti offuscare la nostra comprensione di ciò che il modello vuole rappresentare.
+
+Lo scopo più comune di un modello statistico è quello di imparare qualcosa sulla realtà traendo inferenze dai dati - possibilmente con l'ulteriore obiettivo di consentirci di prendere una decisione razionale - o di fare previsioni su eventi sconosciuti (futuri, presenti o passati).
+
+Un modello statistico _M_ è un modello di un processo aleatorio _R_ che potrebbe aver generato i dati che abbiamo osservato. Il modello _M_ descrive quindi in un modo formale le nostre ipotesi sul processo aleatorio _R_. 
+
+Spesso vogliamo spiegare una parte dei nostri dati, le variabili dipendenti $D_{DV}$ 
+nei termini di altre osservazioni, le variabili indipendenti $D_{IV}$.  Ma è anche possibile che non ci siano variabili indipendenti in termini di cui vorremmo modellare la variabile dipendente $D_{DV}$.
+
+Un modello _M_ per i dati _D_ stabilisce una _fuzione di verosimiglianza_ per $D_{DV}$. 
+
+La funzione di verosimiglianza determina la plausibilità di qualsiasi potenziale osservazione
+$D_{DV}$ alla luce delle corrispondenti osservazioni $D_{IV}$. Molto spesso, la funzione di verosimiglianza ha anche dei parametri liberi, rappresentati da un vettore $\theta$. La  funzione di verosimiglianza del modello _M_ per i dati _D_ con parametri $\theta$ si può dunque scrivere come:
+
+$$
+P_M(D_{DV} \mid D_{IV}, \theta).
+$$
+I modelli bayesiani hanno una componente aggiuntiva, vale a dire una distribuzione a priori sui valori dei parametri, comunemente scritta come:
+
+$$
+P_M(\theta).
+$$
+La distribuzione a priori sui valori dei parametri può essere utilizzata per rappresentare qualsiasi ipotesi a priori motivata e giustificabile sui valori dei parametri che possiamo ritenere plausibili alla luce delle nostre conoscenze presenti.
+
+```{example}
+Supponiamo che il nostro campione di dati sia costituito dagli esiti di una sequenza di lanci di una moneta avente probabilità di successo (testa) $\theta \in [0, 1]$. Abbiamo osservato  _k_ successi in _N_ prove. Dunque, conosciamo _N_ e _k_ ma non conosciamo $\theta$. Il parametro $\theta$ è l'unico parametro di questo modello statistico. La variabile dipendente è _k_.  Possiamo pensare a _N_ come alla nostra variabile indipendente. 
+
+La funzione di verosimiglianza per questo modello statistico è la distribuzione Binomiale:
+
+$$
+P_M(k \mid \theta, N) = \text{Binomial}(k, N, \theta) = {N \choose k} \theta^k (1 - \theta)^{N-k}.
+$$
+
+Per ragioni che diventeranno chiare in seguito, è possibile usare una distribuzione Beta per la distribuzione a priori di $\theta$. Ad esempio, potremmo definire i parametri della distribuzione Beta in modo tale che la distribuzione risultante sia piatta, così da generare una "distribuzione a priori non informativa":
+
+$$
+P_M(\theta) = \text{Beta}(\theta, 1, 1).
+$$
+```
+
+## Notazine
+
+Per rappresentare in un modo conciso i modelli statistici viene usata una notazione speciale, che è molto intuitiva se pensiamo al processo del campionamento. Ad esempio, invece di scrivere
+
+$$
+P_M(\theta) = \text{Beta}(\theta, 1, 1),
+$$
+
+scriviamo:
+
+$$
+\theta \sim \text{Beta}(1, 1).
+$$
+Il simbolo "$\sim$" viene spesso letto "è distribuito come". Possiamo anche pensare che significhi che $\theta$ costituisce un campione estratto dalla distribuzione Beta(1, 1). Allo stesso modo, per la funzione di verosimiglianza dell'esempio precedente possiamo scrivere:
+
+$$
+k \sim \text{Binomial}(k, N, \theta).
+$$
+
+## Parametri e distribuzioni a priori 
+
+Un modello Bayesiano è costituito da una funzione di verosimiglianza e da una distribuzione a priori dei parametri di interesse:
+
+$$ 
+\begin{aligned}
+  & \text{Verosimiglianza: } & P_M(D \mid \theta) \\ 
+  & \text{Distribuzione a priori: } & P_M(\theta) 
+\end{aligned}
+$$ 
+
+In questa sezione, approfondiremo cos'è un parametro, cos'è una distribuzione a priori precedente $P_M(\theta)$ e come possiamo usare un modello per fare previsioni sui dati.
+
+L'esempio che considereremo per questa sezione è il *modello binomiale* che è stato introdotto in èrecedenza.
+Come esempio concreto di dati, consideriamo un caso con $N = 24$ lanci di monete e $k = 7$ esiti testa.
+
+### Cos'è un parametro del modello?
+
+Un parametro del modello è un valore da cui dipende la verosimiglianza. Ad esempio, il singolo parametro $\theta$ nel modello Binomiale determina la forma della funzione di verosimiglianza Binomiale.
+Ricordiamo che la funzione di verosimiglianza per il modello Binomiale è:
+
+$$ 
+P_M(k \mid \theta, N) = \text{Binomial}(k, N, \theta) = \binom{N}{k}\theta^k(1-\theta)^{N-k}. 
+$$
+Per comprendere il ruolo del parametro $\theta$, possiamo generare un grafico della verosimiglianza dei dati osservati (qui: $k = 7$ e $N = 24$) come funzione di $\theta$.
+
+Per ogni possibile valore di $\theta \in [0; 1]$ sull'asse orizzontale, la figura mostra sull'asse verticale la verosimiglianza dei dati osservati. 
+Il grafico mostra che la verosimiglianza dei dati dipende dal valore del parametro $\theta$:
+valori diversi di $\theta$ rendono più o meno verosimili i dati che abbiamo effettivamente osservato. 
+
+```{r ch-03-02-LH-Binomial-Model, fig.cap= "Funzione di verosimiglianza per il modello Binomiale con $k=7$ e $N=24$.", echo = FALSE}
+# data
+k <- 7
+N <- 24
+# plot LH-function
+tibble(
+  theta = seq(0,1, length.out = 401),
+  LH = dbinom(x = k, size = N, prob = theta)
+) %>% 
+  ggplot(aes(x = theta, y = LH)) +
+  geom_line(size = 3) +
+  labs(
+    x = latex2exp::TeX("Probabilità di successo della moneta $\\theta$"),
+    y = latex2exp::TeX("Verosimiglianza $Binomial(k=7, N=24, \\theta)$")
+  )
+```
+
+
+
+
+### Distribuzione a priori sui parametri 
+
+La distribuzione a priori sui valori dei parametri $P_M (\theta)$ è parte integrante di un modello quando adottiamo un approccio Bayesiano all'analisi dei dati. Ciò implica che due modelli (bayesiani) possono condividere la stessa funzione di verosimiglianza, e tuttavia devono essere considerati come modelli diversi, se specificano diverse distribuzioni a priori. Ciò significa che, quando diciamo "Modello binomiale", intendiamo in realtà un'intera classe di modelli, ovvero tutti i modelli con la stessa verosimiglianza ma diverse distribuzioni a priori su $\theta$.
+
+Nell'analisi dei dati Bayesiana, la distribuzione a priori $P_M(\theta)$ codifica le credenze del ricercatore a proposito dei valori dei parametri, prima di avere osservato i dati. 
+Idealmente, le credenze a priori che supportano la specificazione di una distribuzione a priori dovrebbero essere supportate da una qualche motivazione, come ad esempio i risultati di ricerche precedenti o altre motivazioni giustificabili.
+Tuttavia, le credenze soggettive sono solo uno dei modi per giustificare le distribuzioni a priori sui parametri.
+
+Ci sono tre tipi principali di motivazioni per le distribuzioni a priori $P_M (\theta)$.
+
+1. Le **distribuzioni a priori soggettive** catturano le credenze soggettive del ricercatore nel senso sopra descritto.
+2. Le **distribuzioni a priori con finalità pratiche** sono distribuzioni a priori che vengono utilizzate pragmaticamente a causa di una loro utilità specifica, ad esempio, perché semplificano un calcolo matematico o una simulazione al computer, o perché aiutano nel ragionamento statistico, come ad esempio quando vengono formulate i *skeptical priors* che hanno l'obiettivo di lavorare in senso contrario ad una particolare conclusione.
+3. Le **distribuzioni a priori oggettive**  sono distribuzioni a priori che, come alcuni sostengono, *dovrebbero* essere adottate per una data funzione di verosimiglianza per evitare conseguenze concettualmente paradossali. **Non tratteremo le distribuzioni a priori oggettive in questo corso introduttivo e le menzioniamo qui solo per completezza.**
+
+Oltre alla motivazione che giustifica una distribuzione a priori, possiamo distinguere tra distribuzioni a priori in base a quanto fortemente impegnano il ricercatore a ritenere come plausibile un particolare intervallo di valori dei parametri. Il caso più estremo è quello che rivela una totale assenza di conoscenze a priori, il che conduce alle **distribuzioni a priori non informative**, ovvero quelle che assegnano lo stesso livello di credibilità a tutti i valori dei parametri. Le distribuzioni a priori informative, d'altra parte, possono essere *debolmente informative* o *fortemente informative*, a seconda della forza della credenza che esprimono. Il caso più estremo di credenza a priori è quello che riassume il punto di vista del ricercatore nei termini di un  **unico valore** del parametro, il che assegna tutta la probabilità (massa o densità) su di un singolo valore di un parametro. Poiché questa non è più una distribuzione di probabilità, sebbene ne soddisfi la definizione, in questo caso si parla di una *distribuzione a priori degenerata*.
+
+La figura seguente mostra esempi di distribuzioni a priori non informative, debolmente o fortemente informative, così come una distribuzione a priori espressa nei termini di un valore puntuale per il modello Binomiale. Le distribuzione a priori illustrate di seguito  sono le seguenti:
+
+- *non informativa* : $\theta_c \sim \text{Beta}(1,1)$;
+- *debolmente informativa* : $\theta_c \sim \text{Beta}(5,2)$;
+- *fortemente informativa* : $\theta_c \sim \text{Beta}(50,20)$;
+- *valore puntuale* : $\theta_c \sim \text{Beta}(\alpha, \beta)$ con $\alpha, \beta \rightarrow \infty$ e $\frac{\alpha}{\beta} = \frac{5}{2}$.
+
+
+```{r ch-03-02-models-types-of-priors, echo = F, fig.cap = "Examples of different kinds of Bayesian priors for coin bias $\\theta_c$ in the Binomial Model."}
+tibble(
+  theta = seq(0, 1, length.out = 401),
+  `non informativa` = dbeta(theta, 1, 1),
+  `debolmente informativa` = dbeta(theta, 5, 2),
+  `informativa` = dbeta(theta, 50, 20),
+  `puntuale` = dbeta(theta, 50000, 20000)
+) %>% 
+  pivot_longer(
+    cols = -1,
+    names_to = "prior_type",
+    values_to = "prior"
+  ) %>%
+  mutate(
+    prior_type = factor(prior_type, levels = c('non informativa', 'debolmente informativa', 'informativa', 'puntuale'))
+  ) %>%
+  ggplot(aes(x = theta, y = prior)) +
+  geom_line(size = 2) +
+  facet_wrap(~ prior_type, ncol = 2, scales = "free") +
+  labs(
+    x = latex2exp::TeX("Probabilità di successo $\\theta_c$"),
+    y = latex2exp::TeX("Probabilità a priori $P(\\theta_c)$"),
+    title = latex2exp::TeX("Distribuzione a priori per $\\theta$ (Modello Binomiale).")
+  ) +
+  theme(plot.title = element_text(size = 16))
+```
+
+La selezione delle distribuzioni a priori è stata spesso vista come una delle
+scelte più importanti che un ricercatore fa quando implementa un modello
+Bayesiano in quanto può avere un impatto sostanziale sui risultati
+finali.  
+
+La soggettività delle distribuzioni a priori è evidenziata dai critici
+come un potenziale svantaggio dei metodi Bayesiani. A questa critica,
+@vandeSchoot2021modelling rispondono dicendo che, al di là
+della scelta delle distribuzioni a priori, ci sono molti elementi del processo di inferenza statistica che sono soggettivi, ovvero la scelta del modello statistico e le ipotesi sulla distribuzione degli errori. In secondo luogo, @vandeSchoot2021modelling notano come le distribuzioni a priori svolgono due ruoli statistici importanti: quello della "regolarizzazione della stima", ovvero, quel processo che porta ad indebolire l'influenza
+indebita di osservazioni estreme, e quello del miglioramento dell'efficienza
+della stima, ovvero, la facilitazione dei processi di calcolo numerico
+di stima della distribuzione a posteriori.
 
 
 ## Procedura Bayesiana di stima dei parametri
 
-Sulla base di un modello $M$ di parametri $\theta$, la procedura _Bayesiana_ di stima dei parametri si pone il problema di trovare i valori più plausibili di $\theta$, alla luce dei dati disponibili $D$. 
-Dato un modello Bayesiano $M$, è possibile usare il teorema di Bayes per aggiornare le nostre credenze a priori su $\theta$ in modo da produrre nuove _credenze a posteriori_ $P_M(\theta \mid D)$ ottenute combinando i dati osservati $D$ e le credenze precedenti sulla base delle assunzioni esplicitate dal modello $M$.
-Ci sono due diversi metodi per calcolare le distribuzioni a posteriori 
-$P_M(\theta \mid D)$: 
+### Finalità
 
-- una precisa derivazione matematica formulata nei termini della distribuzione a priori coniugata alla distribuzione a posteriori, la quale però ha un'applicabilità molto limitata, 
-- un metodo più efficiente ma approssimato basato sui metodi Monte Carlo basati su Catena di Markov (MCMC). 
+Sulla base di un modello statistico $M$ di parametri $\theta$, l'analisi statistica Bayesiana si pone il problema di trovare i valori più plausibili di $\theta$ alla luce dei dati $D$.
+Il teorema di Bayes viene usato per aggiornare le credenze a priori su $\theta$ in modo tale da produrre nuove _credenze a posteriori_ $P_M(\theta \mid D)$ che combinano le informazioni fornite dai dati $D$ con le credenze precedenti. La distribuzione a posteriori riflette dunque le nuove conoscenze del ricercatore che sono state aggiornate utilizzando le evidenze fornite dai dati.
 
-In questo capitolo introdurremo la terminologia e le idee di base. In seguito ci porremo il problema di sviluppare un'intuizione dei metodi MCMC.
+### Metodi 
+
+Ci sono due diversi metodi per calcolare la distribuzione a posteriori
+$P_M(\theta \mid D)$:
+
+- una precisa derivazione matematica formulata nei termini della distribuzione a priori coniugata alla distribuzione a posteriori; tale procedura però ha un'applicabilità molto limitata;
+- un metodo approssimato, molto facile da utilizzare in pratica, che dipende da metodi Monte Carlo basati su Catena di Markov (MCMC).
+
+In questo capitolo introdurremo la terminologia e le idee di base che stanno alla base della stima delle funzione a posteriori. In seguito ci porremo il problema di sviluppare un'intuizione dei metodi MCMC.
 
 
-## Definizioni e terminologia
+### Terminologia
 
-Consideriamo un modello Bayesiano $M$ avente una verosimiglianza $P(D \mid \theta)$ sui dati osservati $D$ e una distribuzione a priori $P(\theta)$ sui parametri. Usiamo il teorema di Bayes per aggiornare le nostre credenze a priori sui parametri $P(\theta)$ in modo tale da ottenere le nuove credenze a posteriori:
+Consideriamo un modello Bayesiano $M$ avente una verosimiglianza $P(D \mid \theta)$ sui dati osservati $D$ e una distribuzione a priori $P(\theta)$ sui parametri. Applichiamo il teorema di Bayes per produrre la distribuzione a posteriori:
 
 $$P(\theta \mid D) = \frac{P(D \mid \theta) \ P(\theta)}{P(D)}.$$
 
 L'equazione precedente è costituita dalle seguenti componenti:
 
-- la **distribuzione a posteriori** $P(\theta \mid D)$  - la nostra nuova credenza a posteriori relativamente alla plausibilità di ciascun valore $\theta$ alla luce di $D$;
+- la **distribuzione a posteriori** $P(\theta \mid D)$  - la nuova credenza a posteriori relativamente alla plausibilità di ciascun valore $\theta$ alla luce di $D$;
 - la **funzione di verosimiglianza** $P(D \mid \theta)$  - quanto sono verosimili i dati $D$ per ciascun valore fisso $\theta$;
-- la **distribuzione a priori** $P(\theta)$  - la nostra credenza iniziale riguardo alla plausibilità di ciascun valore $\theta$;
+- la **distribuzione a priori** $P(\theta)$  - la credenza iniziale riguardo alla plausibilità di ciascun valore $\theta$;
 - la **verosimiglianza marginale** $P(D) = \int P(D \mid \theta) \ P(\theta) \ \text{d}\theta$ -  quanto sono verosimili i dati $D$ alla luce della nostra credenza a priori relativamente a $\theta$.
 
-La probabilità a posteriori è solitamente scritta nel modo seguente:
+La formula precedente applica il teorema di Bayes per produrre la distribuzione a posteriori dei parametri sconosciuti $\theta$. Tuttavia, molto spesso la probabilità a posteriori è  scritta nel modo seguente:
 
-$$\underbrace{P(\theta \, | \, D)}_{posterior} \propto \underbrace{P(\theta)}_{prior} \ \underbrace{P(D \, | \, \theta)}_{likelihood},$$
+$$
+\underbrace{P(\theta \, | \, D)}_{posterior} \propto \underbrace{P(\theta)}_{prior} \ \underbrace{P(D \, | \, \theta)}_{likelihood},
+$$
 
 dove il segno di proporzionalità indica che le probabilità a sinistra del simbolo $\propto$ sono definite dai termini a destra di  $\propto$ a meno di una costante di normalizzazione. Se $F \colon X \rightarrow \mathbb{R}^+$ è una funzione positiva non normalizzata di probabilità, $P(x) \propto F(x)$ è equivalente a $P(x) = \frac{F(x)}{\sum_{x' \in X} F(x')}$.
 
 
-## La distribuzione a priori
-
-La selezione delle distribuzioni a priori è spesso vista come una delle
-scelte più importanti che un ricercatore fa quando implementa un modello
-bayesiano in quanto può avere un impatto sostanziale sui risultati
-finali. Le distribuzioni a priori possono presentarsi in molte forme
-distributive differenti, come una distribuzione normale, uniforme o di
-Poisson, tra le altre. Le distribuzioni a priori possono essere più o
-meno informative: le informazioni riflesse in una distribuzione a priori
-possono situarsi in un punto qualsiasi del continuum che conduce dalla
-completa incertezza (sul valore del parametro oggetto d'indagine) ad una
-relativa certezza. Sebbene le distribuzioni a priori possono avere
-caratteristiche molto diverse tra loro, esse vengono solitamente
-classificate in una di tre categorie:
-
--   distribuzioni a priori informative,
--   distribuzioni a priori debolmente informative,
--   distribuzioni a priori non informative.
-
-Una classificazione di questo tipo dipende dal giudizio personale del
-ricercatore. Ad esempio, una distribuzione normale è caratterizzata da
-una media e una varianza, e la varianza (o ampiezza) della distribuzione
-definisce al livello di informatività della distribuzione. Una varianza
-pari a 1000 può essere considerata "non informativa" in un dato contesto di
-ricerca e "informativa" in un altro, a seconda della funzione di
-verosimiglianza e dell'unità di misura del parametro.
-
-Non è possibile dire, in generale, che una data distribuzione a priori è
-giusta o sbagliata. Molte volte, una distribuzioni a priori non
-informativa produce una distribuzione a posteriori simile alla
-verosimiglianza, mentre altre volte è possibile ottenere risultati
-imprecisi o distorti con distribuzioni a priori debolmente informative.
-Allo stesso modo, una distribuzione a priori informativa che non si
-sovrappone bene con la verosimiglianza può spostare la distribuzione a
-posteriori lontano dalla verosimiglianza, in modo tale che le inferenze
-che ne derivano saranno allineate più con distribuzione a priori che con
-la verosimiglianza. Indipendentemente dal carattere più o meno
-informativo della distribuzione a priori, è sempre importante condurre
-un'analisi della sensibilità alla distribuzione a priori per comprendere
-l'influenza che le proprietà della distribuzione a priori hanno sulle
-stime a posteriori. Quando la dimensione del campione è piccola, la
-stima bayesiana spesso utilizza distribuzioni a priori debolmente
-informative, ma è possibile che in queste condizioni la specifica
-precedente abbia un enorme effetto sulla distribuzione a posteriori.
-
-La soggettività delle distribuzioni a priori è evidenziata dai critici
-come un potenziale svantaggio dei metodi Bayesiani. A questa critica,
-@vandeSchoot2021modelling rispondono dicendo che, in primo luogo, molti
-elementi del processo di inferenza statistica sono soggettivi, al di là
-della scelta delle distribuzioni a priori, compreso il modello
-statistico scelto dal ricercatore e le ipotesi sulla distribuzione degli
-errori. Dire che, nel processo statistico di inferenza, vi è una
-componente "soggettiva" corrispondente alla scelta della distribuzione a
-priori è fuorviante, in quanto il processo di inferenza statistica è
-caratterizzato da molti altri aspetti che sono intrinsecamente
-soggettivi. In secondo luogo, le distribuzioni a priori non
-corrispondono soltanto ad un aspetto "soggettivo" dell'analisi dei dati.
-Invece, svolgono ruoli statistici importante: la "regolarizzazione della
-stima" (ovvero, quel processo che porta ad indebolire l'influenza
-indebita di osservazioni estreme) e il miglioramento dell'efficienza
-della stima (ovvero, la facilitazione dei processi di calcolo numerico
-di stima della distribuzione a posteriori).
-
 ## Le aspettative dei pazienti con disturbo depressivo maggiore
 
-Nell'esempio che discuteremo di seguito verranno chiarite le relazioni
+Discuteremo ora un esempio che ha lo scopo di chiarite le relazioni
 che legano tra loro le tre distribuzioni che abbiamo introdotto sopra:
 la distribuzione a priori, la verosimiglianza e la distribuzioni a
-posteriori. Nell'esempio considereremo nuovamente la ricerca di
-@zetsche_future_2019. Questi autori si sono chiesti se gli individui
-depressi manifestino delle aspettative accurate circa il loro umore
+posteriori. Nell'esempio faremo riferimento alla ricerca di @zetsche_future_2019. 
+
+@zetsche_future_2019 si sono chiesti se gli individui depressi manifestino delle aspettative accurate circa il loro umore
 futuro, oppure se tali aspettative siano distorte negativamente.
 Esamineremo qui i 30 partecipanti dello studio di @zetsche_future_2019
 che hanno riportato la presenza di un episodio di depressione maggiore
@@ -152,22 +262,22 @@ positivamente distorte. Nella seguente discussione, chiameremo $\theta$
 la probabilità dell'evento "le aspettative del partecipante sono
 distorte negativamente". Il problema che ci poniamo è quello di ottenere
 la stima a posteriori di $\theta$, avendo osservato 23 "successi" in 30
-prove, ovvero $\hat{\theta}$ = 23/30 = 0.77. 
+prove, ovvero $\hat{\theta}$ = 23/30 = 0.77.
 
-Si noti un punto importante qui: un problema di scrivere semplicemente la stima di  $\theta$ come 0.77 è che tale valore ignora l'incertezza della nostra stima. Infatti, il valore di 0.77 si può ottenere come 23/30, o come 230/300, o 2300/3000, o 23000/30000.  L'incertezza della stima 0.77 è diversa in ciascuno di questi casi e questo è molto importante quando si traggono conclusioni dai dati. 
+Si noti un punto importante qui: un problema di scrivere semplicemente la stima di  $\theta$ come 0.77 è che tale valore ignora l'incertezza della nostra stima. Infatti, il valore di 0.77 si può ottenere come 23/30, o come 230/300, o 2300/3000, o 23000/30000.  L'incertezza della stima 0.77 è diversa in ciascuno di questi casi e questo è molto importante quando si traggono conclusioni dai dati.
 
-Nell'approccio frequentista, l'unico strumento che abbiamo per caratterizzare la nostra incertezza relativa alla stima di $\theta$ è la distribuzione campionaria della stima di questo parametro nel caso di un ipotetico campionamento ripetuto; non è invece possibile fare riferimento ad un'incertezza relativa al vero valore del parametro stesso. Per una dimensione campionaria pari a 30, la nostra incertezza deriva dalle caratteristiche della distribuzione campionaria e viene calcolata trovando la varianza campionaria -- ovvero, $n \cdot \hat{\theta} (1 - \hat{\theta}) = 30 \cdot 0.77 (1 - 0.77) =  5.31$ -- e poi l'errore standard, $\sigma / \sqrt{n}$ -- qui 0.42. Per la stessa proporzione di successi pari a 0.77, l'aumento della dimensione del campione rende questo errore standard sempre più piccolo. Questa maggiore precisione corrisponde alle proprietà della distribuzione campionaria di $\hat{\theta}$, ma non quantifica l'incertezza relativa al vero valore di $\theta$. 
+Nell'approccio frequentista, l'unico strumento che abbiamo per caratterizzare la nostra incertezza relativa alla stima di $\theta$ è la distribuzione campionaria della stima di questo parametro nel caso di un ipotetico campionamento ripetuto; non è invece possibile fare riferimento ad un'incertezza relativa al vero valore del parametro stesso. Per una dimensione campionaria pari a 30, la nostra incertezza deriva dalle caratteristiche della distribuzione campionaria e viene calcolata trovando la varianza campionaria -- ovvero, $n \cdot \hat{\theta} (1 - \hat{\theta}) = 30 \cdot 0.77 (1 - 0.77) =  5.31$ -- e poi l'errore standard, $\sigma / \sqrt{n}$ -- qui 0.42. Per la stessa proporzione di successi pari a 0.77, l'aumento della dimensione del campione rende questo errore standard sempre più piccolo. Questa maggiore precisione corrisponde alle proprietà della distribuzione campionaria di $\hat{\theta}$, ma non quantifica l'incertezza relativa al vero valore di $\theta$.
 
-L'approccio Bayesiano procede in modo diverso e ci fornisce invece l'opportunità di quantificare direttamente la nostra incertezza relativa al vero valore del parametro $\theta$, alla luce dei dati -- non della distribuzione campionaria di $\hat{\theta}$. Tale quantificazione dell'incertezza si trova costruendo la distribuzione a posteriori di $\theta$ mediante la regola di Bayes, come verrà mostrato di seguito.
+L'approccio Bayesiano procede in modo diverso e ci fornisce invece l'opportunità di quantificare direttamente la nostra incertezza relativa al vero valore del parametro $\theta$, alla luce dei dati -- non della distribuzione campionaria di $\hat{\theta}$. Tale quantificazione dell'incertezza si trova costruendo la distribuzione a posteriori di $\theta$ mediante il teorema di Bayes.
 
 Per costruire la distribuzione a posteriori di $\theta$, in questo esempio utilizzeremo l'approccio chiamato *grid-based*. Il metodo basato su griglia è un metodo di approsimazione numerica basato su una griglia di punti uniformemente spaziati (si veda
 il capitolo [Stima della funzione a posteriori](#chapter-stima-distr-posteriori)). Anche se la maggior parte dei parametri è continua (ovvero, in linea di principio ciascun parametro può assumere un numero infinito di valori), possiamo ottenere un'eccellente approssimazione della distribuzione a posteriori considerando solo una griglia finita di valori dei parametri. In un tale metodo, la densità di probabilità a posteriori può dunque essere approssimata tramite le densità di probabilità cacolate in ciascuna cella della griglia.
 
 Per calcolare la probabilità a posteriori si procede come indicato di seguito.
 <span style="background-color: #FFFF00">
-Per ciascuno specifico valore $\theta'$ del parametro di interesse (ovvero, di un elemento della griglia) è necessario moltiplicare l'ordinata della probabilità a priori in corrispondenza di $\theta'$ per l'ordinata della funzione di verosimiglianza in corrispondenza di $\theta'$. Tale procedura va ripetuta per ciascun elemento della griglia. 
-</span> 
-C'è ovviamente bisogno di una griglia molto densa per ottenere buone approssimazioni. 
+Per ciascuno specifico valore $\theta'$ (ovvero, per ciascun elemento della griglia) è necessario moltiplicare l'ordinata della distribuzione di probabilità a priori in corrispondenza di $\theta'$ per l'ordinata della funzione di verosimiglianza in corrispondenza di $\theta'$. Tale procedura va ripetuta per ciascun elemento della griglia.
+</span>
+C'è ovviamente bisogno di una griglia molto densa per ottenere buone approssimazioni.
 
 Il metodo basato su griglia è, in primo luogo, un utile strumento didattico in quanto rende trasparente la logica del processo dell'aggiornamento Bayesiano. Per ragioni che vedremo in seguito, tale metodo non può essere usato per la stima di modelli complessi che includono un grande numero di parametri -- ma non è questo il nostro scopo qui. Ma, al di là di questo limite del metodo basato su griglia, è importante sottolineare che, quale che sia il *metodo* che si usa per stimare la funzione a posteriori, il *significato* della funzione a posteriori non cambia ed è ben illustrato dall'esempio qui discusso.
 
@@ -179,7 +289,7 @@ p_grid <- seq(from = 0, to = 1, length.out = n_points)
 p_grid
 ```
 
-## Distribuzione a priori
+### Distribuzione a priori
 
 Supponiamo che le nostre credenze a priori sulla tendenza di un individuo clinicamente depresso a manifestare delle aspettative distorte negativamente circa il suo umore futuro siano molto scarse. Assumiamo quindi per $\theta$ una distribuzione a priori non informativa -- ovvero, ipotizziamo che la distribuzione a priori sia una distribuzione uniforme nell'intervallo [0, 1]. Dato che consideriamo soltanto $n = 50$ valori possibili per il parametro $\theta$, creiamo un vettore di 50 elementi che conterrà i valori della distribuzione a priori scalando ciascun valore del vettore per $n$ in modo tale che la somma di tutti i valori sia uguale a 1.0 (in questo modo viene definita una funzione di massa di probabilità):
 
@@ -197,10 +307,10 @@ sum(prior1)
 La distribuzione a priori così costruita è rappresentata nella figura \@ref(fig:gridappr1).
 
 ```{r gridappr1, fig.cap="Rappresentazione grafica della distribuzione a priori per il parametro $\\theta$, ovvero la probabilità di aspettative future distorte negativamente [@zetsche_future_2019]."}
-p1 <- data.frame(p_grid, prior1) %>% 
+p1 <- data.frame(p_grid, prior1) %>%
   ggplot(aes(x=p_grid, xend=p_grid, y=0, yend=prior1)) +
   geom_line()+
-  geom_segment(color = "#8184FC") + 
+  geom_segment(color = "#8184FC") +
   ylim(0, 0.17) +
   labs(
     x = "Parametro \U03B8",
@@ -210,7 +320,7 @@ p1 <- data.frame(p_grid, prior1) %>%
 p1
 ```
 
-## Funzione di verosimiglianza
+### Funzione di verosimiglianza
 
 Calcoliamo ora la funzione di verosimiglianza utilizzando i 50 valori griglia per $\theta$ che abbiamo definito in precedenza. Per ciascuno dei valori della griglia applichiamo la formula della probabilità binomiale, tendendo sempre costanti i valori dei dati (ovvero 23 "successi" in 30 prove).
 
@@ -220,7 +330,7 @@ $$
 \begin{aligned}
 \binom{30}{23}& \cdot 0.816^{23} \cdot (1 - 0.816)^{7} = 0.135.\notag
 \end{aligned}
-$$ 
+$$
 
 Per fare un secondo esempio, consideriamo il valore griglia $\theta = 0.837$. Per tale elemento della griglia l'ordinata della funzione di verosimiglianza è uguale a
 
@@ -239,7 +349,7 @@ likelihood
 Il vettore `likelihood` è stato ottenuto passando alla funzione `dbinom()` un vettore di valori, ovvero gli elementi della griglia `p_grid`. La funzione `dbinom(x, size, prob)` richiede che vengano specificati tre parametri: il numero di "successi", il numero di prove e la probabilità di successo. Dato che `x` (numero di successi) e `size` (numero di prove bernoulliane) sono degli scalari e `prob` è un vettore, questo significa che la formula della probabilità binomiale verrà applicata a ciascun elemento di `p_grid` tenendo costanti i valori di `x` e `size`, ovvero i dati. In questo modo otteniamo in output un vettore i cui valori corrispondono all'ordinata della funzione di verosimiglianza per il corrispondente valore griglia di $\theta$. La funzione di verosimiglianza così ottenuta è riportata nella figura \@ref(fig:gridappr2).
 
 ```{r gridappr2, fig.cap="Rappresentazione della funzione di verosimiglianza per il parametro $\\theta$, ovvero la probabilità di aspettative future distorte negativamente [@zetsche_future_2019]."}
-p2 <- data.frame(p_grid, likelihood) %>% 
+p2 <- data.frame(p_grid, likelihood) %>%
   ggplot(aes(x=p_grid, xend=p_grid, y=0, yend=likelihood)) +
   geom_segment(color = "#8184FC") +
   ylim(0, 0.17) +
@@ -250,19 +360,19 @@ p2 <- data.frame(p_grid, likelihood) %>%
 p2
 ```
 
-## La stima della distribuzione a posteriori
+### La stima della distribuzione a posteriori
 
-La distribuzione a posteriori per il parametro $\theta$ si ottiene facendo prima il prodotto della verosimiglianza e della distribuzione a priori, e poi scalando tale prodotto per una costante di normalizzazione. Quindi, se ci limitiamo a fare il prodotto dei valori della distribuzione a priori e dei valori della funzione di verosimiglianza otteniamo la funzione a posteriori *non standardizzata*. 
+La distribuzione a posteriori per il parametro $\theta$ si ottiene facendo prima il prodotto della verosimiglianza e della distribuzione a priori, e poi scalando tale prodotto per una costante di normalizzazione. Quindi, se ci limitiamo a fare il prodotto dei valori della distribuzione a priori e dei valori della funzione di verosimiglianza otteniamo la funzione a posteriori *non standardizzata*.
 
 Ricordiamo che, usando il metodo basato su griglia, stiamo manipolando funzioni di massa di probabilità. Ovvero, siamo in un "mondo discreto".  In questo contesto, una funzione di massa di probabilità non è altro che un'elenco di valori la cui somma deve essere uguale a 1.0. In un "mondo continuo", invece, le probabilità sono definite in un modo completamente diverso: corrispondo all'area in un intervallo di valori sotteso alla funzione di densità. Ma nel nostro esempio corrente ci limitiamo al caso discreto in cui, per calcolare le probabilità, è sufficiente fare delle somme, non sono necessari gli integrali.
 
-Nel caso presente abbiamo deciso di usare una distribuzione a priori non informativa, ovvero una distribuzione uniforme. Per ottenere la funzione a posteriori (di massa di probabilità) non standardizzata è dunque sufficiente moltiplicare ciascun valore della funzione di verosimiglianza per 0.02. Per esempio, per il primo valore della funzione di verosimiglianza che abbiamo discusso quale esempio nella sezione precedente, avremo 
+Nel caso presente abbiamo deciso di usare una distribuzione a priori non informativa, ovvero una distribuzione uniforme. Per ottenere la funzione a posteriori (di massa di probabilità) non standardizzata è dunque sufficiente moltiplicare ciascun valore della funzione di verosimiglianza per 0.02. Per esempio, per il primo valore della funzione di verosimiglianza che abbiamo discusso quale esempio nella sezione precedente, avremo
 
 $$
 0.135 \cdot 0.02;
 $$
 
-per il secondo valore della funzione di verosimiglianza che abbiamo discusso nell'esempio precedente avremo 
+per il secondo valore della funzione di verosimiglianza che abbiamo discusso nell'esempio precedente avremo
 
 $$
 0.104 \cdot 0.02;
@@ -311,7 +421,7 @@ erano già fornite dalla funzione di verosimiglianza.
 La funzione a posteriori che abbiamo calcolato con il metodo _grid-based_ è riportata nella figura \@ref(fig:gridappr3).
 
 ```{r gridappr3, fig.cap="Rappresentazione della distribuzione a posteriori per il parametro $\\theta$, ovvero la probabilità di aspettative future distorte negativamente [@zetsche_future_2019]."}
-p3 <- data.frame(p_grid, posterior) %>% 
+p3 <- data.frame(p_grid, posterior) %>%
   ggplot(aes(x=p_grid, xend=p_grid, y=0, yend=posterior)) +
   geom_segment(color = "#8184FC") +
   ylim(0, 0.17) +
@@ -324,10 +434,10 @@ p3
 
 Le funzioni rappresentate nelle figure \@ref(fig:gridappr1), \@ref(fig:gridappr2) e \@ref(fig:gridappr3) sono state calcolate utilizzando una griglia di 50 valori equi-spaziati per il parametro $\theta$. I segmenti verticali rappresentano l'intensità della funzione in corrispondenza di ciascuna modalità parametro $\theta$. Nella figura \@ref(fig:gridappr1) e nella figura \@ref(fig:gridappr3) la somma delle lunghezze dei segmenti verticali è pari ad 1.0 (in altri termini, la funzione a priori e la funzione a posteriori sono delle funzioni di massa di probabilità, in questo esempio); ciò non si verifica, invece, nel caso della figura \@ref(fig:gridappr3) (la funzione di verosimiglianza non è mai una funzione di probabilità, né nel caso discreto né in quello continuo).
 
-## La stima della distribuzione a posteriori (versione 2)
+### La stima della distribuzione a posteriori (versione 2)
 
 Continuiamo la discussione dell'esempio precedente ed esaminiamo l'impatto sulla distribuzione a posteriori di una distribuzione a priori informativa. Una distribuzione a priori informativa riflette un alto grado di certezza sui parametri del modello da stimare.
-Un ricercatore può utilizzare una distribuzione a priori informativa per introdurre nel processo di stima le informazioni esistenti che suggeriscono delle restrizioni sulla possibile gamma di valori di un particolare parametro. 
+Un ricercatore può utilizzare una distribuzione a priori informativa per introdurre nel processo di stima le informazioni esistenti che suggeriscono delle restrizioni sulla possibile gamma di valori di un particolare parametro.
 
 Nel caso presente, supponiamo che la letteratura psicologica fornisca delle informazioni a proposito del valore di $\theta$, ovvero ci fornisca delle informazioni sul valore della probabilità che le aspettative future di un individuo clinicamente depresso siano distorte negativamente -- in altri termini, sono già state svolte ricerche precedenti su questo aspetto e risultati empirici sono già stati raccolti: in una serie di ricerche precedenti è stato trovato che $\theta$ assumeva valori compresi in una certa gamma. In tali circostanze, anziché utilizzare una distribuzione a priori non informativa per $p(\theta)$, il ricercatore può decidere di utilizzare una distribuzione a priori informativa che riflette le conoscenze che sono state acquisite in precedenza sul possibile valore del parametro. Nel caso presente, supponiamo (irrealisticamente) che tali conoscenze pregresse si possano esprimere nei termini di una distribuzione che ha la forma di una Beta di parametri $\alpha = 2$ e $\beta = 10$. Tali ipotetiche conoscenze pregresse (ripeto, del tutto irrealistiche) le quali si riflettono in una Beta(2, 10) ritengono molto plausibili valori bassi di $\theta$ e considerano come impossibili i valori $\theta$ superiori a 0.5. Questo è equivalente a dire che ci aspettiamo che le aspettative relative all'umore futuro siano distorte negativamente solo per pochissimi individui clinicamente depressi -- in altre parole, ci aspettiamo che la maggioranza degli individui clinicamente depressi sia inguaribilmente ottimista. Questa è, ovviamente, una credenza a priori del tutto irrealistica. La esamino qui, non perché abbia alcun senso nel contesto dei dati di @zetsche_future_2019, ma soltanto per fare un esempio che illustra come la distribuzione a posteriori fornisca una sorta di "compromesso" tra la distribuzione a priori e la verosimiglianza, ovvero per chiarire l'impatto che la distribuzione a priori ha sulla distribuzione a posteriori.
 
@@ -352,8 +462,8 @@ Tale distribuzione a priori è rappresentata nella figura
 \@ref(fig:gridappr4).
 
 ```{r gridappr4, fig.cap="Rappresentazione di una funzione a priori informativa per il parametro $\\theta$."}
-plot_df <- data.frame(p_grid, prior2) 
-p4 <- plot_df %>% 
+plot_df <- data.frame(p_grid, prior2)
+p4 <- plot_df %>%
   ggplot(aes(x=p_grid, xend=p_grid, y=0, yend=prior2)) +
   geom_segment(color = "#8184FC") +
   ylim(0, 0.17) +
@@ -416,7 +526,7 @@ distribuzioni a posteriori riportate nelle figure \@ref(fig:gridappr3) e
 \@ref(fig:gridappr5) sono molto diverse tra loro. Discuteremo in seguito
 l'influenza della distribuzione a priori sull'inferenza finale.
 
-## Sommario della funzione a posteriori
+### Sommario della funzione a posteriori
 
 Una volta calcolata la distribuzione a posteriori dobbiamo riassumerla
 in qualche modo. Nel caso in cui venga usato un metodo *grid-based*, il
@@ -431,7 +541,7 @@ esempio didattico.
 
 
 
-### Differenza tra intervalli di confidenza e di credibilità
+## Differenza tra intervalli di confidenza e di credibilità
 
 L'approccio frequentista generalmente ipotizza che il mondo abbia certe proprietà (ad esempio, un parametro viene assunto che un dato parametro ha un particolare valore vero) e cercano di condurre esperimenti la cui conclusione risultante sarà corretta con almeno un livello minimo di probabilità. Per esprimere l'incertezza della nostra conoscenza dopo un esperimento, l'approccio frequentista utilizza un "intervallo di confidenza" -- ovvero, un intervallo di valori progettato per includere il vero valore del parametro con una probabilità minima, diciamo il 95%. Un frequentista progetterà l'esperimento e la procedura di calcolo dell'intervallo di confidenza al 95% in modo tale che su ogni 100 esperimenti eseguiti si prevede che almeno 95 degli intervalli di confidenza risultanti includano il vero valore del parametro; gli altri 5 potrebbero essere leggermente sbagliati, o potrebbero essere del tutto assurdi. Dal punto di vista dell'approccio frequentista, questo è accettabile, purché 95 inferenze su 100 siano corrette (ma ovviamente noi preferiremmo che i 5 risultati sbagliati fossero leggermente sbagliati, non totalmente assurdi).
 
@@ -447,25 +557,23 @@ Vorrei rendere esplicito il fatto che, in questo insegnamento, io mi schiero in 
 
 Possiamo specificare un modello bayesiano definendo una distribuzione congiunta su variabili osservate, $\mathcal Y$, e un insieme di parametri sconosciuti, $\theta$.
 
-$$ 
-  p(\mathcal Y, \theta) 
+$$
+  p(\mathcal Y, \theta)
 $$
 Questa distribuzione congiunta si decompone convenientemente in due termini,
 
-$$ 
-  p(\mathcal Y, \theta) = p(\theta)  p(\mathcal Y \mid \theta) 
+$$
+  p(\mathcal Y, \theta) = p(\theta)  p(\mathcal Y \mid \theta)
 $$
 Il primo termine, $p(\theta)$, è la densità a priori e codifica l'insieme di valori plausibili dei parametri, con i valori più plausibili aventi una densità maggiore. È chiamato "a priori" perché racchiude la nostra conoscenza - e la sua mancanza - sui parametri da stimare prima di osservare i dati. Il secondo termine, $p(\mathcal Y \mid \theta)$, è la verosimiglianza. Dati i parametri del modello $\theta$, $p(\mathcal Y \mid \theta)$ definisce il processo di generazione per $\mathcal Y$.
 
-L'inferenza esegue il _reverse engineering_ del processo di generazione dei dati e si chiede: 
+L'inferenza esegue il _reverse engineering_ del processo di generazione dei dati e si chiede:
 
-> dato un modello e un campione di osservazioni, $\mathcal Y$, quali sono i valori più plausibili dei parametri che potrebbero aver generato le osservazioni? 
+> dato un modello e un campione di osservazioni, $\mathcal Y$, quali sono i valori più plausibili dei parametri che potrebbero aver generato le osservazioni?
 
 In un contesto Bayesiano, l'insieme dei valori plausibili dei parametri condizionati ai dati è caratterizzato dalla distribuzione a posteriori, $p(\theta \mid \mathcal Y)$. La regola di Bayes stabilisce che
 
-$$ 
+$$
   p(\theta \mid \mathcal Y) \propto p(\theta)  p(\mathcal Y \mid \theta),
 $$
 dove $\propto$ sta per "proporzionale a" e indica che la distribuzione a posteriori combina le informazioni fornite dai dati e la nostra conoscenza precedente. Un'espressione analitica per $p(\theta \mid \mathcal Y)$ è raramente disponibile e dobbiamo fare affidamento su algoritmi di calcolo numerico per conoscere la distribuzione a posteriori. Una strategia generale che esamineremo in seguito consiste nel prelevare campioni approssimativi dalla distribuzione a posteriori e utilizzarli per costruire stime empiriche della media a posteriori, della varianza, della mediana, dei quantili e di altre quantità di interesse. Qui abbiamo presentato il metodo *grid-based* per il calcolo della distribuzione a posteriori. I metodi basati su griglia funzionano benissimo quando la distribuzione a posteriori dipende da un numero molto piccolo di parametri sconosciuti, ma non possono essere usati nel caso di modelli statistici più complessi che includono un numero maggiore di parametri.
-
-
