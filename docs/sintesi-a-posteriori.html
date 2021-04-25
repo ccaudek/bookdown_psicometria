@@ -102,6 +102,17 @@ descrittive, come media, mediana, moda, varianza, deviazione standard e
 diversi quantili. In alcuni casi, queste statistiche descrittive sono
 più facili da presentare e interpretare rispetto alla rappresentazione
 grafica completa della distribuzione a posteriori.</p>
+<p>Di solito, riassumiamo la distribuzione a posteriori nei termini di una stima puntuale e / o di una stima ad intervalli. La stima puntuale fornisce informazioni su quello che può essere considerato il “migliore valore” del parametro, e la stima ad intervalli fornisce un’indicazione di quanto gli altri “valori buoni” del parametro siano sparsi attorno al “miglior valore.” La stima puntuale Bayesiana utilizzata più di frequente è la media della distribuzione a posteriori e la stima dell’intervallo Bayesiano più utilizzata è l’intervallo di credibilità.</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-270" class="example"><strong>Esempio 26.1  </strong></span>La figura <a href="sintesi-a-posteriori.html#fig:ch-03-03-estimation-24-7-overview">26.1</a> riporta la funzione a priori (non informativa), la verosimiglianza e la distribuzione a posteriori per l’esperimento casuale di <span class="math inline">\(N\)</span> = 24 lanci di una moneta con <span class="math inline">\(k\)</span> = 7 successi. La figura riporta la stima puntuale a posteriori e l’intervallo di credibilità.
+</div>
+<div class="figure" style="text-align: center">
+<span id="fig:ch-03-03-estimation-24-7-overview"></span>
+<img src="Data-Science-per-psicologi_files/figure-html/ch-03-03-estimation-24-7-overview-1.png" alt="Funzione a priori (non informativa), verosimiglianza e distribuzione a posteriori per l'esempio di 7 successi su 24 lanci di una moneta." width="90%"><img src="Data-Science-per-psicologi_files/figure-html/ch-03-03-estimation-24-7-overview-2.png" alt="Funzione a priori (non informativa), verosimiglianza e distribuzione a posteriori per l'esempio di 7 successi su 24 lanci di una moneta." width="90%"><img src="Data-Science-per-psicologi_files/figure-html/ch-03-03-estimation-24-7-overview-3.png" alt="Funzione a priori (non informativa), verosimiglianza e distribuzione a posteriori per l'esempio di 7 successi su 24 lanci di una moneta." width="90%"><p class="caption">
+Figura 26.1: Funzione a priori (non informativa), verosimiglianza e distribuzione a posteriori per l’esempio di 7 successi su 24 lanci di una moneta.
+</p>
+</div>
 <div id="stima-puntuale" class="section level2" number="26.1">
 <h2>
 <span class="header-section-number">26.1</span> Stima puntuale<a class="anchor" aria-label="anchor" href="#stima-puntuale"><i class="fas fa-link"></i></a>
@@ -109,10 +120,7 @@ grafica completa della distribuzione a posteriori.</p>
 <p>Per sintetizzare la distribuzione a posteriori in modo da giungere ad
 una stima puntuale di <span class="math inline">\(\theta\)</span> si è soliti scegliere tra moda, mediana o
 media a seconda del tipo di distribuzione con cui si ha a che fare e
-della sua forma. Ogni stima puntuale ha una sua interpretazione. La
-media è il valore atteso a posteriori del parametro. La moda può essere
-interpretata come il singolo valore più credibile (“più probabile”) del
-parametro, dati i dati, ovvero il valore per il parametro <span class="math inline">\(\theta\)</span> che
+della sua forma. Ogni stima puntuale ha una sua interpretazione. La media è il valore atteso a posteriori del parametro. La moda può essere interpretata come il singolo valore più credibile (“più probabile”) del parametro, dati i dati, ovvero il valore per il parametro <span class="math inline">\(\theta\)</span> che
 massimizza la distribuzione a posteriori. Per questa ragione la moda
 viene detta <em>massimo a posteriori</em>, MAP. Il limite della moda quale
 statistica riassuntiva della distribuzione a posteriori è che, talvolta,
@@ -265,7 +273,7 @@ campione dei 10000 valori a posteriori del parametro è rappresentato
 nella figura seguente che riporta la densità della distribuzione a posteriori del parametro <span class="math inline">\(p\)</span> = probabilità di osservare “acqua” nell’esperimento casuale del mappamondo.</p>
 <div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/dens.html">dens</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span> </code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-272-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-273-1.png" width="90%" style="display: block; margin: auto;"></div>
 <div id="indici-di-sintesi-della-distribuzione-a-posteriori" class="section level3" number="26.4.1">
 <h3>
 <span class="header-section-number">26.4.1</span> Indici di sintesi della distribuzione a posteriori<a class="anchor" aria-label="anchor" href="#indici-di-sintesi-della-distribuzione-a-posteriori"><i class="fas fa-link"></i></a>
@@ -457,7 +465,7 @@ posteriori più usati: gli intervalli di credibilità e le stime puntuali.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-04-25 07:37:30.</p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-04-25 08:32:39.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

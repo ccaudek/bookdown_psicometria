@@ -15,15 +15,77 @@ diversi quantili. In alcuni casi, queste statistiche descrittive sono
 più facili da presentare e interpretare rispetto alla rappresentazione
 grafica completa della distribuzione a posteriori.
 
+Di solito, riassumiamo la distribuzione a posteriori nei termini di una stima puntuale e / o di una stima ad intervalli. La stima puntuale fornisce informazioni su quello che può essere considerato il "migliore valore" del parametro, e la stima ad intervalli fornisce un'indicazione di quanto gli altri "valori buoni" del parametro siano sparsi attorno al "miglior valore". La stima puntuale Bayesiana utilizzata più di frequente è la media della distribuzione a posteriori e la stima dell'intervallo Bayesiano più utilizzata è l'intervallo di credibilità.
+
+```{example}
+La figura \@ref(fig:ch-03-03-estimation-24-7-overview) riporta la funzione a priori (non informativa), la verosimiglianza e la distribuzione a posteriori per l'esperimento casuale di $N$ = 24 lanci di una moneta con $k$ = 7 successi. La figura riporta la stima puntuale a posteriori e l'intervallo di credibilità.
+```
+
+```{r ch-03-03-estimation-24-7-overview, echo = F, fig.cap = "Funzione a priori (non informativa), verosimiglianza e distribuzione a posteriori per l'esempio di 7 successi su 24 lanci di una moneta.", fig.height = 8}
+prior_plot_24_7 <- 
+  tibble(
+    theta = seq(0.01,1, by = 0.01),
+    prior = dbeta(seq(0.01,1, by = 0.01), 1, 1 )
+  ) %>% 
+  ggplot(aes(x = theta, y = prior)) + 
+  xlim(0,1) + 
+  geom_line(size = 2) + 
+  labs(
+    x = latex2exp::TeX("Parametro $\\theta$"),
+    y = latex2exp::TeX("Densità a priori $P_{M}(\\theta)$"),
+    title = "Distribuzione a priori"
+  )
+lh_plot_24_7 <- 
+  tibble(
+    theta = seq(0.01,1, by = 0.01),
+    lh = dbinom(x = 7, size = 24, prob = theta)
+  ) %>% 
+  ggplot(aes(x = theta, y = lh)) + 
+  xlim(0,1) + 
+  geom_line(size = 2) + 
+  labs(
+    x = latex2exp::TeX("Parametro $\\theta$"),
+    y = latex2exp::TeX("Verosimiglianza $P_{M}(D \\, | \\, \\theta)$"),
+    title = "Funzione di verosimiglianza"
+  )
+hdi = HDInterval::hdi(qbeta , shape1 = 8 , shape2 = 18 )
+hdiData <- tibble(
+  theta = rep(hdi, each = 2),
+  post = c(0,dbeta(hdi, 8, 18), 0)
+)
+expData <- tibble(
+  theta = c(8/26,8/26),
+  post = c(0,dbeta(8/26, 8, 18 ))
+)
+posterior_plot_24_7 <- 
+  tibble(
+    theta = seq(0.01,1, by = 0.01),
+    posterior = dbeta(seq(0.01,1, by = 0.01), 8, 18 )
+  ) %>% 
+  ggplot(aes(x = theta, y = posterior)) + 
+  xlim(0,1) + 
+  labs(
+    x = latex2exp::TeX("Parametro $\\theta$"),
+    y = latex2exp::TeX("Densità a posteriori $P_{M}(\\theta \\, | \\, D)$"),
+    title = "Distribuzione a posteriori"
+  ) +
+  geom_line(data = hdiData, aes(x = theta, y = post), color = "firebrick", size = 1.5) +
+  geom_label(x = 0.7, y = 0.5, label = "Int. cred.: 0.14 - 0.48", color = "firebrick", size = 5) +
+  geom_line(data = expData, aes(x = theta, y = post), color = "darkblue", size = 1.5) +
+  geom_label(x = 0.52, y = dbeta(8/26, 8, 18 ), label = "Valore atteso: 0.308", color = "darkblue", size = 5) +
+  geom_line(color = "black", size = 2)
+
+prior_plot_24_7
+lh_plot_24_7
+posterior_plot_24_7
+```
+
 ## Stima puntuale 
 
 Per sintetizzare la distribuzione a posteriori in modo da giungere ad
 una stima puntuale di $\theta$ si è soliti scegliere tra moda, mediana o
 media a seconda del tipo di distribuzione con cui si ha a che fare e
-della sua forma. Ogni stima puntuale ha una sua interpretazione. La
-media è il valore atteso a posteriori del parametro. La moda può essere
-interpretata come il singolo valore più credibile ("più probabile") del
-parametro, dati i dati, ovvero il valore per il parametro $\theta$ che
+della sua forma. Ogni stima puntuale ha una sua interpretazione. La media è il valore atteso a posteriori del parametro. La moda può essere interpretata come il singolo valore più credibile ("più probabile") del parametro, dati i dati, ovvero il valore per il parametro $\theta$ che
 massimizza la distribuzione a posteriori. Per questa ragione la moda
 viene detta *massimo a posteriori*, MAP. Il limite della moda quale
 statistica riassuntiva della distribuzione a posteriori è che, talvolta,

@@ -86,6 +86,8 @@ fig:gridappr4
 fig:gridappr5
 fig:turista1
 fig:turista2
+exm:unnamed-chunk-270
+fig:ch-03-03-estimation-24-7-overview
 eq:credibint
 fig:linearfunction
 eq:regbivpop
