@@ -378,7 +378,7 @@ limiti-dellinferenza-frequentista
 attenti-al-valore-p
 modellistica-bayesiana
 modelli-statistici
-notazine
+notazione-1
 parametri-e-distribuzioni-a-priori
 cosè-un-parametro-del-modello
 distribuzione-a-priori-sui-parametri

@@ -2,21 +2,20 @@
 
 ## Modelli statistici
 
-I dati non interpretati non sono informativi. Non possiamo generalizzare, trarre inferenze o tentare di fare previsioni a meno di non fare ipotesi (per quanto minime) sui dati a disposizione: cosa rappresenta, come sono stati generati, quali aspetti dei dati sono associati a quali altri aspetti, ecc. I modelli statistici rappresentano un modo per rendere esplicite le nostre assunzioni sui dati.
+I dati non interpretati non sono informativi. Non possiamo generalizzare, trarre inferenze o tentare di fare previsioni a meno di non fare ipotesi (per quanto minime) sui dati a disposizione: cosa rappresentano, come sono stati generati, quali aspetti sono associati a quali altri aspetti, ecc. I modelli statistici rappresentano un modo per rendere esplicite le nostre assunzioni sui dati.
 
 ```{definition}
 Un modello statistico è una rappresentazione formale delle ipotesi relative ai dati e al processo che li ha generati.
 ```
-
 <br>
 
-Nel suo senso naturale più comune, un "modello" è un modello di qualcosa. Intende rappresentare qualcos'altro in una forma semplificata, astratta e più maneggevole; ovviamente, le caratteristiche di un modello dipendono dallo scopo per il quale il modello verrà usato. In generale, un buon modello è in grado di riprodurre alcuni aspetti della realtà, mentre nel contempo ignora tutte quelle caratteristiche irrilevanti che potrebbero altrimenti offuscare la nostra comprensione di ciò che il modello vuole rappresentare.
+Nel suo senso naturale più comune, un "modello" è un modello di qualcosa. Intende rappresentare qualcosa d'altro in una forma semplificata, astratta e più maneggevole. Le caratteristiche di un modello dipendono dallo scopo per il quale il modello verrà usato. In generale, un buon modello è in grado di riprodurre alcuni aspetti della realtà mentre ignora, nel contempo, tutte quelle caratteristiche irrilevanti che potrebbero altrimenti offuscare la nostra comprensione di ciò che il modello vuole rappresentare.
 
 Lo scopo più comune di un modello statistico è quello di imparare qualcosa sulla realtà traendo inferenze dai dati - possibilmente con l'ulteriore obiettivo di consentirci di prendere una decisione razionale - o di fare previsioni su eventi sconosciuti (futuri, presenti o passati).
 
-Un modello statistico _M_ è un modello di un processo aleatorio _R_ che potrebbe aver generato i dati che abbiamo osservato. Il modello _M_ descrive quindi in un modo formale le nostre ipotesi sul processo aleatorio _R_. 
+Un modello statistico _M_ è un modello di un processo aleatorio _R_ che potrebbe avere generato i dati che abbiamo osservato. Il modello _M_ descrive in un modo formale le nostre ipotesi sul processo aleatorio _R_. 
 
-Spesso vogliamo spiegare una parte dei nostri dati, ovvero le variabili dipendenti $D_{DV}$,  nei termini di altre osservazioni, ovvero le variabili indipendenti $D_{IV}$.  Ma è anche possibile trovarsi nella condizione nella quale non ci sono variabili indipendenti ma solo una o più variabili dipendenti $D_{DV}$.
+Spesso vogliamo spiegare una parte dei nostri dati, ovvero le variabili dipendenti $D_{DV}$,  nei termini di altre osservazioni, ovvero le variabili indipendenti $D_{IV}$.  Ma è anche possibile che non ci siano delle variabili indipendenti ma solo una o più variabili dipendenti $D_{DV}$.
 
 Un modello _M_ per i dati _D_ necessariamente include una _fuzione di verosimiglianza_ per $D_{DV}$. La funzione di verosimiglianza descrive la plausibilità delle osservazioni $D_{DV}$ alla luce delle corrispondenti osservazioni $D_{IV}$. Molto spesso, la funzione di verosimiglianza ha anche dei parametri liberi, rappresentati da un vettore $\theta$. 
 
@@ -25,15 +24,15 @@ La  funzione di verosimiglianza del modello _M_ per i dati _D_ con parametri $\t
 $$
 P_M(D_{DV} \mid D_{IV}, \theta).
 $$
-I modelli Bayesiani includono una componente aggiuntiva, vale a dire una distribuzione a priori sui valori dei parametri, comunemente scritta come:
+Oltre alla verosimiglianza, i modelli Bayesiani includono una componente aggiuntiva, ovvero una distribuzione a priori sui valori dei parametri, comunemente scritta come:
 
 $$
 P_M(\theta).
 $$
-La distribuzione a priori sui valori dei parametri può essere utilizzata per rappresentare qualsiasi ipotesi a priori motivata e giustificabile sui valori dei parametri che possiamo ritenere plausibili alla luce delle nostre conoscenze presenti.
+La distribuzione a priori sui parametri rappresenta qualsiasi ipotesi a priori motivata e giustificabile sui valori che, alla luce delle nostre conoscenze presenti, possiamo attribuire ai parametri.
 
 ```{example}
-Supponiamo che il nostro campione di dati sia costituito dagli esiti di una sequenza di lanci di una moneta avente probabilità di successo (testa) $\theta \in [0, 1]$. Abbiamo osservato  _k_ successi in _N_ prove. Dunque, conosciamo _N_ e _k_ ma non conosciamo $\theta$. Il parametro $\theta$ è l'unico parametro di questo modello statistico. La variabile dipendente è _k_.  Possiamo pensare a _N_ come alla nostra variabile indipendente. 
+Supponiamo che il nostro campione di dati sia costituito dagli esiti di una sequenza di lanci di una moneta avente probabilità di successo (testa) $\theta \in [0, 1]$. Abbiamo osservato  _k_ successi in _N_ prove. Dunque, conosciamo _N_ e _k_ ma non conosciamo $\theta$. Il parametro $\theta$ è l'unico parametro di questo modello statistico. La variabile dipendente è _k_.  In questo caso, possiamo pensare a _N_ come alla variabile indipendente. 
 
 La funzione di verosimiglianza per questo modello statistico è la distribuzione Binomiale:
 
@@ -48,9 +47,9 @@ P_M(\theta) = \text{Beta}(\theta, 1, 1).
 $$
 ```
 
-## Notazine
+## Notazione
 
-Per rappresentare in un modo conciso i modelli statistici viene usata una notazione speciale, che è molto intuitiva se pensiamo al processo del campionamento. Ad esempio, invece di scrivere
+Per rappresentare in un modo conciso i modelli statistici viene usata una notazione particolare, la quale è molto intuitiva se pensiamo al processo del campionamento. Ad esempio, invece di scrivere
 
 $$
 P_M(\theta) = \text{Beta}(\theta, 1, 1),
@@ -61,7 +60,7 @@ scriviamo:
 $$
 \theta \sim \text{Beta}(1, 1).
 $$
-Il simbolo "$\sim$" viene spesso letto "è distribuito come". Possiamo anche pensare che significhi che $\theta$ costituisce un campione estratto dalla distribuzione Beta(1, 1). Allo stesso modo, per la funzione di verosimiglianza dell'esempio precedente possiamo scrivere:
+Il simbolo "$\sim$" viene spesso letto "è distribuito come". Possiamo anche pensare che significhi che $\theta$ costituisce un campione estratto dalla distribuzione Beta(1, 1). Allo stesso modo, per l'esempio precedente la verosimiglianza può essere scritta nel modo seguente:
 
 $$
 k \sim \text{Binomial}(k, N, \theta).
@@ -78,24 +77,18 @@ $$
 \end{aligned}
 $$ 
 
-In questa sezione, approfondiremo cos'è un parametro, cos'è una distribuzione a priori precedente $P_M(\theta)$ e come possiamo usare un modello per fare previsioni sui dati.
+In questa sezione, esamineremo (nuovamente) il significato di "parametro", esamineremo il significato di "distribuzione a priori" $P_M(\theta)$ e ci porremo l'obiettivo di usare un modello statistico per fare previsioni a partire dai dati.
 
-L'esempio che considereremo per questa sezione è il *modello binomiale* che è stato introdotto in èrecedenza.
-Come esempio concreto di dati, consideriamo un caso con $N = 24$ lanci di monete e $k = 7$ esiti testa.
+L'esempio che considereremo farà uso del *modello Binomiale*. Come esempio concreto di dati, consideriamo il caso di $N = 24$ lanci di una moneta e di $k = 7$ successi (esito testa).
 
 ### Cos'è un parametro del modello?
 
-Un parametro del modello è un valore da cui dipende la verosimiglianza. Ad esempio, il singolo parametro $\theta$ nel modello Binomiale determina la forma della funzione di verosimiglianza Binomiale.
-Ricordiamo che la funzione di verosimiglianza per il modello Binomiale è:
+Un parametro del modello è un valore da cui dipende la verosimiglianza dei dati. Ad esempio, il singolo parametro $\theta$ nel modello Binomiale determina la forma della funzione di verosimiglianza Binomiale. Ricordiamo che la funzione di verosimiglianza per il modello Binomiale è:
 
 $$ 
 P_M(k \mid \theta, N) = \text{Binomial}(k, N, \theta) = \binom{N}{k}\theta^k(1-\theta)^{N-k}. 
 $$
-Per comprendere il ruolo del parametro $\theta$, possiamo generare un grafico della verosimiglianza dei dati osservati (qui: $k = 7$ e $N = 24$) come funzione di $\theta$.
-
-Per ogni possibile valore di $\theta \in [0; 1]$ sull'asse orizzontale, la figura mostra sull'asse verticale la verosimiglianza dei dati osservati. 
-Il grafico mostra che la verosimiglianza dei dati dipende dal valore del parametro $\theta$:
-valori diversi di $\theta$ rendono più o meno verosimili i dati che abbiamo effettivamente osservato. 
+Per comprendere il ruolo del parametro $\theta$, possiamo generare un grafico della verosimiglianza dei dati (qui: $k = 7$ e $N = 24$) come funzione di $\theta$. La figura mostra, per ogni possibile valore di $\theta \in [0; 1]$ (sull'asse orizzontale), la verosimiglianza dei dati (sull'asse verticale). Dalla figura notiamo che la verosimiglianza dei dati dipende dal valore del parametro $\theta$: i dati risultano più o meno verosimili a seconda dei valori di $\theta$. 
 
 ```{r ch-03-02-LH-Binomial-Model, fig.cap= "Funzione di verosimiglianza per il modello Binomiale con $k=7$ e $N=24$.", echo = FALSE}
 # data
@@ -116,16 +109,14 @@ tibble(
 
 ### Distribuzione a priori sui parametri 
 
-La distribuzione a priori sui valori dei parametri $P_M (\theta)$ è parte integrante di un modello quando adottiamo un approccio Bayesiano all'analisi dei dati. Ciò implica che due modelli (bayesiani) possono condividere la stessa funzione di verosimiglianza, e tuttavia devono essere considerati come modelli diversi, se specificano diverse distribuzioni a priori. Ciò significa che, quando diciamo "Modello binomiale", intendiamo in realtà un'intera classe di modelli, ovvero tutti i modelli con la stessa verosimiglianza ma diverse distribuzioni a priori su $\theta$.
+Quando adottiamo un approccio Bayesiano all'analisi dei dati, la distribuzione a priori sui valori dei parametri $P_M (\theta)$ è parte integrante del modello statistico. Ciò implica che due modelli (Bayesiani) possono condividere la stessa funzione di verosimiglianza, ma tuttavia devono essere considerati come modelli diversi, se specificano diverse distribuzioni a priori. Ciò significa che, quando diciamo "Modello binomiale", intendiamo in realtà un'intera classe di modelli, ovvero tutti i possibili modelli che hanno la stessa verosimiglianza ma diverse distribuzioni a priori su $\theta$.
 
-Nell'analisi dei dati Bayesiana, la distribuzione a priori $P_M(\theta)$ codifica le credenze del ricercatore a proposito dei valori dei parametri, prima di avere osservato i dati. 
-Idealmente, le credenze a priori che supportano la specificazione di una distribuzione a priori dovrebbero essere supportate da una qualche motivazione, come ad esempio i risultati di ricerche precedenti o altre motivazioni giustificabili.
-Tuttavia, le credenze soggettive sono solo uno dei modi per giustificare le distribuzioni a priori sui parametri.
+Nell'analisi dei dati Bayesiana, la distribuzione a priori $P_M(\theta)$ codifica le credenze del ricercatore a proposito dei valori dei parametri, prima di avere osservato i dati. Idealmente, le credenze a priori che supportano la specificazione di una distribuzione a priori dovrebbero essere supportate da una qualche motivazione, come ad esempio i risultati di ricerche precedenti, o altre motivazioni giustificabili. Tuttavia, le credenze soggettive sono solo uno dei possibili modi per giustificare le distribuzioni a priori sui parametri.
 
-Ci sono tre tipi principali di motivazioni per le distribuzioni a priori $P_M (\theta)$.
+Possiamo distinguere tre tipi principali di motivazioni per le distribuzioni a priori $P_M (\theta)$.
 
-1. Le **distribuzioni a priori soggettive** catturano le credenze soggettive del ricercatore nel senso sopra descritto.
-2. Le **distribuzioni a priori con finalità pratiche** sono distribuzioni a priori che vengono utilizzate pragmaticamente a causa di una loro utilità specifica, ad esempio, perché semplificano un calcolo matematico o una simulazione al computer, o perché aiutano nel ragionamento statistico, come ad esempio quando vengono formulate i *skeptical priors* che hanno l'obiettivo di lavorare in senso contrario ad una particolare conclusione.
+1. Le **distribuzioni a priori soggettive** catturano le credenze del ricercatore nel senso sopra descritto.
+2. Le **distribuzioni a priori con finalità pratiche** sono distribuzioni a priori che vengono utilizzate pragmaticamente a causa di una loro utilità specifica, ad esempio, perché semplificano un calcolo matematico o una simulazione al computer, o perché aiutano nel ragionamento statistico, come ad esempio quando vengono formulate gli *skeptical priors* che hanno l'obiettivo di lavorare in senso contrario ad una particolare conclusione.
 3. Le **distribuzioni a priori oggettive**  sono distribuzioni a priori che, come alcuni sostengono, *dovrebbero* essere adottate per una data funzione di verosimiglianza per evitare conseguenze concettualmente paradossali. **Non tratteremo le distribuzioni a priori oggettive in questo corso introduttivo e le menzioniamo qui solo per completezza.**
 
 Oltre alla motivazione che giustifica una distribuzione a priori, possiamo distinguere tra distribuzioni a priori in base a quanto fortemente impegnano il ricercatore a ritenere come plausibile un particolare intervallo di valori dei parametri. Il caso più estremo è quello che rivela una totale assenza di conoscenze a priori, il che conduce alle **distribuzioni a priori non informative**, ovvero quelle che assegnano lo stesso livello di credibilità a tutti i valori dei parametri. Le distribuzioni a priori informative, d'altra parte, possono essere *debolmente informative* o *fortemente informative*, a seconda della forza della credenza che esprimono. Il caso più estremo di credenza a priori è quello che riassume il punto di vista del ricercatore nei termini di un  **unico valore** del parametro, il che assegna tutta la probabilità (massa o densità) su di un singolo valore di un parametro. Poiché questa non è più una distribuzione di probabilità, sebbene ne soddisfi la definizione, in questo caso si parla di una *distribuzione a priori degenerata*.
@@ -182,7 +173,7 @@ di stima della distribuzione a posteriori.
 ### Finalità
 
 Sulla base di un modello statistico $M$ di parametri $\theta$, l'analisi statistica Bayesiana si pone il problema di trovare i valori più plausibili di $\theta$ alla luce dei dati $D$.
-Il teorema di Bayes viene usato per aggiornare le credenze a priori su $\theta$ in modo tale da produrre nuove _credenze a posteriori_ $P_M(\theta \mid D)$ che combinano le informazioni fornite dai dati $D$ con le credenze precedenti. La distribuzione a posteriori riflette dunque le nuove conoscenze del ricercatore che sono state aggiornate utilizzando le evidenze fornite dai dati.
+Il teorema di Bayes viene usato per aggiornare le credenze a priori su $\theta$ (ovvero, la distribuzione a priori) in modo tale da produrre le nuove _credenze a posteriori_ $P_M(\theta \mid D)$ che combinano le informazioni fornite dai dati $D$ con le credenze precedenti. La distribuzione a posteriori riflette dunque l'aggiornamento delle conoscenze del ricercatore alla luce dei dati.
 
 ### Metodi 
 
@@ -230,7 +221,7 @@ k & \sim \text{Binomial}(N, \theta) \\
 \end{aligned}
 $$
 
-Per studiare l'impatto della funzione di verosimiglianza, confronteremo due campioni di dati. Nel primo campione, $N = 24$ e $k = 7$; nel secondo campione, $k = 109$ e $N = 311$. 
+Per studiare l'impatto della distribuzione a priori sulla funzione di verosimiglianza confronteremo due campioni di dati. Nel primo campione, $N = 24$ e $k = 7$; nel secondo campione, $k = 109$ e $N = 311$. 
 Per entrambi i campioni, la funzione di verosimiglianza dei dati è fornita dalla figura seguente.
 
 ```{r, echo = F, fig.cap = "Verosimiglianza per due campioni di dati binomiali. Per il primo campione abbiamo $k = 7$ e $N = 24$; per il secondo campione $k = 109$ e $N = 311$."}
@@ -257,10 +248,9 @@ lh_tibble %>%
   )
 ```
 
-La cosa più importante da notare è che, maggiore è la quantità di dati ($k = 109$ e $N = 311$), più piccolo diventa l'intervallo di valori dei parametri che rendono plausibili i dati osservati.
-Intuitivamente, questo significa che più dati abbiamo, più piccolo sarà l'intervallo a posteriori dei valori plausibili dei parametri, a parità di tutto il resto.
+La cosa più importante da notare è che, maggiore è la quantità di dati ($k = 109$ e $N = 311$), più piccolo diventa l'intervallo di valori dei parametri che rendono plausibili i dati che sono stati osservati. Intuitivamente, questo significa che più dati abbiamo, più piccolo sarà l'intervallo a posteriori dei valori plausibili dei parametri, a parità di tutto il resto.
 
-Consideriamo le quattro distribuzioni a priori che abbiamo descrito in precedenza:
+Consideriamo ora le quattro distribuzioni a priori che abbiamo descrito in precedenza:
 
 ```{r, echo = F, fig.cap = "Esempi di distribuzioni a priori per il parametro $\\theta_c$ nel Modello Binomiale."}
 prior_tibble <- tibble(
@@ -290,7 +280,7 @@ prior_tibble %>%
   ) 
 ```
 
-Combiniamo ora le quattro distribuzioni a priori con i due campioni di dati. Così facendo notiamo che la distribuzione a posteriori è effettivamente un "miscuglio" della distribuzione a priori e della verosimiglianza.
+Combiniamo le quattro distribuzioni a priori con la verosimiglianza dei due campioni di dati. Così facendo notiamo che la distribuzione a posteriori è effettivamente un "miscuglio" della distribuzione a priori e della verosimiglianza.
 
 ```{r, echo = F, fig.cap = "Distribuzioni a posteriori per il parametro $\\theta$ calcolate mediante diverse distribuzioni a priori per due campioni di dati."}
 full_join(lh_tibble, prior_tibble, by = 'theta') %>% 
@@ -332,7 +322,7 @@ Ciò che è importante notare è che, se il campione è grande, una distribuzion
 
 ## Le aspettative dei pazienti con disturbo depressivo maggiore
 
-Discuteremo ora un esempio che ha lo scopo di chiarite le relazioni
+Esaminiamo ora un altro esempio che ha lo scopo di chiarite le relazioni
 che legano tra loro le tre distribuzioni che abbiamo introdotto sopra:
 la distribuzione a priori, la verosimiglianza e la distribuzioni a
 posteriori. Nell'esempio faremo riferimento alla ricerca di @zetsche_future_2019. 

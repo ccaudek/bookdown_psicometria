@@ -559,8 +559,8 @@ Per esempio,</p>
 <span class="co">#&gt;   face   suit value</span>
 <span class="co">#&gt; 1 king spades    13</span>
 <span class="va">deck</span><span class="op">[</span>, <span class="st">"value"</span><span class="op">]</span>
-<span class="co">#&gt;  [1] 13 12 11 10  9  8  7  6  5  4  3  2  1 13 12 11 10  9  8  7  6  5  4  3  2  1 13 12 11 10</span>
-<span class="co">#&gt; [31]  9  8  7  6  5  4  3  2  1 13 12 11 10  9  8  7  6  5  4  3  2  1</span></code></pre></div>
+<span class="co">#&gt;  [1] 13 12 11 10  9  8  7  6  5  4  3  2  1 13 12 11 10  9  8  7  6  5  4  3  2  1 13 12 11 10  9</span>
+<span class="co">#&gt; [32]  8  7  6  5  4  3  2  1 13 12 11 10  9  8  7  6  5  4  3  2  1</span></code></pre></div>
 </div>
 </div>
 <div id="giochi-di-carte" class="section level2" number="5.9">
@@ -579,8 +579,8 @@ uguale alla dimensione del vettore che contiene gli indici da 1 a 52:</p>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">random</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">52</span>, size <span class="op">=</span> <span class="fl">52</span>, replace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="va">random</span>
-<span class="co">#&gt;  [1] 45 23 12 37 38 47 31  4 48  9  5 42 24 15 13  2 41 21 34  6 46 32 52 16 49  3 25 22 11  7</span>
-<span class="co">#&gt; [31] 35 33 43 10 28 17 30  8 26  1 14 18 27 44 20 51 40 36 29 39 50 19</span></code></pre></div>
+<span class="co">#&gt;  [1] 45 23 12 37 38 47 31  4 48  9  5 42 24 15 13  2 41 21 34  6 46 32 52 16 49  3 25 22 11  7 35</span>
+<span class="co">#&gt; [32] 33 43 10 28 17 30  8 26  1 14 18 27 44 20 51 40 36 29 39 50 19</span></code></pre></div>
 <p>Utilizzando il vettore <code>random</code> di indici permutati otteniamo il
 risultato cercato:</p>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
@@ -695,7 +695,7 @@ assegna il nome <code>cards</code> a qualunque oggetto venga passato alla funzio
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-04-24 19:11:38.</p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-04-25 07:37:30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
