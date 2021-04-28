@@ -95,7 +95,7 @@
 <p>I dati non interpretati non sono informativi. Non possiamo generalizzare, trarre inferenze o tentare di fare previsioni a meno di non fare ipotesi (per quanto minime) sui dati a disposizione: cosa rappresentano, come sono stati generati, quali aspetti sono associati a quali altri aspetti, ecc. I modelli statistici rappresentano un modo per rendere esplicite le nostre assunzioni sui dati.</p>
 
 <div class="definition">
-<span id="def:unnamed-chunk-236" class="definition"><strong>Definizione 24.1  </strong></span>Un modello statistico è una rappresentazione formale delle ipotesi relative ai dati e al processo che li ha generati.
+<span id="def:unnamed-chunk-247" class="definition"><strong>Definizione 24.1  </strong></span>Un modello statistico è una rappresentazione formale delle ipotesi relative ai dati e al processo che li ha generati.
 </div>
 <p><br></p>
 <p>Nel suo senso naturale più comune, un “modello” è un modello di qualcosa. Intende rappresentare qualcosa d’altro in una forma semplificata, astratta e più maneggevole. Le caratteristiche di un modello dipendono dallo scopo per il quale il modello verrà usato. In generale, un buon modello è in grado di riprodurre alcuni aspetti della realtà mentre ignora, nel contempo, tutte quelle caratteristiche irrilevanti che potrebbero altrimenti offuscare la nostra comprensione di ciò che il modello vuole rappresentare.</p>
@@ -114,7 +114,7 @@ P_M(\theta).
 La distribuzione a priori sui parametri rappresenta qualsiasi ipotesi a priori motivata e giustificabile sui valori che, alla luce delle nostre conoscenze presenti, possiamo attribuire ai parametri.</p>
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-237" class="example"><strong>Esempio 24.1  </strong></span>Supponiamo che il nostro campione di dati sia costituito dagli esiti di una sequenza di lanci di una moneta avente probabilità di successo (testa) <span class="math inline">\(\theta \in [0, 1]\)</span>. Abbiamo osservato <em>k</em> successi in <em>N</em> prove. Dunque, conosciamo <em>N</em> e <em>k</em> ma non conosciamo <span class="math inline">\(\theta\)</span>. Il parametro <span class="math inline">\(\theta\)</span> è l’unico parametro di questo modello statistico. La variabile dipendente è <em>k</em>. In questo caso, possiamo pensare a <em>N</em> come alla variabile indipendente.</p>
+<p><span id="exm:unnamed-chunk-248" class="example"><strong>Esempio 24.1  </strong></span>Supponiamo che il nostro campione di dati sia costituito dagli esiti di una sequenza di lanci di una moneta avente probabilità di successo (testa) <span class="math inline">\(\theta \in [0, 1]\)</span>. Abbiamo osservato <em>k</em> successi in <em>N</em> prove. Dunque, conosciamo <em>N</em> e <em>k</em> ma non conosciamo <span class="math inline">\(\theta\)</span>. Il parametro <span class="math inline">\(\theta\)</span> è l’unico parametro di questo modello statistico. La variabile dipendente è <em>k</em>. In questo caso, possiamo pensare a <em>N</em> come alla variabile indipendente.</p>
 <p>La funzione di verosimiglianza per questo modello statistico è la distribuzione Binomiale:</p>
 <p><span class="math display">\[
 P_M(k \mid \theta, N) = \text{Binomial}(k, N, \theta) = {N \choose k} \theta^k (1 - \theta)^{N-k}.
@@ -275,23 +275,23 @@ k &amp; \sim \text{Binomial}(N, \theta) \\
 <p>Per studiare l’impatto della distribuzione a priori sulla funzione di verosimiglianza confronteremo due campioni di dati. Nel primo campione, <span class="math inline">\(N = 24\)</span> e <span class="math inline">\(k = 7\)</span>; nel secondo campione, <span class="math inline">\(k = 109\)</span> e <span class="math inline">\(N = 311\)</span>.
 Per entrambi i campioni, la funzione di verosimiglianza dei dati è fornita dalla figura seguente.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:unnamed-chunk-238"></span>
-<img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-238-1.png" alt="Verosimiglianza per due campioni di dati binomiali. Per il primo campione abbiamo $k = 7$ e $N = 24$; per il secondo campione $k = 109$ e $N = 311$." width="90%"><p class="caption">
+<span id="fig:unnamed-chunk-249"></span>
+<img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-249-1.png" alt="Verosimiglianza per due campioni di dati binomiali. Per il primo campione abbiamo $k = 7$ e $N = 24$; per il secondo campione $k = 109$ e $N = 311$." width="90%"><p class="caption">
 Figura 24.3: Verosimiglianza per due campioni di dati binomiali. Per il primo campione abbiamo <span class="math inline">\(k = 7\)</span> e <span class="math inline">\(N = 24\)</span>; per il secondo campione <span class="math inline">\(k = 109\)</span> e <span class="math inline">\(N = 311\)</span>.
 </p>
 </div>
 <p>La cosa più importante da notare è che, maggiore è la quantità di dati (<span class="math inline">\(k = 109\)</span> e <span class="math inline">\(N = 311\)</span>), più piccolo diventa l’intervallo di valori dei parametri che rendono plausibili i dati che sono stati osservati. Intuitivamente, questo significa che più dati abbiamo, più piccolo sarà l’intervallo a posteriori dei valori plausibili dei parametri, a parità di tutto il resto.</p>
 <p>Consideriamo ora le quattro distribuzioni a priori che abbiamo descrito in precedenza:</p>
 <div class="figure" style="text-align: center">
-<span id="fig:unnamed-chunk-239"></span>
-<img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-239-1.png" alt="Esempi di distribuzioni a priori per il parametro $\theta_c$ nel Modello Binomiale." width="90%"><p class="caption">
+<span id="fig:unnamed-chunk-250"></span>
+<img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-250-1.png" alt="Esempi di distribuzioni a priori per il parametro $\theta_c$ nel Modello Binomiale." width="90%"><p class="caption">
 Figura 24.4: Esempi di distribuzioni a priori per il parametro <span class="math inline">\(\theta_c\)</span> nel Modello Binomiale.
 </p>
 </div>
 <p>Combiniamo le quattro distribuzioni a priori con la verosimiglianza dei due campioni di dati. Così facendo notiamo che la distribuzione a posteriori è effettivamente un “miscuglio” della distribuzione a priori e della verosimiglianza.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:unnamed-chunk-240"></span>
-<img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-240-1.png" alt="Distribuzioni a posteriori per il parametro $\theta$ calcolate mediante diverse distribuzioni a priori per due campioni di dati." width="90%"><p class="caption">
+<span id="fig:unnamed-chunk-251"></span>
+<img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-251-1.png" alt="Distribuzioni a posteriori per il parametro $\theta$ calcolate mediante diverse distribuzioni a priori per due campioni di dati." width="90%"><p class="caption">
 Figura 24.5: Distribuzioni a posteriori per il parametro <span class="math inline">\(\theta\)</span> calcolate mediante diverse distribuzioni a priori per due campioni di dati.
 </p>
 </div>
@@ -699,7 +699,7 @@ Questa distribuzione congiunta si decompone convenientemente in due termini,</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-04-28 14:07:08.</p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-04-28 17:06:32.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

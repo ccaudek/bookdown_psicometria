@@ -103,7 +103,7 @@ L’ho pensato per i miei laureandi, ovvero per degli studenti che devono usare 
 </h3>
 <p>Iniziamo con un esempio. Uno degli impatti più importanti dei cambiamenti climatici che stanno investendo il nostro Pianeta è la riduzione dell’estensione della calotta di ghiaccio marino artico. Poniamoci il problema di usare il modello di regressione per esplorare come l’estensione del ghiaccio marino artico sta cambiando nel tempo. I dati sono forniti da <a href="https://nsidc.org">The National Snow and Ice Data Center</a> e sono espressi in milioni di chilometri quadrati.</p>
 <p>I dati sono i seguenti:</p>
-<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">seaice</span><span class="op">)</span>
 <span class="co">#&gt;    year extent_north extent_south</span>
 <span class="co">#&gt; 1  1979       12.328       11.700</span>
@@ -149,19 +149,19 @@ L’ho pensato per i miei laureandi, ovvero per degli studenti che devono usare 
 <p><strong>Domanda di ricerca:</strong> l’estensione del ghiaccio marino artico sta diminuendo nel tempo?</p>
 <p>Per esplorare la risposta a questa domanda, iniziamo a creare una rappresentazione grafica dei dati. Dato che abbiamo due variabi continue (il tempo, espresso in anni, e l’estensione del ghiaccio marino artico, in milioni di chilometri quadrati), questi dati possono essere rappresentati graficamente mediante un diagramma a dispersione.</p>
 <p>Vogliamo sapere come varia l’estensione del ghiaccio marino artico in funzione del tempo e quindi rappresentiamo i dati ponendo la variabile tempo sull’asse delle ascisse e l’estensione del ghiaccio marino artico sull’asse delle ordinate.</p>
-<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">seaice</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">extent_north</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-288-1.png" width="90%" style="display: block; margin: auto;">
+<p><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-307-1.png" width="90%" style="display: block; margin: auto;">
 Guardando la figura vediamo che è ragionevole descrivere mediante una retta la relazione tra l’estensione del ghiaccio marino artico (chiamiamola <code>y</code>) e il tempo (chiamiamolo <code>x</code>). Aggiungiamo al diagramma di dispersione una retta, scegliendola in modo tale che si avvicini il più possibile alla nube di punti rappresentata nel grafico. Ovviamente, è possibile scegliere tra infinite rette diverse. La retta che è rappresentata qui è stata scelta in base ad un criterio particolare, detto “dei minimi quadrati.” Vedremo meglio in seguito cosa questo significa. Per ora ci accontentiamo di riconoscere che la nostra è una buona scelta, per gli scopi presenti.</p>
-<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">seaice</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">extent_north</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
 <span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-289-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-308-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
 </div>
 <div id="interpretazione-dei-coefficienti-a-e-b" class="section level2" number="27.2">
@@ -174,7 +174,7 @@ Guardando la figura vediamo che è ragionevole descrivere mediante una retta la 
 y = a + b \times x
 \end{equation}\]</span></p>
 <p>Prima di calcolare i coefficienti <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> della retta di regressione, rimaneggiamo i nostri dati. In particolare, rinominiamo le variabili e indicizziamo gli anni da 1 a 39. Nel caso presente, vogliamo sapere se l’estensione del ghiaccio marino artico dall’inizio alla fine del periodo temporale considerato, indipendentemente dal fatto che l’anno iniziale sia il 1979 e l’anno finale il 2017. Quindi sottraiamo 1979 dalle modalità della variabile <code>year</code> in modo tale che il primo punto temporale corrisponda a zero.</p>
-<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">seaice</span> <span class="op">&lt;-</span> <span class="va">seaice</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
     x <span class="op">=</span> <span class="va">year</span> <span class="op">-</span> <span class="fl">1979</span>
@@ -190,15 +190,15 @@ y = a + b \times x
 <span class="co">#&gt; $ extent_south &lt;dbl&gt; 11.700, 11.230, 11.435, 11.640, 11.389, 11.454, 11.618, 11.088, 11.554, 12…</span>
 <span class="co">#&gt; $ x            &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, …</span></code></pre></div>
 <p>Il diagramma a dispersione avrà ora la forma seguente:</p>
-<div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">seaice</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
 <span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-291-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-310-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Per trovare i coefficienti <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> della retta di regressione possiamo usare, ad esempio, la funzione <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>:</p>
-<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, data <span class="op">=</span> <span class="va">seaice</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span>
 <span class="co">#&gt; (Intercept)           x </span>
@@ -212,7 +212,7 @@ y = a + b \times x
 <p>Il valore <span class="math inline">\(a\)</span> = 12.501 significa che, nel 1979, l’estensione del ghiaccio marino artico era pari a 12.501 milioni di chilometri quadrati, dato che la modalità <code>x = 0</code> della variabile indipendente corrisponde all’anno 1979.</p>
 <p>Il segno di <span class="math inline">\(b\)</span> è negativo; questo significa che l’estensione del ghiaccio marino artico sta diminuendo nel corso del tempo. Il valore -0.055 ci dice che, per ogni anno che passa (nel periodo dal 1979 al 2017), l’estensione del ghiaccio marino artico diminuisce, in media, di -0.055 milioni di chilometri quadrati.</p>
 <p>Se guardiamo la figura, infatti, vediamo che, se ci sposiamo da <span class="math inline">\(x = 10\)</span> a <span class="math inline">\(x = 20\)</span> (ovvero, di dieci anni), la coordinata <span class="math inline">\(y\)</span> della retta diminuisce di 10 volte <span class="math inline">\(b\)</span>, ovvero di -0.55 milioni di chilometri quadrati. Questo è indicato nella figura qui sotto.</p>
-<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dplot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
   x1 <span class="op">=</span> <span class="fl">10</span>,
   x2 <span class="op">=</span> <span class="fl">20</span>,
@@ -231,7 +231,7 @@ y = a + b \times x
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="fl">24.0</span>, y <span class="op">=</span> <span class="fl">11.75</span>, label <span class="op">=</span> <span class="st">"10 b = -0.55"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="fl">15</span>, y <span class="op">=</span> <span class="fl">12.15</span>, label <span class="op">=</span> <span class="st">"delta x = 10.0"</span><span class="op">)</span>
 <span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-293-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-312-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
 <div id="scomposizione-della-y" class="section level2" number="27.3">
 <h2>
@@ -243,7 +243,7 @@ y = (a + b \times x) + e
 \end{equation}\]</span></p>
 <p>laddove <span class="math inline">\(\hat{y} = a + b \times x\)</span> è la componente di <span class="math inline">\(y\)</span> che è linearmente predicibile conoscendo <span class="math inline">\(x\)</span>, mentre la componente residua, <span class="math inline">\(e\)</span>, è la componente di <span class="math inline">\(y\)</span> che non è linearmente predicibile conoscendo <span class="math inline">\(x\)</span>.</p>
 <p>Nei nostri dati, questi significa quanto segue. Esaminiamo le prime 5 osservazioni del nostro campione:</p>
-<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">seaice</span> <span class="op">%&gt;%</span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">top_n</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> 
@@ -255,7 +255,7 @@ y = (a + b \times x) + e
 <span class="co">#&gt; 4 4 12.332</span>
 <span class="co">#&gt; 5 7 12.203</span></code></pre></div>
 <p>Aggiungo al data.frame una colonna che rappresenta i valori <span class="math inline">\(y\)</span> predetti dal modello lineare (ovvero, <span class="math inline">\(\hat{y} = a + b \times x\)</span>: le coordinate <span class="math inline">\(y\)</span> della retta di regressione per ciascuna delle osservazioni):</p>
-<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">seaice</span><span class="op">$</span><span class="va">yhat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">*</span> <span class="va">seaice</span><span class="op">$</span><span class="va">x</span>
 <span class="va">seaice</span> <span class="op">%&gt;%</span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">yhat</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -272,7 +272,7 @@ y = (a + b \times x) + e
 e = y - (a + b \times x) = y - \hat{y}
 \end{equation}\]</span></p>
 <p>ovvero</p>
-<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">seaice</span><span class="op">$</span><span class="va">e</span> <span class="op">&lt;-</span> <span class="va">seaice</span><span class="op">$</span><span class="va">y</span> <span class="op">-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">*</span> <span class="va">seaice</span><span class="op">$</span><span class="va">x</span><span class="op">)</span>
 <span class="va">seaice</span> <span class="op">%&gt;%</span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">yhat</span>, <span class="va">e</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -285,7 +285,7 @@ e = y - (a + b \times x) = y - \hat{y}
 <span class="co">#&gt; 4 20 11.691 11.40984 0.2811636</span>
 <span class="co">#&gt; 5 22 11.600 11.30069 0.2993114</span></code></pre></div>
 <p>Ciò che volevamo dimostrare è che la somma di <span class="math inline">\(\hat{y}\)</span> e dei residui è uguale alla <span class="math inline">\(y\)</span>. Infatti:</p>
-<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">seaice</span><span class="op">$</span><span class="va">sum</span> <span class="op">&lt;-</span> <span class="va">seaice</span><span class="op">$</span><span class="va">yhat</span> <span class="op">+</span> <span class="va">seaice</span><span class="op">$</span><span class="va">e</span>
 <span class="va">seaice</span> <span class="op">%&gt;%</span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">yhat</span>, <span class="va">e</span>, <span class="va">sum</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -322,7 +322,7 @@ e = y - (a + b \times x) = y - \hat{y}
 <li>l’intervallo di credibilità include lo 0: con un un livello di certezza dell’89%, non possiamo negare la possibilità che nella popolazione la relazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> sia nulla – ovvero, non abbiamo sufficienti informazioni per sapere se è positiva o negativa.</li>
 </ul>
 <p>Ritorniamo ora ai nostri dati e calcoliamo, con un metodo che discuteremo in seguito, l’intervallo di credibilità all’89%. Per ora non ci preoccupiamo della sintassi dei comandi R, né di cosa significano tali istruzioni. Ci preoccupiamo solo di ottenere le stime dei coefficienti della retta di regressione e gli intervalli di credibilità:</p>
-<div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">flist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">alist</a></span><span class="op">(</span>
     <span class="va">y</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">mu</span>, <span class="va">sigma</span><span class="op">)</span>,
     <span class="va">mu</span> <span class="op">&lt;-</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span><span class="op">*</span><span class="va">x</span>,
@@ -344,7 +344,7 @@ e = y - (a + b \times x) = y - \hat{y}
 <span class="co">#&gt; sigma  0.215 0.024  0.176  0.254</span></code></pre></div>
 <p>L’intervallo di credibilità per <span class="math inline">\(b\)</span> così ottenuto, ovvero [-0.059, -0.049], non include lo zero. Possiamo dunque concludere, con un livello di certezza dell’89%, che nella popolazione c’è una relazione negativa tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>. In altre parole, siamo certi, con un livello di certezza dell’89%, che dal 1979 al 2017 l’estensione del ghiaccio marino artico è diminuita.</p>
 <p>Se vogliamo, possiamo anche ottenere una stima di <span class="math inline">\(b\)</span> che corrisponde ad un livello di certezza più alto, il che porterà ad un aumento dell’ampiezza dell’interallo di credibilità. Stimiamo dunque l’interallo di credibilità ad un livello di certezza del 99%:</p>
-<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">out1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">fit</span>, prob<span class="op">=</span><span class="fl">0.99</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span>
 <span class="va">out1</span>
 <span class="co">#&gt;         mean    sd   0.5%  99.5%</span>
@@ -381,7 +381,7 @@ Una affermazione simile può essere fatta a proposito del valore <code>sd</code>
 </h2>
 <p>Il modello statistico della regressione bivariato che abbiamo descritto sopra è molto limitato: può solo descrivere la relazione lineare tra due variabili continue. Estendiamolo ora al caso in cui, oltre ad includere un predittore continuo <span class="math inline">\(x\)</span>, il modello di regressione comprende anche una variabile che consente di suddividere le osservazioni del campione in due gruppi.</p>
 <p>Per semplicità, simuliamo un insieme di dati che utilizzeremo nella seguente discussione.</p>
-<div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span>
 <span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span>
 <span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">4</span>, <span class="fl">1</span><span class="op">)</span>
@@ -411,29 +411,29 @@ Una affermazione simile può essere fatta a proposito del valore <code>sd</code>
 <span class="co">#&gt; 6  4.49  4.81 gr2  </span>
 <span class="co">#&gt; # … with 4 more rows</span></code></pre></div>
 <p>Esaminiamo il diagramma a dispersione che indica chiaramente che ci sono due gruppi distinti di osservazioni:</p>
-<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">group</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-301-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-320-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>È ovvio, che nel caso presente, non è sufficiente un modello di regressione che ignora il fatto che i dati appartengono a due gruppi diversi. Infatti, se adattiamo ai dati un’unica retta di regressione, è facile rendersi conto che tale retta si situerà in una posizione molto distante dai dati.</p>
-<div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
 <span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-302-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-321-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Per questi dati è ovviamente più sensato adattare una diversa retta di regressione a ciascun gruppo di osservazioni:</p>
-<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, color <span class="op">=</span> <span class="va">group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-303-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-322-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Come possiamo modificare il modello di regressione che abbiamo esaminato in precedenza in modo tale da essere in grado di stimare i coefficienti di regressione delle due rette rappresentate nella figura precedente? Questo problema si risolve nel modo seguente. Crediamo una variabile, chiamata <em>dummy</em>, che ha valore 0 per un gruppo, diciamo <code>gr1</code>, e valore 1 per l’altro gruppo:</p>
-<div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span><span class="op">$</span><span class="va">gr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">group</span> <span class="op">==</span> <span class="st">"gr1"</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span> 
 
 <span class="va">d</span> <span class="op">%&gt;%</span>
@@ -481,7 +481,7 @@ y &amp;= \alpha + \beta x + \gamma D + \varepsilon,\notag\\
 <span class="header-section-number">27.5.1</span> Interazione<a class="anchor" aria-label="anchor" href="#interazione"><i class="fas fa-link"></i></a>
 </h3>
 <p>In generale, però, le due rette di regressione non sono parallele. Per potere rappresentare una tale possibilità, introduciamo nel data.frame <code>d</code> una seconda variabile e la chiamiamo <code>DX</code>. Creaimo <code>DX</code> facendo il prodotto delle variabili <code>D</code> e <code>x</code>:</p>
-<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span><span class="op">$</span><span class="va">DX</span> <span class="op">&lt;-</span> <span class="va">d</span><span class="op">$</span><span class="va">gr</span> <span class="op">*</span> <span class="va">d</span><span class="op">$</span><span class="va">x</span>
 
 <span class="va">d</span> <span class="op">%&gt;%</span>
@@ -528,14 +528,14 @@ y &amp;= \alpha + \beta x + \gamma D + \zeta DX + \varepsilon,\notag\\
 <span class="math inline">\(\zeta\)</span> = differenza tra la pendenza della retta di regressione per il gruppo codificato con <em>D</em> = 1 e la pendenza della retta di regressione per il gruppo codificato con <em>D</em> = 0;</li>
 </ul>
 <p>Ritorniamo al nostro esempio numerico e calcoliamo i coefficienti del modello di regressione utilizzando l’approccio Bayesiano:</p>
-<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">flist1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">alist</a></span><span class="op">(</span>
     <span class="va">y</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">mu</span>, <span class="va">sigma</span><span class="op">)</span>,
     <span class="va">mu</span> <span class="op">&lt;-</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span><span class="op">*</span><span class="va">x</span> <span class="op">+</span> <span class="va">gamma</span><span class="op">*</span><span class="va">d</span> <span class="op">+</span> <span class="va">zeta</span><span class="op">*</span><span class="va">DX</span>,
     <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span>, <span class="va">gamma</span>, <span class="va">zeta</span><span class="op">)</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span>, 
     <span class="va">sigma</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap</a></span><span class="op">(</span>
   <span class="va">flist1</span>, 
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">d</span><span class="op">$</span><span class="va">y</span>, x<span class="op">=</span><span class="va">d</span><span class="op">$</span><span class="va">x</span>, d<span class="op">=</span><span class="va">d</span><span class="op">$</span><span class="va">gr</span>, DX<span class="op">=</span><span class="va">d</span><span class="op">$</span><span class="va">DX</span><span class="op">)</span>, 
@@ -561,7 +561,7 @@ y &amp;= \alpha + \beta x + \gamma D + \zeta DX + \varepsilon,\notag\\
 <span class="header-section-number">27.6.1</span> Assenza di interazione<a class="anchor" aria-label="anchor" href="#assenza-di-interazione"><i class="fas fa-link"></i></a>
 </h3>
 <p>Esaminiamo ora i dati <code>epi.bfi</code> contenuti nel pacchetto <code>psychTools</code> che contengono 231 osservazioni relative a 5 scale dall’Eysenck Personality Inventory, 5 scale del Big 5, i valori del Beck Depression Inventory e misure di ansia di stato e ansia di tratto.</p>
-<div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://strengejacke.github.io/sjPlot/">"sjPlot"</a></span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://strengejacke.github.io/sjmisc/">"sjmisc"</a></span><span class="op">)</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://personality-project.org/r/psych/">"psychTools"</a></span><span class="op">)</span>
@@ -595,10 +595,10 @@ y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \varepsilon.
 <p>La risposta è che un generico <span class="math inline">\(\beta_j\)</span> nel modello di regressione multipla rappresenta la variazione del valore atteso della <span class="math inline">\(y\)</span> in base al modello lineare nel caso di un cambiamento unitario di <span class="math inline">\(x_j\)</span> <strong>al netto dell’effetto (lineare) di tutte le altre variabili <span class="math inline">\(x\)</span> incluse nel modello</strong>.</p>
 <p>La seconda parte dell’affermazione precedente (“al netto di…”) è ciò che dobbiamo capire.</p>
 <p>Iniziamo a calcolare con R i coefficienti parziali del modello di regressione multipla descritto sopra:</p>
-<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">bdi</span> <span class="op">~</span> <span class="va">bfneur</span> <span class="op">+</span> <span class="va">stateanx</span>, data <span class="op">=</span> <span class="va">epi.bfi</span><span class="op">)</span></code></pre></div>
 <p>I coefficienti parziali di regressione sono:</p>
-<div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">m</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">out</span>, <span class="fl">3</span><span class="op">)</span>
 <span class="co">#&gt; (Intercept)      bfneur    stateanx </span>
@@ -611,7 +611,7 @@ Scomponiamo dunque i valori <code>bdi</code> in due componenti: la quota del <co
 \text{bdi} = \alpha + \beta \cdot \text{stateanx} + \varepsilon.
 \end{equation}\]</span></p>
 <p>Usando R, tali residui sono dati da:</p>
-<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">bdi</span> <span class="op">~</span> <span class="va">stateanx</span>, data <span class="op">=</span> <span class="va">epi.bfi</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">m1</span><span class="op">$</span><span class="va">res</span><span class="op">)</span>
 <span class="co">#&gt;          1          2          3          4          5          6 </span>
@@ -621,16 +621,16 @@ Scomponiamo dunque i valori <code>bdi</code> in due componenti: la quota del <co
 \text{bfneur} = \alpha + \beta \cdot \text{stateanx} + \varepsilon.
 \end{equation}\]</span></p>
 <p>Usando R, tali residui sono dati da:</p>
-<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">bfneur</span> <span class="op">~</span> <span class="va">stateanx</span>, data <span class="op">=</span> <span class="va">epi.bfi</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">m2</span><span class="op">$</span><span class="va">res</span><span class="op">)</span>
 <span class="co">#&gt;         1         2         3         4         5         6 </span>
 <span class="co">#&gt; -19.12342  27.87881 -24.12070  25.87881 -29.11785 -32.12144</span></code></pre></div>
 <p>Abbiamo così ottenuto la componente della variabile dipendente linermente indipendente da <code>stateanx</code> e la componente di <code>bfneur</code> linermente indipendente da <code>stateanx</code>. In altri termini, abbiamo “statisticamente controllato” l’effetto di <code>stateanx</code> su <code>bdi</code> e su <code>bfneur</code>. Se adesso vogliamo sapere qual è l’effetto di <code>bfneur</code> su <code>bdi</code>, indipendentemente dall’effetto di <code>stateanx</code> su entrambe le variabili, basta che eseguiamo l’analisi di regressione sulle componenti di <code>bdi</code> e <code>bfneur</code> che sono linearmente indipendenti da <code>stateanx</code>. Ovvero, dobbiamo calcolare il coefficiente <span class="math inline">\(b\)</span> del seguente modello di regressione:</p>
-<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">m3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">m1</span><span class="op">$</span><span class="va">res</span> <span class="op">~</span> <span class="va">m2</span><span class="op">$</span><span class="va">res</span><span class="op">)</span></code></pre></div>
 <p>Il coefficiente di regressione del modello precedente</p>
-<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">m3</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>
 <span class="co">#&gt;     m2$res </span>
 <span class="co">#&gt; 0.05441396</span></code></pre></div>
@@ -638,7 +638,7 @@ Scomponiamo dunque i valori <code>bdi</code> in due componenti: la quota del <co
 <p><span class="math display">\[\begin{equation}
 y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \varepsilon.
 \end{equation}\]</span></p>
-<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">out</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>
 <span class="co">#&gt;     bfneur </span>
 <span class="co">#&gt; 0.05441396</span></code></pre></div>
@@ -657,19 +657,19 @@ Cosa significa il concetto di “interazione” tra due variabili indipendenti?<
 y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \varepsilon.
 \end{equation}\]</span></p>
 <p>non possiamo procedere come abbiamo fatto in precedenza, quando avevamo due gruppi di osservazioni, ovvero, non possiamo disegnare una diversa retta di regressione per ciascun gruppo (non essendoci dei gruppi separati). Possiamo invece usare una funzione R come <code><a href="https://strengejacke.github.io/sjPlot/reference/plot_model.html">plot_model()</a></code> che calcola la retta di regressione di <code>bfneur</code> su <code>bdi</code> selezionando alcuni valori “fissi” della variabile <code>stateanx</code> – nello specifico, la media di <code>stateanx</code>, la media meno una deviazione standard, e la media più una deviazione standard. Si produce così la rappresentazione di tre rette di regressione.</p>
-<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://strengejacke.github.io/sjPlot/reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">m</span>, type <span class="op">=</span> <span class="st">"pred"</span>, terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bfneur"</span>, <span class="st">"stateanx"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-316-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-335-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Quello che notiamo dalla figura precedente è che le tre rette sono parallele. Un modello di regressione multipla che non include alcun termine di interazione è infatti un modello <em>additivo</em>: per quale che sia il livello della variabile <code>stateanx</code>, l’effetto di <code>bfneur</code> (ovvero, la pendenza della retta di regressione) non cambia. Quindi, l’effetto di <code>stateanx</code> semplicemente <em>si somma</em> all’effetto di <code>bfneur</code>.</p>
 <p>Una situazione ben diversa si ottiene nel caso di un modello con interazione, come il seguente:</p>
 <p><span class="math display">\[\begin{equation}
 y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 \cdot x_2 + \varepsilon.
 \end{equation}\]</span></p>
 <p>Adattiamo questo modello ai dati</p>
-<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">m4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">bdi</span> <span class="op">~</span> <span class="va">bfneur</span> <span class="op">*</span> <span class="va">stateanx</span>, data <span class="op">=</span> <span class="va">epi.bfi</span><span class="op">)</span></code></pre></div>
 <p>e esaminiamo la souluzione ottenuta:</p>
-<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">m4</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Call:</span>
@@ -692,17 +692,17 @@ y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 \cdot x_2 + \varepsilon.
 <span class="co">#&gt; Multiple R-squared:  0.4229, Adjusted R-squared:  0.4152 </span>
 <span class="co">#&gt; F-statistic: 55.44 on 3 and 227 DF,  p-value: &lt; 2.2e-16</span></code></pre></div>
 <p>Se rappresentiamo graficamente le predizioni del modello</p>
-<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://strengejacke.github.io/sjPlot/reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">m4</span>, type <span class="op">=</span> <span class="st">"pred"</span>, terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bfneur"</span>, <span class="st">"stateanx"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-319-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-338-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>vediamo che, ora, le rette di regressione di <code>bfneur</code> su <code>bdi</code> in corrispondenza dei tre valori prescelti di <code>stateanx</code> non sono più parallele. Questo significa che l’effetto di <code>bfneur</code> su <code>bdi</code> (la pendenza della retta di regressione) <strong>dipende</strong> dal valore di <code>stateanx</code>. Questo è il significato di “interazione”: <code>bfneur</code> ha un effetto diverso su <code>bdi</code> a seconda del livello di <code>stateanx</code>.</p>
 <p>Nel caso presente, vediamo dalla figura che il Neuroticismo ha un effetto più grande sul livello di depressione quando consideriamo coloro che hanno livelli di ansia di stato elevati.</p>
 <p>I coefficienti si interpretano come in precedenza. L’intercetta corrisponde al valore atteso di <code>bdi</code> quando <code>bfneur</code> e <code>stateanx</code> hanno il valore di zero. Questo è di poco interesse. Per cui trasformiamo i dati in modo da utilizzare variabili indipendenti “centrate,” ovvero variabili da cui abbiamo sottratto la media.</p>
-<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">epi.bfi</span><span class="op">$</span><span class="va">neur_c</span> <span class="op">&lt;-</span> <span class="va">epi.bfi</span><span class="op">$</span><span class="va">bfneur</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">epi.bfi</span><span class="op">$</span><span class="va">bfneur</span><span class="op">)</span>
 <span class="va">epi.bfi</span><span class="op">$</span><span class="va">stateanx_c</span> <span class="op">&lt;-</span> <span class="va">epi.bfi</span><span class="op">$</span><span class="va">stateanx</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">epi.bfi</span><span class="op">$</span><span class="va">stateanx</span><span class="op">)</span></code></pre></div>
 <p>Riadattiamo il modello con le variabili centrate:</p>
-<div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">m5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">bdi</span> <span class="op">~</span> <span class="va">neur_c</span> <span class="op">*</span> <span class="va">stateanx_c</span>, data <span class="op">=</span> <span class="va">epi.bfi</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">m5</span><span class="op">)</span>
 <span class="co">#&gt; </span>
@@ -776,7 +776,7 @@ y = \alpha + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 \cdot x_2 + \varepsilon.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-04-28 14:07:08.</p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-04-28 17:06:32.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

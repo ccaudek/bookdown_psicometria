@@ -2,8 +2,8 @@ exr:prob-var-dip-indip
 fig:hist1zetsche
 fig:hist2zetsche
 fig:zetschehist3
-fig:unnamed-chunk-139
-fig:unnamed-chunk-140
+fig:unnamed-chunk-150
+fig:unnamed-chunk-151
 fig:violin-zetsche
 eq:mean
 eq:var-descr
@@ -72,13 +72,13 @@ eq:testz
 fig:regrifiutoaltezzabil2
 fig:regrifiutoaltezzabil3
 eq:twelch
-def:unnamed-chunk-236
-exm:unnamed-chunk-237
+def:unnamed-chunk-247
+exm:unnamed-chunk-248
 fig:ch-03-02-LH-Binomial-Model
 fig:ch-03-02-models-types-of-priors
-fig:unnamed-chunk-238
-fig:unnamed-chunk-239
-fig:unnamed-chunk-240
+fig:unnamed-chunk-249
+fig:unnamed-chunk-250
+fig:unnamed-chunk-251
 fig:gridappr1
 fig:gridappr2
 fig:gridappr3
@@ -86,7 +86,7 @@ fig:gridappr4
 fig:gridappr5
 fig:turista1
 fig:turista2
-exm:unnamed-chunk-271
+exm:unnamed-chunk-282
 fig:ch-03-03-estimation-24-7-overview
 eq:credibint
 fig:linearfunction
@@ -420,6 +420,7 @@ indici-di-sintesi-della-distribuzione-a-posteriori
 probabilità-della-distribuzione-a-posteriori
 quantili-della-distribuzione-a-posteriori
 stime-puntuali-della-distribuzione-a-posteriori
+metodo-dellapprossimazione-quadratica
 una-breve-introduzione-al-modello-di-regressione
 regressione-bivariata
 scioglimento-del-ghiaccio-marino

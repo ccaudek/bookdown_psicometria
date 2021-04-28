@@ -22,3 +22,14 @@ datasauRus
 RColorBrewer
 rio
 patchwork
+tinylabels
+StanHeaders
+rstan
+dagitty
+rethinking
+gghighlight
+ggfortify
+sjPlot
+sjmisc
+psychTools
+foreign

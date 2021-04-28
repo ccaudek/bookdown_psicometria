@@ -218,15 +218,16 @@ Consideriamo ora la possibilità di estrarre 10000 valori del parametro
 $p$ casuali dalla distribuzione a posteriori. Immaginiamo che la
 distribuzione a posteriori sia un'urna che contiene i valori del
 parametro $p$ (ovvero, numeri come 0.107, 0.793, 0.534, 0.908, ecc.).
-All'interno dell'urna, ciascun valore esiste in proporzione alla sua
-densità a posteriori: i valori nell'intorno della moda della
-distribuzione a posteriori sono molto più comuni di quelli che si
-trovano nelle code. Estrarremo ora 10000 valori da quest'urna. Se i
+All'interno dell'urna, ciascun valore è presente in proporzione alla sua
+densità a posteriori: per esempio, valori nell'intorno della moda 
+a posteriori sono molto più comuni di quelli che si trovano nelle code. 
+
+Estrarremo ora 10000 valori da quest'urna. Se i
 valori nell'urna sono ben mescolati, il campione che verrà estratto avrà
 le stesse proporzioni della densità a posteriori. Pertanto, il nostro
-campione conterrà valori di $p$ che si addenseranno sulla linea dei
+campione conterrà valori $p$ che si addenseranno sulla linea dei
 numeri reali in maniera proporzionale alla densità della distribuzione a
-posteriori. Questo risultato può essere ottenuto in   con una riga di
+posteriori. Questo risultato può essere ottenuto in R con una riga di
 codice:
 
 ```{r}
@@ -235,15 +236,16 @@ samples <- sample(
 )
 ```
 
-La funzione `sample()` estrae a caso (con rimessa) 10000 valori dal
-vettore `p_grid`, associando a ciascun valore `p_grid` una probabilità
-di essere estratto proporzionale alla densità della distribuzione a
-posteriori, così come specificato dall'argomento `prob = posterior`. Il
-campione dei 10000 valori a posteriori del parametro è rappresentato
+La funzione `sample()` effettua 10000 estrazioni casuali (con rimessa) dall'"urna"
+`p_grid`, associando a ciascuno dei valori in `p_grid` una probabilità
+di essere estratto che è proporzionale alla densità della distribuzione a
+posteriori; questo viene specificato dall'argomento `prob = posterior`. 
+
+Il campione dei 10000 valori a posteriori del parametro così ottenuto è rappresentato
 nella figura seguente che riporta la densità della distribuzione a posteriori del parametro $p$ = probabilità di osservare "acqua" nell'esperimento casuale del mappamondo. 
 
 ```{r}
-dens(samples) 
+rethinking::dens(samples) 
 ```
 
 
@@ -258,16 +260,12 @@ ricerca. Ma le domande più comuni includono:
 
 -   Qual è la probabilità a posteriori che può essere associata a valori
     del parametro minori di un certo valore?
-
 -   Qual è la probabilità a posteriori che può essere associata ad un
     intervallo di valori del parametro?
-
 -   Quale valore del parametro corrisponde al 5% inferiore della
     distribuzione a posteriori?
-
 -   Quale intervallo di valori del parametro contiene il 90% della
     distribuzione a posteriori?
-
 -   A quale valore del parametro è associata la densità a posteriori
     maggiore?
 
@@ -278,9 +276,9 @@ proporzione di acqua sia inferiore a 0.5. Supponiamo inoltre di volere
 rispondere a questa domanda avendo a disposizione i dati forniti dal
 metodo dell'approssimazione numerica. Ricordiamo che, mediante il metodo
 dell'approssimazione numerica, la distribuzione a posteriori è una
-distribuzione di massa di probabilità. Dunque, usando il metodo
-dell'approssimazione numerica, è possibile trovare la risposta alla
-domanda che ci siamo posti semplicemente sommando tutte le probabilità
+distribuzione di __massa di probabilità__. Dunque, se viene usato il metodo
+dell'approssimazione numerica (_grid approximation_), la risposta alla
+domanda che ci siamo posti si trova sommando tutte le probabilità
 per le quali il valore del parametro è inferiore a 0.5:
 
 ```{r}
@@ -289,30 +287,31 @@ sum(samples < 0.5) / n_points
 
 ovvero 0.17. Questo significa che l'area sottesa alla distribuzione a
 posteriori del parametro $p$ nell'intervallo $[-\infty, 0.5]$ è circa
-uguale al 17%.
+uguale a 0.17.
 
-Usando lo stesso approccio è possibile trovare l'area sottesa alla
+Usando lo stesso approccio è possibile trovare, ad esempio, l'area sottesa alla
 distribuzione a posteriori nell'intervallo compreso tra 0.5 e 0.75:
 
 ```{r}
 sum(samples > 0.5 & samples < 0.75) / n_points
 ```
-ovvero 0.6. Quindi, l'area sottesa alla funzione di densità a
-posteriori nell'intervallo compreso tra 0.5 e 0.75 è pari a circa il
-61%.
+ovvero 0.61. Quindi, possiamo dire che la probabilità a posteriori che il parametro
+assuma un valore compreso tra 0.5 e 0.75 è pari a circa a 0.61.
 
+
+```{remark}
 Negli esempi discussi sopra, il codice `R` utilizza la funzione `sum()`
 per contare quanti elementi del vettore `samples` soddisfano un criterio
 logico. Perché è possibile fare questo? Questo è possibile perché `R`
 converte internamente un'espressione logica, come `samples < 0.5` in un
 vettore di risultati `TRUE` e `FALSE`, uno per ciascun elemento del
-vettore `samples`, indicando se ciascun elemento di `samples` soddisfa o
+vettore `samples`, indicando se tale elemento soddisfa o
 meno il criterio logico. Quando questo vettore di `TRUE` e `FALSE` viene
 sommato, `R` valuta ogni `TRUE` come 1 e ogni `FALSE` come 0. Quindi
 finisce per contare quanti valori `TRUE` sono presenti nel vettore, il
 che è la stessa cosa che contare il numero di elementi in `samples` che
 soddisfano il criterio logico.
-
+```
 
 ### Quantili della distribuzione a posteriori
 
@@ -333,26 +332,25 @@ dell'area della distribuzione a posteriori in ciascuna coda è
 quantile(samples, c(0.025, 0.975))
 ```
 
-La funzione `PI()` (*percentile intervals*) del pacchetto `rethinking`
-restituisce lo stesso risultato:
+La funzione `rethinking::PI()` (*percentile intervals*) restituisce lo stesso risultato:
 
 ```{r}
-PI(samples, prob = 0.95)
+rethinking::PI(samples, prob = 0.95)
 ```
 
 Se la distribuzione a posteriori è asimmetrica, non è sempre una buona
 idea utilizzare l'approccio descritto sopra per calcolare gli intervalli
 di credibilità. Un approccio alternativo è quello di calcolare
-l'intervallo minore che contiene la massa di probabilità specificata --
+__l'intervallo piùpiccolo__ che contiene la massa di probabilità specificata --
 questo non corrisponde necessariamente con l'intervallo che lascia la
 stessa massa di probabilità in ciascuna coda. Tale intervallo può essere
-trovato con la funzione `HPDI()` di `rethinking`:
+trovato con la funzione `rethinking::HPDI()`:
 
 ```{r}
-HPDI(samples, prob = 0.95)
+rethinking::HPDI(samples, prob = 0.95)
 ```
 
-Nel caso presente, il risultato di `HPDI()` è molto simile a quello trovato in precedenza. Ma questo non è sempre vero.
+Nel caso presente, il risultato di `HPDI()` è molto simile a quello trovato in precedenza, ma questo non è sempre vero.
 
 
 ### Stime puntuali della distribuzione a posteriori
@@ -361,14 +359,14 @@ Una volta trovata l'intera distribuzione a posteriori, quale valore di
 sintesi è necessario riportare? Questa sembra una domanda innocente, ma
 in realtà è una domanda a cui è difficile rispondere. La stima Bayesiana
 dei parametri è fornita dall'intera distribuzione a posteriori, che non
-è un singolo numero, ma una funzione che mappa ciascun valore di
-parametro ad un valore di plausibilità. Quindi la cosa più importante da
-capire è che non è necessario scegliere una stima puntuale. In linea di
+è un singolo numero, ma una funzione che mappa ciascun valore del 
+parametro di interesse ad un valore di plausibilità. Quindi 
+non è necessario scegliere una stima puntuale. In linea di
 principio, ciò non è quasi mai necessario ed è spesso dannoso in quanto
 comporta una perdita di informazioni.
 
 Tuttavia ci sono dei casi nei quali tale scelta è necessaria. Diverse
-risposte sono possibili. Una stima del massimo della probabilità a
+risposte sono allora possibili. Una stima del massimo della probabilità a
 posteriori, o brevemente massimo a posteriori, MAP (da *maximum a
 posteriori probability*), è una moda della distribuzione a posteriori.
 Nel caso del metodo dell'approssimazione numerica, una stima del MAP può
@@ -382,7 +380,7 @@ e, nel caso presente, corrisponde a 0.67. Lo stesso risultato si
 ottiene utilizzando i campioni della distribuzione a posteriori:
 
 ```{r}
-chainmode(samples, adj = 0.01)
+rethinking::chainmode(samples, adj = 0.01)
 ```
 
 In alternativa, si possono calcolare la media o la mediana
@@ -394,12 +392,89 @@ median(samples)
 
 le quali, nel caso presente, sono entrambe uguali a 0.64.
 
+## Metodo dell'approssimazione quadratica
+
+Usiamo ora il metodo dell'approssimazione quadratica per trovare la distribuzione a posteriori. Usiamo, come dati, quelli dell'esempio del lancio del mappamondo di McElreath. Abbiamo dunque 6 successi in 9 prove Bernoulliane.  Carichiamo `rethinking`:
+
+```{r}
+library("rethinking")
+```
+
+Definiamo il modello Bayesiano, ovvero specifichiamo sia la verosimiglianza che la distribuzione a priori. Nella sintassi di `rethinking`, questo si ottiene passando l'argomento `alist()` alla funzione `quap()`:
+
+```{r}
+globe_qa <- rethinking::quap(
+  alist(
+    W ~ dbinom(W + L, p), # binomial likelihood
+    p ~ dbeta(1, 1) # uniform prior
+    ), 
+  data = list(W = 6, L = 3) 
+)
+```
+
+Usando la notazione che abbiamo descritto in precedenza, diciamo che la variabile `W` si distribuisce come una Binomiale avente `W + L` prove e probabilità di successo `p`. Questa è la verosimiglianza.
+Specifichiamo anche una distribuzione a priori uniforme. Ricordiamo che una Beta di parametri 1, 1 corrisponde ad una distribuzione uniforme:
+
+```{r}
+x <- seq(0, 1,length = 1000)
+db <- dbeta(x, 1, 1)
+plot(x, db, type = 'l')
+```
+
+Infine, passiamo a i dati `quap()`. Avendo definito in questo modo il modello Bayesiano, la funzione `quap()` calcola la distribuzione a posteriori per il parametro `p` usando il metodo dell'approssimazione quadratica.  
+
+Possiamo esaminare i risultati con `rethinking::precis()`:
+
+```{r}
+# display summary of quadratic approximation
+rethinking::precis(globe_qa, prob = 0.95)
+```
+
+Avendo specificato `prob = 0.95`, otteniamo l'intervallo di credibilità al 95%: [0.36, 0.97]. Si noti che l'intervallo di credibilità al 95% è enorme! Questo dipende dal fatto che abbiamo solo 9 osservazioni.  La funzione `precis()` fornisce anche il valore della media a posteriori, ovvero 0.67.
+
+Consideriamo un'altra distribuzione a priori. 
+
+```{r}
+x <- seq(0, 1,length = 1000)
+db <- dbeta(x, 1, 10)
+plot(x, db, type = 'l')
+```
+
+```{r}
+globe2_qa <- rethinking::quap(
+  alist(
+    W ~ dbinom(W + L, p), # binomial likelihood
+    p ~ dbeta(1, 10) # uniform prior
+    ), 
+  data = list(W = 6, L = 3) 
+)
+rethinking::precis(globe2_qa, prob = 0.95)
+```
+
+Con i dati presenti, una distribuzione a priori informativa ha un enorme effetto sulla distribuzione a posteriori.
+
+Se invece avessimo a disposizione un campione più grande, questo non si verificherebbe:
+
+```{r}
+globe3_qa <- rethinking::quap(
+  alist(
+    W ~ dbinom(W + L, p), # binomial likelihood
+    p ~ dbeta(1, 10) # uniform prior
+    ), 
+  data = list(W = 600, L = 300) 
+)
+rethinking::precis(globe3_qa, prob = 0.95)
+```
+
+Si noti che la media a posteriori di 0.66 è quasi identica a quella che avevamo ottenuto con una distribuzione a priori uniforme (ovvero, 0.67). Ancora più importante è il fatto che, con un campione così grande, l'intervallo di credibilità al 95% diventa piccolissimo: [0.63, 0.69]. Questo vuol dire che, avendo a disposizione un campione sufficientemente grande, siamo piuttosto certi di quali sono i valori plausibili del parametro sconosciuto. E la risposta che troviamo non dipende dalle nostre credenze a priori, anche nel caso in cui, a priori, avevamo delle credenze molto forti (e molto lontane dalla realtà).
+
+
 
 ## Conclusioni {-}
 
-Questo capitolo ha introdotto le procedure di base per la manipolazione
+Questo capitolo introduce le procedure di base per la manipolazione
 della distribuzione a posteriori. Lo strumento fondamentale che è stato
-utilizzato è quello fornito dai campioni di valori dei parametri tratti
+utilizzato è quello fornito da campioni di valori dei parametri tratti
 dalla distribuzione a posteriori. Lavorare con campioni di parametri
 tratti dalla distribuzione a posteriori trasforma un problema di calcolo
 integrale in un problema di riepilogo dei dati. Abbiamo visto quali sono

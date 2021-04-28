@@ -137,7 +137,7 @@ contiene i dati del gruppo a cui è stata somministrata
 l’idrossiclorochina e il vettore <code>yc</code> i dati del gruppo di controllo. Il
 valore <span class="math inline">\(y = 1\)</span> indica che il paziente è positivo al virus SARS-CoV-2
 (l’ordine di 0 e 1 è irrilevante).</p>
-<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ym</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">6</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">8</span><span class="op">)</span><span class="op">)</span>
 <span class="va">ym</span>
 <span class="co">#&gt;  [1] 1 1 1 1 1 1 0 0 0 0 0 0 0 0</span>
@@ -145,7 +145,7 @@ valore <span class="math inline">\(y = 1\)</span> indica che il paziente è posi
 <span class="va">yc</span>
 <span class="co">#&gt;  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0</span></code></pre></div>
 <p>Utilizziamo ora la sintassi di <code>rethinking</code> per definire il modello statistico appropriato per una proporzione. Specifichiamo inoltre una distribuzione a priori non informativa:</p>
-<div class="sourceCode" id="cb316"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"rethinking"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>mc.cores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html">detectCores</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
@@ -155,13 +155,13 @@ valore <span class="math inline">\(y = 1\)</span> indica che il paziente è posi
 <span class="op">)</span></code></pre></div>
 <p>La funzione <code>alist</code> crea un oggetto R di tipo <em>lista</em>, ovvero un insieme ordinato di oggetti. Nel nostro caso, il primo oggetto contenuto nella lista è la specificazione della funzione di verosimiglianza <code>y ~ dbinom(1, p)</code>, mentre il secondo oggetto è la specificazione della distribuzione a priori per il parametro p <code>p ~ dbeta(1, 1)</code>. La funzione di verosimiglianza indica che i dati (nel nostro caso, la frequenza assoluta di casi positivi al virus SARS-CoV-2) si distribuiscono come una variabile aleatoria binomiale di parametro <span class="math inline">\(p\)</span> (il valore <span class="math inline">\(N\)</span> è fisso e conosciuto). La distribuzione a priori per il parametro sconosciuto <span class="math inline">\(p\)</span> è inoltre specificata mediante una Beta(1, 1), ovvero mediante una distribuzione uniforme nell’intervallo unitario [0, 1].</p>
 <p>Il calcolo della distribuzione a posteriori per il parametro <span class="math inline">\(p\)</span> può essere svolto mediante la funzione <code>qmap()</code>. Tale funzione richiede due argomenti: il modello statistico specificato da <code><a href="https://rdrr.io/r/base/list.html">alist()</a></code> e i dati. Tale funzione stima la funzione a posteriori mediante il metodo dell’approssimazione quadratica discusso in precedenza. Anche i dati devono essere un oggetto R di tipo <code>lista</code>. Tale oggetto può essere creato mediante l’istruzione <code><a href="https://rdrr.io/r/base/list.html">list()</a></code>. Nel caso del gruppo sperimentale abbiamo</p>
-<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap</a></span><span class="op">(</span> 
   <span class="va">flist</span>, 
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">ym</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <p>La funzione <code><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap()</a></code> crea un oggetto che abbiamo chiamato <code>m</code> il quale contiene tutte le informazioni che ci servono a proposito della distribuzione a posteriori. Per rappresentare conun grafico la distribuzione a posteriori del parametro <span class="math inline">\(p\)</span> usiamo le seguenti istruzioni:</p>
-<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">post</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/extract.samples.html">extract.samples</a></span><span class="op">(</span><span class="va">m</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/density.html">density</a></span><span class="op">(</span><span class="va">post</span><span class="op">$</span><span class="va">p</span><span class="op">)</span>, 
@@ -171,22 +171,22 @@ valore <span class="math inline">\(y = 1\)</span> indica che il paziente è posi
   xlab <span class="op">=</span> <span class="st">"Parametro p"</span>,
   ylab <span class="op">=</span> <span class="st">"Densità"</span>
 <span class="op">)</span></code></pre></div>
-<p><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-346-1.png" width="90%" style="display: block; margin: auto;">
+<p><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-365-1.png" width="90%" style="display: block; margin: auto;">
 Possiamo sintetizzare la distribuzione a posteriori del parametro <span class="math inline">\(p\)</span> mediante la specificazione dell’intervallo di credibilità al 95%:</p>
-<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">m</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
 <span class="co">#&gt;        mean        sd      2.5%     97.5%</span>
 <span class="co">#&gt; p 0.4285638 0.1322588 0.1693412 0.6877863</span></code></pre></div>
 <p>L’intervallo di credibilità al 95% per il parametro <span class="math inline">\(p\)</span> che abbiamo ottenuto per il gruppo sperimentale ci dice che possiamo essere sicuri al 95% che, nel gruppo sperimentale, la probabilità di risultare positivi al virus SARS-CoV-2 è un valore compreso nell’intervallo [.17, 0.69]. Questo intervallo è piuttosto ampio, il che suggerisce che abbiamo una grande incertezza su quale sia l’effettiva probabilità di risultare positivi al virus SARS-CoV-2 nella popolazione che ha le stesse caratteristiche del gruppo sperimentale, ovvvero in coloro che hanno assunto l’idrossiclorochina.</p>
 <p>La nostra domanda riguarda però l’efficacia dell’idrossiclorochina. Dunque vogliamo confrontare la stima della probabilità di risultare positivi al virus SARS-CoV-2 per coloro che hanno assunto l’idrossiclorochina e coloro che non l’hanno assunta. Dobbiamo dunque calcolare l’intervallo di credibilità al 95% per il gruppo di controllo e confrontarlo con quello trovato sopra.</p>
 <p>Ripetiamo quindi la stessa procedura appena eseguita, usando però i dati del gruppo di controllo.</p>
-<div class="sourceCode" id="cb320"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap</a></span><span class="op">(</span> 
   <span class="va">flist</span>, 
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">yc</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <p>Una rappresentazione grafica della distribuzione a posteriori del parametro <span class="math inline">\(p\)</span> nella condizione di controllo si ottiene con le istruzioni seguenti:</p>
-<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">postc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/extract.samples.html">extract.samples</a></span><span class="op">(</span><span class="va">mc</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/density.html">density</a></span><span class="op">(</span><span class="va">postc</span><span class="op">$</span><span class="va">p</span><span class="op">)</span>, 
@@ -197,9 +197,9 @@ Possiamo sintetizzare la distribuzione a posteriori del parametro <span class="m
   ylab <span class="op">=</span> <span class="st">"Densità"</span>
 <span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/density.html">density</a></span><span class="op">(</span><span class="va">postc</span><span class="op">$</span><span class="va">p</span><span class="op">)</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-349-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-368-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>L’intervallo di credibilità al 95% per il gruppo di controllo è</p>
-<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">mc</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
 <span class="co">#&gt;        mean         sd      2.5%    97.5%</span>
 <span class="co">#&gt; p 0.8749966 0.08267702 0.7129526 1.037041</span></code></pre></div>
@@ -208,7 +208,7 @@ Possiamo sintetizzare la distribuzione a posteriori del parametro <span class="m
 Ciò è indicato dal confronto tra i due intervalli di credibilità al 95% che abbiamo calcolato. Gli intervalli di credibilità dei due gruppi <em>non si sovrappongono</em>. Questo fatto viene interpretato dicendo che il parametro <span class="math inline">\(p\)</span> è diverso nei due gruppi. Sulla base di queste evidenza, dunque, possiamo concludere, con un grado di certezza soggettiva del 95%, che nel gruppo sperimentale vi è una probabilità più bassa di risultare positivi al SARS-CoV-2 rispetto al gruppo di controllo. In altri termini, la conclusione di questa analisi dei dati suggerisce che l’idrossiclorochina è efficace come terapia per il Covid-19. Svolgendo le analisi precedenti abbiamo dunque replicato le conclusioni a cui sono giunti <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>, sia pur utilizzando una procedura statistica diversa.</p>
 <p>Tuttavia, nella ricerca di <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> è presente un aspetto che non abbiamo finora considerato. <span class="citation"><a href="bibliografia.html#ref-Hulme_2020" role="doc-biblioref">Hulme et al.</a> (<a href="bibliografia.html#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span> hanno infatti osservato che <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>, nelle loro analisi statistiche, hanno escluso alcuni dati. Sono stati infatti osservati dei pazienti i quali, nel gruppo sperimentale, sono in realtà peggiorati, anziché essere migliorati. L’analisi di <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> non considera questi dati.</p>
 <p>Se consideriamo tutti i pazienti – non solo quelli selezionati da <span class="citation"><a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">Gautret et al.</a> (<a href="bibliografia.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> – la situazione è la seguente. Gruppo sperimentale: 10 positivi su 18; gruppo di controllo: 14 positivi su 16. Ripetiamo dunque l’analisi descritta in precedenza utilizzando, per il gruppo sperimentale, tutti i dati che abbiamo a disposizione. Così facendo otteniamo il seguente intervallo di credibilità al 95%:</p>
-<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ym</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">8</span><span class="op">)</span><span class="op">)</span>
 <span class="va">ym</span>
 <span class="co">#&gt;  [1] 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0</span>
@@ -240,12 +240,12 @@ Questo modello statistico ci dice che la variabile aleatoria <span class="math i
 <span class="header-section-number">29.3.1</span> Il modello normale con <code>quap()</code><a class="anchor" aria-label="anchor" href="#il-modello-normale-con-quap"><i class="fas fa-link"></i></a>
 </h3>
 <p>Per fare un esempio pratico, consideriamo i 30 valori del BDI-II dei soggetti clinici di <span class="citation"><a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">Zetsche et al.</a> (<a href="bibliografia.html#ref-zetsche_future_2019" role="doc-biblioref">2019</a>)</span>:</p>
-<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
   <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">26</span>, <span class="fl">35</span>, <span class="fl">30</span>, <span class="fl">25</span>, <span class="fl">44</span>, <span class="fl">30</span>, <span class="fl">33</span>, <span class="fl">43</span>, <span class="fl">22</span>, <span class="fl">43</span>, <span class="fl">24</span>, <span class="fl">19</span>, <span class="fl">39</span>, <span class="fl">31</span>, <span class="fl">25</span>, <span class="fl">28</span>, <span class="fl">35</span>, <span class="fl">30</span>, <span class="fl">26</span>, <span class="fl">31</span>, <span class="fl">41</span>, <span class="fl">36</span>, <span class="fl">26</span>, <span class="fl">35</span>, <span class="fl">33</span>, <span class="fl">28</span>, <span class="fl">27</span>, <span class="fl">34</span>, <span class="fl">27</span>, <span class="fl">22</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <p>Calcoliamo le statistiche descrittive per questi dati:</p>
-<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">true_sd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">x</span><span class="op">)</span>
 <span class="va">true_sd</span>
 <span class="co">#&gt; [1] 6.606858</span>
@@ -254,7 +254,7 @@ Questo modello statistico ci dice che la variabile aleatoria <span class="math i
 <span class="va">sample_mean</span>
 <span class="co">#&gt; [1] 30.93333</span></code></pre></div>
 <p>Definiamo ora il modello statistico mediante la funzione <code><a href="https://rdrr.io/r/base/list.html">alist()</a></code>:</p>
-<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">flist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">alist</a></span><span class="op">(</span>
   <span class="va">x</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">mu</span>, <span class="va">sigma</span><span class="op">)</span>, 
   <span class="va">mu</span> <span class="op">~</span> <span class="va">a</span>,
@@ -263,14 +263,14 @@ Questo modello statistico ci dice che la variabile aleatoria <span class="math i
 <span class="op">)</span></code></pre></div>
 <p>Le precedenti istruzioni R specificano un variabile aleatoria <span class="math inline">\(x\)</span> che si distribuisce come una Normale di parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span>; questa è la verosimiglianza. Per utilizzare una notazione che impiegheremo in seguito (ma che qui non è necessaria!), diciamo che la distribuzione a priori di <span class="math inline">\(\mu\)</span> è <span class="math inline">\(a\)</span>, e che <span class="math inline">\(a\)</span> si distribuisce come una Normale di parametri <span class="math inline">\(\mu\)</span> = media del campione e deviazione standard uguale a 100. Il parametro <span class="math inline">\(\sigma\)</span>, inoltre, viene considerato come conosciuto e di valore pari alla deviazione standard del campione. La sintassi presentata sopra non è per nulla elegante e può essere semplificata. La utilizzo qui per facilitare la discussione successiva.</p>
 <p>La distribuzione a posteriori di <span class="math inline">\(\mu\)</span> può essere ottenuta nel modo seguente:</p>
-<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap</a></span><span class="op">(</span> 
     <span class="va">flist</span>,
     data <span class="op">=</span> <span class="va">df</span> 
 <span class="op">)</span></code></pre></div>
 <p>L’intervallo di credibilità al 95% è dato dalla funzione <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis()</a></code>:</p>
-<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">m1</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
 <span class="va">out</span>
 <span class="co">#&gt;       mean       sd     2.5%    97.5%</span>
@@ -327,7 +327,7 @@ Ciò significa che il parametro <span class="math inline">\(\alpha\)</span> è u
 <li><p><span class="math inline">\(X=1\)</span>: la madre ha completato la scuola media superiore.</p></li>
 </ul>
 <p>Supponiamo che i dati siano contenuti nel data.frame <code>df</code>.</p>
-<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb336"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"foreign"</span><span class="op">)</span>
 <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/foreign/man/read.dta.html">read.dta</a></span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"kidiq.dta"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
@@ -339,7 +339,7 @@ Ciò significa che il parametro <span class="math inline">\(\alpha\)</span> è u
 <span class="co">#&gt; 5       115      1  92.74571        4      27</span>
 <span class="co">#&gt; 6        98      0 107.90184        1      18</span></code></pre></div>
 <p>Calcoliamo le statistiche descrittive per i due gruppi:</p>
-<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">mom_hs</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">summarise</span><span class="op">(</span>
@@ -353,7 +353,7 @@ Ciò significa che il parametro <span class="math inline">\(\alpha\)</span> è u
 <span class="co">#&gt; 2      1           89.3  19.0</span></code></pre></div>
 <p>Il punteggio medio PIAT è pari a 77.5 per i bambini la cui madre non ha il diploma di scuola media superiore e pari a 89.3 per i bambini la cui madre ha completato la scuola media superiore. Questa differenza suggerisce un’associazione tra le variabili, ma tale differenza potrebbe essere soltanto la conseguenza della variabilità campionaria, senza riflettere una caratteristica generale della popolazione. Come possiamo usare il modello statistico lineare per fare inferenza sulla differenza osservata tra i due gruppi?</p>
 <p>Per rispondere a questa domanda specifichiamo il modello statistico che descrive la differenza tra i punteggi PIAT dei due gruppi mediante un modello di regressione lineare:</p>
-<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb338"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">flist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">alist</a></span><span class="op">(</span>
   <span class="va">kid_score</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">mu</span>, <span class="va">sigma</span><span class="op">)</span>,
   <span class="va">mu</span> <span class="op">~</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">*</span> <span class="va">mom_hs</span>,
@@ -380,13 +380,13 @@ Ciò significa che il parametro <span class="math inline">\(\alpha\)</span> è u
 <span class="header-section-number">29.4.2.1</span> Inferenza mediante la distribuzione a posteriori<a class="anchor" aria-label="anchor" href="#inferenza-mediante-la-distribuzione-a-posteriori"><i class="fas fa-link"></i></a>
 </h4>
 <p>Adattiamo il modello ai dati utilizzando la funzione <code><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap()</a></code>:</p>
-<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb339"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap</a></span><span class="op">(</span>
   <span class="va">flist</span>,
   data <span class="op">=</span> <span class="va">df</span>
 <span class="op">)</span></code></pre></div>
 <p>Estraiamo alcuni campioni dalla distribuzione a posteriori:</p>
-<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">post</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/extract.samples.html">extract.samples</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span>
 <span class="va">post</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>
 <span class="co">#&gt;          a         b    sigma</span>
@@ -396,7 +396,7 @@ Ciò significa che il parametro <span class="math inline">\(\alpha\)</span> è u
 <span class="co">#&gt; 4 77.23189 10.742990 19.97299</span>
 <span class="co">#&gt; 5 80.54546  9.255061 19.83349</span></code></pre></div>
 <p>Esaminiamo la distribuzione a posteriori dei parametri mediante le istruzioni seguenti.</p>
-<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb341"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/dens.html">dens</a></span><span class="op">(</span>
@@ -426,7 +426,7 @@ Figura 29.1: Distribuzioni a posteriori dei parametri <em>a</em>, <em>b</em> e <
 </p>
 </div>
 <p>Come in precedenza, la funzione <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis()</a></code> può essere usata per calcolare la media a posteriori per i parametri del modello:</p>
-<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb342"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">m1</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
 <span class="co">#&gt;           mean        sd      2.5%    97.5%</span>
 <span class="co">#&gt; a     77.55837 2.0528231 73.534910 81.58183</span>
@@ -459,7 +459,7 @@ Figura 29.2: Distribuzione dei punteggi del <em>Peabody Individual Achievement T
 </h2>
 <p>Continuiamo ora con l’esempio relativo al <em>National Longitudinal Survey of Youth</em> discusso da <span class="citation"><a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">Gelman et al.</a> (<a href="bibliografia.html#ref-gelman2020regression" role="doc-biblioref">2020</a>)</span> ponendoci ora il problema di descrivere l’associazione tra l’intelligenza del bambino, <code>kid_score</code> (ovvero il punteggio totale del <em>Peabody Individual Achievement Test</em>, PIAT), e il quoziente di intelligenza della madre, <code>mom_iq</code>. Si noti che, in questo caso, la variabile indipendente è una variabile continua (e non più dicotomica come nell’esempio precedente).</p>
 <p>Iniziamo esaminando i dati, per verificare che un modello lineare sia appropriato per i dati considerati.</p>
-<div class="sourceCode" id="cb336"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb343"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mom_iq</span>, y <span class="op">=</span> <span class="va">kid_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -487,7 +487,7 @@ Y_i &amp;\sim \mathcal{N}(\mu_i, \sigma) \\
 \]</span></p>
 <p>Si noti che abbiamo descritto <span class="math inline">\(X\)</span> nei termini degli scostamenti dalla media (<span class="math inline">\(X_i - \bar{X}\)</span>). Come in precedenza, ciò fa in modo che il coefficiente <span class="math inline">\(\alpha\)</span> corrisponda al valore atteso della <span class="math inline">\(Y\)</span> in corrispondenza della media di <span class="math inline">\(X\)</span> (quoziente di intelligenza della madre) – questa è una conseguenza del fatto che la retta di regressione passa per il punto <span class="math inline">\((\bar{X}, \bar{Y})\)</span>. Infatti, avrebbe poco senso chiederci qual è il valore atteso del punteggio PIAT quando il quoziente d’intelligenza della madre è uguale a zero.</p>
 <p>Specifichiamo dunque il modello statistico lineare con la sintassi richiesta da <code>rethinking</code>:</p>
-<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb344"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">flist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">alist</a></span><span class="op">(</span>
   <span class="va">kid_score</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">mu</span>, <span class="va">sigma</span><span class="op">)</span>,
   <span class="va">mu</span> <span class="op">~</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">*</span> <span class="op">(</span><span class="va">mom_iq</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">mom_iq</span><span class="op">)</span><span class="op">)</span>,
@@ -496,13 +496,13 @@ Y_i &amp;\sim \mathcal{N}(\mu_i, \sigma) \\
   <span class="va">sigma</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">dunif</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <p>Adattiamo il modello di regressione ai dati</p>
-<div class="sourceCode" id="cb338"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb345"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap</a></span><span class="op">(</span>
   <span class="va">flist</span>,
   data <span class="op">=</span> <span class="va">df</span>
 <span class="op">)</span></code></pre></div>
 <p>Esaminiamo il risultato ottenuto mediante la funzione <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis()</a></code>:</p>
-<div class="sourceCode" id="cb339"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb346"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">m2</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
 <span class="co">#&gt;             mean         sd       2.5%      97.5%</span>
 <span class="co">#&gt; a     86.7973283 0.87475112 85.0828476 88.5118090</span>
@@ -517,7 +517,7 @@ laddove <span class="math inline">\(x\)</span> è la variabile <code>kid_score</
 <p>L’intervallo di credibilità di questo coefficiente ci dice che, con un livello di certezza del 95%, possiamo essere sicuri che, all’aumentare di un punto del quoziente d’intelligenza della madre, la media dei punteggi PIAT crescerà, come minimo, di 0.50 punti e, come massimo, di 0.72 punti. La differenza 0.72 - 0.50 esprime il nostro grado di incertezza rispetto alla stima del parametro, quando vogliamo che la nostra stima sia “credibile” al livello di 0.95. Ma non c’è niente di “magico” o necessario relativamente al livello di 0.95. Infatti, il default della funzione <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis()</a></code> è 0.89. Ciascuno di questi valori è
 arbitrario. Sono possibili tantissime soglie per quantificare la nostra incertezza: alcuni ricercatori usano il livello di 0.5. Il nostro obiettivo è quello di descrivere il livello della nostra incertezza relativamente alla stima del parametro. E la nostra incertezza è
 descritta dall’<em>intera</em> distribuzione a posteriori. Per cui il metodo più semplice, più diretto e più completo per descrivere la nostra incertezza rispetto alla stima dei parametri è quello di riportare graficamente tutta la distribuzione a posteriori, come indicato per esempio nella figura <a href="inferenza-bayesiana.html#fig:post2kids">29.4</a>.</p>
-<div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb347"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">post</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/extract.samples.html">extract.samples</a></span><span class="op">(</span><span class="va">m2</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
 
@@ -600,7 +600,7 @@ modo di contare in quanti diversi modi diverse combinazioni di <span class="math
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-04-28 14:07:08.</p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-04-28 17:06:32.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
