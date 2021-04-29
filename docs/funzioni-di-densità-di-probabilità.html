@@ -137,6 +137,8 @@ questo processo usando R. I risultati della simulazione sono riportati qui di se
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">person</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span>  <span class="co"># ungrouping allows for further data manipulation</span>
+<span class="co">#&gt; Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if `.name_repair` is omitted as of tibble 2.0.0.</span>
+<span class="co">#&gt; Using compatibility `.name_repair`.</span>
 
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">pos</span>, 
        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">step</span>, y <span class="op">=</span> <span class="va">position</span>, group <span class="op">=</span> <span class="va">person</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -154,7 +156,7 @@ questo processo usando R. I risultati della simulazione sono riportati qui di se
 <span class="co">#&gt;  - attr(*, "class")= chr [1:2] "theme" "gg"</span>
 <span class="co">#&gt;  - attr(*, "complete")= logi FALSE</span>
 <span class="co">#&gt;  - attr(*, "validate")= logi TRUE</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-180-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-169-1.png" width="90%" style="display: block; margin: auto;"></div>
 <div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Figure 4.2.a.</span>
 <span class="va">p1</span> <span class="op">&lt;-</span>
@@ -195,7 +197,7 @@ questo processo usando R. I risultati della simulazione sono riportati qui di se
 
 <span class="co"># combine the ggplots</span>
 <span class="op">(</span><span class="va">p1</span> <span class="op">|</span> <span class="va">p2</span> <span class="op">|</span> <span class="va">p3</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">6</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-181-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-170-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Questa simulazione mostra che qualunque processo nel quale viene sommato
 un certo numero di valori casuali, tutti provenienti dalla medesima
 distribuzione, converge ad una distribuzione Normale. Non importa quale
@@ -315,7 +317,7 @@ software.</p>
     x <span class="op">=</span> <span class="st">"Altezza"</span>,
     y <span class="op">=</span> <span class="st">"Densità"</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-185-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-174-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>La risposta si trova utilizzando la funzione di
 ripartizione <span class="math inline">\(F(X)\)</span> della legge <span class="math inline">\(\mathcal{N}(1.7, 0.1)\)</span> in
 corrispondenza dei due valori forniti dal problema:
@@ -377,7 +379,7 @@ dove <span class="math inline">\(C_{\nu}\)</span> è una costante positiva.</p>
     x <span class="op">=</span> <span class="st">"V.a. chi-quadrato con 3 gradi di libertà"</span>,
     y <span class="op">=</span> <span class="st">"Densità"</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-188-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-177-1.png" width="90%" style="display: block; margin: auto;"></div>
 <!-- __Teorema.__ Nel caso di un campione di ampiezza -->
 <!-- $n$ estratto da una popolazione normale di media $\mu$ e varianza -->
 <!-- $\sigma^2$ abbiamo che la stima campionaria della varianza, moltiplicata -->
@@ -424,7 +426,7 @@ pertanto è sempre maggiore di 1 e tende a 1 per
 <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">p</span>, <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">dt</a></span><span class="op">(</span><span class="va">p</span>, <span class="fl">5</span><span class="op">)</span>, type <span class="op">=</span><span class="st">"l"</span>, col<span class="op">=</span><span class="fl">2</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">p</span>, <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">dt</a></span><span class="op">(</span><span class="va">p</span>, <span class="fl">30</span><span class="op">)</span>, col<span class="op">=</span><span class="fl">1</span><span class="op">)</span> 
 <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="fl">.4</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"N(0,1)"</span>, <span class="st">"t(2)"</span>,<span class="st">"t(5)"</span>,<span class="st">"t(30)"</span><span class="op">)</span>, lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-189-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-178-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
 <div id="distribuzione-beta" class="section level2" number="18.4">
 <h2>
@@ -453,7 +455,7 @@ densità.</p>
 <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">p</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="va">p</span>, <span class="fl">3</span>, <span class="fl">7</span><span class="op">)</span>, col<span class="op">=</span><span class="fl">2</span><span class="op">)</span> 
 <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">p</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="va">p</span>, <span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span>, col<span class="op">=</span><span class="fl">1</span><span class="op">)</span> 
 <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="fl">0.4</span>,<span class="fl">9</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Be(9,1)"</span>,<span class="st">"Be(1,9)"</span>,<span class="st">"Be(1,1)"</span>, <span class="st">"Be(3,7)"</span>, <span class="st">"Be(5,5)"</span><span class="op">)</span>,lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">4</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-190-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-179-1.png" width="90%" style="display: block; margin: auto;"></div>
 
 </div>
 </div>
@@ -490,7 +492,7 @@ densità.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-04-28 17:06:32.</p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-04-29 10:41:37.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -140,28 +140,29 @@ analitica, ma solitamente vengono usate delle tecniche numeriche.</p></li>
 <span class="header-section-number">25.3</span> Integrazione con metodo Monte Carlo<a class="anchor" aria-label="anchor" href="#integrazione-con-metodo-monte-carlo"><i class="fas fa-link"></i></a>
 </h2>
 <p>Questi algoritmi estraggono campioni da una distribuzione target mediante la seguente procedura (1) facendo una proposta per un nuovo valore casuale del parametro sconosciuto (o dei parametri sconosciuti) e poi (2) accettando o rifiutando tale proposta. Se entrambi questi passaggi vengono eseguiti correttamente, i valori accettati dei parametri costituiranno dei campioni casuali della distribuzione target.</p>
-<p>L’idea è semplice: per calcolare le statistiche che ci interessano – solitamente, una qualche misura di tendenza centrale e un qualche intervallo che contiene una data proporzione della massa della distribuzione – non abbiamo bisogno di conoscere l’esatta funzione di densità della distribuzione a posteriori <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span>. È sufficiente, per la ragione spiegata nella sezione successiva, riuscire a ottenere un grande numero di campioni <strong>casuali</strong> della distribuzione a posteriori. Se tali campioni che estraiamo dalla distribuzione a posteriori sono veramente casuali, allora le statistiche che ci interessano, ovvero una qualche misura di tendenza centrale e un qualche intervallo che contiene una data proporzione della massa della distribuzione, saranno stimati con esattezza. E come facciamo a sapere che un insieme di campioni della distribuzione a posteriori è veramente estratto in maniera casuale da <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span>? Basta che, seguendo il secondo passo descritto sopra, decidiamo se accettare o rifiutare il valore proposto del parametro in base ad una regola che dipende dal valore della densità <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span> in corrispondenza della proposta. E un valore che sia <strong>proporzionale</strong> a tale densità è facile da ottenere: infatti non è altro che il prodotto della funzione a priori e della verosimiglianza in corrispondenza del valore della proposta. Questo è in essenza l’algoritmo di Metropolis.
-Prima di introdurre i metodi MCMC per la stima della funzione a posteriori, spendiamo però qualche parola sul metodo Monte Carlo.</p>
+<p>L’idea è semplice: per calcolare le statistiche che ci interessano – solitamente, una qualche misura di tendenza centrale e un qualche intervallo che contiene una data proporzione della massa della distribuzione – non abbiamo bisogno di conoscere l’esatta funzione di densità della distribuzione a posteriori <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span>. È sufficiente, per la ragione spiegata nella sezione successiva, riuscire a ottenere un grande numero di campioni <strong>casuali</strong> dalla distribuzione a posteriori. Se i campioni che estraiamo dalla distribuzione a posteriori sono veramente casuali, allora le statistiche che ci interessano, ovvero una qualche misura di tendenza centrale e un qualche intervallo che contiene una data proporzione della massa della distribuzione, saranno stimati con esattezza.</p>
+<p>Come facciamo a sapere che i campioni ottenuti sono stati estratti <strong>in maniera casuale</strong> dalla distribuzione a posteriori <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span>? Per ottenere questo risultato, basta che decidiamo, seguendo il secondo passo elencato sopra, di accettare o rifiutare il valore proposto del parametro in base ad una regola che dipende dal valore della densità <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span> in corrispondenza della proposta. E un valore che è <strong>proporzionale</strong> a tale densità è facile da calcolare: non è altro che il prodotto della funzione a priori e della verosimiglianza <em>in corrispondenza del valore della proposta</em>. Questo è in essenza l’algoritmo di Metropolis.</p>
+<p>Prima di esaminare in dettaglio i metodi MCMC per la stima della funzione a posteriori, spendiamo qualche parola sul metodo Monte Carlo.</p>
 </div>
 <div id="legge-forte-dei-grandi-numeri" class="section level2" number="25.4">
 <h2>
 <span class="header-section-number">25.4</span> Legge forte dei grandi numeri<a class="anchor" aria-label="anchor" href="#legge-forte-dei-grandi-numeri"><i class="fas fa-link"></i></a>
 </h2>
-<p>Il termine Monte-Carlo si riferisce al fatto che per la computazione si ricorre ad un ripetuto campionamento casuale attraverso la generazioni di sequenze di numeri casuali.
+<p>Il termine Monte Carlo si riferisce al fatto che la computazione fa ricorso ad un ripetuto campionamento casuale attraverso la generazione di sequenze di numeri casuali.
 Una delle sue applicazioni più potenti è il calcolo degli integrali mediante simulazione numerica.</p>
-<p>Consideriamo la formula del valore atteso di una variabile aleatoria continua:
-<span class="math display">\[
-\mathbb{E}(X) = \int_{-\infty}^{+\infty} x f(x) dx
+<p>Consideriamo, ad esempio, la formula del valore atteso di una variabile aleatoria continua:</p>
+<p><span class="math display">\[
+\mathbb{E}(X) = \int_{-\infty}^{+\infty} x f(x) dx.
 \]</span>
-Il calcolo del valore atteso, in questo caso, richiede che si facciano le somme dei prodotti <span class="math inline">\(x f(x)\)</span> per tutti gli infinitesimi “incrementi” <span class="math inline">\(dx\)</span> per tutti i possibili valori <span class="math inline">\(X\)</span>.
-Vediamo ora come si possa risolvere un problema di questo tipo in maniera semplice, senza dovere calcolare l’integrale esatto per via analitica.</p>
-<p>L’integrazione con metodo Monte Carlo trova la sua giustificazione nella <em>Legge forte dei grandi numeri</em> la quale, in termini formali, può essere espressa nel modo seguente. Data una successione di variabili casuali <span class="math inline">\(Y_{1}, Y_{2},\dots, Y_{n},\dots\)</span> indipendenti e identicamente distribuite con media <span class="math inline">\(\mu\)</span>, ne segue che
-<span class="math display">\[
+Il calcolo del valore atteso richiede la somma dei prodotti <span class="math inline">\(x f(x)\)</span> per tutti gli infinitesimi “incrementi” <span class="math inline">\(dx\)</span> dei possibili valori <span class="math inline">\(x\)</span>.
+Vediamo come si può risolvere questo problema senza dovere calcolare l’integrale esatto per via analitica.</p>
+<p>L’integrazione con metodo Monte Carlo trova la sua giustificazione nella <em>Legge forte dei grandi numeri</em> la quale, in termini formali, può essere espressa nel modo seguente. Data una successione di variabili casuali <span class="math inline">\(Y_{1}, Y_{2},\dots, Y_{n},\dots\)</span> indipendenti e identicamente distribuite con media <span class="math inline">\(\mu\)</span>, ne segue che</p>
+<p><span class="math display">\[
 P\left( \lim_{n \rightarrow \infty} \frac{1}{n} \sum_{i=1}^n Y_i = \mu \right) = 1.
 \]</span>
 Ciò significa che, al crescere di <span class="math inline">\(n\)</span>, la media delle realizzazioni di <span class="math inline">\(Y_{1}, Y_{2},\dots, Y_{n},\dots\)</span> converge con probabilità 1 al vero valore <span class="math inline">\(\mu\)</span>.</p>
-<p>Possiamo fornire un esempio intuitivo della legge forte dei grandi numeri facendo riferimento ad una serie di lanci di una moneta dove <span class="math inline">\(Y=1\)</span> significa “testa” e <span class="math inline">\(Y=0\)</span> significa “croce.” Per la legge forte dei grandi numeri, nel caso di una moneta equilibrata la proporzione di eventi “testa” converge alla vera probabilità dell’evento “testa”
-<span class="math display">\[
+<p>Possiamo fornire un esempio intuitivo della legge forte dei grandi numeri facendo riferimento ad una serie di lanci di una moneta dove <span class="math inline">\(Y=1\)</span> significa “testa” e <span class="math inline">\(Y=0\)</span> significa “croce.” Per la legge forte dei grandi numeri, nel caso di una moneta equilibrata la proporzione di eventi “testa” converge alla vera probabilità dell’evento “testa”</p>
+<p><span class="math display">\[
 \frac{1}{n} \sum_{i=1}^n Y_i \rightarrow \frac{1}{2}
 \]</span>
 con probabilità di uno.</p>
@@ -171,15 +172,15 @@ con probabilità di uno.</p>
 <h2>
 <span class="header-section-number">25.5</span> Metodi MC basati su Catena di Markov<a class="anchor" aria-label="anchor" href="#metodi-mc-basati-su-catena-di-markov"><i class="fas fa-link"></i></a>
 </h2>
-<p>La costruzione della distribuzione a posteriori, in generale, richiede (al denominsatore) il calcolo di un integrale “intrattabile” per via analitica. Quindi il problema di costruire la distribuzione a posteriori viene affrontato in un altro modo, ovvero facciamo una simulazione numerica che produce un risultato approssimato (ma sufficientemente preciso per tutti gli scopi pratici). A tale scopo usiamo i cosiddetti <em>metodi Monte Carlo basati su Catena di Markov</em> i quali consentono di costruire sequenze di punti (le “catene”) nello spazio dei parametri, la cui densità è proporzionale alla distribuzione a posteriori – in altre parole, consentono di ottenere un grande numero di campioni casuali dalla distribuzione a posteriori.</p>
+<p>Ritornando al discorso precedente, diciamo che la costruzione della distribuzione a posteriori, in generale, richiede (al denominsatore) il calcolo di un integrale “intrattabile” per via analitica. Il problema di costruire la distribuzione a posteriori viene dunque affrontato facendo una simulazione numerica che produce un risultato approssimato (ma sufficientemente preciso per tutti gli scopi pratici). A tale scopo vengono usati i cosiddetti <em>metodi Monte Carlo basati su Catena di Markov</em> i quali consentono di costruire sequenze di punti (le “catene”) nello spazio dei parametri le cui densità sono proporzionali alla distribuzione a posteriori – in altre parole, tali “catene” corrispondono a una sequenza di <strong>campioni casuali</strong> dalla distribuzione a posteriori.</p>
 
 <div class="rmdtip">
-<strong>Osservazione.</strong> Ma cosa sono esattamente le catene di Markov? In termini formali possiamo dire che una catena di Markov è una sequenza di variabili aleatorie <span class="math inline">\(Y_{1}, Y_{2},\dots, Y_{n}\)</span> tale che la dipendenza della distribuzione di <span class="math inline">\(Y_{i+1}\)</span> dai valori di <span class="math inline">\(Y_{1}, \dots, Y_{i}\)</span> è interamente dovuta al valore di <span class="math inline">\(Y_i\)</span>, cioè il passaggio ad uno stato del sistema dipende unicamente dallo stato immediatamente precedente e non dal come si è giunti a tale stato (dalla storia). Per questo motivo si dice che un processo markoviano è senza memoria. Tale “assenza di memoria” può essere interpretata come lo strumento mediante il quale è possibile ottenere un insieme di campioni <strong>casuali</strong> della distribuzione di interesse.
+<strong>Osservazione.</strong> In termini formali possiamo dire che una catena di Markov è una sequenza di variabili aleatorie <span class="math inline">\(Y_{1}, Y_{2},\dots, Y_{n}\)</span> tale che la dipendenza della distribuzione di <span class="math inline">\(Y_{i+1}\)</span> dai valori di <span class="math inline">\(Y_{1}, \dots, Y_{i}\)</span> è interamente dovuta al valore di <span class="math inline">\(Y_i\)</span>, cioè il passaggio ad uno stato del sistema dipende unicamente dallo stato immediatamente precedente e non dal come si è giunti a tale stato (dalla storia). Per questo motivo si dice che un processo markoviano è senza memoria. Tale “assenza di memoria” può essere interpretata come lo strumento mediante il quale è possibile ottenere un insieme di campioni <strong>casuali</strong> della distribuzione di interesse.
 Nel caso dell’inferenza Bayesiana la distribuzione di interesse è la distribuzione a posteriori, <span class="math inline">\(p(\theta \mid \mathcal{Y})\)</span>. Le catene di Markov possono quindi essere utilizzate per stimare i valori di aspettazione di variabili rispetto alla distribuzione a posteriori.
 </div>
-<p>La generazioni di elementi di una catena ha una natura probabilistica e esistono diversi algoritmi per costruire catene di Markov. Due aspetti da tenere in considerazione sotto questo punto di vista sono il periodo di <em>burn-in</em> e le correlazioni tra punti. Al crescere degli step della catena si ottiene una migliore approssimazione della distribuzione target. All’inizio del campionamento però la distribuzione può essere molto diversa dalla distribuzione target. Ci vuole un certo numero di iterazioni prima di raggiungere una situazione di equilibrio e tale periodo è detto di <em>burn-in</em>. Perciò i campioni provenienti dalla parte iniziale della catena vanno tipicamente scartati poiché non rappresentano accuratamente la distribuzione target.</p>
+<p>La generazioni di elementi di una catena ha una natura probabilistica e esistono diversi algoritmi per costruire le catene di Markov. Due aspetti da tenere in considerazione sotto questo punto di vista sono il periodo di <em>burn-in</em> e le correlazioni tra i punti. Al crescere degli step della catena si ottiene una migliore approssimazione della distribuzione target mentre, all’inizio del campionamento, la distribuzione può essere molto diversa dalla distribuzione target. Ci vuole un certo numero di iterazioni prima di raggiungere una situazione di equilibrio e tale periodo è detto di <em>burn-in</em>. Perciò i campioni provenienti dalla parte iniziale della catena vengono tipicamente scartati poiché non rappresentano accuratamente la distribuzione target.</p>
 <p>Normalmente, un algoritmo MCMC genera catene di Markov nelle quali i campioni non sono indipendenti, ma ognuno è autocorrelato a quelli immediatamente precedenti e successivi. Questa correlazione introduce una distorsione nella soluzione che si ottiene. L’arte dei diversi algoritmi MCMC risiede nel rendere il meccanismo efficiente e capace di produrre un risultato non distorto, il che implica la riduzione al minimo del tempo di <em>burn-in</em> e della correlazione tra i diversi campioni.</p>
-<p>Presentiamo ora, in una forma intuitiva, l’algoritmo di Metropolis, ovvero il primo algoritmo MCMC che è stato proposto. Tale algoritmo è stato sviluppato in seguito per renderlo via via più efficiente. Il nostro obiettivo qui è solo quello di illustrare la logica sottostante.</p>
+<p>Presentiamo ora, in una forma intuitiva, l’algoritmo di Metropolis, ovvero il primo algoritmo MCMC che è stato proposto. Tale algoritmo è stato sviluppato in seguito allo scopo di renderlo via via più efficiente. Il nostro obiettivo qui è solo quello di illustrare la logica soggiacente.</p>
 </div>
 <div id="il-problema-del-turista-viaggiatore" class="section level2" number="25.6">
 <h2>
@@ -329,7 +330,7 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
     x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,
     y <span class="op">=</span> <span class="st">"Verosimiglianza"</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-272-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-261-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
 <div id="distribuzione-a-priori-1" class="section level3" number="25.8.2">
 <h3>
@@ -349,7 +350,7 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
     x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,
     y <span class="op">=</span> <span class="st">"Densità"</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-273-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-262-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
 <div id="distribuzione-a-posteriori" class="section level3" number="25.8.3">
 <h3>
@@ -368,7 +369,7 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
     x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,
     y <span class="op">=</span> <span class="st">"Densità"</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-274-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-263-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Questo è il risultato che vogliamo ottenere utilizzando l’algoritmo di Metropolis. Dalla figura precedente vediamo che la moda della distribuzione a posteriori è pari a circa 0.6. Questo è il valore più verosimile a posteriori per il parametro <span class="math inline">\(\theta\)</span>.</p>
 </div>
 <div id="algoritmo-di-metropolis" class="section level3" number="25.8.4">
@@ -440,7 +441,7 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
 
 <span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span>
 <span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
-<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-279-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-268-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>A questo punto è molto facile trovare il massimo a posteriori per il parametro <span class="math inline">\(\theta\)</span>:</p>
 <div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">chain</span><span class="op">[</span><span class="op">-</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">burnIn</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
@@ -538,7 +539,7 @@ L’algoritmo di Metropolis è la versione più semplice e più conosciuta degli
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-04-28 17:06:32.</p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-04-29 10:41:37.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
