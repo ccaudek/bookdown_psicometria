@@ -252,14 +252,14 @@ In pratica la distribuzione a posteriori è sconosciuta e quindi utilizziamo un 
 
 - Calcoliamo poi il rapporto $r$ tra la __distribuzione a posteriori__ non normalizzata determinata dal valore proposto $\theta'_t$ e la __distribuzione a posteriori__ non normalizzata determinata dal valore del parametro $\theta'_{t-1}$ dell'iterazione precedente della catena: $r = \frac{P(x \mid \theta'_t) P(\theta'_t)}{P(x \mid \theta'_{t-1}) P(\theta'_{t-1})}$. Soffermiamoci su tale formula per capire bene cosa significa.  La distribuzione a posteriori non normalizzata corrisponde al numeratore del teorema di Bayes, ovvero $P(x \mid \theta) P(\theta)$, laddove $P(x \mid \theta)$ è la verosimiglianza di $x$ dato $\theta$ e $P(\theta)$ è la distribuzione a priori di $\theta$. Abbiamo visto nella sezione [Un esempio pratico (versione 2)](#sec:aspett_future_beta2_10) che il prodotto di due densità si ottiene facendo il prodotto dei valori delle ordinate corrispondenti delle due curve. Il numeratore del teorema di Bayes ci fornisce la distribuzione a posteriori non normalizzata (l'area sottesa alla curva così ottenuta non è unitaria); dato che qui facciamo un rapporto, però, questo è irrilevante. Al numeratore del rapporto $r$ facciamo il prodotto tra due scalari: la verosimiglianza (l'ordinata) in corrispondenza del valore proposto $\theta'_t$ e la densità della distribuzione a priori in corrispondenza di $\theta'_t$. In maniera simile, al denominatore facciamo il prodotto tra la verosimiglianza (l'ordinata) in corrispondenza di $\theta_{t-1}$ e la densità della distribuzione a priori in corrispondenza di $\theta_{t-1}$. 
 
-- Utilizziamo  il valore $r$ per decidere se dobbiamo effettivamente muoverci nella nuova posizione $\theta'_t$, oppure se dobbiamo campionare un diverso valore $\theta'_t$. Il rapporto $r$ tra le ordinate delle due funzioni a posteriori si pone la seguente domanda: alla luce dei dati, risultano più plausibili i valori proposti del parametro, o quelli del passo precedente della catena? Se il rapporto è maggiore di 1 allora il nuovo valore proposto viene sempre accettato, in quanto la densità a posteriori calcolata con il nuovo valore proposto del parametro è maggiore della densità a posteriori calcolata con il valore del parametro definito nell'interazione precedente della catena. Altrimenti, decidiamo di tenere i valori proposti con una probabilità minore di 1, ovvero non sempre, ma soltanto con una probabilità definita dal rapporto $r$. Se $r$ è uguale a 0.10, ad esempio, questo significa che la densità a posteriori calcolata con il nuovo valore proposto del parametro è 10 volte più piccola della densità a posteriori calcolata con il valore del parametro dell'interazione precedente. In queste circostanze, il valore proposto del parametro verrà accettato solo nel 10% dei casi. L'effetto di questo algoritmo è quello di "campionare" la distribuzione a posteriori in modo tale che la scelta dei valori che vengono accettati è proporzionale alla densità di quei valori nella distribuzione a posteriori. Dal punto di vista algoritmico, questa procedura viene implementata confrontando il valore $r$ con un valore casuale estratto da una distribuzione uniforme tra zero e uno: $U(0, 1)$. Se $r > u \sim U(0, 1)$ allora accettiamo $\theta'_t$ e la catena si muove in quella nuova posizione, ovvero $\theta_t = \theta'_t$. Altrimenti $\theta_t = \theta_{t-1}$ e ripetiamo la procedura descritta sopra campionando un nuovo valore $\theta'_t$.
+- Utilizziamo  il valore $r$ per decidere se dobbiamo effettivamente muoverci nella nuova posizione $\theta'_t$, oppure se dobbiamo campionare un diverso valore $\theta'_t$. Il rapporto $r$ tra le ordinate delle due funzioni a posteriori si pone la seguente domanda: alla luce dei dati, risultano più plausibili i valori proposti del parametro, o quelli del passo precedente della catena? Se il rapporto è maggiore di 1 allora il nuovo valore proposto viene sempre accettato, in quanto la densità a posteriori calcolata con il nuovo valore proposto del parametro è maggiore della densità a posteriori calcolata con il valore del parametro definito nell'interazione precedente della catena. Altrimenti, decidiamo di tenere i valori proposti con una probabilità minore di 1, ovvero non sempre, ma soltanto con una probabilità definita dal rapporto $r$. Se $r$ è uguale a 0.10, ad esempio, questo significa che la densità a posteriori calcolata con il nuovo valore proposto del parametro è 10 volte più piccola della densità a posteriori calcolata con il valore del parametro dell'interazione precedente. In queste circostanze, il valore proposto del parametro verrà accettato solo nel 10% dei casi. L'effetto di questo algoritmo è quello di "campionare" la distribuzione a posteriori in modo tale che la probabilità di scegliere i valori "proposti" sia proporzionale alla densità di tali valori nella distribuzione a posteriori. Dal punto di vista algoritmico, questa procedura viene implementata confrontando il valore $r$ con un valore casuale estratto da una distribuzione uniforme tra zero e uno: $U(0, 1)$. Se $r > u \sim U(0, 1)$ allora accettiamo $\theta'_t$ e la catena si muove in quella nuova posizione, ovvero $\theta_t = \theta'_t$. Altrimenti $\theta_t = \theta_{t-1}$ e ripetiamo la procedura descritta sopra campionando un nuovo valore $\theta'_t$ (questa parte dell'algoritmo di Metropolis corrisponde alla scelta tra conchiglie e sassolini nella metafora del turista viaggiatore).
 
-Per fare un esempio concreto, consideriamo nuovamente i 30 pazienti esaminati da @zetsche_future_2019 e discussi nella sezione [Un esempio pratico](#sec:es_pratico_zetsche). Di essi, 23 hanno manifestato delle aspettative distorte negativamente sul loro stato d'animo futuro. Utilizzando l'algoritmo di Metropolis, ci poniamo il problema di ottenere la stima a posteriori di $\theta$ (probabilità di manifestare un'aspettativa distorta negativamente) dati i 23 "successi" in 30 prove e usando la stessa distribuzione a priori per $\theta$ che è stata usata nella sezione [Un esempio pratico (versione 2)](#sec:aspett_future_beta2_10). 
+Per fare un esempio concreto, consideriamo nuovamente i 30 pazienti esaminati da @zetsche_future_2019 e discussi nella sezione [Un esempio pratico](#sec:es_pratico_zetsche). Di essi, 23 hanno manifestato aspettative distorte negativamente sul loro stato d'animo futuro. Utilizzando l'algoritmo di Metropolis, ci poniamo il problema di ottenere la stima a posteriori di $\theta$ (probabilità di manifestare un'aspettativa distorta negativamente), dati i 23 "successi" in 30 prove. Useremo la stessa distribuzione a priori per $\theta$ che è stata usata nella sezione [Un esempio pratico (versione 2)](#sec:aspett_future_beta2_10). 
 
 
 ### Verosimiglianza 
 
-Per trovare la funzione di verosimiglianza usando i 30 valori di @zetsche_future_2019 definisco la funzione  `likelihood()` come indicato sotto. Tale funzione ritorna l'ordinata della funzione di verosimiglianza binomiale per ciascun valore del vettore `param` che viene dato in input alla funzione.
+Per trovare la verosimiglianza per i 30 valori di @zetsche_future_2019 definisco la funzione  `likelihood()` come indicato qui sotto. Tale funzione ritorna l'ordinata della verosimiglianza Binomiale per ciascun valore del vettore `param` che viene passato alla funzione.
 
 ```{r}
 x <- 23
@@ -270,7 +270,7 @@ likelihood <- function(param, x = 23, N = 30) {
   dbinom(x, N, param)
 }
 
-data.frame(x=param, y=likelihood(param)) %>% 
+data.frame(x = param, y = likelihood(param)) %>% 
   ggplot(aes(x, y)) +
   geom_line() +
   labs(
@@ -279,10 +279,9 @@ data.frame(x=param, y=likelihood(param)) %>%
   )
 ```
 
-
 ### Distribuzione a priori 
 
-Se abbiamo ragioni forti per avere delle aspettative rispetto al valore possibile della nostra stima, una distribuzione a priori *informativa* verrà combinata con le informazioni fornite dal campione per produrre una stima ``razionale'' a posteriori. Nel caso presente utilizziamo la distribuzione informativa presentata nella sezione [Un esempio pratico (versione 2)](#sec:aspett_future_beta2_10) unicamente a scopo esemplicativo, ovvero per fare in modo da "allontanare" la distribuzione a posteriori dalla distribuzione di verosimiglianza. 
+Supponiamo di avere delle credenze forti relativamente ai possibili valori del parametro e utilizziamo la distribuzione a priori informativa discussa nella sezione [Un esempio pratico (versione 2)](#sec:aspett_future_beta2_10). 
 
 ```{r}
 prior <- function(param, alpha = 2, beta = 10) {
@@ -290,7 +289,7 @@ prior <- function(param, alpha = 2, beta = 10) {
   dbeta(param, alpha, beta) # / sum(dbeta(param_vals, alpha, beta))
 }
 
-data.frame(x=param, y=prior(param)) %>% 
+data.frame(x = param, y = prior(param)) %>% 
   ggplot(aes(x, y)) +
   geom_line() +
   labs(
@@ -301,14 +300,14 @@ data.frame(x=param, y=prior(param)) %>%
 
 ### Distribuzione a posteriori 
 
-Abbiamo visto in precedenza come la funzione a posteriori è data dal prodotto della densità a priori e della verosimiglianza. 
+La funzione a posteriori è data dal prodotto della densità a priori e della verosimiglianza: 
 
 ```{r}
 posterior <- function(param) {
   likelihood(param) * prior(param)
 }
 
-data.frame(x=param, y=posterior(param)) %>% 
+data.frame(x = param, y = posterior(param)) %>% 
   ggplot(aes(x, y)) +
   geom_line() +
   labs(
@@ -317,11 +316,11 @@ data.frame(x=param, y=posterior(param)) %>%
   )
 ```
 
-Questo è il risultato che vogliamo ottenere utilizzando l'algoritmo di Metropolis.  Dalla figura precedente vediamo che la moda della distribuzione a posteriori è pari a circa 0.6. Questo è il valore più verosimile a posteriori per il parametro $\theta$.
+Questo è il risultato che vogliamo ottenere utilizzando l'algoritmo di Metropolis.  Dalla figura precedente vediamo che la moda della distribuzione a posteriori è pari a circa 0.6. Questo è il valore più verosimile a posteriori per il parametro $\theta$, se utilizziamo la distribuzione a priori indicata.
 
 ### Algoritmo di Metropolis 
 
-Implementiamo ora l'algoritmo di Metropolis. Utilizziamo una distribuzione proposta gaussiana. Il valore proposto da tale distribuzione ausiliaria corrisponde ad un valore selezionato a caso da una distribuzione gaussiana con media uguale al valore del parametro attualmente considerato nella catena e con una deviazione standard adeguata. In questo esempio, la deviazione standard è stata scelta empiricamente in modo tale da ottenere un tasso di accettazione sensato. È stato mostrato che un tasso di accettazione ottimale dovrebbe essere tra il 20% e il 30%. Se il tasso di accettazione è troppo grande, l'algoritmo esplora uno spazio troppo ristretto della distribuzione a posteriori. Il tasso di accettazione è influenzato dalla distribuzione proposta: in generale, tanto più la distribuzione proposta è simile alla distribuzione target, tanto più alto diventa il tasso di accettazione.
+Implementiamo ora l'algoritmo di Metropolis. Utilizziamo una distribuzione proposta Normale. Il valore proposto da tale distribuzione ausiliaria corrisponde ad un valore selezionato a caso da una distribuzione Normale con media uguale al valore del parametro attualmente considerato nella catena e una deviazione standard adeguata. In questo esempio, la deviazione standard è stata scelta empiricamente in modo tale da ottenere un tasso di accettazione sensato. È stato mostrato che il tasso di accettazione ottimale dovrebbe essere tra il 20% e il 30% (se il tasso di accettazione è troppo grande, l'algoritmo esplora uno spazio troppo ristretto della distribuzione a posteriori). Il tasso di accettazione dipende dalla distribuzione proposta: in generale, tanto più la distribuzione proposta è simile alla distribuzione target, tanto più alto diventa il tasso di accettazione.
 
 ```{r}
 proposal_distribution <- function(param) {
@@ -334,7 +333,7 @@ proposal_distribution <- function(param) {
 }
 ```
 
-In questa implementazione molto semplice della distribuzione proposta ho inserito dei controlli che fanno in modo che il valore proposto da tale distribuzione ausiliaria sia incluso nell'intervallo [0, 1]. Si possono trovare implementazioni migliori di quella fornita qui. Lo scopo è solo quello di spiegare la logica dell'algoritmo di Metropolis, non quella di proporre un'implementazione efficente dell'algoritmo. Per i nostri scopi, tale implementazione "ingenua" funziona, e tanto basta.
+In questa implementazione della distribuzione proposta ho inserito dei controlli che fanno in modo che il valore proposto sia incluso nell'intervallo [0, 1] -- si possono trovare implementazioni migliori di quella presentata qui. Il unico scopo è quello di spiegare la logica dell'algoritmo di Metropolis, non quello di proporre un'implementazione efficente dell'algoritmo. Tale implementazione "ingenua" funziona, e tanto basta.
 
 L'algoritmo di Metropolis è implementato nella funzione seguente:
 
@@ -364,7 +363,7 @@ niter <- 1e4
 chain <- run_metropolis_MCMC(startvalue, niter)
 ```
 
-Otteniamo così 4,000 valori della distribuzione a posteriori per il parametro $\theta$. Di questi valori, 2,000 vengono considerati burn-in e vengono esclusi. Ci restano dunque con 2,000 stime a posteriori di $\theta$.
+Mediante le istruzioni precedenti otteniamo 4,000 valori della distribuzione a posteriori per il parametro $\theta$. Di questi valori, 2,000 vengono considerati burn-in e vengono esclusi. Ci restano dunque con 2,000 stime a posteriori di $\theta$.
 
 Il tasso di accettazione è pari a
 
@@ -379,7 +378,7 @@ il che conferma che la deviazione standard che abbiamo scelto per la distribuzio
 Una figura che rappresenta la distribuzione a posteriori per $\theta$, insieme alla rappresentazione dei valori della catena di Markov realizzata dall'algoritmo di Metropolis, può essere prodotta mediante le seguenti istruzioni:
 
 ```{r}
-p1 <- data.frame(x=chain[-(1:burnIn)]) %>% 
+p1 <- data.frame(x = chain[-(1:burnIn)]) %>% 
   ggplot(aes(x)) +
   geom_histogram() +
   labs(
@@ -389,7 +388,7 @@ p1 <- data.frame(x=chain[-(1:burnIn)]) %>%
   ) +
   geom_vline(xintercept = mean(chain[-(1:burnIn)]))
 
-p2 <- data.frame(x=1:length(chain[-(1:burnIn)]), y=chain[-(1:burnIn)]) %>% 
+p2 <- data.frame(x = 1:length(chain[-(1:burnIn)]), y = chain[-(1:burnIn)]) %>% 
   ggplot(aes(x, y)) +
   geom_line() +
   labs(
