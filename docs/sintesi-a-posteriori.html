@@ -365,7 +365,7 @@ dell’area della distribuzione a posteriori in ciascuna coda è</p>
 <p>Se la distribuzione a posteriori è asimmetrica, non è sempre una buona
 idea utilizzare l’approccio descritto sopra per calcolare gli intervalli
 di credibilità. Un approccio alternativo è quello di calcolare
-<strong>l’intervallo piùpiccolo</strong> che contiene la massa di probabilità specificata –
+<strong>l’intervallo più piccolo</strong> che contiene la massa di probabilità specificata –
 questo non corrisponde necessariamente con l’intervallo che lascia la
 stessa massa di probabilità in ciascuna coda. Tale intervallo può essere
 trovato con la funzione <code><a href="https://rdrr.io/pkg/rethinking/man/HPDI.html">rethinking::HPDI()</a></code>:</p>
@@ -437,8 +437,7 @@ Specifichiamo anche una distribuzione a priori uniforme. Ricordiamo che una Beta
 <p>Infine, passiamo a i dati <code><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap()</a></code>. Avendo definito in questo modo il modello Bayesiano, la funzione <code><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap()</a></code> calcola la distribuzione a posteriori per il parametro <code>p</code> usando il metodo dell’approssimazione quadratica.</p>
 <p>Possiamo esaminare i risultati con <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">rethinking::precis()</a></code>:</p>
 <div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># display summary of quadratic approximation</span>
-<span class="fu">rethinking</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">globe_qa</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu">rethinking</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">globe_qa</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
 <span class="co">#&gt;        mean        sd      2.5%     97.5%</span>
 <span class="co">#&gt; p 0.6666665 0.1571338 0.3586898 0.9746431</span></code></pre></div>
 <p>Avendo specificato <code>prob = 0.95</code>, otteniamo l’intervallo di credibilità al 95%: [0.36, 0.97]. Si noti che l’intervallo di credibilità al 95% è enorme! Questo dipende dal fatto che abbiamo solo 9 osservazioni. La funzione <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis()</a></code> fornisce anche il valore della media a posteriori, ovvero 0.67.</p>
@@ -452,7 +451,7 @@ Specifichiamo anche una distribuzione a priori uniforme. Ricordiamo che una Beta
 <code class="sourceCode R"><span class="va">globe2_qa</span> <span class="op">&lt;-</span> <span class="fu">rethinking</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap</a></span><span class="op">(</span>
   <span class="fu"><a href="https://rdrr.io/r/base/list.html">alist</a></span><span class="op">(</span>
     <span class="va">W</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">W</span> <span class="op">+</span> <span class="va">L</span>, <span class="va">p</span><span class="op">)</span>, <span class="co"># binomial likelihood</span>
-    <span class="va">p</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span> <span class="co"># uniform prior</span>
+    <span class="va">p</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span>
     <span class="op">)</span>, 
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>W <span class="op">=</span> <span class="fl">6</span>, L <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> 
 <span class="op">)</span>
@@ -464,15 +463,15 @@ Specifichiamo anche una distribuzione a priori uniforme. Ricordiamo che una Beta
 <div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">globe3_qa</span> <span class="op">&lt;-</span> <span class="fu">rethinking</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap</a></span><span class="op">(</span>
   <span class="fu"><a href="https://rdrr.io/r/base/list.html">alist</a></span><span class="op">(</span>
-    <span class="va">W</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">W</span> <span class="op">+</span> <span class="va">L</span>, <span class="va">p</span><span class="op">)</span>, <span class="co"># binomial likelihood</span>
-    <span class="va">p</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span> <span class="co"># uniform prior</span>
+    <span class="va">W</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">W</span> <span class="op">+</span> <span class="va">L</span>, <span class="va">p</span><span class="op">)</span>,
+    <span class="va">p</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span>
     <span class="op">)</span>, 
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>W <span class="op">=</span> <span class="fl">600</span>, L <span class="op">=</span> <span class="fl">300</span><span class="op">)</span> 
 <span class="op">)</span>
 <span class="fu">rethinking</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">globe3_qa</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
 <span class="co">#&gt;        mean         sd      2.5%    97.5%</span>
 <span class="co">#&gt; p 0.6600658 0.01571109 0.6292726 0.690859</span></code></pre></div>
-<p>Si noti che la media a posteriori di 0.66 è quasi identica a quella che avevamo ottenuto con una distribuzione a priori uniforme (ovvero, 0.67). Ancora più importante è il fatto che, con un campione così grande, l’intervallo di credibilità al 95% diventa piccolissimo: [0.63, 0.69]. Questo vuol dire che, avendo a disposizione un campione sufficientemente grande, siamo piuttosto certi di quali sono i valori plausibili del parametro sconosciuto. E la risposta che troviamo non dipende dalle nostre credenze a priori, anche nel caso in cui, a priori, avevamo delle credenze molto forti (e molto lontane dalla realtà).</p>
+<p>Si noti che la media a posteriori di 0.66 è quasi identica a quella che avevamo ottenuto con una distribuzione a priori uniforme (ovvero, 0.67). Ancora più importante è il fatto che, con un campione così grande, l’intervallo di credibilità al 95% diventa molto piccolo: [0.63, 0.69]. Questo vuol dire che, avendo a disposizione un campione sufficientemente grande, siamo piuttosto certi di quali sono i valori plausibili del parametro sconosciuto. E la risposta che troviamo non dipende dalle nostre credenze a priori, anche nel caso di credenze a priori molto forti.</p>
 </div>
 <div id="conclusioni-12" class="section level2 unnumbered">
 <h2>Conclusioni<a class="anchor" aria-label="anchor" href="#conclusioni-12"><i class="fas fa-link"></i></a>
@@ -530,7 +529,7 @@ posteriori più usati: gli intervalli di credibilità e le stime puntuali.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-04-29 11:45:34.</p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-05-03 17:26:19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

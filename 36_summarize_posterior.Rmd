@@ -341,7 +341,7 @@ rethinking::PI(samples, prob = 0.95)
 Se la distribuzione a posteriori è asimmetrica, non è sempre una buona
 idea utilizzare l'approccio descritto sopra per calcolare gli intervalli
 di credibilità. Un approccio alternativo è quello di calcolare
-__l'intervallo piùpiccolo__ che contiene la massa di probabilità specificata --
+__l'intervallo più piccolo__ che contiene la massa di probabilità specificata --
 questo non corrisponde necessariamente con l'intervallo che lascia la
 stessa massa di probabilità in ciascuna coda. Tale intervallo può essere
 trovato con la funzione `rethinking::HPDI()`:
@@ -351,7 +351,6 @@ rethinking::HPDI(samples, prob = 0.95)
 ```
 
 Nel caso presente, il risultato di `HPDI()` è molto simile a quello trovato in precedenza, ma questo non è sempre vero.
-
 
 ### Stime puntuali della distribuzione a posteriori
 
@@ -426,7 +425,6 @@ Infine, passiamo a i dati `quap()`. Avendo definito in questo modo il modello Ba
 Possiamo esaminare i risultati con `rethinking::precis()`:
 
 ```{r}
-# display summary of quadratic approximation
 rethinking::precis(globe_qa, prob = 0.95)
 ```
 
@@ -444,7 +442,7 @@ plot(x, db, type = 'l')
 globe2_qa <- rethinking::quap(
   alist(
     W ~ dbinom(W + L, p), # binomial likelihood
-    p ~ dbeta(1, 10) # uniform prior
+    p ~ dbeta(1, 10)
     ), 
   data = list(W = 6, L = 3) 
 )
@@ -458,17 +456,15 @@ Se invece avessimo a disposizione un campione più grande, questo non si verific
 ```{r}
 globe3_qa <- rethinking::quap(
   alist(
-    W ~ dbinom(W + L, p), # binomial likelihood
-    p ~ dbeta(1, 10) # uniform prior
+    W ~ dbinom(W + L, p),
+    p ~ dbeta(1, 10)
     ), 
   data = list(W = 600, L = 300) 
 )
 rethinking::precis(globe3_qa, prob = 0.95)
 ```
 
-Si noti che la media a posteriori di 0.66 è quasi identica a quella che avevamo ottenuto con una distribuzione a priori uniforme (ovvero, 0.67). Ancora più importante è il fatto che, con un campione così grande, l'intervallo di credibilità al 95% diventa piccolissimo: [0.63, 0.69]. Questo vuol dire che, avendo a disposizione un campione sufficientemente grande, siamo piuttosto certi di quali sono i valori plausibili del parametro sconosciuto. E la risposta che troviamo non dipende dalle nostre credenze a priori, anche nel caso in cui, a priori, avevamo delle credenze molto forti (e molto lontane dalla realtà).
-
-
+Si noti che la media a posteriori di 0.66 è quasi identica a quella che avevamo ottenuto con una distribuzione a priori uniforme (ovvero, 0.67). Ancora più importante è il fatto che, con un campione così grande, l'intervallo di credibilità al 95% diventa molto piccolo: [0.63, 0.69]. Questo vuol dire che, avendo a disposizione un campione sufficientemente grande, siamo piuttosto certi di quali sono i valori plausibili del parametro sconosciuto. E la risposta che troviamo non dipende dalle nostre credenze a priori, anche nel caso di credenze a priori molto forti.
 
 ## Conclusioni {-}
 
