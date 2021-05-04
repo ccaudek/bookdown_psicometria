@@ -231,7 +231,8 @@ osservare “acqua”) assumendo, ad esempio, una distribuzione uniforme per
 il parametro di interesse. Le istruzioni R per ottenere tale risultato
 sono riportate qui sotto.</p>
 <div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Grid</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span>
+<span class="co"># Grid</span>
 <span class="va">n_points</span> <span class="op">&lt;-</span> <span class="fl">1e4</span>
 <span class="va">p_grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span>, length.out <span class="op">=</span> <span class="va">n_points</span><span class="op">)</span>
 <span class="co"># Prior</span>
@@ -259,18 +260,19 @@ valori nell’urna sono ben mescolati, il campione che verrà estratto avrà
 le stesse proporzioni della densità a posteriori. Pertanto, il nostro
 campione conterrà valori <span class="math inline">\(p\)</span> che si addenseranno sulla linea dei
 numeri reali in maniera proporzionale alla densità della distribuzione a
-posteriori. Questo risultato può essere ottenuto in R con una riga di
+posteriori. Questo risultato può essere ottenuto in <code>R</code> con una riga di
 codice:</p>
 <div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>
   <span class="va">p_grid</span>, prob <span class="op">=</span> <span class="va">posterior</span>, size <span class="op">=</span> <span class="fl">1e4</span>, replace <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.5767577 0.8921892 0.4632463 0.7049705 0.8475848 0.6337634</span></code></pre></div>
 <p>La funzione <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> effettua 10000 estrazioni casuali (con rimessa) dall’“urna”
 <code>p_grid</code>, associando a ciascuno dei valori in <code>p_grid</code> una probabilità
 di essere estratto che è proporzionale alla densità della distribuzione a
 posteriori; questo viene specificato dall’argomento <code>prob = posterior</code>.</p>
-<p>Il campione dei 10000 valori a posteriori del parametro così ottenuto è rappresentato
-nella figura seguente che riporta la densità della distribuzione a posteriori del parametro <span class="math inline">\(p\)</span> = probabilità di osservare “acqua” nell’esperimento casuale del mappamondo.</p>
+<p>Il campione dei 10000 valori a posteriori del parametro così ottenuto è rappresentato nella figura seguente che riporta la densità della distribuzione a posteriori del parametro <span class="math inline">\(p\)</span> = probabilità di osservare “acqua” nell’esperimento casuale del lancio del mappamondo.</p>
 <div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rethinking</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/dens.html">dens</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span> </code></pre></div>
 <div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-274-1.png" width="90%" style="display: block; margin: auto;"></div>
@@ -304,15 +306,10 @@ maggiore?</li>
 <p>Supponiamo che si voglia conoscere la probabilità a posteriori che la
 proporzione di acqua sia inferiore a 0.5. Supponiamo inoltre di volere
 rispondere a questa domanda avendo a disposizione i dati forniti dal
-metodo dell’approssimazione numerica. Ricordiamo che, mediante il metodo
-dell’approssimazione numerica, la distribuzione a posteriori è una
-distribuzione di <strong>massa di probabilità</strong>. Dunque, se viene usato il metodo
-dell’approssimazione numerica (<em>grid approximation</em>), la risposta alla
-domanda che ci siamo posti si trova sommando tutte le probabilità
-per le quali il valore del parametro è inferiore a 0.5:</p>
+metodo dell’approssimazione numerica, ovvero il vettore <code>samples</code> che costituisce un campione casuale della distribuzione a posteriori. Per rispondere alla domanda che ci siamo posti è sufficiente <strong>contare</strong> quanti elementi del vettore <code>samples</code> soddisfano la condizione logica che abbiamo enunciato:</p>
 <div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">samples</span> <span class="op">&lt;</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">/</span> <span class="va">n_points</span>
-<span class="co">#&gt; [1] 0.1696</span></code></pre></div>
+<span class="co">#&gt; [1] 0.1714</span></code></pre></div>
 <p>ovvero 0.17. Questo significa che l’area sottesa alla distribuzione a
 posteriori del parametro <span class="math inline">\(p\)</span> nell’intervallo <span class="math inline">\([-\infty, 0.5]\)</span> è circa
 uguale a 0.17.</p>
@@ -320,22 +317,12 @@ uguale a 0.17.</p>
 distribuzione a posteriori nell’intervallo compreso tra 0.5 e 0.75:</p>
 <div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">samples</span> <span class="op">&gt;</span> <span class="fl">0.5</span> <span class="op">&amp;</span> <span class="va">samples</span> <span class="op">&lt;</span> <span class="fl">0.75</span><span class="op">)</span> <span class="op">/</span> <span class="va">n_points</span>
-<span class="co">#&gt; [1] 0.6</span></code></pre></div>
-<p>ovvero 0.61. Quindi, possiamo dire che la probabilità a posteriori che il parametro
-assuma un valore compreso tra 0.5 e 0.75 è pari a circa a 0.61.</p>
+<span class="co">#&gt; [1] 0.6038</span></code></pre></div>
+<p>ovvero 0.6. Quindi, possiamo dire che la probabilità a posteriori che il parametro
+assuma un valore compreso tra 0.5 e 0.75 è circa a 0.6.</p>
 
 <div class="remark">
- <span class="remark"><em>Osservazione. </em></span> Negli esempi discussi sopra, il codice <code>R</code> utilizza la funzione <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>
-per contare quanti elementi del vettore <code>samples</code> soddisfano un criterio
-logico. Perché è possibile fare questo? Questo è possibile perché <code>R</code>
-converte internamente un’espressione logica, come <code>samples &lt; 0.5</code> in un
-vettore di risultati <code>TRUE</code> e <code>FALSE</code>, uno per ciascun elemento del
-vettore <code>samples</code>, indicando se tale elemento soddisfa o
-meno il criterio logico. Quando questo vettore di <code>TRUE</code> e <code>FALSE</code> viene
-sommato, <code>R</code> valuta ogni <code>TRUE</code> come 1 e ogni <code>FALSE</code> come 0. Quindi
-finisce per contare quanti valori <code>TRUE</code> sono presenti nel vettore, il
-che è la stessa cosa che contare il numero di elementi in <code>samples</code> che
-soddisfano il criterio logico.
+ <span class="remark"><em>Osservazione. </em></span> Negli esempi discussi sopra, il codice <code>R</code> utilizza la funzione <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> per contare quanti elementi del vettore <code>samples</code> soddisfano una data condizione logica. Infatti, <code>R</code> converte internamente un’espressione logica, come <code>samples &lt; 0.5</code> in un vettore di risultati <code>TRUE</code> e <code>FALSE</code>, uno per ciascun elemento del vettore <code>samples</code>, indicando se tale elemento soddisfa o meno la condizione logica che è stata enunciata. Quando il vettore di <code>TRUE</code> e <code>FALSE</code> viene sommato, <code>R</code> valuta ogni <code>TRUE</code> come 1 e ogni <code>FALSE</code> come 0. Facendo così, <code>R</code> conta quanti valori <code>TRUE</code> sono presenti nel vettore, ovvero restituisce il numero di elementi nel vettore <code>samples</code> che soddisfano la condizione logica indicata.
 </div>
 </div>
 <div id="quantili-della-distribuzione-a-posteriori" class="section level3" number="26.4.3">
@@ -350,18 +337,18 @@ numerica, può essere trovato nel modo seguente.</p>
 <div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">samples</span>, <span class="fl">0.8</span><span class="op">)</span>
 <span class="co">#&gt;       80% </span>
-<span class="co">#&gt; 0.7627763</span></code></pre></div>
+<span class="co">#&gt; 0.7616962</span></code></pre></div>
 <p>ovvero, 0.76. In maniera simile, l’intervallo che lascia il 2.5%
 dell’area della distribuzione a posteriori in ciascuna coda è</p>
 <div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">samples</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0.975</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;      2.5%     97.5% </span>
-<span class="co">#&gt; 0.3554230 0.8824907</span></code></pre></div>
+<span class="co">#&gt; 0.3524327 0.8754925</span></code></pre></div>
 <p>La funzione <code><a href="https://rdrr.io/pkg/rethinking/man/HPDI.html">rethinking::PI()</a></code> (<em>percentile intervals</em>) restituisce lo stesso risultato:</p>
 <div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rethinking</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/HPDI.html">PI</a></span><span class="op">(</span><span class="va">samples</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
 <span class="co">#&gt;        3%       98% </span>
-<span class="co">#&gt; 0.3554230 0.8824907</span></code></pre></div>
+<span class="co">#&gt; 0.3524327 0.8754925</span></code></pre></div>
 <p>Se la distribuzione a posteriori è asimmetrica, non è sempre una buona
 idea utilizzare l’approccio descritto sopra per calcolare gli intervalli
 di credibilità. Un approccio alternativo è quello di calcolare
@@ -372,7 +359,7 @@ trovato con la funzione <code><a href="https://rdrr.io/pkg/rethinking/man/HPDI.h
 <div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rethinking</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/HPDI.html">HPDI</a></span><span class="op">(</span><span class="va">samples</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
 <span class="co">#&gt;     |0.95     0.95| </span>
-<span class="co">#&gt; 0.3610361 0.8860886</span></code></pre></div>
+<span class="co">#&gt; 0.3658366 0.8851885</span></code></pre></div>
 <p>Nel caso presente, il risultato di <code><a href="https://rdrr.io/pkg/rethinking/man/HPDI.html">HPDI()</a></code> è molto simile a quello trovato in precedenza, ma questo non è sempre vero.</p>
 </div>
 <div id="stime-puntuali-della-distribuzione-a-posteriori" class="section level3" number="26.4.4">
@@ -401,13 +388,13 @@ essere ottenuta nel modo seguente:</p>
 ottiene utilizzando i campioni della distribuzione a posteriori:</p>
 <div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rethinking</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/chainmode.html">chainmode</a></span><span class="op">(</span><span class="va">samples</span>, adj <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.6966315</span></code></pre></div>
+<span class="co">#&gt; [1] 0.6107366</span></code></pre></div>
 <p>In alternativa, si possono calcolare la media o la mediana</p>
 <div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.6381123</span>
+<span class="co">#&gt; [1] 0.6366388</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.6453645</span></code></pre></div>
+<span class="co">#&gt; [1] 0.6456146</span></code></pre></div>
 <p>le quali, nel caso presente, sono entrambe uguali a 0.64.</p>
 </div>
 </div>
@@ -438,8 +425,8 @@ Specifichiamo anche una distribuzione a priori uniforme. Ricordiamo che una Beta
 <p>Possiamo esaminare i risultati con <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">rethinking::precis()</a></code>:</p>
 <div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rethinking</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">globe_qa</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
-<span class="co">#&gt;        mean        sd      2.5%     97.5%</span>
-<span class="co">#&gt; p 0.6666665 0.1571338 0.3586898 0.9746431</span></code></pre></div>
+<span class="co">#&gt;        mean        sd    2.5%     97.5%</span>
+<span class="co">#&gt; p 0.6666666 0.1571338 0.35869 0.9746432</span></code></pre></div>
 <p>Avendo specificato <code>prob = 0.95</code>, otteniamo l’intervallo di credibilità al 95%: [0.36, 0.97]. Si noti che l’intervallo di credibilità al 95% è enorme! Questo dipende dal fatto che abbiamo solo 9 osservazioni. La funzione <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis()</a></code> fornisce anche il valore della media a posteriori, ovvero 0.67.</p>
 <p>Consideriamo un’altra distribuzione a priori.</p>
 <div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
@@ -456,8 +443,8 @@ Specifichiamo anche una distribuzione a priori uniforme. Ricordiamo che una Beta
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>W <span class="op">=</span> <span class="fl">6</span>, L <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> 
 <span class="op">)</span>
 <span class="fu">rethinking</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">globe2_qa</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
-<span class="co">#&gt;        mean        sd      2.5%     97.5%</span>
-<span class="co">#&gt; p 0.3333338 0.1111104 0.1155614 0.5511063</span></code></pre></div>
+<span class="co">#&gt;        mean        sd      2.5%    97.5%</span>
+<span class="co">#&gt; p 0.3333336 0.1111104 0.1155612 0.551106</span></code></pre></div>
 <p>Con i dati presenti, una distribuzione a priori informativa ha un enorme effetto sulla distribuzione a posteriori.</p>
 <p>Se invece avessimo a disposizione un campione più grande, questo non si verificherebbe:</p>
 <div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
@@ -469,8 +456,8 @@ Specifichiamo anche una distribuzione a priori uniforme. Ricordiamo che una Beta
   data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>W <span class="op">=</span> <span class="fl">600</span>, L <span class="op">=</span> <span class="fl">300</span><span class="op">)</span> 
 <span class="op">)</span>
 <span class="fu">rethinking</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">globe3_qa</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
-<span class="co">#&gt;        mean         sd      2.5%    97.5%</span>
-<span class="co">#&gt; p 0.6600658 0.01571109 0.6292726 0.690859</span></code></pre></div>
+<span class="co">#&gt;       mean         sd      2.5%     97.5%</span>
+<span class="co">#&gt; p 0.660066 0.01571109 0.6292729 0.6908592</span></code></pre></div>
 <p>Si noti che la media a posteriori di 0.66 è quasi identica a quella che avevamo ottenuto con una distribuzione a priori uniforme (ovvero, 0.67). Ancora più importante è il fatto che, con un campione così grande, l’intervallo di credibilità al 95% diventa molto piccolo: [0.63, 0.69]. Questo vuol dire che, avendo a disposizione un campione sufficientemente grande, siamo piuttosto certi di quali sono i valori plausibili del parametro sconosciuto. E la risposta che troviamo non dipende dalle nostre credenze a priori, anche nel caso di credenze a priori molto forti.</p>
 </div>
 <div id="conclusioni-12" class="section level2 unnumbered">
@@ -529,7 +516,7 @@ posteriori più usati: gli intervalli di credibilità e le stime puntuali.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-05-03 17:26:19.</p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-05-04 07:17:20.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -151,12 +151,11 @@ campione casuale semplice consiste nel seguente insieme di 100 numeri:</p>
 <span class="co"># i valori QI sono numeri interi!</span>
 <span class="va">iq1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">iq1</span><span class="op">)</span> 
 <span class="va">iq1</span>
-<span class="co">#&gt;   [1]  92  97 123 101 102 126 107  81  90  93 118 105 106 102  92 127 107  71 111</span>
-<span class="co">#&gt;  [20]  93  84  97  85  89  91  75 113 102  83 119 106  96 113 113 112 110 108  99</span>
-<span class="co">#&gt;  [39]  95  94  90  97  81 133 118  83  94  93 112  99 104 100  99 121  97 123  77</span>
-<span class="co">#&gt;  [58] 109 102 103 106  92  95  85  84 105 107 101 114 131  93  65 115  89  90 115</span>
-<span class="co">#&gt;  [77]  96  82 103  98 100 106  94 110  97 105 116 107  95 117 115 108 104  91 120</span>
-<span class="co">#&gt;  [96]  91 133 123  96  85</span></code></pre></div>
+<span class="co">#&gt;   [1]  92  97 123 101 102 126 107  81  90  93 118 105 106 102  92 127 107  71 111  93</span>
+<span class="co">#&gt;  [21]  84  97  85  89  91  75 113 102  83 119 106  96 113 113 112 110 108  99  95  94</span>
+<span class="co">#&gt;  [41]  90  97  81 133 118  83  94  93 112  99 104 100  99 121  97 123  77 109 102 103</span>
+<span class="co">#&gt;  [61] 106  92  95  85  84 105 107 101 114 131  93  65 115  89  90 115  96  82 103  98</span>
+<span class="co">#&gt;  [81] 100 106  94 110  97 105 116 107  95 117 115 108 104  91 120  91 133 123  96  85</span></code></pre></div>
 <p>Tali valori sono stati trovati utilizzando la funzione <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> che genera numeri casuali estratti da una distribuzione normale. Nello specifico, abbiamo estratto 100 valori casuali dalla distribuzione normale con media 100 e deviazione standard 15. Se costruiamo un istogramma con i dati di un tale campione otteniamo il grafico mostrato nella figura <a href="introduzione-3.html#fig:histogramqi">19.4</a>.</p>
 <div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">iq1</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -279,7 +278,7 @@ Si noti che la Legge dei grandi numeri non può dirci se lo strumento o l’espe
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-05-03 17:26:19.</p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-05-04 07:17:20.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

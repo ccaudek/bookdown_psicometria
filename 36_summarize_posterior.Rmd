@@ -137,7 +137,6 @@ infinito di tali intervalli. Ciò significa che dobbiamo definire alcune
 condizioni aggiuntive per la scelta dell'intervallo di credibilità.
 Esaminiamo due delle condizioni aggiuntive più comuni.
 
-
 ### Intervallo di credibilità a code uguali 
 
 Un intervallo di credibilità *a code uguali* a livello $\alpha$ è un
@@ -151,7 +150,6 @@ figura successiva che fornisce una generica rappresentazione di una distribuzion
 ```{r intcredeq, fig.align = 'center', out.width = "80%", echo = FALSE}
 knitr::include_graphics(here::here("images", "intcredeq.png"))
 ```
-
 
 ### Intervallo di credibilità a densità a posteriori più alta 
 
@@ -169,7 +167,6 @@ $1 - \alpha$. Questo tipo di intervallo è il meno ampio che si possa
 determinare e inoltre se la distribuzione a posteriori è simmetrica
 unimodale l'intervallo di credibilità a densità a posteriori più alta
 corrisponde all'intervallo di credibilità a code uguali.
-
 
 ## Interpretazione 
 
@@ -196,6 +193,7 @@ il parametro di interesse. Le istruzioni R per ottenere tale risultato
 sono riportate qui sotto.
 
 ```{r}
+set.seed(12345)
 # Grid
 n_points <- 1e4
 p_grid <- seq(from = 0, to = 1, length.out = n_points)
@@ -227,13 +225,14 @@ valori nell'urna sono ben mescolati, il campione che verrà estratto avrà
 le stesse proporzioni della densità a posteriori. Pertanto, il nostro
 campione conterrà valori $p$ che si addenseranno sulla linea dei
 numeri reali in maniera proporzionale alla densità della distribuzione a
-posteriori. Questo risultato può essere ottenuto in R con una riga di
+posteriori. Questo risultato può essere ottenuto in `R` con una riga di
 codice:
 
 ```{r}
 samples <- sample(
   p_grid, prob = posterior, size = 1e4, replace = TRUE
 )
+head(samples)
 ```
 
 La funzione `sample()` effettua 10000 estrazioni casuali (con rimessa) dall'"urna"
@@ -241,13 +240,11 @@ La funzione `sample()` effettua 10000 estrazioni casuali (con rimessa) dall'"urn
 di essere estratto che è proporzionale alla densità della distribuzione a
 posteriori; questo viene specificato dall'argomento `prob = posterior`. 
 
-Il campione dei 10000 valori a posteriori del parametro così ottenuto è rappresentato
-nella figura seguente che riporta la densità della distribuzione a posteriori del parametro $p$ = probabilità di osservare "acqua" nell'esperimento casuale del mappamondo. 
+Il campione dei 10000 valori a posteriori del parametro così ottenuto è rappresentato nella figura seguente che riporta la densità della distribuzione a posteriori del parametro $p$ = probabilità di osservare "acqua" nell'esperimento casuale del lancio del mappamondo. 
 
 ```{r}
 rethinking::dens(samples) 
 ```
-
 
 ### Indici di sintesi della distribuzione a posteriori
 
@@ -274,12 +271,7 @@ ricerca. Ma le domande più comuni includono:
 Supponiamo che si voglia conoscere la probabilità a posteriori che la
 proporzione di acqua sia inferiore a 0.5. Supponiamo inoltre di volere
 rispondere a questa domanda avendo a disposizione i dati forniti dal
-metodo dell'approssimazione numerica. Ricordiamo che, mediante il metodo
-dell'approssimazione numerica, la distribuzione a posteriori è una
-distribuzione di __massa di probabilità__. Dunque, se viene usato il metodo
-dell'approssimazione numerica (_grid approximation_), la risposta alla
-domanda che ci siamo posti si trova sommando tutte le probabilità
-per le quali il valore del parametro è inferiore a 0.5:
+metodo dell'approssimazione numerica, ovvero il vettore `samples` che costituisce un campione casuale della distribuzione a posteriori. Per rispondere alla domanda che ci siamo posti è sufficiente __contare__ quanti elementi del vettore `samples` soddisfano la condizione logica che abbiamo enunciato:
 
 ```{r}
 sum(samples < 0.5) / n_points
@@ -295,22 +287,11 @@ distribuzione a posteriori nell'intervallo compreso tra 0.5 e 0.75:
 ```{r}
 sum(samples > 0.5 & samples < 0.75) / n_points
 ```
-ovvero 0.61. Quindi, possiamo dire che la probabilità a posteriori che il parametro
-assuma un valore compreso tra 0.5 e 0.75 è pari a circa a 0.61.
-
+ovvero 0.6. Quindi, possiamo dire che la probabilità a posteriori che il parametro
+assuma un valore compreso tra 0.5 e 0.75 è circa a 0.6.
 
 ```{remark}
-Negli esempi discussi sopra, il codice `R` utilizza la funzione `sum()`
-per contare quanti elementi del vettore `samples` soddisfano un criterio
-logico. Perché è possibile fare questo? Questo è possibile perché `R`
-converte internamente un'espressione logica, come `samples < 0.5` in un
-vettore di risultati `TRUE` e `FALSE`, uno per ciascun elemento del
-vettore `samples`, indicando se tale elemento soddisfa o
-meno il criterio logico. Quando questo vettore di `TRUE` e `FALSE` viene
-sommato, `R` valuta ogni `TRUE` come 1 e ogni `FALSE` come 0. Quindi
-finisce per contare quanti valori `TRUE` sono presenti nel vettore, il
-che è la stessa cosa che contare il numero di elementi in `samples` che
-soddisfano il criterio logico.
+Negli esempi discussi sopra, il codice `R` utilizza la funzione `sum()` per contare quanti elementi del vettore `samples` soddisfano una data condizione logica. Infatti, `R` converte internamente un'espressione logica, come `samples < 0.5` in un vettore di risultati `TRUE` e `FALSE`, uno per ciascun elemento del vettore `samples`, indicando se tale elemento soddisfa o meno la condizione logica enunciata. Quando il vettore di `TRUE` e `FALSE` viene sommato, `R` valuta ogni `TRUE` come 1 e ogni `FALSE` come 0. Facendo così, `R` conta quanti valori `TRUE` sono presenti nel vettore, ovvero restituisce il numero di elementi nel vettore `samples` che soddisfano la condizione logica indicata.
 ```
 
 ### Quantili della distribuzione a posteriori
