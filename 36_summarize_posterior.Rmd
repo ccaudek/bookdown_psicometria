@@ -212,21 +212,9 @@ unstd_posterior <- likelihood * prior
 posterior <- unstd_posterior / sum(unstd_posterior)
 ```
 
-Consideriamo ora la possibilità di estrarre 10000 valori del parametro
-$p$ casuali dalla distribuzione a posteriori. Immaginiamo che la
-distribuzione a posteriori sia un'urna che contiene i valori del
-parametro $p$ (ovvero, numeri come 0.107, 0.793, 0.534, 0.908, ecc.).
-All'interno dell'urna, ciascun valore è presente in proporzione alla sua
-densità a posteriori: per esempio, valori nell'intorno della moda 
-a posteriori sono molto più comuni di quelli che si trovano nelle code. 
+Chiediamoci ora come sia possibile riassumere la distribuzione a posteriori ottenuta mediante il metodo dell'approssimazione numerica. A tale scopo, estraiamo un campione casuale del parametro $p$ dalla distribuzione a posteriori, diciamo un campione di ampiezza pari a 10000. Per fare questo, immaginiamo che la distribuzione a posteriori sia un'urna che contiene i valori del parametro $p$ (ovvero, numeri come 0.107, 0.793, 0.534, 0.908, ecc.). All'interno dell'urna, ciascun valore è presente in proporzione alla sua densità a posteriori: per esempio, valori nell'intorno della moda a posteriori sono molto più comuni di quelli che si trovano nelle code. 
 
-Estrarremo ora 10000 valori da quest'urna. Se i
-valori nell'urna sono ben mescolati, il campione che verrà estratto avrà
-le stesse proporzioni della densità a posteriori. Pertanto, il nostro
-campione conterrà valori $p$ che si addenseranno sulla linea dei
-numeri reali in maniera proporzionale alla densità della distribuzione a
-posteriori. Questo risultato può essere ottenuto in `R` con una riga di
-codice:
+Se i valori nell'urna sono ben mescolati, il campione che verrà estratto dall'urna avrà le stesse proporzioni della densità a posteriori. Pertanto, il nostro campione conterrà valori $p$ che si addenseranno sulla linea dei numeri reali in maniera proporzionale alla densità della distribuzione a posteriori. Questo risultato può essere ottenuto in `R` con una riga di codice:
 
 ```{r}
 samples <- sample(
@@ -235,12 +223,11 @@ samples <- sample(
 head(samples)
 ```
 
-La funzione `sample()` effettua 10000 estrazioni casuali (con rimessa) dall'"urna"
-`p_grid`, associando a ciascuno dei valori in `p_grid` una probabilità
+La funzione `sample()` effettua `size = 10000` estrazioni casuali (con rimessa) dall'"urna" `p_grid`, associando a ciascuno dei valori `p_grid` una probabilità
 di essere estratto che è proporzionale alla densità della distribuzione a
 posteriori; questo viene specificato dall'argomento `prob = posterior`. 
 
-Il campione dei 10000 valori a posteriori del parametro così ottenuto è rappresentato nella figura seguente che riporta la densità della distribuzione a posteriori del parametro $p$ = probabilità di osservare "acqua" nell'esperimento casuale del lancio del mappamondo. 
+Il campione così ottenuto dei 10000 valori a posteriori del parametro $p$ è rappresentato nella figura seguente la quale illustra la densità della distribuzione a posteriori di $p$ = probabilità di osservare "acqua" nell'esperimento casuale del lancio del mappamondo. 
 
 ```{r}
 rethinking::dens(samples) 
@@ -248,12 +235,7 @@ rethinking::dens(samples)
 
 ### Indici di sintesi della distribuzione a posteriori
 
-Una volta trovata la distribuzione a posteriori prodotta
-dall'aggiornamento Bayesiano, il lavoro del modello statistico è
-terminato. Ma il lavoro del ricercatore è appena iniziato. È infatti
-necessario sintetizzare e interpretare la distribuzione a posteriori.
-Esattamente quali indici di sintesi usare dipende dallo scopo della
-ricerca. Ma le domande più comuni includono:
+Una volta trovata la distribuzione a posteriori prodotta dall'aggiornamento Bayesiano, il lavoro del modello statistico è terminato. Ma il lavoro del ricercatore è appena iniziato. È infatti necessario sintetizzare e interpretare la distribuzione a posteriori. Esattamente quali indici di sintesi usare dipende dallo scopo della ricerca. Ma le domande più comuni includono:
 
 -   Qual è la probabilità a posteriori che può essere associata a valori
     del parametro minori di un certo valore?
@@ -277,18 +259,12 @@ metodo dell'approssimazione numerica, ovvero il vettore `samples` che costituisc
 sum(samples < 0.5) / n_points
 ```
 
-ovvero 0.17. Questo significa che l'area sottesa alla distribuzione a
-posteriori del parametro $p$ nell'intervallo $[-\infty, 0.5]$ è circa
-uguale a 0.17.
-
-Usando lo stesso approccio è possibile trovare, ad esempio, l'area sottesa alla
-distribuzione a posteriori nell'intervallo compreso tra 0.5 e 0.75:
+ovvero 0.17. Questo significa che l'area sottesa alla distribuzione a posteriori del parametro $p$ nell'intervallo $[-\infty, 0.5]$ è circa uguale a 0.17. Usando lo stesso approccio è possibile trovare, ad esempio, l'area sottesa alla distribuzione a posteriori nell'intervallo compreso tra 0.5 e 0.75:
 
 ```{r}
 sum(samples > 0.5 & samples < 0.75) / n_points
 ```
-ovvero 0.6. Quindi, possiamo dire che la probabilità a posteriori che il parametro
-assuma un valore compreso tra 0.5 e 0.75 è circa a 0.6.
+ovvero 0.6. Quindi, possiamo dire che la probabilità a posteriori che il parametro assuma un valore compreso tra 0.5 e 0.75 è circa a 0.6.
 
 ```{remark}
 Negli esempi discussi sopra, il codice `R` utilizza la funzione `sum()` per contare quanti elementi del vettore `samples` soddisfano una data condizione logica. Infatti, `R` converte internamente un'espressione logica, come `samples < 0.5` in un vettore di risultati `TRUE` e `FALSE`, uno per ciascun elemento del vettore `samples`, indicando se tale elemento soddisfa o meno la condizione logica enunciata. Quando il vettore di `TRUE` e `FALSE` viene sommato, `R` valuta ogni `TRUE` come 1 e ogni `FALSE` come 0. Facendo così, `R` conta quanti valori `TRUE` sono presenti nel vettore, ovvero restituisce il numero di elementi nel vettore `samples` che soddisfano la condizione logica indicata.

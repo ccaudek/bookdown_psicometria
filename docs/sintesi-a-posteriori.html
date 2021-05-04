@@ -248,31 +248,18 @@ sono riportate qui sotto.</p>
 <span class="va">unstd_posterior</span> <span class="op">&lt;-</span> <span class="va">likelihood</span> <span class="op">*</span> <span class="va">prior</span>
 <span class="co"># Posterior distribution</span>
 <span class="va">posterior</span> <span class="op">&lt;-</span> <span class="va">unstd_posterior</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">unstd_posterior</span><span class="op">)</span></code></pre></div>
-<p>Consideriamo ora la possibilità di estrarre 10000 valori del parametro
-<span class="math inline">\(p\)</span> casuali dalla distribuzione a posteriori. Immaginiamo che la
-distribuzione a posteriori sia un’urna che contiene i valori del
-parametro <span class="math inline">\(p\)</span> (ovvero, numeri come 0.107, 0.793, 0.534, 0.908, ecc.).
-All’interno dell’urna, ciascun valore è presente in proporzione alla sua
-densità a posteriori: per esempio, valori nell’intorno della moda
-a posteriori sono molto più comuni di quelli che si trovano nelle code.</p>
-<p>Estrarremo ora 10000 valori da quest’urna. Se i
-valori nell’urna sono ben mescolati, il campione che verrà estratto avrà
-le stesse proporzioni della densità a posteriori. Pertanto, il nostro
-campione conterrà valori <span class="math inline">\(p\)</span> che si addenseranno sulla linea dei
-numeri reali in maniera proporzionale alla densità della distribuzione a
-posteriori. Questo risultato può essere ottenuto in <code>R</code> con una riga di
-codice:</p>
+<p>Chiediamoci ora come sia possibile riassumere la distribuzione a posteriori ottenuta mediante il metodo dell’approssimazione numerica. A tale scopo, estraiamo un campione casuale del parametro <span class="math inline">\(p\)</span> dalla distribuzione a posteriori, diciamo un campione di ampiezza pari a 10000. Per fare questo, immaginiamo che la distribuzione a posteriori sia un’urna che contiene i valori del parametro <span class="math inline">\(p\)</span> (ovvero, numeri come 0.107, 0.793, 0.534, 0.908, ecc.). All’interno dell’urna, ciascun valore è presente in proporzione alla sua densità a posteriori: per esempio, valori nell’intorno della moda a posteriori sono molto più comuni di quelli che si trovano nelle code.</p>
+<p>Se i valori nell’urna sono ben mescolati, il campione che verrà estratto dall’urna avrà le stesse proporzioni della densità a posteriori. Pertanto, il nostro campione conterrà valori <span class="math inline">\(p\)</span> che si addenseranno sulla linea dei numeri reali in maniera proporzionale alla densità della distribuzione a posteriori. Questo risultato può essere ottenuto in <code>R</code> con una riga di codice:</p>
 <div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>
   <span class="va">p_grid</span>, prob <span class="op">=</span> <span class="va">posterior</span>, size <span class="op">=</span> <span class="fl">1e4</span>, replace <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0.5767577 0.8921892 0.4632463 0.7049705 0.8475848 0.6337634</span></code></pre></div>
-<p>La funzione <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> effettua 10000 estrazioni casuali (con rimessa) dall’“urna”
-<code>p_grid</code>, associando a ciascuno dei valori in <code>p_grid</code> una probabilità
+<p>La funzione <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> effettua <code>size = 10000</code> estrazioni casuali (con rimessa) dall’“urna” <code>p_grid</code>, associando a ciascuno dei valori <code>p_grid</code> una probabilità
 di essere estratto che è proporzionale alla densità della distribuzione a
 posteriori; questo viene specificato dall’argomento <code>prob = posterior</code>.</p>
-<p>Il campione dei 10000 valori a posteriori del parametro così ottenuto è rappresentato nella figura seguente che riporta la densità della distribuzione a posteriori del parametro <span class="math inline">\(p\)</span> = probabilità di osservare “acqua” nell’esperimento casuale del lancio del mappamondo.</p>
+<p>Il campione così ottenuto dei 10000 valori a posteriori del parametro <span class="math inline">\(p\)</span> è rappresentato nella figura seguente la quale illustra la densità della distribuzione a posteriori di <span class="math inline">\(p\)</span> = probabilità di osservare “acqua” nell’esperimento casuale del lancio del mappamondo.</p>
 <div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rethinking</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/dens.html">dens</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span> </code></pre></div>
 <div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-274-1.png" width="90%" style="display: block; margin: auto;"></div>
@@ -280,12 +267,7 @@ posteriori; questo viene specificato dall’argomento <code>prob = posterior</co
 <h3>
 <span class="header-section-number">26.4.1</span> Indici di sintesi della distribuzione a posteriori<a class="anchor" aria-label="anchor" href="#indici-di-sintesi-della-distribuzione-a-posteriori"><i class="fas fa-link"></i></a>
 </h3>
-<p>Una volta trovata la distribuzione a posteriori prodotta
-dall’aggiornamento Bayesiano, il lavoro del modello statistico è
-terminato. Ma il lavoro del ricercatore è appena iniziato. È infatti
-necessario sintetizzare e interpretare la distribuzione a posteriori.
-Esattamente quali indici di sintesi usare dipende dallo scopo della
-ricerca. Ma le domande più comuni includono:</p>
+<p>Una volta trovata la distribuzione a posteriori prodotta dall’aggiornamento Bayesiano, il lavoro del modello statistico è terminato. Ma il lavoro del ricercatore è appena iniziato. È infatti necessario sintetizzare e interpretare la distribuzione a posteriori. Esattamente quali indici di sintesi usare dipende dallo scopo della ricerca. Ma le domande più comuni includono:</p>
 <ul>
 <li>Qual è la probabilità a posteriori che può essere associata a valori
 del parametro minori di un certo valore?</li>
@@ -310,19 +292,14 @@ metodo dell’approssimazione numerica, ovvero il vettore <code>samples</code> c
 <div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">samples</span> <span class="op">&lt;</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">/</span> <span class="va">n_points</span>
 <span class="co">#&gt; [1] 0.1714</span></code></pre></div>
-<p>ovvero 0.17. Questo significa che l’area sottesa alla distribuzione a
-posteriori del parametro <span class="math inline">\(p\)</span> nell’intervallo <span class="math inline">\([-\infty, 0.5]\)</span> è circa
-uguale a 0.17.</p>
-<p>Usando lo stesso approccio è possibile trovare, ad esempio, l’area sottesa alla
-distribuzione a posteriori nell’intervallo compreso tra 0.5 e 0.75:</p>
+<p>ovvero 0.17. Questo significa che l’area sottesa alla distribuzione a posteriori del parametro <span class="math inline">\(p\)</span> nell’intervallo <span class="math inline">\([-\infty, 0.5]\)</span> è circa uguale a 0.17. Usando lo stesso approccio è possibile trovare, ad esempio, l’area sottesa alla distribuzione a posteriori nell’intervallo compreso tra 0.5 e 0.75:</p>
 <div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">samples</span> <span class="op">&gt;</span> <span class="fl">0.5</span> <span class="op">&amp;</span> <span class="va">samples</span> <span class="op">&lt;</span> <span class="fl">0.75</span><span class="op">)</span> <span class="op">/</span> <span class="va">n_points</span>
 <span class="co">#&gt; [1] 0.6038</span></code></pre></div>
-<p>ovvero 0.6. Quindi, possiamo dire che la probabilità a posteriori che il parametro
-assuma un valore compreso tra 0.5 e 0.75 è circa a 0.6.</p>
+<p>ovvero 0.6. Quindi, possiamo dire che la probabilità a posteriori che il parametro assuma un valore compreso tra 0.5 e 0.75 è circa a 0.6.</p>
 
 <div class="remark">
- <span class="remark"><em>Osservazione. </em></span> Negli esempi discussi sopra, il codice <code>R</code> utilizza la funzione <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> per contare quanti elementi del vettore <code>samples</code> soddisfano una data condizione logica. Infatti, <code>R</code> converte internamente un’espressione logica, come <code>samples &lt; 0.5</code> in un vettore di risultati <code>TRUE</code> e <code>FALSE</code>, uno per ciascun elemento del vettore <code>samples</code>, indicando se tale elemento soddisfa o meno la condizione logica che è stata enunciata. Quando il vettore di <code>TRUE</code> e <code>FALSE</code> viene sommato, <code>R</code> valuta ogni <code>TRUE</code> come 1 e ogni <code>FALSE</code> come 0. Facendo così, <code>R</code> conta quanti valori <code>TRUE</code> sono presenti nel vettore, ovvero restituisce il numero di elementi nel vettore <code>samples</code> che soddisfano la condizione logica indicata.
+ <span class="remark"><em>Osservazione. </em></span> Negli esempi discussi sopra, il codice <code>R</code> utilizza la funzione <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> per contare quanti elementi del vettore <code>samples</code> soddisfano una data condizione logica. Infatti, <code>R</code> converte internamente un’espressione logica, come <code>samples &lt; 0.5</code> in un vettore di risultati <code>TRUE</code> e <code>FALSE</code>, uno per ciascun elemento del vettore <code>samples</code>, indicando se tale elemento soddisfa o meno la condizione logica enunciata. Quando il vettore di <code>TRUE</code> e <code>FALSE</code> viene sommato, <code>R</code> valuta ogni <code>TRUE</code> come 1 e ogni <code>FALSE</code> come 0. Facendo così, <code>R</code> conta quanti valori <code>TRUE</code> sono presenti nel vettore, ovvero restituisce il numero di elementi nel vettore <code>samples</code> che soddisfano la condizione logica indicata.
 </div>
 </div>
 <div id="quantili-della-distribuzione-a-posteriori" class="section level3" number="26.4.3">
@@ -516,7 +493,7 @@ posteriori più usati: gli intervalli di credibilità e le stime puntuali.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-05-04 07:17:20.</p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-05-04 08:13:03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
