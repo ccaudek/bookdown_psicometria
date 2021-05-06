@@ -217,9 +217,7 @@ Chiediamoci ora come sia possibile riassumere la distribuzione a posteriori otte
 Se i valori nell'urna sono ben mescolati, il campione che verrà estratto dall'urna avrà le stesse proporzioni della densità a posteriori. Pertanto, il nostro campione conterrà valori $p$ che si addenseranno sulla linea dei numeri reali in maniera proporzionale alla densità della distribuzione a posteriori. Questo risultato può essere ottenuto in `R` con una riga di codice:
 
 ```{r}
-samples <- sample(
-  p_grid, prob = posterior, size = 1e4, replace = TRUE
-)
+samples <- sample(p_grid, prob = posterior, size = 1e4, replace = TRUE)
 head(samples)
 ```
 

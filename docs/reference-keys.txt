@@ -106,11 +106,6 @@ eq:sdres
 fig:scompdev
 eq:rsq
 eq:propcoefminquad
-eq:mappamondomodel
-fig:postkids
-fig:kids2groups
-fig:kidsqimother
-fig:post2kids
 fig:sets-venn-diagrams
 fig:demorgan
 conoscenza-dichiarativa-e-imperativa
@@ -436,6 +431,10 @@ regressione-multipla
 assenza-di-interazione
 significato-dei-coefficienti-parziali-di-regressione
 interazione-tra-i-regressone
+modello-di-regressione-in-unottica-bayesiana
+predizione-lineare
+confronto-tra-inferenza-bayesiana-e-frequentista
+confronti-tra-medie
 il-modello-statistico-della-regressione-lineare
 la-funzione-lineare
 lerrore-di-misurazione
@@ -453,14 +452,3 @@ inferenza-sullassociazione-tra-x-e-y-nella-popolazione
 modello-statistico-di-regressione-lineare
 proprietà-degli-stimatori-dei-minimi-quadrati
 le-inferenze-sul-modello-di-regressione
-inferenza-bayesiana
-modello-binomiale
-il-presidente-trump-e-lidrossiclorochina
-modello-normale
-il-modello-normale-con-quap
-il-modello-di-regressione-lineare
-variabile-indipendente-dicotomica
-un-esempio-pratico
-inferenza-mediante-la-distribuzione-a-posteriori
-inferenza
-una-variabile-indipendente-continua

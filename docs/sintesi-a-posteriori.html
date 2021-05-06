@@ -70,8 +70,8 @@
 <li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">25</span> Stima della funzione a posteriori</a></li>
 <li><a class="active" href="sintesi-a-posteriori.html"><span class="header-section-number">26</span> Sintesi a posteriori</a></li>
 <li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">27</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">28</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">29</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="modello-di-regressione-in-unottica-bayesiana.html"><span class="header-section-number">28</span> Modello di regressione in un’ottica Bayesiana</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">29</span> Il modello statistico della regressione lineare</a></li>
 <li class="book-part">Informazioni generali</li>
 <li><a class="" href="citazione.html">Citazione</a></li>
 <li class="book-part">Appendici</li>
@@ -251,9 +251,7 @@ sono riportate qui sotto.</p>
 <p>Chiediamoci ora come sia possibile riassumere la distribuzione a posteriori ottenuta mediante il metodo dell’approssimazione numerica. A tale scopo, estraiamo un campione casuale del parametro <span class="math inline">\(p\)</span> dalla distribuzione a posteriori, diciamo un campione di ampiezza pari a 10000. Per fare questo, immaginiamo che la distribuzione a posteriori sia un’urna che contiene i valori del parametro <span class="math inline">\(p\)</span> (ovvero, numeri come 0.107, 0.793, 0.534, 0.908, ecc.). All’interno dell’urna, ciascun valore è presente in proporzione alla sua densità a posteriori: per esempio, valori nell’intorno della moda a posteriori sono molto più comuni di quelli che si trovano nelle code.</p>
 <p>Se i valori nell’urna sono ben mescolati, il campione che verrà estratto dall’urna avrà le stesse proporzioni della densità a posteriori. Pertanto, il nostro campione conterrà valori <span class="math inline">\(p\)</span> che si addenseranno sulla linea dei numeri reali in maniera proporzionale alla densità della distribuzione a posteriori. Questo risultato può essere ottenuto in <code>R</code> con una riga di codice:</p>
 <div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>
-  <span class="va">p_grid</span>, prob <span class="op">=</span> <span class="va">posterior</span>, size <span class="op">=</span> <span class="fl">1e4</span>, replace <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
+<code class="sourceCode R"><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">p_grid</span>, prob <span class="op">=</span> <span class="va">posterior</span>, size <span class="op">=</span> <span class="fl">1e4</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0.5767577 0.8921892 0.4632463 0.7049705 0.8475848 0.6337634</span></code></pre></div>
 <p>La funzione <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> effettua <code>size = 10000</code> estrazioni casuali (con rimessa) dall’“urna” <code>p_grid</code>, associando a ciascuno dei valori <code>p_grid</code> una probabilità
@@ -493,7 +491,7 @@ posteriori più usati: gli intervalli di credibilità e le stime puntuali.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-05-04 08:13:03.</p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-05-06 12:03:31.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

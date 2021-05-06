@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capitolo 28 Modello di regressione in un’ottica Bayesiana | Data Science per psicologi</title>
+<meta name="author" content="Corrado Caudek">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Data Science per psicologi</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Benvenuti</a></li>
+<li class="book-part">Obiettivi formativi</li>
+<li><a class="" href="conoscenza-dichiarativa-e-imperativa.html"><span class="header-section-number">1</span> Conoscenza dichiarativa e imperativa</a></li>
+<li class="book-part">Introduzione al linguaggio R</li>
+<li><a class="" href="introduzione.html">Introduzione</a></li>
+<li><a class="" href="chapter-pacchetti.html"><span class="header-section-number">2</span> Pacchetti</a></li>
+<li><a class="" href="chapter-install-r.html"><span class="header-section-number">3</span> Per cominciare</a></li>
+<li><a class="" href="chapter-sintassi.html"><span class="header-section-number">4</span> Sintassi di base</a></li>
+<li><a class="" href="chapter-strutture-dati.html"><span class="header-section-number">5</span> Strutture di dati</a></li>
+<li><a class="" href="chapter-strut-contr.html"><span class="header-section-number">6</span> Strutture di controllo</a></li>
+<li><a class="" href="chapter-input-output.html"><span class="header-section-number">7</span> Input/Output</a></li>
+<li><a class="" href="manipolazione-dei-dati.html"><span class="header-section-number">8</span> Manipolazione dei dati</a></li>
+<li><a class="" href="flusso-di-lavoro-riproducibile.html"><span class="header-section-number">9</span> Flusso di lavoro riproducibile</a></li>
+<li class="book-part">Statistica descrittiva ed analisi esplorativa dei dat̀i</li>
+<li><a class="" href="introduzione-1.html">Introduzione</a></li>
+<li><a class="" href="terminologia.html"><span class="header-section-number">10</span> Terminologia</a></li>
+<li><a class="" href="chapter-misurazione.html"><span class="header-section-number">11</span> La misurazione in psicologia</a></li>
+<li><a class="" href="chapter-descript.html"><span class="header-section-number">12</span> Statistica descrittiva</a></li>
+<li class="book-part">Nozioni di base</li>
+<li><a class="" href="introduzione-2.html">Introduzione</a></li>
+<li><a class="" href="il-calcolo-delle-probabilit%C3%A0.html"><span class="header-section-number">13</span> Il calcolo delle probabilità</a></li>
+<li><a class="" href="chapter-prob-cond.html"><span class="header-section-number">14</span> Probabilità condizionata</a></li>
+<li><a class="" href="chapter-teo-bayes.html"><span class="header-section-number">15</span> Il teorema di Bayes</a></li>
+<li><a class="" href="chapter-prob-congiunta.html"><span class="header-section-number">16</span> Probabilità congiunta</a></li>
+<li><a class="" href="la-distribuzione-binomiale.html"><span class="header-section-number">17</span> La distribuzione binomiale</a></li>
+<li><a class="" href="funzioni-di-densit%C3%A0-di-probabilit%C3%A0.html"><span class="header-section-number">18</span> Funzioni di densità di probabilità</a></li>
+<li><a class="" href="la-funzione-di-verosimiglianza.html"><span class="header-section-number">19</span> La funzione di verosimiglianza</a></li>
+<li class="book-part">Inferenza frequentista</li>
+<li><a class="" href="introduzione-3.html">Introduzione</a></li>
+<li><a class="" href="distribuzione-campionaria.html"><span class="header-section-number">20</span> Distribuzione campionaria</a></li>
+<li><a class="" href="significativit%C3%A0-statistica.html"><span class="header-section-number">21</span> Significatività statistica</a></li>
+<li><a class="" href="inferenza-sulle-medie.html"><span class="header-section-number">22</span> Inferenza sulle medie</a></li>
+<li><a class="" href="critiche-e-difese.html"><span class="header-section-number">23</span> Critiche e difese</a></li>
+<li class="book-part">Inferenza Bayesiana</li>
+<li><a class="" href="introduzione-4.html">Introduzione</a></li>
+<li><a class="" href="modellistica-bayesiana.html"><span class="header-section-number">24</span> Modellistica Bayesiana</a></li>
+<li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">25</span> Stima della funzione a posteriori</a></li>
+<li><a class="" href="sintesi-a-posteriori.html"><span class="header-section-number">26</span> Sintesi a posteriori</a></li>
+<li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">27</span> Una breve introduzione al modello di regressione</a></li>
+<li><a class="active" href="modello-di-regressione-in-unottica-bayesiana.html"><span class="header-section-number">28</span> Modello di regressione in un’ottica Bayesiana</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">29</span> Il modello statistico della regressione lineare</a></li>
+<li class="book-part">Informazioni generali</li>
+<li><a class="" href="citazione.html">Citazione</a></li>
+<li class="book-part">Appendici</li>
+<li><a class="" href="un-piccolo-ripasso.html">Un piccolo ripasso</a></li>
+<li><a class="" href="bibliografia.html">Bibliografia</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="modello-di-regressione-in-unottica-bayesiana" class="section level1" number="28">
+<h1>
+<span class="header-section-number">Capitolo 28</span> Modello di regressione in un’ottica Bayesiana<a class="anchor" aria-label="anchor" href="#modello-di-regressione-in-unottica-bayesiana"><i class="fas fa-link"></i></a>
+</h1>
+<p>Seguirò qui l’approccio di <span class="citation"><a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">McElreath</a> (<a href="bibliografia.html#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span> per riproporre i temi precedenti, relativi all’analisi di regressione, adottando un punto di vista Bayesiano.
+In generale possiamo dire che il problema è quello di descrivere, mediante un modello statistico, il modo in cui una variabile, chiamata variabile dipendente, è associata a qualche altra variabile, chiamata variabile indipendente. Se la variabile indipendente è statisticamente associata con la variabile dipendente, allora possiamo usarla per prevedere il valore della variabile dipendente.</p>
+<p>Per fare un esempio, userò qui i dati del primo parziale di Psicometria dell’AA 2020/2021. C’erano 30 quiz e a ciascuno gli studenti potevano dare una risposta corretta (codificata con 1) oppure no. In questo esempio ho considerato le risposte non date come risposte non corrette (codificate con 0).
+Come variabile dipendente userò una misura di prestazione nel compito. La misura più ovvia è il punteggio totale (la somma delle riposte corrette). Qui ho usato un indice migliore, ovvero il livello di abilità di ciascun rispondente calcolato con il modello di Rasch. È una misura simile al punteggio totale, ma meno rumorosa. L’ho chiamata <code>theta</code>.
+Come variabile indipendente userò il tempo di consegna del compito. Sembra infatti sensato chiedersi se, conscendo il tempo impiegato per completare il compito, sia possibile prevedere il voto all’esame. Per facilitare l’interpretazione ho trasformato il tempo di consegna (in minuti) dividendolo per 6. In questa nuova scala, dunque, l’unità di misura (il valore 1) corrisponde a 10 minuti.</p>
+<p>Carico i pacchetti che mi servono:</p>
+<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://here.r-lib.org/">"here"</a></span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://docs.ropensci.org/skimr/">"skimr"</a></span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"rethinking"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>show.signif.stars <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<p>Leggo i dati:</p>
+<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">rio</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"psicometria_2021.txt"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>Anche se quella considerata qui non è una domanda scientifica molto interessante, la mia motivazione è quella di descrivere il meccanismo della stima Bayesiana dell’associazione tra due variabili.</p>
+<p>Uso la funzione <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis()</a></code> del pacchetto <code>rethinking</code> per dare un’occhiata ai dati:</p>
+<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">rethinking</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span>
+<span class="co">#&gt;                      mean        sd      5.5%      94.5%      histogram</span>
+<span class="co">#&gt; is_female    7.165775e-01 0.4518695  0.000000  1.0000000     ▂▁▁▁▁▁▁▁▁▇</span>
+<span class="co">#&gt; theta        3.781598e-02 1.3522999 -1.665091  2.4576095     ▁▁▁▃▇▇▂▁▁▁</span>
+<span class="co">#&gt; tot_score    6.087344e-01 0.2029378  0.300000  0.9333333     ▁▁▂▅▅▇▇▇▃▂</span>
+<span class="co">#&gt; t            7.400535e+01 7.6210640 60.000000 79.0000000     ▁▁▁▁▁▁▁▁▂▇</span>
+<span class="co">#&gt; time         1.233422e+01 1.2701773 10.000000 13.1666667      ▁▁▁▁▁▁▂▇▃</span>
+<span class="co">#&gt; proficiency -8.208280e-17 1.0000000 -1.259267  1.7893911 ▁▁▁▁▂▇▇▅▃▂▁▁▁▁</span></code></pre></div>
+<p>Esamino più in dettaglio la variabile <code>theta</code> (l’abilità degli studenti):</p>
+<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">theta</span><span class="op">)</span>
+<span class="co">#&gt;     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. </span>
+<span class="co">#&gt; -4.08875 -0.81942 -0.16520  0.03782  0.78657  4.48244</span></code></pre></div>
+<p>Creo un diagramma a dispersione:</p>
+<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/jitter.html">jitter</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">time</span><span class="op">)</span>, 
+  <span class="fu"><a href="https://rdrr.io/r/base/jitter.html">jitter</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">theta</span><span class="op">)</span>,
+  xlab <span class="op">=</span> <span class="st">"Tempo di completamento (in unità di 10 minuti)"</span>,
+  ylab <span class="op">=</span> <span class="st">"Abilità"</span>,
+  main <span class="op">=</span> <span class="st">"Psicometria: primo parziale AA 2020/2021"</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">theta</span> <span class="op">~</span> <span class="va">time</span>, data <span class="op">=</span> <span class="va">dat</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure">
+<img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-335-1.png" width="90%" style="display: block; margin: auto;">
+Il diagramma a dispersione indica che i dati sono molto rumorosi. Sembra però esserci una relazione tra le due varibili: a tempi di consegna maggiori sono associali livelli più bassi dell’abilità dei rispondenti. Guardando il grafico possiamo dunque pensare che la conoscenza del tempo di consegna possa contribuire alla predizione del livello di abilità degli studenti.</div>
+<p>Poniamoci dunque il problema di utilizzare il meccanismo dell’aggiornamento Bayesiano per descrivere l’associazione tra queste due variabili. Iniziamo in un modo semplice e poniamoci semplicemente il problema di implementare il meccanismo dell’aggiornamento Bayesiano nel quale combiniamo una distribuzione a priori per un parametro con la verosimiglianza, così da ottenere la distribuzione a posteriori. Applichiamo dunque l’aggiornamento Bayesiano alla nostra variabile dipendente: <code>theta</code>.</p>
+<p>Posso descrivere il meccanismo dell’aggiornamento Bayesiano per la variabile <code>theta</code> nel modo seguente:</p>
+<p><span class="math display">\[
+\text{proficiency} \sim N(\mu, \sigma)\\
+\mu \sim N(0, 2.5)\\
+\sigma \sim Unif(0, 5)
+\]</span>
+La verosimiglianza ci dice che <span class="math inline">\(\theta\)</span> si distribuisce in maniera Normale. La distribuzione a priori per il parametro <span class="math inline">\(\mu\)</span> è centrata sullo 0 con una deviazione standard sufficiente da coprire tutta la gamma possibile di valori osservati.</p>
+<p>Per <span class="math inline">\(\sigma\)</span> ho scelto unba distribuzione a priori piuttosto grande, alla luce delle informazioni fornite dal campione:</p>
+<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">theta</span><span class="op">)</span>
+<span class="co">#&gt; [1] 1.3523</span></code></pre></div>
+<p>Utilizzo ora la sintassi di <code>rethinking</code> per specificare l’aggiornamento Bayesiano:</p>
+<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">flist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">alist</a></span><span class="op">(</span>
+    <span class="va">theta</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">mu</span>, <span class="va">sigma</span><span class="op">)</span>,
+    <span class="va">mu</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2.5</span><span class="op">)</span> ,
+    <span class="va">sigma</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">dunif</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>Adatto il modello ai dati usando l’approssimazione quadratica per calcolare la distribuzione a posteriori:</p>
+<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap</a></span><span class="op">(</span><span class="va">flist</span>, data <span class="op">=</span> <span class="va">dat</span><span class="op">)</span></code></pre></div>
+<p>Posso riassumere la distribuzione a posteriori con la funzione <code><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis()</a></code>:</p>
+<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">m</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
+<span class="co">#&gt;             mean         sd       2.5%     97.5%</span>
+<span class="co">#&gt; mu    0.03775628 0.09854847 -0.1553952 0.2309077</span>
+<span class="co">#&gt; sigma 1.34867829 0.06973824  1.2119938 1.4853627</span></code></pre></div>
+<p>Questi numeri forniscono i risultati dell’approssimazione quadratica per la distribuzione marginale a posteriori di ciascun parametro. Ciò significa che i valori più plausibile a posteriori per <span class="math inline">\(\mu\)</span>, alla luce dei dati e considerata la distribuzione a priori che è stata specificata, è data da una distribuzione gaussiana con media 0.04 e deviazione standard 0.10. Per il parametro <span class="math inline">\(\mu\)</span> abbiamo anche l’intervallo di credibilità al 95%. Il valore assoluto di questi numeri non ha molta importanza, in quanto tali valori andrebbero confrontati con il livello di difficoltà degli item del quiz, nel contesto della teoria dei modelli di risposta agli item – ma questo non è lo scopo della discussione presente. Lo scopo è quello di implementare l’aggiornamento Bayesiano utilizzando le funzioni di <code>rethinking</code> e le istruzioni <code>R</code> precedenti mostrano come possiamo ottenere questo risultato.</p>
+<div id="predizione-lineare" class="section level2" number="28.1">
+<h2>
+<span class="header-section-number">28.1</span> Predizione lineare<a class="anchor" aria-label="anchor" href="#predizione-lineare"><i class="fas fa-link"></i></a>
+</h2>
+<p>Quello che abbiamo fatto finora è stato specificare un modello statistico Normale per la distribuzione dei valori di abilità degli studenti di Psicometria. Ora ci porremo il problema di cercare di predire il livello di abilità degli studenti usando il tempo di consegna del primo paziale di Psicometria. Come facciamo ad introdurre un predittore della nostra variabile dipendente (l’abilità, ovvero <span class="math inline">\(\theta\)</span>) nel modello statistico che abbiamo specificato in precedenza?</p>
+<p>La rispsta alla domanda precedente si ottiene specificando la media <span class="math inline">\(\mu\)</span> della distribuzione Normale come funzione lineare del predittore di interesse, ovvero <code>time</code> (il tempo che è stato necessario per completare la prova). Ovvero,</p>
+<p><span class="math display">\[
+\mu = E(\theta) = a + b \times \text{time}.
+\]</span>
+Quello che farà l’aggiornamento Bayesiano sarà di calcolare la distribuzione a posteriori di questa combinazione lineare. Ovvero, prenderà un campione casuale dalla distribuzione a posteriori ottenuta esaminando tutti i possibili valori dei parametri <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>, e pesando la plausibilità dei valori possibili dei parametri mediante la logica dell’aggiornamento Bayesiano. In altri termini, l’aggiornamento Bayesiano si chiede: “considera tutte le rette possili che descrivono l’associazione tra abilità e tempo di consegna e poi ordina tali rette di regression in funzione della loro plausibilità, alla luce dei dati.” La risposta che otteniamo sono le distribuzioni a posteriori dei parametri <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> che individuano la retta che meglio descrive l’associazione tra abilità e tempo di consegna, alla luce dei dati e delle distribuzioni a priori dei parametri che sono state scelte.</p>
+<p>Possiamo scrivere il modello di regressione in questo modo:</p>
+<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">flist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">alist</a></span><span class="op">(</span>
+  <span class="va">theta</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">mu</span>, <span class="va">sigma</span><span class="op">)</span>,
+  <span class="va">mu</span> <span class="op">&lt;-</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">*</span> <span class="va">time</span>,
+  <span class="va">a</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span>,
+  <span class="va">b</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span>,
+  <span class="va">sigma</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">dunif</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>La verosimiglianza è specificata come abbiamo fatto in precedenza: diciamo che l’abilità di ciascun rispondente è un’osservazione che proviene da una distribuzione Normale di parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span>.
+La novità è che il valore atteso di tale distribuzione Normale non è più costante, com’era in precedenza, ma è <em>deterministicamente</em> associato ad un’altra variabile, ovvero <code>time</code>. Questo significa che, per il modello che specifichiamo, al variare di <code>time</code> varia anche il valore atteso di <code>theta</code>. E questa relazione non ha nulla di aleatorio: è una relazione deterministica. Geometricamente, è una retta.
+L’equazione di una retta dipende da due parametri, <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>. Quindi dobbiamo specificare le distribuzioni a priori per i valori possibili di questi parametri. Dico che dobbiamo specificare le distribuzioni a priori per questi parametri perché questi sono i parametri che non conosciamo, sono i parametri che vogliamo trovare, perché sono quelli che descrivono la relazione tra le variabili di interesse, <code>theta</code> e <code>time</code>. Ci chiediamo quali sono i parametri della retta che meglio predice <code>theta</code> conoscendo <code>time</code>.</p>
+<p>Come facciamo a determinare la distribuzione a priori per <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>? È possibile usare strategie diverse. Qui uso delle distribuzioni a priori “vagamente informative.” Ovvero, distribuzioni a priori che includano i valori possibili del parametro, ma tali per cui non forzeranno la distribuzione a posteriori in una direzione o un’altra. Sono distribuzioni a priori “deboli,” che hanno una scarsissima influenza sulla distribuzione a posteriori. Assomigliano a distribuzioni uniformi, con l’unica differenza che escludono i valori veramente “impossibili” dei parametri.</p>
+<p>Adatto dunque il modello così costruito ai dati osservati:</p>
+<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap</a></span><span class="op">(</span>
+  <span class="va">flist</span>,
+  data <span class="op">=</span> <span class="va">dat</span>
+<span class="op">)</span></code></pre></div>
+<p>Estraggo un campione casuale dalla distribuzione a posteriori:</p>
+<div class="sourceCode" id="cb312"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">post</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/extract.samples.html">extract.samples</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span>
+<span class="va">post</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>
+<span class="co">#&gt;          a          b    sigma</span>
+<span class="co">#&gt; 1 3.655263 -0.3015319 1.208449</span>
+<span class="co">#&gt; 2 3.266525 -0.2532797 1.290998</span>
+<span class="co">#&gt; 3 3.490181 -0.2712000 1.275523</span>
+<span class="co">#&gt; 4 5.633546 -0.4518713 1.269671</span>
+<span class="co">#&gt; 5 4.141387 -0.3274958 1.296369</span></code></pre></div>
+<p>Produco una rappresentazione grafica della distribuzione a posteriori per i tre parametri:</p>
+<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/dens.html">dens</a></span><span class="op">(</span>
+  <span class="va">post</span><span class="op">$</span><span class="va">a</span>, lwd <span class="op">=</span> <span class="fl">2.5</span>, xlab <span class="op">=</span> <span class="st">""</span>,
+  ylab <span class="op">=</span> <span class="st">"Densità"</span>, main <span class="op">=</span> <span class="st">"p(a | x, y)"</span>,
+  cex.lab <span class="op">=</span> <span class="fl">1.5</span>, cex.axis <span class="op">=</span> <span class="fl">1.35</span>, cex.main <span class="op">=</span> <span class="fl">1.5</span>,
+  cex.sub <span class="op">=</span> <span class="fl">1.5</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/dens.html">dens</a></span><span class="op">(</span>
+  <span class="va">post</span><span class="op">$</span><span class="va">b</span>, lwd <span class="op">=</span> <span class="fl">2.5</span>, xlab <span class="op">=</span> <span class="st">""</span>,
+  ylab <span class="op">=</span> <span class="st">""</span>, main <span class="op">=</span> <span class="st">"p(b | x, y)"</span>,
+  cex.lab <span class="op">=</span> <span class="fl">1.5</span>, cex.axis <span class="op">=</span> <span class="fl">1.35</span>, cex.main <span class="op">=</span> <span class="fl">1.5</span>,
+  cex.sub <span class="op">=</span> <span class="fl">1.5</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/dens.html">dens</a></span><span class="op">(</span>
+  <span class="va">post</span><span class="op">$</span><span class="va">sigma</span>, lwd <span class="op">=</span> <span class="fl">2.5</span>, xlab <span class="op">=</span> <span class="st">""</span>,
+  ylab <span class="op">=</span> <span class="st">""</span>, main <span class="op">=</span> <span class="st">"p(sigma | x, y)"</span>,
+  cex.lab <span class="op">=</span> <span class="fl">1.5</span>, cex.axis <span class="op">=</span> <span class="fl">1.35</span>, cex.main <span class="op">=</span> <span class="fl">1.5</span>,
+  cex.sub <span class="op">=</span> <span class="fl">1.5</span>
+<span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure">
+<img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-343-1.png" width="90%" style="display: block; margin: auto;">
+Riassumo la distribuzione a posteriori di ciascun parametro con l’intervallo di credibilità al 95%:</div>
+<div class="sourceCode" id="cb314"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">m1</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
+<span class="co">#&gt;             mean         sd       2.5%      97.5%</span>
+<span class="co">#&gt; a      4.0192583 0.91521934  2.2254613  5.8130552</span>
+<span class="co">#&gt; b     -0.3228243 0.07381656 -0.4675021 -0.1781465</span>
+<span class="co">#&gt; sigma  1.2840762 0.06639838  1.1539377  1.4142146</span></code></pre></div>
+<p>Adesso rifaccio la stessa analisi utilizzando l’approccio frequentista, ovvero usando solo la verosimiglianza e ignorando le distribuzioni a priori. Dato che le distribuzioni a priori per i parametri sono debolmente informative, non mi aspetto grandi differenze rispetto ai risultati precedenti.</p>
+<p>La soluzione che utilizza solo la verosimiglianza, ovvero la soluzione di massima verosimiglianza, si ottiene con la funzione <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>:</p>
+<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">theta</span> <span class="op">~</span> <span class="va">time</span>, <span class="va">dat</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; lm(formula = theta ~ time, data = dat)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residuals:</span>
+<span class="co">#&gt;     Min      1Q  Median      3Q     Max </span>
+<span class="co">#&gt; -4.8865 -0.7484  0.0137  0.6409  4.1730 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)</span>
+<span class="co">#&gt; (Intercept)  4.05353    0.92405   4.387 1.93e-05</span>
+<span class="co">#&gt; time        -0.32557    0.07453  -4.369 2.08e-05</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residual standard error: 1.291 on 185 degrees of freedom</span>
+<span class="co">#&gt; Multiple R-squared:  0.09352,    Adjusted R-squared:  0.08862 </span>
+<span class="co">#&gt; F-statistic: 19.09 on 1 and 185 DF,  p-value: 2.08e-05</span></code></pre></div>
+<p>Il risultato è conforme alle nostre aspettative: i due approcci producono valori quasi identici per i parametri <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> e <span class="math inline">\(\widehat{sigma}\)</span>.</p>
+<p>Il parametro <span class="math inline">\(b\)</span> ci dice che, all’aumentare di un’unità di tempo (qui, 10 minuti), il valore atteso dell’abilità dello studente diminuisce di -0.32 punti.</p>
+<p>La deviazione standard dell’abilità è</p>
+<div class="sourceCode" id="cb316"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">theta</span><span class="op">)</span>
+<span class="co">#&gt; [1] 1.3523</span></code></pre></div>
+<p>Per dare un significato a <span class="math inline">\(b\)</span> possiamo dire che è pari a</p>
+<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">0.32557</span> <span class="op">/</span> <span class="fl">1.3523</span> 
+<span class="co">#&gt; [1] 0.2407528</span></code></pre></div>
+<p>circa un quarto di deviazione standard della distribuzione dei punteggi di abilità.</p>
+<p>La gamma di variazione della variabile tempo di consegna è</p>
+<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">time</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">time</span><span class="op">)</span>
+<span class="co">#&gt; [1] 8.166667</span></code></pre></div>
+<p>Quindi, la variazione attesa del punteggio di abilità, in base alla predizione derivante dal tempo di consegna è pari a</p>
+<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">0.32557</span> <span class="op">*</span> <span class="fl">8.166667</span>
+<span class="co">#&gt; [1] 2.658822</span></code></pre></div>
+<p>Considerato che la gamma di variazione dell’abilità è</p>
+<div class="sourceCode" id="cb320"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">theta</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">theta</span><span class="op">)</span>
+<span class="co">#&gt; [1] 8.571182</span></code></pre></div>
+<p>questo significa che la capacità predittiva del tempo di consegna è ben altro che trascurabile. Questo è illustrato nel grafico seguente.</p>
+<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/jitter.html">jitter</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">time</span><span class="op">)</span>, 
+  <span class="fu"><a href="https://rdrr.io/r/base/jitter.html">jitter</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">theta</span><span class="op">)</span>,
+  xlab <span class="op">=</span> <span class="st">"Tempo di completamento (in unità di 10 minuti)"</span>,
+  ylab <span class="op">=</span> <span class="st">"Abilità"</span>,
+  main <span class="op">=</span> <span class="st">"Psicometria: primo parziale AA 2020/2021"</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span>
+
+<span class="va">fit_val</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span>, <span class="va">x</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">*</span> <span class="va">x</span>
+<span class="op">}</span>
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/arrows.html">arrows</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fu">fit_val</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="fl">8</span><span class="op">)</span>,
+       <span class="fl">8</span>, <span class="fu">fit_val</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="fl">8</span><span class="op">)</span>,
+       length <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/arrows.html">arrows</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fu">fit_val</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="fl">6</span><span class="op">)</span>,
+       <span class="fl">6</span>, <span class="fu">fit_val</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="fl">8</span><span class="op">)</span>,
+       length <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-351-1.png" width="90%" style="display: block; margin: auto;"></div>
+<p>Nel modello statistico precedente, il coefficiente <span class="math inline">\(a\)</span> è di scarso interesse: ci dice qual è il valore atteso dell’abilità per tempi di consegna pari a zero – ovviamente una situazione implausibile.</p>
+<p>Possiamo migliorare il modello statistico nel modo seguente. Possiamo “centrare” il predittore, ovvero esprimerlo come differenze rispetto alla media. Che conseguenza avrà questa trasformazione dei dati sul coefficiente <span class="math inline">\(b\)</span>? Ovviamente nessuna, perché ci siamo limitati a traslare rigidamente la nube di punti nel diagramma a dispersione in modo tale che la media della variabile sull’asse <span class="math inline">\(x\)</span> diventi uguale a zero. Dato che la trasformazione dei dati corrisponde ad una traslazione rigida della nube di punti, la pendenza della retta di regressione non cambierà.</p>
+<p>Invece cambierà l’intercetta. Dopo avere centrato la variabile <span class="math inline">\(x\)</span>, l’intercetta corrisponderà al valore atteso della variabile dipendente in corrispondenza della media del predittore. Questa è un’informazione a cui possiamo essere interessati e quindi assegna un senso al coefficiente <span class="math inline">\(a\)</span>. Questa interpretazione è possibile perché la retta di regressione (dei minimi quadrati) passa per il punto <span class="math inline">\((\bar{x}, \bar{y})\)</span>. Se la retta di regressione passa per il punto indicato, ne segue che il parametro <span class="math inline">\(a\)</span> avrà l’interpretazione fornita sopra.</p>
+<p>Calcolo la media di <code>time</code>:</p>
+<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat</span><span class="op">$</span><span class="va">time_bar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">time</span><span class="op">)</span></code></pre></div>
+<p>Il modello statistico diventa:</p>
+<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">formula</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">alist</a></span><span class="op">(</span>
+  <span class="va">theta</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">mu</span>, <span class="va">sigma</span><span class="op">)</span>,
+  <span class="va">mu</span> <span class="op">&lt;-</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">*</span> <span class="op">(</span><span class="va">time</span> <span class="op">-</span> <span class="va">time_bar</span><span class="op">)</span>,
+  <span class="va">a</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span>,
+  <span class="va">b</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span>,
+  <span class="va">sigma</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">dunif</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>Adatto il modello ai dati:</p>
+<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap</a></span><span class="op">(</span>
+  <span class="va">formula</span>, 
+  data <span class="op">=</span> <span class="va">dat</span>
+<span class="op">)</span></code></pre></div>
+<p>Esamino la distribuzione a posteriori:</p>
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">m1</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
+<span class="co">#&gt;              mean         sd       2.5%      97.5%</span>
+<span class="co">#&gt; a      0.03781275 0.09389640 -0.1462208  0.2218463</span>
+<span class="co">#&gt; b     -0.32555683 0.07412354 -0.4708363 -0.1802774</span>
+<span class="co">#&gt; sigma  1.28407056 0.06639754  1.1539338  1.4142073</span></code></pre></div>
+<p>Ora il parametro <span class="math inline">\(a\)</span> è pari a 0.04. Questo è il valore atteso dell’abiltà per un tempo di consegna medio.</p>
+<p>Qui di seguito è presentata una rappresentazione grafica della distribuzione a posteriori di <span class="math inline">\(a\)</span>:</p>
+<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">post</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/extract.samples.html">extract.samples</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/dens.html">dens</a></span><span class="op">(</span>
+  <span class="va">post</span><span class="op">$</span><span class="va">a</span>, lwd <span class="op">=</span> <span class="fl">2.5</span>, xlab <span class="op">=</span> <span class="st">""</span>,
+  ylab <span class="op">=</span> <span class="st">""</span>, main <span class="op">=</span> <span class="st">"p(a | x, y)"</span>,
+  cex.lab <span class="op">=</span> <span class="fl">1.5</span>, cex.axis <span class="op">=</span> <span class="fl">1.35</span>, cex.main <span class="op">=</span> <span class="fl">1.5</span>,
+  cex.sub <span class="op">=</span> <span class="fl">1.5</span>
+<span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-356-1.png" width="90%" style="display: block; margin: auto;"></div>
+</div>
+<div id="confronto-tra-inferenza-bayesiana-e-frequentista" class="section level2" number="28.2">
+<h2>
+<span class="header-section-number">28.2</span> Confronto tra inferenza Bayesiana e frequentista<a class="anchor" aria-label="anchor" href="#confronto-tra-inferenza-bayesiana-e-frequentista"><i class="fas fa-link"></i></a>
+</h2>
+<p>Ritorniamo a <span class="math inline">\(b\)</span> e poniamoci il problema dell’inferenza. La risposta Bayesiana è data dall’intervallo di credibilità. Nel caso di <span class="math inline">\(b\)</span> abbiamo l’intervallo [-0.47, -0.18]. Calcoliamo l’intervallo di fiducia frequentista. Per fare questo usiamo la stima di massima verosimiglianza dei parametri:</p>
+<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">theta</span> <span class="op">~</span> <span class="va">time</span>, data <span class="op">=</span> <span class="va">dat</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; lm(formula = theta ~ time, data = dat)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residuals:</span>
+<span class="co">#&gt;     Min      1Q  Median      3Q     Max </span>
+<span class="co">#&gt; -4.8865 -0.7484  0.0137  0.6409  4.1730 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)</span>
+<span class="co">#&gt; (Intercept)  4.05353    0.92405   4.387 1.93e-05</span>
+<span class="co">#&gt; time        -0.32557    0.07453  -4.369 2.08e-05</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residual standard error: 1.291 on 185 degrees of freedom</span>
+<span class="co">#&gt; Multiple R-squared:  0.09352,    Adjusted R-squared:  0.08862 </span>
+<span class="co">#&gt; F-statistic: 19.09 on 1 and 185 DF,  p-value: 2.08e-05</span></code></pre></div>
+<p>L’intervallo di fiducia è</p>
+<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">-</span><span class="fl">0.32557</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">.975</span>, <span class="fl">185</span><span class="op">)</span> <span class="op">*</span> <span class="fl">0.07453</span> 
+<span class="co">#&gt; [1] -0.472608 -0.178532</span></code></pre></div>
+<p>quasi identico a quello Bayesiano. Di nuovo, questa è una conseguenza dell’avere usato distribuzioni a priori debolmente informative.</p>
+<p>Dall’output della funzione <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> vediamo anche che l’indice di determinazione è pari a 0.09: il 9% della varianza dei punteggi di abilità è spiegato dalla variazione del tempo di consegna. È possibile calcolare anche l’equivalente Bayesiano di tale indice. Ma non è facile farlo con le funzioni di <code>rethinking</code>, per cui non lo discuteremo qui. Per l’esempio presente, non mi aspetto che sia molto diverso da 0.09.</p>
+<p>In termini frequentisti, il valore di 0.09 è stato calcolato nel modo seguente:</p>
+<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">fm</span><span class="op">$</span><span class="va">fitted.values</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">theta</span><span class="op">)</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">theta</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">theta</span><span class="op">)</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.09351571</span></code></pre></div>
+<p>Questa è la prima misura di bontà di adattamento del modello lineare ai dati. Ma ne abbiamo una seconda, ovvero l’errore standard della regressione. Nei termini dell’analisi frequentista, la stima dell’errore standard della regressione è uguale a 1.291. Questo valore è quasi identico alla stima Bayesiana del parametro <code>sigma</code> (1.28), che dunque ha la stessa interpretazione: esso corrisponde <strong>circa</strong> alla grandezza del residuo medio:</p>
+<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">fm</span><span class="op">$</span><span class="va">residuals</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.9451031</span></code></pre></div>
+<p>Possiamo dunque dire che, usando la retta di regressione, compiamo <em>in media</em> un errore pari a 1.28 nel predire l’abilità <span class="math inline">\(\theta\)</span> conoscendo il tempo di consegna.</p>
+</div>
+<div id="confronti-tra-medie" class="section level2" number="28.3">
+<h2>
+<span class="header-section-number">28.3</span> Confronti tra medie<a class="anchor" aria-label="anchor" href="#confronti-tra-medie"><i class="fas fa-link"></i></a>
+</h2>
+<p>I confronti tra le medie dei gruppi possono essere pensati come casi particolari della regressione lineare. A questo scopo dobbiamo usare delle variabili dummy (che assumono solo i valori 0 e 1) nel modello. Per l’esempio che stiamo discutendo, una variabile dummy è <code>is_female</code>. Tale variabile ha valore 1 per le femmine e 0 per i maschi. Possiamo dunque usare questa variabile per chiederci se la media dell’abilità delle femmine sia diversa da quella dei maschi.</p>
+<p>Nel campione esaminato ci sono</p>
+<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">is_female</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;   0   1 </span>
+<span class="co">#&gt;  53 134</span></code></pre></div>
+<p>134 femmine e 53 maschi.</p>
+<p>Calcolo l’abilità media per i due gruppi:</p>
+<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">is_female</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">summarise</span><span class="op">(</span>
+    avg_prof <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">theta</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+    stderr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">theta</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">/</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span>
+<span class="co">#&gt; # A tibble: 2 x 3</span>
+<span class="co">#&gt;   is_female avg_prof stderr</span>
+<span class="co">#&gt;       &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt; 1         0  -0.0162  0.180</span>
+<span class="co">#&gt; 2         1   0.0592  0.119</span></code></pre></div>
+<p>Le femmine hanno un livello di abilità maggiore di quello dei maschi. È questa una differenza robusta o possiamo attribuirla semplicemente alla variabilità campionaria?</p>
+<p>Inizio qui ad usare l’approccio di massima verosimiglianza per eseguire l’analisi di regressione e per interpretare i coefficienti del modello con riferimento alle medie dei gruppi.</p>
+<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fm1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">theta</span> <span class="op">~</span> <span class="va">is_female</span>, data <span class="op">=</span> <span class="va">dat</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fm1</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; lm(formula = theta ~ is_female, data = dat)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residuals:</span>
+<span class="co">#&gt;     Min      1Q  Median      3Q     Max </span>
+<span class="co">#&gt; -4.1479 -0.8786 -0.1490  0.7274  4.4987 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)</span>
+<span class="co">#&gt; (Intercept) -0.01624    0.18619  -0.087    0.931</span>
+<span class="co">#&gt; is_female    0.07544    0.21996   0.343    0.732</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residual standard error: 1.356 on 185 degrees of freedom</span>
+<span class="co">#&gt; Multiple R-squared:  0.0006354,  Adjusted R-squared:  -0.004767 </span>
+<span class="co">#&gt; F-statistic: 0.1176 on 1 and 185 DF,  p-value: 0.732</span></code></pre></div>
+<p>Dai risultati forniti da <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> possiamo vedere che il valore dell’intercetta</p>
+<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fm1</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>
+<span class="co">#&gt; (Intercept) </span>
+<span class="co">#&gt; -0.01624243</span></code></pre></div>
+<p>corrisponde alla media del gruppo codificato con 0</p>
+<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span><span class="va">dat</span><span class="op">$</span><span class="va">is_female</span> <span class="op">==</span> <span class="fl">0</span>, <span class="op">]</span><span class="op">$</span><span class="va">theta</span><span class="op">)</span>
+<span class="co">#&gt; [1] -0.01624243</span></code></pre></div>
+<p>Inoltre, possiamo vedere che il coefficiente <span class="math inline">\(b\)</span></p>
+<div class="sourceCode" id="cb336"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fm1</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>
+<span class="co">#&gt;  is_female </span>
+<span class="co">#&gt; 0.07543971</span></code></pre></div>
+<p>è uguale alla differenza tra la media del gruppo codificato con 0 e la media del gruppo codificato con 1, ovvero è uguale alla differenza tra le medie dei due gruppi:</p>
+<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">-</span><span class="fl">0.01624243</span> <span class="op">-</span> <span class="fl">0.05919728</span>    
+<span class="co">#&gt; [1] -0.07543971</span></code></pre></div>
+<p>Dunque, il test frequentista dell’ipotesi nulla <span class="math inline">\(\beta = 0\)</span> nel modello di regressione è equivalente al test <em>t</em> di Student per due gruppi indipendenti:</p>
+<div class="sourceCode" id="cb338"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">theta</span> <span class="op">~</span> <span class="va">is_female</span>, data <span class="op">=</span> <span class="va">dat</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;  Two Sample t-test</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; data:  theta by is_female</span>
+<span class="co">#&gt; t = -0.34298, df = 185, p-value = 0.732</span>
+<span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span>
+<span class="co">#&gt; 95 percent confidence interval:</span>
+<span class="co">#&gt;  -0.5093846  0.3585051</span>
+<span class="co">#&gt; sample estimates:</span>
+<span class="co">#&gt; mean in group 0 mean in group 1 </span>
+<span class="co">#&gt;     -0.01624243      0.05919728</span></code></pre></div>
+<p>I risultati sono identici a quelli trovati con l’analisi di regressione.</p>
+<p>Usiamo ora l’approccio Bayesiano:</p>
+<div class="sourceCode" id="cb339"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">flist2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">alist</a></span><span class="op">(</span>
+  <span class="va">theta</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">mu</span>, <span class="va">sigma</span><span class="op">)</span>,
+  <span class="va">mu</span> <span class="op">~</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">*</span> <span class="va">is_female</span>,
+  <span class="va">a</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span><span class="op">)</span>,
+  <span class="va">b</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span><span class="op">)</span>,
+  <span class="va">sigma</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">dunif</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>Adatto il modello:</p>
+<div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/quap.html">quap</a></span><span class="op">(</span>
+  <span class="va">flist2</span>,
+  data <span class="op">=</span> <span class="va">dat</span>
+<span class="op">)</span></code></pre></div>
+<p>Esamino la distribuzione a posteriori</p>
+<div class="sourceCode" id="cb341"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">post2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/extract.samples.html">extract.samples</a></span><span class="op">(</span><span class="va">m2</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/dens.html">dens</a></span><span class="op">(</span>
+  <span class="va">post2</span><span class="op">$</span><span class="va">b</span>, lwd <span class="op">=</span> <span class="fl">2.5</span>, xlab <span class="op">=</span> <span class="st">""</span>,
+  ylab <span class="op">=</span> <span class="st">""</span>, main <span class="op">=</span> <span class="st">"p(b | x, y)"</span>,
+  cex.lab <span class="op">=</span> <span class="fl">1.5</span>, cex.axis <span class="op">=</span> <span class="fl">1.35</span>, cex.main <span class="op">=</span> <span class="fl">1.5</span>,
+  cex.sub <span class="op">=</span> <span class="fl">1.5</span>
+<span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Data-Science-per-psicologi_files/figure-html/unnamed-chunk-371-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb342"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/rethinking/man/precis.html">precis</a></span><span class="op">(</span><span class="va">post2</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
+<span class="co">#&gt;              mean         sd       2.5%     97.5%    histogram</span>
+<span class="co">#&gt; a     -0.01644598 0.18445147 -0.3828843 0.3417742     ▁▁▂▇▇▂▁▁</span>
+<span class="co">#&gt; b      0.07585907 0.21640483 -0.3456973 0.5051490   ▁▁▂▅▇▅▁▁▁▁</span>
+<span class="co">#&gt; sigma  1.34820547 0.07064526  1.2073835 1.4847704 ▁▁▁▂▅▇▇▅▂▁▁▁</span></code></pre></div>
+<p>Possiamo confrontare l’intervallo di credibilità al 95% con l’intervallo di fiducia frequentista fornito dalla funzione <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>. Vediamo che sono quasi identici (a parte il segno invertito, che signifca che la differenza tra le medie dei due gruppi è stata fatta come <span class="math inline">\(\bar{Y_2} - \bar{Y_1}\)</span> anziché come <span class="math inline">\(\bar{Y_1} - \bar{Y_2}\)</span>). I risultati dunque non consentono di affermare che le abilità medie delle femmine differiscono da quelle dei maschi, rispetto alla conoscenza degli argomenti del programma d’esame di Psicometria.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">27</span> Una breve introduzione al modello di regressione</a></div>
+<div class="next"><a href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">29</span> Il modello statistico della regressione lineare</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#modello-di-regressione-in-unottica-bayesiana"><span class="header-section-number">28</span> Modello di regressione in un’ottica Bayesiana</a></li>
+<li><a class="nav-link" href="#predizione-lineare"><span class="header-section-number">28.1</span> Predizione lineare</a></li>
+<li><a class="nav-link" href="#confronto-tra-inferenza-bayesiana-e-frequentista"><span class="header-section-number">28.2</span> Confronto tra inferenza Bayesiana e frequentista</a></li>
+<li><a class="nav-link" href="#confronti-tra-medie"><span class="header-section-number">28.3</span> Confronti tra medie</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-05-06 12:03:31.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>

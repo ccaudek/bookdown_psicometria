@@ -70,8 +70,8 @@
 <li><a class="" href="stima-della-funzione-a-posteriori.html"><span class="header-section-number">25</span> Stima della funzione a posteriori</a></li>
 <li><a class="" href="sintesi-a-posteriori.html"><span class="header-section-number">26</span> Sintesi a posteriori</a></li>
 <li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">27</span> Una breve introduzione al modello di regressione</a></li>
-<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">28</span> Il modello statistico della regressione lineare</a></li>
-<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">29</span> Inferenza Bayesiana</a></li>
+<li><a class="" href="modello-di-regressione-in-unottica-bayesiana.html"><span class="header-section-number">28</span> Modello di regressione in un’ottica Bayesiana</a></li>
+<li><a class="" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">29</span> Il modello statistico della regressione lineare</a></li>
 <li class="book-part">Informazioni generali</li>
 <li><a class="" href="citazione.html">Citazione</a></li>
 <li class="book-part">Appendici</li>
@@ -291,9 +291,8 @@ Leggiamo i dati assumendo che il file <code>data.mood.csv</code> si trovi nella 
 <p>Ci sono dunque 66 soggetti i quali hanno ottenuto i valori sulla scala del BDI-II stampati di seguito (li presento ordinati dal più piccolo al più grande).</p>
 <div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">bysubj</span><span class="op">$</span><span class="va">bdi</span><span class="op">)</span>
-<span class="co">#&gt;  [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  2  2</span>
-<span class="co">#&gt; [28]  2  2  3  3  3  5  7  9 12 19 22 22 24 25 25 26 26 26 27 27 28 28 30 30 30 31 31</span>
-<span class="co">#&gt; [55] 33 33 34 35 35 35 36 39 41 43 43 44</span></code></pre></div>
+<span class="co">#&gt;  [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  2  2  2  2  3  3  3  5  7  9</span>
+<span class="co">#&gt; [36] 12 19 22 22 24 25 25 26 26 26 27 27 28 28 30 30 30 31 31 33 33 34 35 35 35 36 39 41 43 43 44</span></code></pre></div>
 <p>Calcolo ora le frequenze assolute per i seguenti intervalli aperti a destra: [0, 13.5), [13.5, 19.5), [19.5, 28.5), [28.5, 63). Esaminando i dati, possiamo notare che 36 soggetti cadono nella prima classe. È però necessario eseguire quest’operazione di conteggio utilizzando R.</p>
 <p>Uno dei modi possibili per calcolare le frequenze assolute è quello di usare la funzione <code><a href="https://rdrr.io/r/base/cut.html">cut()</a></code>. Mediante tal funzione è possibile dividere il <em>campo di variazione</em> (ovvero, la differenza tra il valore massimo di una distribuzione ed il valore minimo) di una variabile continua <code>x</code> in intervalli e codificare ciascun valore <code>x</code> nei termini dell’intervallo a cui appartiene. Tale risultato si ottiene nel modo seguente.</p>
 <div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
@@ -307,14 +306,12 @@ Leggiamo i dati assumendo che il file <code>data.mood.csv</code> si trovi nella 
 <span class="op">)</span>
 
 <span class="va">bysubj</span><span class="op">$</span><span class="va">bdi_level</span>
-<span class="co">#&gt;  [1] moderate severe   severe   moderate severe   severe   severe   severe   moderate</span>
-<span class="co">#&gt; [10] severe   moderate mild     severe   minimal  minimal  minimal  severe   moderate</span>
-<span class="co">#&gt; [19] minimal  minimal  minimal  minimal  minimal  moderate minimal  minimal  minimal </span>
-<span class="co">#&gt; [28] minimal  minimal  minimal  minimal  severe   minimal  minimal  severe   minimal </span>
-<span class="co">#&gt; [37] moderate minimal  minimal  minimal  severe   minimal  minimal  severe   severe  </span>
-<span class="co">#&gt; [46] moderate severe   severe   minimal  moderate minimal  moderate severe   moderate</span>
-<span class="co">#&gt; [55] moderate minimal  minimal  minimal  minimal  minimal  minimal  minimal  minimal </span>
-<span class="co">#&gt; [64] minimal  minimal  minimal </span>
+<span class="co">#&gt;  [1] moderate severe   severe   moderate severe   severe   severe   severe   moderate severe   moderate</span>
+<span class="co">#&gt; [12] mild     severe   minimal  minimal  minimal  severe   moderate minimal  minimal  minimal  minimal </span>
+<span class="co">#&gt; [23] minimal  moderate minimal  minimal  minimal  minimal  minimal  minimal  minimal  severe   minimal </span>
+<span class="co">#&gt; [34] minimal  severe   minimal  moderate minimal  minimal  minimal  severe   minimal  minimal  severe  </span>
+<span class="co">#&gt; [45] severe   moderate severe   severe   minimal  moderate minimal  moderate severe   moderate moderate</span>
+<span class="co">#&gt; [56] minimal  minimal  minimal  minimal  minimal  minimal  minimal  minimal  minimal  minimal  minimal </span>
 <span class="co">#&gt; Levels: minimal mild moderate severe</span></code></pre></div>
 <p>Possiamo ora usare la funzione <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> la quale ritorna un elenco che associa la frequenza assoluta a ciascuna modalità della variabile in input – ovvero, la distribuzione di frequenza assoluta.</p>
 <div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
@@ -1372,7 +1369,7 @@ software statistico.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-05-04 08:13:03.</p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-05-06 12:03:31.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

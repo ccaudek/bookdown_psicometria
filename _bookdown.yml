@@ -61,8 +61,8 @@ rmd_files: [
   "35_grid_approx.Rmd",
   "36_summarize_posterior.Rmd",
   "39_intro_reglin.Rmd",
-  "40_reglin.Rmd",
-  "41_reglin_bayes.Rmd",
+  "40_reglin_bayes.Rmd",
+  "41_reglin.Rmd",
   # ------------------------- appendici
   "97_licenza.Rmd",
   "98_appendici.Rmd",
