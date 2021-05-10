@@ -63,6 +63,7 @@ rmd_files: [
   "39_intro_reglin.Rmd",
   "40_reglin_bayes.Rmd",
   "41_reglin.Rmd",
+  "42_bayesian_inference.Rmd",
   # ------------------------- appendici
   "97_licenza.Rmd",
   "98_appendici.Rmd",

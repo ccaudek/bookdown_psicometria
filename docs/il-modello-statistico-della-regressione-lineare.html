@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capitolo 29 Il modello statistico della regressione lineare | Data Science per psicologi</title>
 <meta name="author" content="Corrado Caudek">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.8/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
@@ -72,6 +72,7 @@
 <li><a class="" href="una-breve-introduzione-al-modello-di-regressione.html"><span class="header-section-number">27</span> Una breve introduzione al modello di regressione</a></li>
 <li><a class="" href="modello-di-regressione-in-unottica-bayesiana.html"><span class="header-section-number">28</span> Modello di regressione in un’ottica Bayesiana</a></li>
 <li><a class="active" href="il-modello-statistico-della-regressione-lineare.html"><span class="header-section-number">29</span> Il modello statistico della regressione lineare</a></li>
+<li><a class="" href="inferenza-bayesiana.html"><span class="header-section-number">30</span> Inferenza Bayesiana</a></li>
 <li class="book-part">Informazioni generali</li>
 <li><a class="" href="citazione.html">Citazione</a></li>
 <li class="book-part">Appendici</li>
@@ -360,28 +361,30 @@ Figura 29.2: Retta di regressione che descrive la relazione lineare tra il quozi
 <p>o, in maniera equivalente, possono essere trovati con <code><a href="https://rdrr.io/r/stats/predict.html">predict(fm)</a></code></p>
 <div class="sourceCode" id="cb350"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span> 
-<span class="co">#&gt;         1         2         3         4         5         6         7         8         9        10        11 </span>
-<span class="co">#&gt; 20.535671 29.034216 26.484652 12.886980 29.034216 22.235380 29.884070 17.986107 12.886980 32.433634 23.935089 </span>
-<span class="co">#&gt;        12        13        14        15        16        17        18        19        20        21        22 </span>
-<span class="co">#&gt; 23.935089 29.034216 24.784943  6.937998 15.436543 36.682907 26.484652 12.886980 18.835962 25.634798 27.334507 </span>
-<span class="co">#&gt;        23        24        25        26        27        28        29        30        31        32        33 </span>
-<span class="co">#&gt; 20.535671 21.385525 24.784943 35.833052 27.334507 27.334507 19.685816 24.784943 14.586689 34.133343  5.238289 </span>
-<span class="co">#&gt;        34 </span>
-<span class="co">#&gt; 12.037125</span></code></pre></div>
+<span class="co">#&gt;         1         2         3         4         5         6         7         8         9 </span>
+<span class="co">#&gt; 20.535671 29.034216 26.484652 12.886980 29.034216 22.235380 29.884070 17.986107 12.886980 </span>
+<span class="co">#&gt;        10        11        12        13        14        15        16        17        18 </span>
+<span class="co">#&gt; 32.433634 23.935089 23.935089 29.034216 24.784943  6.937998 15.436543 36.682907 26.484652 </span>
+<span class="co">#&gt;        19        20        21        22        23        24        25        26        27 </span>
+<span class="co">#&gt; 12.886980 18.835962 25.634798 27.334507 20.535671 21.385525 24.784943 35.833052 27.334507 </span>
+<span class="co">#&gt;        28        29        30        31        32        33        34 </span>
+<span class="co">#&gt; 27.334507 19.685816 24.784943 14.586689 34.133343  5.238289 12.037125</span></code></pre></div>
 <p>I residui di regressione, ovvero la differenza tra il valore osservato e il valore predetto dal modello, si trovano mediante l’istruzione</p>
 <div class="sourceCode" id="cb351"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">e</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">$</span><span class="va">iq2</span> <span class="op">-</span> <span class="va">yhat</span></code></pre></div>
 <p>o, in maniera equivalente, con <code><a href="https://rdrr.io/r/stats/residuals.html">residuals(fm)</a></code></p>
 <div class="sourceCode" id="cb352"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span>
-<span class="co">#&gt;           1           2           3           4           5           6           7           8           9 </span>
-<span class="co">#&gt;  -8.5356706  -1.0342160   8.5153476  -8.8869798 -11.0342160  10.7646203  -3.8840705  -8.9861070   9.1130202 </span>
-<span class="co">#&gt;          10          11          12          13          14          15          16          17          18 </span>
-<span class="co">#&gt;   1.5663659  -6.9350888  -3.9350888   3.9657840   3.2150567   3.0620019  12.5634566   3.3170932   3.5153476 </span>
-<span class="co">#&gt;          19          20          21          22          23          24          25          26          27 </span>
-<span class="co">#&gt;  -2.8869798   5.1640385  -3.6347978   6.6654931   2.4643294  -0.3855252   0.2150567   2.1669478  -2.3345069 </span>
-<span class="co">#&gt;          28          29          30          31          32          33          34 </span>
-<span class="co">#&gt;  -1.3345069   7.3141839  -0.7849433  -5.5866889  -7.1333432  -3.2382890  -3.0371253</span></code></pre></div>
+<span class="co">#&gt;           1           2           3           4           5           6           7           8 </span>
+<span class="co">#&gt;  -8.5356706  -1.0342160   8.5153476  -8.8869798 -11.0342160  10.7646203  -3.8840705  -8.9861070 </span>
+<span class="co">#&gt;           9          10          11          12          13          14          15          16 </span>
+<span class="co">#&gt;   9.1130202   1.5663659  -6.9350888  -3.9350888   3.9657840   3.2150567   3.0620019  12.5634566 </span>
+<span class="co">#&gt;          17          18          19          20          21          22          23          24 </span>
+<span class="co">#&gt;   3.3170932   3.5153476  -2.8869798   5.1640385  -3.6347978   6.6654931   2.4643294  -0.3855252 </span>
+<span class="co">#&gt;          25          26          27          28          29          30          31          32 </span>
+<span class="co">#&gt;   0.2150567   2.1669478  -2.3345069  -1.3345069   7.3141839  -0.7849433  -5.5866889  -7.1333432 </span>
+<span class="co">#&gt;          33          34 </span>
+<span class="co">#&gt;  -3.2382890  -3.0371253</span></code></pre></div>
 <p>I residui possono essere rappresentanti graficamente come riportato nella figura <a href="il-modello-statistico-della-regressione-lineare.html#fig:reglinresiduals">29.3</a>.</p>
 <div class="sourceCode" id="cb353"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span><span class="op">$</span><span class="va">predicted</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fm</span><span class="op">)</span>   
@@ -805,12 +808,9 @@ tecnica di analisi dei dati maggiormente usata in psicologia.</p>
 
 </div>
 </div>
-
-
-
-<div class="chapter-nav">
+  <div class="chapter-nav">
 <div class="prev"><a href="modello-di-regressione-in-unottica-bayesiana.html"><span class="header-section-number">28</span> Modello di regressione in un’ottica Bayesiana</a></div>
-<div class="next"><a href="citazione.html">Citazione</a></div>
+<div class="next"><a href="inferenza-bayesiana.html"><span class="header-section-number">30</span> Inferenza Bayesiana</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -850,18 +850,14 @@ tecnica di analisi dei dati maggiormente usata in psicologia.</p>
 </div>
     </nav>
 </div>
-</div>
-  
-
-  
 
 </div>
- <!-- .container -->
+</div> <!-- .container -->
 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-05-06 12:03:31.</p>
+    <p>"<strong>Data Science per psicologi</strong>" was written by Corrado Caudek. It was last built on 2021-05-10 18:02:15.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
